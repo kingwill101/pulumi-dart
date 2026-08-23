@@ -5,17 +5,17 @@ import 'get_job_definition_node_property_node_range_property_container_volume_ef
 import 'get_job_definition_node_property_node_range_property_container_volume_host.dart';
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
-  /// This parameter is specified when you're using an Amazon Elastic File System file system for job storage.
+  /// Amazon Elastic File System configuration for job storage. See `efsVolumeConfiguration` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration>> efsVolumeConfigurations;
-  /// The contents of the host parameter determine whether your data volume persists on the host container instance and where it's stored.
+  /// Contents of the host parameter determine whether your data volume persists on the host container instance and where it's stored. See `host` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost>> hosts;
-  /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume].
-  /// [efsVolumeConfigurations] This parameter is specified when you're using an Amazon Elastic File System file system for job storage.
-  /// [hosts] The contents of the host parameter determine whether your data volume persists on the host container instance and where it's stored.
-  /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// [efsVolumeConfigurations] Amazon Elastic File System configuration for job storage. See `efsVolumeConfiguration` below.
+  /// [hosts] Contents of the host parameter determine whether your data volume persists on the host container instance and where it's stored. See `host` below.
+  /// [name] Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume({
     required this.efsVolumeConfigurations,
     required this.hosts,
@@ -38,4 +38,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
     );
   }
 }
-

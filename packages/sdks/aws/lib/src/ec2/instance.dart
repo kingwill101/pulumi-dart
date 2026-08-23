@@ -166,6 +166,37 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "ubuntu" {
+///   most_recent = true
+///   filters {
+///     name   = "name"
+///     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+///   }
+///   filters {
+///     name   = "virtualization-type"
+///     values = ["hvm"]
+///   }
+///   owners = ["099720109477"]
+/// }
+///
+/// # Canonical
+/// resource "aws_ec2_instance" "example" {
+///   ami           = data.aws_ec2_getami.ubuntu.id
+///   instance_type = "t3.micro"
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,10 +205,11 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,6 +341,23 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_instance" "example" {
+///   ami           = "resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+///   instance_type = "t3.micro"
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +366,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,6 +573,42 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "example" {
+///   most_recent = true
+///   owners      = ["amazon"]
+///   filters {
+///     name   = "architecture"
+///     values = ["arm64"]
+///   }
+///   filters {
+///     name   = "name"
+///     values = ["al2023-ami-2023*"]
+///   }
+/// }
+///
+/// resource "aws_ec2_instance" "example" {
+///   ami = data.aws_ec2_getami.example.id
+///   instance_market_options = {
+///     market_type = "spot"
+///     spot_options = {
+///       max_price = 0.0031
+///     }
+///   }
+///   instance_type = "t4g.nano"
+///   tags = {
+///     "Name" = "test-spot"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -532,12 +617,13 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.aws.ec2.inputs.InstanceInstanceMarketOptionsArgs;
 /// import com.pulumi.aws.ec2.inputs.InstanceInstanceMarketOptionsSpotOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -758,7 +844,7 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		mySubnet, err := ec2.NewSubnet(ctx, "my_subnet", &ec2.SubnetArgs{
-/// 			VpcId:            myVpc.ID(),
+/// 			VpcId:            myVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock:        pulumi.String("172.16.10.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			Tags: pulumi.StringMap{
@@ -769,7 +855,7 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := ec2.NewNetworkInterface(ctx, "example", &ec2.NetworkInterfaceArgs{
-/// 			SubnetId: mySubnet.ID(),
+/// 			SubnetId: mySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateIps: pulumi.StringArray{
 /// 				pulumi.String("172.16.10.100"),
 /// 			},
@@ -784,7 +870,7 @@ import 'instance_state.dart';
 /// 			Ami:          pulumi.String("ami-005e54dee72cc1d00"),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
 /// 			PrimaryNetworkInterface: &ec2.InstancePrimaryNetworkInterfaceArgs{
-/// 				NetworkInterfaceId: example.ID(),
+/// 				NetworkInterfaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			CreditSpecification: &ec2.InstanceCreditSpecificationArgs{
 /// 				CpuCredits: pulumi.String("unlimited"),
@@ -795,6 +881,47 @@ import 'instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "my_vpc" {
+///   cidr_block = "172.16.0.0/16"
+///   tags = {
+///     "Name" = "tf-example"
+///   }
+/// }
+/// resource "aws_ec2_subnet" "my_subnet" {
+///   vpc_id            = aws_ec2_vpc.my_vpc.id
+///   cidr_block        = "172.16.10.0/24"
+///   availability_zone = "us-west-2a"
+///   tags = {
+///     "Name" = "tf-example"
+///   }
+/// }
+/// resource "aws_ec2_networkinterface" "example" {
+///   subnet_id   = aws_ec2_subnet.my_subnet.id
+///   private_ips = ["172.16.10.100"]
+///   tags = {
+///     "Name" = "primary_network_interface"
+///   }
+/// }
+/// resource "aws_ec2_instance" "example" {
+///   ami           = "ami-005e54dee72cc1d00"
+///   instance_type = "t2.micro"
+///   primary_network_interface = {
+///     network_interface_id = aws_ec2_networkinterface.example.id
+///   }
+///   credit_specification = {
+///     cpu_credits = "unlimited"
+///   }
 /// }
 /// ```
 /// ```java
@@ -813,8 +940,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.aws.ec2.inputs.InstancePrimaryNetworkInterfaceArgs;
 /// import com.pulumi.aws.ec2.inputs.InstanceCreditSpecificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1059,7 +1186,7 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:            example.ID(),
+/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock:        pulumi.String("172.16.10.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-east-2a"),
 /// 			Tags: pulumi.StringMap{
@@ -1089,7 +1216,7 @@ import 'instance_state.dart';
 /// 		_, err = ec2.NewInstance(ctx, "example", &ec2.InstanceArgs{
 /// 			Ami:          pulumi.String(amzn_linux_2023_ami.Id),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_C6a_2XLarge),
-/// 			SubnetId:     exampleSubnet.ID(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			CpuOptions: &ec2.InstanceCpuOptionsArgs{
 /// 				CoreCount:      pulumi.Int(2),
 /// 				ThreadsPerCore: pulumi.Int(2),
@@ -1105,6 +1232,51 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "amzn-linux-2023-ami" {
+///   most_recent = true
+///   owners      = ["amazon"]
+///   filters {
+///     name   = "name"
+///     values = ["al2023-ami-2023.*-x86_64"]
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "172.16.0.0/16"
+///   tags = {
+///     "Name" = "tf-example"
+///   }
+/// }
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   cidr_block        = "172.16.10.0/24"
+///   availability_zone = "us-east-2a"
+///   tags = {
+///     "Name" = "tf-example"
+///   }
+/// }
+/// resource "aws_ec2_instance" "example" {
+///   ami           = data.aws_ec2_getami.amzn-linux-2023-ami.id
+///   instance_type = "c6a.2xlarge"
+///   subnet_id     = aws_ec2_subnet.example.id
+///   cpu_options = {
+///     core_count       = 2
+///     threads_per_core = 2
+///   }
+///   tags = {
+///     "Name" = "tf-example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1117,11 +1289,12 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.aws.ec2.inputs.InstanceCpuOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1216,7 +1389,7 @@ import 'instance_state.dart';
 ///
 /// A host resource group is a collection of Dedicated Hosts that you can manage as a single entity. As you launch instances, License Manager allocates the hosts and launches instances on them based on the settings that you configured. You can add existing Dedicated Hosts to a host resource group and take advantage of automated host management through License Manager.
 ///
-/// &gt; **NOTE:** A dedicated host is automatically associated with a License Manager host resource group if **Allocate hosts automatically** is enabled. Otherwise, use the `host_resource_group_arn` argument to explicitly associate the instance with the host resource group.
+/// &gt; **NOTE:** A dedicated host is automatically associated with a License Manager host resource group if **Allocate hosts automatically** is enabled. Otherwise, use the `hostResourceGroupArn` argument to explicitly associate the instance with the host resource group.
 ///
 ///
 /// ```typescript
@@ -1281,6 +1454,22 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_instance" "this" {
+///   ami                     = "ami-0dcc1e21636832c5d"
+///   instance_type           = "m5.large"
+///   host_resource_group_arn = "arn:aws:resource-groups:us-west-2:123456789012:group/win-testhost"
+///   tenancy                 = "host"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1289,8 +1478,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1324,17 +1513,7 @@ import 'instance_state.dart';
 /// ```
 ///
 ///
-/// ## Tag Guide
-///
-/// These are the five types of tags you might encounter relative to an `aws.ec2.Instance`:
-///
-/// 1. **Instance tags**: Applied to instances but not to `ebs_block_device` and `root_block_device` volumes.
-/// 2. **Default tags**: Applied to the instance and to `ebs_block_device` and `root_block_device` volumes.
-/// 3. **Volume tags**: Applied during creation to `ebs_block_device` and `root_block_device` volumes.
-/// 4. **Root block device tags**: Applied only to the `root_block_device` volume. These conflict with `volume_tags`.
-/// 5. **EBS block device tags**: Applied only to the specific `ebs_block_device` volume you configure them for and cannot be updated. These conflict with `volume_tags`.
-///
-/// Do not use `volume_tags` if you plan to manage block device tags outside the `aws.ec2.Instance` configuration, such as using `tags` in an `aws.ebs.Volume` resource attached via `aws.ec2.VolumeAttachment`. Doing so will result in resource cycling and inconsistent behavior.
+/// &gt; **Note:** There are five types of tags relevant to an `aws.ec2.Instance`: (1) **instance tags** — applied to instances but not to `ebsBlockDevice` or `rootBlockDevice` volumes; (2) **default tags** — applied to the instance and to those volumes; (3) **volume tags** — applied during creation to `ebsBlockDevice` and `rootBlockDevice` volumes; (4) **root block device tags** — applied only to the `rootBlockDevice` volume (conflicts with `volumeTags`); (5) **EBS block device tags** — applied only to the specific `ebsBlockDevice` volume and cannot be updated (conflicts with `volumeTags`). Do not use `volumeTags` if you manage block device tags outside the `aws.ec2.Instance` configuration (e.g., using `tags` in an `aws.ebs.Volume` resource) as this causes resource cycling and inconsistent behavior.
 ///
 /// ## Import
 ///
@@ -1346,7 +1525,7 @@ import 'instance_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -1356,7 +1535,7 @@ import 'instance_state.dart';
 /// $ pulumi import aws:ec2/instance:Instance web i-12345678
 /// ```
 class Instance extends pulumi.CustomResource {
-  /// AMI to use for the instance. Required unless `launch_template` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
+  /// AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
   late final pulumi.Output<String> ami;
   /// ARN of the instance.
   late final pulumi.Output<String> arn;
@@ -1378,15 +1557,15 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> ebsBlockDevices;
   /// If true, the launched EC2 instance will be EBS-optimized. Note that if this is not set on an instance type that is optimized by default then this will show as disabled but if the instance type is optimized by default then there is no need to set this and there is no effect to disabling it. See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
   late final pulumi.Output<bool> ebsOptimized;
-  /// Whether to assign a primary IPv6 Global Unicast Address (GUA) to the instance when launched in a dual-stack or IPv6-only subnet. A primary IPv6 address ensures a consistent IPv6 address for the instance and is automatically assigned by AWS to the ENI. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains until the instance is terminated or the ENI is detached. Disabling `enable_primary_ipv6` after it has been enabled forces recreation of the instance.
+  /// Whether to assign a primary IPv6 Global Unicast Address (GUA) to the instance when launched in a dual-stack or IPv6-only subnet. A primary IPv6 address ensures a consistent IPv6 address for the instance and is automatically assigned by AWS to the ENI. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains until the instance is terminated or the ENI is detached. Disabling `enablePrimaryIpv6` after it has been enabled forces recreation of the instance.
   late final pulumi.Output<bool> enablePrimaryIpv6;
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
   late final pulumi.Output<InstanceEnclaveOptions> enclaveOptions;
   /// One or more configuration blocks to customize Ephemeral (also known as "Instance Store") volumes on the instance. See Block Devices below for details. When accessing this as an attribute reference, it is a set of objects.
   late final pulumi.Output<List<Map<String, dynamic>>> ephemeralBlockDevices;
-  /// Destroys instance even if `disable_api_termination` or `disable_api_stop` is set to `true`. Defaults to `false`. Once this parameter is set to `true`, a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the instance or destroying the instance, this flag will not work. Additionally when importing an instance, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
+  /// Destroys instance even if `disableApiTermination` or `disableApiStop` is set to `true`. Defaults to `false`. Once this parameter is set to `true`, a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the instance or destroying the instance, this flag will not work. Additionally when importing an instance, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   late final pulumi.Output<bool?> forceDestroy;
-  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   late final pulumi.Output<bool?> getPasswordData;
   /// If true, the launched EC2 instance will support hibernation.
   late final pulumi.Output<bool?> hibernation;
@@ -1404,7 +1583,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<InstanceInstanceMarketOptions> instanceMarketOptions;
   /// State of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
   late final pulumi.Output<String> instanceState;
-  /// Instance type to use for the instance. Required unless `launch_template` is specified and the Launch Template specifies an instance type. If an instance type is specified in the Launch Template, setting `instance_type` will override the instance type specified in the Launch Template. Updates to this field will trigger a stop/start of the EC2 instance.
+  /// Instance type to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifies an instance type. If an instance type is specified in the Launch Template, setting `instanceType` will override the instance type specified in the Launch Template. Updates to this field will trigger a stop/start of the EC2 instance.
   late final pulumi.Output<String> instanceType;
   /// Number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
   late final pulumi.Output<int> ipv6AddressCount;
@@ -1424,11 +1603,11 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
   /// ARN of the Outpost the instance is assigned to.
   late final pulumi.Output<String> outpostArn;
-  /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `get_password_data` is true. Note that this encrypted value will be stored in the state file, as with all exported attributes. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `getPasswordData` is true. Note that this encrypted value will be stored in the state file, as with all exported attributes. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   late final pulumi.Output<String> passwordData;
-  /// Placement Group to start the instance in. Conflicts with `placement_group_id`.
+  /// Placement Group to start the instance in. Conflicts with `placementGroupId`.
   late final pulumi.Output<String> placementGroup;
-  /// Placement Group ID to start the instance in. Conflicts with `placement_group`.
+  /// Placement Group ID to start the instance in. Conflicts with `placementGroup`.
   late final pulumi.Output<String> placementGroupId;
   /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`.
   late final pulumi.Output<int> placementPartitionNumber;
@@ -1444,7 +1623,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> privateIp;
   /// Public DNS name assigned to the instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC.
   late final pulumi.Output<String> publicDns;
-  /// Public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip` as this field will change after the EIP is attached.
+  /// Public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `publicIp` as this field will change after the EIP is attached.
   late final pulumi.Output<String> publicIp;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -1452,11 +1631,11 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<InstanceRootBlockDevice> rootBlockDevice;
   /// One or more secondary network interfaces to attach to the instance at launch time. See Secondary Network Interface below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> secondaryNetworkInterfaces;
-  /// List of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e., referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
+  /// List of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e., referenced in a `networkInterface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
   late final pulumi.Output<List<String>> secondaryPrivateIps;
   /// List of security group names to associate with.
   ///
-  /// &gt; **NOTE:** If you are creating Instances in a VPC, use `vpc_security_group_ids` instead.
+  /// &gt; **NOTE:** If you are creating Instances in a VPC, use `vpcSecurityGroupIds` instead.
   late final pulumi.Output<List<String>> securityGroups;
   /// Controls if traffic is routed to the instance when the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
   late final pulumi.Output<bool?> sourceDestCheck;
@@ -1464,21 +1643,21 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> spotInstanceRequestId;
   /// VPC Subnet ID to launch in.
   late final pulumi.Output<String> subnetId;
-  /// Map of tags to assign to the resource. Note that these tags apply to the instance and not block storage devices. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. Note that these tags apply to the instance and not block storage devices. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of `dedicated` runs on single-tenant hardware. The `host` tenancy is not supported for the import-instance command. Valid values are `default`, `dedicated`, and `host`.
   late final pulumi.Output<String> tenancy;
-  /// User data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead. Updates to this field will trigger a stop/start of the EC2 instance by default. If the `user_data_replace_on_change` is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
+  /// User data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `userDataBase64` instead. Updates to this field will trigger a stop/start of the EC2 instance by default. If the `userDataReplaceOnChange` is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
   late final pulumi.Output<String?> userData;
-  /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption. Updates to this field will trigger a stop/start of the EC2 instance by default. If the `user_data_replace_on_change` is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
+  /// Can be used instead of `userData` to pass base64-encoded binary data directly. Use this instead of `userData` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption. Updates to this field will trigger a stop/start of the EC2 instance by default. If the `userDataReplaceOnChange` is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
   late final pulumi.Output<String> userDataBase64;
-  /// When used in combination with `user_data` or `user_data_base64` will trigger a destroy and recreate of the EC2 instance when set to `true`. Defaults to `false` if not set.
+  /// When used in combination with `userData` or `userDataBase64` will trigger a destroy and recreate of the EC2 instance when set to `true`. Defaults to `false` if not set.
   late final pulumi.Output<bool?> userDataReplaceOnChange;
   /// Map of tags to assign, at instance-creation time, to root and EBS volumes.
   ///
-  /// &gt; **NOTE:** Do not use `volume_tags` if you plan to manage block device tags outside the `aws.ec2.Instance` configuration, such as using `tags` in an `aws.ebs.Volume` resource attached via `aws.ec2.VolumeAttachment`. Doing so will result in resource cycling and inconsistent behavior.
+  /// &gt; **NOTE:** Do not use `volumeTags` if you plan to manage block device tags outside the `aws.ec2.Instance` configuration, such as using `tags` in an `aws.ebs.Volume` resource attached via `aws.ec2.VolumeAttachment`. Doing so will result in resource cycling and inconsistent behavior.
   late final pulumi.Output<Map<String, String>?> volumeTags;
   /// List of security group IDs to associate with.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;

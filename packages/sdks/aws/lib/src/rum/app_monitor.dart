@@ -63,6 +63,20 @@ import 'app_monitor_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rum_appmonitor" "example" {
+///   name   = "example"
+///   domain = "localhost"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'app_monitor_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rum.AppMonitor;
 /// import com.pulumi.aws.rum.AppMonitorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,27 +124,29 @@ import 'app_monitor_state.dart';
 /// $ pulumi import aws:rum/appMonitor:AppMonitor example example
 /// ```
 class AppMonitor extends pulumi.CustomResource {
-  /// configuration data for the app monitor. See app_monitor_configuration below.
+  /// configuration data for the app monitor. See appMonitorConfiguration below.
   late final pulumi.Output<AppMonitorAppMonitorConfiguration> appMonitorConfiguration;
   /// The unique ID of the app monitor. Useful for JS templates.
   late final pulumi.Output<String> appMonitorId;
   /// The Amazon Resource Name (ARN) specifying the app monitor.
   late final pulumi.Output<String> arn;
-  /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See custom_events below.
+  /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See customEvents below.
   late final pulumi.Output<AppMonitorCustomEvents> customEvents;
   /// Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges. Default value is `false`.
   late final pulumi.Output<bool?> cwLogEnabled;
   /// The name of the log group where the copies are stored.
   late final pulumi.Output<String> cwLogGroup;
+  /// The top-level internet domain name for which your application has administrative authority. Exactly one of `domain` or `domainList` must be specified.
   late final pulumi.Output<String?> domain;
+  /// A list of internet domain names for which your application has administrative authority. Exactly one of `domain` or `domainList` must be specified.
   late final pulumi.Output<List<String>?> domainLists;
   /// The name of the log stream.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AppMonitor].

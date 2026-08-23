@@ -23,6 +23,8 @@ import 'get_db_system_shapes_args.dart';
 import 'get_db_system_shapes_result.dart';
 import 'get_gi_versions_args.dart';
 import 'get_gi_versions_result.dart';
+import 'get_iam_role_association_args.dart';
+import 'get_iam_role_association_result.dart';
 import 'get_network_args.dart';
 import 'get_network_peering_connection_args.dart';
 import 'get_network_peering_connection_result.dart';
@@ -90,6 +92,19 @@ import 'get_networks_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getcloudautonomousvmcluster" "example" {
+///   id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +113,8 @@ import 'get_networks_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetCloudAutonomousVmClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +207,18 @@ Future<GetCloudAutonomousVmClusterResult> getCloudAutonomousVmCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getcloudautonomousvmclusters" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +227,8 @@ Future<GetCloudAutonomousVmClusterResult> getCloudAutonomousVmCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetCloudAutonomousVmClustersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,6 +326,19 @@ Future<GetCloudAutonomousVmClustersResult> getCloudAutonomousVmClusters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getcloudexadatainfrastructure" "example" {
+///   id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +347,8 @@ Future<GetCloudAutonomousVmClustersResult> getCloudAutonomousVmClusters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetCloudExadataInfrastructureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,6 +441,18 @@ Future<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getcloudexadatainfrastructures" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -409,8 +461,8 @@ Future<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetCloudExadataInfrastructuresArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,6 +560,19 @@ Future<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructures(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getcloudvmcluster" "example" {
+///   id = "example-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -516,8 +581,8 @@ Future<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructures(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetCloudVmClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -610,6 +675,18 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getcloudvmclusters" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -618,8 +695,8 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetCloudVmClustersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -721,6 +798,20 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getdbnode" "example" {
+///   cloud_vm_cluster_id = "cloud_vm_cluster_id"
+///   id                  = "db_node_id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -729,8 +820,8 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetDbNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -832,6 +923,19 @@ Future<GetDbNodeResult> getDbNode(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getdbnodes" "example" {
+///   cloud_vm_cluster_id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -840,8 +944,8 @@ Future<GetDbNodeResult> getDbNode(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetDbNodesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -945,6 +1049,20 @@ Future<GetDbNodesResult> getDbNodes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getdbserver" "example" {
+///   cloud_exadata_infrastructure_id = "exadata_infra_id"
+///   id                              = "db_server_id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -953,8 +1071,8 @@ Future<GetDbNodesResult> getDbNodes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetDbServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1056,6 +1174,19 @@ Future<GetDbServerResult> getDbServer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getdbservers" "example" {
+///   cloud_exadata_infrastructure_id = "exadata_infra_id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1064,8 +1195,8 @@ Future<GetDbServerResult> getDbServer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetDbServersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1158,6 +1289,18 @@ Future<GetDbServersResult> getDbServers(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getdbsystemshapes" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1166,8 +1309,8 @@ Future<GetDbServersResult> getDbServers(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetDbSystemShapesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1223,6 +1366,133 @@ Future<GetGiVersionsResult> getGiVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGiVersionsResult.fromMap(result);
+}
+
+/// Provides details about an AWS Oracle Database@AWS Associate Disassociate IAM Role.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.odb.getIamRoleAssociation({
+///     iamRoleArn: "arn:aws:iam::123456789012:role/odb-iam-role-example",
+///     resourceArn: "arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.odb.get_iam_role_association(iam_role_arn="arn:aws:iam::123456789012:role/odb-iam-role-example",
+///     resource_arn="arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Odb.GetIamRoleAssociation.Invoke(new()
+///     {
+///         IamRoleArn = "arn:aws:iam::123456789012:role/odb-iam-role-example",
+///         ResourceArn = "arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/odb"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := odb.LookupIamRoleAssociation(ctx, &odb.LookupIamRoleAssociationArgs{
+/// 			IamRoleArn:  "arn:aws:iam::123456789012:role/odb-iam-role-example",
+/// 			ResourceArn: "arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getiamroleassociation" "example" {
+///   iam_role_arn = "arn:aws:iam::123456789012:role/odb-iam-role-example"
+///   resource_arn = "arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.odb.OdbFunctions;
+/// import com.pulumi.aws.odb.inputs.GetIamRoleAssociationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = OdbFunctions.getIamRoleAssociation(GetIamRoleAssociationArgs.builder()
+///             .iamRoleArn("arn:aws:iam::123456789012:role/odb-iam-role-example")
+///             .resourceArn("arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:odb:getIamRoleAssociation
+///       arguments:
+///         iamRoleArn: arn:aws:iam::123456789012:role/odb-iam-role-example
+///         resourceArn: arn:aws:odb:us-east-1:123456789012:cloud-vm-cluster/odb-example-cluster-id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_odb_get_iam_role_association_get_iam_role_association_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetIamRoleAssociationResult> getIamRoleAssociation(
+  GetIamRoleAssociationArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:odb/getIamRoleAssociation:getIamRoleAssociation',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetIamRoleAssociationResult.fromMap(result);
 }
 
 /// Data source for to retrieve network resource in AWS for Oracle Database@AWS.
@@ -1281,6 +1551,19 @@ Future<GetGiVersionsResult> getGiVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getnetwork" "example" {
+///   id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1289,8 +1572,8 @@ Future<GetGiVersionsResult> getGiVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1390,6 +1673,19 @@ Future<GetNetworkResult> getNetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getnetworkpeeringconnection" "example" {
+///   id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1398,8 +1694,8 @@ Future<GetNetworkResult> getNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetNetworkPeeringConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1492,6 +1788,18 @@ Future<GetNetworkPeeringConnectionResult> getNetworkPeeringConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getnetworkpeeringconnections" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1500,8 +1808,8 @@ Future<GetNetworkPeeringConnectionResult> getNetworkPeeringConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetNetworkPeeringConnectionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1590,6 +1898,18 @@ Future<GetNetworkPeeringConnectionsResult> getNetworkPeeringConnections(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getnetworks" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1598,8 +1918,8 @@ Future<GetNetworkPeeringConnectionsResult> getNetworkPeeringConnections(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.odb.OdbFunctions;
 /// import com.pulumi.aws.odb.inputs.GetNetworksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,7 +4,7 @@ import 'get_prebuilt_ecr_image_result.dart';
 
 /// Get information about prebuilt Amazon SageMaker AI  Docker images.
 ///
-/// &gt; **NOTE:** The AWS provider creates a validly constructed `registry_path` but does not verify that the `registry_path` corresponds to an existing image. For example, using a `registry_path` containing an `image_tag` that does not correspond to a Docker image in the ECR repository, will result in an error.
+/// &gt; **NOTE:** The AWS provider creates a validly constructed `registryPath` but does not verify that the `registryPath` corresponds to an existing image. For example, using a `registryPath` containing an `imageTag` that does not correspond to a Docker image in the ECR repository, will result in an error.
 ///
 /// ## Example Usage
 ///
@@ -64,6 +64,20 @@ import 'get_prebuilt_ecr_image_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sagemaker_getprebuiltecrimage" "test" {
+///   repository_name = "sagemaker-scikit-learn"
+///   image_tag       = "2.2-1.0.11.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'get_prebuilt_ecr_image_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.SagemakerFunctions;
 /// import com.pulumi.aws.sagemaker.inputs.GetPrebuiltEcrImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

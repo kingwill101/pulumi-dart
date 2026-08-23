@@ -6,14 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecorderStatusState {
   /// Whether the configuration recorder should be enabled or disabled.
   final pulumi.Input<bool>? isEnabled;
-  /// The name of the recorder
+  /// The name of the configuration recorder.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [RecorderStatusState].
   /// [isEnabled] Whether the configuration recorder should be enabled or disabled.
-  /// [name] The name of the recorder
+  /// [name] The name of the configuration recorder.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const RecorderStatusState({
     this.isEnabled,
@@ -37,4 +37,3 @@ class RecorderStatusState {
     );
   }
 }
-

@@ -6,17 +6,17 @@ import 'deployment_group_load_balancer_info_target_group_info.dart';
 import 'deployment_group_load_balancer_info_target_group_pair_info.dart';
 
 class DeploymentGroupLoadBalancerInfo {
-  /// The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
+  /// The Classic Elastic Load Balancer to use in a deployment. Conflicts with `targetGroupInfo` and `targetGroupPairInfo`.
   final pulumi.Input<List<DeploymentGroupLoadBalancerInfoElbInfo>>? elbInfos;
-  /// The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
+  /// The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elbInfo` and `targetGroupPairInfo`.
   final pulumi.Input<List<DeploymentGroupLoadBalancerInfoTargetGroupInfo>>? targetGroupInfos;
-  /// The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elb_info` and `target_group_info`.
+  /// The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elbInfo` and `targetGroupInfo`.
   final pulumi.Input<DeploymentGroupLoadBalancerInfoTargetGroupPairInfo>? targetGroupPairInfo;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfo].
-  /// [elbInfos] The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
-  /// [targetGroupInfos] The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
-  /// [targetGroupPairInfo] The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elb_info` and `target_group_info`.
+  /// [elbInfos] The Classic Elastic Load Balancer to use in a deployment. Conflicts with `targetGroupInfo` and `targetGroupPairInfo`.
+  /// [targetGroupInfos] The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elbInfo` and `targetGroupPairInfo`.
+  /// [targetGroupPairInfo] The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elbInfo` and `targetGroupInfo`.
   const DeploymentGroupLoadBalancerInfo({
     this.elbInfos,
     this.targetGroupInfos,
@@ -39,4 +39,3 @@ class DeploymentGroupLoadBalancerInfo {
     );
   }
 }
-

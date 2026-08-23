@@ -76,6 +76,23 @@ import 'event_archive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventbus" "order" {
+///   name = "orders"
+/// }
+/// resource "aws_cloudwatch_eventarchive" "order" {
+///   name             = "order-archive"
+///   event_source_arn = aws_cloudwatch_eventbus.order.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'event_archive_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventBusArgs;
 /// import com.pulumi.aws.cloudwatch.EventArchive;
 /// import com.pulumi.aws.cloudwatch.EventArchiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,8 +143,7 @@ import 'event_archive_state.dart';
 /// ```
 ///
 ///
-///
-/// ### Optional Arguments
+/// ### Example Usage Optional Arguments
 ///
 ///
 /// ```typescript
@@ -209,7 +225,7 @@ import 'event_archive_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]string{
 /// 			"source": []string{
 /// 				"company.team.order",
 /// 			},
@@ -232,6 +248,28 @@ import 'event_archive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventbus" "order" {
+///   name = "orders"
+/// }
+/// resource "aws_cloudwatch_eventarchive" "order" {
+///   name             = "order-archive"
+///   description      = "Archived events from order service"
+///   event_source_arn = aws_cloudwatch_eventbus.order.arn
+///   retention_days   = 7
+///   event_pattern = jsonencode({
+///     "source" = ["company.team.order"]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +281,8 @@ import 'event_archive_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventArchive;
 /// import com.pulumi.aws.cloudwatch.EventArchiveArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,8 +333,7 @@ import 'event_archive_state.dart';
 /// ```
 ///
 ///
-///
-/// ### CMK Encryption
+/// ### Example Usage CMK Encryption
 ///
 ///
 /// ```typescript
@@ -557,7 +594,7 @@ import 'event_archive_state.dart';
 /// 						map[string]interface{}{
 /// 							"Sid":    "Enable IAM User Permissions",
 /// 							"Effect": "Allow",
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"AWS": fmt.Sprintf("arn:%v:iam::%v:root", currentGetPartition.Partition, current.AccountId),
 /// 							},
 /// 							"Action":   "kms:*",
@@ -566,7 +603,7 @@ import 'event_archive_state.dart';
 /// 						map[string]interface{}{
 /// 							"Sid":    "Allow describing of the key",
 /// 							"Effect": "Allow",
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"Service": "events.amazonaws.com",
 /// 							},
 /// 							"Action": []string{
@@ -577,7 +614,7 @@ import 'event_archive_state.dart';
 /// 						map[string]interface{}{
 /// 							"Sid":    "Allow use of the key",
 /// 							"Effect": "Allow",
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"Service": "events.amazonaws.com",
 /// 							},
 /// 							"Action": []string{
@@ -586,8 +623,8 @@ import 'event_archive_state.dart';
 /// 								"kms:ReEncrypt*",
 /// 							},
 /// 							"Resource": "*",
-/// 							"Condition": map[string]interface{}{
-/// 								"StringEquals": map[string]interface{}{
+/// 							"Condition": map[string]map[string]string{
+/// 								"StringEquals": map[string]string{
 /// 									"kms:EncryptionContext:aws:events:event-bus:arn": arn,
 /// 								},
 /// 							},
@@ -610,13 +647,76 @@ import 'event_archive_state.dart';
 /// 		_, err = cloudwatch.NewEventArchive(ctx, "example", &cloudwatch.EventArchiveArgs{
 /// 			Name:             pulumi.String("example"),
 /// 			EventSourceArn:   example.Arn,
-/// 			KmsKeyIdentifier: exampleKey.ID(),
+/// 			KmsKeyIdentifier: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_cloudwatch_eventbus" "example" {
+///   name = "example"
+/// }
+/// resource "aws_kms_key" "example" {
+///   deletion_window_in_days = 7
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "key-policy-example"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow describing of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "events.amazonaws.com"
+///       }
+///       "Action"   = ["kms:DescribeKey"]
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow use of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "events.amazonaws.com"
+///       }
+///       "Action"   = ["kms:GenerateDataKey", "kms:Decrypt", "kms:ReEncrypt*"]
+///       "Resource" = "*"
+///       "Condition" = {
+///         "StringEquals" = {
+///           "kms:EncryptionContext:aws:events:event-bus:arn" = aws_cloudwatch_eventbus.example.arn
+///         }
+///       }
+///     }]
+///   })
+///   tags = {
+///     "EventBridgeApiDestinations" = "true"
+///   }
+/// }
+/// resource "aws_cloudwatch_eventarchive" "example" {
+///   name               = "example"
+///   event_source_arn   = aws_cloudwatch_eventbus.example.arn
+///   kms_key_identifier = aws_kms_key.example.id
 /// }
 /// ```
 /// ```java
@@ -635,8 +735,8 @@ import 'event_archive_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventArchive;
 /// import com.pulumi.aws.cloudwatch.EventArchiveArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -779,17 +879,29 @@ import 'event_archive_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an EventBridge archive using the `name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the archive.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Archives using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/eventArchive:EventArchive imported_event_archive order-archive
+/// $ pulumi import aws:cloudwatch/eventArchive:EventArchive example example-archive
 /// ```
 class EventArchive extends pulumi.CustomResource {
   /// ARN of the archive.
   late final pulumi.Output<String> arn;
   /// Description for the archive.
   late final pulumi.Output<String?> description;
-  /// Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `event_source_arn`.
+  /// Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `eventSourceArn`.
   late final pulumi.Output<String?> eventPattern;
   /// ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive.
   late final pulumi.Output<String> eventSourceArn;

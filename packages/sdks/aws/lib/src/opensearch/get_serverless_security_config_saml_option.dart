@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerlessSecurityConfigSamlOption {
   /// Group attribute for this SAML integration.
   final pulumi.Input<String> groupAttribute;
-  /// The XML IdP metadata file generated from your identity provider.
+  /// XML IdP metadata file generated from your identity provider.
   final pulumi.Input<String> metadata;
   /// Session timeout, in minutes. Minimum is 5 minutes and maximum is 720 minutes (12 hours). Default is 60 minutes.
   final pulumi.Input<int> sessionTimeout;
@@ -14,7 +14,7 @@ class GetServerlessSecurityConfigSamlOption {
 
   /// Creates a new [GetServerlessSecurityConfigSamlOption].
   /// [groupAttribute] Group attribute for this SAML integration.
-  /// [metadata] The XML IdP metadata file generated from your identity provider.
+  /// [metadata] XML IdP metadata file generated from your identity provider.
   /// [sessionTimeout] Session timeout, in minutes. Minimum is 5 minutes and maximum is 720 minutes (12 hours). Default is 60 minutes.
   /// [userAttribute] User attribute for this SAML integration.
   const GetServerlessSecurityConfigSamlOption({
@@ -42,4 +42,3 @@ class GetServerlessSecurityConfigSamlOption {
     );
   }
 }
-

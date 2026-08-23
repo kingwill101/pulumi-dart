@@ -7,9 +7,9 @@ class LaunchTemplatePlacement {
   final pulumi.Input<String>? affinity;
   /// The Availability Zone for the instance.
   final pulumi.Input<String>? availabilityZone;
-  /// The ID of the placement group for the instance. Conflicts with `group_name`.
+  /// The ID of the placement group for the instance. Conflicts with `groupName`.
   final pulumi.Input<String>? groupId;
-  /// The name of the placement group for the instance. Conflicts with `group_id`.
+  /// The name of the placement group for the instance. Conflicts with `groupId`.
   final pulumi.Input<String>? groupName;
   /// The ID of the Dedicated Host for the instance.
   final pulumi.Input<String>? hostId;
@@ -25,8 +25,8 @@ class LaunchTemplatePlacement {
   /// Creates a new [LaunchTemplatePlacement].
   /// [affinity] The affinity setting for an instance on a Dedicated Host.
   /// [availabilityZone] The Availability Zone for the instance.
-  /// [groupId] The ID of the placement group for the instance. Conflicts with `group_name`.
-  /// [groupName] The name of the placement group for the instance. Conflicts with `group_id`.
+  /// [groupId] The ID of the placement group for the instance. Conflicts with `groupName`.
+  /// [groupName] The name of the placement group for the instance. Conflicts with `groupId`.
   /// [hostId] The ID of the Dedicated Host for the instance.
   /// [hostResourceGroupArn] The ARN of the Host Resource Group in which to launch instances.
   /// [partitionNumber] The number of the partition the instance should launch in. Valid only if the placement group strategy is set to partition.
@@ -72,4 +72,3 @@ class LaunchTemplatePlacement {
     );
   }
 }
-

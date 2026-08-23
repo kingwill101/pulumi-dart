@@ -17,45 +17,45 @@ import 'v2models_intent_confirmation_setting_prompt_specification.dart';
 class V2modelsIntentConfirmationSetting {
   /// Whether the intent's confirmation is sent to the user. When this field is false, confirmation and declination responses aren't sent. If the active field isn't specified, the default is true.
   final pulumi.Input<bool>? active;
-  /// Configuration block for the intent's confirmation step. The dialog code hook is triggered based on these invocation settings when the confirmation next step or declination next step or failure next step is `invoke_dialog_code_hook`.  See `code_hook`.
+  /// Configuration block for the intent's confirmation step. The dialog code hook is triggered based on these invocation settings when the confirmation next step or declination next step or failure next step is `invokeDialogCodeHook`.  See `codeHook`.
   final pulumi.Input<V2modelsIntentConfirmationSettingCodeHook>? codeHook;
-  /// Configuration block for conditional branches to evaluate after the intent is closed. See `confirmation_conditional`.
+  /// Configuration block for conditional branches to evaluate after the intent is closed. See `confirmationConditional`.
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditional>? confirmationConditional;
-  /// Configuration block for the next step that the bot executes when the customer confirms the intent. See `confirmation_next_step`.
+  /// Configuration block for the next step that the bot executes when the customer confirms the intent. See `confirmationNextStep`.
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationNextStep>? confirmationNextStep;
-  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `confirmation_response`.
+  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `confirmationResponse`.
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationResponse>? confirmationResponse;
-  /// Configuration block for conditional branches to evaluate after the intent is declined. See `declination_conditional`.
+  /// Configuration block for conditional branches to evaluate after the intent is declined. See `declinationConditional`.
   final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditional>? declinationConditional;
-  /// Configuration block for the next step that the bot executes when the customer declines the intent. See `declination_next_step`.
+  /// Configuration block for the next step that the bot executes when the customer declines the intent. See `declinationNextStep`.
   final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationNextStep>? declinationNextStep;
-  /// Configuration block for when the user answers "no" to the question defined in `prompt_specification`, Amazon Lex responds with this response to acknowledge that the intent was canceled. See `declination_response`.
+  /// Configuration block for when the user answers "no" to the question defined in `promptSpecification`, Amazon Lex responds with this response to acknowledge that the intent was canceled. See `declinationResponse`.
   final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationResponse>? declinationResponse;
-  /// Configuration block for when the code hook is invoked during confirmation prompt retries. See `elicitation_code_hook`.
+  /// Configuration block for when the code hook is invoked during confirmation prompt retries. See `elicitationCodeHook`.
   final pulumi.Input<V2modelsIntentConfirmationSettingElicitationCodeHook>? elicitationCodeHook;
-  /// Configuration block for conditional branches. Branches are evaluated in the order that they are entered in the list. The first branch with a condition that evaluates to true is executed. The last branch in the list is the default branch. The default branch should not have any condition expression. The default branch is executed if no other branch has a matching condition. See `failure_conditional`.
+  /// Configuration block for conditional branches. Branches are evaluated in the order that they are entered in the list. The first branch with a condition that evaluates to true is executed. The last branch in the list is the default branch. The default branch should not have any condition expression. The default branch is executed if no other branch has a matching condition. See `failureConditional`.
   final pulumi.Input<V2modelsIntentConfirmationSettingFailureConditional>? failureConditional;
-  /// Configuration block for the next step to take in the conversation if the confirmation step fails. See `failure_next_step`.
+  /// Configuration block for the next step to take in the conversation if the confirmation step fails. See `failureNextStep`.
   final pulumi.Input<V2modelsIntentConfirmationSettingFailureNextStep>? failureNextStep;
-  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `failure_response`.
+  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `failureResponse`.
   final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponse>? failureResponse;
-  /// Configuration block for prompting the user to confirm the intent. This question should have a yes or no answer. Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. See `prompt_specification`.
+  /// Configuration block for prompting the user to confirm the intent. This question should have a yes or no answer. Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. See `promptSpecification`.
   final pulumi.Input<V2modelsIntentConfirmationSettingPromptSpecification>? promptSpecification;
 
   /// Creates a new [V2modelsIntentConfirmationSetting].
   /// [active] Whether the intent's confirmation is sent to the user. When this field is false, confirmation and declination responses aren't sent. If the active field isn't specified, the default is true.
-  /// [codeHook] Configuration block for the intent's confirmation step. The dialog code hook is triggered based on these invocation settings when the confirmation next step or declination next step or failure next step is `invoke_dialog_code_hook`.  See `code_hook`.
-  /// [confirmationConditional] Configuration block for conditional branches to evaluate after the intent is closed. See `confirmation_conditional`.
-  /// [confirmationNextStep] Configuration block for the next step that the bot executes when the customer confirms the intent. See `confirmation_next_step`.
-  /// [confirmationResponse] Configuration block for message groups that Amazon Lex uses to respond the user input. See `confirmation_response`.
-  /// [declinationConditional] Configuration block for conditional branches to evaluate after the intent is declined. See `declination_conditional`.
-  /// [declinationNextStep] Configuration block for the next step that the bot executes when the customer declines the intent. See `declination_next_step`.
-  /// [declinationResponse] Configuration block for when the user answers "no" to the question defined in `prompt_specification`, Amazon Lex responds with this response to acknowledge that the intent was canceled. See `declination_response`.
-  /// [elicitationCodeHook] Configuration block for when the code hook is invoked during confirmation prompt retries. See `elicitation_code_hook`.
-  /// [failureConditional] Configuration block for conditional branches. Branches are evaluated in the order that they are entered in the list. The first branch with a condition that evaluates to true is executed. The last branch in the list is the default branch. The default branch should not have any condition expression. The default branch is executed if no other branch has a matching condition. See `failure_conditional`.
-  /// [failureNextStep] Configuration block for the next step to take in the conversation if the confirmation step fails. See `failure_next_step`.
-  /// [failureResponse] Configuration block for message groups that Amazon Lex uses to respond the user input. See `failure_response`.
-  /// [promptSpecification] Configuration block for prompting the user to confirm the intent. This question should have a yes or no answer. Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. See `prompt_specification`.
+  /// [codeHook] Configuration block for the intent's confirmation step. The dialog code hook is triggered based on these invocation settings when the confirmation next step or declination next step or failure next step is `invokeDialogCodeHook`.  See `codeHook`.
+  /// [confirmationConditional] Configuration block for conditional branches to evaluate after the intent is closed. See `confirmationConditional`.
+  /// [confirmationNextStep] Configuration block for the next step that the bot executes when the customer confirms the intent. See `confirmationNextStep`.
+  /// [confirmationResponse] Configuration block for message groups that Amazon Lex uses to respond the user input. See `confirmationResponse`.
+  /// [declinationConditional] Configuration block for conditional branches to evaluate after the intent is declined. See `declinationConditional`.
+  /// [declinationNextStep] Configuration block for the next step that the bot executes when the customer declines the intent. See `declinationNextStep`.
+  /// [declinationResponse] Configuration block for when the user answers "no" to the question defined in `promptSpecification`, Amazon Lex responds with this response to acknowledge that the intent was canceled. See `declinationResponse`.
+  /// [elicitationCodeHook] Configuration block for when the code hook is invoked during confirmation prompt retries. See `elicitationCodeHook`.
+  /// [failureConditional] Configuration block for conditional branches. Branches are evaluated in the order that they are entered in the list. The first branch with a condition that evaluates to true is executed. The last branch in the list is the default branch. The default branch should not have any condition expression. The default branch is executed if no other branch has a matching condition. See `failureConditional`.
+  /// [failureNextStep] Configuration block for the next step to take in the conversation if the confirmation step fails. See `failureNextStep`.
+  /// [failureResponse] Configuration block for message groups that Amazon Lex uses to respond the user input. See `failureResponse`.
+  /// [promptSpecification] Configuration block for prompting the user to confirm the intent. This question should have a yes or no answer. Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. See `promptSpecification`.
   const V2modelsIntentConfirmationSetting({
     this.active,
     this.codeHook,
@@ -108,4 +108,3 @@ class V2modelsIntentConfirmationSetting {
     );
   }
 }
-

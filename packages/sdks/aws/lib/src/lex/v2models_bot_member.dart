@@ -48,4 +48,3 @@ class V2modelsBotMember {
     );
   }
 }
-

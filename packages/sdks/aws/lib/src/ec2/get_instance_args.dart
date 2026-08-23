@@ -10,14 +10,14 @@ import 'get_instance_filter.dart';
 class GetInstanceArgs {
   /// One or more filters to apply to the search.
   /// If multiple `filter` blocks are provided, they all must be true.
-  /// For a full reference of filter names, see [describe-instances in the AWS CLI reference][1].
+  /// For a full reference of filter names, see [describe-instances in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html).
   /// See `filter` Block below.
   final pulumi.Input<List<GetInstanceFilter>>? filters;
-  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   final pulumi.Input<bool>? getPasswordData;
-  /// Retrieve Base64 encoded User Data contents into the `user_data_base64` attribute. A SHA-1 hash of the User Data contents will always be present in the `user_data` attribute. Defaults to `false`.
+  /// Retrieve Base64 encoded User Data contents into the `userDataBase64` attribute. A SHA-1 hash of the User Data contents will always be present in the `userData` attribute. Defaults to `false`.
   ///
-  /// &gt; **NOTE:** At least one of `filter`, `instance_tags`, or `instance_id` must be specified.
+  /// &gt; **NOTE:** At least one of `filter`, `instanceTags`, or `instanceId` must be specified.
   ///
   /// &gt; **NOTE:** If anything other than a single match is returned by the search,
   /// this call will fail. Ensure that your search is specific enough to return
@@ -35,8 +35,8 @@ class GetInstanceArgs {
 
   /// Creates a new [GetInstanceArgs].
   /// [filters] One or more filters to apply to the search.
-  /// [getPasswordData] If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-  /// [getUserData] Retrieve Base64 encoded User Data contents into the `user_data_base64` attribute. A SHA-1 hash of the User Data contents will always be present in the `user_data` attribute. Defaults to `false`.
+  /// [getPasswordData] If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// [getUserData] Retrieve Base64 encoded User Data contents into the `userDataBase64` attribute. A SHA-1 hash of the User Data contents will always be present in the `userData` attribute. Defaults to `false`.
   /// [instanceId] Specify the exact Instance ID with which to populate the data source.
   /// [instanceTags] Map of tags, each pair of which must
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -75,4 +75,3 @@ class GetInstanceArgs {
     );
   }
 }
-

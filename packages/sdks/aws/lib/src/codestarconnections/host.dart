@@ -68,6 +68,21 @@ import 'host_vpc_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codestarconnections_host" "example" {
+///   name              = "example-host"
+///   provider_endpoint = "https://example.com"
+///   provider_type     = "GitHubEnterpriseServer"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'host_vpc_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codestarconnections.Host;
 /// import com.pulumi.aws.codestarconnections.HostArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -22,7 +22,7 @@ class WorkflowState {
   final pulumi.Input<String>? owner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags for the workflow. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the workflow. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Type of the workflow. Valid values: `BUILD`, `TEST`.
@@ -44,7 +44,7 @@ class WorkflowState {
   /// [name] Name of the workflow.
   /// [owner] Owner of the workflow.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags for the workflow. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags for the workflow. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [type] Type of the workflow. Valid values: `BUILD`, `TEST`.
   /// [uri] S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
@@ -104,4 +104,3 @@ class WorkflowState {
     );
   }
 }
-

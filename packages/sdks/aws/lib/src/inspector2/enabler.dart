@@ -75,6 +75,20 @@ import 'enabler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_inspector2_enabler" "example" {
+///   account_ids    = ["123456789012"]
+///   resource_types = ["EC2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +97,8 @@ import 'enabler_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.inspector2.Enabler;
 /// import com.pulumi.aws.inspector2.EnablerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,6 +214,23 @@ import 'enabler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_inspector2_enabler" "test" {
+///   account_ids    = [data.aws_getcalleridentity.current.account_id]
+///   resource_types = ["ECR", "EC2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +241,8 @@ import 'enabler_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.inspector2.Enabler;
 /// import com.pulumi.aws.inspector2.EnablerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,7 +287,7 @@ import 'enabler_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Inspector Enabler using using `account_ids` and `region_types` formatted as `[account_id1]:[account_id2]:...-[resource_type1]:[resource_type2]:...`, where `account_ids` are sorted in ascending order and `resource_types` are sorted in alphabetical order. For example:
+/// Using `pulumi import`, import Inspector Enabler using using `accountIds` and `regionTypes` formatted as `[accountId1]:[accountId2]:...-[resourceType1]:[resourceType2]:...`, where `accountIds` are sorted in ascending order and `resourceTypes` are sorted in alphabetical order. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:inspector2/enabler:Enabler example 123456789012:234567890123-EC2:ECR

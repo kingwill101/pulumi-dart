@@ -81,6 +81,24 @@ import 'account_password_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_accountpasswordpolicy" "strict" {
+///   minimum_password_length        = 8
+///   require_lowercase_characters   = true
+///   require_numbers                = true
+///   require_uppercase_characters   = true
+///   require_symbols                = true
+///   allow_users_to_change_password = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +107,8 @@ import 'account_password_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.AccountPasswordPolicy;
 /// import com.pulumi.aws.iam.AccountPasswordPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +156,7 @@ import 'account_password_policy_state.dart';
 class AccountPasswordPolicy extends pulumi.CustomResource {
   /// Whether to allow users to change their own password
   late final pulumi.Output<bool?> allowUsersToChangePassword;
-  /// Indicates whether passwords in the account expire. Returns `true` if `max_password_age` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
+  /// Indicates whether passwords in the account expire. Returns `true` if `maxPasswordAge` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
   late final pulumi.Output<bool> expirePasswords;
   /// Whether users are prevented from setting a new password after their password has expired (i.e., require administrator reset)
   late final pulumi.Output<bool> hardExpiry;

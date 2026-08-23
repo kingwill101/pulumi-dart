@@ -114,7 +114,7 @@ import 'budget_action_state.dart';
 ///     execution_role_arn=example_role.arn,
 ///     action_threshold={
 ///         "action_threshold_type": "ABSOLUTE_VALUE",
-///         "action_threshold_value": 100,
+///         "action_threshold_value": float(100),
 ///     },
 ///     definition={
 ///         "iam_action_definition": {
@@ -366,6 +366,78 @@ import 'budget_action_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:Describe*"]
+///     resources = ["*"]
+///   }
+/// }
+/// data "aws_getpartition" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["budgets.${data.aws_getpartition.current.dns_suffix}"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_budgets_budgetaction" "example" {
+///   budget_name        = aws_budgets_budget.example.name
+///   action_type        = "APPLY_IAM_POLICY"
+///   approval_model     = "AUTOMATIC"
+///   notification_type  = "ACTUAL"
+///   execution_role_arn = aws_iam_role.example.arn
+///   action_threshold = {
+///     action_threshold_type  = "ABSOLUTE_VALUE"
+///     action_threshold_value = 100
+///   }
+///   definition = {
+///     iam_action_definition = {
+///       policy_arn = aws_iam_policy.example.arn
+///       roles      = [aws_iam_role.example.name]
+///     }
+///   }
+///   subscribers {
+///     address           = "example@example.example"
+///     subscription_type = "EMAIL"
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// resource "aws_iam_policy" "example" {
+///   name        = "example"
+///   description = "My example policy"
+///   policy      = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_budgets_budget" "example" {
+///   name              = "example"
+///   budget_type       = "USAGE"
+///   limit_amount      = "10.0"
+///   limit_unit        = "dollars"
+///   time_period_start = "2006-01-02_15:04"
+///   time_unit         = "MONTHLY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -374,10 +446,12 @@ import 'budget_action_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.iam.Policy;
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetPartitionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.budgets.Budget;
@@ -388,8 +462,8 @@ import 'budget_action_state.dart';
 /// import com.pulumi.aws.budgets.inputs.BudgetActionDefinitionArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetActionDefinitionIamActionDefinitionArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetActionSubscriberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -558,7 +632,7 @@ import 'budget_action_state.dart';
 /// $ pulumi import aws:budgets/budgetAction:BudgetAction myBudget 123456789012:some-id:myBudget
 /// ```
 class BudgetAction extends pulumi.CustomResource {
-  /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
+  /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
   late final pulumi.Output<String> accountId;
   /// The id of the budget action.
   late final pulumi.Output<String> actionId;
@@ -582,9 +656,9 @@ class BudgetAction extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// A list of subscribers. See Subscriber.
   late final pulumi.Output<List<Map<String, dynamic>>> subscribers;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [BudgetAction].

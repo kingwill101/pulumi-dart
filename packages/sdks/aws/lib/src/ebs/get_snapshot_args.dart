@@ -8,7 +8,7 @@ import 'get_snapshot_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ebs_get_snapshot_get_snapshot_args_doc}
 class GetSnapshotArgs {
-  /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference][1].
+  /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html).
   final pulumi.Input<List<GetSnapshotFilter>>? filters;
   /// If more than one result is returned, use the most recent snapshot.
   final pulumi.Input<bool>? mostRecent;
@@ -24,7 +24,7 @@ class GetSnapshotArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetSnapshotArgs].
-  /// [filters] One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference][1].
+  /// [filters] One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html).
   /// [mostRecent] If more than one result is returned, use the most recent snapshot.
   /// [owners] Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -65,4 +65,3 @@ class GetSnapshotArgs {
     );
   }
 }
-

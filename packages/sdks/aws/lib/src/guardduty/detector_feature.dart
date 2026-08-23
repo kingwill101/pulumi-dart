@@ -69,7 +69,7 @@ import 'detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "s3_protection", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID(),
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:       pulumi.String("S3_DATA_EVENTS"),
 /// 			Status:     pulumi.String("ENABLED"),
 /// 		})
@@ -78,6 +78,24 @@ import 'detector_feature_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "example" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_detectorfeature" "s3_protection" {
+///   detector_id = aws_guardduty_detector.example.id
+///   name        = "S3_DATA_EVENTS"
+///   status      = "ENABLED"
 /// }
 /// ```
 /// ```java
@@ -90,8 +108,8 @@ import 'detector_feature_state.dart';
 /// import com.pulumi.aws.guardduty.DetectorArgs;
 /// import com.pulumi.aws.guardduty.DetectorFeature;
 /// import com.pulumi.aws.guardduty.DetectorFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,7 +150,7 @@ import 'detector_feature_state.dart';
 /// ```
 ///
 ///
-/// ## Extended Threat Detection for EKS
+/// ### Extended Threat Detection for EKS
 ///
 /// To enable GuardDuty [Extended Threat Detection](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-extended-threat-detection.html) for EKS, you need at least one of these features enabled: [EKS Protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html) or [Runtime Monitoring](https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring-configuration.html). For maximum detection coverage, enabling both is recommended to enhance detection capabilities.
 ///
@@ -229,7 +247,7 @@ import 'detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "eks_protection", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID(),
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:       pulumi.String("EKS_AUDIT_LOGS"),
 /// 			Status:     pulumi.String("ENABLED"),
 /// 		})
@@ -237,7 +255,7 @@ import 'detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "eks_runtime_monitoring", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID(),
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
 /// 			Status:     pulumi.String("ENABLED"),
 /// 			AdditionalConfigurations: guardduty.DetectorFeatureAdditionalConfigurationArray{
@@ -254,6 +272,33 @@ import 'detector_feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "example" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_detectorfeature" "eks_protection" {
+///   detector_id = aws_guardduty_detector.example.id
+///   name        = "EKS_AUDIT_LOGS"
+///   status      = "ENABLED"
+/// }
+/// resource "aws_guardduty_detectorfeature" "eks_runtime_monitoring" {
+///   detector_id = aws_guardduty_detector.example.id
+///   name        = "EKS_RUNTIME_MONITORING"
+///   status      = "ENABLED"
+///   additional_configurations {
+///     name   = "EKS_ADDON_MANAGEMENT"
+///     status = "ENABLED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +310,8 @@ import 'detector_feature_state.dart';
 /// import com.pulumi.aws.guardduty.DetectorFeature;
 /// import com.pulumi.aws.guardduty.DetectorFeatureArgs;
 /// import com.pulumi.aws.guardduty.inputs.DetectorFeatureAdditionalConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,7 +375,7 @@ class DetectorFeature extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   late final pulumi.Output<String> detectorId;
-  /// The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`, `RUNTIME_MONITORING`. Only one of two features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING` can be added, adding both features will cause an error. Refer to the [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfiguration.html) for the current list of supported values.
+  /// The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`, `RUNTIME_MONITORING`, `AI_PROTECTION`, `AI_ANALYST`. Only one of two features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING` can be added, adding both features will cause an error. Refer to the [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfiguration.html) for the current list of supported values.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

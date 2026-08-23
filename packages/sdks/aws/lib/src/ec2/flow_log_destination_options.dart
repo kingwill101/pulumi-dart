@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowLogDestinationOptions {
   /// File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.
   final pulumi.Input<String>? fileFormat;
-  /// Indicates whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
+  /// Whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
   final pulumi.Input<bool>? hiveCompatiblePartitions;
-  /// Indicates whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
+  /// Whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
   final pulumi.Input<bool>? perHourPartition;
 
   /// Creates a new [FlowLogDestinationOptions].
   /// [fileFormat] File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.
-  /// [hiveCompatiblePartitions] Indicates whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
-  /// [perHourPartition] Indicates whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
+  /// [hiveCompatiblePartitions] Whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
+  /// [perHourPartition] Whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
   const FlowLogDestinationOptions({
     this.fileFormat,
     this.hiveCompatiblePartitions,
@@ -36,4 +36,3 @@ class FlowLogDestinationOptions {
     );
   }
 }
-

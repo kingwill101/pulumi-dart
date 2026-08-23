@@ -34,7 +34,7 @@ import 'bucket_policy_state.dart';
 /// });
 /// const allowAccessFromAnotherAccountBucketPolicy = new aws.s3.BucketPolicy("allow_access_from_another_account", {
 ///     bucket: example.id,
-///     policy: allowAccessFromAnotherAccount.apply(allowAccessFromAnotherAccount => allowAccessFromAnotherAccount.json),
+///     policy: allowAccessFromAnotherAccount.json,
 /// });
 /// ```
 /// ```python
@@ -156,16 +156,42 @@ import 'bucket_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "allow_access_from_another_account", &s3.BucketPolicyArgs{
-/// 			Bucket: example.ID(),
-/// 			Policy: pulumi.String(allowAccessFromAnotherAccount.ApplyT(func(allowAccessFromAnotherAccount iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &allowAccessFromAnotherAccount.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: allowAccessFromAnotherAccount.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "allowAccessFromAnotherAccount" {
+///   statements {
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["123456789012"]
+///     }
+///     actions   = ["s3:GetObject", "s3:ListBucket"]
+///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-tf-test-bucket"
+/// }
+/// resource "aws_s3_bucketpolicy" "allow_access_from_another_account" {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_getpolicydocument.allowAccessFromAnotherAccount.json
 /// }
 /// ```
 /// ```java
@@ -178,10 +204,12 @@ import 'bucket_policy_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,7 +291,7 @@ import 'bucket_policy_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///

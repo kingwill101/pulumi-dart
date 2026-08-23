@@ -67,6 +67,21 @@ import 'folder_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_foldermembership" "example" {
+///   folder_id   = exampleAwsQuicksightFolder.folderId
+///   member_type = "DATASET"
+///   member_id   = exampleAwsQuicksightDataSet.dataSetId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'folder_membership_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.FolderMembership;
 /// import com.pulumi.aws.quicksight.FolderMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

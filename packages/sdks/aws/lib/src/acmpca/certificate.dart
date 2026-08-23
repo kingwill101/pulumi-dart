@@ -8,7 +8,7 @@ import 'certificate_validity.dart';
 /// Certificates created using `aws.acmpca.Certificate` are not eligible for automatic renewal,
 /// and must be replaced instead.
 /// To issue a renewable certificate using an ACM PCA, create a `aws.acm.Certificate`
-/// with the parameter `certificate_authority_arn`.
+/// with the parameter `certificateAuthorityArn`.
 ///
 /// ## Example Usage
 ///
@@ -163,7 +163,7 @@ import 'certificate_validity.dart';
 /// 		csr, err := tls.NewCertRequest(ctx, "csr", &tls.CertRequestArgs{
 /// 			PrivateKeyPem: key.PrivateKeyPem,
 /// 			Subject: tls.CertRequestSubjectArgs{
-/// 				map[string]interface{}{
+/// 				map[string]string{
 /// 					"commonName": "example",
 /// 				},
 /// 			},
@@ -187,6 +187,47 @@ import 'certificate_validity.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     tls = {
+///       source = "pulumi/tls"
+///     }
+///   }
+/// }
+///
+/// resource "aws_acmpca_certificate" "example" {
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
+///   certificate_signing_request = tls_certrequest.csr.cert_request_pem
+///   signing_algorithm           = "SHA256WITHRSA"
+///   validity = {
+///     type  = "YEARS"
+///     value = 1
+///   }
+/// }
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+///   permanent_deletion_time_in_days = 7
+/// }
+/// resource "tls_privatekey" "key" {
+///   algorithm = "RSA"
+/// }
+/// resource "tls_certrequest" "csr" {
+///   private_key_pem = tls_privatekey.key.private_key_pem
+///   subject = [{
+///     "commonName" = "example"
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +245,8 @@ import 'certificate_validity.dart';
 /// import com.pulumi.aws.acmpca.Certificate;
 /// import com.pulumi.aws.acmpca.CertificateArgs;
 /// import com.pulumi.aws.acmpca.inputs.CertificateValidityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +275,7 @@ import 'certificate_validity.dart';
 ///
 ///         var csr = new CertRequest("csr", CertRequestArgs.builder()
 ///             .privateKeyPem(key.privateKeyPem())
-///             .subject(CertRequestSubjectArgs.builder()
+///             .subject(com.pulumi.tls.inputs.CertRequestSubjectArgs.builder()
 ///                 .commonName("example")
 ///                 .build())
 ///             .build());

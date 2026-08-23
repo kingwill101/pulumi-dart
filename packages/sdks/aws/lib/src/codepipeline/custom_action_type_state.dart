@@ -23,7 +23,7 @@ class CustomActionTypeState {
   final pulumi.Input<String>? region;
   final pulumi.Input<CustomActionTypeSettings>? settings;
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<String>? version;
 
@@ -38,7 +38,7 @@ class CustomActionTypeState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [settings] Optional.
   /// [tags] Optional.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [version] Optional.
   const CustomActionTypeState({
     this.arn,
@@ -89,4 +89,3 @@ class CustomActionTypeState {
     );
   }
 }
-

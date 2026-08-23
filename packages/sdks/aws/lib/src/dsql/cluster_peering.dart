@@ -127,9 +127,7 @@ import 'cluster_peering_timeouts.dart';
 /// 			Clusters: pulumi.StringArray{
 /// 				example2.Arn,
 /// 			},
-/// 			WitnessRegion: pulumi.String(example1.MultiRegionProperties.ApplyT(func(multiRegionProperties dsql.ClusterMultiRegionProperties) (*string, error) {
-/// 				return &multiRegionProperties.WitnessRegion, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			WitnessRegion: example1.MultiRegionProperties.WitnessRegion(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -139,15 +137,43 @@ import 'cluster_peering_timeouts.dart';
 /// 			Clusters: pulumi.StringArray{
 /// 				example1.Arn,
 /// 			},
-/// 			WitnessRegion: pulumi.String(example2.MultiRegionProperties.ApplyT(func(multiRegionProperties dsql.ClusterMultiRegionProperties) (*string, error) {
-/// 				return &multiRegionProperties.WitnessRegion, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			WitnessRegion: example2.MultiRegionProperties.WitnessRegion(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dsql_cluster" "example_1" {
+///   multi_region_properties = {
+///     witness_region = "us-west-2"
+///   }
+/// }
+/// resource "aws_dsql_cluster" "example_2" {
+///   multi_region_properties = {
+///     witness_region = "us-west-2"
+///   }
+/// }
+/// resource "aws_dsql_clusterpeering" "example_1" {
+///   identifier     = aws_dsql_cluster.example_1.identifier
+///   clusters       = [aws_dsql_cluster.example_2.arn]
+///   witness_region = aws_dsql_cluster.example_1.multi_region_properties.witness_region
+/// }
+/// resource "aws_dsql_clusterpeering" "example_2" {
+///   identifier     = aws_dsql_cluster.example_2.identifier
+///   clusters       = [aws_dsql_cluster.example_1.arn]
+///   witness_region = aws_dsql_cluster.example_2.multi_region_properties.witness_region
 /// }
 /// ```
 /// ```java
@@ -161,8 +187,8 @@ import 'cluster_peering_timeouts.dart';
 /// import com.pulumi.aws.dsql.inputs.ClusterMultiRegionPropertiesArgs;
 /// import com.pulumi.aws.dsql.ClusterPeering;
 /// import com.pulumi.aws.dsql.ClusterPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

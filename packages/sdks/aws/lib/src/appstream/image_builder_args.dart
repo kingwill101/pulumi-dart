@@ -36,7 +36,7 @@ class ImageBuilderArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Configuration block for the VPC configuration for the image builder. See below.
   final pulumi.Input<ImageBuilderVpcConfig>? vpcConfig;
@@ -54,7 +54,7 @@ class ImageBuilderArgs {
   /// [instanceType] Instance type to use when launching the image builder.
   /// [name] Unique name for the image builder.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfig] Configuration block for the VPC configuration for the image builder. See below.
   const ImageBuilderArgs({
     this.accessEndpoints,
@@ -111,4 +111,3 @@ class ImageBuilderArgs {
     );
   }
 }
-

@@ -7,13 +7,13 @@ class GetListenerRuleConditionHttpHeader {
   final pulumi.Input<String> httpHeaderName;
   /// Set of regular expressions to compare against the request URL.
   final pulumi.Input<List<String>> regexValues;
-  /// Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// Set of source IP addresses in CIDR format for Application Load Balancers
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetListenerRuleConditionHttpHeader].
   /// [httpHeaderName] Name of the HTTP header to match.
   /// [regexValues] Set of regular expressions to compare against the request URL.
-  /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// [values] Set of source IP addresses in CIDR format for Application Load Balancers
   const GetListenerRuleConditionHttpHeader({
     required this.httpHeaderName,
     required this.regexValues,
@@ -36,4 +36,3 @@ class GetListenerRuleConditionHttpHeader {
     );
   }
 }
-

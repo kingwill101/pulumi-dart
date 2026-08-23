@@ -90,6 +90,32 @@ import 'endpoint_state.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_endpoint" "example" {
+///   application_domain     = "example.com"
+///   attachment_type        = "vpc"
+///   description            = "example"
+///   domain_certificate_arn = exampleAwsAcmCertificate.arn
+///   endpoint_domain_prefix = "example"
+///   endpoint_type          = "load-balancer"
+///   load_balancer_options = {
+///     load_balancer_arn = exampleAwsLb.arn
+///     port              = 443
+///     protocol          = "https"
+///     subnet_ids        = [for subnet in public : subnet.id]
+///   }
+///   security_group_ids       = [exampleAwsSecurityGroup.id]
+///   verified_access_group_id = exampleAwsVerifiedaccessGroup.id
+/// }
+/// ```
 ///
 ///
 /// ### Network Interface Example
@@ -199,6 +225,31 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_endpoint" "example" {
+///   application_domain     = "example.com"
+///   attachment_type        = "vpc"
+///   description            = "example"
+///   domain_certificate_arn = exampleAwsAcmCertificate.arn
+///   endpoint_domain_prefix = "example"
+///   endpoint_type          = "network-interface"
+///   network_interface_options = {
+///     network_interface_id = exampleAwsNetworkInterface.id
+///     port                 = 443
+///     protocol             = "https"
+///   }
+///   security_group_ids       = [exampleAwsSecurityGroup.id]
+///   verified_access_group_id = exampleAwsVerifiedaccessGroup.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +259,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.aws.verifiedaccess.Endpoint;
 /// import com.pulumi.aws.verifiedaccess.EndpointArgs;
 /// import com.pulumi.aws.verifiedaccess.inputs.EndpointNetworkInterfaceOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,6 +395,32 @@ import 'endpoint_state.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_endpoint" "example" {
+///   attachment_type = "vpc"
+///   description     = "example"
+///   endpoint_type   = "cidr"
+///   cidr_options = {
+///     cidr = test[0].cidrBlock
+///     port_ranges = [{
+///       "fromPort" = 443
+///       "toPort"   = 443
+///     }]
+///     protocol   = "tcp"
+///     subnet_ids = [for subnet in test : subnet.id]
+///   }
+///   security_group_ids       = [testAwsSecurityGroup.id]
+///   verified_access_group_id = testAwsVerifiedaccessGroup.id
+/// }
+/// ```
 ///
 ///
 /// ## Import
@@ -385,7 +462,7 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> securityGroupIds;
   /// The options in use for server side encryption.
   late final pulumi.Output<EndpointSseSpecification> sseSpecification;
-  /// Key-value tags for the Verified Access Endpoint. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Verified Access Endpoint. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the Verified Access group to associate the endpoint with.

@@ -108,7 +108,7 @@ import 'identity_provider_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewIdentityProvider(ctx, "example_provider", &cognito.IdentityProviderArgs{
-/// 			UserPoolId:   example.ID(),
+/// 			UserPoolId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 			ProviderName: pulumi.String("Google"),
 /// 			ProviderType: pulumi.String("Google"),
 /// 			ProviderDetails: pulumi.StringMap{
@@ -128,6 +128,34 @@ import 'identity_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name                     = "example-pool"
+///   auto_verified_attributes = ["email"]
+/// }
+/// resource "aws_cognito_identityprovider" "example_provider" {
+///   user_pool_id  = aws_cognito_userpool.example.id
+///   provider_name = "Google"
+///   provider_type = "Google"
+///   provider_details = {
+///     "authorize_scopes" = "email"
+///     "client_id"        = "your client_id"
+///     "client_secret"    = "your client_secret"
+///   }
+///   attribute_mapping = {
+///     "email"    = "email"
+///     "username" = "sub"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +166,8 @@ import 'identity_provider_state.dart';
 /// import com.pulumi.aws.cognito.UserPoolArgs;
 /// import com.pulumi.aws.cognito.IdentityProvider;
 /// import com.pulumi.aws.cognito.IdentityProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

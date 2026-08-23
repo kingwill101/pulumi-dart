@@ -22,9 +22,9 @@ class CodeSigningConfigState {
   final pulumi.Input<CodeSigningConfigPolicies>? policies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [CodeSigningConfigState].
@@ -35,8 +35,8 @@ class CodeSigningConfigState {
   /// [lastModified] Date and time that the code signing configuration was last modified.
   /// [policies] Configuration block of code signing policies that define the actions to take if the validation checks fail. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const CodeSigningConfigState({
     this.allowedPublishers,
     this.arn,
@@ -77,4 +77,3 @@ class CodeSigningConfigState {
     );
   }
 }
-

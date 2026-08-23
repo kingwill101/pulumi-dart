@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_on_exception_step_decrypt_step_details_destination_file_location.dart';
 
 class WorkflowOnExceptionStepDecryptStepDetails {
-  /// Specifies the location for the file being copied. Use ${Transfer:username} in this field to parametrize the destination prefix by username.
+  /// Location for the file being copied. Use `${Transfer:username}` in this field to parametrize the destination prefix by username. See `destinationFileLocation` Block below.
   final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation>? destinationFileLocation;
-  /// The name of the step, used as an identifier.
+  /// Name of the step, used as an identifier.
   final pulumi.Input<String>? name;
-  /// A flag that indicates whether or not to overwrite an existing file of the same name. The default is `FALSE`. Valid values are `TRUE` and `FALSE`.
+  /// Flag that indicates whether or not to overwrite an existing file of the same name. The default is `FALSE`. Valid values are `TRUE` and `FALSE`.
   final pulumi.Input<String>? overwriteExisting;
-  /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter ${previous.file} to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter ${original.file} to use the originally-uploaded file location as input for this step.
+  /// File to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter `${previous.file}` to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter `${original.file}` to use the originally-uploaded file location as input for this step.
   final pulumi.Input<String>? sourceFileLocation;
-  /// The type of encryption used. Currently, this value must be `"PGP"`.
+  /// Type of encryption used. Currently, this value must be `"PGP"`.
   final pulumi.Input<String> type;
 
   /// Creates a new [WorkflowOnExceptionStepDecryptStepDetails].
-  /// [destinationFileLocation] Specifies the location for the file being copied. Use ${Transfer:username} in this field to parametrize the destination prefix by username.
-  /// [name] The name of the step, used as an identifier.
-  /// [overwriteExisting] A flag that indicates whether or not to overwrite an existing file of the same name. The default is `FALSE`. Valid values are `TRUE` and `FALSE`.
-  /// [sourceFileLocation] Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter ${previous.file} to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter ${original.file} to use the originally-uploaded file location as input for this step.
-  /// [type] The type of encryption used. Currently, this value must be `"PGP"`.
+  /// [destinationFileLocation] Location for the file being copied. Use `${Transfer:username}` in this field to parametrize the destination prefix by username. See `destinationFileLocation` Block below.
+  /// [name] Name of the step, used as an identifier.
+  /// [overwriteExisting] Flag that indicates whether or not to overwrite an existing file of the same name. The default is `FALSE`. Valid values are `TRUE` and `FALSE`.
+  /// [sourceFileLocation] File to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter `${previous.file}` to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter `${original.file}` to use the originally-uploaded file location as input for this step.
+  /// [type] Type of encryption used. Currently, this value must be `"PGP"`.
   const WorkflowOnExceptionStepDecryptStepDetails({
     this.destinationFileLocation,
     this.name,
@@ -49,4 +49,3 @@ class WorkflowOnExceptionStepDecryptStepDetails {
     );
   }
 }
-

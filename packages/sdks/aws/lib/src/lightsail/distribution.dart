@@ -184,6 +184,47 @@ import 'distribution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_bucket" "example" {
+///   name      = "example-bucket"
+///   bundle_id = "small_1_0"
+/// }
+/// resource "aws_lightsail_distribution" "example" {
+///   name      = "example-distribution"
+///   bundle_id = "small_1_0"
+///   origin = {
+///     name        = aws_lightsail_bucket.example.name
+///     region_name = aws_lightsail_bucket.example.region
+///   }
+///   default_cache_behavior = {
+///     behavior = "cache"
+///   }
+///   cache_behavior_settings = {
+///     allowed_http_methods = "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"
+///     cached_http_methods  = "GET,HEAD"
+///     default_ttl          = 86400
+///     maximum_ttl          = 31536000
+///     minimum_ttl          = 0
+///     forwarded_cookies = {
+///       option = "none"
+///     }
+///     forwarded_headers = {
+///       option = "default"
+///     }
+///     forwarded_query_strings = {
+///       option = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +241,8 @@ import 'distribution_state.dart';
 /// import com.pulumi.aws.lightsail.inputs.DistributionCacheBehaviorSettingsForwardedCookiesArgs;
 /// import com.pulumi.aws.lightsail.inputs.DistributionCacheBehaviorSettingsForwardedHeadersArgs;
 /// import com.pulumi.aws.lightsail.inputs.DistributionCacheBehaviorSettingsForwardedQueryStringsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +525,49 @@ import 'distribution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+///
+/// resource "aws_lightsail_staticipattachment" "example" {
+///   static_ip_name = aws_lightsail_staticip.example.name
+///   instance_name  = aws_lightsail_instance.example.name
+/// }
+/// resource "aws_lightsail_staticip" "example" {
+///   name = "example-static-ip"
+/// }
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example-instance"
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "micro_1_0"
+/// }
+/// resource "aws_lightsail_distribution" "example" {
+///   depends_on = [aws_lightsail_staticipattachment.example]
+///   name       = "example-distribution"
+///   bundle_id  = "small_1_0"
+///   origin = {
+///     name        = aws_lightsail_instance.example.name
+///     region_name = data.aws_getavailabilityzones.available.id
+///   }
+///   default_cache_behavior = {
+///     behavior = "cache"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -492,6 +576,7 @@ import 'distribution_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.lightsail.StaticIp;
 /// import com.pulumi.aws.lightsail.StaticIpArgs;
 /// import com.pulumi.aws.lightsail.Instance;
@@ -503,8 +588,8 @@ import 'distribution_state.dart';
 /// import com.pulumi.aws.lightsail.inputs.DistributionOriginArgs;
 /// import com.pulumi.aws.lightsail.inputs.DistributionDefaultCacheBehaviorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -830,6 +915,54 @@ import 'distribution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+///
+/// resource "aws_lightsail_lb" "example" {
+///   name              = "example-load-balancer"
+///   health_check_path = "/"
+///   instance_port     = "80"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example-instance"
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+/// }
+/// resource "aws_lightsail_lbattachment" "example" {
+///   lb_name       = aws_lightsail_lb.example.name
+///   instance_name = aws_lightsail_instance.example.name
+/// }
+/// resource "aws_lightsail_distribution" "example" {
+///   depends_on = [aws_lightsail_lbattachment.example]
+///   name       = "example-distribution"
+///   bundle_id  = "small_1_0"
+///   origin = {
+///     name        = aws_lightsail_lb.example.name
+///     region_name = data.aws_getavailabilityzones.available.id
+///   }
+///   default_cache_behavior = {
+///     behavior = "cache"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -838,6 +971,7 @@ import 'distribution_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.lightsail.Lb;
 /// import com.pulumi.aws.lightsail.LbArgs;
 /// import com.pulumi.aws.lightsail.Instance;
@@ -849,8 +983,8 @@ import 'distribution_state.dart';
 /// import com.pulumi.aws.lightsail.inputs.DistributionOriginArgs;
 /// import com.pulumi.aws.lightsail.inputs.DistributionDefaultCacheBehaviorArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1006,9 +1140,9 @@ class Distribution extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Support code. Include this code in your email to support when you have questions about your Lightsail distribution. This code enables our support team to look up your Lightsail information more easily.
   late final pulumi.Output<String> supportCode;
-  /// Map of tags for the Lightsail Distribution. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags for the Lightsail Distribution. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Distribution].

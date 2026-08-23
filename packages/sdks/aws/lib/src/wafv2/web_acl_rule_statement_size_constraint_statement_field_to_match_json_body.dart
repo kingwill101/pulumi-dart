@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_size_constraint_statement_field_to_match_json_body_match_pattern.dart';
 
 class WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody {
-  /// What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
+  /// How to handle requests with invalid JSON body. Valid values: `EVALUATE_AS_STRING`, `MATCH`, `NO_MATCH`.
   final pulumi.Input<String>? invalidFallbackBehavior;
-  /// The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `included_paths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern> matchPattern;
-  /// The parts of the JSON to match against using the `match_pattern`. Valid values are `ALL`, `KEY` and `VALUE`.
+  /// JSON content to inspect. See JSON Body Match Pattern below.
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern>? matchPattern;
+  /// Parts of the JSON to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
-  /// What to do if the body is larger than can be inspected. Valid values are `CONTINUE` (default), `MATCH` and `NO_MATCH`.
+  /// How to handle requests with a body larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`. Defaults to `CONTINUE`.
   final pulumi.Input<String>? oversizeHandling;
 
   /// Creates a new [WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody].
-  /// [invalidFallbackBehavior] What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
-  /// [matchPattern] The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `included_paths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
-  /// [matchScope] The parts of the JSON to match against using the `match_pattern`. Valid values are `ALL`, `KEY` and `VALUE`.
-  /// [oversizeHandling] What to do if the body is larger than can be inspected. Valid values are `CONTINUE` (default), `MATCH` and `NO_MATCH`.
+  /// [invalidFallbackBehavior] How to handle requests with invalid JSON body. Valid values: `EVALUATE_AS_STRING`, `MATCH`, `NO_MATCH`.
+  /// [matchPattern] JSON content to inspect. See JSON Body Match Pattern below.
+  /// [matchScope] Parts of the JSON to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
+  /// [oversizeHandling] How to handle requests with a body larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`. Defaults to `CONTINUE`.
   const WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody({
     this.invalidFallbackBehavior,
-    required this.matchPattern,
+    this.matchPattern,
     required this.matchScope,
     this.oversizeHandling,
   });
@@ -28,7 +28,7 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'invalidFallbackBehavior': ?invalidFallbackBehavior,
-      'matchPattern': pulumi.Input.mapInputValue<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern, Map<String, dynamic>>(matchPattern, (value) => value.toMap()),
+      'matchPattern': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern, Map<String, dynamic>>(matchPattern, (value) => value.toMap()),
       'matchScope': matchScope,
       'oversizeHandling': ?oversizeHandling,
     };
@@ -37,10 +37,9 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody {
   factory WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody(
       invalidFallbackBehavior: (() { final guardedValue = map['invalidFallbackBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      matchPattern: pulumi.Input.fromValue(WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())),
+      matchPattern: (() { final guardedValue = map['matchPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       matchScope: pulumi.Input.fromValue(map['matchScope'] as String),
       oversizeHandling: (() { final guardedValue = map['oversizeHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

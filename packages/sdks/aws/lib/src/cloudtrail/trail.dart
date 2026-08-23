@@ -13,7 +13,7 @@ import 'trail_state.dart';
 /// ### Basic
 ///
 /// Enable CloudTrail to capture all compatible management events in region.
-/// For capturing events from services like IAM, `include_global_service_events` must be enabled.
+/// For capturing events from services like IAM, `includeGlobalServiceEvents` must be enabled.
 ///
 ///
 /// ```typescript
@@ -52,7 +52,7 @@ import 'trail_state.dart';
 ///                 identifiers: ["cloudtrail.amazonaws.com"],
 ///             }],
 ///             actions: ["s3:PutObject"],
-///             resources: [Promise.all([exampleBucket.arn, current]).then(([arn, current]) => `${arn}/prefix/AWSLogs/${current.accountId}/*`)],
+///             resources: [pulumi.all([exampleBucket.arn, current]).apply(([arn, current]) => `${arn}/prefix/AWSLogs/${current.accountId}/*`)],
 ///             conditions: [
 ///                 {
 ///                     test: "StringEquals",
@@ -70,7 +70,7 @@ import 'trail_state.dart';
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
 ///     bucket: exampleBucket.id,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// const exampleTrail = new aws.cloudtrail.Trail("example", {
 ///     name: "example",
@@ -372,17 +372,15 @@ import 'trail_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID(),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 /// 			Name:                       pulumi.String("example"),
-/// 			S3BucketName:               exampleBucket.ID(),
+/// 			S3BucketName:               exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			S3KeyPrefix:                pulumi.String("prefix"),
 /// 			IncludeGlobalServiceEvents: pulumi.Bool(false),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -393,6 +391,75 @@ import 'trail_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "AWSCloudTrailAclCheck"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["cloudtrail.amazonaws.com"]
+///     }
+///     actions   = ["s3:GetBucketAcl"]
+///     resources = [aws_s3_bucket.example.arn]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "aws:SourceArn"
+///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:cloudtrail:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:trail/example"]
+///     }
+///   }
+///   statements {
+///     sid    = "AWSCloudTrailWrite"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["cloudtrail.amazonaws.com"]
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.example.arn}/prefix/AWSLogs/${data.aws_getcalleridentity.current.account_id}/*"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "s3:x-amz-acl"
+///       values   = ["bucket-owner-full-control"]
+///     }
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "aws:SourceArn"
+///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:cloudtrail:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:trail/example"]
+///     }
+///   }
+/// }
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+///
+/// resource "aws_cloudtrail_trail" "example" {
+///   depends_on                    = [aws_s3_bucketpolicy.example]
+///   name                          = "example"
+///   s3_bucket_name                = aws_s3_bucket.example.id
+///   s3_key_prefix                 = "prefix"
+///   include_global_service_events = false
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "my-test-trail"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -409,13 +476,16 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.cloudtrail.Trail;
 /// import com.pulumi.aws.cloudtrail.TrailArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,6 +750,26 @@ import 'trail_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudtrail_trail" "example" {
+///   event_selectors {
+///     read_write_type           = "All"
+///     include_management_events = true
+///     data_resources {
+///       type   = "AWS::Lambda::Function"
+///       values = ["arn:aws:lambda"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -689,8 +779,9 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.cloudtrail.Trail;
 /// import com.pulumi.aws.cloudtrail.TrailArgs;
 /// import com.pulumi.aws.cloudtrail.inputs.TrailEventSelectorArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudtrail.inputs.TrailEventSelectorDataResourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -826,6 +917,26 @@ import 'trail_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudtrail_trail" "example" {
+///   event_selectors {
+///     read_write_type           = "All"
+///     include_management_events = true
+///     data_resources {
+///       type   = "AWS::S3::Object"
+///       values = ["arn:aws:s3"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -835,8 +946,9 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.cloudtrail.Trail;
 /// import com.pulumi.aws.cloudtrail.TrailArgs;
 /// import com.pulumi.aws.cloudtrail.inputs.TrailEventSelectorArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudtrail.inputs.TrailEventSelectorDataResourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -988,6 +1100,30 @@ import 'trail_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucket" "important-bucket" {
+///   bucket = "important-bucket"
+/// }
+///
+/// resource "aws_cloudtrail_trail" "example" {
+///   event_selectors {
+///     read_write_type           = "All"
+///     include_management_events = true
+///     data_resources {
+///       type   = "AWS::S3::Object"
+///       values = ["${data.aws_s3_getbucket.important-bucket.arn}/"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -999,8 +1135,9 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.cloudtrail.Trail;
 /// import com.pulumi.aws.cloudtrail.TrailArgs;
 /// import com.pulumi.aws.cloudtrail.inputs.TrailEventSelectorArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudtrail.inputs.TrailEventSelectorDataResourceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1273,6 +1410,47 @@ import 'trail_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucket" "not-important-bucket-1" {
+///   bucket = "not-important-bucket-1"
+/// }
+/// data "aws_s3_getbucket" "not-important-bucket-2" {
+///   bucket = "not-important-bucket-2"
+/// }
+///
+/// resource "aws_cloudtrail_trail" "example" {
+///   advanced_event_selectors {
+///     name = "Log all S3 objects events except for two S3 buckets"
+///     field_selectors {
+///       field  = "eventCategory"
+///       equals = ["Data"]
+///     }
+///     field_selectors {
+///       field            = "resources.ARN"
+///       not_starts_withs = ["${data.aws_s3_getbucket.not-important-bucket-1.arn}/", "${data.aws_s3_getbucket.not-important-bucket-2.arn}/"]
+///     }
+///     field_selectors {
+///       field  = "resources.type"
+///       equals = ["AWS::S3::Object"]
+///     }
+///   }
+///   advanced_event_selectors {
+///     name = "Log readOnly and writeOnly management events"
+///     field_selectors {
+///       field  = "eventCategory"
+///       equals = ["Management"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1284,8 +1462,9 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.cloudtrail.Trail;
 /// import com.pulumi.aws.cloudtrail.TrailArgs;
 /// import com.pulumi.aws.cloudtrail.inputs.TrailAdvancedEventSelectorArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudtrail.inputs.TrailAdvancedEventSelectorFieldSelectorArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1755,6 +1934,74 @@ import 'trail_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucket" "important-bucket-1" {
+///   bucket = "important-bucket-1"
+/// }
+/// data "aws_s3_getbucket" "important-bucket-2" {
+///   bucket = "important-bucket-2"
+/// }
+/// data "aws_s3_getbucket" "important-bucket-3" {
+///   bucket = "important-bucket-3"
+/// }
+///
+/// resource "aws_cloudtrail_trail" "example" {
+///   advanced_event_selectors {
+///     name = "Log PutObject and DeleteObject events for two S3 buckets"
+///     field_selectors {
+///       field  = "eventCategory"
+///       equals = ["Data"]
+///     }
+///     field_selectors {
+///       field  = "eventName"
+///       equals = ["PutObject", "DeleteObject"]
+///     }
+///     field_selectors {
+///       field        = "resources.ARN"
+///       starts_withs = ["${data.aws_s3_getbucket.important-bucket-1.arn}/", "${data.aws_s3_getbucket.important-bucket-2.arn}/"]
+///     }
+///     field_selectors {
+///       field  = "readOnly"
+///       equals = ["false"]
+///     }
+///     field_selectors {
+///       field  = "resources.type"
+///       equals = ["AWS::S3::Object"]
+///     }
+///   }
+///   advanced_event_selectors {
+///     name = "Log Delete* events for one S3 bucket"
+///     field_selectors {
+///       field  = "eventCategory"
+///       equals = ["Data"]
+///     }
+///     field_selectors {
+///       field        = "eventName"
+///       starts_withs = ["Delete"]
+///     }
+///     field_selectors {
+///       field  = "resources.ARN"
+///       equals = ["${data.aws_s3_getbucket.important-bucket-3.arn}/important-prefix"]
+///     }
+///     field_selectors {
+///       field  = "readOnly"
+///       equals = ["false"]
+///     }
+///     field_selectors {
+///       field  = "resources.type"
+///       equals = ["AWS::S3::Object"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1766,8 +2013,9 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.cloudtrail.Trail;
 /// import com.pulumi.aws.cloudtrail.TrailArgs;
 /// import com.pulumi.aws.cloudtrail.inputs.TrailAdvancedEventSelectorArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudtrail.inputs.TrailAdvancedEventSelectorFieldSelectorArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1979,6 +2227,22 @@ import 'trail_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "Example"
+/// }
+/// resource "aws_cloudtrail_trail" "example" {
+///   cloud_watch_logs_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1989,8 +2253,8 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.cloudtrail.Trail;
 /// import com.pulumi.aws.cloudtrail.TrailArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2029,13 +2293,20 @@ import 'trail_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the CloudTrail trail.
+///
+///
 /// Using `pulumi import`, import Cloudtrails using the `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudtrail/trail:Trail sample arn:aws:cloudtrail:us-east-1:123456789012:trail/my-sample-trail
 /// ```
 class Trail extends pulumi.CustomResource {
-  /// Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `event_selector`.
+  /// Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `eventSelector`.
   late final pulumi.Output<List<Map<String, dynamic>>?> advancedEventSelectors;
   /// ARN of the trail.
   late final pulumi.Output<String> arn;
@@ -2047,7 +2318,7 @@ class Trail extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableLogFileValidation;
   /// Enables logging for the trail. When set to `true`, logging is started by calling the [`StartLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html) API. When set to `false`, logging is stopped by calling the [`StopLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StopLogging.html) API. Defaults to `true`.
   late final pulumi.Output<bool?> enableLogging;
-  /// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advanced_event_selector`.
+  /// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advancedEventSelector`.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventSelectors;
   /// Region in which the trail was created.
   late final pulumi.Output<String> homeRegion;
@@ -2075,9 +2346,9 @@ class Trail extends pulumi.CustomResource {
   late final pulumi.Output<String> snsTopicArn;
   /// Name of the Amazon SNS topic defined for notification of log file delivery. Specify the SNS topic ARN if it resides in another region.
   late final pulumi.Output<String?> snsTopicName;
-  /// Map of tags to assign to the trail. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the trail. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Trail].

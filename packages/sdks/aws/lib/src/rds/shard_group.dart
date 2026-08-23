@@ -56,7 +56,7 @@ import 'shard_group_timeouts.dart';
 /// example_shard_group = aws.rds.ShardGroup("example",
 ///     db_shard_group_identifier="example-shard-group",
 ///     db_cluster_identifier=example.id,
-///     max_acu=1200)
+///     max_acu=float(1200))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -127,7 +127,7 @@ import 'shard_group_timeouts.dart';
 /// 		}
 /// 		_, err = rds.NewShardGroup(ctx, "example", &rds.ShardGroupArgs{
 /// 			DbShardGroupIdentifier: pulumi.String("example-shard-group"),
-/// 			DbClusterIdentifier:    example.ID(),
+/// 			DbClusterIdentifier:    example.ID().ToIDOutput().ToStringOutput(),
 /// 			MaxAcu:                 pulumi.Float64(1200),
 /// 		})
 /// 		if err != nil {
@@ -135,6 +135,36 @@ import 'shard_group_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_cluster" "example" {
+///   cluster_identifier                    = "example-limitless-cluster"
+///   engine                                = "aurora-postgresql"
+///   engine_version                        = "16.6-limitless"
+///   engine_mode                           = ""
+///   storage_type                          = "aurora-iopt1"
+///   cluster_scalability_type              = "limitless"
+///   master_username                       = "foo"
+///   master_password                       = "must_be_eight_characters"
+///   performance_insights_enabled          = true
+///   performance_insights_retention_period = 31
+///   enabled_cloudwatch_logs_exports       = ["postgresql"]
+///   monitoring_interval                   = 5
+///   monitoring_role_arn                   = exampleAwsIamRole.arn
+/// }
+/// resource "aws_rds_shardgroup" "example" {
+///   db_shard_group_identifier = "example-shard-group"
+///   db_cluster_identifier     = aws_rds_cluster.example.id
+///   max_acu                   = 1200
 /// }
 /// ```
 /// ```java
@@ -147,8 +177,8 @@ import 'shard_group_timeouts.dart';
 /// import com.pulumi.aws.rds.ClusterArgs;
 /// import com.pulumi.aws.rds.ShardGroup;
 /// import com.pulumi.aws.rds.ShardGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,7 +246,7 @@ import 'shard_group_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import shard group using the `db_shard_group_identifier`. For example:
+/// Using `pulumi import`, import shard group using the `dbShardGroupIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/shardGroup:ShardGroup example example-shard-group
@@ -242,11 +272,11 @@ class ShardGroup extends pulumi.CustomResource {
   late final pulumi.Output<bool> publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-shard-group.html).
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ShardGroupTimeouts?> timeouts;
 

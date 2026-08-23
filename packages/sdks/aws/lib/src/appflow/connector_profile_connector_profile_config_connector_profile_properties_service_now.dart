@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow {
+  /// Location of the Zendesk resource.
   final pulumi.Input<String> instanceUrl;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow].
-  /// [instanceUrl] Required.
+  /// [instanceUrl] Location of the Zendesk resource.
   const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow({
     required this.instanceUrl,
   });
@@ -23,4 +24,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow
     );
   }
 }
-

@@ -164,6 +164,42 @@ import 'domain_saml_options_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "example" {
+///   domain_name    = "example"
+///   engine_version = "OpenSearch_1.1"
+///   cluster_config = {
+///     instance_type = "r4.large.search"
+///   }
+///   snapshot_options = {
+///     automated_snapshot_start_hour = 23
+///   }
+///   tags = {
+///     "Domain" = "TestDomain"
+///   }
+/// }
+/// resource "aws_opensearch_domainsamloptions" "example" {
+///   domain_name = aws_opensearch_domain.example.domain_name
+///   saml_options = {
+///     enabled = true
+///     idp = {
+///       entity_id        = "https://example.com"
+///       metadata_content = file("./saml-metadata.xml")
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +216,8 @@ import 'domain_saml_options_state.dart';
 /// import com.pulumi.aws.opensearch.inputs.DomainSamlOptionsSamlOptionsIdpArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -254,7 +290,7 @@ import 'domain_saml_options_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearch domains using the `domain_name`. For example:
+/// Using `pulumi import`, import OpenSearch domains using the `domainName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/domainSamlOptions:DomainSamlOptions example domain_name

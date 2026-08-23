@@ -11,11 +11,11 @@ class SdkvoiceSipRuleState {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `target_applications`.
+  /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `targetApplications`.
   final pulumi.Input<List<SdkvoiceSipRuleTargetApplication>>? targetApplications;
-  /// The type of trigger assigned to the SIP rule in `trigger_value`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
+  /// The type of trigger assigned to the SIP rule in `triggerValue`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
   final pulumi.Input<String>? triggerType;
-  /// If `trigger_type` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `trigger_type` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
+  /// If `triggerType` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `triggerType` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? triggerValue;
@@ -24,9 +24,9 @@ class SdkvoiceSipRuleState {
   /// [disabled] Enables or disables a rule. You must disable rules before you can delete them.
   /// [name] The name of the SIP rule.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [targetApplications] List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `target_applications`.
-  /// [triggerType] The type of trigger assigned to the SIP rule in `trigger_value`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
-  /// [triggerValue] If `trigger_type` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `trigger_type` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
+  /// [targetApplications] List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `targetApplications`.
+  /// [triggerType] The type of trigger assigned to the SIP rule in `triggerValue`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
+  /// [triggerValue] If `triggerType` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `triggerType` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
   const SdkvoiceSipRuleState({
     this.disabled,
     this.name,
@@ -58,4 +58,3 @@ class SdkvoiceSipRuleState {
     );
   }
 }
-

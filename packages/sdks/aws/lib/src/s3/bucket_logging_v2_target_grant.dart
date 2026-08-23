@@ -31,4 +31,3 @@ class BucketLoggingV2TargetGrant {
     );
   }
 }
-

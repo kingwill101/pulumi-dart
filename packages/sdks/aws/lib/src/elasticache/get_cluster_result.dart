@@ -9,7 +9,7 @@ class GetClusterResult {
   final String arn;
   /// Availability Zone for the cache cluster.
   final String availabilityZone;
-  /// List of node objects including `id`, `address`, `port`, `availability_zone` and `outpost_arn`.
+  /// List of node objects including `id`, `address`, `port`, `availabilityZone` and `outpostArn`.
   /// Referenceable e.g., as `${data.aws_elasticache_cluster.bar.cache_nodes.0.address}`
   final List<GetClusterCacheNode> cacheNodes;
   /// (Memcached only) DNS name of the cache cluster without the port appended.
@@ -65,7 +65,7 @@ class GetClusterResult {
   /// Creates a new [GetClusterResult].
   /// [arn] Required.
   /// [availabilityZone] Availability Zone for the cache cluster.
-  /// [cacheNodes] List of node objects including `id`, `address`, `port`, `availability_zone` and `outpost_arn`.
+  /// [cacheNodes] List of node objects including `id`, `address`, `port`, `availabilityZone` and `outpostArn`.
   /// [clusterAddress] (Memcached only) DNS name of the cache cluster without the port appended.
   /// [clusterId] Required.
   /// [configurationEndpoint] (Memcached only) Configuration endpoint to allow host discovery.
@@ -180,4 +180,3 @@ class GetClusterResult {
     );
   }
 }
-

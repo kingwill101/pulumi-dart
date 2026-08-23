@@ -91,6 +91,24 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn  = exampleAwsDynamodbTable.streamArn
+///   function_name     = exampleAwsLambdaFunction.arn
+///   starting_position = "LATEST"
+///   tags = {
+///     "Name" = "dynamodb-stream-mapping"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +117,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.EventSourceMapping;
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -230,6 +248,29 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn                   = exampleAwsKinesisStream.arn
+///   function_name                      = exampleAwsLambdaFunction.arn
+///   starting_position                  = "LATEST"
+///   batch_size                         = 100
+///   maximum_batching_window_in_seconds = 5
+///   parallelization_factor             = 2
+///   destination_config = {
+///     on_failure = {
+///       destination_arn = dlq.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +281,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingDestinationConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingDestinationConfigOnFailureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,6 +402,24 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn = exampleAwsSqsQueue.arn
+///   function_name    = exampleAwsLambdaFunction.arn
+///   batch_size       = 10
+///   scaling_config = {
+///     maximum_concurrency = 100
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -370,8 +429,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMapping;
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingScalingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,10 +583,10 @@ import 'event_source_mapping_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]interface{}{
 /// 			"body": map[string]interface{}{
-/// 				"Temperature": []map[string]interface{}{
-/// 					map[string]interface{}{
+/// 				"Temperature": []map[string][]interface{}{
+/// 					map[string][]interface{}{
 /// 						"numeric": []interface{}{
 /// 							">",
 /// 							0,
@@ -563,6 +622,32 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn = exampleAwsSqsQueue.arn
+///   function_name    = exampleAwsLambdaFunction.arn
+///   filter_criteria = {
+///     filters = [{
+///       "pattern" = jsonencode({
+///         "body" = {
+///           "Temperature" = [{
+///             "numeric" = [">", 0, "<=", 100]
+///           }]
+///           "Location" = ["New York"]
+///         }
+///       })
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -572,9 +657,10 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMapping;
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingFilterCriteriaArgs;
+/// import com.pulumi.aws.lambda.inputs.EventSourceMappingFilterCriteriaFilterArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -730,6 +816,26 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn  = exampleAwsMskCluster.arn
+///   function_name     = exampleAwsLambdaFunction.arn
+///   topics            = ["orders", "inventory"]
+///   starting_position = "TRIM_HORIZON"
+///   batch_size        = 100
+///   amazon_managed_kafka_event_source_config = {
+///     consumer_group_id = "lambda-consumer-group"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -739,8 +845,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMapping;
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -967,6 +1073,46 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   function_name     = exampleAwsLambdaFunction.arn
+///   topics            = ["orders"]
+///   starting_position = "TRIM_HORIZON"
+///   self_managed_event_source = {
+///     endpoints = {
+///       "KAFKA_BOOTSTRAP_SERVERS" = "kafka1.example.com:9092,kafka2.example.com:9092"
+///     }
+///   }
+///   self_managed_kafka_event_source_config = {
+///     consumer_group_id = "lambda-consumer-group"
+///   }
+///   source_access_configurations {
+///     type = "VPC_SUBNET"
+///     uri  ="subnet:${example1.id}"
+///   }
+///   source_access_configurations {
+///     type = "VPC_SUBNET"
+///     uri  ="subnet:${example2.id}"
+///   }
+///   source_access_configurations {
+///     type = "VPC_SECURITY_GROUP"
+///     uri  ="security_group:${exampleAwsSecurityGroup.id}"
+///   }
+///   provisioned_poller_config = {
+///     maximum_pollers   = 100
+///     minimum_pollers   = 10
+///     poller_group_name = "group-123"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -979,8 +1125,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingSelfManagedKafkaEventSourceConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingSourceAccessConfigurationArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingProvisionedPollerConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1140,6 +1286,26 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn = exampleAwsMqBroker.arn
+///   function_name    = exampleAwsLambdaFunction.arn
+///   queues           = "orders"
+///   batch_size       = 10
+///   source_access_configurations {
+///     type = "BASIC_AUTH"
+///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1149,8 +1315,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMapping;
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingSourceAccessConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1299,6 +1465,30 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn = exampleAwsMqBroker.arn
+///   function_name    = exampleAwsLambdaFunction.arn
+///   queues           = "orders"
+///   batch_size       = 1
+///   source_access_configurations {
+///     type = "VIRTUAL_HOST"
+///     uri  = "/production"
+///   }
+///   source_access_configurations {
+///     type = "BASIC_AUTH"
+///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1308,8 +1498,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMapping;
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingSourceAccessConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1461,6 +1651,30 @@ import 'event_source_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_eventsourcemapping" "example" {
+///   event_source_arn  = exampleAwsDocdbCluster.arn
+///   function_name     = exampleAwsLambdaFunction.arn
+///   starting_position = "LATEST"
+///   document_db_event_source_config = {
+///     database_name   = "orders"
+///     collection_name = "transactions"
+///     full_document   = "UpdateLookup"
+///   }
+///   source_access_configurations {
+///     type = "BASIC_AUTH"
+///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1471,8 +1685,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingDocumentDbEventSourceConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingSourceAccessConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1522,13 +1736,25 @@ import 'event_source_mapping_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `uuid` (String) UUID of the event source mapping.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Lambda event source mappings using the `UUID` (event source mapping identifier). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lambda/eventSourceMapping:EventSourceMapping example 12345kxodurf3443
 /// ```
 class EventSourceMapping extends pulumi.CustomResource {
-  /// Additional configuration block for Amazon Managed Kafka sources. Incompatible with `self_managed_event_source` and `self_managed_kafka_event_source_config`. See below.
+  /// Additional configuration block for Amazon Managed Kafka sources. Incompatible with `selfManagedEventSource` and `selfManagedKafkaEventSourceConfig`. See below.
   late final pulumi.Output<EventSourceMappingAmazonManagedKafkaEventSourceConfig> amazonManagedKafkaEventSourceConfig;
   /// Event source mapping ARN.
   late final pulumi.Output<String> arn;
@@ -1546,7 +1772,7 @@ class EventSourceMapping extends pulumi.CustomResource {
   late final pulumi.Output<String?> eventSourceArn;
   /// Criteria to use for [event filtering](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html) Kinesis stream, DynamoDB stream, SQS queue event sources. See below.
   late final pulumi.Output<EventSourceMappingFilterCriteria?> filterCriteria;
-  /// ARN of the Lambda function the event source mapping is sending events to. (Note: this is a computed value that differs from `function_name` above.)
+  /// ARN of the Lambda function the event source mapping is sending events to. (Note: this is a computed value that differs from `functionName` above.)
   late final pulumi.Output<String> functionArn;
   /// Name or ARN of the Lambda function that will be subscribing to events.
   ///
@@ -1560,7 +1786,7 @@ class EventSourceMapping extends pulumi.CustomResource {
   late final pulumi.Output<String> lastModified;
   /// Result of the last AWS Lambda invocation of your Lambda function.
   late final pulumi.Output<String> lastProcessingResult;
-  /// Maximum amount of time to gather records before invoking the function, in seconds (between 0 and 300). Records will continue to buffer until either `maximum_batching_window_in_seconds` expires or `batch_size` has been met. For streaming event sources, defaults to as soon as records are available in the stream. Only available for stream sources (DynamoDB and Kinesis) and SQS standard queues.
+  /// Maximum amount of time to gather records before invoking the function, in seconds (between 0 and 300). Records will continue to buffer until either `maximumBatchingWindowInSeconds` expires or `batchSize` has been met. For streaming event sources, defaults to as soon as records are available in the stream. Only available for stream sources (DynamoDB and Kinesis) and SQS standard queues.
   late final pulumi.Output<int?> maximumBatchingWindowInSeconds;
   /// Maximum age of a record that Lambda sends to a function for processing. Only available for stream sources (DynamoDB and Kinesis). Must be either -1 (forever, and the default value) or between 60 and 604800 (inclusive).
   late final pulumi.Output<int> maximumRecordAgeInSeconds;
@@ -1578,28 +1804,30 @@ class EventSourceMapping extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Scaling configuration of the event source. Only available for SQS queues. See below.
   late final pulumi.Output<EventSourceMappingScalingConfig?> scalingConfig;
-  /// For Self Managed Kafka sources, the location of the self managed cluster. If set, configuration must also include `source_access_configuration`. See below.
+  /// For Self Managed Kafka sources, the location of the self managed cluster. If set, configuration must also include `sourceAccessConfiguration`. See below.
   late final pulumi.Output<EventSourceMappingSelfManagedEventSource?> selfManagedEventSource;
-  /// Additional configuration block for Self Managed Kafka sources. Incompatible with `event_source_arn` and `amazon_managed_kafka_event_source_config`. See below.
+  /// Additional configuration block for Self Managed Kafka sources. Incompatible with `eventSourceArn` and `amazonManagedKafkaEventSourceConfig`. See below.
   late final pulumi.Output<EventSourceMappingSelfManagedKafkaEventSourceConfig> selfManagedKafkaEventSourceConfig;
-  /// For Self Managed Kafka sources, the access configuration for the source. If set, configuration must also include `self_managed_event_source`. See below.
+  /// For Self Managed Kafka sources, the access configuration for the source. If set, configuration must also include `selfManagedEventSource`. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sourceAccessConfigurations;
   /// Position in the stream where AWS Lambda should start reading. Must be one of `AT_TIMESTAMP` (Kinesis only), `LATEST` or `TRIM_HORIZON` if getting events from Kinesis, DynamoDB, MSK or Self Managed Apache Kafka. Must not be provided if getting events from SQS. More information about these positions can be found in the [AWS DynamoDB Streams API Reference](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_GetShardIterator.html) and [AWS Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType).
   late final pulumi.Output<String?> startingPosition;
-  /// Timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of the data record which to start reading when using `starting_position` set to `AT_TIMESTAMP`. If a record with this exact timestamp does not exist, the next later record is chosen. If the timestamp is older than the current trim horizon, the oldest available record is chosen.
+  /// Timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of the data record which to start reading when using `startingPosition` set to `AT_TIMESTAMP`. If a record with this exact timestamp does not exist, the next later record is chosen. If the timestamp is older than the current trim horizon, the oldest available record is chosen.
   late final pulumi.Output<String?> startingPositionTimestamp;
   /// State of the event source mapping.
   late final pulumi.Output<String> state;
   /// Reason the event source mapping is in its current state.
   late final pulumi.Output<String> stateTransitionReason;
-  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name of the Kafka topics. Only available for MSK sources. A single topic name must be specified.
   late final pulumi.Output<List<String>?> topics;
   /// Duration in seconds of a processing window for [AWS Lambda streaming analytics](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-windows). The range is between 1 second up to 900 seconds. Only available for stream sources (DynamoDB and Kinesis).
   late final pulumi.Output<int?> tumblingWindowInSeconds;
+  /// Whether to apply resource level timeout values while retrying eventually consistent API operations. By default the provider uses a 5 minute timeout to allow for propagation in the Lambda service. When set to `true`, this default value is replaced with the configurable resource timeouts. Increased timeout values may be useful in highly active accounts, or regions where propagation delays are inconsistent.
+  late final pulumi.Output<bool?> useResourceTimeoutForPropagation;
   /// UUID of the created event source mapping.
   late final pulumi.Output<String> uuid;
 
@@ -1652,6 +1880,7 @@ class EventSourceMapping extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     topics = registerOutput<List<String>?>('topics');
     tumblingWindowInSeconds = registerOutput<int?>('tumblingWindowInSeconds');
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
     uuid = registerOutput<String>('uuid');
   }
 
@@ -1713,6 +1942,7 @@ class EventSourceMapping extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     topics = registerOutput<List<String>?>('topics');
     tumblingWindowInSeconds = registerOutput<int?>('tumblingWindowInSeconds');
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
     uuid = registerOutput<String>('uuid');
   }
 }

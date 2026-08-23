@@ -247,7 +247,7 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("example-flink-application"),
 /// 			Source: pulumi.NewFileAsset("flink-app.jar"),
 /// 		})
@@ -313,6 +313,73 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example-flink-application"
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   key    = "example-flink-application"
+///   source = fileAsset("flink-app.jar")
+/// }
+/// resource "aws_kinesisanalyticsv2_application" "example" {
+///   name                   = "example-flink-application"
+///   runtime_environment    = "FLINK-1_8"
+///   service_execution_role = exampleAwsIamRole.arn
+///   application_configuration = {
+///     application_code_configuration = {
+///       code_content = {
+///         s3_content_location = {
+///           bucket_arn = aws_s3_bucket.example.arn
+///           file_key   = aws_s3_bucketobjectv2.example.key
+///         }
+///       }
+///       code_content_type = "ZIPFILE"
+///     }
+///     environment_properties = {
+///       property_groups = [{
+///         "propertyGroupId" = "PROPERTY-GROUP-1"
+///         "propertyMap" = {
+///           "Key1" = "Value1"
+///         }
+///         }, {
+///         "propertyGroupId" = "PROPERTY-GROUP-2"
+///         "propertyMap" = {
+///           "KeyA" = "ValueA"
+///           "KeyB" = "ValueB"
+///         }
+///       }]
+///     }
+///     flink_application_configuration = {
+///       checkpoint_configuration = {
+///         configuration_type = "DEFAULT"
+///       }
+///       monitoring_configuration = {
+///         configuration_type = "CUSTOM"
+///         log_level          = "DEBUG"
+///         metrics_level      = "TASK"
+///       }
+///       parallelism_configuration = {
+///         auto_scaling_enabled = true
+///         configuration_type   = "CUSTOM"
+///         parallelism          = 10
+///         parallelism_per_kpu  = 4
+///       }
+///     }
+///   }
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -330,13 +397,14 @@ import 'application_state.dart';
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocationArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationEnvironmentPropertiesArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroupArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationFlinkApplicationConfigurationArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfigurationArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfigurationArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfigurationArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -422,7 +490,7 @@ import 'application_state.dart';
 ///       bucket: ${example.id}
 ///       key: example-flink-application
 ///       source:
-///         fn::FileAsset: flink-app.jar
+///         fn::fileAsset: flink-app.jar
 ///   exampleApplication:
 ///     type: aws:kinesisanalyticsv2:Application
 ///     name: example
@@ -938,6 +1006,108 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example-sql-application"
+/// }
+/// resource "aws_cloudwatch_logstream" "example" {
+///   name           = "example-sql-application"
+///   log_group_name = aws_cloudwatch_loggroup.example.name
+/// }
+/// resource "aws_kinesisanalyticsv2_application" "example" {
+///   name                   = "example-sql-application"
+///   runtime_environment    = "SQL-1_0"
+///   service_execution_role = exampleAwsIamRole.arn
+///   application_configuration = {
+///     application_code_configuration = {
+///       code_content = {
+///         text_content = "SELECT 1;\n"
+///       }
+///       code_content_type = "PLAINTEXT"
+///     }
+///     sql_application_configuration = {
+///       input = {
+///         name_prefix = "PREFIX_1"
+///         input_parallelism = {
+///           count = 3
+///         }
+///         input_schema = {
+///           record_columns = [{
+///             "name"    = "COLUMN_1"
+///             "sqlType" = "VARCHAR(8)"
+///             "mapping" = "MAPPING-1"
+///             }, {
+///             "name"    = "COLUMN_2"
+///             "sqlType" = "DOUBLE"
+///           }]
+///           record_encoding = "UTF-8"
+///           record_format = {
+///             record_format_type = "CSV"
+///             mapping_parameters = {
+///               csv_mapping_parameters = {
+///                 record_column_delimiter = ","
+///                 record_row_delimiter    = "\n"
+///               }
+///             }
+///           }
+///         }
+///         kinesis_streams_input = {
+///           resource_arn = exampleAwsKinesisStream.arn
+///         }
+///       }
+///       outputs = [{
+///         "name" = "OUTPUT_1"
+///         "destinationSchema" = {
+///           "recordFormatType" = "JSON"
+///         }
+///         "lambdaOutput" = {
+///           "resourceArn" = exampleAwsLambdaFunction.arn
+///         }
+///         }, {
+///         "name" = "OUTPUT_2"
+///         "destinationSchema" = {
+///           "recordFormatType" = "CSV"
+///         }
+///         "kinesisFirehoseOutput" = {
+///           "resourceArn" = exampleAwsKinesisFirehoseDeliveryStream.arn
+///         }
+///       }]
+///       reference_data_source = {
+///         table_name = "TABLE-1"
+///         reference_schema = {
+///           record_columns = [{
+///             "name"    = "COLUMN_1"
+///             "sqlType" = "INTEGER"
+///           }]
+///           record_format = {
+///             record_format_type = "JSON"
+///             mapping_parameters = {
+///               json_mapping_parameters = {
+///                 record_row_path = "$"
+///               }
+///             }
+///           }
+///         }
+///         s3_reference_data_source = {
+///           bucket_arn = exampleAwsS3Bucket.arn
+///           file_key   = "KEY-1"
+///         }
+///       }
+///     }
+///   }
+///   cloudwatch_logging_options = {
+///     log_stream_arn = aws_cloudwatch_logstream.example.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -957,19 +1127,25 @@ import 'application_state.dart';
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelismArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationCloudwatchLoggingOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1306,7 +1482,7 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("example-flink-application"),
 /// 			Source: pulumi.NewFileAsset("flink-app.jar"),
 /// 		})
@@ -1345,6 +1521,44 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example-flink-application"
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   key    = "example-flink-application"
+///   source = fileAsset("flink-app.jar")
+/// }
+/// resource "aws_kinesisanalyticsv2_application" "example" {
+///   name                   = "example-flink-application"
+///   runtime_environment    = "FLINK-1_8"
+///   service_execution_role = exampleAwsIamRole.arn
+///   application_configuration = {
+///     application_code_configuration = {
+///       code_content = {
+///         s3_content_location = {
+///           bucket_arn = aws_s3_bucket.example.arn
+///           file_key   = aws_s3_bucketobjectv2.example.key
+///         }
+///       }
+///       code_content_type = "ZIPFILE"
+///     }
+///     vpc_configuration = {
+///       security_group_ids = [exampleAwsSecurityGroup[0].id, exampleAwsSecurityGroup[1].id]
+///       subnet_ids         = [exampleAwsSubnet.id]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1363,8 +1577,8 @@ import 'application_state.dart';
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocationArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationVpcConfigurationArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1425,7 +1639,7 @@ import 'application_state.dart';
 ///       bucket: ${example.id}
 ///       key: example-flink-application
 ///       source:
-///         fn::FileAsset: flink-app.jar
+///         fn::fileAsset: flink-app.jar
 ///   exampleApplication:
 ///     type: aws:kinesisanalyticsv2:Application
 ///     name: example
@@ -1477,7 +1691,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The runtime environment for the application. Valid values: `SQL-1_0`, `FLINK-1_6`, `FLINK-1_8`, `FLINK-1_11`, `FLINK-1_13`, `FLINK-1_15`, `FLINK-1_18`, `FLINK-1_19`, `FLINK-1_20`.
+  /// The runtime environment for the application. Valid values: `SQL-1_0`, `FLINK-1_6`, `FLINK-1_8`, `FLINK-1_11`, `FLINK-1_13`, `FLINK-1_15`, `FLINK-1_18`, `FLINK-1_19`, `FLINK-1_20`, `FLINK-2_2`.
   late final pulumi.Output<String> runtimeEnvironment;
   /// The ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources.
   late final pulumi.Output<String> serviceExecutionRole;
@@ -1485,11 +1699,11 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<bool?> startApplication;
   /// The status of the application.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// A map of tags to assign to the application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The current application version. Kinesis Data Analytics updates the `version_id` each time the application is updated.
+  /// The current application version. Kinesis Data Analytics updates the `versionId` each time the application is updated.
   late final pulumi.Output<int> versionId;
 
   /// Creates a new [Application].

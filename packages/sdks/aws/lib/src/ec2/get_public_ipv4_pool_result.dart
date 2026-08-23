@@ -10,7 +10,7 @@ class GetPublicIpv4PoolResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// Name of the location from which the address pool is advertised.
-  /// * pool_address_ranges` - List of Address Ranges in the Pool; each address range record contains:
+  /// * poolAddressRanges` - List of Address Ranges in the Pool; each address range record contains:
   final String networkBorderGroup;
   final List<GetPublicIpv4PoolPoolAddressRange> poolAddressRanges;
   final String poolId;
@@ -72,4 +72,3 @@ class GetPublicIpv4PoolResult {
     );
   }
 }
-

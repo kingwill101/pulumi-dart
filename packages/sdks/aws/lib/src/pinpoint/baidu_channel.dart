@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'baidu_channel_args.dart';
 import 'baidu_channel_state.dart';
 
-/// Provides a Pinpoint Baidu Channel resource.
+/// Provides an End User Messaging Baidu Channel resource.
 ///
 /// &gt; **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
 /// ## Example Usage
@@ -74,6 +74,23 @@ import 'baidu_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pinpoint_app" "app" {
+/// }
+/// resource "aws_pinpoint_baiduchannel" "channel" {
+///   application_id = aws_pinpoint_app.app.application_id
+///   api_key        = ""
+///   secret_key     = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +100,8 @@ import 'baidu_channel_state.dart';
 /// import com.pulumi.aws.pinpoint.App;
 /// import com.pulumi.aws.pinpoint.BaiduChannel;
 /// import com.pulumi.aws.pinpoint.BaiduChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,7 +139,7 @@ import 'baidu_channel_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Pinpoint Baidu Channel using the `application-id`. For example:
+/// Using `pulumi import`, import End User Messaging Baidu Channel using the `application-id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:pinpoint/baiduChannel:BaiduChannel channel application-id
@@ -130,9 +147,9 @@ import 'baidu_channel_state.dart';
 class BaiduChannel extends pulumi.CustomResource {
   /// Platform credential API key from Baidu.
   late final pulumi.Output<String> apiKey;
-  /// The application ID.
+  /// Application ID.
   late final pulumi.Output<String> applicationId;
-  /// Specifies whether to enable the channel. Defaults to `true`.
+  /// Whether to enable the channel. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

@@ -7,25 +7,26 @@ import 'opt_in_resource_data.dart';
 
 /// Input properties used for looking up and filtering OptIn resources.
 class OptInState {
-  /// Lake Formation condition, which applies to permissions and opt-ins that contain an expression.
+  /// Lake Formation condition, which applies to permissions and opt-ins that contain an expression. See `condition` Block for more details.
   final pulumi.Input<List<OptInCondition>>? conditions;
   /// Last modified date and time of the record.
   final pulumi.Input<String>? lastModified;
+  /// User who updated the record.
   final pulumi.Input<String>? lastUpdatedBy;
-  /// Lake Formation principal. Supported principals are IAM users or IAM roles. See Principal for more details.
+  /// Lake Formation principal. Supported principals are IAM users or IAM roles. See `principal` Block for more details.
   final pulumi.Input<List<OptInPrincipal>>? principals;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Structure for the resource. See Resource for more details.
+  /// Structure for the resource. See `resourceData` Block for more details.
   final pulumi.Input<List<OptInResourceData>>? resourceDatas;
 
   /// Creates a new [OptInState].
-  /// [conditions] Lake Formation condition, which applies to permissions and opt-ins that contain an expression.
+  /// [conditions] Lake Formation condition, which applies to permissions and opt-ins that contain an expression. See `condition` Block for more details.
   /// [lastModified] Last modified date and time of the record.
-  /// [lastUpdatedBy] Optional.
-  /// [principals] Lake Formation principal. Supported principals are IAM users or IAM roles. See Principal for more details.
+  /// [lastUpdatedBy] User who updated the record.
+  /// [principals] Lake Formation principal. Supported principals are IAM users or IAM roles. See `principal` Block for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceDatas] Structure for the resource. See Resource for more details.
+  /// [resourceDatas] Structure for the resource. See `resourceData` Block for more details.
   const OptInState({
     this.conditions,
     this.lastModified,
@@ -57,4 +58,3 @@ class OptInState {
     );
   }
 }
-

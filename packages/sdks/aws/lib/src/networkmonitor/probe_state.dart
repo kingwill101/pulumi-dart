@@ -22,9 +22,9 @@ class ProbeState {
   final pulumi.Input<String>? region;
   /// The ARN of the subnet.
   final pulumi.Input<String>? sourceArn;
-  /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the monitor. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<String>? vpcId;
 
@@ -39,8 +39,8 @@ class ProbeState {
   /// [protocol] The protocol used for the network traffic between the source and destination. This must be either TCP or ICMP.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceArn] The ARN of the subnet.
-  /// [tags] Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the monitor. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcId] Optional.
   const ProbeState({
     this.addressFamily,
@@ -94,4 +94,3 @@ class ProbeState {
     );
   }
 }
-

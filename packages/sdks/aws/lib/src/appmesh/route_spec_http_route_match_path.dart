@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecHttpRouteMatchPath {
-  /// The exact path to match on.
+  /// Exact query parameter to match on.
   final pulumi.Input<String>? exact;
-  /// The regex used to match the path.
+  /// Regex used to match the path.
   final pulumi.Input<String>? regex;
 
   /// Creates a new [RouteSpecHttpRouteMatchPath].
-  /// [exact] The exact path to match on.
-  /// [regex] The regex used to match the path.
+  /// [exact] Exact query parameter to match on.
+  /// [regex] Regex used to match the path.
   const RouteSpecHttpRouteMatchPath({
     this.exact,
     this.regex,
@@ -30,4 +30,3 @@ class RouteSpecHttpRouteMatchPath {
     );
   }
 }
-

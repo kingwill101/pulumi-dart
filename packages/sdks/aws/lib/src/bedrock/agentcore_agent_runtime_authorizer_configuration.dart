@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_agent_runtime_authorizer_configuration_custom_jwt_authorizer.dart';
 
 class AgentcoreAgentRuntimeAuthorizerConfiguration {
-  /// JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
+  /// JWT-based authorization configuration block. See `customJwtAuthorizer` below.
   final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer>? customJwtAuthorizer;
 
   /// Creates a new [AgentcoreAgentRuntimeAuthorizerConfiguration].
-  /// [customJwtAuthorizer] JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
+  /// [customJwtAuthorizer] JWT-based authorization configuration block. See `customJwtAuthorizer` below.
   const AgentcoreAgentRuntimeAuthorizerConfiguration({
     this.customJwtAuthorizer,
   });
@@ -25,4 +25,3 @@ class AgentcoreAgentRuntimeAuthorizerConfiguration {
     );
   }
 }
-

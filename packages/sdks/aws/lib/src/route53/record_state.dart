@@ -22,7 +22,7 @@ class RecordState {
   final pulumi.Input<RecordCidrRoutingPolicy>? cidrRoutingPolicy;
   /// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
   final pulumi.Input<List<RecordFailoverRoutingPolicy>>? failoverRoutingPolicies;
-  /// [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`.
+  /// [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`. Does not include trailing `.`.
   final pulumi.Input<String>? fqdn;
   /// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
   final pulumi.Input<List<RecordGeolocationRoutingPolicy>>? geolocationRoutingPolicies;
@@ -38,7 +38,7 @@ class RecordState {
   final pulumi.Input<String>? name;
   /// A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
   final pulumi.Input<List<String>>? records;
-  /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidr_routing_policy`, `failover_routing_policy`, `geolocation_routing_policy`,`geoproximity_routing_policy`, `latency_routing_policy`, `multivalue_answer_routing_policy`, or `weighted_routing_policy`.
+  /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidrRoutingPolicy`, `failoverRoutingPolicy`, `geolocationRoutingPolicy`,`geoproximityRoutingPolicy`, `latencyRoutingPolicy`, `multivalueAnswerRoutingPolicy`, or `weightedRoutingPolicy`.
   final pulumi.Input<String>? setIdentifier;
   /// The TTL of the record.
   final pulumi.Input<int>? ttl;
@@ -54,7 +54,7 @@ class RecordState {
   /// [allowOverwrite] Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
   /// [cidrRoutingPolicy] A block indicating a routing policy based on the IP network ranges of requestors. Conflicts with any other routing policy. Documented below.
   /// [failoverRoutingPolicies] A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
-  /// [fqdn] [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`.
+  /// [fqdn] [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`. Does not include trailing `.`.
   /// [geolocationRoutingPolicies] A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
   /// [geoproximityRoutingPolicy] A block indicating a routing policy based on the geoproximity of the requestor. Conflicts with any other routing policy. Documented below.
   /// [healthCheckId] The health check the record should be associated with.
@@ -62,7 +62,7 @@ class RecordState {
   /// [multivalueAnswerRoutingPolicy] Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
   /// [name] The name of the record.
   /// [records] A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
-  /// [setIdentifier] Unique identifier to differentiate records with routing policies from one another. Required if using `cidr_routing_policy`, `failover_routing_policy`, `geolocation_routing_policy`,`geoproximity_routing_policy`, `latency_routing_policy`, `multivalue_answer_routing_policy`, or `weighted_routing_policy`.
+  /// [setIdentifier] Unique identifier to differentiate records with routing policies from one another. Required if using `cidrRoutingPolicy`, `failoverRoutingPolicy`, `geolocationRoutingPolicy`,`geoproximityRoutingPolicy`, `latencyRoutingPolicy`, `multivalueAnswerRoutingPolicy`, or `weightedRoutingPolicy`.
   /// [ttl] The TTL of the record.
   /// [type] The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `HTTPS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
   /// [weightedRoutingPolicies] A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
@@ -131,4 +131,3 @@ class RecordState {
     );
   }
 }
-

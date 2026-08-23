@@ -65,6 +65,21 @@ import 'local_gateway_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_localgatewayroute" "example" {
+///   destination_cidr_block                   = "172.16.0.0/16"
+///   local_gateway_route_table_id             = exampleAwsEc2LocalGatewayRouteTable.id
+///   local_gateway_virtual_interface_group_id = exampleAwsEc2LocalGatewayVirtualInterfaceGroup.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'local_gateway_route_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.LocalGatewayRoute;
 /// import com.pulumi.aws.ec2.LocalGatewayRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

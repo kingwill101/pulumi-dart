@@ -77,6 +77,23 @@ import 'target_group_attachment_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_targetgroupattachment" "example" {
+///   target_group_identifier = exampleAwsVpclatticeTargetGroup.id
+///   target = {
+///     id   = exampleAwsLb.arn
+///     port = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'target_group_attachment_target.dart';
 /// import com.pulumi.aws.vpclattice.TargetGroupAttachment;
 /// import com.pulumi.aws.vpclattice.TargetGroupAttachmentArgs;
 /// import com.pulumi.aws.vpclattice.inputs.TargetGroupAttachmentTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,9 +140,9 @@ import 'target_group_attachment_target.dart';
 class TargetGroupAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The target.
+  /// Target to register with the target group. See `target` Block for details.
   late final pulumi.Output<TargetGroupAttachmentTarget> target;
-  /// The ID or Amazon Resource Name (ARN) of the target group.
+  /// ID or Amazon Resource Name (ARN) of the target group.
   late final pulumi.Output<String> targetGroupIdentifier;
 
   /// Creates a new [TargetGroupAttachment].

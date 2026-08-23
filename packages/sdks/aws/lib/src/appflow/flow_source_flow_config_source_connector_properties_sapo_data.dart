@@ -6,15 +6,15 @@ import 'flow_source_flow_config_source_connector_properties_sapo_data_parallelis
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   final pulumi.Input<String> objectPath;
-  /// Sets the page size for each concurrent process that transfers OData records from your SAP instance.
+  /// Page size for each concurrent process that transfers OData records from your SAP instance. See the `source_flow_config.source_connector_properties.sapo_data.pagination_config` Block for details.
   final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig>? paginationConfig;
-  /// Sets the number of concurrent processes that transfers OData records from your SAP instance.
+  /// Number of concurrent processes that transfer OData records from your SAP instance. See the `source_flow_config.source_connector_properties.sapo_data.parallelism_config` Block for details.
   final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig>? parallelismConfig;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoData].
   /// [objectPath] Required.
-  /// [paginationConfig] Sets the page size for each concurrent process that transfers OData records from your SAP instance.
-  /// [parallelismConfig] Sets the number of concurrent processes that transfers OData records from your SAP instance.
+  /// [paginationConfig] Page size for each concurrent process that transfers OData records from your SAP instance. See the `source_flow_config.source_connector_properties.sapo_data.pagination_config` Block for details.
+  /// [parallelismConfig] Number of concurrent processes that transfer OData records from your SAP instance. See the `source_flow_config.source_connector_properties.sapo_data.parallelism_config` Block for details.
   const FlowSourceFlowConfigSourceConnectorPropertiesSapoData({
     required this.objectPath,
     this.paginationConfig,
@@ -37,4 +37,3 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
     );
   }
 }
-

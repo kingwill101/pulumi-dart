@@ -5,7 +5,7 @@ import 'product_state.dart';
 
 /// Manages a Service Catalog Product.
 ///
-/// &gt; **NOTE:** The user or role that uses this resources must have the `cloudformation:GetTemplate` IAM policy permission. This policy permission is required when using the `template_physical_id` argument.
+/// &gt; **NOTE:** The user or role that uses this resources must have the `cloudformation:GetTemplate` IAM policy permission. This policy permission is required when using the `templatePhysicalId` argument.
 ///
 /// &gt; A "provisioning artifact" is also referred to as a "version." A "distributor" is also referred to as a "vendor."
 ///
@@ -98,6 +98,27 @@ import 'product_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_product" "example" {
+///   name  = "example"
+///   owner = "example-owner"
+///   type  = "CLOUD_FORMATION_TEMPLATE"
+///   provisioning_artifact_parameters = {
+///     template_url = "https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json"
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +128,8 @@ import 'product_state.dart';
 /// import com.pulumi.aws.servicecatalog.Product;
 /// import com.pulumi.aws.servicecatalog.ProductArgs;
 /// import com.pulumi.aws.servicecatalog.inputs.ProductProvisioningArtifactParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,7 +193,7 @@ class Product extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Owner of the product.
   late final pulumi.Output<String> owner;
-  /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioning_artifact_parameters` Block for details.
+  /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioningArtifactParameters` Block for details.
   late final pulumi.Output<ProductProvisioningArtifactParameters> provisioningArtifactParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -184,9 +205,9 @@ class Product extends pulumi.CustomResource {
   late final pulumi.Output<String> supportEmail;
   /// Contact URL for product support.
   late final pulumi.Output<String> supportUrl;
-  /// Tags to apply to the product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the product. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.
   ///

@@ -17,20 +17,20 @@ class GlobalSecondaryIndexArgs {
   final pulumi.Input<String> indexName;
   /// Set of nested attribute definitions.
   /// At least 1 element defining a `HASH` is required.
-  /// All elements with the `key_type` of `HASH` must precede elements with `key_type` of `RANGE`.
-  /// Changing any values in `key_schema` will re-create the resource.
-  /// See `key_schema` below.
-  final pulumi.Input<List<GlobalSecondaryIndexKeySchema>>? keySchemas;
+  /// All elements with the `keyType` of `HASH` must precede elements with `keyType` of `RANGE`.
+  /// Changing any values in `keySchema` will re-create the resource.
+  /// See `keySchema` below.
+  final pulumi.Input<List<GlobalSecondaryIndexKeySchema>> keySchemas;
   /// Sets the maximum number of read and write units for the index.
-  /// See `on_demand_throughput` below.
-  /// Only valid if the table's `billing_mode` is `PAY_PER_REQUEST`.
+  /// See `onDemandThroughput` below.
+  /// Only valid if the table's `billingMode` is `PAY_PER_REQUEST`.
   final pulumi.Input<GlobalSecondaryIndexOnDemandThroughput>? onDemandThroughput;
   /// Describes which attributes from the table are represented in the index.
   /// See `projection` below.
   final pulumi.Input<GlobalSecondaryIndexProjection>? projection;
   /// Provisioned throughput for the index.
-  /// See `provisioned_throughput` below.
-  /// Required if the table's `billing_mode` is `PROVISIONED`.
+  /// See `provisionedThroughput` below.
+  /// Required if the table's `billingMode` is `PROVISIONED`.
   final pulumi.Input<GlobalSecondaryIndexProvisionedThroughput>? provisionedThroughput;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -40,7 +40,7 @@ class GlobalSecondaryIndexArgs {
   final pulumi.Input<String> tableName;
   final pulumi.Input<GlobalSecondaryIndexTimeouts>? timeouts;
   /// Sets the number of warm read and write units for this index.
-  /// See `warm_throughput` below.
+  /// See `warmThroughput` below.
   final pulumi.Input<GlobalSecondaryIndexWarmThroughput>? warmThroughput;
 
   /// Creates a new [GlobalSecondaryIndexArgs].
@@ -55,7 +55,7 @@ class GlobalSecondaryIndexArgs {
   /// [warmThroughput] Sets the number of warm read and write units for this index.
   const GlobalSecondaryIndexArgs({
     required this.indexName,
-    this.keySchemas,
+    required this.keySchemas,
     this.onDemandThroughput,
     this.projection,
     this.provisionedThroughput,
@@ -68,7 +68,7 @@ class GlobalSecondaryIndexArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'indexName': indexName,
-      'keySchemas': ?pulumi.Input.mapOptionalInputValue<List<GlobalSecondaryIndexKeySchema>, List<Map<String, dynamic>>>(keySchemas, (value) => pulumi.Input.encodeList<GlobalSecondaryIndexKeySchema, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'keySchemas': pulumi.Input.mapInputValue<List<GlobalSecondaryIndexKeySchema>, List<Map<String, dynamic>>>(keySchemas, (value) => pulumi.Input.encodeList<GlobalSecondaryIndexKeySchema, Map<String, dynamic>>(value, (value) => value.toMap())),
       'onDemandThroughput': ?pulumi.Input.mapOptionalInputValue<GlobalSecondaryIndexOnDemandThroughput, Map<String, dynamic>>(onDemandThroughput, (value) => value.toMap()),
       'projection': ?pulumi.Input.mapOptionalInputValue<GlobalSecondaryIndexProjection, Map<String, dynamic>>(projection, (value) => value.toMap()),
       'provisionedThroughput': ?pulumi.Input.mapOptionalInputValue<GlobalSecondaryIndexProvisionedThroughput, Map<String, dynamic>>(provisionedThroughput, (value) => value.toMap()),
@@ -82,7 +82,7 @@ class GlobalSecondaryIndexArgs {
   factory GlobalSecondaryIndexArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexArgs(
       indexName: pulumi.Input.fromValue(map['indexName'] as String),
-      keySchemas: (() { final guardedValue = map['keySchemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(guardedValue, (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      keySchemas: pulumi.Input.fromValue(pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(map['keySchemas']!, (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))),
       onDemandThroughput: (() { final guardedValue = map['onDemandThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GlobalSecondaryIndexOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       projection: (() { final guardedValue = map['projection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GlobalSecondaryIndexProjection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GlobalSecondaryIndexProvisionedThroughput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -93,4 +93,3 @@ class GlobalSecondaryIndexArgs {
     );
   }
 }
-

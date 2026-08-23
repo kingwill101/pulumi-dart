@@ -5,14 +5,14 @@ import 'ingestion_destination_destination_configuration_audit_log_destination_fi
 import 'ingestion_destination_destination_configuration_audit_log_destination_s3_bucket.dart';
 
 class IngestionDestinationDestinationConfigurationAuditLogDestination {
-  /// Contains information about an Amazon Data Firehose delivery stream.
+  /// Amazon Data Firehose delivery stream destination. See `destination_configuration.audit_log.destination.firehose_stream` Block below.
   final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream>? firehoseStream;
-  /// Contains information about an Amazon S3 bucket.
+  /// Amazon S3 bucket destination. See `destination_configuration.audit_log.destination.s3_bucket` Block below.
   final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket>? s3Bucket;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestination].
-  /// [firehoseStream] Contains information about an Amazon Data Firehose delivery stream.
-  /// [s3Bucket] Contains information about an Amazon S3 bucket.
+  /// [firehoseStream] Amazon Data Firehose delivery stream destination. See `destination_configuration.audit_log.destination.firehose_stream` Block below.
+  /// [s3Bucket] Amazon S3 bucket destination. See `destination_configuration.audit_log.destination.s3_bucket` Block below.
   const IngestionDestinationDestinationConfigurationAuditLogDestination({
     this.firehoseStream,
     this.s3Bucket,
@@ -32,4 +32,3 @@ class IngestionDestinationDestinationConfigurationAuditLogDestination {
     );
   }
 }
-

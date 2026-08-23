@@ -22,7 +22,7 @@ class GetResolverRuleResult {
   final String shareStatus;
   /// Map of tags assigned to the resolver rule.
   final Map<String, String> tags;
-  /// List of configurations for target IP addresses. Only applicable for `FORWARD` rules. See `target_ips` below for details.
+  /// List of configurations for target IP addresses. Only applicable for `FORWARD` rules. See `targetIps` below for details.
   final List<GetResolverRuleTargetIp> targetIps;
 
   /// Creates a new [GetResolverRuleResult].
@@ -37,7 +37,7 @@ class GetResolverRuleResult {
   /// [ruleType] Required.
   /// [shareStatus] Whether the rules is shared and, if so, whether the current account is sharing the rule with another account, or another account is sharing the rule with the current account.
   /// [tags] Map of tags assigned to the resolver rule.
-  /// [targetIps] List of configurations for target IP addresses. Only applicable for `FORWARD` rules. See `target_ips` below for details.
+  /// [targetIps] List of configurations for target IP addresses. Only applicable for `FORWARD` rules. See `targetIps` below for details.
   const GetResolverRuleResult({
     required this.arn,
     required this.domainName,
@@ -87,4 +87,3 @@ class GetResolverRuleResult {
     );
   }
 }
-

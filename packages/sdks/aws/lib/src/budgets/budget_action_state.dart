@@ -7,7 +7,7 @@ import 'budget_action_subscriber.dart';
 
 /// Input properties used for looking up and filtering BudgetAction resources.
 class BudgetActionState {
-  /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
+  /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
   final pulumi.Input<String>? accountId;
   /// The id of the budget action.
   final pulumi.Input<String>? actionId;
@@ -31,13 +31,13 @@ class BudgetActionState {
   final pulumi.Input<String>? status;
   /// A list of subscribers. See Subscriber.
   final pulumi.Input<List<BudgetActionSubscriber>>? subscribers;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [BudgetActionState].
-  /// [accountId] The ID of the target account for budget. Will use current user's account_id by default if omitted.
+  /// [accountId] The ID of the target account for budget. Will use current user's accountId by default if omitted.
   /// [actionId] The id of the budget action.
   /// [actionThreshold] The trigger threshold of the action. See Action Threshold.
   /// [actionType] The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
@@ -49,8 +49,8 @@ class BudgetActionState {
   /// [notificationType] The type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
   /// [status] The status of the budget action.
   /// [subscribers] A list of subscribers. See Subscriber.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const BudgetActionState({
     this.accountId,
     this.actionId,
@@ -106,4 +106,3 @@ class BudgetActionState {
     );
   }
 }
-

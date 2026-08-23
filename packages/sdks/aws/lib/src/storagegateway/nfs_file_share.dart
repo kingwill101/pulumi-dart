@@ -76,6 +76,22 @@ import 'nfs_file_share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_nfsfileshare" "example" {
+///   client_lists = ["0.0.0.0/0"]
+///   gateway_arn  = exampleAwsStoragegatewayGateway.arn
+///   location_arn = exampleAwsS3Bucket.arn
+///   role_arn     = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +100,8 @@ import 'nfs_file_share_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.NfsFileShare;
 /// import com.pulumi.aws.storagegateway.NfsFileShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,7 +148,7 @@ class NfsFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The Amazon Resource Name (ARN) of the storage used for audit logs.
   late final pulumi.Output<String?> auditDestinationArn;
-  /// The region of the S3 bucket used by the file share. Required when specifying `vpc_endpoint_dns_name`.
+  /// The region of the S3 bucket used by the file share. Required when specifying `vpcEndpointDnsName`.
   late final pulumi.Output<String?> bucketRegion;
   /// Refresh cache information. see Cache Attributes for more details.
   late final pulumi.Output<NfsFileShareCacheAttributes?> cacheAttributes;
@@ -140,7 +156,7 @@ class NfsFileShare extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> clientLists;
   /// The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
   late final pulumi.Output<String?> defaultStorageClass;
-  /// The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
+  /// The name of the file share. Must be set if an S3 prefix name is set in `locationArn`.
   late final pulumi.Output<String> fileShareName;
   /// ID of the NFS File Share.
   late final pulumi.Output<String> fileshareId;
@@ -150,7 +166,7 @@ class NfsFileShare extends pulumi.CustomResource {
   late final pulumi.Output<bool?> guessMimeTypeEnabled;
   /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   late final pulumi.Output<bool?> kmsEncrypted;
-  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
+  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is true.
   late final pulumi.Output<String?> kmsKeyArn;
   /// The ARN of the backed storage used for storing file data.
   late final pulumi.Output<String> locationArn;
@@ -172,9 +188,9 @@ class NfsFileShare extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
   late final pulumi.Output<String?> squash;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The DNS name of the VPC endpoint for S3 PrivateLink.
   late final pulumi.Output<String?> vpcEndpointDnsName;

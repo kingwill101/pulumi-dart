@@ -10,7 +10,7 @@ import 'analytics_application_state.dart';
 ///
 /// For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
 ///
-/// !&gt; **WARNING:** _This resource is deprecated and will be removed in a future version._ [Effective January 27, 2026](https://aws.amazon.com/blogs/big-data/migrate-from-amazon-kinesis-data-analytics-for-sql-to-amazon-managed-service-for-apache-flink-and-amazon-managed-service-for-apache-flink-studio/), AWS will [no longer support](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/discontinuation.html) Amazon Kinesis Data Analytics for SQL. Use the `aws.kinesisanalyticsv2.Application` resource instead to manage Amazon Kinesis Data Analytics for Apache Flink applications. AWS provides guidance for migrating from [Amazon Kinesis Data Analytics for SQL Applications to Amazon Managed Service for Apache Flink Studio](https://aws.amazon.com/blogs/big-data/migrate-from-amazon-kinesis-data-analytics-for-sql-applications-to-amazon-managed-service-for-apache-flink-studio/) including [examples](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/migrating-to-kda-studio-overview.html).
+/// &gt; **WARNING:** _This resource is deprecated and will be removed in a future version._ [Effective January 27, 2026](https://aws.amazon.com/blogs/big-data/migrate-from-amazon-kinesis-data-analytics-for-sql-to-amazon-managed-service-for-apache-flink-and-amazon-managed-service-for-apache-flink-studio/), AWS will [no longer support](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/discontinuation.html) Amazon Kinesis Data Analytics for SQL. Use the `aws.kinesisanalyticsv2.Application` resource instead to manage Amazon Kinesis Data Analytics for Apache Flink applications. AWS provides guidance for migrating from [Amazon Kinesis Data Analytics for SQL Applications to Amazon Managed Service for Apache Flink Studio](https://aws.amazon.com/blogs/big-data/migrate-from-amazon-kinesis-data-analytics-for-sql-applications-to-amazon-managed-service-for-apache-flink-studio/) including [examples](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/migrating-to-kda-studio-overview.html).
 ///
 /// &gt; **Note:** To manage Amazon Kinesis Data Analytics for Apache Flink applications, use the `aws.kinesisanalyticsv2.Application` resource.
 ///
@@ -202,6 +202,48 @@ import 'analytics_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_stream" "test_stream" {
+///   name        = "kinesis-test"
+///   shard_count = 1
+/// }
+/// resource "aws_kinesis_analyticsapplication" "test_application" {
+///   name = "kinesis-analytics-application-test"
+///   inputs = {
+///     name_prefix = "test_prefix"
+///     kinesis_stream = {
+///       resource_arn = aws_kinesis_stream.test_stream.arn
+///       role_arn     = test.arn
+///     }
+///     parallelism = {
+///       count = 1
+///     }
+///     schema = {
+///       record_columns = [{
+///         "mapping" = "$.test"
+///         "name"    = "test"
+///         "sqlType" = "VARCHAR(8)"
+///       }]
+///       record_encoding = "UTF-8"
+///       record_format = {
+///         mapping_parameters = {
+///           json = {
+///             record_row_path = "$"
+///           }
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,11 +258,12 @@ import 'analytics_application_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsKinesisStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsParallelismArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaArgs;
+/// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -629,6 +672,77 @@ import 'analytics_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "analytics"
+/// }
+/// resource "aws_cloudwatch_logstream" "example" {
+///   name           = "example-kinesis-application"
+///   log_group_name = aws_cloudwatch_loggroup.example.name
+/// }
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "example-kinesis-stream"
+///   shard_count = 1
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "example" {
+///   name        = "example-kinesis-delivery-stream"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     bucket_arn = exampleAwsS3Bucket.arn
+///     role_arn   = exampleAwsIamRole.arn
+///   }
+/// }
+/// resource "aws_kinesis_analyticsapplication" "test" {
+///   name = "example-application"
+///   cloudwatch_logging_options = {
+///     log_stream_arn = aws_cloudwatch_logstream.example.arn
+///     role_arn       = exampleAwsIamRole.arn
+///   }
+///   inputs = {
+///     name_prefix = "example_prefix"
+///     schema = {
+///       record_columns = [{
+///         "name"    = "COLUMN_1"
+///         "sqlType" = "INTEGER"
+///       }]
+///       record_format = {
+///         mapping_parameters = {
+///           csv = {
+///             record_column_delimiter = ","
+///             record_row_delimiter    = "|"
+///           }
+///         }
+///       }
+///     }
+///     kinesis_stream = {
+///       resource_arn = aws_kinesis_stream.example.arn
+///       role_arn     = exampleAwsIamRole.arn
+///     }
+///     starting_position_configurations = [{
+///       "startingPosition" = "NOW"
+///     }]
+///   }
+///   outputs {
+///     name = "OUTPUT_1"
+///     schema = {
+///       record_format_type = "CSV"
+///     }
+///     kinesis_firehose = {
+///       resource_arn = aws_kinesis_firehosedeliverystream.example.arn
+///       role_arn     = exampleAwsIamRole.arn
+///     }
+///   }
+///   start_application = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -649,15 +763,17 @@ import 'analytics_application_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationCloudwatchLoggingOptionsArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaArgs;
+/// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsKinesisStreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsStartingPositionConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationOutputArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationOutputSchemaArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationOutputKinesisFirehoseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -831,14 +947,14 @@ class AnalyticsApplication extends pulumi.CustomResource {
   late final pulumi.Output<AnalyticsApplicationReferenceDataSources?> referenceDataSources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `starting_position` must be configured.
-  /// To modify an application's starting position, first stop the application by setting `start_application = false`, then update `starting_position` and set `start_application = true`.
+  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured.
+  /// To modify an application's starting position, first stop the application by setting `startApplication = false`, then update `startingPosition` and set `startApplication = true`.
   late final pulumi.Output<bool?> startApplication;
   /// The Status of the application.
   late final pulumi.Output<String> status;
-  /// Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The Version of the application.
   late final pulumi.Output<int> version;

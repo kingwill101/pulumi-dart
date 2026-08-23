@@ -4,7 +4,7 @@ import 'reserved_instance_state.dart';
 
 /// Manages an RDS DB Reserved Instance.
 ///
-/// &gt; **NOTE:** Once created, a reservation is valid for the `duration` of the provided `offering_id` and cannot be deleted. Performing a `destroy` will only remove the resource from state. For more information see [RDS Reserved Instances Documentation](https://aws.amazon.com/rds/reserved-instances/) and [PurchaseReservedDBInstancesOffering](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_PurchaseReservedDBInstancesOffering.html).
+/// &gt; **NOTE:** Once created, a reservation is valid for the `duration` of the provided `offeringId` and cannot be deleted. Performing a `destroy` will only remove the resource from state. For more information see [RDS Reserved Instances Documentation](https://aws.amazon.com/rds/reserved-instances/) and [PurchaseReservedDBInstancesOffering](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_PurchaseReservedDBInstancesOffering.html).
 ///
 /// &gt; **NOTE:** Due to the expense of testing this resource, we provide it as best effort. If you find it useful, and have the ability to help test or notice issues, consider reaching out to us on GitHub.
 ///
@@ -100,6 +100,29 @@ import 'reserved_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getreservedinstanceoffering" "test" {
+///   db_instance_class   = "db.t2.micro"
+///   duration            = 31536000
+///   multi_az            = false
+///   offering_type       = "All Upfront"
+///   product_description = "mysql"
+/// }
+///
+/// resource "aws_rds_reservedinstance" "example" {
+///   offering_id    = data.aws_rds_getreservedinstanceoffering.test.offering_id
+///   reservation_id = "optionalCustomReservationID"
+///   instance_count = 3
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +133,8 @@ import 'reserved_instance_state.dart';
 /// import com.pulumi.aws.rds.inputs.GetReservedInstanceOfferingArgs;
 /// import com.pulumi.aws.rds.ReservedInstance;
 /// import com.pulumi.aws.rds.ReservedInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,7 +186,7 @@ import 'reserved_instance_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import RDS DB Instance Reservations using the `instance_id`. For example:
+/// Using `pulumi import`, import RDS DB Instance Reservations using the `instanceId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/reservedInstance:ReservedInstance reservation_instance CustomReservationID
@@ -185,7 +208,7 @@ class ReservedInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> leaseId;
   /// Whether the reservation applies to Multi-AZ deployments.
   late final pulumi.Output<bool> multiAz;
-  /// ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
+  /// ID of the Reserved DB instance offering to purchase. To determine an `offeringId`, see the `aws.rds.getReservedInstanceOffering` data source.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> offeringId;
@@ -203,9 +226,9 @@ class ReservedInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> startTime;
   /// State of the reserved DB instance.
   late final pulumi.Output<String> state;
-  /// Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the DB reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Hourly price charged for this reserved DB instance.
   late final pulumi.Output<double> usagePrice;

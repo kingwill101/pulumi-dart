@@ -13,7 +13,7 @@ import 'user_profile_user_settings_canvas_app_settings_workspace_settings.dart';
 class UserProfileUserSettingsCanvasAppSettings {
   /// The model deployment settings for the SageMaker AI Canvas application. See Direct Deploy Settings below.
   final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings>? directDeploySettings;
-  /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emr_serverless_settings` Block below.
+  /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emrServerlessSettings` Block below.
   final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings>? emrServerlessSettings;
   final pulumi.Input<UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings>? generativeAiSettings;
   /// The settings for connecting to an external data source with OAuth. See Identity Provider OAuth Settings below.
@@ -29,7 +29,7 @@ class UserProfileUserSettingsCanvasAppSettings {
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettings].
   /// [directDeploySettings] The model deployment settings for the SageMaker AI Canvas application. See Direct Deploy Settings below.
-  /// [emrServerlessSettings] The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emr_serverless_settings` Block below.
+  /// [emrServerlessSettings] The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emrServerlessSettings` Block below.
   /// [generativeAiSettings] Optional.
   /// [identityProviderOauthSettings] The settings for connecting to an external data source with OAuth. See Identity Provider OAuth Settings below.
   /// [kendraSettings] The settings for document querying. See Kendra Settings below.
@@ -73,4 +73,3 @@ class UserProfileUserSettingsCanvasAppSettings {
     );
   }
 }
-

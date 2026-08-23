@@ -8,7 +8,7 @@ import 'server_workflow_details.dart';
 
 /// Provides a AWS Transfer Server resource.
 ///
-/// &gt; **NOTE on AWS IAM permissions:** If the `endpoint_type` is set to `VPC`, the `ec2:DescribeVpcEndpoints` and `ec2:ModifyVpcEndpoint` [actions](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-actions-as-permissions) are used.
+/// &gt; **NOTE on AWS IAM permissions:** If the `endpointType` is set to `VPC`, the `ec2:DescribeVpcEndpoints` and `ec2:ModifyVpcEndpoint` [actions](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-actions-as-permissions) are used.
 ///
 /// &gt; **NOTE:** Use the `aws.transfer.Tag` resource to manage the system tags used for [custom hostnames](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-dns.html#tag-custom-hostname-cdk).
 ///
@@ -73,6 +73,21 @@ import 'server_workflow_details.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "example" {
+///   tags = {
+///     "Name" = "Example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'server_workflow_details.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.Server;
 /// import com.pulumi.aws.transfer.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,6 +176,19 @@ import 'server_workflow_details.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "example" {
+///   security_policy_name = "TransferSecurityPolicy-2020-06"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +197,8 @@ import 'server_workflow_details.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.Server;
 /// import com.pulumi.aws.transfer.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,6 +310,24 @@ import 'server_workflow_details.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "example" {
+///   endpoint_type = "VPC"
+///   endpoint_details = {
+///     address_allocation_ids = [exampleAwsEip.id]
+///     subnet_ids             = [exampleAwsSubnet.id]
+///     vpc_id                 = exampleAwsVpc.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -291,8 +337,8 @@ import 'server_workflow_details.dart';
 /// import com.pulumi.aws.transfer.Server;
 /// import com.pulumi.aws.transfer.ServerArgs;
 /// import com.pulumi.aws.transfer.inputs.ServerEndpointDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -388,6 +434,20 @@ import 'server_workflow_details.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "example" {
+///   identity_provider_type = "AWS_DIRECTORY_SERVICE"
+///   directory_id           = exampleAwsDirectoryServiceDirectory.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -396,8 +456,8 @@ import 'server_workflow_details.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.Server;
 /// import com.pulumi.aws.transfer.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,7 +496,7 @@ import 'server_workflow_details.dart';
 ///
 /// const example = new aws.transfer.Server("example", {
 ///     identityProviderType: "AWS_LAMBDA",
-///     "function": exampleAwsLambdaIdentityProvider.arn,
+///     "function": exampleAwsLambdaFunction.arn,
 /// });
 /// ```
 /// ```python
@@ -445,7 +505,7 @@ import 'server_workflow_details.dart';
 ///
 /// example = aws.transfer.Server("example",
 ///     identity_provider_type="AWS_LAMBDA",
-///     function=example_aws_lambda_identity_provider["arn"])
+///     function=example_aws_lambda_function["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -458,7 +518,7 @@ import 'server_workflow_details.dart';
 ///     var example = new Aws.Transfer.Server("example", new()
 ///     {
 ///         IdentityProviderType = "AWS_LAMBDA",
-///         Function = exampleAwsLambdaIdentityProvider.Arn,
+///         Function = exampleAwsLambdaFunction.Arn,
 ///     });
 ///
 /// });
@@ -475,13 +535,27 @@ import 'server_workflow_details.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewServer(ctx, "example", &transfer.ServerArgs{
 /// 			IdentityProviderType: pulumi.String("AWS_LAMBDA"),
-/// 			Function:             pulumi.Any(exampleAwsLambdaIdentityProvider.Arn),
+/// 			Function:             pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "example" {
+///   identity_provider_type = "AWS_LAMBDA"
+///   function               = exampleAwsLambdaFunction.arn
 /// }
 /// ```
 /// ```java
@@ -492,8 +566,8 @@ import 'server_workflow_details.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.Server;
 /// import com.pulumi.aws.transfer.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -507,7 +581,7 @@ import 'server_workflow_details.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Server("example", ServerArgs.builder()
 ///             .identityProviderType("AWS_LAMBDA")
-///             .function(exampleAwsLambdaIdentityProvider.arn())
+///             .function(exampleAwsLambdaFunction.arn())
 ///             .build());
 ///
 ///     }
@@ -519,7 +593,7 @@ import 'server_workflow_details.dart';
 ///     type: aws:transfer:Server
 ///     properties:
 ///       identityProviderType: AWS_LAMBDA
-///       function: ${exampleAwsLambdaIdentityProvider.arn}
+///       function: ${exampleAwsLambdaFunction.arn}
 /// ```
 ///
 ///
@@ -627,6 +701,27 @@ import 'server_workflow_details.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "example" {
+///   endpoint_type = "VPC"
+///   endpoint_details = {
+///     subnet_ids = [exampleAwsSubnet.id]
+///     vpc_id     = exampleAwsVpc.id
+///   }
+///   protocols              = ["FTP", "FTPS"]
+///   certificate            = exampleAwsAcmCertificate.arn
+///   identity_provider_type = "API_GATEWAY"
+///   url                    ="${exampleAwsApiGatewayDeployment.invokeUrl}${exampleAwsApiGatewayResource.path}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -636,8 +731,8 @@ import 'server_workflow_details.dart';
 /// import com.pulumi.aws.transfer.Server;
 /// import com.pulumi.aws.transfer.ServerArgs;
 /// import com.pulumi.aws.transfer.inputs.ServerEndpointDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,7 +912,7 @@ import 'server_workflow_details.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		transfer, err := cloudwatch.NewLogGroup(ctx, "transfer", &cloudwatch.LogGroupArgs{
+/// 		transfer2, err := cloudwatch.NewLogGroup(ctx, "transfer", &cloudwatch.LogGroupArgs{
 /// 			NamePrefix: pulumi.String("transfer_test_"),
 /// 		})
 /// 		if err != nil {
@@ -861,7 +956,7 @@ import 'server_workflow_details.dart';
 /// 				pulumi.String("SFTP"),
 /// 			},
 /// 			StructuredLogDestinations: pulumi.StringArray{
-/// 				transfer.Arn.ApplyT(func(arn string) (string, error) {
+/// 				transfer2.Arn.ApplyT(func(arn string) (string, error) {
 /// 					return fmt.Sprintf("%v:*", arn), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -871,6 +966,41 @@ import 'server_workflow_details.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "transferAssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["transfer.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "transfer" {
+///   name_prefix = "transfer_test_"
+/// }
+/// resource "aws_iam_role" "iam_for_transfer" {
+///   name_prefix         = "iam_for_transfer_"
+///   assume_role_policy  = data.aws_iam_getpolicydocument.transferAssumeRole.json
+///   managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AWSTransferLoggingAccess"]
+/// }
+/// resource "aws_transfer_server" "transfer" {
+///   endpoint_type               = "PUBLIC"
+///   logging_role                = aws_iam_role.iam_for_transfer.arn
+///   protocols                   = ["SFTP"]
+///   structured_log_destinations = ["${aws_cloudwatch_loggroup.transfer.arn}:*"]
 /// }
 /// ```
 /// ```java
@@ -883,12 +1013,14 @@ import 'server_workflow_details.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.transfer.Server;
 /// import com.pulumi.aws.transfer.ServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -982,85 +1114,63 @@ import 'server_workflow_details.dart';
 /// $ pulumi import aws:transfer/server:Server example s-12345678
 /// ```
 ///
-/// Certain resource arguments, such as `host_key`, cannot be read via the API and imported into the provider. This provider will display a difference for these arguments the first run after import if declared in the provider configuration for an imported resource.
+/// Certain resource arguments, such as `hostKey`, cannot be read via the API and imported into the provider. This provider will display a difference for these arguments the first run after import if declared in the provider configuration for an imported resource.
 class Server extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of Transfer Server
   late final pulumi.Output<String> arn;
-  /// The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM) certificate. This is required when `protocols` is set to `FTPS`
+  /// Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM) certificate. Required when `protocols` is set to `FTPS`.
   late final pulumi.Output<String?> certificate;
-  /// The directory service ID of the directory service you want to connect to with an `identity_provider_type` of `AWS_DIRECTORY_SERVICE`.
+  /// Directory service ID of the directory service you want to connect to with an `identityProviderType` of `AWS_DIRECTORY_SERVICE`.
   late final pulumi.Output<String?> directoryId;
-  /// The domain of the storage system that is used for file transfers. Valid values are: `S3` and `EFS`. The default value is `S3`.
+  /// Domain of the storage system that is used for file transfers. Valid values are: `S3` and `EFS`. The default value is `S3`.
   late final pulumi.Output<String?> domain;
-  /// The endpoint of the Transfer Server (e.g., `s-12345678.server.transfer.REGION.amazonaws.com`)
+  /// Endpoint of the Transfer Server (e.g., `s-12345678.server.transfer.REGION.amazonaws.com`)
   late final pulumi.Output<String> endpoint;
-  /// The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. See `endpoint_details` Block below for details.
+  /// Virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. See `endpointDetails` Block below for details.
   late final pulumi.Output<ServerEndpointDetails?> endpointDetails;
-  /// The type of endpoint that you want your SFTP server connect to. If you connect to a `VPC` (or `VPC_ENDPOINT`), your SFTP server isn't accessible over the public internet. If you want to connect your SFTP server via public internet, set `PUBLIC`.  Defaults to `PUBLIC`.
+  /// Type of endpoint that you want your SFTP server connect to. If you connect to a `VPC` (or `VPC_ENDPOINT`), your SFTP server isn't accessible over the public internet. If you want to connect your SFTP server via public internet, set `PUBLIC`. Defaults to `PUBLIC`.
   late final pulumi.Output<String?> endpointType;
-  /// A boolean that indicates all users associated with the server should be deleted so that the Server can be destroyed without error. The default value is `false`. This option only applies to servers configured with a `SERVICE_MANAGED` `identity_provider_type`.
+  /// Boolean that indicates all users associated with the server should be deleted so that the Server can be destroyed without error. The default value is `false`. This option only applies to servers configured with a `SERVICE_MANAGED` `identityProviderType`.
   late final pulumi.Output<bool?> forceDestroy;
-  /// The ARN for a lambda function to use for the Identity provider with an `identity_provider_type` of `AWS_LAMBDA`.
+  /// ARN for a lambda function to use for the Identity provider with an `identityProviderType` of `AWS_LAMBDA`.
   late final pulumi.Output<String?> function;
   /// RSA, ECDSA, or ED25519 private key (e.g., as generated by the `ssh-keygen -t rsa -b 2048 -N "" -m PEM -f my-new-server-key`, `ssh-keygen -t ecdsa -b 256 -N "" -m PEM -f my-new-server-key` or `ssh-keygen -t ed25519 -N "" -f my-new-server-key` commands).
   late final pulumi.Output<String?> hostKey;
-  /// This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is equivalent to the output of the `ssh-keygen -l -E md5 -f my-new-server-key` command.
+  /// Message-digest algorithm (MD5) hash of the server's host key. This value is equivalent to the output of the `ssh-keygen -l -E md5 -f my-new-server-key` command.
   late final pulumi.Output<String> hostKeyFingerprint;
-  /// The mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice. Using `AWS_DIRECTORY_SERVICE` will allow for authentication against AWS Managed Active Directory or Microsoft Active Directory in your on-premises environment, or in AWS using AD Connectors. Use the `AWS_LAMBDA` value to directly use a Lambda function as your identity provider. If you choose this value, you must specify the ARN for the lambda function in the `function` argument.
+  /// Mode of authentication enabled for this service. The default value is `SERVICE_MANAGED`, which allows you to store and access SFTP user credentials within the service. `API_GATEWAY` indicates that user authentication requires a call to an API Gateway endpoint URL provided by you to integrate an identity provider of your choice. Using `AWS_DIRECTORY_SERVICE` will allow for authentication against AWS Managed Active Directory or Microsoft Active Directory in your on-premises environment, or in AWS using AD Connectors. Use the `AWS_LAMBDA` value to directly use a Lambda function as your identity provider. If you choose this value, you must specify the ARN for the lambda function in the `function` argument.
   late final pulumi.Output<String?> identityProviderType;
-  /// Amazon Resource Name (ARN) of the IAM role used to authenticate the user account with an `identity_provider_type` of `API_GATEWAY`.
+  /// Amazon Resource Name (ARN) of the IAM role used to authenticate the user account with an `identityProviderType` of `API_GATEWAY`.
   late final pulumi.Output<String?> invocationRole;
+  /// Type of IP addresses for the AWS Transfer Family endpoint. Valid values are `IPV4` and `DUALSTACK`. The default value is `IPV4`. When `ipAddressType` is set to `DUALSTACK`, `addressAllocationIds` cannot be specified in the `endpointDetails` block. Updating `ipAddressType` stops the server and then restarts it with the new `ipAddressType` value.
+  late final pulumi.Output<String> ipAddressType;
   /// Amazon Resource Name (ARN) of an IAM role that allows the service to write your SFTP users’ activity to your Amazon CloudWatch logs for monitoring and auditing purposes.
   late final pulumi.Output<String?> loggingRole;
   /// Specify a string to display when users connect to a server. This string is displayed after the user authenticates. The SFTP protocol does not support post-authentication display banners.
   late final pulumi.Output<String?> postAuthenticationLoginBanner;
   /// Specify a string to display when users connect to a server. This string is displayed before the user authenticates.
   late final pulumi.Output<String?> preAuthenticationLoginBanner;
-  /// The protocol settings that are configured for your server. See `protocol_details` Block below for details.
+  /// Protocol settings that are configured for your server. See `protocolDetails` Block below for details.
   late final pulumi.Output<ServerProtocolDetails> protocolDetails;
-  /// Specifies the file transfer protocol or protocols over which your file transfer protocol client can connect to your server's endpoint. This defaults to `SFTP` . The available protocols are:
-  /// * `AS2`: File transfer over Applicability Statement 2
-  /// * `SFTP`: File transfer over SSH
-  /// * `FTPS`: File transfer with TLS encryption
-  /// * `FTP`: Unencrypted file transfer
+  /// File transfer protocol or protocols over which your file transfer protocol client can connect to your server's endpoint. This defaults to `SFTP`. The available protocols are `AS2` (file transfer over Applicability Statement 2), `SFTP` (file transfer over SSH), `FTPS` (file transfer with TLS encryption), and `FTP` (unencrypted file transfer).
   late final pulumi.Output<List<String>> protocols;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies whether or not performance for your Amazon S3 directories is optimized. This is disabled by default. See `s3_storage_options` Block below for details.
+  /// Whether performance for your Amazon S3 directories is optimized. This is disabled by default. See `s3StorageOptions` Block below for details.
   late final pulumi.Output<ServerS3StorageOptions> s3StorageOptions;
-  /// Specifies the name of the security policy that is attached to the server. Default value is: `TransferSecurityPolicy-2018-11`. The available values are:
-  /// * `TransferSecurityPolicy-2018-11`
-  /// * `TransferSecurityPolicy-2020-06`
-  /// * `TransferSecurityPolicy-2022-03`
-  /// * `TransferSecurityPolicy-2023-05`
-  /// * `TransferSecurityPolicy-2024-01`
-  /// * `TransferSecurityPolicy-2025-03`
-  /// * `TransferSecurityPolicy-FIPS-2020-06`
-  /// * `TransferSecurityPolicy-FIPS-2023-05`
-  /// * `TransferSecurityPolicy-FIPS-2024-01`
-  /// * `TransferSecurityPolicy-FIPS-2024-05`
-  /// * `TransferSecurityPolicy-FIPS-2025-03`
-  /// * `TransferSecurityPolicy-PQ-SSH-Experimental-2023-04`
-  /// * `TransferSecurityPolicy-PQ-SSH-FIPS-Experimental-2023-04`
-  /// * `TransferSecurityPolicy-Restricted-2018-11`
-  /// * `TransferSecurityPolicy-Restricted-2020-06`
-  /// * `TransferSecurityPolicy-Restricted-2024-06`
-  /// * `TransferSecurityPolicy-SshAuditCompliant-2025-02`
-  /// * `TransferSecurityPolicy-AS2Restricted-2025-07`
-  ///
-  /// See [Security policies for AWS Transfer Family servers](https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html) for details.
+  /// Name of the security policy that is attached to the server. Default value is: `TransferSecurityPolicy-2018-11`. The available values are `TransferSecurityPolicy-2018-11`, `TransferSecurityPolicy-2020-06`, `TransferSecurityPolicy-2022-03`, `TransferSecurityPolicy-2023-05`, `TransferSecurityPolicy-2024-01`, `TransferSecurityPolicy-2025-03`, `TransferSecurityPolicy-FIPS-2020-06`, `TransferSecurityPolicy-FIPS-2023-05`, `TransferSecurityPolicy-FIPS-2024-01`, `TransferSecurityPolicy-FIPS-2024-05`, `TransferSecurityPolicy-FIPS-2025-03`, `TransferSecurityPolicy-PQ-SSH-Experimental-2023-04`, `TransferSecurityPolicy-PQ-SSH-FIPS-Experimental-2023-04`, `TransferSecurityPolicy-Restricted-2018-11`, `TransferSecurityPolicy-Restricted-2020-06`, `TransferSecurityPolicy-Restricted-2024-06`, `TransferSecurityPolicy-SshAuditCompliant-2025-02`, and `TransferSecurityPolicy-AS2Restricted-2025-07`. See [Security policies for AWS Transfer Family servers](https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html) for details.
   late final pulumi.Output<String?> securityPolicyName;
-  /// For SFTP-enabled servers with an `identity_provider_type` of `API_GATEWAY` or `AWS_LAMBDA`. Valid values are `PASSWORD`, `PUBLIC_KEY`, `PUBLIC_KEY_OR_PASSWORD` and `PUBLIC_KEY_AND_PASSWORD`. Default value is: `PUBLIC_KEY_OR_PASSWORD`.
+  /// For SFTP-enabled servers with an `identityProviderType` of `API_GATEWAY` or `AWS_LAMBDA`. Valid values are `PASSWORD`, `PUBLIC_KEY`, `PUBLIC_KEY_OR_PASSWORD` and `PUBLIC_KEY_AND_PASSWORD`. Default value is: `PUBLIC_KEY_OR_PASSWORD`.
   late final pulumi.Output<String> sftpAuthenticationMethods;
-  /// A set of ARNs of destinations that will receive structured logs from the transfer server such as CloudWatch Log Group ARNs. If provided this enables the transfer server to emit structured logs to the specified locations.
+  /// Set of ARNs of destinations that will receive structured logs from the transfer server such as CloudWatch Log Group ARNs. If provided this enables the transfer server to emit structured logs to the specified locations.
   late final pulumi.Output<List<String>?> structuredLogDestinations;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
+  /// URL of the service endpoint used to authenticate users with an `identityProviderType` of `API_GATEWAY`.
   late final pulumi.Output<String?> url;
-  /// Specifies the workflow details. See `workflow_details` Block below for details.
+  /// Workflow details. See `workflowDetails` Block below for details.
   late final pulumi.Output<ServerWorkflowDetails?> workflowDetails;
 
   /// Creates a new [Server].
@@ -1090,6 +1200,7 @@ class Server extends pulumi.CustomResource {
     hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
     identityProviderType = registerOutput<String?>('identityProviderType');
     invocationRole = registerOutput<String?>('invocationRole');
+    ipAddressType = registerOutput<String>('ipAddressType');
     loggingRole = registerOutput<String?>('loggingRole');
     postAuthenticationLoginBanner = registerOutput<String?>('postAuthenticationLoginBanner');
     preAuthenticationLoginBanner = registerOutput<String?>('preAuthenticationLoginBanner');
@@ -1142,6 +1253,7 @@ class Server extends pulumi.CustomResource {
     hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
     identityProviderType = registerOutput<String?>('identityProviderType');
     invocationRole = registerOutput<String?>('invocationRole');
+    ipAddressType = registerOutput<String>('ipAddressType');
     loggingRole = registerOutput<String?>('loggingRole');
     postAuthenticationLoginBanner = registerOutput<String?>('postAuthenticationLoginBanner');
     preAuthenticationLoginBanner = registerOutput<String?>('preAuthenticationLoginBanner');

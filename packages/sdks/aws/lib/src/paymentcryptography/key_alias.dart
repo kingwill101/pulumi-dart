@@ -135,6 +135,34 @@ import 'key_alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_paymentcryptography_key" "test" {
+///   exportable = true
+///   key_attributes {
+///     key_algorithm = "TDES_3KEY"
+///     key_class     = "SYMMETRIC_KEY"
+///     key_usage     = "TR31_P0_PIN_ENCRYPTION_KEY"
+///     key_modes_of_uses {
+///       decrypt = true
+///       encrypt = true
+///       wrap    = true
+///       unwrap  = true
+///     }
+///   }
+/// }
+/// resource "aws_paymentcryptography_keyalias" "test" {
+///   alias_name = "alias/test-alias"
+///   key_arn    = aws_paymentcryptography_key.test.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,10 +172,11 @@ import 'key_alias_state.dart';
 /// import com.pulumi.aws.paymentcryptography.Key;
 /// import com.pulumi.aws.paymentcryptography.KeyArgs;
 /// import com.pulumi.aws.paymentcryptography.inputs.KeyKeyAttributeArgs;
+/// import com.pulumi.aws.paymentcryptography.inputs.KeyKeyAttributeKeyModesOfUseArgs;
 /// import com.pulumi.aws.paymentcryptography.KeyAlias;
 /// import com.pulumi.aws.paymentcryptography.KeyAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

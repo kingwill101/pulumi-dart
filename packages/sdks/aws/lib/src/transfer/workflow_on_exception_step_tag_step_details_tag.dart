@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowOnExceptionStepTagStepDetailsTag {
+  /// Name assigned to the tag that you create.
   final pulumi.Input<String> key;
-  /// The value that corresponds to the key.
+  /// Value that corresponds to the key.
   final pulumi.Input<String> value;
 
   /// Creates a new [WorkflowOnExceptionStepTagStepDetailsTag].
-  /// [key] Required.
-  /// [value] The value that corresponds to the key.
+  /// [key] Name assigned to the tag that you create.
+  /// [value] Value that corresponds to the key.
   const WorkflowOnExceptionStepTagStepDetailsTag({
     required this.key,
     required this.value,
@@ -29,4 +30,3 @@ class WorkflowOnExceptionStepTagStepDetailsTag {
     );
   }
 }
-

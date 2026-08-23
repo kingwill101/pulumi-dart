@@ -31,7 +31,7 @@ class ClusterArgs {
   final pulumi.Input<String>? configurations;
   /// JSON string for supplying list of configurations for the EMR cluster.
   ///
-  /// &gt; **NOTE on `configurations_json`:** If the `Configurations` value is empty then you should skip the `Configurations` field instead of providing an empty list as a value, `"Configurations": []`.
+  /// &gt; **NOTE on `configurationsJson`:** If the `Configurations` value is empty then you should skip the `Configurations` field instead of providing an empty list as a value, `"Configurations": []`.
   ///
   ///
   /// ```typescript
@@ -137,6 +137,19 @@ class ClusterArgs {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_emr_cluster" "cluster" {
+  ///   configurations_json = "[\n{\n\\\"Classification\\\": \\\"hadoop-env\\\",\n\\\"Configurations\\\": [\n{\n\\\"Classification\\\": \\\"export\\\",\n\\\"Properties\\\": {\n\\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n}\n}\n],\n\\\"Properties\\\": {}\n}\n]\n"
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -145,8 +158,8 @@ class ClusterArgs {
   /// import com.pulumi.core.Output;
   /// import com.pulumi.aws.emr.Cluster;
   /// import com.pulumi.aws.emr.ClusterArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -202,7 +215,7 @@ class ClusterArgs {
   ///         ]
   /// ```
   final pulumi.Input<String>? configurationsJson;
-  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `core_instance_group` configuration blocks are set. Detailed below.
+  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `coreInstanceGroup` configuration blocks are set. Detailed below.
   final pulumi.Input<ClusterCoreInstanceFleet>? coreInstanceFleet;
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
   final pulumi.Input<ClusterCoreInstanceGroup>? coreInstanceGroup;
@@ -222,7 +235,7 @@ class ClusterArgs {
   final pulumi.Input<String>? logEncryptionKmsKeyId;
   /// S3 bucket to write the log files of the job flow. If a value is not provided, logs are not created.
   final pulumi.Input<String>? logUri;
-  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `master_instance_group` configuration blocks are set. Detailed below.
+  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `masterInstanceGroup` configuration blocks are set. Detailed below.
   final pulumi.Input<ClusterMasterInstanceFleet>? masterInstanceFleet;
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [master node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-master).
   final pulumi.Input<ClusterMasterInstanceGroup>? masterInstanceGroup;
@@ -238,17 +251,17 @@ class ClusterArgs {
   final pulumi.Input<String> releaseLabel;
   /// Way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an `instance group` is resized.
   final pulumi.Input<String>? scaleDownBehavior;
-  /// Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater.
+  /// Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `releaseLabel` 4.8.0 or greater.
   final pulumi.Input<String>? securityConfiguration;
   /// IAM role that will be assumed by the Amazon EMR service to access AWS resources.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> serviceRole;
-  /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater (default is 1).
+  /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `releaseLabel` 5.28.0 or greater (default is 1).
   final pulumi.Input<int>? stepConcurrencyLevel;
   /// List of steps to run when creating the cluster. See below. It is highly recommended to utilize the lifecycle resource options block with `ignoreChanges` if other steps are being managed outside of this provider.
   final pulumi.Input<List<ClusterStep>>? steps;
-  /// list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// list of tags to apply to the EMR Cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
   final pulumi.Input<bool>? terminationProtection;
@@ -267,7 +280,7 @@ class ClusterArgs {
   /// [bootstrapActions] Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. See below.
   /// [configurations] List of configurations supplied for the EMR cluster you are creating. Supply a configuration object for applications to override their default configuration. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
   /// [configurationsJson] JSON string for supplying list of configurations for the EMR cluster.
-  /// [coreInstanceFleet] Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `core_instance_group` configuration blocks are set. Detailed below.
+  /// [coreInstanceFleet] Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `coreInstanceGroup` configuration blocks are set. Detailed below.
   /// [coreInstanceGroup] Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
   /// [customAmiId] Custom Amazon Linux AMI for the cluster (instead of an EMR-owned AMI). Available in Amazon EMR version 5.7.0 and later.
   /// [ebsRootVolumeSize] Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
@@ -277,7 +290,7 @@ class ClusterArgs {
   /// [listStepsStates] List of [step states](https://docs.aws.amazon.com/emr/latest/APIReference/API_StepStatus.html) used to filter returned steps
   /// [logEncryptionKmsKeyId] AWS KMS customer master key (CMK) key ID or arn used for encrypting log files. This attribute is only available with EMR version 5.30.0 and later, excluding EMR 6.0.0.
   /// [logUri] S3 bucket to write the log files of the job flow. If a value is not provided, logs are not created.
-  /// [masterInstanceFleet] Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `master_instance_group` configuration blocks are set. Detailed below.
+  /// [masterInstanceFleet] Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `masterInstanceGroup` configuration blocks are set. Detailed below.
   /// [masterInstanceGroup] Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [master node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-master).
   /// [name] Name of the job flow.
   /// [osReleaseLabel] Amazon Linux release for all nodes in a cluster launch RunJobFlow request. If not specified, Amazon EMR uses the latest validated Amazon Linux release for cluster launch.
@@ -285,11 +298,11 @@ class ClusterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [releaseLabel] Release label for the Amazon EMR release.
   /// [scaleDownBehavior] Way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an `instance group` is resized.
-  /// [securityConfiguration] Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater.
+  /// [securityConfiguration] Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `releaseLabel` 4.8.0 or greater.
   /// [serviceRole] IAM role that will be assumed by the Amazon EMR service to access AWS resources.
-  /// [stepConcurrencyLevel] Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater (default is 1).
+  /// [stepConcurrencyLevel] Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `releaseLabel` 5.28.0 or greater (default is 1).
   /// [steps] List of steps to run when creating the cluster. See below. It is highly recommended to utilize the lifecycle resource options block with `ignoreChanges` if other steps are being managed outside of this provider.
-  /// [tags] list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] list of tags to apply to the EMR Cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [terminationProtection] Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
   /// [unhealthyNodeReplacement] Whether whether Amazon EMR should gracefully replace core nodes that have degraded within the cluster. Default value is `false`.
   /// [visibleToAllUsers] Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. Default value is `true`.
@@ -405,4 +418,3 @@ class ClusterArgs {
     );
   }
 }
-

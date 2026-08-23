@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capability_configuration_argo_cd.dart';
 
 class CapabilityConfiguration {
-  /// ArgoCD configuration. See `argo_cd` below.
+  /// ArgoCD configuration. See `argoCd` below.
   final pulumi.Input<CapabilityConfigurationArgoCd>? argoCd;
 
   /// Creates a new [CapabilityConfiguration].
-  /// [argoCd] ArgoCD configuration. See `argo_cd` below.
+  /// [argoCd] ArgoCD configuration. See `argoCd` below.
   const CapabilityConfiguration({
     this.argoCd,
   });
@@ -25,4 +25,3 @@ class CapabilityConfiguration {
     );
   }
 }
-

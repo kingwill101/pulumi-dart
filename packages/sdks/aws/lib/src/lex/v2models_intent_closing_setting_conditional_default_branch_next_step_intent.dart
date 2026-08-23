@@ -31,4 +31,3 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntent {
     );
   }
 }
-

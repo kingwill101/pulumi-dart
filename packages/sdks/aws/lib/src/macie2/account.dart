@@ -61,6 +61,20 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_macie2_account" "test" {
+///   finding_publishing_frequency = "FIFTEEN_MINUTES"
+///   status                       = "ENABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.macie2.Account;
 /// import com.pulumi.aws.macie2.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

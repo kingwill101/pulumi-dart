@@ -33,13 +33,13 @@ class MultitenantDistributionArgs {
   final pulumi.Input<bool> enabled;
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
   final pulumi.Input<String>? httpVersion;
-  /// One or more origin_group for this distribution (multiples allowed). See Origin Group below.
+  /// One or more originGroup for this distribution (multiples allowed). See Origin Group below.
   final pulumi.Input<List<MultitenantDistributionOriginGroup>>? originGroups;
   /// One or more origins for this distribution (multiples allowed). See Origin below.
   final pulumi.Input<List<MultitenantDistributionOrigin>>? origins;
   /// Restriction configuration for this distribution. See Restrictions below.
   final pulumi.Input<MultitenantDistributionRestrictions>? restrictions;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   final pulumi.Input<MultitenantDistributionTenantConfig> tenantConfig;
@@ -58,10 +58,10 @@ class MultitenantDistributionArgs {
   /// [defaultRootObject] Object that you want CloudFront to return when an end user requests the root URL.
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
   /// [httpVersion] Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
-  /// [originGroups] One or more origin_group for this distribution (multiples allowed). See Origin Group below.
+  /// [originGroups] One or more originGroup for this distribution (multiples allowed). See Origin Group below.
   /// [origins] One or more origins for this distribution (multiples allowed). See Origin below.
   /// [restrictions] Restriction configuration for this distribution. See Restrictions below.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tenantConfig] Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   /// [timeouts] Optional.
   /// [viewerCertificate] SSL configuration for this distribution. See Viewer Certificate below.
@@ -127,4 +127,3 @@ class MultitenantDistributionArgs {
     );
   }
 }
-

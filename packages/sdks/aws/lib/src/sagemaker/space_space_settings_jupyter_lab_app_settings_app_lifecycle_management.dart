@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'space_space_settings_jupyter_lab_app_settings_app_lifecycle_management_idle_settings.dart';
 
 class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
-  /// Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
+  /// Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.
   final pulumi.Input<SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
 
   /// Creates a new [SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement].
-  /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
+  /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.
   const SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
@@ -25,4 +25,3 @@ class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
     );
   }
 }
-

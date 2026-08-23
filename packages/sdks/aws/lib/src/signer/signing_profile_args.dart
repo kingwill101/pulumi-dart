@@ -17,13 +17,13 @@ class SigningProfileArgs {
   final pulumi.Input<String> platformId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The validity period for a signing job. See `signature_validity_period` Block below for details.
+  /// The validity period for a signing job. See `signatureValidityPeriod` Block below for details.
   final pulumi.Input<SigningProfileSignatureValidityPeriod>? signatureValidityPeriod;
-  /// The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signing_material` Block below for details.
+  /// The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signingMaterial` Block below for details.
   final pulumi.Input<SigningProfileSigningMaterial>? signingMaterial;
   /// Map of key-value pairs for signing. These can include any information that you want to use during signing.
   final pulumi.Input<Map<String, String>>? signingParameters;
-  /// A list of tags associated with the signing profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A list of tags associated with the signing profile. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [SigningProfileArgs].
@@ -31,10 +31,10 @@ class SigningProfileArgs {
   /// [namePrefix] A signing profile name prefix. Terraform will generate a unique suffix. Conflicts with `name`.
   /// [platformId] The ID of the platform that is used by the target signing profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [signatureValidityPeriod] The validity period for a signing job. See `signature_validity_period` Block below for details.
-  /// [signingMaterial] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signing_material` Block below for details.
+  /// [signatureValidityPeriod] The validity period for a signing job. See `signatureValidityPeriod` Block below for details.
+  /// [signingMaterial] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signingMaterial` Block below for details.
   /// [signingParameters] Map of key-value pairs for signing. These can include any information that you want to use during signing.
-  /// [tags] A list of tags associated with the signing profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A list of tags associated with the signing profile. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const SigningProfileArgs({
     this.name,
     this.namePrefix,
@@ -72,4 +72,3 @@ class SigningProfileArgs {
     );
   }
 }
-

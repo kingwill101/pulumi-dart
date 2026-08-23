@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation {
+  /// Replica ownership.
   final pulumi.Input<String> owner;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation].
-  /// [owner] Required.
+  /// [owner] Replica ownership.
   const GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation({
     required this.owner,
   });
@@ -23,4 +24,3 @@ class GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation {
     );
   }
 }
-

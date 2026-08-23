@@ -6,7 +6,7 @@ class GetRegionResult {
   /// Region's description in this format: "Location (Region name)".
   final String description;
   final String endpoint;
-  /// Region's name (e.g. `us-east-1`).
+  /// (**Deprecated**) Region's name (e.g. `us-east-1`).
   final String id;
   final String name;
   final String region;
@@ -14,7 +14,7 @@ class GetRegionResult {
   /// Creates a new [GetRegionResult].
   /// [description] Region's description in this format: "Location (Region name)".
   /// [endpoint] Required.
-  /// [id] Region's name (e.g. `us-east-1`).
+  /// [id] (**Deprecated**) Region's name (e.g. `us-east-1`).
   /// [name] Required.
   /// [region] Required.
   const GetRegionResult({
@@ -45,4 +45,3 @@ class GetRegionResult {
     );
   }
 }
-

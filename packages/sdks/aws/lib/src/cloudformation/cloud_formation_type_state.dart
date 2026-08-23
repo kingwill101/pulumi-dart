@@ -5,7 +5,7 @@ import 'cloud_formation_type_logging_config.dart';
 
 /// Input properties used for looking up and filtering CloudFormationType resources.
 class CloudFormationTypeState {
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `type_arn`.
+  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `typeArn`.
   final pulumi.Input<String>? arn;
   /// Identifier of the CloudFormation Type default version.
   final pulumi.Input<String>? defaultVersionId;
@@ -43,7 +43,7 @@ class CloudFormationTypeState {
   final pulumi.Input<String>? visibility;
 
   /// Creates a new [CloudFormationTypeState].
-  /// [arn] (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `type_arn`.
+  /// [arn] (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `typeArn`.
   /// [defaultVersionId] Identifier of the CloudFormation Type default version.
   /// [deprecatedStatus] Deprecation status of the version.
   /// [description] Description of the version.
@@ -128,4 +128,3 @@ class CloudFormationTypeState {
     );
   }
 }
-

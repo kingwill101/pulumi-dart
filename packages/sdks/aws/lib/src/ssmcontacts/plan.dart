@@ -77,6 +77,22 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmcontacts_plan" "example" {
+///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
+///   stages {
+///     duration_in_minutes = 1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +102,8 @@ import 'plan_state.dart';
 /// import com.pulumi.aws.ssmcontacts.Plan;
 /// import com.pulumi.aws.ssmcontacts.PlanArgs;
 /// import com.pulumi.aws.ssmcontacts.inputs.PlanStageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,6 +227,26 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmcontacts_contact" "contact" {
+///   alias = "alias"
+///   type  = "PERSONAL"
+/// }
+/// resource "aws_ssmcontacts_plan" "plan" {
+///   contact_id = aws_ssmcontacts_contact.contact.arn
+///   stages {
+///     duration_in_minutes = 1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,8 +258,8 @@ import 'plan_state.dart';
 /// import com.pulumi.aws.ssmcontacts.Plan;
 /// import com.pulumi.aws.ssmcontacts.PlanArgs;
 /// import com.pulumi.aws.ssmcontacts.inputs.PlanStageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +520,52 @@ import 'plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmcontacts_contact" "escalation_plan" {
+///   alias = "escalation-plan-alias"
+///   type  = "ESCALATION"
+/// }
+/// resource "aws_ssmcontacts_contact" "contact_one" {
+///   alias = "alias"
+///   type  = "PERSONAL"
+/// }
+/// resource "aws_ssmcontacts_contact" "contact_two" {
+///   alias = "alias"
+///   type  = "PERSONAL"
+/// }
+/// resource "aws_ssmcontacts_plan" "test" {
+///   contact_id = aws_ssmcontacts_contact.escalation_plan.arn
+///   stages {
+///     duration_in_minutes = 0
+///     targets {
+///       contact_target_info = {
+///         is_essential = false
+///         contact_id   = aws_ssmcontacts_contact.contact_one.arn
+///       }
+///     }
+///     targets {
+///       contact_target_info = {
+///         is_essential = true
+///         contact_id   = aws_ssmcontacts_contact.contact_two.arn
+///       }
+///     }
+///     targets {
+///       channel_target_info = {
+///         retry_interval_in_minutes = 2
+///         contact_channel_id        = channel.arn
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -495,8 +577,11 @@ import 'plan_state.dart';
 /// import com.pulumi.aws.ssmcontacts.Plan;
 /// import com.pulumi.aws.ssmcontacts.PlanArgs;
 /// import com.pulumi.aws.ssmcontacts.inputs.PlanStageArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssmcontacts.inputs.PlanStageTargetArgs;
+/// import com.pulumi.aws.ssmcontacts.inputs.PlanStageTargetContactTargetInfoArgs;
+/// import com.pulumi.aws.ssmcontacts.inputs.PlanStageTargetChannelTargetInfoArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

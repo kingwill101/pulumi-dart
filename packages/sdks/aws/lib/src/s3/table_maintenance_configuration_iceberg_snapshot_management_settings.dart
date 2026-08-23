@@ -3,16 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
-  /// Snapshots older than this will be marked for deletiion.
-  /// Must be at least `1`.
+  /// Snapshots older than this will be marked for deletion. Must be at least `1`.
   final pulumi.Input<int> maxSnapshotAgeHours;
-  /// Minimum number of snapshots to keep.
-  /// Must be at least `1`.
+  /// Minimum number of snapshots to keep. Must be at least `1`.
   final pulumi.Input<int> minSnapshotsToKeep;
 
   /// Creates a new [TableMaintenanceConfigurationIcebergSnapshotManagementSettings].
-  /// [maxSnapshotAgeHours] Snapshots older than this will be marked for deletiion.
-  /// [minSnapshotsToKeep] Minimum number of snapshots to keep.
+  /// [maxSnapshotAgeHours] Snapshots older than this will be marked for deletion. Must be at least `1`.
+  /// [minSnapshotsToKeep] Minimum number of snapshots to keep. Must be at least `1`.
   const TableMaintenanceConfigurationIcebergSnapshotManagementSettings({
     required this.maxSnapshotAgeHours,
     required this.minSnapshotsToKeep,
@@ -32,4 +30,3 @@ class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
     );
   }
 }
-

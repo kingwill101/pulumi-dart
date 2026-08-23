@@ -19,7 +19,7 @@ class VpcPeeringConnectionAccepterArgs {
   /// A configuration block that describes [VPC Peering Connection]
   /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
   final pulumi.Input<VpcPeeringConnectionAccepterRequester>? requester;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The VPC Peering Connection ID to manage.
   final pulumi.Input<String> vpcPeeringConnectionId;
@@ -29,7 +29,7 @@ class VpcPeeringConnectionAccepterArgs {
   /// [autoAccept] Whether or not to accept the peering request. Defaults to `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requester] A configuration block that describes [VPC Peering Connection]
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcPeeringConnectionId] The VPC Peering Connection ID to manage.
   const VpcPeeringConnectionAccepterArgs({
     this.accepter,
@@ -62,4 +62,3 @@ class VpcPeeringConnectionAccepterArgs {
     );
   }
 }
-

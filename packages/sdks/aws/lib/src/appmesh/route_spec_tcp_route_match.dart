@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecTcpRouteMatch {
+  /// Port number to match from the request.
   final pulumi.Input<int>? port;
 
   /// Creates a new [RouteSpecTcpRouteMatch].
-  /// [port] Optional.
+  /// [port] Port number to match from the request.
   const RouteSpecTcpRouteMatch({
     this.port,
   });
@@ -23,4 +24,3 @@ class RouteSpecTcpRouteMatch {
     );
   }
 }
-

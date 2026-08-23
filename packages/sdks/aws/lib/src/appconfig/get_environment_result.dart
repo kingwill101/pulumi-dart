@@ -18,8 +18,7 @@ class GetEnvironmentResult {
   /// Name of the environment.
   final String name;
   final String region;
-  /// State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK`
-  /// or `ROLLED_BACK`.
+  /// State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK` or `ROLLED_BACK`.
   final String state;
   /// Map of tags for the resource.
   final Map<String, String> tags;
@@ -33,7 +32,7 @@ class GetEnvironmentResult {
   /// [monitors] Set of Amazon CloudWatch alarms to monitor during the deployment process.
   /// [name] Name of the environment.
   /// [region] Required.
-  /// [state] State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK`
+  /// [state] State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK` or `ROLLED_BACK`.
   /// [tags] Map of tags for the resource.
   const GetEnvironmentResult({
     required this.applicationId,
@@ -78,4 +77,3 @@ class GetEnvironmentResult {
     );
   }
 }
-

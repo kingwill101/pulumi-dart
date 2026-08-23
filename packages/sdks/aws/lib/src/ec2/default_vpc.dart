@@ -12,7 +12,7 @@ import 'default_vpc_state.dart';
 /// The `aws.ec2.DefaultVpc` resource behaves differently from normal resources in that if a default VPC exists, this provider does not _create_ this resource, but instead "adopts" it into management.
 /// If no default VPC exists, the provider creates a new default VPC, which leads to the implicit creation of [other resources](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#default-vpc-components).
 /// By default, `pulumi destroy` does not delete the default VPC but does remove the resource from the state.
-/// Set the `force_destroy` argument to `true` to delete the default VPC.
+/// Set the `forceDestroy` argument to `true` to delete the default VPC.
 ///
 /// ## Example Usage
 ///
@@ -75,6 +75,21 @@ import 'default_vpc_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_defaultvpc" "default" {
+///   tags = {
+///     "Name" = "Default VPC"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +98,8 @@ import 'default_vpc_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.DefaultVpc;
 /// import com.pulumi.aws.ec2.DefaultVpcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,6 +129,18 @@ import 'default_vpc_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) VPC ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS account ID for this resource.
+/// * `region` (String) AWS Region for this resource.
+///
 ///
 /// Using `pulumi import`, import Default VPCs using the VPC `id`. For example:
 ///

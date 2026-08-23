@@ -14,7 +14,7 @@ class AgentFlowDefinitionNode {
   final pulumi.Input<String> name;
   /// A list of objects containing information about an output from the node. See Node Output for more information.
   final pulumi.Input<List<AgentFlowDefinitionNodeOutput>>? outputs;
-  /// The type of node. This value must match the name of the key that you provide in the configuration. Valid values: `Agent`, `Collector`, `Condition`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
+  /// Type of node. This value must match the name of the key you provide in `configuration`. Valid values: `Agent`, `Collector`, `Condition`, `InlineCode`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionNode].
@@ -22,7 +22,7 @@ class AgentFlowDefinitionNode {
   /// [inputs] A list of objects containing information about an input into the node. See Node Input for more information.
   /// [name] A name for the node.
   /// [outputs] A list of objects containing information about an output from the node. See Node Output for more information.
-  /// [type] The type of node. This value must match the name of the key that you provide in the configuration. Valid values: `Agent`, `Collector`, `Condition`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
+  /// [type] Type of node. This value must match the name of the key you provide in `configuration`. Valid values: `Agent`, `Collector`, `Condition`, `InlineCode`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
   const AgentFlowDefinitionNode({
     this.configuration,
     this.inputs,
@@ -51,4 +51,3 @@ class AgentFlowDefinitionNode {
     );
   }
 }
-

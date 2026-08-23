@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_firewall_policy_stateless_custom_action_action_definition.dart';
 
 class FirewallPolicyFirewallPolicyStatelessCustomAction {
-  /// A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
+  /// A configuration block describing the custom action associated with the `actionName`. See Action Definition below for details.
   final pulumi.Input<FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition> actionDefinition;
   /// A friendly name of the custom action.
   final pulumi.Input<String> actionName;
 
   /// Creates a new [FirewallPolicyFirewallPolicyStatelessCustomAction].
-  /// [actionDefinition] A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
+  /// [actionDefinition] A configuration block describing the custom action associated with the `actionName`. See Action Definition below for details.
   /// [actionName] A friendly name of the custom action.
   const FirewallPolicyFirewallPolicyStatelessCustomAction({
     required this.actionDefinition,
@@ -31,4 +31,3 @@ class FirewallPolicyFirewallPolicyStatelessCustomAction {
     );
   }
 }
-

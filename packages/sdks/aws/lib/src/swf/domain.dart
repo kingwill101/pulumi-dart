@@ -67,6 +67,21 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_swf_domain" "foo" {
+///   name                                        = "foo"
+///   description                                 = "SWF Domain"
+///   workflow_execution_retention_period_in_days = 30
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.swf.Domain;
 /// import com.pulumi.aws.swf.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,9 +141,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Length of time that SWF will continue to retain information about the workflow execution after the workflow execution is complete, must be between 0 and 90 days.
   late final pulumi.Output<String> workflowExecutionRetentionPeriodInDays;

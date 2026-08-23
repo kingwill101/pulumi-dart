@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_backend_default_client_policy_tl_validation_subject_alternative_name_match.dart';
 
 class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName {
+  /// Criteria for determining a SAN's match. See `spec.listener.tls.validation.subject_alternative_names.match` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeNameMatch>> matches;
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName].
-  /// [matches] Required.
+  /// [matches] Criteria for determining a SAN's match. See `spec.listener.tls.validation.subject_alternative_names.match` Block for details.
   const GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName({
     required this.matches,
   });
@@ -24,4 +25,3 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternative
     );
   }
 }
-

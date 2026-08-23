@@ -65,6 +65,21 @@ import 'voice_connector_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_voiceconnector" "test" {
+///   name               = "connector-test-1"
+///   require_encryption = true
+///   aws_region         = "us-east-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'voice_connector_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.chime.VoiceConnector;
 /// import com.pulumi.aws.chime.VoiceConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,9 +143,9 @@ class VoiceConnector extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<bool> requireEncryption;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VoiceConnector].

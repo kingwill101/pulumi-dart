@@ -5,14 +5,14 @@ import 'firehose_delivery_stream_extended_s3_configuration_data_format_conversio
 import 'firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_input_format_configuration_deserializer_open_xjson_ser_de.dart';
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer {
-  /// Specifies the native Hive / HCatalog JsonSerDe. More details below. See `hive_json_ser_de` block below for details.
+  /// Specifies the native Hive / HCatalog JsonSerDe. More details below. See `hiveJsonSerDe` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe>? hiveJsonSerDe;
-  /// Specifies the OpenX SerDe. See `open_x_json_ser_de` block below for details.
+  /// Specifies the OpenX SerDe. See `openXJsonSerDe` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe>? openXJsonSerDe;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer].
-  /// [hiveJsonSerDe] Specifies the native Hive / HCatalog JsonSerDe. More details below. See `hive_json_ser_de` block below for details.
-  /// [openXJsonSerDe] Specifies the OpenX SerDe. See `open_x_json_ser_de` block below for details.
+  /// [hiveJsonSerDe] Specifies the native Hive / HCatalog JsonSerDe. More details below. See `hiveJsonSerDe` block below for details.
+  /// [openXJsonSerDe] Specifies the OpenX SerDe. See `openXJsonSerDe` block below for details.
   const FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer({
     this.hiveJsonSerDe,
     this.openXJsonSerDe,
@@ -32,4 +32,3 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
     );
   }
 }
-

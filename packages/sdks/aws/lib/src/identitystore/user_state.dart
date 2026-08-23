@@ -43,6 +43,8 @@ class UserState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? userName;
+  /// The current status of the user account.
+  final pulumi.Input<String>? userStatus;
   /// The user type.
   ///
   /// &gt; Unless specified otherwise, all fields can contain up to 1024 characters of free-form text.
@@ -65,6 +67,7 @@ class UserState {
   /// [title] The user's title.
   /// [userId] The identifier for this user in the identity store.
   /// [userName] A unique string used to identify the user. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. The limit is 128 characters.
+  /// [userStatus] The current status of the user account.
   /// [userType] The user type.
   const UserState({
     this.addresses,
@@ -83,6 +86,7 @@ class UserState {
     this.title,
     this.userId,
     this.userName,
+    this.userStatus,
     this.userType,
   });
 
@@ -104,6 +108,7 @@ class UserState {
       'title': ?title,
       'userId': ?userId,
       'userName': ?userName,
+      'userStatus': ?userStatus,
       'userType': ?userType,
     };
   }
@@ -126,8 +131,8 @@ class UserState {
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userStatus: (() { final guardedValue = map['userStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userType: (() { final guardedValue = map['userType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

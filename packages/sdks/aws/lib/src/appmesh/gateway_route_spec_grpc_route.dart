@@ -5,14 +5,14 @@ import 'gateway_route_spec_grpc_route_action.dart';
 import 'gateway_route_spec_grpc_route_match.dart';
 
 class GatewayRouteSpecGrpcRoute {
-  /// Action to take if a match is determined.
+  /// Action to take if a match is determined. See `spec.grpc_route.action` Block for details.
   final pulumi.Input<GatewayRouteSpecGrpcRouteAction> action;
-  /// Criteria for determining a request match.
+  /// Criteria for determining a request match. See `spec.grpc_route.match` Block for details.
   final pulumi.Input<GatewayRouteSpecGrpcRouteMatch> match;
 
   /// Creates a new [GatewayRouteSpecGrpcRoute].
-  /// [action] Action to take if a match is determined.
-  /// [match] Criteria for determining a request match.
+  /// [action] Action to take if a match is determined. See `spec.grpc_route.action` Block for details.
+  /// [match] Criteria for determining a request match. See `spec.grpc_route.match` Block for details.
   const GatewayRouteSpecGrpcRoute({
     required this.action,
     required this.match,
@@ -32,4 +32,3 @@ class GatewayRouteSpecGrpcRoute {
     );
   }
 }
-

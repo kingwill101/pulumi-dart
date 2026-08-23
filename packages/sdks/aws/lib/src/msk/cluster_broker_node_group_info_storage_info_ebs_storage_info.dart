@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_broker_node_group_info_storage_info_ebs_storage_info_provisioned_throughput.dart';
 
 class ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
-  /// A block that contains EBS volume provisioned throughput information. To provision storage throughput, you must choose broker type kafka.m5.4xlarge or larger. See ebs_storage_info provisioned_throughput Argument Reference below.
+  /// A block that contains EBS volume provisioned throughput information. To provision storage throughput, you must choose broker type kafka.m5.4xlarge or larger. See ebsStorageInfo provisioned_throughput Argument Reference below.
   final pulumi.Input<ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>? provisionedThroughput;
   /// The size in GiB of the EBS volume for the data drive on each broker node. Minimum value of `1` and maximum value of `16384`.
   final pulumi.Input<int>? volumeSize;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo].
-  /// [provisionedThroughput] A block that contains EBS volume provisioned throughput information. To provision storage throughput, you must choose broker type kafka.m5.4xlarge or larger. See ebs_storage_info provisioned_throughput Argument Reference below.
+  /// [provisionedThroughput] A block that contains EBS volume provisioned throughput information. To provision storage throughput, you must choose broker type kafka.m5.4xlarge or larger. See ebsStorageInfo provisioned_throughput Argument Reference below.
   /// [volumeSize] The size in GiB of the EBS volume for the data drive on each broker node. Minimum value of `1` and maximum value of `16384`.
   const ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo({
     this.provisionedThroughput,
@@ -31,4 +31,3 @@ class ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
     );
   }
 }
-

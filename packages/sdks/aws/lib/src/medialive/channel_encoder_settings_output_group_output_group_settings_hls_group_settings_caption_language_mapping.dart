@@ -34,4 +34,3 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptio
     );
   }
 }
-

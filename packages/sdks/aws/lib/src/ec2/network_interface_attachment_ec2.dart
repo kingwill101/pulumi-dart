@@ -65,6 +65,21 @@ import 'network_interface_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkinterfaceattachment" "test" {
+///   instance_id          = testAwsInstance.id
+///   network_interface_id = testAwsNetworkInterface.id
+///   device_index         = 0
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'network_interface_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NetworkInterfaceAttachment;
 /// import com.pulumi.aws.ec2.NetworkInterfaceAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

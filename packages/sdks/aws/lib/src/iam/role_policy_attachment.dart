@@ -6,7 +6,7 @@ import 'role_policy_attachment_state.dart';
 ///
 /// &gt; **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
 ///
-/// &gt; **NOTE:** For a given role, this resource is incompatible with using the `aws.iam.Role` resource `managed_policy_arns` argument. When using that argument and this resource, both will attempt to manage the role's managed policy attachments and Pulumi will show a permanent difference.
+/// &gt; **NOTE:** For a given role, this resource is incompatible with using the `aws.iam.Role` resource `managedPolicyArns` argument. When using that argument and this resource, both will attempt to manage the role's managed policy attachments and Pulumi will show a permanent difference.
 ///
 /// ## Example Usage
 ///
@@ -221,6 +221,47 @@ import 'role_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ec2.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "policy" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:Describe*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "role" {
+///   name               = "test-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_policy" "policy" {
+///   name        = "test-policy"
+///   description = "A test policy"
+///   policy      = data.aws_iam_getpolicydocument.policy.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "test-attach" {
+///   role       = aws_iam_role.role.name
+///   policy_arn = aws_iam_policy.policy.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,14 +270,16 @@ import 'role_policy_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.Policy;
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -338,11 +381,11 @@ import 'role_policy_attachment_state.dart';
 /// #### Required
 ///
 /// * `role` (String) Name of the IAM role.
-/// * `policy_arn` (String) ARN of the IAM policy.
+/// * `policyArn` (String) ARN of the IAM policy.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
 /// Using `pulumi import`, import IAM role policy attachments using the role name and policy arn separated by `/`. For example:

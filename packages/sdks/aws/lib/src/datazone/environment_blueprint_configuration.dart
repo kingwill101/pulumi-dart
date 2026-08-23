@@ -24,7 +24,7 @@ import 'environment_blueprint_configuration_state.dart';
 /// });
 /// const exampleEnvironmentBlueprintConfiguration = new aws.datazone.EnvironmentBlueprintConfiguration("example", {
 ///     domainId: example.id,
-///     environmentBlueprintId: defaultDataLake.apply(defaultDataLake => defaultDataLake.id),
+///     environmentBlueprintId: defaultDataLake.id,
 ///     enabledRegions: ["us-east-1"],
 ///     regionalParameters: {
 ///         "us-east-1": {
@@ -84,7 +84,7 @@ import 'environment_blueprint_configuration_state.dart';
 ///         },
 ///         RegionalParameters =
 ///         {
-///             { "us-east-1",
+///             { "us-east-1", new InputMap<string>
 ///             {
 ///                 { "s3Location", "s3://my-amazon-datazone-bucket" },
 ///             } },
@@ -111,15 +111,13 @@ import 'environment_blueprint_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultDataLake := datazone.GetEnvironmentBlueprintOutput(ctx, datazone.GetEnvironmentBlueprintOutputArgs{
-/// 			DomainId: example.ID(),
+/// 			DomainId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:     pulumi.String("DefaultDataLake"),
 /// 			Managed:  pulumi.Bool(true),
 /// 		}, nil)
 /// 		_, err = datazone.NewEnvironmentBlueprintConfiguration(ctx, "example", &datazone.EnvironmentBlueprintConfigurationArgs{
-/// 			DomainId: example.ID(),
-/// 			EnvironmentBlueprintId: pulumi.String(defaultDataLake.ApplyT(func(defaultDataLake datazone.GetEnvironmentBlueprintResult) (*string, error) {
-/// 				return &defaultDataLake.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			DomainId:               example.ID().ToIDOutput().ToStringOutput(),
+/// 			EnvironmentBlueprintId: defaultDataLake.Id(),
 /// 			EnabledRegions: pulumi.StringArray{
 /// 				pulumi.String("us-east-1"),
 /// 			},
@@ -136,6 +134,36 @@ import 'environment_blueprint_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_datazone_getenvironmentblueprint" "defaultDataLake" {
+///   domain_id = aws_datazone_domain.example.id
+///   name      = "DefaultDataLake"
+///   managed   = true
+/// }
+///
+/// resource "aws_datazone_domain" "example" {
+///   name                  = "example_domain"
+///   domain_execution_role = domainExecutionRole.arn
+/// }
+/// resource "aws_datazone_environmentblueprintconfiguration" "example" {
+///   domain_id                = aws_datazone_domain.example.id
+///   environment_blueprint_id = data.aws_datazone_getenvironmentblueprint.defaultDataLake.id
+///   enabled_regions          = ["us-east-1"]
+///   regional_parameters = {
+///     "us-east-1" = {
+///       "s3Location" = "s3://my-amazon-datazone-bucket"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +176,8 @@ import 'environment_blueprint_configuration_state.dart';
 /// import com.pulumi.aws.datazone.inputs.GetEnvironmentBlueprintArgs;
 /// import com.pulumi.aws.datazone.EnvironmentBlueprintConfiguration;
 /// import com.pulumi.aws.datazone.EnvironmentBlueprintConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,7 +241,20 @@ import 'environment_blueprint_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DataZone Environment Blueprint Configuration using the `domain_id` and `environment_blueprint_id`, separated by a `/`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainId` - (String) ID of the DataZone domain.
+/// * `environmentBlueprintId` - (String) ID of the environment blueprint.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import DataZone Environment Blueprint Configuration using the `domainId` and `environmentBlueprintId`, separated by a `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration example domain-id-12345/environment-blueprint-id-54321
@@ -227,6 +268,8 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> enabledRegions;
   /// ID of the Environment Blueprint
   late final pulumi.Output<String> environmentBlueprintId;
+  /// A map of global parameters to configure for the blueprint across all regions.
+  late final pulumi.Output<Map<String, String>?> globalParameters;
   /// ARN of the manage access role with which this blueprint is created.
   late final pulumi.Output<String?> manageAccessRoleArn;
   /// ARN of the provisioning role with which this blueprint is created.
@@ -253,6 +296,7 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
     domainId = registerOutput<String>('domainId');
     enabledRegions = registerOutput<List<String>>('enabledRegions');
     environmentBlueprintId = registerOutput<String>('environmentBlueprintId');
+    globalParameters = registerOutput<Map<String, String>?>('globalParameters');
     manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
     provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
     region = registerOutput<String>('region');
@@ -285,6 +329,7 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
     domainId = registerOutput<String>('domainId');
     enabledRegions = registerOutput<List<String>>('enabledRegions');
     environmentBlueprintId = registerOutput<String>('environmentBlueprintId');
+    globalParameters = registerOutput<Map<String, String>?>('globalParameters');
     manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
     provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
     region = registerOutput<String>('region');

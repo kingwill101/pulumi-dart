@@ -27,9 +27,9 @@ class RuleState {
   final pulumi.Input<RuleScope>? scope;
   /// Source specifies the rule owner, the rule identifier, and the notifications that cause the function to evaluate your AWS resources. See Source Below.
   final pulumi.Input<RuleSource>? source;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [RuleState].
@@ -43,8 +43,8 @@ class RuleState {
   /// [ruleId] The ID of the config rule
   /// [scope] Scope defines which resources can trigger an evaluation for the rule. See Scope Below.
   /// [source] Source specifies the rule owner, the rule identifier, and the notifications that cause the function to evaluate your AWS resources. See Source Below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const RuleState({
     this.arn,
     this.description,
@@ -94,4 +94,3 @@ class RuleState {
     );
   }
 }
-

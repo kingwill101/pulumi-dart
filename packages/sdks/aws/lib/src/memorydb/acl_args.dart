@@ -7,22 +7,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_memorydb_acl_acl_args_doc}
 class AclArgs {
-  /// Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Set of MemoryDB user names to be included in this ACL.
   final pulumi.Input<List<String>>? userNames;
 
   /// Creates a new [AclArgs].
-  /// [name] Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userNames] Set of MemoryDB user names to be included in this ACL.
   const AclArgs({
     this.name,
@@ -52,4 +52,3 @@ class AclArgs {
     );
   }
 }
-

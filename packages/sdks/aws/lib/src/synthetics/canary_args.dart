@@ -31,11 +31,11 @@ class CanaryArgs {
   final pulumi.Input<CanaryRunConfig>? runConfig;
   /// Runtime version to use for the canary. Versions change often so consult the [Amazon CloudWatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html) for the latest valid versions. Values include `syn-python-selenium-1.0`, `syn-nodejs-puppeteer-3.0`, `syn-nodejs-2.2`, `syn-nodejs-2.1`, `syn-nodejs-2.0`, and `syn-1.0`.
   final pulumi.Input<String> runtimeVersion;
-  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zip_file`.**
+  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zipFile`.**
   final pulumi.Input<String>? s3Bucket;
-  /// S3 key of your script. **Conflicts with `zip_file`.**
+  /// S3 key of your script. **Conflicts with `zipFile`.**
   final pulumi.Input<String>? s3Key;
-  /// S3 version ID of your script. **Conflicts with `zip_file`.**
+  /// S3 version ID of your script. **Conflicts with `zipFile`.**
   final pulumi.Input<String>? s3Version;
   /// Configuration block providing how often the canary is to run and when these test runs are to stop. Detailed below.
   ///
@@ -45,11 +45,11 @@ class CanaryArgs {
   final pulumi.Input<bool>? startCanary;
   /// Number of days to retain data about successful runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
   final pulumi.Input<int>? successRetentionPeriod;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Configuration block. Detailed below.
   final pulumi.Input<CanaryVpcConfig>? vpcConfig;
-  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3_bucket`, `s3_key`, and `s3_version`.**
+  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3Bucket`, `s3Key`, and `s3Version`.**
   final pulumi.Input<String>? zipFile;
 
   /// Creates a new [CanaryArgs].
@@ -63,15 +63,15 @@ class CanaryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [runConfig] Configuration block for individual canary runs. Detailed below.
   /// [runtimeVersion] Runtime version to use for the canary. Versions change often so consult the [Amazon CloudWatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html) for the latest valid versions. Values include `syn-python-selenium-1.0`, `syn-nodejs-puppeteer-3.0`, `syn-nodejs-2.2`, `syn-nodejs-2.1`, `syn-nodejs-2.0`, and `syn-1.0`.
-  /// [s3Bucket] Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zip_file`.**
-  /// [s3Key] S3 key of your script. **Conflicts with `zip_file`.**
-  /// [s3Version] S3 version ID of your script. **Conflicts with `zip_file`.**
+  /// [s3Bucket] Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zipFile`.**
+  /// [s3Key] S3 key of your script. **Conflicts with `zipFile`.**
+  /// [s3Version] S3 version ID of your script. **Conflicts with `zipFile`.**
   /// [schedule] Configuration block providing how often the canary is to run and when these test runs are to stop. Detailed below.
   /// [startCanary] Whether to run or stop the canary.
   /// [successRetentionPeriod] Number of days to retain data about successful runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfig] Configuration block. Detailed below.
-  /// [zipFile] ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3_bucket`, `s3_key`, and `s3_version`.**
+  /// [zipFile] ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3Bucket`, `s3Key`, and `s3Version`.**
   const CanaryArgs({
     this.artifactConfig,
     required this.artifactS3Location,
@@ -142,4 +142,3 @@ class CanaryArgs {
     );
   }
 }
-

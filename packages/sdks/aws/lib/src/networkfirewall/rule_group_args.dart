@@ -21,9 +21,9 @@ class RuleGroupArgs {
   final pulumi.Input<String>? region;
   /// A configuration block that defines the rule group rules. Required unless `rules` is specified. See Rule Group below for details.
   final pulumi.Input<RuleGroupRuleGroup>? ruleGroup;
-  /// The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `rule_group` is specified.
+  /// The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `ruleGroup` is specified.
   final pulumi.Input<String>? rules;
-  /// A map of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
   final pulumi.Input<String> type;
@@ -35,8 +35,8 @@ class RuleGroupArgs {
   /// [name] A friendly name of the rule group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleGroup] A configuration block that defines the rule group rules. Required unless `rules` is specified. See Rule Group below for details.
-  /// [rules] The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `rule_group` is specified.
-  /// [tags] A map of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [rules] The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `ruleGroup` is specified.
+  /// [tags] A map of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
   const RuleGroupArgs({
     required this.capacity,
@@ -78,4 +78,3 @@ class RuleGroupArgs {
     );
   }
 }
-

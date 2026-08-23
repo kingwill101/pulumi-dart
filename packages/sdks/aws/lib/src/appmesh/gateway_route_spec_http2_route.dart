@@ -5,14 +5,14 @@ import 'gateway_route_spec_http2_route_action.dart';
 import 'gateway_route_spec_http2_route_match.dart';
 
 class GatewayRouteSpecHttp2Route {
-  /// Action to take if a match is determined.
+  /// Action to take if a match is determined. See `spec.http2_route.action` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2RouteAction> action;
-  /// Criteria for determining a request match.
+  /// Criteria for determining a request match. See `spec.http2_route.match` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2RouteMatch> match;
 
   /// Creates a new [GatewayRouteSpecHttp2Route].
-  /// [action] Action to take if a match is determined.
-  /// [match] Criteria for determining a request match.
+  /// [action] Action to take if a match is determined. See `spec.http2_route.action` Block for details.
+  /// [match] Criteria for determining a request match. See `spec.http2_route.match` Block for details.
   const GatewayRouteSpecHttp2Route({
     required this.action,
     required this.match,
@@ -32,4 +32,3 @@ class GatewayRouteSpecHttp2Route {
     );
   }
 }
-

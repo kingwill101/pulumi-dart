@@ -3,27 +3,29 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake {
-  /// The name of the account.
+  /// Name of the account.
   final pulumi.Input<String>? accountName;
+  /// Name of the Amazon S3 bucket associated with Snowflake.
   final pulumi.Input<String> bucketName;
+  /// Bucket path that refers to the Amazon S3 bucket associated with Snowflake.
   final pulumi.Input<String>? bucketPrefix;
+  /// Snowflake Private Link service name to be used for private data transfers.
   final pulumi.Input<String>? privateLinkServiceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// * `name ` (Required) - Name of the connector profile. The name is unique for each `ConnectorProfile` in your AWS account.
   final pulumi.Input<String>? region;
   /// Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `&lt;Database&gt;.&lt;Schema&gt;.&lt;Stage Name&gt;`.
   final pulumi.Input<String> stage;
-  /// The name of the Snowflake warehouse.
+  /// Name of the Snowflake warehouse.
   final pulumi.Input<String> warehouse;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake].
-  /// [accountName] The name of the account.
-  /// [bucketName] Required.
-  /// [bucketPrefix] Optional.
-  /// [privateLinkServiceName] Optional.
+  /// [accountName] Name of the account.
+  /// [bucketName] Name of the Amazon S3 bucket associated with Snowflake.
+  /// [bucketPrefix] Bucket path that refers to the Amazon S3 bucket associated with Snowflake.
+  /// [privateLinkServiceName] Snowflake Private Link service name to be used for private data transfers.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stage] Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `&lt;Database&gt;.&lt;Schema&gt;.&lt;Stage Name&gt;`.
-  /// [warehouse] The name of the Snowflake warehouse.
+  /// [warehouse] Name of the Snowflake warehouse.
   const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake({
     this.accountName,
     required this.bucketName,
@@ -58,4 +60,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake 
     );
   }
 }
-

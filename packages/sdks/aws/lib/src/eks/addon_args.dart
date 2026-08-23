@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'addon_namespace_config.dart';
 import 'addon_pod_identity_association.dart';
 
 /// {@template pulumi_eks_addon_addon_args_doc}
@@ -18,9 +19,11 @@ class AddonArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> clusterName;
-  /// custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
+  /// Custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
   final pulumi.Input<String>? configurationValues;
-  /// Configuration block with EKS Pod Identity association settings. See `pod_identity_association` below for details.
+  /// Namespace configuration for the add-on. See `namespaceConfig` below for details.
+  final pulumi.Input<AddonNamespaceConfig>? namespaceConfig;
+  /// Configuration block with EKS Pod Identity association settings. See `podIdentityAssociation` below for details.
   final pulumi.Input<List<AddonPodIdentityAssociation>>? podIdentityAssociations;
   /// Indicates if you want to preserve the created resources when deleting the EKS add-on.
   final pulumi.Input<bool>? preserve;
@@ -42,26 +45,28 @@ class AddonArgs {
   /// for service accounts on your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
   /// in the Amazon EKS User Guide.
   final pulumi.Input<String>? serviceAccountRoleArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AddonArgs].
   /// [addonName] Name of the EKS add-on. The name must match one of
   /// [addonVersion] The version of the EKS add-on. The version must
   /// [clusterName] Name of the EKS Cluster.
-  /// [configurationValues] custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
-  /// [podIdentityAssociations] Configuration block with EKS Pod Identity association settings. See `pod_identity_association` below for details.
+  /// [configurationValues] Custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
+  /// [namespaceConfig] Namespace configuration for the add-on. See `namespaceConfig` below for details.
+  /// [podIdentityAssociations] Configuration block with EKS Pod Identity association settings. See `podIdentityAssociation` below for details.
   /// [preserve] Indicates if you want to preserve the created resources when deleting the EKS add-on.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resolveConflictsOnCreate] How to resolve field value conflicts when migrating a self-managed add-on to an Amazon EKS add-on. Valid values are `NONE` and `OVERWRITE`. For more details see the [CreateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateAddon.html) API Documentation.
   /// [resolveConflictsOnUpdate] How to resolve field value conflicts for an Amazon EKS add-on if you've changed a value from the Amazon EKS default value. Valid values are `NONE`, `OVERWRITE`, and `PRESERVE`. For more details see the [UpdateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html) API Documentation.
   /// [serviceAccountRoleArn] The Amazon Resource Name (ARN) of an
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AddonArgs({
     required this.addonName,
     this.addonVersion,
     required this.clusterName,
     this.configurationValues,
+    this.namespaceConfig,
     this.podIdentityAssociations,
     this.preserve,
     this.region,
@@ -77,6 +82,7 @@ class AddonArgs {
       'addonVersion': ?addonVersion,
       'clusterName': clusterName,
       'configurationValues': ?configurationValues,
+      'namespaceConfig': ?pulumi.Input.mapOptionalInputValue<AddonNamespaceConfig, Map<String, dynamic>>(namespaceConfig, (value) => value.toMap()),
       'podIdentityAssociations': ?pulumi.Input.mapOptionalInputValue<List<AddonPodIdentityAssociation>, List<Map<String, dynamic>>>(podIdentityAssociations, (value) => pulumi.Input.encodeList<AddonPodIdentityAssociation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'preserve': ?preserve,
       'region': ?region,
@@ -93,6 +99,7 @@ class AddonArgs {
       addonVersion: (() { final guardedValue = map['addonVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       configurationValues: (() { final guardedValue = map['configurationValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceConfig: (() { final guardedValue = map['namespaceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AddonNamespaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       podIdentityAssociations: (() { final guardedValue = map['podIdentityAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AddonPodIdentityAssociation>(guardedValue, (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))); })(),
       preserve: (() { final guardedValue = map['preserve']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -103,4 +110,3 @@ class AddonArgs {
     );
   }
 }
-

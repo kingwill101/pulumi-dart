@@ -30,4 +30,3 @@ class GetRouteSpecHttp2RouteTimeout {
     );
   }
 }
-

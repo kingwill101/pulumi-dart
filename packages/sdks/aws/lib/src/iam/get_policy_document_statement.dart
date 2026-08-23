@@ -20,7 +20,7 @@ class GetPolicyDocumentStatement {
   final pulumi.Input<List<String>>? notResources;
   /// Configuration block for principals. Detailed below.
   final pulumi.Input<List<GetPolicyDocumentStatementPrincipal>>? principals;
-  /// List of resource ARNs that this statement applies to. This is required by AWS if used for an IAM policy. Conflicts with `not_resources`.
+  /// List of resource ARNs that this statement applies to. This is required by AWS if used for an IAM policy. Conflicts with `notResources`.
   final pulumi.Input<List<String>>? resources;
   /// Sid (statement ID) is an identifier for a policy statement.
   final pulumi.Input<String>? sid;
@@ -33,7 +33,7 @@ class GetPolicyDocumentStatement {
   /// [notPrincipals] Like `principals` except these are principals that the statement does *not* apply to.
   /// [notResources] List of resource ARNs that this statement does *not* apply to. Use to apply a policy statement to all resources *except* those listed. Conflicts with `resources`.
   /// [principals] Configuration block for principals. Detailed below.
-  /// [resources] List of resource ARNs that this statement applies to. This is required by AWS if used for an IAM policy. Conflicts with `not_resources`.
+  /// [resources] List of resource ARNs that this statement applies to. This is required by AWS if used for an IAM policy. Conflicts with `notResources`.
   /// [sid] Sid (statement ID) is an identifier for a policy statement.
   const GetPolicyDocumentStatement({
     this.actions,
@@ -75,4 +75,3 @@ class GetPolicyDocumentStatement {
     );
   }
 }
-

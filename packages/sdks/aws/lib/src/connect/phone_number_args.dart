@@ -15,7 +15,7 @@ class PhoneNumberArgs {
   final pulumi.Input<String>? prefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Tags to apply to the Phone Number. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Phone Number. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   final pulumi.Input<String> targetArn;
@@ -27,7 +27,7 @@ class PhoneNumberArgs {
   /// [description] The description of the phone number.
   /// [prefix] The prefix of the phone number that is used to filter available phone numbers. If provided, it must contain `+` as part of the country code. Do not specify this argument when importing the resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Tags to apply to the Phone Number. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Tags to apply to the Phone Number. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetArn] The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   /// [type] The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
   const PhoneNumberArgs({
@@ -64,4 +64,3 @@ class PhoneNumberArgs {
     );
   }
 }
-

@@ -84,6 +84,24 @@ import 'member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_member" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   account_id = "123456789012"
+///   email      = "example@example.com"
+///   invite     = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'member_state.dart';
 /// import com.pulumi.aws.securityhub.Member;
 /// import com.pulumi.aws.securityhub.MemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,7 +157,19 @@ import 'member_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Security Hub members using their account ID. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `memberAccountId` (String) ID of the member AWS account.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Security Hub members using `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:securityhub/member:Member example 123456789012

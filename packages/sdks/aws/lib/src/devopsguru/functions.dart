@@ -60,6 +60,19 @@ import 'get_resource_collection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_devopsguru_getnotificationchannel" "example" {
+///   id = "channel-1234"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_resource_collection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.devopsguru.DevopsguruFunctions;
 /// import com.pulumi.aws.devopsguru.inputs.GetNotificationChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +180,19 @@ Future<GetNotificationChannelResult> getNotificationChannel(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_devopsguru_getresourcecollection" "example" {
+///   type = "AWS_SERVICE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +201,8 @@ Future<GetNotificationChannelResult> getNotificationChannel(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.devopsguru.DevopsguruFunctions;
 /// import com.pulumi.aws.devopsguru.inputs.GetResourceCollectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

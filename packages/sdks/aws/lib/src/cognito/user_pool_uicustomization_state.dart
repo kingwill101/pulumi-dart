@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering UserPoolUICustomization resources.
 class UserPoolUICustomizationState {
-  /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
+  /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.
   final pulumi.Input<String>? clientId;
   /// The creation date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
   final pulumi.Input<String>? creationDate;
-  /// The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
+  /// The CSS values in the UI customization, provided as a String. At least one of `css` or `imageFile` is required.
   final pulumi.Input<String>? css;
   /// The CSS version number.
   final pulumi.Input<String>? cssVersion;
-  /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
+  /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `imageFile` is required.
   final pulumi.Input<String>? imageFile;
   /// The logo image URL for the UI customization.
   final pulumi.Input<String>? imageUrl;
@@ -24,11 +24,11 @@ class UserPoolUICustomizationState {
   final pulumi.Input<String>? userPoolId;
 
   /// Creates a new [UserPoolUICustomizationState].
-  /// [clientId] The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
+  /// [clientId] The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.
   /// [creationDate] The creation date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
-  /// [css] The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
+  /// [css] The CSS values in the UI customization, provided as a String. At least one of `css` or `imageFile` is required.
   /// [cssVersion] The CSS version number.
-  /// [imageFile] The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
+  /// [imageFile] The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `imageFile` is required.
   /// [imageUrl] The logo image URL for the UI customization.
   /// [lastModifiedDate] The last-modified date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -73,4 +73,3 @@ class UserPoolUICustomizationState {
     );
   }
 }
-

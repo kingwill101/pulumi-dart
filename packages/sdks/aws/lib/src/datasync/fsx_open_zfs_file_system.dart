@@ -98,6 +98,27 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_fsxopenzfsfilesystem" "example" {
+///   fsx_filesystem_arn  = exampleAwsFsxOpenzfsFileSystem.arn
+///   security_group_arns = [exampleAwsSecurityGroup.arn]
+///   protocol = {
+///     nfs = {
+///       mount_options = {
+///         version = "AUTOMATIC"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +130,8 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// import com.pulumi.aws.datasync.inputs.FsxOpenZfsFileSystemProtocolArgs;
 /// import com.pulumi.aws.datasync.inputs.FsxOpenZfsFileSystemProtocolNfsArgs;
 /// import com.pulumi.aws.datasync.inputs.FsxOpenZfsFileSystemProtocolNfsMountOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,9 +195,9 @@ class FsxOpenZfsFileSystem extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> securityGroupArns;
   /// Subdirectory to perform actions as source or destination. Must start with `/fsx`.
   late final pulumi.Output<String> subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The URL of the FSx for openzfs location that was described.
   late final pulumi.Output<String> uri;

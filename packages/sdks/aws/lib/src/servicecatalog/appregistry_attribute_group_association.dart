@@ -95,7 +95,7 @@ import 'appregistry_attribute_group_association_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"app":   "exampleapp",
 /// 			"group": "examplegroup",
 /// 		})
@@ -112,14 +112,39 @@ import 'appregistry_attribute_group_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = servicecatalog.NewAppregistryAttributeGroupAssociation(ctx, "example", &servicecatalog.AppregistryAttributeGroupAssociationArgs{
-/// 			ApplicationId:    example.ID(),
-/// 			AttributeGroupId: exampleAppregistryAttributeGroup.ID(),
+/// 			ApplicationId:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			AttributeGroupId: exampleAppregistryAttributeGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_appregistryapplication" "example" {
+///   name = "example-app"
+/// }
+/// resource "aws_servicecatalog_appregistryattributegroup" "example" {
+///   name        = "example"
+///   description = "example description"
+///   attributes = jsonencode({
+///     "app"   = "exampleapp"
+///     "group" = "examplegroup"
+///   })
+/// }
+/// resource "aws_servicecatalog_appregistryattributegroupassociation" "example" {
+///   application_id     = aws_servicecatalog_appregistryapplication.example.id
+///   attribute_group_id = aws_servicecatalog_appregistryattributegroup.example.id
 /// }
 /// ```
 /// ```java
@@ -135,8 +160,8 @@ import 'appregistry_attribute_group_association_state.dart';
 /// import com.pulumi.aws.servicecatalog.AppregistryAttributeGroupAssociation;
 /// import com.pulumi.aws.servicecatalog.AppregistryAttributeGroupAssociationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,7 +222,7 @@ import 'appregistry_attribute_group_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Service Catalog AppRegistry Attribute Group Association using `application_id` and `attribute_group_id` arguments separated by a comma (`,`). For example:
+/// Using `pulumi import`, import Service Catalog AppRegistry Attribute Group Association using `applicationId` and `attributeGroupId` arguments separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:servicecatalog/appregistryAttributeGroupAssociation:AppregistryAttributeGroupAssociation example 12456778723424sdffsdfsdq34,12234t3564dsfsdf34asff4ww3

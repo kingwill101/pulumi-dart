@@ -84,6 +84,25 @@ import 'domain_entry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_domain" "example" {
+///   domain_name = "example.com"
+/// }
+/// resource "aws_lightsail_domainentry" "example" {
+///   domain_name = aws_lightsail_domain.example.domain_name
+///   name        = "www"
+///   type        = "A"
+///   target      = "127.0.0.1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +113,8 @@ import 'domain_entry_state.dart';
 /// import com.pulumi.aws.lightsail.DomainArgs;
 /// import com.pulumi.aws.lightsail.DomainEntry;
 /// import com.pulumi.aws.lightsail.DomainEntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

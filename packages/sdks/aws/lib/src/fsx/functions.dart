@@ -66,6 +66,19 @@ import 'get_windows_file_system_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fsx_getontapfilesystem" "example" {
+///   id = "fs-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +87,8 @@ import 'get_windows_file_system_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.FsxFunctions;
 /// import com.pulumi.aws.fsx.inputs.GetOntapFileSystemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,6 +131,8 @@ Future<GetOntapFileSystemResult> getOntapFileSystem(
 }
 
 /// Retrieve information on FSx ONTAP Storage Virtual Machine (SVM).
+///
+/// The arguments of this data source act as filters for querying the available ONTAP Storage Virtual Machines in the current region. The given filters must match exactly one Storage Virtual Machine whose data will be exported as attributes.
 ///
 /// ## Example Usage
 ///
@@ -173,6 +188,19 @@ Future<GetOntapFileSystemResult> getOntapFileSystem(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fsx_getontapstoragevirtualmachine" "example" {
+///   id = "svm-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +209,8 @@ Future<GetOntapFileSystemResult> getOntapFileSystem(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.FsxFunctions;
 /// import com.pulumi.aws.fsx.inputs.GetOntapStorageVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,6 +314,22 @@ Future<GetOntapFileSystemResult> getOntapFileSystem(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fsx_getontapstoragevirtualmachine" "example" {
+///   filters {
+///     name   = "file-system-id"
+///     values = ["fs-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +338,9 @@ Future<GetOntapFileSystemResult> getOntapFileSystem(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.FsxFunctions;
 /// import com.pulumi.aws.fsx.inputs.GetOntapStorageVirtualMachineArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.fsx.inputs.GetOntapStorageVirtualMachineFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -422,6 +467,22 @@ Future<GetOntapStorageVirtualMachineResult> getOntapStorageVirtualMachine(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fsx_getontapstoragevirtualmachines" "example" {
+///   filters {
+///     name   = "file-system-id"
+///     values = ["fs-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -430,8 +491,9 @@ Future<GetOntapStorageVirtualMachineResult> getOntapStorageVirtualMachine(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.FsxFunctions;
 /// import com.pulumi.aws.fsx.inputs.GetOntapStorageVirtualMachinesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.fsx.inputs.GetOntapStorageVirtualMachinesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -562,6 +624,23 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fsx_getopenzfssnapshot" "example" {
+///   most_recent = true
+///   filters {
+///     name   = "volume-id"
+///     values = ["fsvol-073a32b6098a73feb"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -570,8 +649,9 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.FsxFunctions;
 /// import com.pulumi.aws.fsx.inputs.GetOpenZfsSnapshotArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.fsx.inputs.GetOpenZfsSnapshotFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -677,6 +757,19 @@ Future<GetOpenZfsSnapshotResult> getOpenZfsSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fsx_getwindowsfilesystem" "example" {
+///   id = "fs-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -685,8 +778,8 @@ Future<GetOpenZfsSnapshotResult> getOpenZfsSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.FsxFunctions;
 /// import com.pulumi.aws.fsx.inputs.GetWindowsFileSystemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

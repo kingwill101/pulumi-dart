@@ -5,13 +5,13 @@ import 'centralization_rule_for_organization_rule_destination.dart';
 import 'centralization_rule_for_organization_rule_source.dart';
 
 class CentralizationRuleForOrganizationRule {
-  /// Configuration block for the destination where logs will be centralized. See `destination` below.
+  /// Configuration block for the destination where telemetry will be centralized. See `destination` below.
   final pulumi.Input<CentralizationRuleForOrganizationRuleDestination> destination;
   /// Configuration block for the source of logs to be centralized. See `source` below.
   final pulumi.Input<CentralizationRuleForOrganizationRuleSource> source;
 
   /// Creates a new [CentralizationRuleForOrganizationRule].
-  /// [destination] Configuration block for the destination where logs will be centralized. See `destination` below.
+  /// [destination] Configuration block for the destination where telemetry will be centralized. See `destination` below.
   /// [source] Configuration block for the source of logs to be centralized. See `source` below.
   const CentralizationRuleForOrganizationRule({
     required this.destination,
@@ -32,4 +32,3 @@ class CentralizationRuleForOrganizationRule {
     );
   }
 }
-

@@ -65,6 +65,21 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3outposts_endpoint" "example" {
+///   outpost_id        = exampleAwsOutpostsOutpost.id
+///   security_group_id = exampleAwsSecurityGroup.id
+///   subnet_id         = exampleAwsSubnet.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3outposts.Endpoint;
 /// import com.pulumi.aws.s3outposts.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,7 +137,7 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> cidrBlock;
   /// UTC creation time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> creationTime;
-  /// The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
+  /// ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   late final pulumi.Output<String?> customerOwnedIpv4Pool;
   /// Set of nested attributes for associated Elastic Network Interfaces (ENIs).
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;

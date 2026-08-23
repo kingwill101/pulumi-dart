@@ -106,6 +106,27 @@ import 'lf_tag_expression_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_lftag" "example" {
+///   key    = "example"
+///   values = ["value"]
+/// }
+/// resource "aws_lakeformation_lftagexpression" "example" {
+///   name = "example"
+///   expressions {
+///     tag_key    = aws_lakeformation_lftag.example.key
+///     tag_values = aws_lakeformation_lftag.example.values
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +138,8 @@ import 'lf_tag_expression_state.dart';
 /// import com.pulumi.aws.lakeformation.LfTagExpression;
 /// import com.pulumi.aws.lakeformation.LfTagExpressionArgs;
 /// import com.pulumi.aws.lakeformation.inputs.LfTagExpressionExpressionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

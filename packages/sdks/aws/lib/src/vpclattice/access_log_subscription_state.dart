@@ -12,12 +12,13 @@ class AccessLogSubscriptionState {
   final pulumi.Input<String>? region;
   /// Amazon Resource Name (ARN) of the service network or service.
   final pulumi.Input<String>? resourceArn;
-  /// The ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
+  /// ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? resourceIdentifier;
   /// Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
   final pulumi.Input<String>? serviceNetworkLogType;
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -26,9 +27,9 @@ class AccessLogSubscriptionState {
   /// [destinationArn] Amazon Resource Name (ARN) of the log destination.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] Amazon Resource Name (ARN) of the service network or service.
-  /// [resourceIdentifier] The ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
+  /// [resourceIdentifier] ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   /// [serviceNetworkLogType] Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
-  /// [tags] Optional.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   const AccessLogSubscriptionState({
     this.arn,
@@ -67,4 +68,3 @@ class AccessLogSubscriptionState {
     );
   }
 }
-

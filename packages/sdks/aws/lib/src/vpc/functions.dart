@@ -62,6 +62,19 @@ import 'get_security_group_rules_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpc_getendpointassociations" "example" {
+///   vpc_endpoint_id = exampleAwsVpcEndpoint.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_security_group_rules_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.VpcFunctions;
 /// import com.pulumi.aws.vpc.inputs.GetEndpointAssociationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +180,19 @@ Future<GetEndpointAssociationsResult> getEndpointAssociations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpc_getsecuritygrouprule" "example" {
+///   security_group_rule_id = securityGroupRuleId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +201,8 @@ Future<GetEndpointAssociationsResult> getEndpointAssociations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.VpcFunctions;
 /// import com.pulumi.aws.vpc.inputs.GetSecurityGroupRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,23 +301,40 @@ Future<GetSecurityGroupRuleResult> getSecurityGroupRule(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := vpc.GetSecurityGroupRules(ctx, &vpc.GetSecurityGroupRulesArgs{
-/// Filters: []vpc.GetSecurityGroupRulesFilter{
-/// {
-/// Name: "group-id",
-/// Values: interface{}{
-/// securityGroupId,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := vpc.GetSecurityGroupRules(ctx, &vpc.GetSecurityGroupRulesArgs{
+/// 			Filters: []vpc.GetSecurityGroupRulesFilter{
+/// 				{
+/// 					Name: "group-id",
+/// 					Values: pulumi.StringArray{
+/// 						securityGroupId,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpc_getsecuritygrouprules" "example" {
+///   filters {
+///     name   = "group-id"
+///     values = [securityGroupId]
+///   }
 /// }
 /// ```
 /// ```java
@@ -302,8 +345,9 @@ Future<GetSecurityGroupRuleResult> getSecurityGroupRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.VpcFunctions;
 /// import com.pulumi.aws.vpc.inputs.GetSecurityGroupRulesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.vpc.inputs.GetSecurityGroupRulesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

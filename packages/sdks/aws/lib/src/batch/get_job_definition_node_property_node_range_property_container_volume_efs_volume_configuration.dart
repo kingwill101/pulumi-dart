@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_job_definition_node_property_node_range_property_container_volume_efs_volume_configuration_authorization_config.dart';
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration {
-  /// The authorization configuration details for the Amazon EFS file system.
+  /// Authorization configuration details for the Amazon EFS file system. See `authorizationConfig` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig>> authorizationConfigs;
-  /// The Amazon EFS file system ID to use.
+  /// Amazon EFS file system ID to use.
   final pulumi.Input<String> fileSystemId;
-  /// The directory within the Amazon EFS file system to mount as the root directory inside the host.
+  /// Directory within the Amazon EFS file system to mount as the root directory inside the host.
   final pulumi.Input<String> rootDirectory;
-  /// Determines whether to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server
+  /// Whether to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server.
   final pulumi.Input<String> transitEncryption;
-  /// The port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server.
+  /// Port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server.
   final pulumi.Input<int> transitEncryptionPort;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration].
-  /// [authorizationConfigs] The authorization configuration details for the Amazon EFS file system.
-  /// [fileSystemId] The Amazon EFS file system ID to use.
-  /// [rootDirectory] The directory within the Amazon EFS file system to mount as the root directory inside the host.
-  /// [transitEncryption] Determines whether to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server
-  /// [transitEncryptionPort] The port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server.
+  /// [authorizationConfigs] Authorization configuration details for the Amazon EFS file system. See `authorizationConfig` below.
+  /// [fileSystemId] Amazon EFS file system ID to use.
+  /// [rootDirectory] Directory within the Amazon EFS file system to mount as the root directory inside the host.
+  /// [transitEncryption] Whether to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server.
+  /// [transitEncryptionPort] Port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration({
     required this.authorizationConfigs,
     required this.fileSystemId,
@@ -49,4 +49,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
     );
   }
 }
-

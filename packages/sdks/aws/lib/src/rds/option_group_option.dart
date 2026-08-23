@@ -8,7 +8,7 @@ class OptionGroupOption {
   final pulumi.Input<List<String>>? dbSecurityGroupMemberships;
   /// Name of the option (e.g., MEMCACHED).
   final pulumi.Input<String> optionName;
-  /// The option settings to apply. See `option_settings` Block below for more details.
+  /// The option settings to apply. See `optionSettings` Block below for more details.
   final pulumi.Input<List<OptionGroupOptionOptionSetting>>? optionSettings;
   /// Port number when connecting to the option (e.g., 11211). Leaving out or removing `port` from your configuration does not remove or clear a port from the option in AWS. AWS may assign a default port. Not including `port` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any port changes.
   final pulumi.Input<int>? port;
@@ -20,7 +20,7 @@ class OptionGroupOption {
   /// Creates a new [OptionGroupOption].
   /// [dbSecurityGroupMemberships] List of DB Security Groups for which the option is enabled.
   /// [optionName] Name of the option (e.g., MEMCACHED).
-  /// [optionSettings] The option settings to apply. See `option_settings` Block below for more details.
+  /// [optionSettings] The option settings to apply. See `optionSettings` Block below for more details.
   /// [port] Port number when connecting to the option (e.g., 11211). Leaving out or removing `port` from your configuration does not remove or clear a port from the option in AWS. AWS may assign a default port. Not including `port` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any port changes.
   /// [version] Version of the option (e.g., 13.1.0.0). Leaving out or removing `version` from your configuration does not remove or clear a version from the option in AWS. AWS may assign a default version. Not including `version` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any version changes.
   /// [vpcSecurityGroupMemberships] List of VPC Security Groups for which the option is enabled.
@@ -55,4 +55,3 @@ class OptionGroupOption {
     );
   }
 }
-

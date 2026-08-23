@@ -8,27 +8,35 @@ import 'get_bucket_replication_configuration_rule_filter.dart';
 import 'get_bucket_replication_configuration_rule_source_selection_criteria.dart';
 
 class GetBucketReplicationConfigurationRule {
+  /// Configuration block that specifies whether delete markers are replicated. See `deleteMarkerReplication` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDeleteMarkerReplication>> deleteMarkerReplications;
+  /// Configuration block that specifies the destination for the rule. See `destination` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestination>> destinations;
+  /// Configuration block that specifies replication of existing objects. See `existingObjectReplication` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleExistingObjectReplication>> existingObjectReplications;
+  /// Configuration block that identifies the subset of objects to which the rule applies. See `filter` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleFilter>> filters;
+  /// Unique identifier for the rule.
   final pulumi.Input<String> id;
-  /// The object key name prefix that identifies the subset of objects to which the rule applies.
+  /// Object key name prefix that identifies the subset of objects to which the rule applies.
   final pulumi.Input<String> prefix;
+  /// Priority associated with the rule.
   final pulumi.Input<int> priority;
+  /// Configuration block that specifies special object selection criteria. See `sourceSelectionCriteria` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleSourceSelectionCriteria>> sourceSelectionCriterias;
+  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRule].
-  /// [deleteMarkerReplications] Required.
-  /// [destinations] Required.
-  /// [existingObjectReplications] Required.
-  /// [filters] Required.
-  /// [id] Required.
-  /// [prefix] The object key name prefix that identifies the subset of objects to which the rule applies.
-  /// [priority] Required.
-  /// [sourceSelectionCriterias] Required.
-  /// [status] Required.
+  /// [deleteMarkerReplications] Configuration block that specifies whether delete markers are replicated. See `deleteMarkerReplication` Block below.
+  /// [destinations] Configuration block that specifies the destination for the rule. See `destination` Block below.
+  /// [existingObjectReplications] Configuration block that specifies replication of existing objects. See `existingObjectReplication` Block below.
+  /// [filters] Configuration block that identifies the subset of objects to which the rule applies. See `filter` Block below.
+  /// [id] Unique identifier for the rule.
+  /// [prefix] Object key name prefix that identifies the subset of objects to which the rule applies.
+  /// [priority] Priority associated with the rule.
+  /// [sourceSelectionCriterias] Configuration block that specifies special object selection criteria. See `sourceSelectionCriteria` Block below.
+  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
   const GetBucketReplicationConfigurationRule({
     required this.deleteMarkerReplications,
     required this.destinations,
@@ -69,4 +77,3 @@ class GetBucketReplicationConfigurationRule {
     );
   }
 }
-

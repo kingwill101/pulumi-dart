@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action.dart';
 
 class GetManagedRuleGroupRule {
-  /// Action taken on a web request when it matches a rule's statement. See `action_to_use` for details.
+  /// Action taken on a web request when it matches a rule's statement. See `action` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleAction>> actions;
   /// Managed rule group name.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetManagedRuleGroupRule].
-  /// [actions] Action taken on a web request when it matches a rule's statement. See `action_to_use` for details.
+  /// [actions] Action taken on a web request when it matches a rule's statement. See `action` Block for details.
   /// [name] Managed rule group name.
   const GetManagedRuleGroupRule({
     required this.actions,
@@ -31,4 +31,3 @@ class GetManagedRuleGroupRule {
     );
   }
 }
-

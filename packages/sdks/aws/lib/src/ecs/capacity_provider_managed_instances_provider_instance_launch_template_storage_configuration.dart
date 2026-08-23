@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration {
-  /// The size of the tasks volume in GiB. Must be at least 1.
+  /// Size of the tasks volume in GiB. Must be at least 1.
   final pulumi.Input<int> storageSizeGib;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration].
-  /// [storageSizeGib] The size of the tasks volume in GiB. Must be at least 1.
+  /// [storageSizeGib] Size of the tasks volume in GiB. Must be at least 1.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration({
     required this.storageSizeGib,
   });
@@ -24,4 +24,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfi
     );
   }
 }
-

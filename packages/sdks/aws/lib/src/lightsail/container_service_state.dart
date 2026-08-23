@@ -38,9 +38,9 @@ class ContainerServiceState {
   final pulumi.Input<int>? scale;
   /// Current state of the container service.
   final pulumi.Input<String>? state;
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Publicly accessible URL of the container service. If no public endpoint is specified in the currentDeployment, this URL returns a 404 response.
   final pulumi.Input<String>? url;
@@ -61,8 +61,8 @@ class ContainerServiceState {
   /// [resourceType] Lightsail resource type of the container service (i.e., ContainerService).
   /// [scale] Scale specification for the container service. The scale specifies the allocated compute nodes of the container service.
   /// [state] Current state of the container service.
-  /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [url] Publicly accessible URL of the container service. If no public endpoint is specified in the currentDeployment, this URL returns a 404 response.
   const ContainerServiceState({
     this.arn,
@@ -131,4 +131,3 @@ class ContainerServiceState {
     );
   }
 }
-

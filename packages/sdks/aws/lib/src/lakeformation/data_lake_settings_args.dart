@@ -33,7 +33,7 @@ class DataLakeSettingsArgs {
   final pulumi.Input<String>? region;
   /// List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
   ///
-  /// &gt; **NOTE:** Although optional, not including `admins`, `create_database_default_permissions`, `create_table_default_permissions`, `parameters`, and/or `trusted_resource_owners` results in the setting being cleared.
+  /// &gt; **NOTE:** Although optional, not including `admins`, `createDatabaseDefaultPermissions`, `createTableDefaultPermissions`, `parameters`, and/or `trustedResourceOwners` results in the setting being cleared.
   final pulumi.Input<List<String>>? trustedResourceOwners;
 
   /// Creates a new [DataLakeSettingsArgs].
@@ -98,4 +98,3 @@ class DataLakeSettingsArgs {
     );
   }
 }
-

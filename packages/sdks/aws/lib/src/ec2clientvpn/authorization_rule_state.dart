@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering AuthorizationRule resources.
 class AuthorizationRuleState {
-  /// The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
+  /// The ID of the group to which the authorization rule grants access. One of `accessGroupId` or `authorizeAllGroups` must be set.
   final pulumi.Input<String>? accessGroupId;
-  /// Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
+  /// Indicates whether the authorization rule grants access to all clients. One of `accessGroupId` or `authorizeAllGroups` must be set.
   final pulumi.Input<bool>? authorizeAllGroups;
   /// The ID of the Client VPN endpoint.
   final pulumi.Input<String>? clientVpnEndpointId;
@@ -18,8 +18,8 @@ class AuthorizationRuleState {
   final pulumi.Input<String>? targetNetworkCidr;
 
   /// Creates a new [AuthorizationRuleState].
-  /// [accessGroupId] The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
-  /// [authorizeAllGroups] Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
+  /// [accessGroupId] The ID of the group to which the authorization rule grants access. One of `accessGroupId` or `authorizeAllGroups` must be set.
+  /// [authorizeAllGroups] Indicates whether the authorization rule grants access to all clients. One of `accessGroupId` or `authorizeAllGroups` must be set.
   /// [clientVpnEndpointId] The ID of the Client VPN endpoint.
   /// [description] A brief description of the authorization rule.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -55,4 +55,3 @@ class AuthorizationRuleState {
     );
   }
 }
-

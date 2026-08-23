@@ -18,7 +18,7 @@ class GetApplicationResult {
   final String instanceArn;
   /// Name of the application.
   final String name;
-  /// Options for the portal associated with an application. See the `aws.ssoadmin.Application` resource documentation. The attributes are the same.
+  /// Options for the portal associated with an application. See `portalOptions` Block below.
   final List<GetApplicationPortalOption> portalOptions;
   final String region;
   /// Status of the application.
@@ -32,7 +32,7 @@ class GetApplicationResult {
   /// [id] ARN of the application.
   /// [instanceArn] ARN of the instance of IAM Identity Center.
   /// [name] Name of the application.
-  /// [portalOptions] Options for the portal associated with an application. See the `aws.ssoadmin.Application` resource documentation. The attributes are the same.
+  /// [portalOptions] Options for the portal associated with an application. See `portalOptions` Block below.
   /// [region] Required.
   /// [status] Status of the application.
   const GetApplicationResult({
@@ -78,4 +78,3 @@ class GetApplicationResult {
     );
   }
 }
-

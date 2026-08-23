@@ -30,4 +30,3 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet {
     );
   }
 }
-

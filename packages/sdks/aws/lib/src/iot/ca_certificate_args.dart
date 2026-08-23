@@ -20,10 +20,10 @@ class CaCertificateArgs {
   final pulumi.Input<String>? region;
   /// Information about the registration configuration. See below.
   final pulumi.Input<CaCertificateRegistrationConfig>? registrationConfig;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// PEM encoded verification certificate containing the common name of a registration code. Review
-  /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificate_mode` is `DEFAULT`.
+  /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificateMode` is `DEFAULT`.
   final pulumi.Input<String>? verificationCertificatePem;
 
   /// Creates a new [CaCertificateArgs].
@@ -33,7 +33,7 @@ class CaCertificateArgs {
   /// [certificateMode] The certificate mode in which the CA will be registered. Valid values: `DEFAULT` and `SNI_ONLY`. Default: `DEFAULT`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registrationConfig] Information about the registration configuration. See below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [verificationCertificatePem] PEM encoded verification certificate containing the common name of a registration code. Review
   const CaCertificateArgs({
     required this.active,
@@ -72,4 +72,3 @@ class CaCertificateArgs {
     );
   }
 }
-

@@ -62,6 +62,22 @@ import 'get_experiment_templates_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fis_getexperimenttemplates" "all" {
+/// }
+///
+/// output "all" {
+///   value = data.aws_fis_getexperimenttemplates.all.ids
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +86,8 @@ import 'get_experiment_templates_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fis.FisFunctions;
 /// import com.pulumi.aws.fis.inputs.GetExperimentTemplatesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,7 +214,7 @@ import 'get_experiment_templates_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := fis.GetExperimentTemplates(ctx, &fis.GetExperimentTemplatesArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Name": "example",
 /// 				"Tier": "1",
 /// 			},
@@ -228,6 +244,30 @@ import 'get_experiment_templates_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_fis_getexperimenttemplates" "example" {
+///   tags = {
+///     "Name" = "example"
+///     "Tier" = 1
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
+///   statements {
+///     sid       = "StartFISExperiment"
+///     effect    = "Allow"
+///     actions   = ["fis:StartExperiment"]
+///     resources = ["arn:aws:fis:*:*:experiment-template/${data.aws_fis_getexperimenttemplates.example.ids[0]}", "arn:aws:fis:*:*:experiment/*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +278,9 @@ import 'get_experiment_templates_result.dart';
 /// import com.pulumi.aws.fis.inputs.GetExperimentTemplatesArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

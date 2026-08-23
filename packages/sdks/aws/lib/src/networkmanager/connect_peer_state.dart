@@ -8,7 +8,7 @@ import 'connect_peer_configuration.dart';
 class ConnectPeerState {
   /// ARN of the Connect peer.
   final pulumi.Input<String>? arn;
-  /// Connect peer BGP options. See bgp_options for more information.
+  /// Connect peer BGP options. See bgpOptions for more information.
   final pulumi.Input<ConnectPeerBgpOptions>? bgpOptions;
   /// Configuration of the Connect peer.
   final pulumi.Input<List<ConnectPeerConfiguration>>? configurations;
@@ -34,14 +34,14 @@ class ConnectPeerState {
   final pulumi.Input<String>? state;
   /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   final pulumi.Input<String>? subnetArn;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ConnectPeerState].
   /// [arn] ARN of the Connect peer.
-  /// [bgpOptions] Connect peer BGP options. See bgp_options for more information.
+  /// [bgpOptions] Connect peer BGP options. See bgpOptions for more information.
   /// [configurations] Configuration of the Connect peer.
   /// [connectAttachmentId] ID of the connection attachment.
   /// [connectPeerId] ID of the Connect peer.
@@ -53,8 +53,8 @@ class ConnectPeerState {
   /// [peerAddress] Connect peer address.
   /// [state] State of the Connect peer.
   /// [subnetArn] Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
-  /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ConnectPeerState({
     this.arn,
     this.bgpOptions,
@@ -113,4 +113,3 @@ class ConnectPeerState {
     );
   }
 }
-

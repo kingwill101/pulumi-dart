@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_ontap_storage_virtual_machine_active_directory_configuration_self_managed_active_directory_configuration.dart';
 
 class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
-  /// The NetBIOS name of the AD computer object to which the SVM is joined.
+  /// NetBIOS name of the AD computer object to which the SVM is joined.
   final pulumi.Input<String> netbiosName;
   final pulumi.Input<List<GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration>> selfManagedActiveDirectoryConfigurations;
 
   /// Creates a new [GetOntapStorageVirtualMachineActiveDirectoryConfiguration].
-  /// [netbiosName] The NetBIOS name of the AD computer object to which the SVM is joined.
+  /// [netbiosName] NetBIOS name of the AD computer object to which the SVM is joined.
   /// [selfManagedActiveDirectoryConfigurations] Required.
   const GetOntapStorageVirtualMachineActiveDirectoryConfiguration({
     required this.netbiosName,
@@ -30,4 +30,3 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
     );
   }
 }
-

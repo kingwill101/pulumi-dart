@@ -16,7 +16,7 @@ class ClusterSnapshotState {
   final pulumi.Input<String>? engine;
   /// Version of the database engine for this DocumentDB cluster snapshot.
   final pulumi.Input<String>? engineVersion;
-  /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
+  /// If storageEncrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
   final pulumi.Input<String>? kmsKeyId;
   /// Port that the DocumentDB cluster was listening on at the time of the snapshot.
   final pulumi.Input<int>? port;
@@ -38,7 +38,7 @@ class ClusterSnapshotState {
   /// [dbClusterSnapshotIdentifier] The Identifier for the snapshot.
   /// [engine] Specifies the name of the database engine.
   /// [engineVersion] Version of the database engine for this DocumentDB cluster snapshot.
-  /// [kmsKeyId] If storage_encrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
+  /// [kmsKeyId] If storageEncrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
   /// [port] Port that the DocumentDB cluster was listening on at the time of the snapshot.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotType] Optional.
@@ -101,4 +101,3 @@ class ClusterSnapshotState {
     );
   }
 }
-

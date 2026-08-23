@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField {
-  /// The name of the field in the request payload that contains your customer's email.
   final pulumi.Input<String> identifier;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField].
-  /// [identifier] The name of the field in the request payload that contains your customer's email.
+  /// [identifier] Required.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField({
     required this.identifier,
   });
@@ -24,4 +23,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

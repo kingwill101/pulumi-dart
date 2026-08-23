@@ -97,9 +97,9 @@ import 'browser_settings_association_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"chromePolicies": map[string]interface{}{
-/// 				"DefaultDownloadDirectory": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]map[string]string{
+/// 			"chromePolicies": map[string]map[string]string{
+/// 				"DefaultDownloadDirectory": map[string]string{
 /// 					"value": "/home/as2-streaming-user/MyFiles/TemporaryFiles1",
 /// 				},
 /// 			},
@@ -125,6 +125,32 @@ import 'browser_settings_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_workspacesweb_browsersettings" "example" {
+///   browser_policy = jsonencode({
+///     "chromePolicies" = {
+///       "DefaultDownloadDirectory" = {
+///         "value" = "/home/as2-streaming-user/MyFiles/TemporaryFiles1"
+///       }
+///     }
+///   })
+/// }
+/// resource "aws_workspacesweb_browsersettingsassociation" "example" {
+///   browser_settings_arn = aws_workspacesweb_browsersettings.example.browser_settings_arn
+///   portal_arn           = aws_workspacesweb_portal.example.portal_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +164,8 @@ import 'browser_settings_association_state.dart';
 /// import com.pulumi.aws.workspacesweb.BrowserSettingsAssociation;
 /// import com.pulumi.aws.workspacesweb.BrowserSettingsAssociationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

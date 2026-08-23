@@ -5,7 +5,7 @@ import 'cluster_serverless_v2_scaling_configuration.dart';
 
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
-  /// Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engine_version` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
+  /// Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engineVersion` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
   final pulumi.Input<bool>? allowMajorVersionUpgrade;
   /// Whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
   final pulumi.Input<bool>? applyImmediately;
@@ -17,7 +17,7 @@ class ClusterState {
   final pulumi.Input<int>? backupRetentionPeriod;
   /// Cluster identifier. If omitted, Terraform will assign a random, unique identifier.
   final pulumi.Input<String>? clusterIdentifier;
-  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
+  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `clusterIdentifier`.
   final pulumi.Input<String>? clusterIdentifierPrefix;
   /// List of Neptune Instances that are a part of this cluster
   final pulumi.Input<List<String>>? clusterMembers;
@@ -45,11 +45,11 @@ class ClusterState {
   final pulumi.Input<bool>? iamDatabaseAuthenticationEnabled;
   /// List of ARNs for the IAM roles to associate to the Neptune Cluster.
   final pulumi.Input<List<String>>? iamRoles;
-  /// ARN for the KMS encryption key. When specifying `kms_key_arn`, `storage_encrypted` needs to be set to true.
+  /// ARN for the KMS encryption key. When specifying `kmsKeyArn`, `storageEncrypted` needs to be set to true.
   final pulumi.Input<String>? kmsKeyArn;
   /// Cluster parameter group to associate with the cluster.
   final pulumi.Input<String>? neptuneClusterParameterGroupName;
-  /// Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engine_version`.
+  /// Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engineVersion`.
   final pulumi.Input<String>? neptuneInstanceParameterGroupName;
   /// Neptune subnet group to associate with this Neptune instance.
   final pulumi.Input<String>? neptuneSubnetGroupName;
@@ -67,7 +67,7 @@ class ClusterState {
   final pulumi.Input<String>? replicationSourceIdentifier;
   /// If set, create the Neptune cluster as a serverless one. See Serverless for example block attributes.
   final pulumi.Input<ClusterServerlessV2ScalingConfiguration>? serverlessV2ScalingConfiguration;
-  /// Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
+  /// Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
   final pulumi.Input<bool>? skipFinalSnapshot;
   /// Whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a Neptune cluster snapshot, or the ARN when specifying a Neptune snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   final pulumi.Input<String>? snapshotIdentifier;
@@ -75,21 +75,21 @@ class ClusterState {
   final pulumi.Input<bool>? storageEncrypted;
   /// Storage type associated with the cluster `standard/iopt1`. Default: `standard`.
   final pulumi.Input<String>? storageType;
-  /// Map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the Neptune cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// List of VPC security groups to associate with the Cluster
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
 
   /// Creates a new [ClusterState].
-  /// [allowMajorVersionUpgrade] Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engine_version` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
+  /// [allowMajorVersionUpgrade] Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engineVersion` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
   /// [applyImmediately] Whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
   /// [arn] Neptune Cluster ARN
   /// [availabilityZones] List of EC2 Availability Zones that instances in the Neptune cluster can be created in.
   /// [backupRetentionPeriod] Days to retain backups for. Default `1`
   /// [clusterIdentifier] Cluster identifier. If omitted, Terraform will assign a random, unique identifier.
-  /// [clusterIdentifierPrefix] Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
+  /// [clusterIdentifierPrefix] Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `clusterIdentifier`.
   /// [clusterMembers] List of Neptune Instances that are a part of this cluster
   /// [clusterResourceId] Neptune Cluster Resource ID
   /// [copyTagsToSnapshot] If set to true, tags are copied to any snapshot of the DB cluster that is created.
@@ -103,9 +103,9 @@ class ClusterState {
   /// [hostedZoneId] Route53 Hosted Zone ID of the endpoint
   /// [iamDatabaseAuthenticationEnabled] Whether or not mappings of AWS Identity and Access Management (IAM) accounts to database accounts is enabled.
   /// [iamRoles] List of ARNs for the IAM roles to associate to the Neptune Cluster.
-  /// [kmsKeyArn] ARN for the KMS encryption key. When specifying `kms_key_arn`, `storage_encrypted` needs to be set to true.
+  /// [kmsKeyArn] ARN for the KMS encryption key. When specifying `kmsKeyArn`, `storageEncrypted` needs to be set to true.
   /// [neptuneClusterParameterGroupName] Cluster parameter group to associate with the cluster.
-  /// [neptuneInstanceParameterGroupName] Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engine_version`.
+  /// [neptuneInstanceParameterGroupName] Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engineVersion`.
   /// [neptuneSubnetGroupName] Neptune subnet group to associate with this Neptune instance.
   /// [port] Port on which the Neptune accepts connections. Default is `8182`.
   /// [preferredBackupWindow] Daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per regionE.g., 04:00-09:00
@@ -114,12 +114,12 @@ class ClusterState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationSourceIdentifier] ARN of a source Neptune cluster or Neptune instance if this Neptune cluster is to be created as a Read Replica.
   /// [serverlessV2ScalingConfiguration] If set, create the Neptune cluster as a serverless one. See Serverless for example block attributes.
-  /// [skipFinalSnapshot] Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
+  /// [skipFinalSnapshot] Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
   /// [snapshotIdentifier] Whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a Neptune cluster snapshot, or the ARN when specifying a Neptune snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   /// [storageEncrypted] Whether the Neptune cluster is encrypted. The default is `false` if not specified.
   /// [storageType] Storage type associated with the cluster `standard/iopt1`. Default: `standard`.
-  /// [tags] Map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the Neptune cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate with the Cluster
   const ClusterState({
     this.allowMajorVersionUpgrade,
@@ -248,4 +248,3 @@ class ClusterState {
     );
   }
 }
-

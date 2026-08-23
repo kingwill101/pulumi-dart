@@ -5,13 +5,13 @@ import 'proactive_engagement_emergency_contact.dart';
 
 /// Input properties used for looking up and filtering ProactiveEngagement resources.
 class ProactiveEngagementState {
-  /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
+  /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergencyContacts`.
   final pulumi.Input<List<ProactiveEngagementEmergencyContact>>? emergencyContacts;
   /// Boolean value indicating if Proactive Engagement should be enabled or not.
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ProactiveEngagementState].
-  /// [emergencyContacts] One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
+  /// [emergencyContacts] One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergencyContacts`.
   /// [enabled] Boolean value indicating if Proactive Engagement should be enabled or not.
   const ProactiveEngagementState({
     this.emergencyContacts,
@@ -32,4 +32,3 @@ class ProactiveEngagementState {
     );
   }
 }
-

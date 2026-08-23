@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxVolumeNas1Configuration {
-  /// The size of the network attached storage.
+  /// Size of the network attached storage.
   final pulumi.Input<int> size;
-  /// The type of the network attached storage.
+  /// Type of the network attached storage.
   final pulumi.Input<String> type;
 
   /// Creates a new [KxVolumeNas1Configuration].
-  /// [size] The size of the network attached storage.
-  /// [type] The type of the network attached storage.
+  /// [size] Size of the network attached storage.
+  /// [type] Type of the network attached storage.
   const KxVolumeNas1Configuration({
     required this.size,
     required this.type,
@@ -30,4 +30,3 @@ class KxVolumeNas1Configuration {
     );
   }
 }
-

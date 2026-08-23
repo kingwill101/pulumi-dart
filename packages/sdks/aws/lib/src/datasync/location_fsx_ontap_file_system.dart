@@ -104,6 +104,28 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_locationfsxontapfilesystem" "test" {
+///   fsx_filesystem_arn          = testAwsFsxOntapFileSystem.arn
+///   security_group_arns         = [testAwsSecurityGroup.arn]
+///   storage_virtual_machine_arn = testAwsFsxOntapStorageVirtualMachine.arn
+///   protocol = {
+///     nfs = {
+///       mount_options = {
+///         version = "NFS3"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +137,8 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// import com.pulumi.aws.datasync.inputs.LocationFsxOntapFileSystemProtocolArgs;
 /// import com.pulumi.aws.datasync.inputs.LocationFsxOntapFileSystemProtocolNfsArgs;
 /// import com.pulumi.aws.datasync.inputs.LocationFsxOntapFileSystemProtocolNfsMountOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,7 +209,7 @@ class LocationFsxOntapFileSystem extends pulumi.CustomResource {
   late final pulumi.Output<String> storageVirtualMachineArn;
   /// Path to the file share in the SVM where you'll copy your data. You can specify a junction path (also known as a mount point), qtree path (for NFS file shares), or share name (for SMB file shares) (e.g. `/vol1`, `/vol1/tree1`, `share1`).
   late final pulumi.Output<String> subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// URI of the FSx ONTAP file system location

@@ -8,13 +8,13 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
   final pulumi.Input<String> modelArn;
   /// Specifies whether to enable parsing of multimodal data, including both text and images. Valid values: `MULTIMODAL`.
   final pulumi.Input<String>? parsingModality;
-  /// Instructions for interpreting the contents of the document. See `parsing_prompt` block for details.
+  /// Instructions for interpreting the contents of the document. See `parsingPrompt` block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt>? parsingPrompt;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration].
   /// [modelArn] The ARN of the model used to parse documents
   /// [parsingModality] Specifies whether to enable parsing of multimodal data, including both text and images. Valid values: `MULTIMODAL`.
-  /// [parsingPrompt] Instructions for interpreting the contents of the document. See `parsing_prompt` block for details.
+  /// [parsingPrompt] Instructions for interpreting the contents of the document. See `parsingPrompt` block for details.
   const AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration({
     required this.modelArn,
     this.parsingModality,
@@ -37,4 +37,3 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
     );
   }
 }
-

@@ -16,7 +16,7 @@ class IpGroupArgs {
   final pulumi.Input<String>? region;
   /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
   final pulumi.Input<List<IpGroupRule>>? rules;
-  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [IpGroupArgs].
@@ -24,7 +24,7 @@ class IpGroupArgs {
   /// [name] The name of the IP group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-  /// [tags] A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const IpGroupArgs({
     this.description,
     this.name,
@@ -53,4 +53,3 @@ class IpGroupArgs {
     );
   }
 }
-

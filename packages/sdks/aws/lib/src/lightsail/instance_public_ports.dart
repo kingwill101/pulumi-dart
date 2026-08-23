@@ -192,6 +192,44 @@ import 'instance_public_ports_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+///
+/// resource "aws_lightsail_instance" "example" {
+///   name              = "example-instance"
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   blueprint_id      = "amazon_linux_2"
+///   bundle_id         = "nano_3_0"
+/// }
+/// resource "aws_lightsail_instancepublicports" "example" {
+///   instance_name = aws_lightsail_instance.example.name
+///   port_infos {
+///     protocol  = "tcp"
+///     from_port = 80
+///     to_port   = 80
+///   }
+///   port_infos {
+///     protocol  = "tcp"
+///     from_port = 443
+///     to_port   = 443
+///     cidrs     = ["192.168.1.0/24"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,13 +238,14 @@ import 'instance_public_ports_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.lightsail.Instance;
 /// import com.pulumi.aws.lightsail.InstanceArgs;
 /// import com.pulumi.aws.lightsail.InstancePublicPorts;
 /// import com.pulumi.aws.lightsail.InstancePublicPortsArgs;
 /// import com.pulumi.aws.lightsail.inputs.InstancePublicPortsPortInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,7 +328,7 @@ import 'instance_public_ports_state.dart';
 class InstancePublicPorts extends pulumi.CustomResource {
   /// Name of the instance for which to open ports.
   late final pulumi.Output<String> instanceName;
-  /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
+  /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `portInfo` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>> portInfos;

@@ -73,6 +73,22 @@ import 'file_system_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_filesystem" "foo" {
+///   creation_token = "my-product"
+///   tags = {
+///     "Name" = "MyProduct"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +97,8 @@ import 'file_system_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.efs.FileSystem;
 /// import com.pulumi.aws.efs.FileSystemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,6 +200,22 @@ import 'file_system_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_filesystem" "foo_with_lifecyle_policy" {
+///   creation_token = "my-product"
+///   lifecycle_policies {
+///     transition_to_ia = "AFTER_30_DAYS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +225,8 @@ import 'file_system_state.dart';
 /// import com.pulumi.aws.efs.FileSystem;
 /// import com.pulumi.aws.efs.FileSystemArgs;
 /// import com.pulumi.aws.efs.inputs.FileSystemLifecyclePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,7 +285,7 @@ class FileSystem extends pulumi.CustomResource {
   late final pulumi.Output<bool> encrypted;
   /// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
   late final pulumi.Output<String> kmsKeyId;
-  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecycle_policy` block below for details.
+  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecyclePolicy` block below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> lifecyclePolicies;
   /// The value of the file system's `Name` tag.
   late final pulumi.Output<String> name;
@@ -265,17 +297,17 @@ class FileSystem extends pulumi.CustomResource {
   late final pulumi.Output<String> performanceMode;
   /// A file system [protection](https://docs.aws.amazon.com/efs/latest/ug/API_FileSystemProtectionDescription.html) object. See `protection` block below for details.
   late final pulumi.Output<FileSystemProtection> protection;
-  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughput_mode` set to `provisioned`.
+  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughputMode` set to `provisioned`.
   late final pulumi.Output<double?> provisionedThroughputInMibps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The latest known metered size (in bytes) of data stored in the file system, the value is not the exact size that the file system was at any point in time. See Size In Bytes.
   late final pulumi.Output<List<Map<String, dynamic>>> sizeInBytes;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
+  /// Throughput mode for the file system. Defaults to `bursting`, matching the [`CreateFileSystem`](https://docs.aws.amazon.com/efs/latest/ug/API_CreateFileSystem.html) API default. Note that AWS [recommends `elastic` for most use cases](https://docs.aws.amazon.com/efs/latest/ug/managing-throughput.html), and `elastic` is the default in the Amazon EFS console. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisionedThroughputInMibps`.
   late final pulumi.Output<String?> throughputMode;
 
   /// Creates a new [FileSystem].

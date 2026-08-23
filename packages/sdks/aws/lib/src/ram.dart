@@ -20,5 +20,6 @@ export 'ram/resource_share_args.dart';
 export 'ram/resource_share_associations_exclusive.dart';
 export 'ram/resource_share_associations_exclusive_args.dart';
 export 'ram/resource_share_associations_exclusive_state.dart';
+export 'ram/resource_share_resource_share_configuration.dart';
 export 'ram/resource_share_state.dart';
 export 'ram/sharing_with_organization.dart';

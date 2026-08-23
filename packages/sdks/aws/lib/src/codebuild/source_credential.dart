@@ -70,6 +70,21 @@ import 'source_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_sourcecredential" "example" {
+///   auth_type   = "PERSONAL_ACCESS_TOKEN"
+///   server_type = "GITHUB"
+///   token       = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'source_credential_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codebuild.SourceCredential;
 /// import com.pulumi.aws.codebuild.SourceCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,6 +191,22 @@ import 'source_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_sourcecredential" "example" {
+///   auth_type   = "BASIC_AUTH"
+///   server_type = "BITBUCKET"
+///   token       = "example"
+///   user_name   = "test-user"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +215,8 @@ import 'source_credential_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codebuild.SourceCredential;
 /// import com.pulumi.aws.codebuild.SourceCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,6 +311,21 @@ import 'source_credential_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_sourcecredential" "example" {
+///   auth_type   = "CODECONNECTIONS"
+///   server_type = "GITHUB"
+///   token       = "arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -288,8 +334,8 @@ import 'source_credential_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codebuild.SourceCredential;
 /// import com.pulumi.aws.codebuild.SourceCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,7 +393,7 @@ class SourceCredential extends pulumi.CustomResource {
   /// The source provider used for this project.
   late final pulumi.Output<String> serverType;
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
-  /// app password. When using an AWS CodeStar connection (`auth_type = "CODECONNECTIONS")`, this is an AWS CodeStar
+  /// app password. When using an AWS CodeStar connection (`authType = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
   late final pulumi.Output<String> token;
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for

@@ -41,7 +41,7 @@ class BranchArgs {
   final pulumi.Input<String>? region;
   /// Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
   final pulumi.Input<String>? stage;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Content Time To Live (TTL) for the website in seconds.
   final pulumi.Input<String>? ttl;
@@ -64,7 +64,7 @@ class BranchArgs {
   /// [pullRequestEnvironmentName] Amplify environment name for the pull request.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stage] Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [ttl] Content Time To Live (TTL) for the website in seconds.
   const BranchArgs({
     required this.appId,
@@ -136,4 +136,3 @@ class BranchArgs {
     );
   }
 }
-

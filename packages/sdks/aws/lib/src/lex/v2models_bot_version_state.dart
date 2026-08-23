@@ -57,4 +57,3 @@ class V2modelsBotVersionState {
     );
   }
 }
-

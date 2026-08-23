@@ -126,6 +126,30 @@ import 'domain_identity_verification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_domainidentity" "example" {
+///   domain = "example.com"
+/// }
+/// resource "aws_route53_record" "example_amazonses_verification_record" {
+///   zone_id = exampleAwsRoute53Zone.zoneId
+///   name    ="_amazonses.${aws_ses_domainidentity.example.domain}"
+///   type    = "TXT"
+///   ttl     = "600"
+///   records = [aws_ses_domainidentity.example.verification_token]
+/// }
+/// resource "aws_ses_domainidentityverification" "example_verification" {
+///   depends_on = [aws_route53_record.example_amazonses_verification_record]
+///   domain     = aws_ses_domainidentity.example.domain
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +163,8 @@ import 'domain_identity_verification_state.dart';
 /// import com.pulumi.aws.ses.DomainIdentityVerification;
 /// import com.pulumi.aws.ses.DomainIdentityVerificationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

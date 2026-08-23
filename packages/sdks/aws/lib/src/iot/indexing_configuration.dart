@@ -172,6 +172,40 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_indexingconfiguration" "example" {
+///   thing_indexing_configuration = {
+///     thing_indexing_mode              = "REGISTRY_AND_SHADOW"
+///     thing_connectivity_indexing_mode = "STATUS"
+///     device_defender_indexing_mode    = "VIOLATIONS"
+///     named_shadow_indexing_mode       = "ON"
+///     filter = {
+///       named_shadow_names = ["thing1shadow"]
+///     }
+///     custom_fields = [{
+///       "name" = "shadow.desired.power"
+///       "type" = "Boolean"
+///       }, {
+///       "name" = "attributes.version"
+///       "type" = "Number"
+///       }, {
+///       "name" = "shadow.name.thing1shadow.desired.DefaultDesired"
+///       "type" = "String"
+///       }, {
+///       "name" = "deviceDefender.securityProfile1.NUMBER_VALUE_BEHAVIOR.lastViolationValue.number"
+///       "type" = "Number"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +216,9 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// import com.pulumi.aws.iot.IndexingConfigurationArgs;
 /// import com.pulumi.aws.iot.inputs.IndexingConfigurationThingIndexingConfigurationArgs;
 /// import com.pulumi.aws.iot.inputs.IndexingConfigurationThingIndexingConfigurationFilterArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iot.inputs.IndexingConfigurationThingIndexingConfigurationCustomFieldArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

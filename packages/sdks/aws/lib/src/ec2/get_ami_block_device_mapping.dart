@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAmiBlockDeviceMapping {
   /// Physical name of the device.
   final pulumi.Input<String> deviceName;
-  /// Map containing EBS information, if the device is EBS based. Unlike most object attributes, these are accessed directly (e.g., `ebs.volume_size` or `ebs["volume_size"]`) rather than accessed through the first element of a list (e.g., `ebs[0].volume_size`).
+  /// Map containing EBS information, if the device is EBS based. Unlike most object attributes, these are accessed directly (e.g., `ebs.volume_size` or `ebs["volumeSize"]`) rather than accessed through the first element of a list (e.g., `ebs[0].volume_size`). See `ebs` below.
   final pulumi.Input<Map<String, String>> ebs;
   /// Suppresses the specified device included in the block device mapping of the AMI.
   final pulumi.Input<String> noDevice;
@@ -14,7 +14,7 @@ class GetAmiBlockDeviceMapping {
 
   /// Creates a new [GetAmiBlockDeviceMapping].
   /// [deviceName] Physical name of the device.
-  /// [ebs] Map containing EBS information, if the device is EBS based. Unlike most object attributes, these are accessed directly (e.g., `ebs.volume_size` or `ebs["volume_size"]`) rather than accessed through the first element of a list (e.g., `ebs[0].volume_size`).
+  /// [ebs] Map containing EBS information, if the device is EBS based. Unlike most object attributes, these are accessed directly (e.g., `ebs.volume_size` or `ebs["volumeSize"]`) rather than accessed through the first element of a list (e.g., `ebs[0].volume_size`). See `ebs` below.
   /// [noDevice] Suppresses the specified device included in the block device mapping of the AMI.
   /// [virtualName] Virtual device name (for instance stores).
   const GetAmiBlockDeviceMapping({
@@ -42,4 +42,3 @@ class GetAmiBlockDeviceMapping {
     );
   }
 }
-

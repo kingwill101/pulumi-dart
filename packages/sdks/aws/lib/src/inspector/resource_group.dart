@@ -67,6 +67,22 @@ import 'resource_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_inspector_resourcegroup" "example" {
+///   tags = {
+///     "Name" = "foo"
+///     "Env"  = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +91,8 @@ import 'resource_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.inspector.ResourceGroup;
 /// import com.pulumi.aws.inspector.ResourceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

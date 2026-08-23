@@ -7,25 +7,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_service_get_service_args_doc}
 class GetServiceArgs {
-  /// DNS name of the service (_e.g.,_ `rds.us-east-1.amazonaws.com`). One of `dns_name`, `reverse_dns_name`, or `service_id` is required.
+  /// DNS name of the service (_e.g.,_ `rds.us-east-1.amazonaws.com`). One of `dnsName`, `reverseDnsName`, or `serviceId` is required.
   final pulumi.Input<String>? dnsName;
   final pulumi.Input<String>? id;
   /// Region of the service (_e.g.,_ `us-west-2`, `ap-northeast-1`). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Reverse DNS name of the service (_e.g.,_ `com.amazonaws.us-west-2.s3`). One of `dns_name`, `reverse_dns_name`, or `service_id` is required.
+  /// Reverse DNS name of the service (_e.g.,_ `com.amazonaws.us-west-2.s3`). One of `dnsName`, `reverseDnsName`, or `serviceId` is required.
   final pulumi.Input<String>? reverseDnsName;
   /// Prefix of the service (_e.g.,_ `com.amazonaws` in AWS Commercial, `cn.com.amazonaws` in AWS China).
   final pulumi.Input<String>? reverseDnsPrefix;
-  /// Service endpoint ID (_e.g.,_ `s3`, `rds`, `ec2`). One of `dns_name`, `reverse_dns_name`, or `service_id` is required. A service's endpoint ID can be found in the [_AWS General Reference_](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html).
+  /// Service endpoint ID (_e.g.,_ `s3`, `rds`, `ec2`). One of `dnsName`, `reverseDnsName`, or `serviceId` is required. A service's endpoint ID can be found in the [_AWS General Reference_](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html).
   final pulumi.Input<String>? serviceId;
 
   /// Creates a new [GetServiceArgs].
-  /// [dnsName] DNS name of the service (_e.g.,_ `rds.us-east-1.amazonaws.com`). One of `dns_name`, `reverse_dns_name`, or `service_id` is required.
+  /// [dnsName] DNS name of the service (_e.g.,_ `rds.us-east-1.amazonaws.com`). One of `dnsName`, `reverseDnsName`, or `serviceId` is required.
   /// [id] Optional.
   /// [region] Region of the service (_e.g.,_ `us-west-2`, `ap-northeast-1`). Defaults to the Region set in the provider configuration.
-  /// [reverseDnsName] Reverse DNS name of the service (_e.g.,_ `com.amazonaws.us-west-2.s3`). One of `dns_name`, `reverse_dns_name`, or `service_id` is required.
+  /// [reverseDnsName] Reverse DNS name of the service (_e.g.,_ `com.amazonaws.us-west-2.s3`). One of `dnsName`, `reverseDnsName`, or `serviceId` is required.
   /// [reverseDnsPrefix] Prefix of the service (_e.g.,_ `com.amazonaws` in AWS Commercial, `cn.com.amazonaws` in AWS China).
-  /// [serviceId] Service endpoint ID (_e.g.,_ `s3`, `rds`, `ec2`). One of `dns_name`, `reverse_dns_name`, or `service_id` is required. A service's endpoint ID can be found in the [_AWS General Reference_](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html).
+  /// [serviceId] Service endpoint ID (_e.g.,_ `s3`, `rds`, `ec2`). One of `dnsName`, `reverseDnsName`, or `serviceId` is required. A service's endpoint ID can be found in the [_AWS General Reference_](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html).
   const GetServiceArgs({
     this.dnsName,
     this.id,
@@ -57,4 +57,3 @@ class GetServiceArgs {
     );
   }
 }
-

@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_trigger_config_trigger_properties_scheduled.dart';
 
 class FlowTriggerConfigTriggerProperties {
+  /// Configuration details of a schedule-triggered flow. See the `trigger_config.trigger_properties.scheduled` Block for details.
   final pulumi.Input<FlowTriggerConfigTriggerPropertiesScheduled>? scheduled;
 
   /// Creates a new [FlowTriggerConfigTriggerProperties].
-  /// [scheduled] Optional.
+  /// [scheduled] Configuration details of a schedule-triggered flow. See the `trigger_config.trigger_properties.scheduled` Block for details.
   const FlowTriggerConfigTriggerProperties({
     this.scheduled,
   });
@@ -24,4 +25,3 @@ class FlowTriggerConfigTriggerProperties {
     );
   }
 }
-

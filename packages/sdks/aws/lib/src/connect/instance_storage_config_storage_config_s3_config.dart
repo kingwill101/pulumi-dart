@@ -37,4 +37,3 @@ class InstanceStorageConfigStorageConfigS3Config {
     );
   }
 }
-

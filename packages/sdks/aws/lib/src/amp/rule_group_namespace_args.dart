@@ -13,7 +13,7 @@ class RuleGroupNamespaceArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// ID of the prometheus workspace the rule group namespace should be linked to.
   final pulumi.Input<String> workspaceId;
@@ -22,7 +22,7 @@ class RuleGroupNamespaceArgs {
   /// [data] the rule group namespace data that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-Ruler.html).
   /// [name] The name of the rule group namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [workspaceId] ID of the prometheus workspace the rule group namespace should be linked to.
   const RuleGroupNamespaceArgs({
     required this.data,
@@ -52,4 +52,3 @@ class RuleGroupNamespaceArgs {
     );
   }
 }
-

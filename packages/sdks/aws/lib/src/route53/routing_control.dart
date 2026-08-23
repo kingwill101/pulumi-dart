@@ -61,6 +61,20 @@ import 'routing_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53recoverycontrol_routingcontrol" "example" {
+///   name        = "tinlicker"
+///   cluster_arn = "arn:aws:route53-recovery-control::881188118811:cluster/8d47920e-d789-437d-803a-2dcc4b204393"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'routing_control_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53recoverycontrol.RoutingControl;
 /// import com.pulumi.aws.route53recoverycontrol.RoutingControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,6 +173,21 @@ import 'routing_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53recoverycontrol_routingcontrol" "example" {
+///   name              = "thomasoliver"
+///   cluster_arn       = "arn:aws:route53-recovery-control::881188118811:cluster/8d47920e-d789-437d-803a-2dcc4b204393"
+///   control_panel_arn = "arn:aws:route53-recovery-control::428113431245:controlpanel/abd5fbfc052d4844a082dbf400f61da8"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +196,8 @@ import 'routing_control_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53recoverycontrol.RoutingControl;
 /// import com.pulumi.aws.route53recoverycontrol.RoutingControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

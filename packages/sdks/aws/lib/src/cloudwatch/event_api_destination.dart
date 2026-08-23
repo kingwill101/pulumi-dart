@@ -79,6 +79,24 @@ import 'event_api_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventapidestination" "test" {
+///   name                             = "api-destination"
+///   description                      = "An API Destination"
+///   invocation_endpoint              = "https://api.destination.com/endpoint"
+///   http_method                      = "POST"
+///   invocation_rate_limit_per_second = 20
+///   connection_arn                   = testAwsCloudwatchEventConnection.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +105,8 @@ import 'event_api_destination_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.EventApiDestination;
 /// import com.pulumi.aws.cloudwatch.EventApiDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,10 +146,22 @@ import 'event_api_destination_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EventBridge API Destinations using the `name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the API destination.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import API Destinations using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/eventApiDestination:EventApiDestination test api-destination
+/// $ pulumi import aws:cloudwatch/eventApiDestination:EventApiDestination example example-destination
 /// ```
 class EventApiDestination extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the event API Destination.

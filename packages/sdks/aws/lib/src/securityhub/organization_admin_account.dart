@@ -116,6 +116,30 @@ import 'organization_admin_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["securityhub.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_organizationadminaccount" "example" {
+///   depends_on       = [aws_organizations_organization.example]
+///   admin_account_id = "123456789012"
+/// }
+/// # Auto enable security hub in organization member accounts
+/// resource "aws_securityhub_organizationconfiguration" "example" {
+///   auto_enable = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +154,8 @@ import 'organization_admin_account_state.dart';
 /// import com.pulumi.aws.securityhub.OrganizationConfiguration;
 /// import com.pulumi.aws.securityhub.OrganizationConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,7 +218,19 @@ import 'organization_admin_account_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Security Hub Organization Admin Accounts using the AWS account ID. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `adminAccountId` (String) ID of the administrator AWS account.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Security Hub administrator accounts using `adminAccountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:securityhub/organizationAdminAccount:OrganizationAdminAccount example 123456789012

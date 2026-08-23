@@ -146,6 +146,31 @@ import 'log_resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "elasticsearch-log-publishing-policy" {
+///   statements {
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents", "logs:PutLogEventsBatch"]
+///     resources = ["arn:aws:logs:*"]
+///     principals {
+///       identifiers = ["es.amazonaws.com"]
+///       type        = "Service"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logresourcepolicy" "elasticsearch-log-publishing-policy" {
+///   policy_document = data.aws_iam_getpolicydocument.elasticsearch-log-publishing-policy.json
+///   policy_name     = "elasticsearch-log-publishing-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,10 +179,12 @@ import 'log_resource_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicy;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,6 +381,31 @@ import 'log_resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "route53-query-logging-policy" {
+///   statements {
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+///     resources = ["arn:aws:logs:*:*:log-group:/aws/route53/*"]
+///     principals {
+///       identifiers = ["route53.amazonaws.com"]
+///       type        = "Service"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logresourcepolicy" "route53-query-logging-policy" {
+///   policy_document = data.aws_iam_getpolicydocument.route53-query-logging-policy.json
+///   policy_name     = "route53-query-logging-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -362,10 +414,12 @@ import 'log_resource_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicy;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,18 +480,41 @@ import 'log_resource_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch log resource policies using the policy name. For example:
+/// ### Identity Schema
+///
+/// Exactly one of `policyName` or `resourceArn` must be configured.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `policyName` (String) Name of the resource policy.
+/// * `region` (String) Region where this resource is managed.
+/// * `resourceArn` (String) ARN of the resource to which the policy is attached.
+///
+///
+///
+/// Using `pulumi import`, import Resource Policies using `policyName` for account-scoped policies, or `resourceArn` for resource-scoped policies. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/logResourcePolicy:LogResourcePolicy MyPolicy MyPolicy
+/// $ pulumi import aws:cloudwatch/logResourcePolicy:LogResourcePolicy my_policy_account_scoped my_policy
+/// ```
+///
+/// ```sh
+/// $ pulumi import aws:cloudwatch/logResourcePolicy:LogResourcePolicy my_policy_resource_scoped "arn:aws:logs:us-west-2:123456789012:log-group:/my-log-group"
 /// ```
 class LogResourcePolicy extends pulumi.CustomResource {
   /// Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
   late final pulumi.Output<String> policyDocument;
-  /// Name of the resource policy.
-  late final pulumi.Output<String> policyName;
+  /// Name of the resource policy. Exactly one of `policyName` or `resourceArn` must be specified and this argument is required for account-scoped policies. Note that the number of resource policies without `resourceArn` is limited to 10 per region.
+  late final pulumi.Output<String?> policyName;
+  /// Scope of the resource policy (`ACCOUNT` or `RESOURCE`).
+  late final pulumi.Output<String> policyScope;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// ARN of the CloudWatch Logs resource to which the resource policy is attached. Exactly one of `policyName` or `resourceArn` must be specified and this argument is required for resource-scoped policies. Only one policy can be attached per log group resource ARN.
+  late final pulumi.Output<String?> resourceArn;
+  /// Revision ID of the resource policy. Only populated for resource-scoped policies.
+  late final pulumi.Output<String> revisionId;
 
   /// Creates a new [LogResourcePolicy].
   /// [name] The Pulumi resource name.
@@ -454,8 +531,11 @@ class LogResourcePolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
-    policyName = registerOutput<String>('policyName');
+    policyName = registerOutput<String?>('policyName');
+    policyScope = registerOutput<String>('policyScope');
     region = registerOutput<String>('region');
+    resourceArn = registerOutput<String?>('resourceArn');
+    revisionId = registerOutput<String>('revisionId');
   }
 
   /// Gets an existing [LogResourcePolicy] resource's state with the given [name] and [id].
@@ -482,7 +562,10 @@ class LogResourcePolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
-    policyName = registerOutput<String>('policyName');
+    policyName = registerOutput<String?>('policyName');
+    policyScope = registerOutput<String>('policyScope');
     region = registerOutput<String>('region');
+    resourceArn = registerOutput<String?>('resourceArn');
+    revisionId = registerOutput<String>('revisionId');
   }
 }

@@ -4,7 +4,7 @@ import 'ledger_state.dart';
 
 /// Provides an AWS Quantum Ledger Database (QLDB) resource
 ///
-/// &gt; **NOTE:** Deletion protection is enabled by default. To successfully delete this resource via this provider, `deletion_protection = false` must be applied before attempting deletion.
+/// &gt; **NOTE:** Deletion protection is enabled by default. To successfully delete this resource via this provider, `deletionProtection = false` must be applied before attempting deletion.
 ///
 /// ## Example Usage
 ///
@@ -63,6 +63,20 @@ import 'ledger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_qldb_ledger" "sample-ledger" {
+///   name             = "sample-ledger"
+///   permissions_mode = "STANDARD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'ledger_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.qldb.Ledger;
 /// import com.pulumi.aws.qldb.LedgerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,9 +136,9 @@ class Ledger extends pulumi.CustomResource {
   late final pulumi.Output<String> permissionsMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Ledger].

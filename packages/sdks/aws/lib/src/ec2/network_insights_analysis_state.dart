@@ -30,13 +30,13 @@ class NetworkInsightsAnalysisState {
   final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponent>>? returnPathComponents;
   /// The date/time the analysis was started.
   final pulumi.Input<String>? startDate;
-  /// The status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `path_found`.
+  /// The status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
   final pulumi.Input<String>? status;
   /// A message to provide more context when the `status` is `failed`.
   final pulumi.Input<String>? statusMessage;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// If enabled, the resource will wait for the Network Insights Analysis status to change to `succeeded` or `failed`. Setting this to `false` will skip the process. Default: `true`.
   final pulumi.Input<bool>? waitForCompletion;
@@ -54,10 +54,10 @@ class NetworkInsightsAnalysisState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [returnPathComponents] The components in the path from destination to source. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathComponent.html) for details.
   /// [startDate] The date/time the analysis was started.
-  /// [status] The status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `path_found`.
+  /// [status] The status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
   /// [statusMessage] A message to provide more context when the `status` is `failed`.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [waitForCompletion] If enabled, the resource will wait for the Network Insights Analysis status to change to `succeeded` or `failed`. Setting this to `false` will skip the process. Default: `true`.
   /// [warningMessage] The warning message.
   const NetworkInsightsAnalysisState({
@@ -121,4 +121,3 @@ class NetworkInsightsAnalysisState {
     );
   }
 }
-

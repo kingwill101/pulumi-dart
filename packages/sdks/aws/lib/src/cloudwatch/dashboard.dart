@@ -160,7 +160,7 @@ import 'dashboard_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]interface{}{
 /// 			"widgets": []interface{}{
 /// 				map[string]interface{}{
 /// 					"type":   "metric",
@@ -189,7 +189,7 @@ import 'dashboard_state.dart';
 /// 					"y":      7,
 /// 					"width":  3,
 /// 					"height": 3,
-/// 					"properties": map[string]interface{}{
+/// 					"properties": map[string]string{
 /// 						"markdown": "Hello world",
 /// 					},
 /// 				},
@@ -210,6 +210,44 @@ import 'dashboard_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_dashboard" "main" {
+///   dashboard_name = "my-dashboard"
+///   dashboard_body = jsonencode({
+///     "widgets" = [{
+///       "type"   = "metric"
+///       "x"      = 0
+///       "y"      = 0
+///       "width"  = 12
+///       "height" = 6
+///       "properties" = {
+///         "metrics" = [["AWS/EC2", "CPUUtilization", "InstanceId", "i-012345"]]
+///         "period"  = 300
+///         "stat"    = "Average"
+///         "region"  = "us-east-1"
+///         "title"   = "EC2 Instance CPU"
+///       }
+///       }, {
+///       "type"   = "text"
+///       "x"      = 0
+///       "y"      = 7
+///       "width"  = 3
+///       "height" = 3
+///       "properties" = {
+///         "markdown" = "Hello world"
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +257,8 @@ import 'dashboard_state.dart';
 /// import com.pulumi.aws.cloudwatch.Dashboard;
 /// import com.pulumi.aws.cloudwatch.DashboardArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,10 +347,22 @@ import 'dashboard_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch dashboards using the `dashboard_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `dashboardName` (String) Name of the dashboard.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Dashboards using `dashboardName`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/dashboard:Dashboard sample dashboard_name
+/// $ pulumi import aws:cloudwatch/dashboard:Dashboard example example-dashboard
 /// ```
 class Dashboard extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the dashboard.

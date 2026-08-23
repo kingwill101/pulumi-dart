@@ -17,11 +17,11 @@ class SchemaArgs {
   final pulumi.Input<String>? region;
   /// The ARN of the Glue Registry to create the schema in.
   final pulumi.Input<String>? registryArn;
-  /// The schema definition using the `data_format` setting for `schema_name`.
+  /// The schema definition using the `dataFormat` setting for `schemaName`.
   final pulumi.Input<String> schemaDefinition;
   /// The Name of the schema.
   final pulumi.Input<String> schemaName;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [SchemaArgs].
@@ -30,9 +30,9 @@ class SchemaArgs {
   /// [description] A description of the schema.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryArn] The ARN of the Glue Registry to create the schema in.
-  /// [schemaDefinition] The schema definition using the `data_format` setting for `schema_name`.
+  /// [schemaDefinition] The schema definition using the `dataFormat` setting for `schemaName`.
   /// [schemaName] The Name of the schema.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const SchemaArgs({
     required this.compatibility,
     required this.dataFormat,
@@ -70,4 +70,3 @@ class SchemaArgs {
     );
   }
 }
-

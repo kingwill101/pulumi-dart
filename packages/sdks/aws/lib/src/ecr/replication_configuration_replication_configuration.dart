@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_configuration_replication_configuration_rule.dart';
 
 class ReplicationConfigurationReplicationConfiguration {
-  /// The replication rules for a replication configuration. A maximum of 10 are allowed per `replication_configuration`. See Rule
+  /// The replication rules for a replication configuration. A maximum of 10 are allowed per `replicationConfiguration`. See Rule
   final pulumi.Input<List<ReplicationConfigurationReplicationConfigurationRule>> rules;
 
   /// Creates a new [ReplicationConfigurationReplicationConfiguration].
-  /// [rules] The replication rules for a replication configuration. A maximum of 10 are allowed per `replication_configuration`. See Rule
+  /// [rules] The replication rules for a replication configuration. A maximum of 10 are allowed per `replicationConfiguration`. See Rule
   const ReplicationConfigurationReplicationConfiguration({
     required this.rules,
   });
@@ -25,4 +25,3 @@ class ReplicationConfigurationReplicationConfiguration {
     );
   }
 }
-

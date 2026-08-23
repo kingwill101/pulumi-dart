@@ -8,23 +8,23 @@ import 'api_event_config_default_subscribe_auth_mode.dart';
 import 'api_event_config_log_config.dart';
 
 class ApiEventConfig {
-  /// List of authentication providers. See Auth Providers below.
+  /// List of authentication providers. See `event_config.auth_provider` Block below.
   final pulumi.Input<List<ApiEventConfigAuthProvider>> authProviders;
-  /// List of authentication modes for connections. See Auth Modes below.
+  /// List of authentication modes for connections. See `event_config.connection_auth_mode` Block below.
   final pulumi.Input<List<ApiEventConfigConnectionAuthMode>> connectionAuthModes;
-  /// List of default authentication modes for publishing. See Auth Modes below.
+  /// List of default authentication modes for publishing. See `event_config.default_publish_auth_mode` Block below.
   final pulumi.Input<List<ApiEventConfigDefaultPublishAuthMode>> defaultPublishAuthModes;
-  /// List of default authentication modes for subscribing. See Auth Modes below.
+  /// List of default authentication modes for subscribing. See `event_config.default_subscribe_auth_mode` Block below.
   final pulumi.Input<List<ApiEventConfigDefaultSubscribeAuthMode>> defaultSubscribeAuthModes;
-  /// Logging configuration. See Log Config below.
+  /// Logging configuration. See `logConfig` Block below.
   final pulumi.Input<ApiEventConfigLogConfig>? logConfig;
 
   /// Creates a new [ApiEventConfig].
-  /// [authProviders] List of authentication providers. See Auth Providers below.
-  /// [connectionAuthModes] List of authentication modes for connections. See Auth Modes below.
-  /// [defaultPublishAuthModes] List of default authentication modes for publishing. See Auth Modes below.
-  /// [defaultSubscribeAuthModes] List of default authentication modes for subscribing. See Auth Modes below.
-  /// [logConfig] Logging configuration. See Log Config below.
+  /// [authProviders] List of authentication providers. See `event_config.auth_provider` Block below.
+  /// [connectionAuthModes] List of authentication modes for connections. See `event_config.connection_auth_mode` Block below.
+  /// [defaultPublishAuthModes] List of default authentication modes for publishing. See `event_config.default_publish_auth_mode` Block below.
+  /// [defaultSubscribeAuthModes] List of default authentication modes for subscribing. See `event_config.default_subscribe_auth_mode` Block below.
+  /// [logConfig] Logging configuration. See `logConfig` Block below.
   const ApiEventConfig({
     required this.authProviders,
     required this.connectionAuthModes,
@@ -53,4 +53,3 @@ class ApiEventConfig {
     );
   }
 }
-

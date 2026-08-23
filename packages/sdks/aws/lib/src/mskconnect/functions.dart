@@ -60,6 +60,19 @@ import 'get_worker_configuration_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_mskconnect_getconnector" "example" {
+///   name = "example-mskconnector"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_worker_configuration_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mskconnect.MskconnectFunctions;
 /// import com.pulumi.aws.mskconnect.inputs.GetConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,6 +178,19 @@ Future<GetConnectorResult> getConnector(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_mskconnect_getcustomplugin" "example" {
+///   name = "example-debezium-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +199,8 @@ Future<GetConnectorResult> getConnector(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mskconnect.MskconnectFunctions;
 /// import com.pulumi.aws.mskconnect.inputs.GetCustomPluginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,6 +296,19 @@ Future<GetCustomPluginResult> getCustomPlugin(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_mskconnect_getworkerconfiguration" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -278,8 +317,8 @@ Future<GetCustomPluginResult> getCustomPlugin(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mskconnect.MskconnectFunctions;
 /// import com.pulumi.aws.mskconnect.inputs.GetWorkerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -9,7 +9,7 @@ class GetNamespaceResult {
   final String arn;
   /// The name of the first database created in the namespace.
   final String dbName;
-  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `default_iam_role_arn`, it also must be part of `iam_roles`.
+  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
   final String defaultIamRoleArn;
   /// A list of IAM roles to associate with the namespace.
   final List<String> iamRoles;
@@ -28,7 +28,7 @@ class GetNamespaceResult {
   /// [adminUsername] The username of the administrator for the first database created in the namespace.
   /// [arn] Amazon Resource Name (ARN) of the Redshift Serverless Namespace.
   /// [dbName] The name of the first database created in the namespace.
-  /// [defaultIamRoleArn] The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `default_iam_role_arn`, it also must be part of `iam_roles`.
+  /// [defaultIamRoleArn] The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
   /// [iamRoles] A list of IAM roles to associate with the namespace.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [kmsKeyId] The ARN of the Amazon Web Services Key Management Service key used to encrypt your data.
@@ -82,4 +82,3 @@ class GetNamespaceResult {
     );
   }
 }
-

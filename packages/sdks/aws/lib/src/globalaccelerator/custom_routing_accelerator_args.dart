@@ -18,7 +18,7 @@ class CustomRoutingAcceleratorArgs {
   final pulumi.Input<List<String>>? ipAddresses;
   /// The name of a custom routing accelerator.
   final pulumi.Input<String>? name;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [CustomRoutingAcceleratorArgs].
@@ -27,7 +27,7 @@ class CustomRoutingAcceleratorArgs {
   /// [ipAddressType] The IP address type that an accelerator supports. For a custom routing accelerator, the value must be `"IPV4"`.
   /// [ipAddresses] The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   /// [name] The name of a custom routing accelerator.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const CustomRoutingAcceleratorArgs({
     this.attributes,
     this.enabled,
@@ -59,4 +59,3 @@ class CustomRoutingAcceleratorArgs {
     );
   }
 }
-

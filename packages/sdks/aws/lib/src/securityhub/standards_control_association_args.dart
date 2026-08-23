@@ -17,7 +17,7 @@ class StandardsControlAssociationArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> standardsArn;
-  /// The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
+  /// The reason for updating the control's enablement status in the standard. Required when `associationStatus` is `DISABLED`.
   final pulumi.Input<String>? updatedReason;
 
   /// Creates a new [StandardsControlAssociationArgs].
@@ -25,7 +25,7 @@ class StandardsControlAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityControlId] The unique identifier for the security control whose enablement status you want to update.
   /// [standardsArn] The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
-  /// [updatedReason] The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
+  /// [updatedReason] The reason for updating the control's enablement status in the standard. Required when `associationStatus` is `DISABLED`.
   const StandardsControlAssociationArgs({
     required this.associationStatus,
     this.region,
@@ -54,4 +54,3 @@ class StandardsControlAssociationArgs {
     );
   }
 }
-

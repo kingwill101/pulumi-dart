@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replicator_args.dart';
+import 'replicator_log_delivery.dart';
 import 'replicator_replication_info_list.dart';
 import 'replicator_state.dart';
 
@@ -206,7 +207,7 @@ import 'replicator_state.dart';
 /// MskClusterArn: pulumi.Any(source.Arn),
 /// },
 /// VpcConfig: &msk.ReplicatorKafkaClusterVpcConfigArgs{
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,27-48)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,27-48)),
 /// SecurityGroupsIds: pulumi.StringArray{
 /// sourceAwsSecurityGroup.Id,
 /// },
@@ -217,7 +218,7 @@ import 'replicator_state.dart';
 /// MskClusterArn: pulumi.Any(target.Arn),
 /// },
 /// VpcConfig: &msk.ReplicatorKafkaClusterVpcConfigArgs{
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:17,27-48)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:17,27-48)),
 /// SecurityGroupsIds: pulumi.StringArray{
 /// targetAwsSecurityGroup.Id,
 /// },
@@ -257,6 +258,56 @@ import 'replicator_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_msk_replicator" "test" {
+///   replicator_name            = "test-name"
+///   description                = "test-description"
+///   service_execution_role_arn = sourceAwsIamRole.arn
+///   kafka_clusters {
+///     amazon_msk_cluster = {
+///       msk_cluster_arn = source.arn
+///     }
+///     vpc_config = {
+///       subnet_ids          = sourceAwsSubnet[*].id
+///       security_groups_ids = [sourceAwsSecurityGroup.id]
+///     }
+///   }
+///   kafka_clusters {
+///     amazon_msk_cluster = {
+///       msk_cluster_arn = target.arn
+///     }
+///     vpc_config = {
+///       subnet_ids          = targetAwsSubnet[*].id
+///       security_groups_ids = [targetAwsSecurityGroup.id]
+///     }
+///   }
+///   replication_info_list = {
+///     source_kafka_cluster_arn = source.arn
+///     target_kafka_cluster_arn = target.arn
+///     target_compression_type  = "NONE"
+///     topic_replications = [{
+///       "topicNameConfiguration" = {
+///         "type" = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
+///       }
+///       "topicsToReplicates" = [".*"]
+///       "startingPosition" = {
+///         "type" = "LATEST"
+///       }
+///     }]
+///     consumer_group_replications = [{
+///       "consumerGroupsToReplicates" = [".*"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +320,12 @@ import 'replicator_state.dart';
 /// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterAmazonMskClusterArgs;
 /// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterVpcConfigArgs;
 /// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,10 +386,17 @@ import 'replicator_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import MSK replicators using the replicator ARN. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) ARN of the MSK replicator.
+///
+///
+/// Using `pulumi import`, import MSK replicators using `arn`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:msk/replicator:Replicator example arn:aws:kafka:us-west-2:123456789012:configuration/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
+/// $ pulumi import aws:msk/replicator:Replicator example arn:aws:kafka:us-west-2:123456789012:replicator/example-replicator/b3a16098-f408-4995-8e36-482db4f1b46b
 /// ```
 class Replicator extends pulumi.CustomResource {
   /// ARN of the Replicator.
@@ -344,6 +406,8 @@ class Replicator extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// A list of Kafka clusters which are targets of the replicator.
   late final pulumi.Output<List<Map<String, dynamic>>> kafkaClusters;
+  /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
+  late final pulumi.Output<ReplicatorLogDelivery?> logDelivery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
@@ -352,9 +416,9 @@ class Replicator extends pulumi.CustomResource {
   late final pulumi.Output<String> replicatorName;
   /// The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
   late final pulumi.Output<String> serviceExecutionRoleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Replicator].
@@ -375,6 +439,7 @@ class Replicator extends pulumi.CustomResource {
     currentVersion = registerOutput<String>('currentVersion');
     description = registerOutput<String?>('description');
     kafkaClusters = registerOutput<List<Map<String, dynamic>>>('kafkaClusters');
+    logDelivery = registerOutput<ReplicatorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replicationInfoList = registerOutput<ReplicatorReplicationInfoList>('replicationInfoList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorReplicationInfoList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicatorName = registerOutput<String>('replicatorName');
@@ -410,6 +475,7 @@ class Replicator extends pulumi.CustomResource {
     currentVersion = registerOutput<String>('currentVersion');
     description = registerOutput<String?>('description');
     kafkaClusters = registerOutput<List<Map<String, dynamic>>>('kafkaClusters');
+    logDelivery = registerOutput<ReplicatorLogDelivery?>('logDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replicationInfoList = registerOutput<ReplicatorReplicationInfoList>('replicationInfoList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorReplicationInfoList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicatorName = registerOutput<String>('replicatorName');

@@ -7,13 +7,13 @@ class GetListenerRuleActionJwtValidationAdditionalClaim {
   final pulumi.Input<String> format;
   /// Name of the claim to validate.
   final pulumi.Input<String> name;
-  /// Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// Set of source IP addresses in CIDR format for Application Load Balancers
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetListenerRuleActionJwtValidationAdditionalClaim].
   /// [format] Format of the claim value.
   /// [name] Name of the claim to validate.
-  /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
+  /// [values] Set of source IP addresses in CIDR format for Application Load Balancers
   const GetListenerRuleActionJwtValidationAdditionalClaim({
     required this.format,
     required this.name,
@@ -36,4 +36,3 @@ class GetListenerRuleActionJwtValidationAdditionalClaim {
     );
   }
 }
-

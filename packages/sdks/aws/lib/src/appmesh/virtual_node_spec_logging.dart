@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_logging_access_log.dart';
 
 class VirtualNodeSpecLogging {
-  /// Access log configuration for a virtual node.
+  /// Access log configuration for a virtual node. See `spec.logging.access_log` Block for details.
   final pulumi.Input<VirtualNodeSpecLoggingAccessLog>? accessLog;
 
   /// Creates a new [VirtualNodeSpecLogging].
-  /// [accessLog] Access log configuration for a virtual node.
+  /// [accessLog] Access log configuration for a virtual node. See `spec.logging.access_log` Block for details.
   const VirtualNodeSpecLogging({
     this.accessLog,
   });
@@ -25,4 +25,3 @@ class VirtualNodeSpecLogging {
     );
   }
 }
-

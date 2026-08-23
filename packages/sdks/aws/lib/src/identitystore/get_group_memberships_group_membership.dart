@@ -8,14 +8,14 @@ class GetGroupMembershipsGroupMembership {
   final pulumi.Input<String> groupId;
   /// Identity Store ID associated with the Single Sign-On Instance.
   final pulumi.Input<String> identityStoreId;
-  /// An object containing the identifier of a group member. See `member_id` below.
+  /// An object containing the identifier of a group member. See `memberId` below.
   final pulumi.Input<GetGroupMembershipsGroupMembershipMemberId> memberId;
   final pulumi.Input<String> membershipId;
 
   /// Creates a new [GetGroupMembershipsGroupMembership].
   /// [groupId] The identifier for a group in the Identity Store.
   /// [identityStoreId] Identity Store ID associated with the Single Sign-On Instance.
-  /// [memberId] An object containing the identifier of a group member. See `member_id` below.
+  /// [memberId] An object containing the identifier of a group member. See `memberId` below.
   /// [membershipId] Required.
   const GetGroupMembershipsGroupMembership({
     required this.groupId,
@@ -42,4 +42,3 @@ class GetGroupMembershipsGroupMembership {
     );
   }
 }
-

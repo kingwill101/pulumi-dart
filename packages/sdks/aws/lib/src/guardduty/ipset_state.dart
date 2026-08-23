@@ -12,15 +12,17 @@ class IPSetState {
   final pulumi.Input<String>? detectorId;
   /// The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   final pulumi.Input<String>? format;
+  /// ID of the GuardDuty IPSet.
+  final pulumi.Input<String>? ipSetId;
   /// The URI of the file that contains the IPSet.
   final pulumi.Input<String>? location;
   /// The friendly name to identify the IPSet.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [IPSetState].
@@ -28,16 +30,18 @@ class IPSetState {
   /// [arn] Amazon Resource Name (ARN) of the GuardDuty IPSet.
   /// [detectorId] The detector ID of the GuardDuty.
   /// [format] The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
+  /// [ipSetId] ID of the GuardDuty IPSet.
   /// [location] The URI of the file that contains the IPSet.
   /// [name] The friendly name to identify the IPSet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const IPSetState({
     this.activate,
     this.arn,
     this.detectorId,
     this.format,
+    this.ipSetId,
     this.location,
     this.name,
     this.region,
@@ -51,6 +55,7 @@ class IPSetState {
       'arn': ?arn,
       'detectorId': ?detectorId,
       'format': ?format,
+      'ipSetId': ?ipSetId,
       'location': ?location,
       'name': ?name,
       'region': ?region,
@@ -65,6 +70,7 @@ class IPSetState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       detectorId: (() { final guardedValue = map['detectorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipSetId: (() { final guardedValue = map['ipSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -73,4 +79,3 @@ class IPSetState {
     );
   }
 }
-

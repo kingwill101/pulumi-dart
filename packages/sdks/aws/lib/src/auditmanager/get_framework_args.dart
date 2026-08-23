@@ -7,6 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_auditmanager_get_framework_get_framework_args_doc}
 class GetFrameworkArgs {
+  /// Type of framework. Valid values are `Custom` and `Standard`.
   final pulumi.Input<String> frameworkType;
   /// Name of the framework.
   final pulumi.Input<String> name;
@@ -14,7 +15,7 @@ class GetFrameworkArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetFrameworkArgs].
-  /// [frameworkType] Required.
+  /// [frameworkType] Type of framework. Valid values are `Custom` and `Standard`.
   /// [name] Name of the framework.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetFrameworkArgs({
@@ -39,4 +40,3 @@ class GetFrameworkArgs {
     );
   }
 }
-

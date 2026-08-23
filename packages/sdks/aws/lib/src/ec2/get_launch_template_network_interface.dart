@@ -10,6 +10,7 @@ class GetLaunchTemplateNetworkInterface {
   final pulumi.Input<bool>? deleteOnTermination;
   final pulumi.Input<String> description;
   final pulumi.Input<int> deviceIndex;
+  final pulumi.Input<int> enaQueueCount;
   final pulumi.Input<String> interfaceType;
   final pulumi.Input<int> ipv4AddressCount;
   final pulumi.Input<List<String>> ipv4Addresses;
@@ -33,6 +34,7 @@ class GetLaunchTemplateNetworkInterface {
   /// [deleteOnTermination] Optional.
   /// [description] Required.
   /// [deviceIndex] Required.
+  /// [enaQueueCount] Required.
   /// [interfaceType] Required.
   /// [ipv4AddressCount] Required.
   /// [ipv4Addresses] Required.
@@ -55,6 +57,7 @@ class GetLaunchTemplateNetworkInterface {
     this.deleteOnTermination,
     required this.description,
     required this.deviceIndex,
+    required this.enaQueueCount,
     required this.interfaceType,
     required this.ipv4AddressCount,
     required this.ipv4Addresses,
@@ -80,6 +83,7 @@ class GetLaunchTemplateNetworkInterface {
       'deleteOnTermination': ?deleteOnTermination,
       'description': description,
       'deviceIndex': deviceIndex,
+      'enaQueueCount': enaQueueCount,
       'interfaceType': interfaceType,
       'ipv4AddressCount': ipv4AddressCount,
       'ipv4Addresses': ipv4Addresses,
@@ -106,6 +110,7 @@ class GetLaunchTemplateNetworkInterface {
       deleteOnTermination: (() { final guardedValue = map['deleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
       deviceIndex: pulumi.Input.fromValue(map['deviceIndex'] as int),
+      enaQueueCount: pulumi.Input.fromValue(map['enaQueueCount'] as int),
       interfaceType: pulumi.Input.fromValue(map['interfaceType'] as String),
       ipv4AddressCount: pulumi.Input.fromValue(map['ipv4AddressCount'] as int),
       ipv4Addresses: pulumi.Input.fromValue((map['ipv4Addresses'] as List).cast<String>()),
@@ -124,4 +129,3 @@ class GetLaunchTemplateNetworkInterface {
     );
   }
 }
-

@@ -9,7 +9,7 @@ class VoiceConnectorStreamingState {
   final pulumi.Input<int>? dataRetention;
   /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
   final pulumi.Input<bool>? disabled;
-  /// The media insights configuration. See `media_insights_configuration`.
+  /// The media insights configuration. See `mediaInsightsConfiguration`.
   final pulumi.Input<VoiceConnectorStreamingMediaInsightsConfiguration>? mediaInsightsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -21,7 +21,7 @@ class VoiceConnectorStreamingState {
   /// Creates a new [VoiceConnectorStreamingState].
   /// [dataRetention] The retention period, in hours, for the Amazon Kinesis data.
   /// [disabled] When true, media streaming to Amazon Kinesis is turned off. Default: `false`
-  /// [mediaInsightsConfiguration] The media insights configuration. See `media_insights_configuration`.
+  /// [mediaInsightsConfiguration] The media insights configuration. See `mediaInsightsConfiguration`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [streamingNotificationTargets] The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
@@ -56,4 +56,3 @@ class VoiceConnectorStreamingState {
     );
   }
 }
-

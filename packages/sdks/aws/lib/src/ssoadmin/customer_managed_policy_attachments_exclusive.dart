@@ -7,7 +7,7 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///
 /// This resource is designed to manage all customer managed policy attachments for an SSO permission set. Using this resource, Terraform will remove any customer managed policies attached to the permission set that are not defined in the configuration.
 ///
-/// !&gt; **WARNING:** Do not use this resource together with the `aws.ssoadmin.CustomerManagedPolicyAttachment` resource for the same permission set. Doing so will cause a conflict and will lead to customer managed policies being removed.
+/// &gt; **WARNING:** Do not use this resource together with the `aws.ssoadmin.CustomerManagedPolicyAttachment` resource for the same permission set. Doing so will cause a conflict and will lead to customer managed policies being removed.
 ///
 /// &gt; Destruction of this resource means Terraform will no longer manage the customer managed policy attachments, **but will not detach any policies**. The permission set will retain all customer managed policies that were attached at the time of destruction.
 ///
@@ -194,6 +194,43 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_permissionset" "example" {
+///   name         = "Example"
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// resource "aws_iam_policy" "example" {
+///   name        = "TestPolicy"
+///   description = "My test policy"
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["ec2:Describe*"]
+///       "Effect"   = "Allow"
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// resource "aws_ssoadmin_customermanagedpolicyattachmentsexclusive" "example" {
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   customer_managed_policy_references {
+///     name = aws_iam_policy.example.name
+///     path = "/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +247,8 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// import com.pulumi.aws.ssoadmin.CustomerManagedPolicyAttachmentsExclusiveArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReferenceArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,7 +335,7 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///
 /// ### Disallow Customer Managed Policy Attachments
 ///
-/// To disallow all customer managed policy attachments, omit the `customer_managed_policy_reference` block.
+/// To disallow all customer managed policy attachments, omit the `customerManagedPolicyReference` block.
 ///
 /// &gt; Any customer managed policies attached to the permission set will be **removed**.
 ///
@@ -357,6 +394,20 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssoadmin_customermanagedpolicyattachmentsexclusive" "example" {
+///   instance_arn       = exampleAwsSsoadminInstances.arns[0]
+///   permission_set_arn = exampleAwsSsoadminPermissionSet.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +416,8 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.CustomerManagedPolicyAttachmentsExclusive;
 /// import com.pulumi.aws.ssoadmin.CustomerManagedPolicyAttachmentsExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -402,15 +453,16 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 ///
 /// #### Required
 ///
-/// * `instance_arn` (String) ARN of the SSO Instance.
-/// * `permission_set_arn` (String) ARN of the Permission Set.
+/// * `instanceArn` (String) ARN of the SSO Instance.
+/// * `permissionSetArn` (String) ARN of the Permission Set.
 ///
 /// #### Optional
 ///
+/// * `accountId` (String) Account ID where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import SSO Admin Customer Managed Policy Attachments Exclusive using the `instance_arn` and `permission_set_arn` arguments, separated by a comma (`,`). For example:
+/// Using `pulumi import`, import SSO Admin Customer Managed Policy Attachments Exclusive using the `instanceArn` and `permissionSetArn` arguments, separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive example arn:aws:sso:::instance/ssoins-1234567890abcdef,arn:aws:sso:::permissionSet/ssoins-1234567890abcdef/ps-1234567890abcdef

@@ -24,4 +24,3 @@ class S3LocationS3Config {
     );
   }
 }
-

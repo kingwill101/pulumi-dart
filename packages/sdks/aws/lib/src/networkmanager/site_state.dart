@@ -15,9 +15,9 @@ class SiteState {
   final pulumi.Input<String>? globalNetworkId;
   /// Site location. See below.
   final pulumi.Input<SiteLocation>? location;
-  /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Site. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [SiteState].
@@ -25,8 +25,8 @@ class SiteState {
   /// [description] Description of the Site.
   /// [globalNetworkId] ID of the Global Network to create the site in.
   /// [location] Site location. See below.
-  /// [tags] Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the Site. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const SiteState({
     this.arn,
     this.description,
@@ -58,4 +58,3 @@ class SiteState {
     );
   }
 }
-

@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationConnectionTenant {
+  /// Display name of the tenant.
   final pulumi.Input<String> tenantDisplayName;
+  /// ID of the application tenant.
   final pulumi.Input<String> tenantIdentifier;
 
   /// Creates a new [AppAuthorizationConnectionTenant].
-  /// [tenantDisplayName] Required.
-  /// [tenantIdentifier] Required.
+  /// [tenantDisplayName] Display name of the tenant.
+  /// [tenantIdentifier] ID of the application tenant.
   const AppAuthorizationConnectionTenant({
     required this.tenantDisplayName,
     required this.tenantIdentifier,
@@ -28,4 +30,3 @@ class AppAuthorizationConnectionTenant {
     );
   }
 }
-

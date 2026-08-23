@@ -42,4 +42,3 @@ class GetPublicIpv4PoolPoolAddressRange {
     );
   }
 }
-

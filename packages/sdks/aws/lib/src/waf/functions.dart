@@ -64,6 +64,19 @@ import 'get_web_acl_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_waf_getipset" "example" {
+///   name = "tfWAFIPSet"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'get_web_acl_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.waf.WafFunctions;
 /// import com.pulumi.aws.waf.inputs.GetIpsetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +182,19 @@ Future<GetIpsetResult> getIpset(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_waf_getratebasedrule" "example" {
+///   name = "tfWAFRateBasedRule"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +203,8 @@ Future<GetIpsetResult> getIpset(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.waf.WafFunctions;
 /// import com.pulumi.aws.waf.inputs.GetRateBasedRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,6 +300,19 @@ Future<GetRateBasedRuleResult> getRateBasedRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_waf_getrule" "example" {
+///   name = "tfWAFRule"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,8 +321,8 @@ Future<GetRateBasedRuleResult> getRateBasedRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.waf.WafFunctions;
 /// import com.pulumi.aws.waf.inputs.GetRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -454,6 +493,35 @@ Future<GetRuleResult> getRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_waf_getsubscribedrulegroup" "byName" {
+///   name = "F5 Bot Detection Signatures For AWS WAF"
+/// }
+/// data "aws_waf_getsubscribedrulegroup" "byMetricName" {
+///   metric_name = "F5BotDetectionSignatures"
+/// }
+///
+/// resource "aws_waf_webacl" "acl" {
+///   rules {
+///     priority = 1
+///     rule_id  = data.aws_waf_getsubscribedrulegroup.byName.id
+///     type     = "GROUP"
+///   }
+///   rules {
+///     priority = 2
+///     rule_id  = data.aws_waf_getsubscribedrulegroup.byMetricName.id
+///     type     = "GROUP"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -465,8 +533,8 @@ Future<GetRuleResult> getRule(
 /// import com.pulumi.aws.waf.WebAcl;
 /// import com.pulumi.aws.waf.WebAclArgs;
 /// import com.pulumi.aws.waf.inputs.WebAclRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -596,6 +664,19 @@ Future<GetSubscribedRuleGroupResult> getSubscribedRuleGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_waf_getwebacl" "example" {
+///   name = "tfWAFWebACL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -604,8 +685,8 @@ Future<GetSubscribedRuleGroupResult> getSubscribedRuleGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.waf.WafFunctions;
 /// import com.pulumi.aws.waf.inputs.GetWebAclArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

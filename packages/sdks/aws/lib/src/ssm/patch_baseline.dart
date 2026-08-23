@@ -4,7 +4,7 @@ import 'patch_baseline_state.dart';
 
 /// Provides an SSM Patch Baseline resource.
 ///
-/// &gt; **NOTE on Patch Baselines:** The `approved_patches` and `approval_rule` are
+/// &gt; **NOTE on Patch Baselines:** The `approvedPatches` and `approvalRule` are
 /// both marked as optional fields, but the Patch Baseline requires that at least one
 /// of them is specified.
 ///
@@ -12,7 +12,7 @@ import 'patch_baseline_state.dart';
 ///
 /// ### Basic Usage
 ///
-/// Using `approved_patches` only.
+/// Using `approvedPatches` only.
 ///
 ///
 /// ```typescript
@@ -74,6 +74,20 @@ import 'patch_baseline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_patchbaseline" "production" {
+///   name             = "patch-baseline"
+///   approved_patches = ["KB123456"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +96,8 @@ import 'patch_baseline_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.PatchBaseline;
 /// import com.pulumi.aws.ssm.PatchBaselineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -437,6 +451,57 @@ import 'patch_baseline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_patchbaseline" "production" {
+///   name             = "patch-baseline"
+///   description      = "Patch Baseline Description"
+///   approved_patches = ["KB123456", "KB456789"]
+///   rejected_patches = ["KB987654"]
+///   global_filters {
+///     key    = "PRODUCT"
+///     values = ["WindowsServer2008"]
+///   }
+///   global_filters {
+///     key    = "CLASSIFICATION"
+///     values = ["ServicePacks"]
+///   }
+///   global_filters {
+///     key    = "MSRC_SEVERITY"
+///     values = ["Low"]
+///   }
+///   approval_rules {
+///     approve_after_days = 7
+///     compliance_level   = "HIGH"
+///     patch_filters {
+///       key    = "PRODUCT"
+///       values = ["WindowsServer2016"]
+///     }
+///     patch_filters {
+///       key    = "CLASSIFICATION"
+///       values = ["CriticalUpdates", "SecurityUpdates", "Updates"]
+///     }
+///     patch_filters {
+///       key    = "MSRC_SEVERITY"
+///       values = ["Critical", "Important", "Moderate"]
+///     }
+///   }
+///   approval_rules {
+///     approve_after_days = 7
+///     patch_filters {
+///       key    = "PRODUCT"
+///       values = ["WindowsServer2012"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -447,8 +512,9 @@ import 'patch_baseline_state.dart';
 /// import com.pulumi.aws.ssm.PatchBaselineArgs;
 /// import com.pulumi.aws.ssm.inputs.PatchBaselineGlobalFilterArgs;
 /// import com.pulumi.aws.ssm.inputs.PatchBaselineApprovalRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssm.inputs.PatchBaselineApprovalRulePatchFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -789,6 +855,43 @@ import 'patch_baseline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_patchbaseline" "windows_os_apps" {
+///   name             = "WindowsOSAndMicrosoftApps"
+///   description      = "Patch both Windows and Microsoft apps"
+///   operating_system = "WINDOWS"
+///   approval_rules {
+///     approve_after_days = 7
+///     patch_filters {
+///       key    = "CLASSIFICATION"
+///       values = ["CriticalUpdates", "SecurityUpdates"]
+///     }
+///     patch_filters {
+///       key    = "MSRC_SEVERITY"
+///       values = ["Critical", "Important"]
+///     }
+///   }
+///   approval_rules {
+///     approve_after_days = 7
+///     patch_filters {
+///       key    = "PATCH_SET"
+///       values = ["APPLICATION"]
+///     }
+///     patch_filters {
+///       key    = "PRODUCT"
+///       values = ["Office 2013", "Office 2016"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -798,8 +901,9 @@ import 'patch_baseline_state.dart';
 /// import com.pulumi.aws.ssm.PatchBaseline;
 /// import com.pulumi.aws.ssm.PatchBaselineArgs;
 /// import com.pulumi.aws.ssm.inputs.PatchBaselineApprovalRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssm.inputs.PatchBaselineApprovalRulePatchFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1040,6 +1144,28 @@ import 'patch_baseline_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_patchbaseline" "al_2017_09" {
+///   approval_rules {
+///   }
+///   name             = "Amazon-Linux-2017.09"
+///   description      = "My patch repository for Amazon Linux 2017.09"
+///   operating_system = "AMAZON_LINUX"
+///   sources {
+///     name          = "My-AL2017.09"
+///     products      = ["AmazonLinux2017.09"]
+///     configuration = "[amzn-main]\nname=amzn-main-Base\nmirrorlist=http://repo./$awsregion./$awsdomain//$releasever/main/mirror.list\nmirrorlist_expire=300\nmetadata_expire=300\npriority=10\nfailovermethod=priority\nfastestmirror_enabled=0\ngpgcheck=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-ga\nenabled=1\nretries=3\ntimeout=5\nreport_instanceid=yes\n"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1050,8 +1176,8 @@ import 'patch_baseline_state.dart';
 /// import com.pulumi.aws.ssm.PatchBaselineArgs;
 /// import com.pulumi.aws.ssm.inputs.PatchBaselineApprovalRuleArgs;
 /// import com.pulumi.aws.ssm.inputs.PatchBaselineSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1137,7 +1263,7 @@ import 'patch_baseline_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -1147,9 +1273,9 @@ import 'patch_baseline_state.dart';
 /// $ pulumi import aws:ssm/patchBaseline:PatchBaseline example pb-12345678
 /// ```
 class PatchBaseline extends pulumi.CustomResource {
-  /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approval_rule` below.
+  /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approvalRule` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> approvalRules;
-  /// List of explicitly approved patches for the baseline. Cannot be specified with `approval_rule`.
+  /// List of explicitly approved patches for the baseline. Cannot be specified with `approvalRule`.
   late final pulumi.Output<List<String>?> approvedPatches;
   /// Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
   late final pulumi.Output<String?> approvedPatchesComplianceLevel;
@@ -1175,13 +1301,13 @@ class PatchBaseline extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// List of rejected patches.
   late final pulumi.Output<List<String>?> rejectedPatches;
-  /// Action for Patch Manager to take on patches included in the `rejected_patches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
+  /// Action for Patch Manager to take on patches included in the `rejectedPatches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
   late final pulumi.Output<String> rejectedPatchesAction;
   /// Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [PatchBaseline].

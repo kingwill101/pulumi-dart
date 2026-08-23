@@ -112,7 +112,7 @@ import 'protection_state.dart';
 /// 		}
 /// 		_, err = shield.NewProtection(ctx, "example", &shield.ProtectionArgs{
 /// 			Name: pulumi.String("example"),
-/// 			ResourceArn: example.ID().ApplyT(func(id string) (string, error) {
+/// 			ResourceArn: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("arn:aws:ec2:%v:%v:eip-allocation/%v", current.Region, currentGetCallerIdentity.AccountId, id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			Tags: pulumi.StringMap{
@@ -124,6 +124,33 @@ import 'protection_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+/// }
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+///
+/// resource "aws_ec2_eip" "example" {
+///   domain = "vpc"
+/// }
+/// resource "aws_shield_protection" "example" {
+///   name         = "example"
+///   resource_arn ="arn:aws:ec2:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"
+///   tags = {
+///     "Environment" = "Dev"
+///   }
 /// }
 /// ```
 /// ```java
@@ -140,8 +167,8 @@ import 'protection_state.dart';
 /// import com.pulumi.aws.ec2.EipArgs;
 /// import com.pulumi.aws.shield.Protection;
 /// import com.pulumi.aws.shield.ProtectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,9 +246,9 @@ class Protection extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The ARN (Amazon Resource Name) of the resource to be protected.
   late final pulumi.Output<String> resourceArn;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Protection].

@@ -57,6 +57,19 @@ import 'data_protection_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
+///   display_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'data_protection_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettings;
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,6 +230,32 @@ import 'data_protection_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
+///   display_name = "example"
+///   description  = "Example data protection settings"
+///   inline_redaction_configuration = {
+///     global_confidence_level = 2
+///     global_enforced_urls    = ["https://example.com"]
+///     inline_redaction_patterns = [{
+///       "builtInPatternId" = "ssn"
+///       "confidenceLevel"  = 3
+///       "redactionPlaceHolders" = [{
+///         "redactionPlaceHolderType" = "CustomText"
+///         "redactionPlaceHolderText" = "REDACTED"
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +265,10 @@ import 'data_protection_settings_state.dart';
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettings;
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.DataProtectionSettingsInlineRedactionConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.workspacesweb.inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs;
+/// import com.pulumi.aws.workspacesweb.inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -548,6 +589,57 @@ import 'data_protection_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "KMS key for WorkSpaces Web Data Protection Settings"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_workspacesweb_dataprotectionsettings" "example" {
+///   display_name         = "example-complete"
+///   description          = "Complete example data protection settings"
+///   customer_managed_key = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
+///   }
+///   inline_redaction_configuration = {
+///     global_confidence_level = 2
+///     global_enforced_urls    = ["https://example.com", "https://test.example.com"]
+///     global_exempt_urls      = ["https://exempt.example.com"]
+///     inline_redaction_patterns = [{
+///       "builtInPatternId" = "ssn"
+///       "confidenceLevel"  = 3
+///       "enforcedUrls"     = ["https://pattern1.example.com"]
+///       "exemptUrls"       = ["https://exempt-pattern1.example.com"]
+///       "redactionPlaceHolders" = [{
+///         "redactionPlaceHolderType" = "CustomText"
+///         "redactionPlaceHolderText" = "REDACTED-SSN"
+///       }]
+///       }, {
+///       "customPattern" = {
+///         "patternName"        = "CustomPattern"
+///         "patternRegex"       = "/\\d{3}-\\d{2}-\\d{4}/g"
+///         "keywordRegex"       = "/SSN|Social Security/gi"
+///         "patternDescription" = "Custom SSN pattern"
+///       }
+///       "redactionPlaceHolders" = [{
+///         "redactionPlaceHolderType" = "CustomText"
+///         "redactionPlaceHolderText" = "REDACTED-CUSTOM"
+///       }]
+///     }]
+///   }
+///   tags = {
+///     "Name" = "example-data-protection-settings"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -559,8 +651,11 @@ import 'data_protection_settings_state.dart';
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettings;
 /// import com.pulumi.aws.workspacesweb.DataProtectionSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.DataProtectionSettingsInlineRedactionConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.workspacesweb.inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs;
+/// import com.pulumi.aws.workspacesweb.inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs;
+/// import com.pulumi.aws.workspacesweb.inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPatternArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -666,7 +761,7 @@ import 'data_protection_settings_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WorkSpaces Web Data Protection Settings using the `data_protection_settings_arn`. For example:
+/// Using `pulumi import`, import WorkSpaces Web Data Protection Settings using the `dataProtectionSettingsArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspacesweb/dataProtectionSettings:DataProtectionSettings example arn:aws:workspaces-web:us-west-2:123456789012:dataprotectionsettings/abcdef12345
@@ -690,9 +785,9 @@ class DataProtectionSettings extends pulumi.CustomResource {
   late final pulumi.Output<DataProtectionSettingsInlineRedactionConfiguration?> inlineRedactionConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DataProtectionSettings].

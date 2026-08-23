@@ -20,9 +20,9 @@ class ConnectionState {
   final pulumi.Input<String>? globalNetworkId;
   /// ID of the link for the first device.
   final pulumi.Input<String>? linkId;
-  /// Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ConnectionState].
@@ -33,8 +33,8 @@ class ConnectionState {
   /// [deviceId] ID of the first device in the connection.
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link for the first device.
-  /// [tags] Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ConnectionState({
     this.arn,
     this.connectedDeviceId,
@@ -75,4 +75,3 @@ class ConnectionState {
     );
   }
 }
-

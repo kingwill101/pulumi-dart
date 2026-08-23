@@ -22,6 +22,7 @@ class GetLoadBalancerResult {
   final bool enableCrossZoneLoadBalancing;
   final bool enableDeletionProtection;
   final bool enableHttp2;
+  final String enablePrefixForIpv6SourceNat;
   final bool enableTlsVersionAndCipherSuiteHeaders;
   final bool enableWafFailOpen;
   final bool enableXffClientPort;
@@ -61,6 +62,7 @@ class GetLoadBalancerResult {
   /// [enableCrossZoneLoadBalancing] Required.
   /// [enableDeletionProtection] Required.
   /// [enableHttp2] Required.
+  /// [enablePrefixForIpv6SourceNat] Required.
   /// [enableTlsVersionAndCipherSuiteHeaders] Required.
   /// [enableWafFailOpen] Required.
   /// [enableXffClientPort] Required.
@@ -98,6 +100,7 @@ class GetLoadBalancerResult {
     required this.enableCrossZoneLoadBalancing,
     required this.enableDeletionProtection,
     required this.enableHttp2,
+    required this.enablePrefixForIpv6SourceNat,
     required this.enableTlsVersionAndCipherSuiteHeaders,
     required this.enableWafFailOpen,
     required this.enableXffClientPort,
@@ -138,6 +141,7 @@ class GetLoadBalancerResult {
       'enableCrossZoneLoadBalancing': enableCrossZoneLoadBalancing,
       'enableDeletionProtection': enableDeletionProtection,
       'enableHttp2': enableHttp2,
+      'enablePrefixForIpv6SourceNat': enablePrefixForIpv6SourceNat,
       'enableTlsVersionAndCipherSuiteHeaders': enableTlsVersionAndCipherSuiteHeaders,
       'enableWafFailOpen': enableWafFailOpen,
       'enableXffClientPort': enableXffClientPort,
@@ -179,6 +183,7 @@ class GetLoadBalancerResult {
       enableCrossZoneLoadBalancing: map['enableCrossZoneLoadBalancing'] as bool,
       enableDeletionProtection: map['enableDeletionProtection'] as bool,
       enableHttp2: map['enableHttp2'] as bool,
+      enablePrefixForIpv6SourceNat: map['enablePrefixForIpv6SourceNat'] as String,
       enableTlsVersionAndCipherSuiteHeaders: map['enableTlsVersionAndCipherSuiteHeaders'] as bool,
       enableWafFailOpen: map['enableWafFailOpen'] as bool,
       enableXffClientPort: map['enableXffClientPort'] as bool,
@@ -205,4 +210,3 @@ class GetLoadBalancerResult {
     );
   }
 }
-

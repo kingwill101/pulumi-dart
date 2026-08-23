@@ -24,4 +24,3 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchJa3Fingerprint {
     );
   }
 }
-

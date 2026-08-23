@@ -21,7 +21,9 @@ class VpcDhcpOptionsArgs {
   final pulumi.Input<List<String>>? ntpServers;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  ///
+  /// &gt; **Note:** All arguments are optional but at least one must be specified. `domainNameServers`, `netbiosNameServers`, and `ntpServers` are limited to four servers each. To use the DHCP Options Set you must associate it to a VPC using `aws.ec2.VpcDhcpOptionsAssociation`. If you delete a DHCP Options Set, all VPCs using it will be associated to AWS's `default` DHCP Option Set. In most cases, set `domainNameServers` to `AmazonProvidedDNS` unless configuring your own DNS.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VpcDhcpOptionsArgs].
@@ -32,7 +34,7 @@ class VpcDhcpOptionsArgs {
   /// [netbiosNodeType] The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
   /// [ntpServers] List of NTP servers to configure.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const VpcDhcpOptionsArgs({
     this.domainName,
     this.domainNameServers,
@@ -70,4 +72,3 @@ class VpcDhcpOptionsArgs {
     );
   }
 }
-

@@ -22,7 +22,7 @@ class EfsLocationArgs {
   final pulumi.Input<String>? region;
   /// Subdirectory to perform actions as source or destination. Default `/`.
   final pulumi.Input<String>? subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [EfsLocationArgs].
@@ -33,7 +33,7 @@ class EfsLocationArgs {
   /// [inTransitEncryption] Specifies whether you want DataSync to use TLS encryption when transferring data to or from your Amazon EFS file system. Valid values are `NONE` and `TLS1_2`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subdirectory] Subdirectory to perform actions as source or destination. Default `/`.
-  /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const EfsLocationArgs({
     this.accessPointArn,
     required this.ec2Config,
@@ -71,4 +71,3 @@ class EfsLocationArgs {
     );
   }
 }
-

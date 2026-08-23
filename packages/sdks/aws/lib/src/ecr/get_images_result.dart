@@ -5,8 +5,6 @@ import 'get_images_image_id.dart';
 
 /// Result data returned by getImages.
 class GetImagesResult {
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// List of image objects containing image digest and tags. Each object has the following attributes:
   final List<GetImagesImageId> imageIds;
   final String region;
@@ -14,13 +12,11 @@ class GetImagesResult {
   final String repositoryName;
 
   /// Creates a new [GetImagesResult].
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [imageIds] List of image objects containing image digest and tags. Each object has the following attributes:
   /// [region] Required.
   /// [registryId] Optional.
   /// [repositoryName] Required.
   const GetImagesResult({
-    required this.id,
     required this.imageIds,
     required this.region,
     this.registryId,
@@ -29,7 +25,6 @@ class GetImagesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
       'imageIds': pulumi.Input.encodeList<GetImagesImageId, Map<String, dynamic>>(imageIds, (value) => value.toMap()),
       'region': region,
       'registryId': ?registryId,
@@ -39,7 +34,6 @@ class GetImagesResult {
 
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
-      id: map['id'] as String,
       imageIds: pulumi.Input.decodeList<GetImagesImageId>(map['imageIds']!, (value) => GetImagesImageId.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       registryId: (() { final guardedValue = map['registryId']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -47,4 +41,3 @@ class GetImagesResult {
     );
   }
 }
-

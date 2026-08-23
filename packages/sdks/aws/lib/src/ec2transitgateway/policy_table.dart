@@ -70,6 +70,22 @@ import 'policy_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_policytable" "example" {
+///   transit_gateway_id = exampleAwsEc2TransitGateway.id
+///   tags = {
+///     "Name" = "Example Policy Table"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +94,8 @@ import 'policy_table_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.PolicyTable;
 /// import com.pulumi.aws.ec2transitgateway.PolicyTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,9 +140,9 @@ class PolicyTable extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The state of the EC2 Transit Gateway Policy Table.
   late final pulumi.Output<String> state;
-  /// Key-value tags for the EC2 Transit Gateway Policy Table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Policy Table. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// EC2 Transit Gateway identifier.
   late final pulumi.Output<String> transitGatewayId;

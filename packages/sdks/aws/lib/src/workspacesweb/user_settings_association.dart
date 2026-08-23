@@ -108,6 +108,30 @@ import 'user_settings_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_workspacesweb_usersettings" "example" {
+///   copy_allowed     = "Enabled"
+///   download_allowed = "Enabled"
+///   paste_allowed    = "Enabled"
+///   print_allowed    = "Enabled"
+///   upload_allowed   = "Enabled"
+/// }
+/// resource "aws_workspacesweb_usersettingsassociation" "example" {
+///   user_settings_arn = aws_workspacesweb_usersettings.example.user_settings_arn
+///   portal_arn        = aws_workspacesweb_portal.example.portal_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +144,8 @@ import 'user_settings_association_state.dart';
 /// import com.pulumi.aws.workspacesweb.UserSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.UserSettingsAssociation;
 /// import com.pulumi.aws.workspacesweb.UserSettingsAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -410,14 +410,14 @@ import 'flow_trigger_config.dart';
 /// 			return err
 /// 		}
 /// 		exampleSourceBucketPolicy, err := s3.NewBucketPolicy(ctx, "example_source", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleSourceBucket.ID(),
+/// 			Bucket: exampleSourceBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(exampleSource.Json),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleSourceBucket.ID(),
+/// 			Bucket: exampleSourceBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("example_source.csv"),
 /// 			Source: pulumi.NewFileAsset("example_source.csv"),
 /// 		})
@@ -462,7 +462,7 @@ import 'flow_trigger_config.dart';
 /// 			return err
 /// 		}
 /// 		exampleDestinationBucketPolicy, err := s3.NewBucketPolicy(ctx, "example_destination", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleDestinationBucket.ID(),
+/// 			Bucket: exampleDestinationBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(exampleDestination.Json),
 /// 		})
 /// 		if err != nil {
@@ -519,6 +519,96 @@ import 'flow_trigger_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "exampleSource" {
+///   statements {
+///     sid    = "AllowAppFlowSourceActions"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["appflow.amazonaws.com"]
+///     }
+///     actions   = ["s3:ListBucket", "s3:GetObject"]
+///     resources = ["arn:aws:s3:::example-source", "arn:aws:s3:::example-source/*"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "exampleDestination" {
+///   statements {
+///     sid    = "AllowAppFlowDestinationActions"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["appflow.amazonaws.com"]
+///     }
+///     actions   = ["s3:PutObject", "s3:AbortMultipartUpload", "s3:ListMultipartUploadParts", "s3:ListBucketMultipartUploads", "s3:GetBucketAcl", "s3:PutObjectAcl"]
+///     resources = ["arn:aws:s3:::example-destination", "arn:aws:s3:::example-destination/*"]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example_source" {
+///   bucket = "example-source"
+/// }
+/// resource "aws_s3_bucketpolicy" "example_source" {
+///   bucket = aws_s3_bucket.example_source.id
+///   policy = data.aws_iam_getpolicydocument.exampleSource.json
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket = aws_s3_bucket.example_source.id
+///   key    = "example_source.csv"
+///   source = fileAsset("example_source.csv")
+/// }
+/// resource "aws_s3_bucket" "example_destination" {
+///   bucket = "example-destination"
+/// }
+/// resource "aws_s3_bucketpolicy" "example_destination" {
+///   bucket = aws_s3_bucket.example_destination.id
+///   policy = data.aws_iam_getpolicydocument.exampleDestination.json
+/// }
+/// resource "aws_appflow_flow" "example" {
+///   name = "example"
+///   source_flow_config = {
+///     connector_type = "S3"
+///     source_connector_properties = {
+///       s3 = {
+///         bucket_name   = aws_s3_bucketpolicy.example_source.bucket
+///         bucket_prefix = "example"
+///       }
+///     }
+///   }
+///   destination_flow_configs {
+///     connector_type = "S3"
+///     destination_connector_properties = {
+///       s3 = {
+///         bucket_name = aws_s3_bucketpolicy.example_destination.bucket
+///         s3_output_format_config = {
+///           prefix_config = {
+///             prefix_type = "PATH"
+///           }
+///         }
+///       }
+///     }
+///   }
+///   tasks {
+///     source_fields     = ["exampleField"]
+///     destination_field = "exampleField"
+///     task_type         = "Map"
+///     connector_operators {
+///       s3 = "NO_OP"
+///     }
+///   }
+///   trigger_config = {
+///     trigger_type = "OnDemand"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -529,6 +619,8 @@ import 'flow_trigger_config.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.s3.BucketObjectv2;
@@ -544,10 +636,11 @@ import 'flow_trigger_config.dart';
 /// import com.pulumi.aws.appflow.inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfigArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowTaskArgs;
+/// import com.pulumi.aws.appflow.inputs.FlowTaskConnectorOperatorArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowTriggerConfigArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,7 +773,7 @@ import 'flow_trigger_config.dart';
 ///       bucket: ${exampleSourceBucket.id}
 ///       key: example_source.csv
 ///       source:
-///         fn::FileAsset: example_source.csv
+///         fn::fileAsset: example_source.csv
 ///   exampleDestinationBucket:
 ///     type: aws:s3:Bucket
 ///     name: example_destination
@@ -772,7 +865,7 @@ import 'flow_trigger_config.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -784,29 +877,29 @@ import 'flow_trigger_config.dart';
 class Flow extends pulumi.CustomResource {
   /// Flow's ARN.
   late final pulumi.Output<String> arn;
-  /// Description of the flow you want to create.
+  /// Description of the flow.
   late final pulumi.Output<String?> description;
-  /// A Destination Flow Config that controls how Amazon AppFlow places data in the destination connector.
+  /// Configuration that controls how Amazon AppFlow places data in the destination connector. See the `destinationFlowConfig` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>> destinationFlowConfigs;
-  /// The current status of the flow.
+  /// Current status of the flow.
   late final pulumi.Output<String> flowStatus;
-  /// ARN (Amazon Resource Name) of the Key Management Service (KMS) key you provide for encryption. This is required if you do not want to use the Amazon AppFlow-managed KMS key. If you don't provide anything here, Amazon AppFlow uses the Amazon AppFlow-managed KMS key.
+  /// ARN of the Key Management Service (KMS) key you provide for encryption. Required if you do not want to use the Amazon AppFlow-managed KMS key. Uses the Amazon AppFlow-managed KMS key when not provided.
   late final pulumi.Output<String> kmsArn;
-  /// A Catalog that determines the configuration that Amazon AppFlow uses when it catalogs the data that’s transferred by the associated flow. When Amazon AppFlow catalogs the data from a flow, it stores metadata in a data catalog.
+  /// Configuration that determines how Amazon AppFlow catalogs the data that the flow transfers. See the `metadataCatalogConfig` Block for details.
   late final pulumi.Output<FlowMetadataCatalogConfig> metadataCatalogConfig;
   /// Name of the flow.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Source Flow Config that controls how Amazon AppFlow retrieves data from the source connector.
+  /// Configuration that controls how Amazon AppFlow retrieves data from the source connector. See the `sourceFlowConfig` Block for details.
   late final pulumi.Output<FlowSourceFlowConfig> sourceFlowConfig;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// A Task that Amazon AppFlow performs while transferring the data in the flow run.
+  /// Tasks that Amazon AppFlow performs while transferring the data in the flow run. See the `task` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>> tasks;
-  /// A Trigger that determine how and when the flow runs.
+  /// Configuration that determines how and when the flow runs. See the `triggerConfig` Block for details.
   late final pulumi.Output<FlowTriggerConfig> triggerConfig;
 
   /// Creates a new [Flow].

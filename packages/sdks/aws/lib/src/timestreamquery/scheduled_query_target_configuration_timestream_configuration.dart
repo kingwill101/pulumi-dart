@@ -14,7 +14,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
   final pulumi.Input<String>? measureNameColumn;
   /// Configuration block for how to map measures to multi-measure records. See below.
   final pulumi.Input<List<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping>>? mixedMeasureMappings;
-  /// Configuration block for multi-measure mappings. Only one of `mixed_measure_mappings` or `multi_measure_mappings` can be provided. `multi_measure_mappings` can be used to ingest data as multi measures in the derived table. See below.
+  /// Configuration block for multi-measure mappings. Only one of `mixedMeasureMappings` or `multiMeasureMappings` can be provided. `multiMeasureMappings` can be used to ingest data as multi measures in the derived table. See below.
   final pulumi.Input<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings>? multiMeasureMappings;
   /// Name of Timestream table that the query result will be written to. The table should be within the same database that is provided in Timestream configuration.
   final pulumi.Input<String> tableName;
@@ -26,7 +26,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
   /// [dimensionMappings] Configuration block for mapping of column(s) from the query result to the dimension in the destination table. See below.
   /// [measureNameColumn] Name of the measure column.
   /// [mixedMeasureMappings] Configuration block for how to map measures to multi-measure records. See below.
-  /// [multiMeasureMappings] Configuration block for multi-measure mappings. Only one of `mixed_measure_mappings` or `multi_measure_mappings` can be provided. `multi_measure_mappings` can be used to ingest data as multi measures in the derived table. See below.
+  /// [multiMeasureMappings] Configuration block for multi-measure mappings. Only one of `mixedMeasureMappings` or `multiMeasureMappings` can be provided. `multiMeasureMappings` can be used to ingest data as multi measures in the derived table. See below.
   /// [tableName] Name of Timestream table that the query result will be written to. The table should be within the same database that is provided in Timestream configuration.
   /// [timeColumn] Column from query result that should be used as the time column in destination table. Column type for this should be TIMESTAMP.
   const ScheduledQueryTargetConfigurationTimestreamConfiguration({
@@ -63,4 +63,3 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
     );
   }
 }
-

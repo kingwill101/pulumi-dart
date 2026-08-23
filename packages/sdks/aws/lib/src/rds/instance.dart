@@ -10,15 +10,15 @@ import 'instance_state.dart';
 /// databases.
 ///
 /// Changes to a DB instance can occur when you manually change a parameter, such as
-/// `allocated_storage`, and are reflected in the next maintenance window. Because
+/// `allocatedStorage`, and are reflected in the next maintenance window. Because
 /// of this, this provider may report a difference in its planning phase because a
-/// modification has not yet taken place. You can use the `apply_immediately` flag
+/// modification has not yet taken place. You can use the `applyImmediately` flag
 /// to instruct the service to apply the change immediately (see documentation
 /// below).
 ///
-/// When upgrading the major version of an engine, `allow_major_version_upgrade` must be set to `true`.
+/// When upgrading the major version of an engine, `allowMajorVersionUpgrade` must be set to `true`.
 ///
-/// &gt; **Note:** using `apply_immediately` can result in a brief downtime as the server reboots.
+/// &gt; **Note:** using `applyImmediately` can result in a brief downtime as the server reboots.
 /// See the AWS Docs on [RDS Instance Maintenance][instance-maintenance] for more information.
 ///
 /// &gt; **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
@@ -27,23 +27,9 @@ import 'instance_state.dart';
 ///
 ///
 ///
-/// ## RDS Instance Class Types
+/// Amazon RDS supports instance classes for General-purpose, Memory-optimized, Burstable Performance, and Optimized-reads use cases. For more information see [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html).
 ///
-/// Amazon RDS supports instance classes for the following use cases: General-purpose, Memory-optimized, Burstable Performance, and Optimized-reads.
-/// For more information please read the AWS RDS documentation about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-///
-/// ## Low-Downtime Updates
-///
-/// By default, RDS applies updates to DB Instances in-place, which can lead to service interruptions.
-/// Low-downtime updates minimize service interruptions by performing the updates with an [RDS Blue/Green deployment][blue-green] and switching over the instances when complete.
-///
-/// Low-downtime updates are only available for DB Instances using MySQL, MariaDB and PostgreSQL,
-/// as other engines are not supported by RDS Blue/Green deployments.
-/// They cannot be used with DB Instances with replicas.
-///
-/// Backups must be enabled to use low-downtime updates.
-///
-/// Enable low-downtime updates by setting `blue_green_update.enabled` to `true`.
+/// By default, RDS applies updates to DB Instances in-place, which can lead to service interruptions. Low-downtime updates minimize service interruptions by performing the updates with an [RDS Blue/Green deployment][blue-green] and switching over the instances when complete. Low-downtime updates are only available for MySQL, MariaDB, and PostgreSQL — other engines are not supported by RDS Blue/Green deployments — and cannot be used with DB Instances with replicas. Backups must be enabled. Enable low-downtime updates by setting `blue_green_update.enabled` to `true`.
 ///
 /// ## Example Usage
 ///
@@ -132,6 +118,27 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage    = 10
+///   db_name              = "mydb"
+///   engine               = "mysql"
+///   engine_version       = "8.0"
+///   instance_class       = "db.t3.micro"
+///   username             = "foo"
+///   password             = "foobarbaz"
+///   parameter_group_name = "default.mysql8.0"
+///   skip_final_snapshot  = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +147,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,7 +224,7 @@ import 'instance_state.dart';
 ///     engine: custom_oracle.then(custom_oracle => custom_oracle.engine),
 ///     engineVersion: custom_oracle.then(custom_oracle => custom_oracle.engineVersion),
 ///     identifier: "ee-instance-demo",
-///     instanceClass: custom_oracle.then(custom_oracle => custom_oracle.instanceClass).apply((x) => aws.rds.InstanceType[x]),
+///     instanceClass: aws.rds.InstanceType[custom_oracle.then(custom_oracle => custom_oracle.instanceClass)],
 ///     kmsKeyId: byId.then(byId => byId.arn),
 ///     licenseModel: custom_oracle.then(custom_oracle => custom_oracle.licenseModel),
 ///     multiAz: false,
@@ -232,7 +239,7 @@ import 'instance_state.dart';
 ///     customIamInstanceProfile: "AWSRDSCustomInstanceProfile",
 ///     backupRetentionPeriod: 7,
 ///     identifier: "ee-instance-replica",
-///     instanceClass: custom_oracle.then(custom_oracle => custom_oracle.instanceClass).apply((x) => aws.rds.InstanceType[x]),
+///     instanceClass: aws.rds.InstanceType[custom_oracle.then(custom_oracle => custom_oracle.instanceClass)],
 ///     kmsKeyId: byId.then(byId => byId.arn),
 ///     multiAz: false,
 ///     skipFinalSnapshot: true,
@@ -264,7 +271,7 @@ import 'instance_state.dart';
 ///     engine=custom_oracle.engine,
 ///     engine_version=custom_oracle.engine_version,
 ///     identifier="ee-instance-demo",
-///     instance_class=custom_oracle.instance_class.apply(lambda x: aws.rds.InstanceType(x)),
+///     instance_class=aws.rds.InstanceType(custom_oracle.instance_class),
 ///     kms_key_id=by_id.arn,
 ///     license_model=custom_oracle.license_model,
 ///     multi_az=False,
@@ -278,7 +285,7 @@ import 'instance_state.dart';
 ///     custom_iam_instance_profile="AWSRDSCustomInstanceProfile",
 ///     backup_retention_period=7,
 ///     identifier="ee-instance-replica",
-///     instance_class=custom_oracle.instance_class.apply(lambda x: aws.rds.InstanceType(x)),
+///     instance_class=aws.rds.InstanceType(custom_oracle.instance_class),
 ///     kms_key_id=by_id.arn,
 ///     multi_az=False,
 ///     skip_final_snapshot=True,
@@ -422,6 +429,61 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getorderabledbinstance" "custom-oracle" {
+///   engine                     = "custom-oracle-ee"
+///   engine_version             = "19.c.ee.002"
+///   license_model              = "bring-your-own-license"
+///   storage_type               = "gp3"
+///   preferred_instance_classes = ["db.r5.xlarge", "db.r5.2xlarge", "db.r5.4xlarge"]
+/// }
+/// data "aws_kms_getkey" "byId" {
+///   key_id = "example-ef278353ceba4a5a97de6784565b9f78"
+/// }
+///
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage           = 50
+///   auto_minor_version_upgrade  = false # Custom for Oracle does not support minor version upgrades
+///   custom_iam_instance_profile = "AWSRDSCustomInstanceProfile"
+///   backup_retention_period     = 7
+///   db_subnet_group_name        = dbSubnetGroupName
+///   engine                      = data.aws_rds_getorderabledbinstance.custom-oracle.engine
+///   engine_version              = data.aws_rds_getorderabledbinstance.custom-oracle.engine_version
+///   identifier                  = "ee-instance-demo"
+///   instance_class              = data.aws_rds_getorderabledbinstance.custom-oracle.instance_class
+///   kms_key_id                  = data.aws_kms_getkey.byId.arn
+///   license_model               = data.aws_rds_getorderabledbinstance.custom-oracle.license_model
+///   multi_az                    = false # Custom for Oracle does not support multi-az
+///   password                    = "avoid-plaintext-passwords"
+///   username                    = "test"
+///   storage_encrypted           = true
+/// }
+/// resource "aws_rds_instance" "test-replica" {
+///   replicate_source_db         = aws_rds_instance.default.identifier
+///   replica_mode                = "mounted"
+///   auto_minor_version_upgrade  = false
+///   custom_iam_instance_profile = "AWSRDSCustomInstanceProfile"
+///   backup_retention_period     = 7
+///   identifier                  = "ee-instance-replica"
+///   instance_class              = data.aws_rds_getorderabledbinstance.custom-oracle.instance_class
+///   kms_key_id                  = data.aws_kms_getkey.byId.arn
+///   multi_az                    = false # Custom for Oracle does not support multi-az
+///   skip_final_snapshot         = true
+///   storage_encrypted           = true
+/// }
+/// # Lookup the available instance classes for the custom engine for the region being operated in
+/// # CEV engine to be used
+/// # CEV engine version to be used
+/// # The RDS instance resource requires an ARN. Look up the ARN of the KMS key associated with the CEV.
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -434,8 +496,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.kms.inputs.GetKeyArgs;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -587,7 +649,7 @@ import 'instance_state.dart';
 ///     engine: custom_sqlserver.then(custom_sqlserver => custom_sqlserver.engine),
 ///     engineVersion: custom_sqlserver.then(custom_sqlserver => custom_sqlserver.engineVersion),
 ///     identifier: "sql-instance-demo",
-///     instanceClass: custom_sqlserver.then(custom_sqlserver => custom_sqlserver.instanceClass).apply((x) => aws.rds.InstanceType[x]),
+///     instanceClass: aws.rds.InstanceType[custom_sqlserver.then(custom_sqlserver => custom_sqlserver.instanceClass)],
 ///     kmsKeyId: byId.then(byId => byId.arn),
 ///     multiAz: false,
 ///     password: "avoid-plaintext-passwords",
@@ -619,7 +681,7 @@ import 'instance_state.dart';
 ///     engine=custom_sqlserver.engine,
 ///     engine_version=custom_sqlserver.engine_version,
 ///     identifier="sql-instance-demo",
-///     instance_class=custom_sqlserver.instance_class.apply(lambda x: aws.rds.InstanceType(x)),
+///     instance_class=aws.rds.InstanceType(custom_sqlserver.instance_class),
 ///     kms_key_id=by_id.arn,
 ///     multi_az=False,
 ///     password="avoid-plaintext-passwords",
@@ -729,6 +791,46 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getorderabledbinstance" "custom-sqlserver" {
+///   engine                     = "custom-sqlserver-se"
+///   engine_version             = "15.00.4249.2.v1"
+///   storage_type               = "gp3"
+///   preferred_instance_classes = ["db.r5.xlarge", "db.r5.2xlarge", "db.r5.4xlarge"]
+/// }
+/// data "aws_kms_getkey" "byId" {
+///   key_id = "example-ef278353ceba4a5a97de6784565b9f78"
+/// }
+///
+/// resource "aws_rds_instance" "example" {
+///   allocated_storage           = 500
+///   auto_minor_version_upgrade  = false # Custom for SQL Server does not support minor version upgrades
+///   custom_iam_instance_profile = "AWSRDSCustomSQLServerInstanceProfile"
+///   backup_retention_period     = 7
+///   db_subnet_group_name        = dbSubnetGroupName
+///   engine                      = data.aws_rds_getorderabledbinstance.custom-sqlserver.engine
+///   engine_version              = data.aws_rds_getorderabledbinstance.custom-sqlserver.engine_version
+///   identifier                  = "sql-instance-demo"
+///   instance_class              = data.aws_rds_getorderabledbinstance.custom-sqlserver.instance_class
+///   kms_key_id                  = data.aws_kms_getkey.byId.arn
+///   multi_az                    = false # Custom for SQL Server does support multi-az
+///   password                    = "avoid-plaintext-passwords"
+///   storage_encrypted           = true
+///   username                    = "test"
+/// }
+/// # Lookup the available instance classes for the custom engine for the region being operated in
+/// # CEV engine to be used
+/// # CEV engine version to be used
+/// # The RDS instance resource requires an ARN. Look up the ARN of the KMS key.
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -741,8 +843,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.kms.inputs.GetKeyArgs;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -843,9 +945,9 @@ import 'instance_state.dart';
 ///     engine: "db2-se",
 /// });
 /// // Lookup the available instance classes for the engine in the region being operated in
-/// const example = Promise.all([_default, _default]).then(([_default, _default1]) => aws.rds.getOrderableDbInstance({
+/// const example = _default.then(_default => aws.rds.getOrderableDbInstance({
 ///     engine: _default.engine,
-///     engineVersion: _default1.version,
+///     engineVersion: _default.version,
 ///     licenseModel: "bring-your-own-license",
 ///     storageType: "gp3",
 ///     preferredInstanceClasses: [
@@ -879,7 +981,7 @@ import 'instance_state.dart';
 ///     engine: example.then(example => example.engine),
 ///     engineVersion: example.then(example => example.engineVersion),
 ///     identifier: "db2-instance-demo",
-///     instanceClass: example.then(example => example.instanceClass).apply((x) => aws.rds.InstanceType[x]),
+///     instanceClass: aws.rds.InstanceType[example.then(example => example.instanceClass)],
 ///     parameterGroupName: exampleParameterGroup.name,
 ///     password: "avoid-plaintext-passwords",
 ///     username: "test",
@@ -925,7 +1027,7 @@ import 'instance_state.dart';
 ///     engine=example.engine,
 ///     engine_version=example.engine_version,
 ///     identifier="db2-instance-demo",
-///     instance_class=example.instance_class.apply(lambda x: aws.rds.InstanceType(x)),
+///     instance_class=aws.rds.InstanceType(example.instance_class),
 ///     parameter_group_name=example_parameter_group.name,
 ///     password="avoid-plaintext-passwords",
 ///     username="test")
@@ -1070,6 +1172,57 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_rds_getengineversion" "default" {
+///   engine = "db2-se"
+/// }
+/// data "aws_rds_getorderabledbinstance" "example" {
+///   engine                     = data.aws_rds_getengineversion.default.engine
+///   engine_version             = data.aws_rds_getengineversion.default.version
+///   license_model              = "bring-your-own-license"
+///   storage_type               = "gp3"
+///   preferred_instance_classes = ["db.t3.small", "db.r6i.large", "db.m6i.large"]
+/// }
+///
+/// # The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default paramater group as a source, and set license information.
+/// resource "aws_rds_parametergroup" "example" {
+///   name   = "db-db2-params"
+///   family = data.aws_rds_getengineversion.default.parameter_group_family
+///   parameters {
+///     apply_method = "immediate"
+///     name         = "rds.ibm_customer_id"
+///     value        = 0
+///   }
+///   parameters {
+///     apply_method = "immediate"
+///     name         = "rds.ibm_site_id"
+///     value        = 0
+///   }
+/// }
+/// # Create the RDS Db2 instance, use the data sources defined to set attributes
+/// resource "aws_rds_instance" "example" {
+///   allocated_storage       = 100
+///   backup_retention_period = 7
+///   db_name                 = "test"
+///   engine                  = data.aws_rds_getorderabledbinstance.example.engine
+///   engine_version          = data.aws_rds_getorderabledbinstance.example.engine_version
+///   identifier              = "db2-instance-demo"
+///   instance_class          = data.aws_rds_getorderabledbinstance.example.instance_class
+///   parameter_group_name    = aws_rds_parametergroup.example.name
+///   password                = "avoid-plaintext-passwords"
+///   username                = "test"
+/// }
+/// # Lookup the default version for the engine. Db2 Standard Edition is `db2-se`, Db2 Advanced Edition is `db2-ae`.
+/// # Lookup the available instance classes for the engine in the region being operated in
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1084,8 +1237,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.rds.inputs.ParameterGroupParameterArgs;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1204,7 +1357,7 @@ import 'instance_state.dart';
 ///
 /// ### Storage Autoscaling
 ///
-/// To enable Storage Autoscaling with instances that support the feature, define the `max_allocated_storage` argument higher than the `allocated_storage` argument. This provider will automatically hide differences with the `allocated_storage` argument value if autoscaling occurs.
+/// To enable Storage Autoscaling with instances that support the feature, define the `maxAllocatedStorage` argument higher than the `allocatedStorage` argument. This provider will automatically hide differences with the `allocatedStorage` argument value if autoscaling occurs.
 ///
 ///
 /// ```typescript
@@ -1261,6 +1414,20 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "example" {
+///   allocated_storage     = 50
+///   max_allocated_storage = 100
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1269,8 +1436,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1304,7 +1471,7 @@ import 'instance_state.dart';
 ///
 /// &gt; More information about RDS/Aurora Aurora integrates with Secrets Manager to manage master user passwords for your DB clusters can be found in the [RDS User Guide](https://aws.amazon.com/about-aws/whats-new/2022/12/amazon-rds-integration-aws-secrets-manager/) and [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html).
 ///
-/// You can specify the `manage_master_user_password` attribute to enable managing the master password with Secrets Manager. You can also update an existing cluster to use Secrets Manager by specify the `manage_master_user_password` attribute and removing the `password` attribute (removal is required).
+/// You can specify the `manageMasterUserPassword` attribute to enable managing the master password with Secrets Manager. You can also update an existing cluster to use Secrets Manager by specify the `manageMasterUserPassword` attribute and removing the `password` attribute (removal is required).
 ///
 ///
 /// ```typescript
@@ -1385,6 +1552,26 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage           = 10
+///   db_name                     = "mydb"
+///   engine                      = "mysql"
+///   engine_version              = "8.0"
+///   instance_class              = "db.t3.micro"
+///   manage_master_user_password = true
+///   username                    = "foo"
+///   parameter_group_name        = "default.mysql8.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1393,8 +1580,8 @@ import 'instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1440,7 +1627,7 @@ import 'instance_state.dart';
 ///
 /// &gt; More information about RDS/Aurora Aurora integrates with Secrets Manager to manage master user passwords for your DB clusters can be found in the [RDS User Guide](https://aws.amazon.com/about-aws/whats-new/2022/12/amazon-rds-integration-aws-secrets-manager/) and [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html).
 ///
-/// You can specify the `master_user_secret_kms_key_id` attribute to specify a specific KMS Key.
+/// You can specify the `masterUserSecretKmsKeyId` attribute to specify a specific KMS Key.
 ///
 ///
 /// ```typescript
@@ -1539,6 +1726,30 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "Example KMS Key"
+/// }
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage             = 10
+///   db_name                       = "mydb"
+///   engine                        = "mysql"
+///   engine_version                = "8.0"
+///   instance_class                = "db.t3.micro"
+///   manage_master_user_password   = true
+///   master_user_secret_kms_key_id = aws_kms_key.example.key_id
+///   username                      = "foo"
+///   parameter_group_name          = "default.mysql8.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1549,8 +1760,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1612,7 +1823,7 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Specifies the DNS address of the DB instance.
   late final pulumi.Output<String> address;
-  /// The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs. If `replicate_source_db` is set, the value is ignored during the creation of the instance.
+  /// The allocated storage in gibibytes. If `maxAllocatedStorage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs. If `replicateSourceDb` is set, the value is ignored during the creation of the instance.
   late final pulumi.Output<int> allocatedStorage;
   /// Indicates that major version
   /// upgrades are allowed. Changing this parameter does not result in an outage and
@@ -1641,10 +1852,10 @@ class Instance extends pulumi.CustomResource {
   /// Specifies where automated backups and manual snapshots are stored. Possible values are `region` (default) and `outposts`. See [Working with Amazon RDS on AWS Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html) for more information.
   late final pulumi.Output<String> backupTarget;
   /// The daily time range (in UTC) during which automated backups are created if they are enabled.
-  /// Example: "09:46-10:16". Must not overlap with `maintenance_window`.
+  /// Example: "09:46-10:16". Must not overlap with `maintenanceWindow`.
   late final pulumi.Output<String> backupWindow;
   /// Enables low-downtime updates using [RDS Blue/Green deployments][blue-green].
-  /// See `blue_green_update` below.
+  /// See `blueGreenUpdate` below.
   late final pulumi.Output<InstanceBlueGreenUpdate?> blueGreenUpdate;
   /// The identifier of the CA certificate for the DB instance.
   late final pulumi.Output<String> caCertIdentifier;
@@ -1652,7 +1863,7 @@ class Instance extends pulumi.CustomResource {
   /// This can't be changed.
   /// See [Oracle Character Sets Supported in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCharacterSets.html) or
   /// [Server-Level Collation for Microsoft SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.CommonDBATasks.Collation.html) for more information.
-  /// Cannot be set  with `replicate_source_db`, `restore_to_point_in_time`, `s3_import`, or `snapshot_identifier`.
+  /// Cannot be set  with `replicateSourceDb`, `restoreToPointInTime`, `s3Import`, or `snapshotIdentifier`.
   late final pulumi.Output<String> characterSetName;
   /// Copy all Instance `tags` to snapshots. Default is `false`.
   late final pulumi.Output<bool?> copyTagsToSnapshot;
@@ -1663,7 +1874,7 @@ class Instance extends pulumi.CustomResource {
   /// For more detailed documentation about each argument, refer to the [AWS official
   /// documentation](http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html).
   ///
-  /// &gt; **NOTE:** Removing the `replicate_source_db` attribute from an existing RDS
+  /// &gt; **NOTE:** Removing the `replicateSourceDb` attribute from an existing RDS
   /// Replicate database managed by the provider will promote the database to a fully
   /// standalone database.
   late final pulumi.Output<bool?> customerOwnedIpEnabled;
@@ -1684,17 +1895,17 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<bool?> deleteAutomatedBackups;
   /// If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
   late final pulumi.Output<bool?> deletionProtection;
-  /// The ID of the Directory Service Active Directory domain to create the instance in. Conflicts with `domain_fqdn`, `domain_ou`, `domain_auth_secret_arn` and a `domain_dns_ips`.
+  /// The ID of the Directory Service Active Directory domain to create the instance in. Conflicts with `domainFqdn`, `domainOu`, `domainAuthSecretArn` and a `domainDnsIps`.
   late final pulumi.Output<String?> domain;
-  /// The ARN for the Secrets Manager secret with the self managed Active Directory credentials for the user joining the domain. Conflicts with `domain` and `domain_iam_role_name`.
+  /// The ARN for the Secrets Manager secret with the self managed Active Directory credentials for the user joining the domain. Conflicts with `domain` and `domainIamRoleName`.
   late final pulumi.Output<String?> domainAuthSecretArn;
-  /// The IPv4 DNS IP addresses of your primary and secondary self managed Active Directory domain controllers. Two IP addresses must be provided. If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list. Conflicts with `domain` and `domain_iam_role_name`.
+  /// The IPv4 DNS IP addresses of your primary and secondary self managed Active Directory domain controllers. Two IP addresses must be provided. If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list. Conflicts with `domain` and `domainIamRoleName`.
   late final pulumi.Output<List<String>?> domainDnsIps;
-  /// The fully qualified domain name (FQDN) of the self managed Active Directory domain. Conflicts with `domain` and `domain_iam_role_name`.
+  /// The fully qualified domain name (FQDN) of the self managed Active Directory domain. Conflicts with `domain` and `domainIamRoleName`.
   late final pulumi.Output<String> domainFqdn;
-  /// The name of the IAM role to be used when making API calls to the Directory Service. Conflicts with `domain_fqdn`, `domain_ou`, `domain_auth_secret_arn` and a `domain_dns_ips`.
+  /// The name of the IAM role to be used when making API calls to the Directory Service. Conflicts with `domainFqdn`, `domainOu`, `domainAuthSecretArn` and a `domainDnsIps`.
   late final pulumi.Output<String?> domainIamRoleName;
-  /// The self managed Active Directory organizational unit for your DB instance to join. Conflicts with `domain` and `domain_iam_role_name`.
+  /// The self managed Active Directory organizational unit for your DB instance to join. Conflicts with `domain` and `domainIamRoleName`.
   late final pulumi.Output<String?> domainOu;
   /// Set of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. For supported values, see the EnableCloudwatchLogsExports.member.N parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html).
   late final pulumi.Output<List<String>?> enabledCloudwatchLogsExports;
@@ -1704,12 +1915,12 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> engine;
   /// The life cycle type for this DB instance. This setting applies only to RDS for MySQL and RDS for PostgreSQL. Valid values are `open-source-rds-extended-support`, `open-source-rds-extended-support-disabled`. Default value is `open-source-rds-extended-support`. [Using Amazon RDS Extended Support]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html
   late final pulumi.Output<String> engineLifecycleSupport;
-  /// The engine version to use. If `auto_minor_version_upgrade` is enabled, you can provide a prefix of the version such as `8.0` (for `8.0.36`). The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below. For supported values, see the EngineVersion parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html). Note that for Amazon Aurora instances the engine version must match the DB cluster's engine version'.
+  /// The engine version to use. If `autoMinorVersionUpgrade` is enabled, you can provide a prefix of the version such as `8.0` (for `8.0.36`). The actual engine version used is returned in the attribute `engineVersionActual`, see Attribute Reference below. For supported values, see the EngineVersion parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html). Note that for Amazon Aurora instances the engine version must match the DB cluster's engine version'.
   late final pulumi.Output<String> engineVersion;
   /// The running version of the database.
   late final pulumi.Output<String> engineVersionActual;
   /// The name of your final DB snapshot
-  /// when this DB instance is deleted. Must be provided if `skip_final_snapshot` is
+  /// when this DB instance is deleted. Must be provided if `skipFinalSnapshot` is
   /// set to `false`. The value must begin with a letter, only contain alphanumeric characters and hyphens, and not end with a hyphen or contain two consecutive hyphens. Must not be provided when deleting a read replica.
   late final pulumi.Output<String?> finalSnapshotIdentifier;
   /// Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
@@ -1717,15 +1928,15 @@ class Instance extends pulumi.CustomResource {
   /// Specifies whether mappings of AWS Identity and Access Management (IAM) accounts to database
   /// accounts is enabled.
   late final pulumi.Output<bool?> iamDatabaseAuthenticationEnabled;
-  /// The name of the RDS instance, if omitted, this provider will assign a random, unique identifier. Required if `restore_to_point_in_time` is specified.
+  /// The name of the RDS instance, if omitted, this provider will assign a random, unique identifier. Required if `restoreToPointInTime` is specified.
   late final pulumi.Output<String> identifier;
   /// Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
   late final pulumi.Output<String> identifierPrefix;
   /// The instance type of the RDS instance.
   late final pulumi.Output<String> instanceClass;
   /// The amount of provisioned IOPS. Setting this implies a
-  /// storage_type of "io1" or "io2". Can only be set when `storage_type` is `"io1"`, `"io2` or `"gp3"`.
-  /// Cannot be specified for gp3 storage if the `allocated_storage` value is below a per-`engine` threshold.
+  /// storageType of "io1" or "io2". Can only be set when `storageType` is `"io1"`, `"io2` or `"gp3"`.
+  /// Cannot be specified for gp3 storage if the `allocatedStorage` value is below a per-`engine` threshold.
   /// See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
   late final pulumi.Output<int> iops;
   /// The ARN for the KMS encryption key. If creating an
@@ -1748,13 +1959,13 @@ class Instance extends pulumi.CustomResource {
   /// docs](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
   /// for more information.
   late final pulumi.Output<String> maintenanceWindow;
-  /// Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if `password` or `password_wo` is provided.
+  /// Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if `password` or `passwordWo` is provided.
   late final pulumi.Output<bool?> manageMasterUserPassword;
   /// The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. To use a KMS key in a different Amazon Web Services account, specify the key ARN or alias ARN. If not specified, the default KMS key for your Amazon Web Services account is used.
   late final pulumi.Output<String> masterUserSecretKmsKeyId;
-  /// A block that specifies the master user secret. Only available when `manage_master_user_password` is set to true. Documented below.
+  /// A block that specifies the master user secret. Only available when `manageMasterUserPassword` is set to true. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> masterUserSecrets;
-  /// Specifies the maximum storage (in GiB) that Amazon RDS can automatically scale to for this DB instance. By default, Storage Autoscaling is disabled. To enable Storage Autoscaling, set `max_allocated_storage` to **greater than or equal to** `allocated_storage`. Setting `max_allocated_storage` to 0 explicitly disables Storage Autoscaling. When configured, changes to `allocated_storage` will be automatically ignored as the storage can dynamically scale.
+  /// Specifies the maximum storage (in GiB) that Amazon RDS can automatically scale to for this DB instance. By default, Storage Autoscaling is disabled. To enable Storage Autoscaling, set `maxAllocatedStorage` to **greater than or equal to** `allocatedStorage`. Setting `maxAllocatedStorage` to 0 explicitly disables Storage Autoscaling. When configured, changes to `allocatedStorage` will be automatically ignored as the storage can dynamically scale.
   late final pulumi.Output<int?> maxAllocatedStorage;
   /// The interval, in seconds, between points
   /// when Enhanced Monitoring metrics are collected for the DB instance. To disable
@@ -1778,18 +1989,18 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> optionGroupName;
   /// Name of the DB parameter group to associate.
   late final pulumi.Output<String> parameterGroupName;
-  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manage_master_user_password` is set to `true`.
+  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manageMasterUserPassword` is set to `true`.
   late final pulumi.Output<String?> password;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manage_master_user_password` is set to `true`.
+  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manageMasterUserPassword` is set to `true`.
   late final pulumi.Output<String?> passwordWo;
-  /// Used together with `password_wo` to trigger an update. Increment this value when an update to `password_wo` is required.
+  /// Used together with `passwordWo` to trigger an update. Increment this value when an update to `passwordWo` is required.
   late final pulumi.Output<int?> passwordWoVersion;
   /// Specifies whether Performance Insights are enabled. Defaults to false.
   late final pulumi.Output<bool?> performanceInsightsEnabled;
-  /// The ARN for the KMS key to encrypt Performance Insights data. When specifying `performance_insights_kms_key_id`, `performance_insights_enabled` needs to be set to true. Once KMS key is set, it can never be changed.
+  /// The ARN for the KMS key to encrypt Performance Insights data. When specifying `performanceInsightsKmsKeyId`, `performanceInsightsEnabled` needs to be set to true. Once KMS key is set, it can never be changed.
   late final pulumi.Output<String> performanceInsightsKmsKeyId;
-  /// Amount of time in days to retain Performance Insights data. Valid values are `7`, `731` (2 years) or a multiple of `31`. When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
+  /// Amount of time in days to retain Performance Insights data. Valid values are `7`, `731` (2 years) or a multiple of `31`. When specifying `performanceInsightsRetentionPeriod`, `performanceInsightsEnabled` needs to be set to true. Defaults to '7'.
   late final pulumi.Output<int> performanceInsightsRetentionPeriod;
   /// The port on which the DB accepts connections.
   late final pulumi.Output<int> port;
@@ -1803,10 +2014,10 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> replicaMode;
   late final pulumi.Output<List<String>> replicas;
   /// Specifies that this resource is a Replica database, and to use this value as the source database.
-  /// If replicating an Amazon RDS Database Instance in the same region, use the `identifier` of the source DB, unless also specifying the `db_subnet_group_name`.
-  /// If specifying the `db_subnet_group_name` in the same region, use the `arn` of the source DB.
+  /// If replicating an Amazon RDS Database Instance in the same region, use the `identifier` of the source DB, unless also specifying the `dbSubnetGroupName`.
+  /// If specifying the `dbSubnetGroupName` in the same region, use the `arn` of the source DB.
   /// If replicating an Instance in a different region, use the `arn` of the source DB.
-  /// Note that if you are creating a cross-region replica of an encrypted database you will also need to specify a `kms_key_id`.
+  /// Note that if you are creating a cross-region replica of an encrypted database you will also need to specify a `kmsKeyId`.
   /// See [DB Instance Replication][instance-replication] and [Working with PostgreSQL and MySQL Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html) for more information on using Replication.
   late final pulumi.Output<String?> replicateSourceDb;
   /// The RDS Resource ID of this instance.
@@ -1820,7 +2031,7 @@ class Instance extends pulumi.CustomResource {
   /// Determines whether a final DB snapshot is
   /// created before the DB instance is deleted. If true is specified, no DBSnapshot
   /// is created. If false is specified, a DB snapshot is created before the DB
-  /// instance is deleted, using the value from `final_snapshot_identifier`. Default
+  /// instance is deleted, using the value from `finalSnapshotIdentifier`. Default
   /// is `false`.
   late final pulumi.Output<bool?> skipFinalSnapshot;
   /// Specifies whether or not to create this database from a snapshot.
@@ -1830,19 +2041,19 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Specifies whether the DB instance is
   /// encrypted. Note that if you are creating a cross-region read replica this field
-  /// is ignored and you should instead declare `kms_key_id` with a valid ARN. The
+  /// is ignored and you should instead declare `kmsKeyId` with a valid ARN. The
   /// default is `false` if not specified.
   late final pulumi.Output<bool?> storageEncrypted;
-  /// The storage throughput value for the DB instance. Can only be set when `storage_type` is `"gp3"`. Cannot be specified if the `allocated_storage` value is below a per-`engine` threshold. See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
+  /// The storage throughput value for the DB instance. Can only be set when `storageType` is `"gp3"`. Cannot be specified if the `allocatedStorage` value is below a per-`engine` threshold. See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
   late final pulumi.Output<int> storageThroughput;
   /// One of "standard" (magnetic), "gp2" (general
   /// purpose SSD), "gp3" (general purpose SSD that needs `iops` independently)
   /// "io1" (provisioned IOPS SSD) or "io2" (block express storage provisioned IOPS
   /// SSD). The default is "io1" if `iops` is specified, "gp2" if not.
   late final pulumi.Output<String> storageType;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Time zone of the DB instance. `timezone` is currently
   /// only supported by Microsoft SQL Server. The `timezone` can only be set on
@@ -1853,9 +2064,9 @@ class Instance extends pulumi.CustomResource {
   /// Order in which the instances are upgraded (`first`, `second`, `last`). See [the AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Maintenance.AMVU.UpgradeRollout.html) for details.
   late final pulumi.Output<String> upgradeRolloutOrder;
   /// Whether to upgrade the storage file system configuration on the read replica.
-  /// Can only be set with `replicate_source_db`.
+  /// Can only be set with `replicateSourceDb`.
   late final pulumi.Output<bool?> upgradeStorageConfig;
-  /// (Required unless a `snapshot_identifier` or `replicate_source_db`
+  /// (Required unless a `snapshotIdentifier` or `replicateSourceDb`
   /// is provided) Username for the master DB user. Cannot be specified for a replica.
   late final pulumi.Output<String> username;
   /// List of VPC security groups to

@@ -8,7 +8,7 @@ import 'service_network_resource_association_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vpclattice_service_network_resource_association_service_network_resource_association_args_doc}
 class ServiceNetworkResourceAssociationArgs {
-  /// Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resource_configuration_identifier` must have a custom domain name or a group domain for private DNS.
+  /// Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resourceConfigurationIdentifier` must have a custom domain name or a group domain for private DNS.
   final pulumi.Input<bool>? privateDnsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -18,16 +18,16 @@ class ServiceNetworkResourceAssociationArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> serviceNetworkIdentifier;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ServiceNetworkResourceAssociationTimeouts>? timeouts;
 
   /// Creates a new [ServiceNetworkResourceAssociationArgs].
-  /// [privateDnsEnabled] Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resource_configuration_identifier` must have a custom domain name or a group domain for private DNS.
+  /// [privateDnsEnabled] Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resourceConfigurationIdentifier` must have a custom domain name or a group domain for private DNS.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceConfigurationIdentifier] Identifier of Resource Configuration to associate to the Service Network.
   /// [serviceNetworkIdentifier] Identifier of the Service Network to associate the Resource to.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const ServiceNetworkResourceAssociationArgs({
     this.privateDnsEnabled,
@@ -60,4 +60,3 @@ class ServiceNetworkResourceAssociationArgs {
     );
   }
 }
-

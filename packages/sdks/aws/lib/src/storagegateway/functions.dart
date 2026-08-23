@@ -60,6 +60,20 @@ import 'get_local_disk_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_storagegateway_getlocaldisk" "test" {
+///   disk_path   = testAwsVolumeAttachment.deviceName
+///   gateway_arn = testAwsStoragegatewayGateway.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +82,8 @@ import 'get_local_disk_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.StoragegatewayFunctions;
 /// import com.pulumi.aws.storagegateway.inputs.GetLocalDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

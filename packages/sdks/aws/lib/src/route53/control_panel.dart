@@ -61,6 +61,20 @@ import 'control_panel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53recoverycontrol_controlpanel" "example" {
+///   name        = "balmorhea"
+///   cluster_arn = "arn:aws:route53-recovery-control::123456789012:cluster/8d47920e-d789-437d-803a-2dcc4b204393"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'control_panel_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53recoverycontrol.ControlPanel;
 /// import com.pulumi.aws.route53recoverycontrol.ControlPanelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,9 +136,9 @@ class ControlPanel extends pulumi.CustomResource {
   late final pulumi.Output<int> routingControlCount;
   /// Status of control panel: `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ControlPanel].

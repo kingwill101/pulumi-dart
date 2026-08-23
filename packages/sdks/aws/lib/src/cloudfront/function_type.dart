@@ -40,6 +40,10 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String> runtime;
   /// Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
   late final pulumi.Output<String> status;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [FunctionType].
   /// [name] The Pulumi resource name.
@@ -65,6 +69,8 @@ class FunctionType extends pulumi.CustomResource {
     publish = registerOutput<bool?>('publish');
     runtime = registerOutput<String>('runtime');
     status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [FunctionType] resource's state with the given [name] and [id].
@@ -100,5 +106,7 @@ class FunctionType extends pulumi.CustomResource {
     publish = registerOutput<bool?>('publish');
     runtime = registerOutput<String>('runtime');
     status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

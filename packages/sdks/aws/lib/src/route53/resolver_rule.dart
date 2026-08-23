@@ -63,6 +63,20 @@ import 'resolver_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverrule" "sys" {
+///   domain_name = "subdomain.example.com"
+///   rule_type   = "SYSTEM"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'resolver_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.ResolverRule;
 /// import com.pulumi.aws.route53.ResolverRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,6 +212,28 @@ import 'resolver_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverrule" "fwd" {
+///   domain_name          = "example.com"
+///   name                 = "example"
+///   rule_type            = "FORWARD"
+///   resolver_endpoint_id = foo.id
+///   target_ips {
+///     ip = "123.45.67.89"
+///   }
+///   tags = {
+///     "Environment" = "Prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +243,8 @@ import 'resolver_rule_state.dart';
 /// import com.pulumi.aws.route53.ResolverRule;
 /// import com.pulumi.aws.route53.ResolverRuleArgs;
 /// import com.pulumi.aws.route53.inputs.ResolverRuleTargetIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,6 +382,28 @@ import 'resolver_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverrule" "fwd" {
+///   domain_name          = "example.com"
+///   name                 = "example"
+///   rule_type            = "FORWARD"
+///   resolver_endpoint_id = foo.id
+///   target_ips {
+///     ipv6 = "2600:1f18:1686:2000:4e60:6e3e:258:da36"
+///   }
+///   tags = {
+///     "Environment" = "Prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +413,8 @@ import 'resolver_rule_state.dart';
 /// import com.pulumi.aws.route53.ResolverRule;
 /// import com.pulumi.aws.route53.ResolverRuleArgs;
 /// import com.pulumi.aws.route53.inputs.ResolverRuleTargetIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,7 +466,7 @@ import 'resolver_rule_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -420,7 +478,7 @@ import 'resolver_rule_state.dart';
 class ResolverRule extends pulumi.CustomResource {
   /// ARN (Amazon Resource Name) for the resolver rule.
   late final pulumi.Output<String> arn;
-  /// DNS queries for this domain name are forwarded to the IP addresses that are specified using `target_ip`.
+  /// DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
   late final pulumi.Output<String> domainName;
   /// Friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
   late final pulumi.Output<String> name;
@@ -428,7 +486,7 @@ class ResolverRule extends pulumi.CustomResource {
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
+  /// ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
   /// This argument should only be specified for `FORWARD` type rules.
   late final pulumi.Output<String?> resolverEndpointId;
   /// Rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
@@ -436,9 +494,9 @@ class ResolverRule extends pulumi.CustomResource {
   /// Whether the rules is shared and, if so, whether the current account is sharing the rule with another account, or another account is sharing the rule with the current account.
   /// Values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
   late final pulumi.Output<String> shareStatus;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).
   /// This argument should only be specified for `FORWARD` type rules.

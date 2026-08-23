@@ -13,8 +13,6 @@ class GetTableResult {
   final String creationTime;
   /// Name of database.
   final String databaseName;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// Last time table was updated.
   final String lastUpdatedTime;
   /// Object containing the following attributes to desribe magnetic store writes.
@@ -33,7 +31,6 @@ class GetTableResult {
   /// [arn] ARN that uniquely identifies the table.
   /// [creationTime] Time that table was created.
   /// [databaseName] Name of database.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [lastUpdatedTime] Last time table was updated.
   /// [magneticStoreWriteProperties] Object containing the following attributes to desribe magnetic store writes.
   /// [name] Name of the table.
@@ -45,7 +42,6 @@ class GetTableResult {
     required this.arn,
     required this.creationTime,
     required this.databaseName,
-    required this.id,
     required this.lastUpdatedTime,
     required this.magneticStoreWriteProperties,
     required this.name,
@@ -60,7 +56,6 @@ class GetTableResult {
       'arn': arn,
       'creationTime': creationTime,
       'databaseName': databaseName,
-      'id': id,
       'lastUpdatedTime': lastUpdatedTime,
       'magneticStoreWriteProperties': pulumi.Input.encodeList<GetTableMagneticStoreWriteProperty, Map<String, dynamic>>(magneticStoreWriteProperties, (value) => value.toMap()),
       'name': name,
@@ -76,7 +71,6 @@ class GetTableResult {
       arn: map['arn'] as String,
       creationTime: map['creationTime'] as String,
       databaseName: map['databaseName'] as String,
-      id: map['id'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       magneticStoreWriteProperties: pulumi.Input.decodeList<GetTableMagneticStoreWriteProperty>(map['magneticStoreWriteProperties']!, (value) => GetTableMagneticStoreWriteProperty.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
@@ -87,4 +81,3 @@ class GetTableResult {
     );
   }
 }
-

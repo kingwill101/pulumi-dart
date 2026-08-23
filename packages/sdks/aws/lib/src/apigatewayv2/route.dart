@@ -78,7 +78,7 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigatewayv2.NewRoute(ctx, "example", &apigatewayv2.RouteArgs{
-/// 			ApiId:    example.ID(),
+/// 			ApiId:    example.ID().ToIDOutput().ToStringOutput(),
 /// 			RouteKey: pulumi.String("$default"),
 /// 		})
 /// 		if err != nil {
@@ -86,6 +86,25 @@ import 'route_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_api" "example" {
+///   name                       = "example-websocket-api"
+///   protocol_type              = "WEBSOCKET"
+///   route_selection_expression = "$request.body.action"
+/// }
+/// resource "aws_apigatewayv2_route" "example" {
+///   api_id    = aws_apigatewayv2_api.example.id
+///   route_key = "$default"
 /// }
 /// ```
 /// ```java
@@ -98,8 +117,8 @@ import 'route_state.dart';
 /// import com.pulumi.aws.apigatewayv2.ApiArgs;
 /// import com.pulumi.aws.apigatewayv2.Route;
 /// import com.pulumi.aws.apigatewayv2.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,7 +252,7 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleIntegration, err := apigatewayv2.NewIntegration(ctx, "example", &apigatewayv2.IntegrationArgs{
-/// 			ApiId:             example.ID(),
+/// 			ApiId:             example.ID().ToIDOutput().ToStringOutput(),
 /// 			IntegrationType:   pulumi.String("HTTP_PROXY"),
 /// 			IntegrationMethod: pulumi.String("ANY"),
 /// 			IntegrationUri:    pulumi.String("https://example.com/{proxy}"),
@@ -242,9 +261,9 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigatewayv2.NewRoute(ctx, "example", &apigatewayv2.RouteArgs{
-/// 			ApiId:    example.ID(),
+/// 			ApiId:    example.ID().ToIDOutput().ToStringOutput(),
 /// 			RouteKey: pulumi.String("ANY /example/{proxy+}"),
-/// 			Target: exampleIntegration.ID().ApplyT(func(id string) (string, error) {
+/// 			Target: exampleIntegration.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("integrations/%v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -253,6 +272,31 @@ import 'route_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_api" "example" {
+///   name          = "example-http-api"
+///   protocol_type = "HTTP"
+/// }
+/// resource "aws_apigatewayv2_integration" "example" {
+///   api_id             = aws_apigatewayv2_api.example.id
+///   integration_type   = "HTTP_PROXY"
+///   integration_method = "ANY"
+///   integration_uri    = "https://example.com/{proxy}"
+/// }
+/// resource "aws_apigatewayv2_route" "example" {
+///   api_id    = aws_apigatewayv2_api.example.id
+///   route_key = "ANY /example/{proxy+}"
+///   target    ="integrations/${aws_apigatewayv2_integration.example.id}"
 /// }
 /// ```
 /// ```java
@@ -267,8 +311,8 @@ import 'route_state.dart';
 /// import com.pulumi.aws.apigatewayv2.IntegrationArgs;
 /// import com.pulumi.aws.apigatewayv2.Route;
 /// import com.pulumi.aws.apigatewayv2.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,28 +372,38 @@ import 'route_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.apigatewayv2.Route` using the API identifier and route identifier. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `apiId` (String) API identifier.
+/// * `id` (String) Route identifier.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import `aws.apigatewayv2.Route` using `apiId` and `id` (route identifier), delimited by a `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apigatewayv2/route:Route example aabbccddee/1122334
 /// ```
 ///
-/// &gt; **Note:** The API Gateway managed route created as part of [_quick_create_](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
+/// &gt; **Note:** The API Gateway managed route created as part of [*quick_create*](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
 class Route extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
-  /// Boolean whether an API key is required for the route. Defaults to `false`. Supported only for WebSocket APIs.
+  /// Whether an API key is required for the route. Defaults to `false`. Supported only for WebSocket APIs.
   late final pulumi.Output<bool?> apiKeyRequired;
   /// Authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
   late final pulumi.Output<List<String>?> authorizationScopes;
-  /// Authorization type for the route.
-  /// For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-  /// For HTTP APIs, valid values are `NONE` for open access, `JWT` for using JSON Web Tokens, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
-  /// Defaults to `NONE`.
+  /// Authorization type for the route. For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer. For HTTP APIs, valid values are `NONE` for open access, `JWT` for using JSON Web Tokens, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer. Defaults to `NONE`.
   late final pulumi.Output<String?> authorizationType;
   /// Identifier of the `aws.apigatewayv2.Authorizer` resource to be associated with this route.
   late final pulumi.Output<String?> authorizerId;
-  /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route. Supported only for WebSocket APIs.
+  /// [Model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route. Supported only for WebSocket APIs.
   late final pulumi.Output<String?> modelSelectionExpression;
   /// Operation name for the route. Must be between 1 and 64 characters in length.
   late final pulumi.Output<String?> operationName;
@@ -357,11 +411,11 @@ class Route extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Request models for the route. Supported only for WebSocket APIs.
   late final pulumi.Output<Map<String, String>?> requestModels;
-  /// Request parameters for the route. Supported only for WebSocket APIs.
+  /// Request parameters for the route. Supported only for WebSocket APIs. See `requestParameter` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> requestParameters;
   /// Route key for the route. For HTTP APIs, the route key can be either `$default`, or a combination of an HTTP method and resource path, for example, `GET /pets`.
   late final pulumi.Output<String> routeKey;
-  /// The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
+  /// [Route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
   late final pulumi.Output<String?> routeResponseSelectionExpression;
   /// Target for the route, of the form `integrations/`*`IntegrationID`*, where *`IntegrationID`* is the identifier of an `aws.apigatewayv2.Integration` resource.
   late final pulumi.Output<String?> target;

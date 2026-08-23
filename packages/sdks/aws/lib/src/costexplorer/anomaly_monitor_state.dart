@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnomalyMonitorState {
   /// ARN of the anomaly monitor.
   final pulumi.Input<String>? arn;
-  /// The dimensions to evaluate. Valid values: `SERVICE`.
+  /// The dimensions to evaluate. Valid values: `COST_CATEGORY`, `LINKED_ACCOUNT`, `SERVICE`, `TAG`.
   final pulumi.Input<String>? monitorDimension;
   /// A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
   final pulumi.Input<String>? monitorSpecification;
@@ -14,19 +14,19 @@ class AnomalyMonitorState {
   final pulumi.Input<String>? monitorType;
   /// The name of the monitor.
   final pulumi.Input<String>? name;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [AnomalyMonitorState].
   /// [arn] ARN of the anomaly monitor.
-  /// [monitorDimension] The dimensions to evaluate. Valid values: `SERVICE`.
+  /// [monitorDimension] The dimensions to evaluate. Valid values: `COST_CATEGORY`, `LINKED_ACCOUNT`, `SERVICE`, `TAG`.
   /// [monitorSpecification] A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
   /// [monitorType] The possible type values. Valid values: `DIMENSIONAL` | `CUSTOM`.
   /// [name] The name of the monitor.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const AnomalyMonitorState({
     this.arn,
     this.monitorDimension,
@@ -61,4 +61,3 @@ class AnomalyMonitorState {
     );
   }
 }
-

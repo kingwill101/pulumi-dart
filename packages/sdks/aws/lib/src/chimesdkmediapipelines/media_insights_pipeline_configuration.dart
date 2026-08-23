@@ -250,6 +250,55 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "mediaPipelinesAssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["mediapipelines.chime.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+///   name                     = "MyBasicConfiguration"
+///   resource_access_role_arn = aws_iam_role.call_analytics_role.arn
+///   elements {
+///     type = "AmazonTranscribeCallAnalyticsProcessor"
+///     amazon_transcribe_call_analytics_processor_configuration = {
+///       language_code = "en-US"
+///     }
+///   }
+///   elements {
+///     type = "KinesisDataStreamSink"
+///     kinesis_data_stream_sink_configuration = {
+///       insights_target = aws_kinesis_stream.example.arn
+///     }
+///   }
+///   tags = {
+///     "Key1" = "Value1"
+///     "Key2" = "Value2"
+///   }
+/// }
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "example"
+///   shard_count = 2
+/// }
+/// resource "aws_iam_role" "call_analytics_role" {
+///   name               = "CallAnalyticsRole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.mediaPipelinesAssumeRole.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -260,6 +309,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.aws.kinesis.StreamArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.MediaInsightsPipelineConfiguration;
@@ -267,8 +318,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -371,7 +422,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// ```
 ///
 ///
-/// - The required policies on `call_analytics_role` will vary based on the selected processors. See [Call analytics resource access role](https://docs.aws.amazon.com/chime-sdk/latest/dg/ca-resource-access-role.html) for directions on choosing appropriate policies.
+/// - The required policies on `callAnalyticsRole` will vary based on the selected processors. See [Call analytics resource access role](https://docs.aws.amazon.com/chime-sdk/latest/dg/ca-resource-access-role.html) for directions on choosing appropriate policies.
 ///
 /// ### Transcribe Call Analytics processor usage
 ///
@@ -655,6 +706,63 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "transcribeAssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["transcribe.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+///   name                     = "MyCallAnalyticsConfiguration"
+///   resource_access_role_arn = exampleAwsIamRole.arn
+///   elements {
+///     type = "AmazonTranscribeCallAnalyticsProcessor"
+///     amazon_transcribe_call_analytics_processor_configuration = {
+///       call_analytics_stream_categories     = ["category_1", "category_2"]
+///       content_redaction_type               = "PII"
+///       enable_partial_results_stabilization = true
+///       filter_partial_results               = true
+///       language_code                        = "en-US"
+///       language_model_name                  = "MyLanguageModel"
+///       partial_results_stability            = "high"
+///       pii_entity_types                     = "ADDRESS,BANK_ACCOUNT_NUMBER"
+///       post_call_analytics_settings = {
+///         content_redaction_output     = "redacted"
+///         data_access_role_arn         = aws_iam_role.post_call_role.arn
+///         output_encryption_kms_key_id = "MyKmsKeyId"
+///         output_location              = "s3://MyBucket"
+///       }
+///       vocabulary_filter_method = "mask"
+///       vocabulary_filter_name   = "MyVocabularyFilter"
+///       vocabulary_name          = "MyVocabulary"
+///     }
+///   }
+///   elements {
+///     type = "KinesisDataStreamSink"
+///     kinesis_data_stream_sink_configuration = {
+///       insights_target = example.arn
+///     }
+///   }
+/// }
+/// resource "aws_iam_role" "post_call_role" {
+///   name               = "PostCallAccessRole"
+///   assume_role_policy = data.aws_iam_getpolicydocument.transcribeAssumeRole.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -663,6 +771,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.MediaInsightsPipelineConfiguration;
@@ -671,8 +781,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettingsArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1040,6 +1150,55 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+///   name                     = "MyRealTimeAlertConfiguration"
+///   resource_access_role_arn = callAnalyticsRole.arn
+///   elements {
+///     type = "AmazonTranscribeCallAnalyticsProcessor"
+///     amazon_transcribe_call_analytics_processor_configuration = {
+///       language_code = "en-US"
+///     }
+///   }
+///   elements {
+///     type = "KinesisDataStreamSink"
+///     kinesis_data_stream_sink_configuration = {
+///       insights_target = example.arn
+///     }
+///   }
+///   real_time_alert_configuration = {
+///     disabled = false
+///     rules = [{
+///       "type" = "IssueDetection"
+///       "issueDetectionConfiguration" = {
+///         "ruleName" = "MyIssueDetectionRule"
+///       }
+///       }, {
+///       "type" = "KeywordMatch"
+///       "keywordMatchConfiguration" = {
+///         "keywords" = ["keyword1", "keyword2"]
+///         "negate"   = false
+///         "ruleName" = "MyKeywordMatchRule"
+///       }
+///       }, {
+///       "type" = "Sentiment"
+///       "sentimentConfiguration" = {
+///         "ruleName"      = "MySentimentRule"
+///         "sentimentType" = "NEGATIVE"
+///         "timePeriod"    = 60
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1052,8 +1211,12 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationRealTimeAlertConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleArgs;
+/// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfigurationArgs;
+/// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfigurationArgs;
+/// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfigurationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1308,6 +1471,42 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+///   name                     = "MyTranscribeConfiguration"
+///   resource_access_role_arn = exampleAwsIamRole.arn
+///   elements {
+///     type = "AmazonTranscribeProcessor"
+///     amazon_transcribe_processor_configuration = {
+///       content_identification_type          = "PII"
+///       enable_partial_results_stabilization = true
+///       filter_partial_results               = true
+///       language_code                        = "en-US"
+///       language_model_name                  = "MyLanguageModel"
+///       partial_results_stability            = "high"
+///       pii_entity_types                     = "ADDRESS,BANK_ACCOUNT_NUMBER"
+///       show_speaker_label                   = true
+///       vocabulary_filter_method             = "mask"
+///       vocabulary_filter_name               = "MyVocabularyFilter"
+///       vocabulary_name                      = "MyVocabulary"
+///     }
+///   }
+///   elements {
+///     type = "KinesisDataStreamSink"
+///     kinesis_data_stream_sink_configuration = {
+///       insights_target = example.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1319,8 +1518,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1591,6 +1790,51 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+///   name                     = "MyVoiceAnalyticsConfiguration"
+///   resource_access_role_arn = example.arn
+///   elements {
+///     type = "VoiceAnalyticsProcessor"
+///     voice_analytics_processor_configuration = {
+///       speaker_search_status      = "Enabled"
+///       voice_tone_analysis_status = "Enabled"
+///     }
+///   }
+///   elements {
+///     type = "LambdaFunctionSink"
+///     lambda_function_sink_configuration = {
+///       insights_target = "arn:aws:lambda:us-west-2:1111111111:function:MyFunction"
+///     }
+///   }
+///   elements {
+///     type = "SnsTopicSink"
+///     sns_topic_sink_configuration = {
+///       insights_target = "arn:aws:sns:us-west-2:1111111111:topic/MyTopic"
+///     }
+///   }
+///   elements {
+///     type = "SqsQueueSink"
+///     sqs_queue_sink_configuration = {
+///       insights_target = "arn:aws:sqs:us-west-2:1111111111:queue/MyQueue"
+///     }
+///   }
+///   elements {
+///     type = "KinesisDataStreamSink"
+///     kinesis_data_stream_sink_configuration = {
+///       insights_target = test.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1605,8 +1849,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementSnsTopicSinkConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementSqsQueueSinkConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1774,6 +2018,26 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "my_configuration" {
+///   name                     = "MyS3RecordingConfiguration"
+///   resource_access_role_arn = example.arn
+///   elements {
+///     type = "S3RecordingSink"
+///     s3_recording_sink_configuration = {
+///       destination = "arn:aws:s3:::MyBucket"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1784,8 +2048,8 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.aws.chimesdkmediapipelines.MediaInsightsPipelineConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementS3RecordingSinkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

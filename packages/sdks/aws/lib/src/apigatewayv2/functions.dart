@@ -62,6 +62,19 @@ import 'get_vpc_link_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigatewayv2_getapi" "example" {
+///   api_id = "aabbccddee"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_vpc_link_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Apigatewayv2Functions;
 /// import com.pulumi.aws.apigatewayv2.inputs.GetApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +180,19 @@ Future<GetApiResult> getApi(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigatewayv2_getapis" "example" {
+///   protocol_type = "HTTP"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +201,8 @@ Future<GetApiResult> getApi(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Apigatewayv2Functions;
 /// import com.pulumi.aws.apigatewayv2.inputs.GetApisArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,6 +306,21 @@ Future<GetApisResult> getApis(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigatewayv2_getexport" "test" {
+///   api_id        = testAwsApigatewayv2Route.apiId
+///   specification = "OAS30"
+///   output_type   = "JSON"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -288,8 +329,8 @@ Future<GetApisResult> getApis(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Apigatewayv2Functions;
 /// import com.pulumi.aws.apigatewayv2.inputs.GetExportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -391,6 +432,19 @@ Future<GetExportResult> getExport(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_apigatewayv2_getvpclink" "example" {
+///   vpc_link_id = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -399,8 +453,8 @@ Future<GetExportResult> getExport(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Apigatewayv2Functions;
 /// import com.pulumi.aws.apigatewayv2.inputs.GetVpcLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

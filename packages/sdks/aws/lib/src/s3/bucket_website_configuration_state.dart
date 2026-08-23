@@ -16,12 +16,11 @@ class BucketWebsiteConfigurationState {
   final pulumi.Input<String>? expectedBucketOwner;
   /// Name of the index document for the website. See below.
   final pulumi.Input<BucketWebsiteConfigurationIndexDocument>? indexDocument;
-  /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `error_document`, `index_document`, and `routing_rule`.
+  /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `errorDocument`, `indexDocument`, and `routingRule`.
   final pulumi.Input<BucketWebsiteConfigurationRedirectAllRequestsTo>? redirectAllRequestsTo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
-  /// describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
+  /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html) describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
   final pulumi.Input<String>? routingRuleDetails;
   /// List of rules that define when a redirect is applied and the redirect behavior. See below.
   final pulumi.Input<List<BucketWebsiteConfigurationRoutingRule>>? routingRules;
@@ -35,9 +34,9 @@ class BucketWebsiteConfigurationState {
   /// [errorDocument] Name of the error document for the website. See below.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [indexDocument] Name of the index document for the website. See below.
-  /// [redirectAllRequestsTo] Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `error_document`, `index_document`, and `routing_rule`.
+  /// [redirectAllRequestsTo] Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `errorDocument`, `indexDocument`, and `routingRule`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routingRuleDetails] JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
+  /// [routingRuleDetails] JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html) describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
   /// [routingRules] List of rules that define when a redirect is applied and the redirect behavior. See below.
   /// [websiteDomain] Domain of the website endpoint. This is used to create Route 53 alias records.
   /// [websiteEndpoint] Website endpoint.
@@ -84,4 +83,3 @@ class BucketWebsiteConfigurationState {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'statement_state.dart';
 ///
 /// ## Example Usage
 ///
-/// ### cluster_identifier
+/// ### clusterIdentifier
 ///
 ///
 /// ```typescript
@@ -71,6 +71,22 @@ import 'statement_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftdata_statement" "example" {
+///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
+///   database           = exampleAwsRedshiftCluster.databaseName
+///   db_user            = exampleAwsRedshiftCluster.masterUsername
+///   sql                = "CREATE GROUP group_name;"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +95,8 @@ import 'statement_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftdata.Statement;
 /// import com.pulumi.aws.redshiftdata.StatementArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +130,7 @@ import 'statement_state.dart';
 /// ```
 ///
 ///
-/// ### workgroup_name
+/// ### workgroupName
 ///
 ///
 /// ```typescript
@@ -175,6 +191,21 @@ import 'statement_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftdata_statement" "example" {
+///   workgroup_name = exampleAwsRedshiftserverlessWorkgroup.workgroupName
+///   database       = "dev"
+///   sql            = "CREATE GROUP group_name;"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +214,8 @@ import 'statement_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftdata.Statement;
 /// import com.pulumi.aws.redshiftdata.StatementArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

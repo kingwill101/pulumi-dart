@@ -6,16 +6,15 @@ import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation_trust
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation_trust_sds.dart';
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust {
-  /// TLS validation context trust for an AWS Certificate Manager (ACM) certificate.
+  /// AWS Certificate Manager (ACM) certificate.
   final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm>? acm;
-  /// TLS validation context trust for a local file certificate.
   final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds>? sds;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust].
-  /// [acm] TLS validation context trust for an AWS Certificate Manager (ACM) certificate.
-  /// [file] TLS validation context trust for a local file certificate.
+  /// [acm] AWS Certificate Manager (ACM) certificate.
+  /// [file] Optional.
   /// [sds] TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust({
     this.acm,
@@ -39,4 +38,3 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust {
     );
   }
 }
-

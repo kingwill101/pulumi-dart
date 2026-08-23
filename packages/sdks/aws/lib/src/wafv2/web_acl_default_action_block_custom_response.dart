@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_default_action_block_custom_response_response_header.dart';
 
 class WebAclDefaultActionBlockCustomResponse {
-  /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
+  /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
   final pulumi.Input<String>? customResponseBodyKey;
   /// The HTTP status code to return to the client.
   final pulumi.Input<int> responseCode;
-  /// The `response_header` blocks used to define the HTTP response headers added to the response. See `response_header` below for details.
+  /// The `responseHeader` blocks used to define the HTTP response headers added to the response. See `responseHeader` below for details.
   final pulumi.Input<List<WebAclDefaultActionBlockCustomResponseResponseHeader>>? responseHeaders;
 
   /// Creates a new [WebAclDefaultActionBlockCustomResponse].
-  /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
+  /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
   /// [responseCode] The HTTP status code to return to the client.
-  /// [responseHeaders] The `response_header` blocks used to define the HTTP response headers added to the response. See `response_header` below for details.
+  /// [responseHeaders] The `responseHeader` blocks used to define the HTTP response headers added to the response. See `responseHeader` below for details.
   const WebAclDefaultActionBlockCustomResponse({
     this.customResponseBodyKey,
     required this.responseCode,
@@ -37,4 +37,3 @@ class WebAclDefaultActionBlockCustomResponse {
     );
   }
 }
-

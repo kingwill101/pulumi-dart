@@ -14,9 +14,9 @@ import 'usage_plan_throttle_settings.dart';
 /// $ pulumi import aws:apigateway/usagePlan:UsagePlan myusageplan <usage_plan_id>
 /// ```
 class UsagePlan extends pulumi.CustomResource {
-  /// Associated API stages of the usage plan.
+  /// Associated API stages of the usage plan. See `apiStages` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> apiStages;
-  /// ARN
+  /// ARN of the usage plan.
   late final pulumi.Output<String> arn;
   /// Description of a usage plan.
   late final pulumi.Output<String?> description;
@@ -24,15 +24,15 @@ class UsagePlan extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// AWS Marketplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
   late final pulumi.Output<String?> productCode;
-  /// The quota settings of the usage plan.
+  /// Quota settings of the usage plan. See `quotaSettings` Block below.
   late final pulumi.Output<UsagePlanQuotaSettings?> quotaSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The throttling limits of the usage plan.
+  /// Throttling limits of the usage plan. See `throttleSettings` Block below.
   late final pulumi.Output<UsagePlanThrottleSettings?> throttleSettings;
 
   /// Creates a new [UsagePlan].

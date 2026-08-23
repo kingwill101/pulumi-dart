@@ -4,7 +4,7 @@ import 'function_recursion_config_state.dart';
 
 /// Manages an AWS Lambda Function Recursion Config. Use this resource to control how Lambda handles recursive function invocations to prevent infinite loops.
 ///
-/// &gt; **Note:** Destruction of this resource will return the `recursive_loop` configuration back to the default value of `Terminate`.
+/// &gt; **Note:** Destruction of this resource will return the `recursiveLoop` configuration back to the default value of `Terminate`.
 ///
 /// ## Example Usage
 ///
@@ -105,6 +105,29 @@ import 'function_recursion_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Lambda function that may need to call itself
+/// resource "aws_lambda_function" "example" {
+///   code    = fileArchive("function.zip")
+///   name    = "recursive_processor"
+///   role    = lambdaRole.arn
+///   handler = "index.handler"
+///   runtime = "python3.12"
+/// }
+/// # Allow the function to invoke itself recursively
+/// resource "aws_lambda_functionrecursionconfig" "example" {
+///   function_name  = aws_lambda_function.example.name
+///   recursive_loop = "Allow"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +139,8 @@ import 'function_recursion_config_state.dart';
 /// import com.pulumi.aws.lambda.FunctionRecursionConfig;
 /// import com.pulumi.aws.lambda.FunctionRecursionConfigArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,7 +177,7 @@ import 'function_recursion_config_state.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: recursive_processor
 ///       role: ${lambdaRole.arn}
 ///       handler: index.handler
@@ -182,7 +205,7 @@ import 'function_recursion_config_state.dart';
 ///     name: "production-data-processor",
 ///     role: lambdaRole.arn,
 ///     handler: "app.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     tags: {
 ///         Environment: "production",
 ///         Purpose: "data-processing",
@@ -204,7 +227,7 @@ import 'function_recursion_config_state.dart';
 ///     name="production-data-processor",
 ///     role=lambda_role["arn"],
 ///     handler="app.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     tags={
 ///         "Environment": "production",
 ///         "Purpose": "data-processing",
@@ -229,7 +252,7 @@ import 'function_recursion_config_state.dart';
 ///         Name = "production-data-processor",
 ///         Role = lambdaRole.Arn,
 ///         Handler = "app.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -262,7 +285,7 @@ import 'function_recursion_config_state.dart';
 /// 			Name:    pulumi.String("production-data-processor"),
 /// 			Role:    pulumi.Any(lambdaRole.Arn),
 /// 			Handler: pulumi.String("app.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Purpose":     pulumi.String("data-processing"),
@@ -283,6 +306,33 @@ import 'function_recursion_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Production function with recursion protection
+/// resource "aws_lambda_function" "production_processor" {
+///   code    = fileArchive("processor.zip")
+///   name    = "production-data-processor"
+///   role    = lambdaRole.arn
+///   handler = "app.handler"
+///   runtime = "nodejs24.x"
+///   tags = {
+///     "Environment" = "production"
+///     "Purpose"     = "data-processing"
+///   }
+/// }
+/// # Prevent infinite loops in production
+/// resource "aws_lambda_functionrecursionconfig" "example" {
+///   function_name  = aws_lambda_function.production_processor.name
+///   recursive_loop = "Terminate"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +344,8 @@ import 'function_recursion_config_state.dart';
 /// import com.pulumi.aws.lambda.FunctionRecursionConfig;
 /// import com.pulumi.aws.lambda.FunctionRecursionConfigArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,7 +363,7 @@ import 'function_recursion_config_state.dart';
 ///             .name("production-data-processor")
 ///             .role(lambdaRole.arn())
 ///             .handler("app.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Purpose", "data-processing")
@@ -337,11 +387,11 @@ import 'function_recursion_config_state.dart';
 ///     name: production_processor
 ///     properties:
 ///       code:
-///         fn::FileArchive: processor.zip
+///         fn::fileArchive: processor.zip
 ///       name: production-data-processor
 ///       role: ${lambdaRole.arn}
 ///       handler: app.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///       tags:
 ///         Environment: production
 ///         Purpose: data-processing

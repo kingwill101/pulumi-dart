@@ -156,6 +156,28 @@ import 'theme_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_theme" "example" {
+///   theme_id      = "example"
+///   name          = "example"
+///   base_theme_id = "MIDNIGHT"
+///   configuration = {
+///     data_color_palette = {
+///       colors            = ["#FFFFFF", "#111111", "#222222", "#333333", "#444444", "#555555", "#666666", "#777777", "#888888", "#999999"]
+///       empty_fill_color  = "#FFFFFF"
+///       min_max_gradients = ["#FFFFFF", "#111111"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +188,8 @@ import 'theme_state.dart';
 /// import com.pulumi.aws.quicksight.ThemeArgs;
 /// import com.pulumi.aws.quicksight.inputs.ThemeConfigurationArgs;
 /// import com.pulumi.aws.quicksight.inputs.ThemeConfigurationDataColorPaletteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,9 +285,9 @@ class Theme extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The theme creation status.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Identifier of the theme.
   ///

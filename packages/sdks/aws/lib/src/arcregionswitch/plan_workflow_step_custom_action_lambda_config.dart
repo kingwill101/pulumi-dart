@@ -5,7 +5,7 @@ import 'plan_workflow_step_custom_action_lambda_config_lambda.dart';
 import 'plan_workflow_step_custom_action_lambda_config_ungraceful.dart';
 
 class PlanWorkflowStepCustomActionLambdaConfig {
-  /// Lambda function configuration. See Lambda below.
+  /// Lambda function configuration. See `lambda` Block for details.
   final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigLambda>>? lambdas;
   /// Region where the Lambda function should run. Valid values: `activatingRegion`, `deactivatingRegion`.
   final pulumi.Input<String> regionToRun;
@@ -13,15 +13,15 @@ class PlanWorkflowStepCustomActionLambdaConfig {
   final pulumi.Input<double> retryIntervalMinutes;
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
-  /// Ungraceful behavior configuration. See Ungraceful below.
+  /// Ungraceful behavior configuration. See `workflow.step.custom_action_lambda_config.ungraceful` Block for details.
   final pulumi.Input<List<PlanWorkflowStepCustomActionLambdaConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepCustomActionLambdaConfig].
-  /// [lambdas] Lambda function configuration. See Lambda below.
+  /// [lambdas] Lambda function configuration. See `lambda` Block for details.
   /// [regionToRun] Region where the Lambda function should run. Valid values: `activatingRegion`, `deactivatingRegion`.
   /// [retryIntervalMinutes] Retry interval in minutes.
   /// [timeoutMinutes] Timeout in minutes.
-  /// [ungracefuls] Ungraceful behavior configuration. See Ungraceful below.
+  /// [ungracefuls] Ungraceful behavior configuration. See `workflow.step.custom_action_lambda_config.ungraceful` Block for details.
   const PlanWorkflowStepCustomActionLambdaConfig({
     this.lambdas,
     required this.regionToRun,
@@ -50,4 +50,3 @@ class PlanWorkflowStepCustomActionLambdaConfig {
     );
   }
 }
-

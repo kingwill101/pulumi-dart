@@ -85,6 +85,24 @@ import 'trust_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_truststore" "example" {
+///   certificates {
+///     body = file("certificate.pem")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'trust_store_state.dart';
 /// import com.pulumi.aws.workspacesweb.inputs.TrustStoreCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,6 +276,30 @@ import 'trust_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_truststore" "example" {
+///   certificates {
+///     body = file("certificate1.pem")
+///   }
+///   certificates {
+///     body = file("certificate2.pem")
+///   }
+///   tags = {
+///     "Name" = "example-trust-store"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +311,8 @@ import 'trust_store_state.dart';
 /// import com.pulumi.aws.workspacesweb.inputs.TrustStoreCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,7 +367,7 @@ import 'trust_store_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WorkSpaces Web Trust Store using the `trust_store_arn`. For example:
+/// Using `pulumi import`, import WorkSpaces Web Trust Store using the `trustStoreArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspacesweb/trustStore:TrustStore example arn:aws:workspaces-web:us-west-2:123456789012:trustStore/trust_store-id-12345678
@@ -337,9 +379,9 @@ class TrustStore extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the trust store.
   late final pulumi.Output<String> trustStoreArn;

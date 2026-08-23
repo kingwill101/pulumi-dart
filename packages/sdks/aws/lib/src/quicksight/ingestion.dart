@@ -67,6 +67,21 @@ import 'ingestion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_ingestion" "example" {
+///   data_set_id    = exampleAwsQuicksightDataSet.dataSetId
+///   ingestion_id   = "example-id"
+///   ingestion_type = "FULL_REFRESH"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'ingestion_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.Ingestion;
 /// import com.pulumi.aws.quicksight.IngestionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

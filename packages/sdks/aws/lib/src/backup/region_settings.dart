@@ -155,6 +155,43 @@ import 'region_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_regionsettings" "test" {
+///   resource_type_opt_in_preference = {
+///     "Aurora"                 = true
+///     "CloudFormation"         = true
+///     "DocumentDB"             = true
+///     "DSQL"                   = true
+///     "DynamoDB"               = true
+///     "EBS"                    = true
+///     "EC2"                    = true
+///     "EFS"                    = true
+///     "FSx"                    = true
+///     "Neptune"                = true
+///     "Redshift"               = true
+///     "Redshift Serverless"    = false
+///     "RDS"                    = false
+///     "S3"                     = false
+///     "SAP HANA on Amazon EC2" = false
+///     "Storage Gateway"        = false
+///     "VirtualMachine"         = false
+///   }
+///   resource_type_management_preference = {
+///     "CloudFormation" = true
+///     "DSQL"           = true
+///     "DynamoDB"       = false
+///     "EFS"            = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +200,8 @@ import 'region_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.RegionSettings;
 /// import com.pulumi.aws.backup.RegionSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,6 +276,14 @@ import 'region_settings_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import Backup Region Settings using the `region`. For example:
 ///

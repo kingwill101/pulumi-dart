@@ -24,4 +24,3 @@ class InsightFiltersNetworkSourceIpv4 {
     );
   }
 }
-

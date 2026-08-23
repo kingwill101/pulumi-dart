@@ -3,6 +3,7 @@
 
 /// Result data returned by getKey.
 class GetKeyResult {
+  /// ARN of the API Key.
   final String arn;
   /// Date and time when the API Key was created.
   final String createdDate;
@@ -25,7 +26,7 @@ class GetKeyResult {
   final String value;
 
   /// Creates a new [GetKeyResult].
-  /// [arn] Required.
+  /// [arn] ARN of the API Key.
   /// [createdDate] Date and time when the API Key was created.
   /// [customerId] Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   /// [description] Description of the API Key.
@@ -82,4 +83,3 @@ class GetKeyResult {
     );
   }
 }
-

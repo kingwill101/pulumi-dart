@@ -132,7 +132,7 @@ import 'profile_state.dart';
 /// 						"sts:TagSession",
 /// 						"sts:SetSourceIdentity",
 /// 					},
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "rolesanywhere.amazonaws.com",
 /// 					},
 /// 					"Effect": "Allow",
@@ -165,6 +165,35 @@ import 'profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "test" {
+///   name = "test"
+///   path = "/"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = ["sts:AssumeRole", "sts:TagSession", "sts:SetSourceIdentity"]
+///       "Principal" = {
+///         "Service" = "rolesanywhere.amazonaws.com"
+///       }
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///     }]
+///   })
+/// }
+/// resource "aws_rolesanywhere_profile" "test" {
+///   name      = "example"
+///   role_arns = [aws_iam_role.test.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +205,8 @@ import 'profile_state.dart';
 /// import com.pulumi.aws.rolesanywhere.Profile;
 /// import com.pulumi.aws.rolesanywhere.ProfileArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,9 +302,9 @@ class Profile extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> roleArns;
   /// A session policy that applies to the trust boundary of the vended session credentials.
   late final pulumi.Output<String?> sessionPolicy;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Profile].

@@ -85,6 +85,24 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "Sample KMS Key"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_finspace_kxenvironment" "example" {
+///   name       = "my-tf-kx-environment"
+///   kms_key_id = aws_kms_key.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.finspace.KxEnvironment;
 /// import com.pulumi.aws.finspace.KxEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,7 +273,7 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 			Description: pulumi.String("Environment description"),
 /// 			KmsKeyId:    example.Arn,
 /// 			TransitGatewayConfiguration: &finspace.KxEnvironmentTransitGatewayConfigurationArgs{
-/// 				TransitGatewayId:  exampleTransitGateway.ID(),
+/// 				TransitGatewayId:  exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 				RoutableCidrSpace: pulumi.String("100.64.0.0/26"),
 /// 			},
 /// 			CustomDnsConfigurations: finspace.KxEnvironmentCustomDnsConfigurationArray{
@@ -272,6 +290,36 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "Sample KMS Key"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+///   description = "example"
+/// }
+/// resource "aws_finspace_kxenvironment" "example_env" {
+///   name        = "my-tf-kx-environment"
+///   description = "Environment description"
+///   kms_key_id  = aws_kms_key.example.arn
+///   transit_gateway_configuration = {
+///     transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
+///     routable_cidr_space = "100.64.0.0/26"
+///   }
+///   custom_dns_configurations {
+///     custom_dns_server_name = "example.finspace.amazonaws.com"
+///     custom_dns_server_ip   = "10.0.0.76"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +334,8 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// import com.pulumi.aws.finspace.KxEnvironmentArgs;
 /// import com.pulumi.aws.finspace.inputs.KxEnvironmentTransitGatewayConfigurationArgs;
 /// import com.pulumi.aws.finspace.inputs.KxEnvironmentCustomDnsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -519,7 +567,7 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 			Description: pulumi.String("Environment description"),
 /// 			KmsKeyId:    example.Arn,
 /// 			TransitGatewayConfiguration: &finspace.KxEnvironmentTransitGatewayConfigurationArgs{
-/// 				TransitGatewayId:  exampleTransitGateway.ID(),
+/// 				TransitGatewayId:  exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 				RoutableCidrSpace: pulumi.String("100.64.0.0/26"),
 /// 				AttachmentNetworkAclConfigurations: finspace.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationArray{
 /// 					&finspace.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationArgs{
@@ -552,6 +600,50 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "Sample KMS Key"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+///   description = "example"
+/// }
+/// resource "aws_finspace_kxenvironment" "example_env" {
+///   name        = "my-tf-kx-environment"
+///   description = "Environment description"
+///   kms_key_id  = aws_kms_key.example.arn
+///   transit_gateway_configuration = {
+///     transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
+///     routable_cidr_space = "100.64.0.0/26"
+///     attachment_network_acl_configurations = [{
+///       "ruleNumber" = 1
+///       "protocol"   = "6"
+///       "ruleAction" = "allow"
+///       "cidrBlock"  = "0.0.0.0/0"
+///       "portRange" = {
+///         "from" = 53
+///         "to"   = 53
+///       }
+///       "icmpTypeCode" = {
+///         "type" = -1
+///         "code" = -1
+///       }
+///     }]
+///   }
+///   custom_dns_configurations {
+///     custom_dns_server_name = "example.finspace.amazonaws.com"
+///     custom_dns_server_ip   = "10.0.0.76"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -565,9 +657,12 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// import com.pulumi.aws.finspace.KxEnvironment;
 /// import com.pulumi.aws.finspace.KxEnvironmentArgs;
 /// import com.pulumi.aws.finspace.inputs.KxEnvironmentTransitGatewayConfigurationArgs;
+/// import com.pulumi.aws.finspace.inputs.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationArgs;
+/// import com.pulumi.aws.finspace.inputs.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRangeArgs;
+/// import com.pulumi.aws.finspace.inputs.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCodeArgs;
 /// import com.pulumi.aws.finspace.inputs.KxEnvironmentCustomDnsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -679,20 +774,20 @@ class KxEnvironment extends pulumi.CustomResource {
   /// Unique identifier for the AWS environment infrastructure account.
   late final pulumi.Output<String> infrastructureAccountId;
   /// KMS key ID to encrypt your data in the FinSpace environment.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<String> kmsKeyId;
   /// Last timestamp at which the environment was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> lastModifiedTimestamp;
   /// Name of the KX environment that you want to create.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Status of environment creation
   late final pulumi.Output<String> status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
   late final pulumi.Output<KxEnvironmentTransitGatewayConfiguration?> transitGatewayConfiguration;

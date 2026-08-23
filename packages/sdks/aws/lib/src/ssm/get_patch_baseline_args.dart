@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ssm_get_patch_baseline_get_patch_baseline_args_doc}
 class GetPatchBaselineArgs {
-  /// Filters the results against the baselines default_baseline field.
+  /// Filters the results against the baselines defaultBaseline field.
   final pulumi.Input<bool>? defaultBaseline;
   /// Filter results by the baseline name prefix.
   final pulumi.Input<String>? namePrefix;
@@ -21,7 +21,7 @@ class GetPatchBaselineArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetPatchBaselineArgs].
-  /// [defaultBaseline] Filters the results against the baselines default_baseline field.
+  /// [defaultBaseline] Filters the results against the baselines defaultBaseline field.
   /// [namePrefix] Filter results by the baseline name prefix.
   /// [operatingSystem] Specified OS for the baseline. Valid values: `AMAZON_LINUX`, `AMAZON_LINUX_2`, `UBUNTU`, `REDHAT_ENTERPRISE_LINUX`, `SUSE`, `CENTOS`, `ORACLE_LINUX`, `DEBIAN`, `MACOS`, `RASPBIAN` and `ROCKY_LINUX`.
   /// [owner] Owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
@@ -54,4 +54,3 @@ class GetPatchBaselineArgs {
     );
   }
 }
-

@@ -194,7 +194,7 @@ import 'proactive_engagement_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "drt.shield.amazonaws.com",
 /// 					},
 /// 					"Action": "sts:AssumeRole",
@@ -257,6 +257,56 @@ import 'proactive_engagement_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_shield_proactiveengagement" "example" {
+///   depends_on = [aws_shield_drtaccessrolearnassociation.example]
+///   enabled    = true
+///   emergency_contacts {
+///     contact_notes = "Notes"
+///     email_address = "contact1@example.com"
+///     phone_number  = "+12358132134"
+///   }
+///   emergency_contacts {
+///     contact_notes = "Notes 2"
+///     email_address = "contact2@example.com"
+///     phone_number  = "+12358132134"
+///   }
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"    = ""
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "drt.shield.amazonaws.com"
+///       }
+///       "Action" = "sts:AssumeRole"
+///     }]
+///   })
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   role       = aws_iam_role.example.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy"
+/// }
+/// resource "aws_shield_drtaccessrolearnassociation" "example" {
+///   role_arn = aws_iam_role.example.arn
+/// }
+/// resource "aws_shield_protectiongroup" "example" {
+///   protection_group_id = "example"
+///   aggregation         = "MAX"
+///   pattern             = "ALL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +326,8 @@ import 'proactive_engagement_state.dart';
 /// import com.pulumi.aws.shield.ProtectionGroupArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,7 +449,7 @@ import 'proactive_engagement_state.dart';
 /// $ pulumi import aws:shield/proactiveEngagement:ProactiveEngagement example 123456789012
 /// ```
 class ProactiveEngagement extends pulumi.CustomResource {
-  /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
+  /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergencyContacts`.
   late final pulumi.Output<List<Map<String, dynamic>>> emergencyContacts;
   /// Boolean value indicating if Proactive Engagement should be enabled or not.
   late final pulumi.Output<bool> enabled;

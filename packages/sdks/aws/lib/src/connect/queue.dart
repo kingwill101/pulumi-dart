@@ -86,6 +86,25 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_queue" "test" {
+///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name                  = "Example Name"
+///   description           = "Example Description"
+///   hours_of_operation_id = "12345678-1234-1234-1234-123456789012"
+///   tags = {
+///     "Name" = "Example Queue"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +113,8 @@ import 'queue_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.Queue;
 /// import com.pulumi.aws.connect.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +238,26 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_queue" "test" {
+///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name                  = "Example Name"
+///   description           = "Example Description"
+///   hours_of_operation_id = "12345678-1234-1234-1234-123456789012"
+///   quick_connect_ids     = ["12345678-abcd-1234-abcd-123456789012"]
+///   tags = {
+///     "Name" = "Example Queue with Quick Connect IDs"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +266,8 @@ import 'queue_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.Queue;
 /// import com.pulumi.aws.connect.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -367,6 +406,30 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_queue" "test" {
+///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name                  = "Example Name"
+///   description           = "Example Description"
+///   hours_of_operation_id = "12345678-1234-1234-1234-123456789012"
+///   outbound_caller_config = {
+///     outbound_caller_id_name      = "example"
+///     outbound_caller_id_number_id = "12345678-abcd-1234-abcd-123456789012"
+///     outbound_flow_id             = "87654321-defg-1234-defg-987654321234"
+///   }
+///   tags = {
+///     "Name" = "Example Queue with Outbound Caller Config"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -376,8 +439,8 @@ import 'queue_state.dart';
 /// import com.pulumi.aws.connect.Queue;
 /// import com.pulumi.aws.connect.QueueArgs;
 /// import com.pulumi.aws.connect.inputs.QueueOutboundCallerConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,7 +488,7 @@ import 'queue_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Queues using the `instance_id` and `queue_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Queues using the `instanceId` and `queueId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/queue:Queue example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -453,9 +516,9 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Specifies the description of the Queue. Valid values are `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> status;
-  /// Tags to apply to the Queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Queue. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Queue].

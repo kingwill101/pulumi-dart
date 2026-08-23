@@ -452,7 +452,7 @@ import 'cluster_state.dart';
 /// 		subnetAz1, err := ec2.NewSubnet(ctx, "subnet_az1", &ec2.SubnetArgs{
 /// 			AvailabilityZone: pulumi.String(azs.Names[0]),
 /// 			CidrBlock:        pulumi.String("192.168.0.0/24"),
-/// 			VpcId:            vpc.ID(),
+/// 			VpcId:            vpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -460,7 +460,7 @@ import 'cluster_state.dart';
 /// 		subnetAz2, err := ec2.NewSubnet(ctx, "subnet_az2", &ec2.SubnetArgs{
 /// 			AvailabilityZone: pulumi.String(azs.Names[1]),
 /// 			CidrBlock:        pulumi.String("192.168.1.0/24"),
-/// 			VpcId:            vpc.ID(),
+/// 			VpcId:            vpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -468,18 +468,18 @@ import 'cluster_state.dart';
 /// 		subnetAz3, err := ec2.NewSubnet(ctx, "subnet_az3", &ec2.SubnetArgs{
 /// 			AvailabilityZone: pulumi.String(azs.Names[2]),
 /// 			CidrBlock:        pulumi.String("192.168.2.0/24"),
-/// 			VpcId:            vpc.ID(),
+/// 			VpcId:            vpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		sg, err := ec2.NewSecurityGroup(ctx, "sg", &ec2.SecurityGroupArgs{
-/// 			VpcId: vpc.ID(),
+/// 			VpcId: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		kms, err := kms.NewKey(ctx, "kms", &kms.KeyArgs{
+/// 		kms2, err := kms.NewKey(ctx, "kms", &kms.KeyArgs{
 /// 			Description: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -498,7 +498,7 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -553,9 +553,9 @@ import 'cluster_state.dart';
 /// 			BrokerNodeGroupInfo: &msk.ClusterBrokerNodeGroupInfoArgs{
 /// 				InstanceType: pulumi.String("kafka.m5.large"),
 /// 				ClientSubnets: pulumi.StringArray{
-/// 					subnetAz1.ID(),
-/// 					subnetAz2.ID(),
-/// 					subnetAz3.ID(),
+/// 					subnetAz1.ID().ToIDOutput().ToStringOutput(),
+/// 					subnetAz2.ID().ToIDOutput().ToStringOutput(),
+/// 					subnetAz3.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				StorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoArgs{
 /// 					EbsStorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs{
@@ -563,11 +563,11 @@ import 'cluster_state.dart';
 /// 					},
 /// 				},
 /// 				SecurityGroups: pulumi.StringArray{
-/// 					sg.ID(),
+/// 					sg.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			EncryptionInfo: &msk.ClusterEncryptionInfoArgs{
-/// 				EncryptionAtRestKmsKeyArn: kms.Arn,
+/// 				EncryptionAtRestKmsKeyArn: kms2.Arn,
 /// 			},
 /// 			OpenMonitoring: &msk.ClusterOpenMonitoringArgs{
 /// 				Prometheus: &msk.ClusterOpenMonitoringPrometheusArgs{
@@ -591,7 +591,7 @@ import 'cluster_state.dart';
 /// 					},
 /// 					S3: &msk.ClusterLoggingInfoBrokerLogsS3Args{
 /// 						Enabled: pulumi.Bool(true),
-/// 						Bucket:  bucket.ID(),
+/// 						Bucket:  bucket.ID().ToIDOutput().ToStringOutput(),
 /// 						Prefix:  pulumi.String("logs/msk-"),
 /// 					},
 /// 				},
@@ -607,6 +607,133 @@ import 'cluster_state.dart';
 /// 		ctx.Export("bootstrapBrokersTls", example.BootstrapBrokersTls)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "azs" {
+///   state = "available"
+/// }
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["firehose.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "vpc" {
+///   cidr_block = "192.168.0.0/22"
+/// }
+/// resource "aws_ec2_subnet" "subnet_az1" {
+///   availability_zone = data.aws_getavailabilityzones.azs.names[0]
+///   cidr_block        = "192.168.0.0/24"
+///   vpc_id            = aws_ec2_vpc.vpc.id
+/// }
+/// resource "aws_ec2_subnet" "subnet_az2" {
+///   availability_zone = data.aws_getavailabilityzones.azs.names[1]
+///   cidr_block        = "192.168.1.0/24"
+///   vpc_id            = aws_ec2_vpc.vpc.id
+/// }
+/// resource "aws_ec2_subnet" "subnet_az3" {
+///   availability_zone = data.aws_getavailabilityzones.azs.names[2]
+///   cidr_block        = "192.168.2.0/24"
+///   vpc_id            = aws_ec2_vpc.vpc.id
+/// }
+/// resource "aws_ec2_securitygroup" "sg" {
+///   vpc_id = aws_ec2_vpc.vpc.id
+/// }
+/// resource "aws_kms_key" "kms" {
+///   description = "example"
+/// }
+/// resource "aws_cloudwatch_loggroup" "test" {
+///   name = "msk_broker_logs"
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "msk-broker-logs-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "bucket_acl" {
+///   bucket = aws_s3_bucket.bucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_iam_role" "firehose_role" {
+///   name               = "firehose_test_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-msk-broker-logs-stream"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     role_arn   = aws_iam_role.firehose_role.arn
+///     bucket_arn = aws_s3_bucket.bucket.arn
+///   }
+///   tags = {
+///     "LogDeliveryEnabled" = "placeholder"
+///   }
+/// }
+/// resource "aws_msk_cluster" "example" {
+///   cluster_name           = "example"
+///   kafka_version          = "3.8.x"
+///   number_of_broker_nodes = 3
+///   broker_node_group_info = {
+///     instance_type  = "kafka.m5.large"
+///     client_subnets = [aws_ec2_subnet.subnet_az1.id, aws_ec2_subnet.subnet_az2.id, aws_ec2_subnet.subnet_az3.id]
+///     storage_info = {
+///       ebs_storage_info = {
+///         volume_size = 1000
+///       }
+///     }
+///     security_groups = [aws_ec2_securitygroup.sg.id]
+///   }
+///   encryption_info = {
+///     encryption_at_rest_kms_key_arn = aws_kms_key.kms.arn
+///   }
+///   open_monitoring = {
+///     prometheus = {
+///       jmx_exporter = {
+///         enabled_in_broker = true
+///       }
+///       node_exporter = {
+///         enabled_in_broker = true
+///       }
+///     }
+///   }
+///   logging_info = {
+///     broker_logs = {
+///       cloudwatch_logs = {
+///         enabled   = true
+///         log_group = aws_cloudwatch_loggroup.test.name
+///       }
+///       firehose = {
+///         enabled         = true
+///         delivery_stream = aws_kinesis_firehosedeliverystream.test_stream.name
+///       }
+///       s3 = {
+///         enabled = true
+///         bucket  = aws_s3_bucket.bucket.id
+///         prefix  = "logs/msk-"
+///       }
+///     }
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// output "zookeeperConnectString" {
+///   value = aws_msk_cluster.example.zookeeper_connect_string
+/// }
+/// output "bootstrapBrokersTls" {
+///   value = aws_msk_cluster.example.bootstrap_brokers_tls
 /// }
 /// ```
 /// ```java
@@ -633,6 +760,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
@@ -653,8 +782,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.msk.inputs.ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs;
 /// import com.pulumi.aws.msk.inputs.ClusterLoggingInfoBrokerLogsFirehoseArgs;
 /// import com.pulumi.aws.msk.inputs.ClusterLoggingInfoBrokerLogsS3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -923,7 +1052,7 @@ import 'cluster_state.dart';
 /// ```
 ///
 ///
-/// ### With volume_throughput argument
+/// ### With volumeThroughput argument
 ///
 ///
 /// ```typescript
@@ -1066,6 +1195,35 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_msk_cluster" "example" {
+///   cluster_name           = "example"
+///   kafka_version          = "3.8.x"
+///   number_of_broker_nodes = 3
+///   broker_node_group_info = {
+///     instance_type  = "kafka.m5.4xlarge"
+///     client_subnets = [subnetAz1.id, subnetAz2.id, subnetAz3.id]
+///     storage_info = {
+///       ebs_storage_info = {
+///         provisioned_throughput = {
+///           enabled           = true
+///           volume_throughput = 250
+///         }
+///         volume_size = 1000
+///       }
+///     }
+///     security_groups = [sg.id]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1078,8 +1236,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.msk.inputs.ClusterBrokerNodeGroupInfoStorageInfoArgs;
 /// import com.pulumi.aws.msk.inputs.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs;
 /// import com.pulumi.aws.msk.inputs.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1144,7 +1302,14 @@ import 'cluster_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import MSK clusters using the cluster `arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the MSK cluster.
+///
+///
+/// Using `pulumi import`, import MSK cluster using the cluster ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:msk/cluster:Cluster example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
@@ -1154,6 +1319,8 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Comma separated list of one or more hostname:port pairs of kafka brokers suitable to bootstrap connectivity to the kafka cluster. Contains a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `PLAINTEXT` or `TLS_PLAINTEXT`. The resource sorts values alphabetically. AWS may not always return all endpoints so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> bootstrapBrokers;
+  /// One or more IPv6 DNS names (or IP addresses) and plaintext port pairs. For example, `2001:db8:1234:1a00:*:80,2001:db8:1234:1a02:*:80,2001:db8:1234:1a04:*:80`. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `PLAINTEXT` or `TLS_PLAINTEXT`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
+  late final pulumi.Output<String> bootstrapBrokersIpv6;
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.iam` is set to `true` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersPublicSaslIam;
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
@@ -1162,39 +1329,47 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> bootstrapBrokersPublicTls;
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.iam` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersSaslIam;
+  /// One or more IPv6 DNS names (or IP addresses) and SASL IAM port pairs. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.iam` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
+  late final pulumi.Output<String> bootstrapBrokersSaslIamIpv6;
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersSaslScram;
+  /// One or more IPv6 DNS names (or IP addresses) and SASL SCRAM port pairs. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
+  late final pulumi.Output<String> bootstrapBrokersSaslScramIpv6;
   /// One or more DNS names (or IP addresses) and TLS port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersTls;
+  /// One or more IPv6 DNS names (or IP addresses) and TLS port pairs. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
+  late final pulumi.Output<String> bootstrapBrokersTlsIpv6;
   /// A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivitySaslIam;
   /// A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivitySaslScram;
   /// A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivityTls;
-  /// Configuration block for the broker nodes of the Kafka cluster. See broker_node_group_info Argument Reference below.
+  /// Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
   late final pulumi.Output<ClusterBrokerNodeGroupInfo> brokerNodeGroupInfo;
-  /// Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
+  /// Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
   late final pulumi.Output<ClusterClientAuthentication?> clientAuthentication;
   /// Name of the MSK cluster.
   late final pulumi.Output<String> clusterName;
   /// UUID of the MSK cluster, for use in IAM policies.
   late final pulumi.Output<String> clusterUuid;
-  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configuration_info Argument Reference below.
+  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configurationInfo Argument Reference below.
   late final pulumi.Output<ClusterConfigurationInfo?> configurationInfo;
   /// Current version of the MSK Cluster used for updates, e.g., `K13V1IB3VIYZZH`
   late final pulumi.Output<String> currentVersion;
-  /// Configuration block for specifying encryption. See encryption_info Argument Reference below.
+  /// Status indicating whether Amazon MSK requires customer action for the cluster. Valid values are `NONE`, `ACTION_RECOMMENDED`, and `CRITICAL_ACTION_REQUIRED`.
+  late final pulumi.Output<String> customerActionStatus;
+  /// Configuration block for specifying encryption. See encryptionInfo Argument Reference below.
   late final pulumi.Output<ClusterEncryptionInfo?> encryptionInfo;
   /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
   late final pulumi.Output<String?> enhancedMonitoring;
   /// Specify the desired Kafka software version.
   late final pulumi.Output<String> kafkaVersion;
-  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See logging_info Argument Reference below.
+  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See loggingInfo Argument Reference below.
   late final pulumi.Output<ClusterLoggingInfo?> loggingInfo;
   /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
   late final pulumi.Output<int> numberOfBrokerNodes;
-  /// Configuration block for JMX and Node monitoring for the MSK cluster. See open_monitoring Argument Reference below.
+  /// Configuration block for JMX and Node monitoring for the MSK cluster. See openMonitoring Argument Reference below.
   late final pulumi.Output<ClusterOpenMonitoring?> openMonitoring;
   /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
   late final pulumi.Output<ClusterRebalancing> rebalancing;
@@ -1202,9 +1377,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
   late final pulumi.Output<String> storageMode;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> zookeeperConnectString;
@@ -1227,12 +1402,16 @@ class Cluster extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokers = registerOutput<String>('bootstrapBrokers');
+    bootstrapBrokersIpv6 = registerOutput<String>('bootstrapBrokersIpv6');
     bootstrapBrokersPublicSaslIam = registerOutput<String>('bootstrapBrokersPublicSaslIam');
     bootstrapBrokersPublicSaslScram = registerOutput<String>('bootstrapBrokersPublicSaslScram');
     bootstrapBrokersPublicTls = registerOutput<String>('bootstrapBrokersPublicTls');
     bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
+    bootstrapBrokersSaslIamIpv6 = registerOutput<String>('bootstrapBrokersSaslIamIpv6');
     bootstrapBrokersSaslScram = registerOutput<String>('bootstrapBrokersSaslScram');
+    bootstrapBrokersSaslScramIpv6 = registerOutput<String>('bootstrapBrokersSaslScramIpv6');
     bootstrapBrokersTls = registerOutput<String>('bootstrapBrokersTls');
+    bootstrapBrokersTlsIpv6 = registerOutput<String>('bootstrapBrokersTlsIpv6');
     bootstrapBrokersVpcConnectivitySaslIam = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslIam');
     bootstrapBrokersVpcConnectivitySaslScram = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslScram');
     bootstrapBrokersVpcConnectivityTls = registerOutput<String>('bootstrapBrokersVpcConnectivityTls');
@@ -1242,6 +1421,7 @@ class Cluster extends pulumi.CustomResource {
     clusterUuid = registerOutput<String>('clusterUuid');
     configurationInfo = registerOutput<ClusterConfigurationInfo?>('configurationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigurationInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     currentVersion = registerOutput<String>('currentVersion');
+    customerActionStatus = registerOutput<String>('customerActionStatus');
     encryptionInfo = registerOutput<ClusterEncryptionInfo?>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
     kafkaVersion = registerOutput<String>('kafkaVersion');
@@ -1282,12 +1462,16 @@ class Cluster extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokers = registerOutput<String>('bootstrapBrokers');
+    bootstrapBrokersIpv6 = registerOutput<String>('bootstrapBrokersIpv6');
     bootstrapBrokersPublicSaslIam = registerOutput<String>('bootstrapBrokersPublicSaslIam');
     bootstrapBrokersPublicSaslScram = registerOutput<String>('bootstrapBrokersPublicSaslScram');
     bootstrapBrokersPublicTls = registerOutput<String>('bootstrapBrokersPublicTls');
     bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
+    bootstrapBrokersSaslIamIpv6 = registerOutput<String>('bootstrapBrokersSaslIamIpv6');
     bootstrapBrokersSaslScram = registerOutput<String>('bootstrapBrokersSaslScram');
+    bootstrapBrokersSaslScramIpv6 = registerOutput<String>('bootstrapBrokersSaslScramIpv6');
     bootstrapBrokersTls = registerOutput<String>('bootstrapBrokersTls');
+    bootstrapBrokersTlsIpv6 = registerOutput<String>('bootstrapBrokersTlsIpv6');
     bootstrapBrokersVpcConnectivitySaslIam = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslIam');
     bootstrapBrokersVpcConnectivitySaslScram = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslScram');
     bootstrapBrokersVpcConnectivityTls = registerOutput<String>('bootstrapBrokersVpcConnectivityTls');
@@ -1297,6 +1481,7 @@ class Cluster extends pulumi.CustomResource {
     clusterUuid = registerOutput<String>('clusterUuid');
     configurationInfo = registerOutput<ClusterConfigurationInfo?>('configurationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigurationInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     currentVersion = registerOutput<String>('currentVersion');
+    customerActionStatus = registerOutput<String>('customerActionStatus');
     encryptionInfo = registerOutput<ClusterEncryptionInfo?>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
     kafkaVersion = registerOutput<String>('kafkaVersion');

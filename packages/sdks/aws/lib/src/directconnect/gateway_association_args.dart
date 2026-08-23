@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayAssociationArgs {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
   ///
-  /// &gt; **NOTE:** `dx_gateway_id` and `associated_gateway_id` must be specified for single account Direct Connect gateway associations.
+  /// &gt; **NOTE:** `dxGatewayId` and `associatedGatewayId` must be specified for single account Direct Connect gateway associations.
   ///
-  /// &gt; **NOTE:** If the `associated_gateway_id` is in another region, an alias in a new provider block for that region should be specified.
+  /// &gt; **NOTE:** If the `associatedGatewayId` is in another region, an alias in a new provider block for that region should be specified.
   final pulumi.Input<List<String>>? allowedPrefixes;
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for single account Direct Connect gateway associations.
@@ -65,4 +65,3 @@ class GatewayAssociationArgs {
     );
   }
 }
-

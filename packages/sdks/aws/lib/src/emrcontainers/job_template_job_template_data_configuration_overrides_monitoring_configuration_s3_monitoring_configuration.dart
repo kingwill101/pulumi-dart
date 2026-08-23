@@ -24,4 +24,3 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3M
     );
   }
 }
-

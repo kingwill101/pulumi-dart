@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerTlCertificateSd {
+  /// Name of the secret for a virtual node's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
   final pulumi.Input<String> secretName;
 
   /// Creates a new [GetVirtualNodeSpecListenerTlCertificateSd].
-  /// [secretName] Required.
+  /// [secretName] Name of the secret for a virtual node's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
   const GetVirtualNodeSpecListenerTlCertificateSd({
     required this.secretName,
   });
@@ -23,4 +24,3 @@ class GetVirtualNodeSpecListenerTlCertificateSd {
     );
   }
 }
-

@@ -7,15 +7,15 @@ import 'v2models_intent_initial_response_setting_code_hook_post_code_hook_specif
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditional {
   /// Whether a conditional branch is active. When active is false, the conditions are not evaluated.
   final pulumi.Input<bool> active;
-  /// Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditional_branch`.
+  /// Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditionalBranch`.
   final pulumi.Input<List<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranch>>? conditionalBranches;
-  /// Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `default_branch`.
+  /// Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `defaultBranch`.
   final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalDefaultBranch>? defaultBranch;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditional].
   /// [active] Whether a conditional branch is active. When active is false, the conditions are not evaluated.
-  /// [conditionalBranches] Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditional_branch`.
-  /// [defaultBranch] Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `default_branch`.
+  /// [conditionalBranches] Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditionalBranch`.
+  /// [defaultBranch] Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `defaultBranch`.
   const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditional({
     required this.active,
     this.conditionalBranches,
@@ -38,4 +38,3 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailu
     );
   }
 }
-

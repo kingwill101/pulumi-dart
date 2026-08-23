@@ -64,6 +64,20 @@ import 'route_server_vpc_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpc_routeservervpcassociation" "example" {
+///   route_server_id = exampleAwsVpcRouteServer.routeServerId
+///   vpc_id          = exampleAwsVpc.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'route_server_vpc_association_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.RouteServerVpcAssociation;
 /// import com.pulumi.aws.vpc.RouteServerVpcAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

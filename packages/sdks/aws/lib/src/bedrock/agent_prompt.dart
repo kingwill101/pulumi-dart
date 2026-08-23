@@ -63,6 +63,20 @@ import 'agent_prompt_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentprompt" "example" {
+///   name        = "MyPrompt"
+///   description = "My prompt description."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'agent_prompt_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentPrompt;
 /// import com.pulumi.aws.bedrock.AgentPromptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,6 +282,41 @@ import 'agent_prompt_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentprompt" "example" {
+///   name            = "MakePlaylist"
+///   description     = "My first prompt."
+///   default_variant = "Variant1"
+///   variants {
+///     name     = "Variant1"
+///     model_id = "amazon.titan-text-express-v1"
+///     inference_configuration = {
+///       text = {
+///         temperature = 0.8
+///       }
+///     }
+///     template_type = "TEXT"
+///     template_configuration = {
+///       text = {
+///         text = "Make me a {{genre}} playlist consisting of the following number of songs: {{number}}."
+///         input_variables = [{
+///           "name" = "genre"
+///           }, {
+///           "name" = "number"
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -281,8 +330,9 @@ import 'agent_prompt_state.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentPromptVariantInferenceConfigurationTextArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentPromptVariantTemplateConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentPromptVariantTemplateConfigurationTextArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.bedrock.inputs.AgentPromptVariantTemplateConfigurationTextInputVariableArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,9 +423,9 @@ class AgentPrompt extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Time at which the prompt was last updated.
   late final pulumi.Output<String> updatedAt;

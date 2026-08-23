@@ -18,10 +18,7 @@ class GetAvailabilityZonesArgs {
   final pulumi.Input<List<GetAvailabilityZonesFilter>>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Allows to filter list of Availability Zones based on their
-  /// current state. Can be either `"available"`, `"information"`, `"impaired"` or
-  /// `"unavailable"`. By default the list includes a complete set of Availability Zones
-  /// to which the underlying AWS account has access, regardless of their state.
+  /// Allows to filter list of Availability Zones based on their current state. Can be either `"available"`, `"information"`, `"impaired"` or `"unavailable"`. By default the list includes a complete set of Availability Zones to which the underlying AWS account has access, regardless of their state.
   final pulumi.Input<String>? state;
 
   /// Creates a new [GetAvailabilityZonesArgs].
@@ -30,7 +27,7 @@ class GetAvailabilityZonesArgs {
   /// [excludeZoneIds] List of Availability Zone IDs to exclude.
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [state] Allows to filter list of Availability Zones based on their
+  /// [state] Allows to filter list of Availability Zones based on their current state. Can be either `"available"`, `"information"`, `"impaired"` or `"unavailable"`. By default the list includes a complete set of Availability Zones to which the underlying AWS account has access, regardless of their state.
   const GetAvailabilityZonesArgs({
     this.allAvailabilityZones,
     this.excludeNames,
@@ -62,4 +59,3 @@ class GetAvailabilityZonesArgs {
     );
   }
 }
-

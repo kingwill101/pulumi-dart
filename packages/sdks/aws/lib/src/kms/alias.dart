@@ -71,6 +71,22 @@ import 'alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "a" {
+/// }
+/// resource "aws_kms_alias" "a" {
+///   name          = "alias/my-key-alias"
+///   target_key_id = aws_kms_key.a.key_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +96,8 @@ import 'alias_state.dart';
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.Alias;
 /// import com.pulumi.aws.kms.AliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,7 +142,7 @@ import 'alias_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///

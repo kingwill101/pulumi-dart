@@ -53,4 +53,3 @@ class BucketVersioningV2Args {
     );
   }
 }
-

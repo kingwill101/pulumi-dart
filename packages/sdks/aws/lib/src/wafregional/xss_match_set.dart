@@ -118,6 +118,31 @@ import 'xss_match_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafregional_xssmatchset" "xss_match_set" {
+///   name = "xss_match_set"
+///   xss_match_tuples {
+///     text_transformation = "NONE"
+///     field_to_match = {
+///       type = "URI"
+///     }
+///   }
+///   xss_match_tuples {
+///     text_transformation = "NONE"
+///     field_to_match = {
+///       type = "QUERY_STRING"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +153,8 @@ import 'xss_match_set_state.dart';
 /// import com.pulumi.aws.wafregional.XssMatchSetArgs;
 /// import com.pulumi.aws.wafregional.inputs.XssMatchSetXssMatchTupleArgs;
 /// import com.pulumi.aws.wafregional.inputs.XssMatchSetXssMatchTupleFieldToMatchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

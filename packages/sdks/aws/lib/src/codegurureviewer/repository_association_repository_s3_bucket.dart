@@ -30,4 +30,3 @@ class RepositoryAssociationRepositoryS3Bucket {
     );
   }
 }
-

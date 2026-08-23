@@ -171,7 +171,7 @@ import 'object_lambda_access_point_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAccessPoint, err := s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -229,6 +229,51 @@ import 'object_lambda_access_point_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_accesspoint" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "example"
+/// }
+/// resource "aws_s3control_objectlambdaaccesspoint" "example" {
+///   name = "example"
+///   configuration = {
+///     supporting_access_point = aws_s3_accesspoint.example.arn
+///     transformation_configurations = [{
+///       "actions" = ["GetObject"]
+///       "contentTransformation" = {
+///         "awsLambda" = {
+///           "functionArn" = exampleAwsLambdaFunction.arn
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// resource "aws_s3control_objectlambdaaccesspointpolicy" "example" {
+///   name = aws_s3control_objectlambdaaccesspoint.example.name
+///   policy = jsonencode({
+///     "Version" = "2008-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Action" = "s3-object-lambda:GetObject"
+///       "Principal" = {
+///         "AWS" = current.accountId
+///       }
+///       "Resource" = aws_s3control_objectlambdaaccesspoint.example.arn
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -242,11 +287,14 @@ import 'object_lambda_access_point_policy_state.dart';
 /// import com.pulumi.aws.s3control.ObjectLambdaAccessPoint;
 /// import com.pulumi.aws.s3control.ObjectLambdaAccessPointArgs;
 /// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationArgs;
+/// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationArgs;
+/// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationArgs;
+/// import com.pulumi.aws.s3control.inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaArgs;
 /// import com.pulumi.aws.s3control.ObjectLambdaAccessPointPolicy;
 /// import com.pulumi.aws.s3control.ObjectLambdaAccessPointPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,19 +393,19 @@ import 'object_lambda_access_point_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Object Lambda Access Point policies using the `account_id` and `name`, separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Object Lambda Access Point policies using the `accountId` and `name`, separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy example 123456789012:example
 /// ```
 class ObjectLambdaAccessPointPolicy extends pulumi.CustomResource {
-  /// The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-  /// Indicates whether this access point currently has a policy that allows public access.
+  /// Whether this access point currently has a policy that allows public access.
   late final pulumi.Output<bool> hasPublicAccessPolicy;
-  /// The name of the Object Lambda Access Point.
+  /// Name of the Object Lambda Access Point.
   late final pulumi.Output<String> name;
-  /// The Object Lambda Access Point resource policy document.
+  /// Object Lambda Access Point resource policy document.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

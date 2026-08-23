@@ -19,19 +19,19 @@ class SigningProfileState {
   final pulumi.Input<String>? platformId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Revocation information for a signing profile. See `revocation_record` Block below for details.
+  /// Revocation information for a signing profile. See `revocationRecord` Block below for details.
   final pulumi.Input<List<SigningProfileRevocationRecord>>? revocationRecords;
-  /// The validity period for a signing job. See `signature_validity_period` Block below for details.
+  /// The validity period for a signing job. See `signatureValidityPeriod` Block below for details.
   final pulumi.Input<SigningProfileSignatureValidityPeriod>? signatureValidityPeriod;
-  /// The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signing_material` Block below for details.
+  /// The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signingMaterial` Block below for details.
   final pulumi.Input<SigningProfileSigningMaterial>? signingMaterial;
   /// Map of key-value pairs for signing. These can include any information that you want to use during signing.
   final pulumi.Input<Map<String, String>>? signingParameters;
   /// The status of the target signing profile.
   final pulumi.Input<String>? status;
-  /// A list of tags associated with the signing profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A list of tags associated with the signing profile. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The current version of the signing profile.
   final pulumi.Input<String>? version;
@@ -45,13 +45,13 @@ class SigningProfileState {
   /// [platformDisplayName] A human-readable name for the signing platform associated with the signing profile.
   /// [platformId] The ID of the platform that is used by the target signing profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [revocationRecords] Revocation information for a signing profile. See `revocation_record` Block below for details.
-  /// [signatureValidityPeriod] The validity period for a signing job. See `signature_validity_period` Block below for details.
-  /// [signingMaterial] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signing_material` Block below for details.
+  /// [revocationRecords] Revocation information for a signing profile. See `revocationRecord` Block below for details.
+  /// [signatureValidityPeriod] The validity period for a signing job. See `signatureValidityPeriod` Block below for details.
+  /// [signingMaterial] The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signingMaterial` Block below for details.
   /// [signingParameters] Map of key-value pairs for signing. These can include any information that you want to use during signing.
   /// [status] The status of the target signing profile.
-  /// [tags] A list of tags associated with the signing profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A list of tags associated with the signing profile. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [version] The current version of the signing profile.
   /// [versionArn] The signing profile ARN, including the profile version.
   const SigningProfileState({
@@ -112,4 +112,3 @@ class SigningProfileState {
     );
   }
 }
-

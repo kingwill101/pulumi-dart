@@ -84,6 +84,25 @@ import 'ingestion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appfabric_ingestion" "example" {
+///   app            = "OKTA"
+///   app_bundle_arn = exampleAwsAppfabricAppBundle.arn
+///   tenant_id      = "example.okta.com"
+///   ingestion_type = "auditLog"
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +111,8 @@ import 'ingestion_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appfabric.Ingestion;
 /// import com.pulumi.aws.appfabric.IngestionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,14 +151,13 @@ import 'ingestion_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AppFabric Ingestion using the `app_bundle_identifier` and `arn` separated by `,`. For example:
+/// Using `pulumi import`, import AppFabric Ingestion using the `appBundleIdentifier` and `arn` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appfabric/ingestion:Ingestion example arn:aws:appfabric:[region]:[account]:appbundle/a9b91477-8831-43c0-970c-xxxxxxxxxx,arn:aws:appfabric:[region]:[account]:appbundle/a9b91477-8831-43c0-970c-xxxxxxxxxx/ingestion/32251416-710b-4425-96ca-xxxxxxxxxx
 /// ```
 class Ingestion extends pulumi.CustomResource {
-  /// Name of the application.
-  /// Refer to the AWS Documentation for the [list of valid values](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateIngestion.html#appfabric-CreateIngestion-request-app)
+  /// Name of the application. Refer to the AWS Documentation for the [list of valid values](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateIngestion.html#appfabric-CreateIngestion-request-app).
   late final pulumi.Output<String> app;
   /// Amazon Resource Name (ARN) of the app bundle to use for the request.
   late final pulumi.Output<String> appBundleArn;
@@ -149,9 +167,9 @@ class Ingestion extends pulumi.CustomResource {
   late final pulumi.Output<String> ingestionType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the application tenant.
   late final pulumi.Output<String> tenantId;

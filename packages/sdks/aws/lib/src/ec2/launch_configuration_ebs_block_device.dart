@@ -3,26 +3,38 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchConfigurationEbsBlockDevice {
+  /// Whether the volume should be destroyed
+  /// on instance termination (Default: `true`).
   final pulumi.Input<bool>? deleteOnTermination;
+  /// The name of the device to mount.
   final pulumi.Input<String> deviceName;
+  /// Whether the volume should be encrypted or not. Defaults to `false`.
   final pulumi.Input<bool>? encrypted;
+  /// The amount of provisioned
+  /// [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
+  /// This must be set with a `volumeType` of `"io1"`.
   final pulumi.Input<int>? iops;
+  /// Whether the device in the block device mapping of the AMI is suppressed.
   final pulumi.Input<bool>? noDevice;
+  /// The Snapshot ID to mount.
   final pulumi.Input<String>? snapshotId;
+  /// The throughput (MiBps) to provision for a `gp3` volume.
   final pulumi.Input<int>? throughput;
+  /// The size of the volume in gigabytes.
   final pulumi.Input<int>? volumeSize;
+  /// The type of volume. Can be `standard`, `gp2`, `gp3`, `st1`, `sc1` or `io1`.
   final pulumi.Input<String>? volumeType;
 
   /// Creates a new [LaunchConfigurationEbsBlockDevice].
-  /// [deleteOnTermination] Optional.
-  /// [deviceName] Required.
-  /// [encrypted] Optional.
-  /// [iops] Optional.
-  /// [noDevice] Optional.
-  /// [snapshotId] Optional.
-  /// [throughput] Optional.
-  /// [volumeSize] Optional.
-  /// [volumeType] Optional.
+  /// [deleteOnTermination] Whether the volume should be destroyed
+  /// [deviceName] The name of the device to mount.
+  /// [encrypted] Whether the volume should be encrypted or not. Defaults to `false`.
+  /// [iops] The amount of provisioned
+  /// [noDevice] Whether the device in the block device mapping of the AMI is suppressed.
+  /// [snapshotId] The Snapshot ID to mount.
+  /// [throughput] The throughput (MiBps) to provision for a `gp3` volume.
+  /// [volumeSize] The size of the volume in gigabytes.
+  /// [volumeType] The type of volume. Can be `standard`, `gp2`, `gp3`, `st1`, `sc1` or `io1`.
   const LaunchConfigurationEbsBlockDevice({
     this.deleteOnTermination,
     required this.deviceName,
@@ -63,4 +75,3 @@ class LaunchConfigurationEbsBlockDevice {
     );
   }
 }
-

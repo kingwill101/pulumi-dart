@@ -198,6 +198,48 @@ import 'spot_fleet_request_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Request a Spot fleet
+/// resource "aws_ec2_spotfleetrequest" "cheap_compute" {
+///   iam_fleet_role      = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price          = "0.03"
+///   allocation_strategy = "diversified"
+///   target_capacity     = 6
+///   valid_until         = "2019-11-04T20:44:20Z"
+///   launch_specifications {
+///     instance_type            = "m4.10xlarge"
+///     ami                      = "ami-1234"
+///     spot_price               = "2.793"
+///     placement_tenancy        = "dedicated"
+///     iam_instance_profile_arn = example.arn
+///   }
+///   launch_specifications {
+///     instance_type            = "m4.4xlarge"
+///     ami                      = "ami-5678"
+///     key_name                 = "my-key"
+///     spot_price               = "1.117"
+///     iam_instance_profile_arn = example.arn
+///     availability_zone        = "us-west-1a"
+///     subnet_id                = "subnet-1234"
+///     weighted_capacity        = 35
+///     root_block_devices {
+///       volume_size = "300"
+///       volume_type = "gp2"
+///     }
+///     tags = {
+///       "Name" = "spot-fleet-example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +249,9 @@ import 'spot_fleet_request_state.dart';
 /// import com.pulumi.aws.ec2.SpotFleetRequest;
 /// import com.pulumi.aws.ec2.SpotFleetRequestArgs;
 /// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -310,7 +353,7 @@ import 'spot_fleet_request_state.dart';
 ///     launchTemplateConfigs: [{
 ///         launchTemplateSpecification: {
 ///             id: foo.id,
-///             version: foo.latestVersion,
+///             version: foo.latestVersion.apply(x =>String(x)),
 ///         },
 ///     }],
 /// }, {
@@ -334,7 +377,7 @@ import 'spot_fleet_request_state.dart';
 ///     launch_template_configs=[{
 ///         "launch_template_specification": {
 ///             "id": foo.id,
-///             "version": foo.latest_version,
+///             "version": foo.latest_version.apply(lambda x: str(x)),
 ///         },
 ///     }],
 ///     opts = pulumi.ResourceOptions(depends_on=[test_attach]))
@@ -409,7 +452,7 @@ import 'spot_fleet_request_state.dart';
 /// 			LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
 /// 				&ec2.SpotFleetRequestLaunchTemplateConfigArgs{
 /// 					LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
-/// 						Id:      foo.ID(),
+/// 						Id:      foo.ID().ToIDOutput().ToStringOutput(),
 /// 						Version: foo.LatestVersion,
 /// 					},
 /// 				},
@@ -422,6 +465,35 @@ import 'spot_fleet_request_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_launchtemplate" "foo" {
+///   name          = "launch-template"
+///   image_id      = "ami-516b9131"
+///   instance_type = "m1.small"
+///   key_name      = "some-key"
+/// }
+/// resource "aws_ec2_spotfleetrequest" "foo" {
+///   depends_on      = [test-attach]
+///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price      = "0.005"
+///   target_capacity = 2
+///   valid_until     = "2019-11-04T20:44:20Z"
+///   launch_template_configs {
+///     launch_template_specification = {
+///       id      = aws_ec2_launchtemplate.foo.id
+///       version = aws_ec2_launchtemplate.foo.latest_version
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -437,8 +509,8 @@ import 'spot_fleet_request_state.dart';
 /// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchTemplateConfigArgs;
 /// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -502,7 +574,7 @@ import 'spot_fleet_request_state.dart';
 /// ```
 ///
 ///
-/// &gt; **NOTE:** This provider does not support the functionality where multiple `subnet_id` or `availability_zone` parameters can be specified in the same
+/// &gt; **NOTE:** This provider does not support the functionality where multiple `subnetId` or `availabilityZone` parameters can be specified in the same
 /// launch configuration block. If you want to specify multiple values, then separate launch configuration blocks should be used or launch template overrides should be configured, one per subnet:
 ///
 /// ### Using multiple launch specifications
@@ -629,6 +701,34 @@ import 'spot_fleet_request_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_spotfleetrequest" "foo" {
+///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price      = "0.005"
+///   target_capacity = 2
+///   valid_until     = "2019-11-04T20:44:20Z"
+///   launch_specifications {
+///     instance_type     = "m1.small"
+///     ami               = "ami-d06a90b0"
+///     key_name          = "my-key"
+///     availability_zone = "us-west-2a"
+///   }
+///   launch_specifications {
+///     instance_type     = "m5.large"
+///     ami               = "ami-d06a90b0"
+///     key_name          = "my-key"
+///     availability_zone = "us-west-2a"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -638,8 +738,8 @@ import 'spot_fleet_request_state.dart';
 /// import com.pulumi.aws.ec2.SpotFleetRequest;
 /// import com.pulumi.aws.ec2.SpotFleetRequestArgs;
 /// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchSpecificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -695,7 +795,7 @@ import 'spot_fleet_request_state.dart';
 /// ```
 ///
 ///
-/// &gt; In this example, we use a `dynamic` block to define zero or more `launch_specification` blocks, producing one for each element in the list of subnet ids.
+/// &gt; In this example, we use a `dynamic` block to define zero or more `launchSpecification` blocks, producing one for each element in the list of subnet ids.
 ///
 ///
 /// ```typescript
@@ -752,9 +852,9 @@ import 'spot_fleet_request_state.dart';
 ///             "Name": "Spot Node",
 ///             "tag_builder": "builder",
 ///         },
-///     } for entry in [{"key": k, "value": v} for k, v in [{
+///     } for entry in [{"key": k, "value": v} for k, v in sorted([{
 ///         "subnetId": s[1],
-///     } for s in subnets]]],
+///     } for s in subnets].items())]],
 ///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
 ///     target_capacity=3,
 ///     valid_until="2019-11-04T20:44:20Z",
@@ -816,6 +916,47 @@ import 'spot_fleet_request_state.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_spotfleetrequest" "example" {
+///   dynamic "launch_specifications" {
+///     for_each = entries([for s in var.subnets : {
+///       "subnetId" = s[1]
+///     } ])
+///     content {
+///       ami                    = "ami-1234"
+///       instance_type          = "m4.4xlarge"
+///       subnet_id              = launch_specifications.value.value.subnetId
+///       vpc_security_group_ids = "sg-123456"
+///       root_block_devices {
+///         volume_size           = "8"
+///         volume_type           = "gp2"
+///         delete_on_termination = "true"
+///       }
+///       tags = {
+///         "Name"        = "Spot Node"
+///         "tag_builder" = "builder"
+///       }
+///     }
+///   }
+///   iam_fleet_role                      = "arn:aws:iam::12345678:role/spot-fleet"
+///   target_capacity                     = 3
+///   valid_until                         = "2019-11-04T20:44:20Z"
+///   allocation_strategy                 = "lowestPrice"
+///   fleet_type                          = "request"
+///   wait_for_fulfillment                = "true"
+///   terminate_instances_with_expiration = "true"
+/// }
+/// variable "subnets" {
+/// }
+/// ```
 ///
 ///
 /// ### Using multiple launch configurations
@@ -845,7 +986,7 @@ import 'spot_fleet_request_state.dart';
 ///     launchTemplateConfigs: [{
 ///         launchTemplateSpecification: {
 ///             id: foo.id,
-///             version: foo.latestVersion,
+///             version: foo.latestVersion.apply(x =>String(x)),
 ///         },
 ///         overrides: [
 ///             {
@@ -884,7 +1025,7 @@ import 'spot_fleet_request_state.dart';
 ///     launch_template_configs=[{
 ///         "launch_template_specification": {
 ///             "id": foo.id,
-///             "version": foo.latest_version,
+///             "version": foo.latest_version.apply(lambda x: str(x)),
 ///         },
 ///         "overrides": [
 ///             {
@@ -980,62 +1121,108 @@ import 'spot_fleet_request_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
-/// Filters: []ec2.GetSubnetsFilter{
-/// {
-/// Name: "vpc-id",
-/// Values: interface{}{
-/// vpcId,
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
+/// 			Filters: []ec2.GetSubnetsFilter{
+/// 				{
+/// 					Name: "vpc-id",
+/// 					Values: pulumi.StringArray{
+/// 						vpcId,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		foo, err := ec2.NewLaunchTemplate(ctx, "foo", &ec2.LaunchTemplateArgs{
+/// 			Name:         pulumi.String("launch-template"),
+/// 			ImageId:      pulumi.String("ami-516b9131"),
+/// 			InstanceType: pulumi.String("m1.small"),
+/// 			KeyName:      pulumi.String("some-key"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
+/// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
+/// 			SpotPrice:      pulumi.String("0.005"),
+/// 			TargetCapacity: pulumi.Int(2),
+/// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
+/// 			LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
+/// 				&ec2.SpotFleetRequestLaunchTemplateConfigArgs{
+/// 					LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
+/// 						Id:      foo.ID().ToIDOutput().ToStringOutput(),
+/// 						Version: foo.LatestVersion,
+/// 					},
+/// 					Overrides: ec2.SpotFleetRequestLaunchTemplateConfigOverrideArray{
+/// 						&ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
+/// 							SubnetId: pulumi.String(example.Ids[0]),
+/// 						},
+/// 						&ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
+/// 							SubnetId: pulumi.String(example.Ids[1]),
+/// 						},
+/// 						&ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
+/// 							SubnetId: pulumi.String(example.Ids[2]),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			test_attach,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// foo, err := ec2.NewLaunchTemplate(ctx, "foo", &ec2.LaunchTemplateArgs{
-/// Name: pulumi.String("launch-template"),
-/// ImageId: pulumi.String("ami-516b9131"),
-/// InstanceType: pulumi.String("m1.small"),
-/// KeyName: pulumi.String("some-key"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// _, err = ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
-/// IamFleetRole: pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
-/// SpotPrice: pulumi.String("0.005"),
-/// TargetCapacity: pulumi.Int(2),
-/// ValidUntil: pulumi.String("2019-11-04T20:44:20Z"),
-/// LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
-/// &ec2.SpotFleetRequestLaunchTemplateConfigArgs{
-/// LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
-/// Id: foo.ID(),
-/// Version: foo.LatestVersion,
-/// },
-/// Overrides: ec2.SpotFleetRequestLaunchTemplateConfigOverrideArray{
-/// &ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
-/// SubnetId: pulumi.String(example.Ids[0]),
-/// },
-/// &ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
-/// SubnetId: pulumi.String(example.Ids[1]),
-/// },
-/// &ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs{
-/// SubnetId: pulumi.String(example.Ids[2]),
-/// },
-/// },
-/// },
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// test_attach,
-/// }))
-/// if err != nil {
-/// return err
+///
+/// data "aws_ec2_getsubnets" "example" {
+///   filters {
+///     name   = "vpc-id"
+///     values = [vpcId]
+///   }
 /// }
-/// return nil
-/// })
+///
+/// resource "aws_ec2_launchtemplate" "foo" {
+///   name          = "launch-template"
+///   image_id      = "ami-516b9131"
+///   instance_type = "m1.small"
+///   key_name      = "some-key"
+/// }
+/// resource "aws_ec2_spotfleetrequest" "foo" {
+///   depends_on      = [test-attach]
+///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price      = "0.005"
+///   target_capacity = 2
+///   valid_until     = "2019-11-04T20:44:20Z"
+///   launch_template_configs {
+///     launch_template_specification = {
+///       id      = aws_ec2_launchtemplate.foo.id
+///       version = aws_ec2_launchtemplate.foo.latest_version
+///     }
+///     overrides {
+///       subnet_id = data.aws_ec2_getsubnets.example.ids[0]
+///     }
+///     overrides {
+///       subnet_id = data.aws_ec2_getsubnets.example.ids[1]
+///     }
+///     overrides {
+///       subnet_id = data.aws_ec2_getsubnets.example.ids[2]
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1046,15 +1233,17 @@ import 'spot_fleet_request_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetSubnetsArgs;
+/// import com.pulumi.aws.ec2.inputs.GetSubnetsFilterArgs;
 /// import com.pulumi.aws.ec2.LaunchTemplate;
 /// import com.pulumi.aws.ec2.LaunchTemplateArgs;
 /// import com.pulumi.aws.ec2.SpotFleetRequest;
 /// import com.pulumi.aws.ec2.SpotFleetRequestArgs;
 /// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchTemplateConfigArgs;
 /// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs;
+/// import com.pulumi.aws.ec2.inputs.SpotFleetRequestLaunchTemplateConfigOverrideArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1180,21 +1369,21 @@ class SpotFleetRequest extends pulumi.CustomResource {
   /// `terminate`.
   late final pulumi.Output<String?> instanceInterruptionBehaviour;
   /// The number of Spot pools across which to allocate your target Spot capacity.
-  /// Valid only when `allocation_strategy` is set to `lowestPrice`. Spot Fleet selects
+  /// Valid only when `allocationStrategy` is set to `lowestPrice`. Spot Fleet selects
   /// the cheapest Spot pools and evenly allocates your target Spot capacity across
   /// the number of Spot pools that you specify.
   late final pulumi.Output<int?> instancePoolsToUseCount;
   /// Used to define the launch configuration of the
   /// spot-fleet request. Can be specified multiple times to define different bids
-  /// across different markets and instance types. Conflicts with `launch_template_config`. At least one of `launch_specification` or `launch_template_config` is required.
+  /// across different markets and instance types. Conflicts with `launchTemplateConfig`. At least one of `launchSpecification` or `launchTemplateConfig` is required.
   ///
   /// **Note**: This takes in similar but not
   /// identical inputs as `aws.ec2.Instance`.  There are limitations on
   /// what you can specify. See the list of officially supported inputs in the
   /// [reference documentation](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetLaunchSpecification.html). Any normal `aws.ec2.Instance` parameter that corresponds to those inputs may be used and it have
-  /// a additional parameter `iam_instance_profile_arn` takes `aws.iam.InstanceProfile` attribute `arn` as input.
+  /// a additional parameter `iamInstanceProfileArn` takes `aws.iam.InstanceProfile` attribute `arn` as input.
   late final pulumi.Output<List<Map<String, dynamic>>?> launchSpecifications;
-  /// Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launch_specification`. At least one of `launch_specification` or `launch_template_config` is required.
+  /// Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launchSpecification`. At least one of `launchSpecification` or `launchTemplateConfig` is required.
   late final pulumi.Output<List<Map<String, dynamic>>?> launchTemplateConfigs;
   /// A list of elastic load balancer names to add to the Spot fleet.
   late final pulumi.Output<List<String>> loadBalancers;
@@ -1214,21 +1403,21 @@ class SpotFleetRequest extends pulumi.CustomResource {
   late final pulumi.Output<String?> spotPrice;
   /// The state of the Spot fleet request.
   late final pulumi.Output<String> spotRequestState;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The number of units to request. You can choose to set the
   /// target capacity in terms of instances or a performance characteristic that is
   /// important to your application workload, such as vCPUs, memory, or I/O.
   late final pulumi.Output<int> targetCapacity;
-  /// The unit for the target capacity. This can only be done with `instance_requirements` defined
+  /// The unit for the target capacity. This can only be done with `instanceRequirements` defined
   late final pulumi.Output<String?> targetCapacityUnitType;
   /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
   late final pulumi.Output<List<String>> targetGroupArns;
   /// Indicates whether running Spot
   /// instances should be terminated when the resource is deleted (and the Spot fleet request cancelled).
-  /// If no value is specified, the value of the `terminate_instances_with_expiration` argument is used.
+  /// If no value is specified, the value of the `terminateInstancesWithExpiration` argument is used.
   late final pulumi.Output<String?> terminateInstancesOnDelete;
   /// Indicates whether running Spot
   /// instances should be terminated when the Spot fleet request expires.

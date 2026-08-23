@@ -24,4 +24,3 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fing
     );
   }
 }
-

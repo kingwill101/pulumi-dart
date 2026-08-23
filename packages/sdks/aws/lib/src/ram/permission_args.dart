@@ -8,24 +8,24 @@ import 'permission_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ram_permission_permission_args_doc}
 class PermissionArgs {
-  /// Specifies the name of the customer managed permission. The name must be unique within the AWS Region.
+  /// Name of the customer managed permission. The name must be unique within the AWS Region.
   final pulumi.Input<String>? name;
-  /// A string in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
+  /// String in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
   final pulumi.Input<String> policyTemplate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
+  /// Name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
   final pulumi.Input<String> resourceType;
-  /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<PermissionTimeouts>? timeouts;
 
   /// Creates a new [PermissionArgs].
-  /// [name] Specifies the name of the customer managed permission. The name must be unique within the AWS Region.
-  /// [policyTemplate] A string in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
+  /// [name] Name of the customer managed permission. The name must be unique within the AWS Region.
+  /// [policyTemplate] String in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceType] Specifies the name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
-  /// [tags] A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [resourceType] Name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
+  /// [tags] Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const PermissionArgs({
     this.name,
@@ -58,4 +58,3 @@ class PermissionArgs {
     );
   }
 }
-

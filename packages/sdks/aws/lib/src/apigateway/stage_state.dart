@@ -24,12 +24,9 @@ class StageState {
   final pulumi.Input<String>? description;
   /// Version of the associated API documentation.
   final pulumi.Input<String>? documentationVersion;
-  /// Execution ARN to be used in `lambda_permission`'s `source_arn`
-  /// when allowing API Gateway to invoke a Lambda function,
-  /// e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
+  /// Execution ARN to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
   final pulumi.Input<String>? executionArn;
-  /// URL to invoke the API pointing to the stage,
-  /// e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
+  /// URL to invoke the API pointing to the stage, e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
   final pulumi.Input<String>? invokeUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -37,9 +34,9 @@ class StageState {
   final pulumi.Input<String>? restApi;
   /// Name of the stage
   final pulumi.Input<String>? stageName;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Map that defines the stage variables.
   final pulumi.Input<Map<String, String>>? variables;
@@ -58,13 +55,13 @@ class StageState {
   /// [deployment] ID of the deployment that the stage points to
   /// [description] Description of the stage.
   /// [documentationVersion] Version of the associated API documentation.
-  /// [executionArn] Execution ARN to be used in `lambda_permission`'s `source_arn`
-  /// [invokeUrl] URL to invoke the API pointing to the stage,
+  /// [executionArn] Execution ARN to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
+  /// [invokeUrl] URL to invoke the API pointing to the stage, e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApi] ID of the associated REST API
   /// [stageName] Name of the stage
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [variables] Map that defines the stage variables.
   /// [webAclArn] ARN of the WebAcl associated with the Stage.
   /// [xrayTracingEnabled] Whether active tracing with X-ray is enabled. Defaults to `false`.
@@ -138,4 +135,3 @@ class StageState {
     );
   }
 }
-

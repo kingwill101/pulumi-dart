@@ -4,25 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement.dart';
 
 class WebAclRuleStatementAndStatement {
-  /// The statements to combine.
-  final pulumi.Input<List<WebAclRuleStatement>> statements;
+  /// List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
+  final pulumi.Input<List<WebAclRuleStatement>>? statements;
 
   /// Creates a new [WebAclRuleStatementAndStatement].
-  /// [statements] The statements to combine.
+  /// [statements] List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
   const WebAclRuleStatementAndStatement({
-    required this.statements,
+    this.statements,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements': pulumi.Input.mapInputValue<List<WebAclRuleStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statements': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebAclRuleStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementAndStatement(
-      statements: pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatement>(map['statements']!, (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))),
+      statements: (() { final guardedValue = map['statements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatement>(guardedValue, (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

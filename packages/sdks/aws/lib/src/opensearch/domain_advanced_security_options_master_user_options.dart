@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAdvancedSecurityOptionsMasterUserOptions {
-  /// ARN for the main user. Only specify if `internal_user_database_enabled` is not set or set to `false`.
+  /// ARN for the main user. Only specify if `internalUserDatabaseEnabled` is not set or set to `false`.
   final pulumi.Input<String>? masterUserArn;
-  /// Main user's username, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
+  /// Main user's username, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internalUserDatabaseEnabled` is set to `true`.
   final pulumi.Input<String>? masterUserName;
-  /// Main user's password, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
+  /// Main user's password, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internalUserDatabaseEnabled` is set to `true`.
   final pulumi.Input<String>? masterUserPassword;
 
   /// Creates a new [DomainAdvancedSecurityOptionsMasterUserOptions].
-  /// [masterUserArn] ARN for the main user. Only specify if `internal_user_database_enabled` is not set or set to `false`.
-  /// [masterUserName] Main user's username, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
-  /// [masterUserPassword] Main user's password, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
+  /// [masterUserArn] ARN for the main user. Only specify if `internalUserDatabaseEnabled` is not set or set to `false`.
+  /// [masterUserName] Main user's username, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internalUserDatabaseEnabled` is set to `true`.
+  /// [masterUserPassword] Main user's password, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internalUserDatabaseEnabled` is set to `true`.
   const DomainAdvancedSecurityOptionsMasterUserOptions({
     this.masterUserArn,
     this.masterUserName,
@@ -36,4 +36,3 @@ class DomainAdvancedSecurityOptionsMasterUserOptions {
     );
   }
 }
-

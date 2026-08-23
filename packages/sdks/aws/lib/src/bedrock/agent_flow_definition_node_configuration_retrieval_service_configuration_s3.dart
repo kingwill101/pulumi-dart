@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3 {
+  /// The name of the Amazon S3 bucket in which to store the input into the node.
   final pulumi.Input<String> bucketName;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3].
-  /// [bucketName] Required.
+  /// [bucketName] The name of the Amazon S3 bucket in which to store the input into the node.
   const AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3({
     required this.bucketName,
   });
@@ -23,4 +24,3 @@ class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3 {
     );
   }
 }
-

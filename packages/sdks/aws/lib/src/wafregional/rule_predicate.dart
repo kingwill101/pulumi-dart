@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RulePredicate {
+  /// The unique identifier of a predicate, such as the ID of a `ByteMatchSet` or `IPSet`.
   final pulumi.Input<String> dataId;
+  /// Whether to use the settings or the negated settings that you specified in the objects.
   final pulumi.Input<bool> negated;
+  /// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`
   final pulumi.Input<String> type;
 
   /// Creates a new [RulePredicate].
-  /// [dataId] Required.
-  /// [negated] Required.
-  /// [type] Required.
+  /// [dataId] The unique identifier of a predicate, such as the ID of a `ByteMatchSet` or `IPSet`.
+  /// [negated] Whether to use the settings or the negated settings that you specified in the objects.
+  /// [type] The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`
   const RulePredicate({
     required this.dataId,
     required this.negated,
@@ -33,4 +36,3 @@ class RulePredicate {
     );
   }
 }
-

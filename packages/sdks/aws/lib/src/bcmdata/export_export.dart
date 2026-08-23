@@ -6,25 +6,25 @@ import 'export_export_destination_configuration.dart';
 import 'export_export_refresh_cadence.dart';
 
 class ExportExport {
-  /// Data query for this specific data export. See the `data_query` argument reference below.
+  /// Data query for this specific data export. See the `dataQuery` argument reference below.
   final pulumi.Input<List<ExportExportDataQuery>>? dataQueries;
   /// Description for this specific data export.
   final pulumi.Input<String>? description;
-  /// Destination configuration for this specific data export. See the `destination_configurations` argument reference below.
+  /// Destination configuration for this specific data export. See the `destinationConfigurations` argument reference below.
   final pulumi.Input<List<ExportExportDestinationConfiguration>>? destinationConfigurations;
   final pulumi.Input<String>? exportArn;
   /// Name of this specific data export.
   final pulumi.Input<String> name;
-  /// Cadence for Amazon Web Services to update the export in your S3 bucket. See the `refresh_cadence` argument reference below.
+  /// Cadence for Amazon Web Services to update the export in your S3 bucket. See the `refreshCadence` argument reference below.
   final pulumi.Input<List<ExportExportRefreshCadence>>? refreshCadences;
 
   /// Creates a new [ExportExport].
-  /// [dataQueries] Data query for this specific data export. See the `data_query` argument reference below.
+  /// [dataQueries] Data query for this specific data export. See the `dataQuery` argument reference below.
   /// [description] Description for this specific data export.
-  /// [destinationConfigurations] Destination configuration for this specific data export. See the `destination_configurations` argument reference below.
+  /// [destinationConfigurations] Destination configuration for this specific data export. See the `destinationConfigurations` argument reference below.
   /// [exportArn] Optional.
   /// [name] Name of this specific data export.
-  /// [refreshCadences] Cadence for Amazon Web Services to update the export in your S3 bucket. See the `refresh_cadence` argument reference below.
+  /// [refreshCadences] Cadence for Amazon Web Services to update the export in your S3 bucket. See the `refreshCadence` argument reference below.
   const ExportExport({
     this.dataQueries,
     this.description,
@@ -56,4 +56,3 @@ class ExportExport {
     );
   }
 }
-

@@ -25,6 +25,8 @@ class GetRouteTableRoute {
   final pulumi.Input<String> natGatewayId;
   /// ID of the elastic network interface (eni) to use.
   final pulumi.Input<String> networkInterfaceId;
+  /// ARN of the ODB network.
+  final pulumi.Input<String> odbNetworkArn;
   /// EC2 Transit Gateway ID.
   final pulumi.Input<String> transitGatewayId;
   /// VPC Endpoint ID.
@@ -44,6 +46,7 @@ class GetRouteTableRoute {
   /// [localGatewayId] Local Gateway ID.
   /// [natGatewayId] NAT Gateway ID.
   /// [networkInterfaceId] ID of the elastic network interface (eni) to use.
+  /// [odbNetworkArn] ARN of the ODB network.
   /// [transitGatewayId] EC2 Transit Gateway ID.
   /// [vpcEndpointId] VPC Endpoint ID.
   /// [vpcPeeringConnectionId] VPC Peering ID.
@@ -59,6 +62,7 @@ class GetRouteTableRoute {
     required this.localGatewayId,
     required this.natGatewayId,
     required this.networkInterfaceId,
+    required this.odbNetworkArn,
     required this.transitGatewayId,
     required this.vpcEndpointId,
     required this.vpcPeeringConnectionId,
@@ -77,6 +81,7 @@ class GetRouteTableRoute {
       'localGatewayId': localGatewayId,
       'natGatewayId': natGatewayId,
       'networkInterfaceId': networkInterfaceId,
+      'odbNetworkArn': odbNetworkArn,
       'transitGatewayId': transitGatewayId,
       'vpcEndpointId': vpcEndpointId,
       'vpcPeeringConnectionId': vpcPeeringConnectionId,
@@ -96,10 +101,10 @@ class GetRouteTableRoute {
       localGatewayId: pulumi.Input.fromValue(map['localGatewayId'] as String),
       natGatewayId: pulumi.Input.fromValue(map['natGatewayId'] as String),
       networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
+      odbNetworkArn: pulumi.Input.fromValue(map['odbNetworkArn'] as String),
       transitGatewayId: pulumi.Input.fromValue(map['transitGatewayId'] as String),
       vpcEndpointId: pulumi.Input.fromValue(map['vpcEndpointId'] as String),
       vpcPeeringConnectionId: pulumi.Input.fromValue(map['vpcPeeringConnectionId'] as String),
     );
   }
 }
-

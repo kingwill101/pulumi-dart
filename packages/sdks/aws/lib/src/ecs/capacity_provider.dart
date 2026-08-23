@@ -6,9 +6,11 @@ import 'capacity_provider_state.dart';
 
 /// Provides an ECS cluster capacity provider. More information can be found on the [ECS Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-capacity-providers.html).
 ///
-/// &gt; **NOTE:** Associating an ECS Capacity Provider to an Auto Scaling Group will automatically add the `AmazonECSManaged` tag to the Auto Scaling Group. This tag should be included in the `aws.autoscaling.Group` resource configuration to prevent the provider from removing it in subsequent executions as well as ensuring the `AmazonECSManaged` tag is propagated to all EC2 Instances in the Auto Scaling Group if `min_size` is above 0 on creation. Any EC2 Instances in the Auto Scaling Group without this tag must be manually be updated, otherwise they may cause unexpected scaling behavior and metrics.
+/// &gt; **NOTE:** Associating an ECS Capacity Provider to an Auto Scaling Group will automatically add the `AmazonECSManaged` tag to the Auto Scaling Group. This tag should be included in the `aws.autoscaling.Group` resource configuration to prevent the provider from removing it in subsequent executions as well as ensuring the `AmazonECSManaged` tag is propagated to all EC2 Instances in the Auto Scaling Group if `minSize` is above 0 on creation. Any EC2 Instances in the Auto Scaling Group without this tag must be manually be updated, otherwise they may cause unexpected scaling behavior and metrics.
 ///
-/// &gt; **NOTE:** You must specify exactly one of `auto_scaling_group_provider` or `managed_instances_provider`. When using `managed_instances_provider`, the `cluster` parameter is required. When using `auto_scaling_group_provider`, the `cluster` parameter must not be set.
+/// &gt; **NOTE:** You must specify exactly one of `autoScalingGroupProvider` or `managedInstancesProvider`. When using `managedInstancesProvider`, the `cluster` parameter is required. When using `autoScalingGroupProvider`, the `cluster` parameter must not be set.
+///
+/// &gt; **NOTE:** AWS cannot delete a capacity provider that is still associated with a cluster through `aws.ecs.ClusterCapacityProviders`. When a change forces replacement, add a `replaceTriggeredBy` lifecycle rule to the `aws.ecs.ClusterCapacityProviders` resource so the association is recreated before the old capacity provider is deleted.
 ///
 /// ## Example Usage
 ///
@@ -143,6 +145,36 @@ import 'capacity_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_group" "example" {
+///   tags {
+///     key                 = "AmazonECSManaged"
+///     value               = true
+///     propagate_at_launch = true
+///   }
+/// }
+/// resource "aws_ecs_capacityprovider" "example" {
+///   name = "example"
+///   auto_scaling_group_provider = {
+///     auto_scaling_group_arn         = aws_autoscaling_group.example.arn
+///     managed_termination_protection = "ENABLED"
+///     managed_scaling = {
+///       maximum_scaling_step_size = 1000
+///       minimum_scaling_step_size = 1
+///       status                    = "ENABLED"
+///       target_capacity           = 10
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +188,8 @@ import 'capacity_provider_state.dart';
 /// import com.pulumi.aws.ecs.CapacityProviderArgs;
 /// import com.pulumi.aws.ecs.inputs.CapacityProviderAutoScalingGroupProviderArgs;
 /// import com.pulumi.aws.ecs.inputs.CapacityProviderAutoScalingGroupProviderManagedScalingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +266,7 @@ import 'capacity_provider_state.dart';
 ///         propagateTags: "CAPACITY_PROVIDER",
 ///         instanceLaunchTemplate: {
 ///             ec2InstanceProfileArn: ecsInstance.arn,
-///             monitoring: "ENABLED",
+///             monitoring: "DETAILED",
 ///             networkConfiguration: {
 ///                 subnets: [exampleAwsSubnet.id],
 ///                 securityGroups: [exampleAwsSecurityGroup.id],
@@ -273,7 +305,7 @@ import 'capacity_provider_state.dart';
 ///         "propagate_tags": "CAPACITY_PROVIDER",
 ///         "instance_launch_template": {
 ///             "ec2_instance_profile_arn": ecs_instance["arn"],
-///             "monitoring": "ENABLED",
+///             "monitoring": "DETAILED",
 ///             "network_configuration": {
 ///                 "subnets": [example_aws_subnet["id"]],
 ///                 "security_groups": [example_aws_security_group["id"]],
@@ -318,7 +350,7 @@ import 'capacity_provider_state.dart';
 ///             InstanceLaunchTemplate = new Aws.Ecs.Inputs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateArgs
 ///             {
 ///                 Ec2InstanceProfileArn = ecsInstance.Arn,
-///                 Monitoring = "ENABLED",
+///                 Monitoring = "DETAILED",
 ///                 NetworkConfiguration = new Aws.Ecs.Inputs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfigurationArgs
 ///                 {
 ///                     Subnets = new[]
@@ -380,7 +412,7 @@ import 'capacity_provider_state.dart';
 /// 				PropagateTags:         pulumi.String("CAPACITY_PROVIDER"),
 /// 				InstanceLaunchTemplate: &ecs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateArgs{
 /// 					Ec2InstanceProfileArn: pulumi.Any(ecsInstance.Arn),
-/// 					Monitoring:            pulumi.String("ENABLED"),
+/// 					Monitoring:            pulumi.String("DETAILED"),
 /// 					NetworkConfiguration: &ecs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfigurationArgs{
 /// 						Subnets: pulumi.StringArray{
 /// 							exampleAwsSubnet.Id,
@@ -419,6 +451,47 @@ import 'capacity_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_capacityprovider" "example" {
+///   name    = "example"
+///   cluster = "my-cluster"
+///   managed_instances_provider = {
+///     infrastructure_role_arn = ecsInfrastructure.arn
+///     propagate_tags          = "CAPACITY_PROVIDER"
+///     instance_launch_template = {
+///       ec2_instance_profile_arn = ecsInstance.arn
+///       monitoring               = "DETAILED"
+///       network_configuration = {
+///         subnets         = [exampleAwsSubnet.id]
+///         security_groups = [exampleAwsSecurityGroup.id]
+///       }
+///       storage_configuration = {
+///         storage_size_gib = 30
+///       }
+///       instance_requirements = {
+///         memory_mib = {
+///           min = 1024
+///           max = 8192
+///         }
+///         vcpu_count = {
+///           min = 1
+///           max = 4
+///         }
+///         instance_generations = ["current"]
+///         cpu_manufacturers    = ["intel", "amd"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -434,8 +507,8 @@ import 'capacity_provider_state.dart';
 /// import com.pulumi.aws.ecs.inputs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsArgs;
 /// import com.pulumi.aws.ecs.inputs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryMibArgs;
 /// import com.pulumi.aws.ecs.inputs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsVcpuCountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -455,7 +528,7 @@ import 'capacity_provider_state.dart';
 ///                 .propagateTags("CAPACITY_PROVIDER")
 ///                 .instanceLaunchTemplate(CapacityProviderManagedInstancesProviderInstanceLaunchTemplateArgs.builder()
 ///                     .ec2InstanceProfileArn(ecsInstance.arn())
-///                     .monitoring("ENABLED")
+///                     .monitoring("DETAILED")
 ///                     .networkConfiguration(CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfigurationArgs.builder()
 ///                         .subnets(exampleAwsSubnet.id())
 ///                         .securityGroups(exampleAwsSecurityGroup.id())
@@ -496,7 +569,7 @@ import 'capacity_provider_state.dart';
 ///         propagateTags: CAPACITY_PROVIDER
 ///         instanceLaunchTemplate:
 ///           ec2InstanceProfileArn: ${ecsInstance.arn}
-///           monitoring: ENABLED
+///           monitoring: DETAILED
 ///           networkConfiguration:
 ///             subnets:
 ///               - ${exampleAwsSubnet.id}
@@ -536,19 +609,19 @@ import 'capacity_provider_state.dart';
 class CapacityProvider extends pulumi.CustomResource {
   /// ARN that identifies the capacity provider.
   late final pulumi.Output<String> arn;
-  /// Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `auto_scaling_group_provider` or `managed_instances_provider` must be specified.
+  /// Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
   late final pulumi.Output<CapacityProviderAutoScalingGroupProvider?> autoScalingGroupProvider;
-  /// Name of the ECS cluster. Required when using `managed_instances_provider`. Must not be set when using `auto_scaling_group_provider`.
+  /// Name of the ECS cluster. Required when using `managedInstancesProvider`. Must not be set when using `autoScalingGroupProvider`.
   late final pulumi.Output<String?> cluster;
-  /// Configuration block for the managed instances provider. Detailed below. Exactly one of `auto_scaling_group_provider` or `managed_instances_provider` must be specified.
+  /// Configuration block for the managed instances provider. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
   late final pulumi.Output<CapacityProviderManagedInstancesProvider?> managedInstancesProvider;
   /// Name of the capacity provider.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CapacityProvider].

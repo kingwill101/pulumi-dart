@@ -8,7 +8,7 @@ import 'get_resources_tag_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_resourcegroupstaggingapi_get_resources_get_resources_args_doc}
 class GetResourcesArgs {
-  /// Specifies whether to exclude resources that are compliant with the tag policy. You can use this parameter only if the `include_compliance_details` argument is also set to `true`.
+  /// Specifies whether to exclude resources that are compliant with the tag policy. You can use this parameter only if the `includeComplianceDetails` argument is also set to `true`.
   final pulumi.Input<bool>? excludeCompliantResources;
   /// Specifies whether to include details regarding the compliance with the effective tag policy.
   final pulumi.Input<bool>? includeComplianceDetails;
@@ -18,16 +18,16 @@ class GetResourcesArgs {
   final pulumi.Input<List<String>>? resourceArnLists;
   /// Constraints on the resources that you want returned. The format of each resource type is `service:resourceType`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
   final pulumi.Input<List<String>>? resourceTypeFilters;
-  /// Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resource_arn_list`.
+  /// Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resourceArnList`.
   final pulumi.Input<List<GetResourcesTagFilter>>? tagFilters;
 
   /// Creates a new [GetResourcesArgs].
-  /// [excludeCompliantResources] Specifies whether to exclude resources that are compliant with the tag policy. You can use this parameter only if the `include_compliance_details` argument is also set to `true`.
+  /// [excludeCompliantResources] Specifies whether to exclude resources that are compliant with the tag policy. You can use this parameter only if the `includeComplianceDetails` argument is also set to `true`.
   /// [includeComplianceDetails] Specifies whether to include details regarding the compliance with the effective tag policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArnLists] Specifies a list of ARNs of resources for which you want to retrieve tag data. Conflicts with `filter`.
   /// [resourceTypeFilters] Constraints on the resources that you want returned. The format of each resource type is `service:resourceType`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
-  /// [tagFilters] Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resource_arn_list`.
+  /// [tagFilters] Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resourceArnList`.
   const GetResourcesArgs({
     this.excludeCompliantResources,
     this.includeComplianceDetails,
@@ -59,4 +59,3 @@ class GetResourcesArgs {
     );
   }
 }
-

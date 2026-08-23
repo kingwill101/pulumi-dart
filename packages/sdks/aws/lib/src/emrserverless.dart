@@ -7,6 +7,7 @@ export 'emrserverless/application_initial_capacity.dart';
 export 'emrserverless/application_initial_capacity_initial_capacity_config.dart';
 export 'emrserverless/application_initial_capacity_initial_capacity_config_worker_configuration.dart';
 export 'emrserverless/application_interactive_configuration.dart';
+export 'emrserverless/application_job_level_cost_allocation_configuration.dart';
 export 'emrserverless/application_maximum_capacity.dart';
 export 'emrserverless/application_monitoring_configuration.dart';
 export 'emrserverless/application_monitoring_configuration_cloudwatch_logging_configuration.dart';

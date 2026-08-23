@@ -23,4 +23,3 @@ class GetRouteSpecHttp2RouteMatchQueryParameterMatch {
     );
   }
 }
-

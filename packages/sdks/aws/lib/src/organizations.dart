@@ -1,6 +1,9 @@
 export 'organizations/account.dart';
 export 'organizations/account_args.dart';
 export 'organizations/account_state.dart';
+export 'organizations/aws_service_access.dart';
+export 'organizations/aws_service_access_args.dart';
+export 'organizations/aws_service_access_state.dart';
 export 'organizations/delegated_administrator.dart';
 export 'organizations/delegated_administrator_args.dart';
 export 'organizations/delegated_administrator_state.dart';

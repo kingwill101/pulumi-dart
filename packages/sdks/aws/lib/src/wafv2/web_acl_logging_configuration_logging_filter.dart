@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_logging_configuration_logging_filter_filter.dart';
 
 class WebAclLoggingConfigurationLoggingFilter {
-  /// Default handling for logs that don't match any of the specified filtering conditions. Valid values for `default_behavior` are `KEEP` or `DROP`.
+  /// Default handling for logs that don't match any of the specified filtering conditions. Valid values for `defaultBehavior` are `KEEP` or `DROP`.
   final pulumi.Input<String> defaultBehavior;
   /// Filter(s) that you want to apply to the logs. See Filter below for more details.
   final pulumi.Input<List<WebAclLoggingConfigurationLoggingFilterFilter>> filters;
 
   /// Creates a new [WebAclLoggingConfigurationLoggingFilter].
-  /// [defaultBehavior] Default handling for logs that don't match any of the specified filtering conditions. Valid values for `default_behavior` are `KEEP` or `DROP`.
+  /// [defaultBehavior] Default handling for logs that don't match any of the specified filtering conditions. Valid values for `defaultBehavior` are `KEEP` or `DROP`.
   /// [filters] Filter(s) that you want to apply to the logs. See Filter below for more details.
   const WebAclLoggingConfigurationLoggingFilter({
     required this.defaultBehavior,
@@ -31,4 +31,3 @@ class WebAclLoggingConfigurationLoggingFilter {
     );
   }
 }
-

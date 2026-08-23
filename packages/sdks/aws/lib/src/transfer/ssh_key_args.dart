@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_transfer_ssh_key_ssh_key_args_doc}
 class SshKeyArgs {
-  /// The public key portion of an SSH key pair.
+  /// Public key portion of an SSH key pair.
   final pulumi.Input<String> body;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The Server ID of the Transfer Server (e.g., `s-12345678`)
+  /// Server ID of the Transfer Server (e.g., `s-12345678`)
   final pulumi.Input<String> serverId;
-  /// The name of the user account that is assigned to one or more servers.
+  /// Name of the user account that is assigned to one or more servers.
   final pulumi.Input<String> userName;
 
   /// Creates a new [SshKeyArgs].
-  /// [body] The public key portion of an SSH key pair.
+  /// [body] Public key portion of an SSH key pair.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serverId] The Server ID of the Transfer Server (e.g., `s-12345678`)
-  /// [userName] The name of the user account that is assigned to one or more servers.
+  /// [serverId] Server ID of the Transfer Server (e.g., `s-12345678`)
+  /// [userName] Name of the user account that is assigned to one or more servers.
   const SshKeyArgs({
     required this.body,
     this.region,
@@ -46,4 +46,3 @@ class SshKeyArgs {
     );
   }
 }
-

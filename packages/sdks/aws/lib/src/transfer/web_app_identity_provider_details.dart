@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_app_identity_provider_details_identity_center_config.dart';
 
 class WebAppIdentityProviderDetails {
-  /// Block that describes the values to use for the IAM Identity Center settings. See Identity center config below.
+  /// Block that describes the values to use for the IAM Identity Center settings. See `identityCenterConfig` Block below.
   final pulumi.Input<WebAppIdentityProviderDetailsIdentityCenterConfig>? identityCenterConfig;
 
   /// Creates a new [WebAppIdentityProviderDetails].
-  /// [identityCenterConfig] Block that describes the values to use for the IAM Identity Center settings. See Identity center config below.
+  /// [identityCenterConfig] Block that describes the values to use for the IAM Identity Center settings. See `identityCenterConfig` Block below.
   const WebAppIdentityProviderDetails({
     this.identityCenterConfig,
   });
@@ -25,4 +25,3 @@ class WebAppIdentityProviderDetails {
     );
   }
 }
-

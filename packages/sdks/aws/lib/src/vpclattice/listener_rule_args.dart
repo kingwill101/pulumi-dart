@@ -9,36 +9,34 @@ import 'listener_rule_match.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vpclattice_listener_rule_listener_rule_args_doc}
 class ListenerRuleArgs {
-  /// The action for the listener rule.
-  /// See `action` Block for details.
+  /// Action for the listener rule. See `action` Block for details.
   final pulumi.Input<ListenerRuleAction> action;
-  /// The ID or Amazon Resource Name (ARN) of the listener.
+  /// ID or Amazon Resource Name (ARN) of the listener.
   final pulumi.Input<String> listenerIdentifier;
-  /// The rule match.
-  /// See `match` Block
+  /// Rule match. See `match` Block for details.
   final pulumi.Input<ListenerRuleMatch> match;
-  /// The name of the rule. The name must be unique within the listener. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
+  /// Name of the rule. Must be unique within the listener. Valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
   final pulumi.Input<String>? name;
-  /// The priority assigned to the rule. Each rule for a specific listener must have a unique priority. The lower the priority number the higher the priority.
-  ///
-  /// The following arguments are optional:
+  /// Priority assigned to the rule. Each rule for a specific listener must have a unique priority. The lower the priority number the higher the priority.
   final pulumi.Input<int> priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The ID or Amazon Resource Identifier (ARN) of the service.
+  /// ID or Amazon Resource Name (ARN) of the service.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> serviceIdentifier;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ListenerRuleArgs].
-  /// [action] The action for the listener rule.
-  /// [listenerIdentifier] The ID or Amazon Resource Name (ARN) of the listener.
-  /// [match] The rule match.
-  /// [name] The name of the rule. The name must be unique within the listener. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
-  /// [priority] The priority assigned to the rule. Each rule for a specific listener must have a unique priority. The lower the priority number the higher the priority.
+  /// [action] Action for the listener rule. See `action` Block for details.
+  /// [listenerIdentifier] ID or Amazon Resource Name (ARN) of the listener.
+  /// [match] Rule match. See `match` Block for details.
+  /// [name] Name of the rule. Must be unique within the listener. Valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
+  /// [priority] Priority assigned to the rule. Each rule for a specific listener must have a unique priority. The lower the priority number the higher the priority.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceIdentifier] The ID or Amazon Resource Identifier (ARN) of the service.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [serviceIdentifier] ID or Amazon Resource Name (ARN) of the service.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ListenerRuleArgs({
     required this.action,
     required this.listenerIdentifier,
@@ -76,4 +74,3 @@ class ListenerRuleArgs {
     );
   }
 }
-

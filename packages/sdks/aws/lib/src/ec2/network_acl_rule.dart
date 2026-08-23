@@ -88,7 +88,7 @@ import 'network_acl_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkAclRule(ctx, "bar", &ec2.NetworkAclRuleArgs{
-/// 			NetworkAclId: bar.ID(),
+/// 			NetworkAclId: bar.ID().ToIDOutput().ToStringOutput(),
 /// 			RuleNumber:   pulumi.Int(200),
 /// 			Egress:       pulumi.Bool(false),
 /// 			Protocol:     pulumi.String("tcp"),
@@ -104,6 +104,29 @@ import 'network_acl_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkacl" "bar" {
+///   vpc_id = foo.id
+/// }
+/// resource "aws_ec2_networkaclrule" "bar" {
+///   network_acl_id = aws_ec2_networkacl.bar.id
+///   rule_number    = 200
+///   egress         = false
+///   protocol       = "tcp"
+///   rule_action    = "allow"
+///   cidr_block     = foo.cidrBlock
+///   from_port      = 22
+///   to_port        = 22
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +137,8 @@ import 'network_acl_rule_state.dart';
 /// import com.pulumi.aws.ec2.NetworkAclArgs;
 /// import com.pulumi.aws.ec2.NetworkAclRule;
 /// import com.pulumi.aws.ec2.NetworkAclRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,22 +189,37 @@ import 'network_acl_rule_state.dart';
 /// ```
 ///
 ///
-/// &gt; **Note:** One of either `cidr_block` or `ipv6_cidr_block` is required.
+/// &gt; **Note:** One of either `cidrBlock` or `ipv6CidrBlock` is required.
 ///
 /// ## Import
 ///
-/// Using the procotol's decimal value:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `egress` (Boolean) Indicates whether this is an egress rule.
+/// * `networkAclId` (String) The ID of the network ACL.
+/// * `protocol` (String) The protocol. This can be a decimal value such as `6` or a keyword such as `tcp`.
+/// * `ruleNumber` (Number) The rule number for the entry.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// **Using `pulumi import` to import** individual rules using `NETWORK_ACL_ID:RULE_NUMBER:PROTOCOL:EGRESS`, where `PROTOCOL` can be a decimal (such as "6") or string (such as "tcp") value. For example:
+/// Using the protocol's decimal value:
 ///
-/// Using the procotol's string value:
+///
+/// Using `pulumi import`, import individual rules using `NETWORK_ACL_ID:RULE_NUMBER:PROTOCOL:EGRESS`, where `PROTOCOL` can be a decimal (such as `"6"`) or string (such as `"tcp"`) value. For example:
+///
+/// Using the protocol's string value:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/networkAclRule:NetworkAclRule my_rule acl-7aaabd18:100:tcp:false
 /// ```
 ///
-/// Using the procotol's decimal value:
+/// Using the protocol's decimal value:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/networkAclRule:NetworkAclRule my_rule acl-7aaabd18:100:6:false
@@ -195,9 +233,9 @@ class NetworkAclRule extends pulumi.CustomResource {
   late final pulumi.Output<int?> fromPort;
   /// ICMP protocol: The ICMP code. Required if specifying ICMP for the protocolE.g., -1
   ///
-  /// &gt; **NOTE:** If the value of `protocol` is `-1` or `all`, the `from_port` and `to_port` values will be ignored and the rule will apply to all ports.
+  /// &gt; **NOTE:** If the value of `protocol` is `-1` or `all`, the `fromPort` and `toPort` values will be ignored and the rule will apply to all ports.
   ///
-  /// &gt; **NOTE:** If the value of `icmp_type` is `-1` (which results in a wildcard ICMP type), the `icmp_code` must also be set to `-1` (wildcard ICMP code).
+  /// &gt; **NOTE:** If the value of `icmpType` is `-1` (which results in a wildcard ICMP type), the `icmpCode` must also be set to `-1` (wildcard ICMP code).
   ///
   /// &gt; Note: For more information on ICMP types and codes, see here: https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml
   late final pulumi.Output<int?> icmpCode;

@@ -108,6 +108,29 @@ import 'logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_loggingconfiguration" "example" {
+///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
+///   logging_configuration = {
+///     log_destination_configs = [{
+///       "logDestination" = {
+///         "bucketName" = exampleAwsS3Bucket.bucket
+///         "prefix"     = "example"
+///       }
+///       "logDestinationType" = "S3"
+///       "logType"            = "FLOW"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +140,9 @@ import 'logging_configuration_state.dart';
 /// import com.pulumi.aws.networkfirewall.LoggingConfiguration;
 /// import com.pulumi.aws.networkfirewall.LoggingConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.LoggingConfigurationLoggingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,6 +284,28 @@ import 'logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_loggingconfiguration" "example" {
+///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
+///   logging_configuration = {
+///     log_destination_configs = [{
+///       "logDestination" = {
+///         "logGroup" = exampleAwsCloudwatchLogGroup.name
+///       }
+///       "logDestinationType" = "CloudWatchLogs"
+///       "logType"            = "ALERT"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -269,8 +315,9 @@ import 'logging_configuration_state.dart';
 /// import com.pulumi.aws.networkfirewall.LoggingConfiguration;
 /// import com.pulumi.aws.networkfirewall.LoggingConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.LoggingConfigurationLoggingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,6 +455,28 @@ import 'logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_loggingconfiguration" "example" {
+///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
+///   logging_configuration = {
+///     log_destination_configs = [{
+///       "logDestination" = {
+///         "deliveryStream" = exampleAwsKinesisFirehoseDeliveryStream.name
+///       }
+///       "logDestinationType" = "KinesisDataFirehose"
+///       "logType"            = "TLS"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -417,8 +486,9 @@ import 'logging_configuration_state.dart';
 /// import com.pulumi.aws.networkfirewall.LoggingConfiguration;
 /// import com.pulumi.aws.networkfirewall.LoggingConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.LoggingConfigurationLoggingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkfirewall.inputs.LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -461,7 +531,7 @@ import 'logging_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Network Firewall Logging Configurations using the `firewall_arn`. For example:
+/// Using `pulumi import`, import Network Firewall Logging Configurations using the `firewallArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:networkfirewall/loggingConfiguration:LoggingConfiguration example arn:aws:network-firewall:us-west-1:123456789012:firewall/example

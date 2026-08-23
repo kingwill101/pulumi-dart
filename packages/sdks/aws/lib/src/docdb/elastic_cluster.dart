@@ -80,6 +80,24 @@ import 'elastic_cluster_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_docdb_elasticcluster" "example" {
+///   name                = "my-docdb-cluster"
+///   admin_user_name     = "foo"
+///   admin_user_password = "mustbeeightchars"
+///   auth_type           = "PLAIN_TEXT"
+///   shard_capacity      = 2
+///   shard_count         = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +106,8 @@ import 'elastic_cluster_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.docdb.ElasticCluster;
 /// import com.pulumi.aws.docdb.ElasticClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,7 +176,7 @@ class ElasticCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyId;
   /// Name of the Elastic DocumentDB cluster
   late final pulumi.Output<String> name;
-  /// The daily time range during which automated backups are created if automated backups are enabled, as determined by the `backup_retention_period`.
+  /// The daily time range during which automated backups are created if automated backups are enabled, as determined by the `backupRetentionPeriod`.
   late final pulumi.Output<String> preferredBackupWindow;
   /// Weekly time range during which system maintenance can occur in UTC. Format: `ddd:hh24:mi-ddd:hh24:mi`. If not specified, AWS will choose a random 30-minute window on a random day of the week.
   late final pulumi.Output<String> preferredMaintenanceWindow;
@@ -170,9 +188,11 @@ class ElasticCluster extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> shardCount;
+  /// Number of replica instances applying to all shards in the elastic cluster. If not specified, the default value of 2 is set.
+  late final pulumi.Output<int> shardInstanceCount;
   /// IDs of subnets in which the Elastic DocumentDB Cluster operates.
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags to assign to the collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the collection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ElasticClusterTimeouts?> timeouts;
@@ -209,6 +229,7 @@ class ElasticCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     shardCapacity = registerOutput<int>('shardCapacity');
     shardCount = registerOutput<int>('shardCount');
+    shardInstanceCount = registerOutput<int>('shardInstanceCount');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -252,6 +273,7 @@ class ElasticCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     shardCapacity = registerOutput<int>('shardCapacity');
     shardCount = registerOutput<int>('shardCount');
+    shardInstanceCount = registerOutput<int>('shardInstanceCount');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

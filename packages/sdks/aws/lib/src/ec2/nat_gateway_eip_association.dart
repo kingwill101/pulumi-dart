@@ -5,7 +5,7 @@ import 'nat_gateway_eip_association_timeouts.dart';
 
 /// Resource for managing an AWS VPC NAT Gateway EIP Association.
 ///
-/// !&gt; **WARNING:** You should not use the `aws.ec2.NatGatewayEipAssociation` resource in conjunction with an `aws.ec2.NatGateway` resource that has `secondary_allocation_ids` configured. Doing so may cause perpetual differences, and result in associations being overwritten.
+/// &gt; **WARNING:** You should not use the `aws.ec2.NatGatewayEipAssociation` resource in conjunction with an `aws.ec2.NatGateway` resource that has `secondaryAllocationIds` configured. Doing so may cause perpetual differences, and result in associations being overwritten.
 ///
 /// ## Example Usage
 ///
@@ -66,6 +66,20 @@ import 'nat_gateway_eip_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_natgatewayeipassociation" "example" {
+///   allocation_id  = exampleAwsEip.id
+///   nat_gateway_id = exampleAwsNatGateway.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'nat_gateway_eip_association_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NatGatewayEipAssociation;
 /// import com.pulumi.aws.ec2.NatGatewayEipAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

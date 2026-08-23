@@ -10,27 +10,27 @@ import 'ontap_storage_virtual_machine_active_directory_configuration.dart';
 class OntapStorageVirtualMachineArgs {
   /// Configuration block that Amazon FSx uses to join the FSx ONTAP Storage Virtual Machine(SVM) to your Microsoft Active Directory (AD) directory. Detailed below.
   final pulumi.Input<OntapStorageVirtualMachineActiveDirectoryConfiguration>? activeDirectoryConfiguration;
-  /// The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
+  /// ID of the Amazon FSx ONTAP File System that this SVM will be created on.
   final pulumi.Input<String> fileSystemId;
-  /// The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
+  /// Name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
+  /// Root volume security style. Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
   final pulumi.Input<String>? rootVolumeSecurityStyle;
-  /// Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
+  /// Password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
   final pulumi.Input<String>? svmAdminPassword;
-  /// A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the storage virtual machine. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [OntapStorageVirtualMachineArgs].
   /// [activeDirectoryConfiguration] Configuration block that Amazon FSx uses to join the FSx ONTAP Storage Virtual Machine(SVM) to your Microsoft Active Directory (AD) directory. Detailed below.
-  /// [fileSystemId] The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
-  /// [name] The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
+  /// [fileSystemId] ID of the Amazon FSx ONTAP File System that this SVM will be created on.
+  /// [name] Name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [rootVolumeSecurityStyle] Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
-  /// [svmAdminPassword] Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
-  /// [tags] A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [rootVolumeSecurityStyle] Root volume security style. Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
+  /// [svmAdminPassword] Password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
+  /// [tags] Map of tags to assign to the storage virtual machine. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const OntapStorageVirtualMachineArgs({
     this.activeDirectoryConfiguration,
     required this.fileSystemId,
@@ -65,4 +65,3 @@ class OntapStorageVirtualMachineArgs {
     );
   }
 }
-

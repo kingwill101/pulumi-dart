@@ -194,7 +194,7 @@ import 'ca_certificate_state.dart';
 /// 		ca, err := tls.NewSelfSignedCert(ctx, "ca", &tls.SelfSignedCertArgs{
 /// 			PrivateKeyPem: caPrivateKey.PrivateKeyPem,
 /// 			Subject: tls.SelfSignedCertSubjectArgs{
-/// 				map[string]interface{}{
+/// 				map[string]string{
 /// 					"commonName":   "example.com",
 /// 					"organization": "ACME Examples, Inc",
 /// 				},
@@ -258,6 +258,57 @@ import 'ca_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     tls = {
+///       source = "pulumi/tls"
+///     }
+///   }
+/// }
+///
+/// data "aws_iot_getregistrationcode" "example" {
+/// }
+///
+/// resource "tls_selfsignedcert" "ca" {
+///   private_key_pem = tls_privatekey.ca.private_key_pem
+///   subject = [{
+///     "commonName"   = "example.com"
+///     "organization" = "ACME Examples, Inc"
+///   }]
+///   validity_period_hours = 12
+///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
+///   is_ca_certificate     = true
+/// }
+/// resource "tls_privatekey" "ca" {
+///   algorithm = "RSA"
+/// }
+/// resource "tls_certrequest" "verification" {
+///   private_key_pem = tls_privatekey.verification.private_key_pem
+///   subject = [{
+///     "commonName" = data.aws_iot_getregistrationcode.example.registration_code
+///   }]
+/// }
+/// resource "tls_privatekey" "verification" {
+///   algorithm = "RSA"
+/// }
+/// resource "tls_locallysignedcert" "verification" {
+///   cert_request_pem      = tls_certrequest.verification.cert_request_pem
+///   ca_private_key_pem    = tls_privatekey.ca.private_key_pem
+///   ca_cert_pem           = tls_selfsignedcert.ca.cert_pem
+///   validity_period_hours = 12
+///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
+/// }
+/// resource "aws_iot_cacertificate" "example" {
+///   active                       = true
+///   ca_certificate_pem           = tls_selfsignedcert.ca.cert_pem
+///   verification_certificate_pem = tls_locallysignedcert.verification.cert_pem
+///   allow_auto_registration      = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +327,8 @@ import 'ca_certificate_state.dart';
 /// import com.pulumi.tls.LocallySignedCertArgs;
 /// import com.pulumi.aws.iot.CaCertificate;
 /// import com.pulumi.aws.iot.CaCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,7 +346,7 @@ import 'ca_certificate_state.dart';
 ///
 ///         var ca = new SelfSignedCert("ca", SelfSignedCertArgs.builder()
 ///             .privateKeyPem(caPrivateKey.privateKeyPem())
-///             .subject(SelfSignedCertSubjectArgs.builder()
+///             .subject(com.pulumi.tls.inputs.SelfSignedCertSubjectArgs.builder()
 ///                 .commonName("example.com")
 ///                 .organization("ACME Examples, Inc")
 ///                 .build())
@@ -316,7 +367,7 @@ import 'ca_certificate_state.dart';
 ///
 ///         var verification = new CertRequest("verification", CertRequestArgs.builder()
 ///             .privateKeyPem(verificationPrivateKey.privateKeyPem())
-///             .subject(CertRequestSubjectArgs.builder()
+///             .subject(com.pulumi.tls.inputs.CertRequestSubjectArgs.builder()
 ///                 .commonName(example.registrationCode())
 ///                 .build())
 ///             .build());
@@ -418,14 +469,14 @@ class CaCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Information about the registration configuration. See below.
   late final pulumi.Output<CaCertificateRegistrationConfig?> registrationConfig;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// When the CA certificate is valid.
   late final pulumi.Output<List<Map<String, dynamic>>> validities;
   /// PEM encoded verification certificate containing the common name of a registration code. Review
-  /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificate_mode` is `DEFAULT`.
+  /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificateMode` is `DEFAULT`.
   late final pulumi.Output<String?> verificationCertificatePem;
 
   /// Creates a new [CaCertificate].

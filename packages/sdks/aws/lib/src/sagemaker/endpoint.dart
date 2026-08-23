@@ -5,119 +5,7 @@ import 'endpoint_state.dart';
 
 /// Provides a SageMaker AI Endpoint resource.
 ///
-/// ## Example Usage
-///
-/// Basic usage:
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const e = new aws.sagemaker.Endpoint("e", {
-///     name: "my-endpoint",
-///     endpointConfigName: ec.name,
-///     tags: {
-///         Name: "foo",
-///     },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// e = aws.sagemaker.Endpoint("e",
-///     name="my-endpoint",
-///     endpoint_config_name=ec["name"],
-///     tags={
-///         "Name": "foo",
-///     })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var e = new Aws.Sagemaker.Endpoint("e", new()
-///     {
-///         Name = "my-endpoint",
-///         EndpointConfigName = ec.Name,
-///         Tags =
-///         {
-///             { "Name", "foo" },
-///         },
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sagemaker"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := sagemaker.NewEndpoint(ctx, "e", &sagemaker.EndpointArgs{
-/// 			Name:               pulumi.String("my-endpoint"),
-/// 			EndpointConfigName: pulumi.Any(ec.Name),
-/// 			Tags: pulumi.StringMap{
-/// 				"Name": pulumi.String("foo"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.sagemaker.Endpoint;
-/// import com.pulumi.aws.sagemaker.EndpointArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var e = new Endpoint("e", EndpointArgs.builder()
-///             .name("my-endpoint")
-///             .endpointConfigName(ec.name())
-///             .tags(Map.of("Name", "foo"))
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   e:
-///     type: aws:sagemaker:Endpoint
-///     properties:
-///       name: my-endpoint
-///       endpointConfigName: ${ec.name}
-///       tags:
-///         Name: foo
-/// ```
-///
+/// &gt; **Note:** `aws.sagemaker.Endpoint` resources cannot recognize changes to an `aws.sagemaker.EndpointConfiguration` resource unless the Endpoint Configuration's `name` attribute, changes. Endpoint Configuration names should be randomized by either specifying `namePrefix` or specifying no name. This will automatically change the name when the Endpoint Configuration is modified. The Endpoint Configuration's lifecycle meta-argument `lifecycle.create_before_destroy` should also be set to `true` to prevent conflicts.
 ///
 /// ## Import
 ///
@@ -137,9 +25,9 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Endpoint].

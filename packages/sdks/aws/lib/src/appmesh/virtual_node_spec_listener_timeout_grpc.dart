@@ -5,14 +5,14 @@ import 'virtual_node_spec_listener_timeout_grpc_idle.dart';
 import 'virtual_node_spec_listener_timeout_grpc_per_request.dart';
 
 class VirtualNodeSpecListenerTimeoutGrpc {
-  /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
+  /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.listener.timeout.tcp.idle` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTimeoutGrpcIdle>? idle;
-  /// Per request timeout.
+  /// Per request timeout. See `spec.listener.timeout.http2.per_request` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTimeoutGrpcPerRequest>? perRequest;
 
   /// Creates a new [VirtualNodeSpecListenerTimeoutGrpc].
-  /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
-  /// [perRequest] Per request timeout.
+  /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.listener.timeout.tcp.idle` Block for details.
+  /// [perRequest] Per request timeout. See `spec.listener.timeout.http2.per_request` Block for details.
   const VirtualNodeSpecListenerTimeoutGrpc({
     this.idle,
     this.perRequest,
@@ -32,4 +32,3 @@ class VirtualNodeSpecListenerTimeoutGrpc {
     );
   }
 }
-

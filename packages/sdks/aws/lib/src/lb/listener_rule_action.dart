@@ -17,7 +17,7 @@ class ListenerRuleAction {
   final pulumi.Input<ListenerRuleActionFixedResponse>? fixedResponse;
   /// Configuration block for creating an action that distributes requests among one or more target groups.
   /// Specify only if `type` is `forward`.
-  /// Cannot be specified with `target_group_arn`.
+  /// Cannot be specified with `targetGroupArn`.
   final pulumi.Input<ListenerRuleActionForward>? forward;
   /// Information for creating a JWT validation action. Required if `type` is `jwt-validation`.
   final pulumi.Input<ListenerRuleActionJwtValidation>? jwtValidation;
@@ -86,4 +86,3 @@ class ListenerRuleAction {
     );
   }
 }
-

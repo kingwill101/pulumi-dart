@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Group resources.
 class GroupState {
-  /// The ARN assigned by AWS for this group.
+  /// ARN assigned by AWS for this group.
   final pulumi.Input<String>? arn;
-  /// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
+  /// Group's name. Must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
   final pulumi.Input<String>? name;
   /// Path in which to create the group.
   final pulumi.Input<String>? path;
-  /// The [unique ID][1] assigned by AWS.
+  /// [Unique ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html#GUIDs) assigned by AWS.
   final pulumi.Input<String>? uniqueId;
 
   /// Creates a new [GroupState].
-  /// [arn] The ARN assigned by AWS for this group.
-  /// [name] The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
+  /// [arn] ARN assigned by AWS for this group.
+  /// [name] Group's name. Must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
   /// [path] Path in which to create the group.
-  /// [uniqueId] The [unique ID][1] assigned by AWS.
+  /// [uniqueId] [Unique ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html#GUIDs) assigned by AWS.
   const GroupState({
     this.arn,
     this.name,
@@ -43,4 +43,3 @@ class GroupState {
     );
   }
 }
-

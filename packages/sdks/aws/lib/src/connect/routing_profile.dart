@@ -182,6 +182,45 @@ import 'routing_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_routingprofile" "example" {
+///   instance_id               = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name                      = "example"
+///   default_outbound_queue_id = "12345678-1234-1234-1234-123456789012"
+///   description               = "example description"
+///   media_concurrencies {
+///     channel     = "VOICE"
+///     concurrency = 1
+///     cross_channel_behavior = {
+///       behavior_type = "ROUTE_ANY_CHANNEL"
+///     }
+///   }
+///   media_concurrencies {
+///     channel     = "CHAT"
+///     concurrency = 3
+///     cross_channel_behavior = {
+///       behavior_type = "ROUTE_CURRENT_CHANNEL_ONLY"
+///     }
+///   }
+///   queue_configs {
+///     channel  = "VOICE"
+///     delay    = 2
+///     priority = 1
+///     queue_id = "12345678-1234-1234-1234-123456789012"
+///   }
+///   tags = {
+///     "Name" = "Example Routing Profile"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +232,8 @@ import 'routing_profile_state.dart';
 /// import com.pulumi.aws.connect.inputs.RoutingProfileMediaConcurrencyArgs;
 /// import com.pulumi.aws.connect.inputs.RoutingProfileMediaConcurrencyCrossChannelBehaviorArgs;
 /// import com.pulumi.aws.connect.inputs.RoutingProfileQueueConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,7 +307,7 @@ import 'routing_profile_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Routing Profiles using the `instance_id` and `routing_profile_id` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Routing Profiles using the `instanceId` and `routingProfileId` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/routingProfile:RoutingProfile example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -282,20 +321,20 @@ class RoutingProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
-  /// One or more `media_concurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `media_concurrencies` block is documented below.
+  /// One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> mediaConcurrencies;
   /// Specifies the name of the Routing Profile.
   late final pulumi.Output<String> name;
-  /// One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
+  /// One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> queueConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Identifier for the Routing Profile.
   late final pulumi.Output<String> routingProfileId;
   /// Tags to apply to the Routing Profile. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [RoutingProfile].

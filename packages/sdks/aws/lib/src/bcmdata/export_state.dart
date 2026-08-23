@@ -11,7 +11,7 @@ class ExportState {
   final pulumi.Input<String>? arn;
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   final pulumi.Input<ExportExport>? export;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ExportTimeouts>? timeouts;
@@ -19,7 +19,7 @@ class ExportState {
   /// Creates a new [ExportState].
   /// [arn] Amazon Resource Name (ARN) for this export.
   /// [export] The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   const ExportState({
@@ -50,4 +50,3 @@ class ExportState {
     );
   }
 }
-

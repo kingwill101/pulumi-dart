@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataIntegrationScheduleConfig {
-  /// The start date for objects to import in the first flow run as an Unix/epoch timestamp in milliseconds or in ISO-8601 format. This needs to be a time in the past, meaning that the data created or updated before this given date will not be downloaded.
+  /// Start date for objects to import in the first flow run as an Unix/epoch timestamp in milliseconds or in ISO-8601 format. This needs to be a time in the past, meaning that the data created or updated before this given date will not be downloaded.
   final pulumi.Input<String> firstExecutionFrom;
-  /// The name of the object to pull from the data source. Examples of objects in Salesforce include `Case`, `Account`, or `Lead`.
+  /// Name of the object to pull from the data source. Examples of objects in Salesforce include `Case`, `Account`, or `Lead`.
   final pulumi.Input<String> object_;
   /// How often the data should be pulled from data source. Examples include `rate(1 hour)`, `rate(3 hours)`, `rate(1 day)`.
   final pulumi.Input<String> scheduleExpression;
 
   /// Creates a new [DataIntegrationScheduleConfig].
-  /// [firstExecutionFrom] The start date for objects to import in the first flow run as an Unix/epoch timestamp in milliseconds or in ISO-8601 format. This needs to be a time in the past, meaning that the data created or updated before this given date will not be downloaded.
-  /// [object_] The name of the object to pull from the data source. Examples of objects in Salesforce include `Case`, `Account`, or `Lead`.
+  /// [firstExecutionFrom] Start date for objects to import in the first flow run as an Unix/epoch timestamp in milliseconds or in ISO-8601 format. This needs to be a time in the past, meaning that the data created or updated before this given date will not be downloaded.
+  /// [object_] Name of the object to pull from the data source. Examples of objects in Salesforce include `Case`, `Account`, or `Lead`.
   /// [scheduleExpression] How often the data should be pulled from data source. Examples include `rate(1 hour)`, `rate(3 hours)`, `rate(1 day)`.
   const DataIntegrationScheduleConfig({
     required this.firstExecutionFrom,
@@ -36,4 +36,3 @@ class DataIntegrationScheduleConfig {
     );
   }
 }
-

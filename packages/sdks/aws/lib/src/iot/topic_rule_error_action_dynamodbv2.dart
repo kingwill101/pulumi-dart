@@ -31,4 +31,3 @@ class TopicRuleErrorActionDynamodbv2 {
     );
   }
 }
-

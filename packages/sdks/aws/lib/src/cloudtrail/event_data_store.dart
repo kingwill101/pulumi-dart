@@ -12,7 +12,7 @@ import 'event_data_store_state.dart';
 ///
 /// ### Basic
 ///
-/// The most simple event data store configuration requires us to only set the `name` attribute. The event data store will automatically capture all management events. To capture management events from all the regions, `multi_region_enabled` must be `true`.
+/// The most simple event data store configuration requires us to only set the `name` attribute. The event data store will automatically capture all management events. To capture management events from all the regions, `multiRegionEnabled` must be `true`.
 ///
 ///
 /// ```typescript
@@ -62,6 +62,19 @@ import 'event_data_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudtrail_eventdatastore" "example" {
+///   name = "example-event-data-store"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'event_data_store_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudtrail.EventDataStore;
 /// import com.pulumi.aws.cloudtrail.EventDataStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,6 +295,41 @@ import 'event_data_store_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_dynamodb_gettable" "table" {
+///   name = "not-important-dynamodb-table"
+/// }
+///
+/// resource "aws_cloudtrail_eventdatastore" "example" {
+///   advanced_event_selectors {
+///     name = "Log all DynamoDB PutEvent actions for a specific DynamoDB table"
+///     field_selectors {
+///       field  = "eventCategory"
+///       equals = ["Data"]
+///     }
+///     field_selectors {
+///       field  = "resources.type"
+///       equals = ["AWS::DynamoDB::Table"]
+///     }
+///     field_selectors {
+///       field  = "eventName"
+///       equals = ["PutItem"]
+///     }
+///     field_selectors {
+///       field  = "resources.ARN"
+///       equals = [data.aws_dynamodb_gettable.table.arn]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -293,8 +341,9 @@ import 'event_data_store_state.dart';
 /// import com.pulumi.aws.cloudtrail.EventDataStore;
 /// import com.pulumi.aws.cloudtrail.EventDataStoreArgs;
 /// import com.pulumi.aws.cloudtrail.inputs.EventDataStoreAdvancedEventSelectorArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudtrail.inputs.EventDataStoreAdvancedEventSelectorFieldSelectorArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,9 +449,9 @@ class EventDataStore extends pulumi.CustomResource {
   late final pulumi.Output<int?> retentionPeriod;
   /// Specifies whether to stop ingesting new events into the event data store. If set to `true`, ingestion is suspended while maintaining the ability to query existing events. If set to `false`, ingestion is active.
   late final pulumi.Output<String?> suspend;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies whether termination protection is enabled for the event data store. If termination protection is enabled, you cannot delete the event data store until termination protection is disabled. Default: `true`.
   late final pulumi.Output<bool?> terminationProtectionEnabled;

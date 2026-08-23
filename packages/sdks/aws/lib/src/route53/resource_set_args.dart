@@ -16,14 +16,14 @@ class ResourceSetArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<ResourceSetResource>> resources;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ResourceSetArgs].
   /// [resourceSetName] Unique name describing the resource set.
   /// [resourceSetType] Type of the resources in the resource set.
   /// [resources] List of resources to add to this resource set. See below.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   const ResourceSetArgs({
     required this.resourceSetName,
     required this.resourceSetType,
@@ -49,4 +49,3 @@ class ResourceSetArgs {
     );
   }
 }
-

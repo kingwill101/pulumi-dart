@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification {
-  /// Metric type.
   final pulumi.Input<String> predefinedMetricType;
-  /// Label that uniquely identifies a specific target group from which to determine the average request count.
   final pulumi.Input<String>? resourceLabel;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification].
-  /// [predefinedMetricType] Metric type.
-  /// [resourceLabel] Label that uniquely identifies a specific target group from which to determine the average request count.
+  /// [predefinedMetricType] Required.
+  /// [resourceLabel] Optional.
   const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification({
     required this.predefinedMetricType,
     this.resourceLabel,
@@ -30,4 +28,3 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedSca
     );
   }
 }
-

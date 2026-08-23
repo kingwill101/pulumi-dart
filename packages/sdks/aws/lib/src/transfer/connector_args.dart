@@ -10,35 +10,35 @@ import 'connector_sftp_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_transfer_connector_connector_args_doc}
 class ConnectorArgs {
-  /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
   final pulumi.Input<String> accessRole;
-  /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
+  /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `as2Config` Block below.
   final pulumi.Input<ConnectorAs2Config>? as2Config;
-  /// Specifies the egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. Fields documented below.
+  /// Egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. See `egressConfig` Block below.
   final pulumi.Input<ConnectorEgressConfig>? egressConfig;
-  /// The IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
+  /// IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
   final pulumi.Input<String>? loggingRole;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Name of the security policy for the connector.
   final pulumi.Input<String>? securityPolicyName;
-  /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
+  /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `sftpConfig` Block below.
   final pulumi.Input<ConnectorSftpConfig>? sftpConfig;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
+  /// URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
   final pulumi.Input<String>? url;
 
   /// Creates a new [ConnectorArgs].
-  /// [accessRole] The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
-  /// [as2Config] Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
-  /// [egressConfig] Specifies the egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. Fields documented below.
-  /// [loggingRole] The IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
+  /// [accessRole] IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// [as2Config] Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `as2Config` Block below.
+  /// [egressConfig] Egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. See `egressConfig` Block below.
+  /// [loggingRole] IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityPolicyName] Name of the security policy for the connector.
-  /// [sftpConfig] Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [url] The URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
+  /// [sftpConfig] Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `sftpConfig` Block below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [url] URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
   const ConnectorArgs({
     required this.accessRole,
     this.as2Config,
@@ -79,4 +79,3 @@ class ConnectorArgs {
     );
   }
 }
-

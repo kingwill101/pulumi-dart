@@ -14,7 +14,7 @@ class AgentKnowledgeBaseState {
   /// Description of the knowledge base.
   final pulumi.Input<String>? description;
   final pulumi.Input<List<String>>? failureReasons;
-  /// Details about the embeddings configuration of the knowledge base. See `knowledge_base_configuration` block for details.
+  /// Details about the embeddings configuration of the knowledge base. See `knowledgeBaseConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfiguration>? knowledgeBaseConfiguration;
   /// Name of the knowledge base.
   final pulumi.Input<String>? name;
@@ -24,11 +24,11 @@ class AgentKnowledgeBaseState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? roleArn;
-  /// Details about the storage configuration of the knowledge base. See `storage_configuration` block for details.
+  /// Details about the storage configuration of the knowledge base. See `storageConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfiguration>? storageConfiguration;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<AgentKnowledgeBaseTimeouts>? timeouts;
   /// Time at which the knowledge base was last updated.
@@ -39,13 +39,13 @@ class AgentKnowledgeBaseState {
   /// [createdAt] Time at which the knowledge base was created.
   /// [description] Description of the knowledge base.
   /// [failureReasons] Optional.
-  /// [knowledgeBaseConfiguration] Details about the embeddings configuration of the knowledge base. See `knowledge_base_configuration` block for details.
+  /// [knowledgeBaseConfiguration] Details about the embeddings configuration of the knowledge base. See `knowledgeBaseConfiguration` block for details.
   /// [name] Name of the knowledge base.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the IAM role with permissions to invoke API operations on the knowledge base.
-  /// [storageConfiguration] Details about the storage configuration of the knowledge base. See `storage_configuration` block for details.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [storageConfiguration] Details about the storage configuration of the knowledge base. See `storageConfiguration` block for details.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [updatedAt] Time at which the knowledge base was last updated.
   const AgentKnowledgeBaseState({
@@ -100,4 +100,3 @@ class AgentKnowledgeBaseState {
     );
   }
 }
-

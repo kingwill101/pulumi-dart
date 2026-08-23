@@ -37,4 +37,3 @@ class BucketServerSideEncryptionConfigurationV2Rule {
     );
   }
 }
-

@@ -20,15 +20,15 @@ class TemplateState {
   final pulumi.Input<List<TemplatePermission>>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `source_entity` should be configured. See source_entity.
+  /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
   final pulumi.Input<TemplateSourceEntity>? sourceEntity;
   /// Amazon Resource Name (ARN) of an analysis or template that was used to create this template.
   final pulumi.Input<String>? sourceEntityArn;
   /// The template creation status.
   final pulumi.Input<String>? status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Identifier for the template.
   final pulumi.Input<String>? templateId;
@@ -47,11 +47,11 @@ class TemplateState {
   /// [name] Display name for the template.
   /// [permissions] A set of resource permissions on the template. Maximum of 64 items. See permissions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceEntity] The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `source_entity` should be configured. See source_entity.
+  /// [sourceEntity] The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
   /// [sourceEntityArn] Amazon Resource Name (ARN) of an analysis or template that was used to create this template.
   /// [status] The template creation status.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [templateId] Identifier for the template.
   /// [versionDescription] A description of the current template version being created/updated.
   /// [versionNumber] The version number of the template version.
@@ -113,4 +113,3 @@ class TemplateState {
     );
   }
 }
-

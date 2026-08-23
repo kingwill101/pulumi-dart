@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConfigurationResourceConfigurationDefinitionArnResource {
-  /// The ARN of the Resource for this configuration.
+  /// ARN of the Resource for this configuration.
   final pulumi.Input<String> arn;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionArnResource].
-  /// [arn] The ARN of the Resource for this configuration.
+  /// [arn] ARN of the Resource for this configuration.
   const ResourceConfigurationResourceConfigurationDefinitionArnResource({
     required this.arn,
   });
@@ -24,4 +24,3 @@ class ResourceConfigurationResourceConfigurationDefinitionArnResource {
     );
   }
 }
-

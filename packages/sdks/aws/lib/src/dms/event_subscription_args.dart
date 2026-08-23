@@ -21,7 +21,7 @@ class EventSubscriptionArgs {
   final pulumi.Input<List<String>>? sourceIds;
   /// Type of source for events. Valid values: `replication-instance` or `replication-task`
   final pulumi.Input<String> sourceType;
-  /// Map of resource tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [EventSubscriptionArgs].
@@ -32,7 +32,7 @@ class EventSubscriptionArgs {
   /// [snsTopicArn] SNS topic arn to send events on.
   /// [sourceIds] Ids of sources to listen to. If you don't specify a value, notifications are provided for all sources.
   /// [sourceType] Type of source for events. Valid values: `replication-instance` or `replication-task`
-  /// [tags] Map of resource tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of resource tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const EventSubscriptionArgs({
     this.enabled,
     required this.eventCategories,
@@ -70,4 +70,3 @@ class EventSubscriptionArgs {
     );
   }
 }
-

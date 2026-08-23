@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_log_delivery_worker_log_delivery.dart';
 
 class ConnectorLogDelivery {
-  /// The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See `worker_log_delivery` Block for details.
+  /// The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See `workerLogDelivery` Block for details.
   final pulumi.Input<ConnectorLogDeliveryWorkerLogDelivery> workerLogDelivery;
 
   /// Creates a new [ConnectorLogDelivery].
-  /// [workerLogDelivery] The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See `worker_log_delivery` Block for details.
+  /// [workerLogDelivery] The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See `workerLogDelivery` Block for details.
   const ConnectorLogDelivery({
     required this.workerLogDelivery,
   });
@@ -25,4 +25,3 @@ class ConnectorLogDelivery {
     );
   }
 }
-

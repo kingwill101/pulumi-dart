@@ -19,33 +19,33 @@ import 'get_service_account_result.dart';
 ///     bucket: "tf-cloudtrail-logging-test-bucket",
 ///     forceDestroy: true,
 /// });
-/// const allowCloudtrailLogging = pulumi.all([main, bucket.arn, main, bucket.arn]).apply(([main, bucketArn, main1, bucketArn1]) => aws.iam.getPolicyDocumentOutput({
+/// const allowCloudtrailLogging = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
 ///         {
 ///             sid: "Put bucket policy needed for trails",
 ///             effect: "Allow",
 ///             principals: [{
 ///                 type: "AWS",
-///                 identifiers: [main.arn],
+///                 identifiers: [main.then(main => main.arn)],
 ///             }],
 ///             actions: ["s3:PutObject"],
-///             resources: [`${bucketArn}/*`],
+///             resources: [pulumi.interpolate`${bucket.arn}/*`],
 ///         },
 ///         {
 ///             sid: "Get bucket policy needed for trails",
 ///             effect: "Allow",
 ///             principals: [{
 ///                 type: "AWS",
-///                 identifiers: [main1.arn],
+///                 identifiers: [main.then(main => main.arn)],
 ///             }],
 ///             actions: ["s3:GetBucketAcl"],
-///             resources: [bucketArn1],
+///             resources: [bucket.arn],
 ///         },
 ///     ],
-/// }));
+/// });
 /// const allowCloudtrailLoggingBucketPolicy = new aws.s3.BucketPolicy("allow_cloudtrail_logging", {
 ///     bucket: bucket.id,
-///     policy: allowCloudtrailLogging.apply(allowCloudtrailLogging => allowCloudtrailLogging.json),
+///     policy: allowCloudtrailLogging.json,
 /// });
 /// ```
 /// ```python
@@ -56,10 +56,7 @@ import 'get_service_account_result.dart';
 /// bucket = aws.s3.Bucket("bucket",
 ///     bucket="tf-cloudtrail-logging-test-bucket",
 ///     force_destroy=True)
-/// allow_cloudtrail_logging = pulumi.Output.all(
-///     bucketArn=bucket.arn,
-///     bucketArn1=bucket.arn
-/// ).apply(lambda resolved_outputs: aws.iam.get_policy_document(statements=[
+/// allow_cloudtrail_logging = aws.iam.get_policy_document_output(statements=[
 ///     {
 ///         "sid": "Put bucket policy needed for trails",
 ///         "effect": "Allow",
@@ -68,7 +65,7 @@ import 'get_service_account_result.dart';
 ///             "identifiers": [main.arn],
 ///         }],
 ///         "actions": ["s3:PutObject"],
-///         "resources": [f"{resolved_outputs['bucketArn']}/*"],
+///         "resources": [bucket.arn.apply(lambda arn: f"{arn}/*")],
 ///     },
 ///     {
 ///         "sid": "Get bucket policy needed for trails",
@@ -78,10 +75,9 @@ import 'get_service_account_result.dart';
 ///             "identifiers": [main.arn],
 ///         }],
 ///         "actions": ["s3:GetBucketAcl"],
-///         "resources": [resolved_outputs['bucketArn1']],
+///         "resources": [bucket.arn],
 ///     },
-/// ]))
-///
+/// ])
 /// allow_cloudtrail_logging_bucket_policy = aws.s3.BucketPolicy("allow_cloudtrail_logging",
 ///     bucket=bucket.id,
 ///     policy=allow_cloudtrail_logging.json)
@@ -106,13 +102,13 @@ import 'get_service_account_result.dart';
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Sid = "Put bucket policy needed for trails",
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -130,13 +126,13 @@ import 'get_service_account_result.dart';
 ///                     $"{bucket.Arn}/*",
 ///                 },
 ///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Sid = "Get bucket policy needed for trails",
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -176,75 +172,114 @@ import 'get_service_account_result.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// main, err := cloudtrail.GetServiceAccount(ctx, &cloudtrail.GetServiceAccountArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		main, err := cloudtrail.GetServiceAccount(ctx, &cloudtrail.GetServiceAccountArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+/// 			Bucket:       pulumi.String("tf-cloudtrail-logging-test-bucket"),
+/// 			ForceDestroy: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		allowCloudtrailLogging := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Sid:    pulumi.String("Put bucket policy needed for trails"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String(main.Arn),
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						bucket.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/*", arn), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
+/// 				},
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Sid:    pulumi.String("Get bucket policy needed for trails"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String(main.Arn),
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:GetBucketAcl"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						bucket.Arn,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = s3.NewBucketPolicy(ctx, "allow_cloudtrail_logging", &s3.BucketPolicyArgs{
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: allowCloudtrailLogging.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
-/// Bucket: pulumi.String("tf-cloudtrail-logging-test-bucket"),
-/// ForceDestroy: pulumi.Bool(true),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// allowCloudtrailLogging := pulumi.All(bucket.Arn,bucket.Arn).ApplyT(func(_args []interface{}) (iam.GetPolicyDocumentResult, error) {
-/// bucketArn := _args[0].(string)
-/// bucketArn1 := _args[1].(string)
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Sid: pulumi.StringRef(pulumi.String(pulumi.StringRef("Put bucket policy needed for trails"))),
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// main.Arn,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "s3:PutObject",
-/// },
-/// Resources: []string{
-/// fmt.Sprintf("%v/*", bucketArn),
-/// },
-/// },
-/// {
-/// Sid: pulumi.StringRef(pulumi.String(pulumi.StringRef("Get bucket policy needed for trails"))),
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// main.Arn,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "s3:GetBucketAcl",
-/// },
-/// Resources: []string{
-/// bucketArn1,
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = s3.NewBucketPolicy(ctx, "allow_cloudtrail_logging", &s3.BucketPolicyArgs{
-/// Bucket: bucket.ID(),
-/// Policy: pulumi.String(allowCloudtrailLogging.ApplyT(func(allowCloudtrailLogging iam.GetPolicyDocumentResult) (*string, error) {
-/// return &allowCloudtrailLogging.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_cloudtrail_getserviceaccount" "main" {
 /// }
-/// return nil
-/// })
+/// data "aws_iam_getpolicydocument" "allowCloudtrailLogging" {
+///   statements {
+///     sid    = "Put bucket policy needed for trails"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [data.aws_cloudtrail_getserviceaccount.main.arn]
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.bucket.arn}/*"]
+///   }
+///   statements {
+///     sid    = "Get bucket policy needed for trails"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [data.aws_cloudtrail_getserviceaccount.main.arn]
+///     }
+///     actions   = ["s3:GetBucketAcl"]
+///     resources = [aws_s3_bucket.bucket.arn]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket        = "tf-cloudtrail-logging-test-bucket"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketpolicy" "allow_cloudtrail_logging" {
+///   bucket = aws_s3_bucket.bucket.id
+///   policy = data.aws_iam_getpolicydocument.allowCloudtrailLogging.json
 /// }
 /// ```
 /// ```java
@@ -259,10 +294,12 @@ import 'get_service_account_result.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,37 +319,33 @@ import 'get_service_account_result.dart';
 ///             .forceDestroy(true)
 ///             .build());
 ///
-///         final var allowCloudtrailLogging = Output.tuple(bucket.arn(), bucket.arn()).applyValue(values -> {
-///             var bucketArn = values.t1;
-///             var bucketArn1 = values.t2;
-///             return IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///                 .statements(
-///                     GetPolicyDocumentStatementArgs.builder()
-///                         .sid("Put bucket policy needed for trails")
-///                         .effect("Allow")
-///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                             .type("AWS")
-///                             .identifiers(main.arn())
-///                             .build())
-///                         .actions("s3:PutObject")
-///                         .resources(String.format("%s/*", bucketArn))
-///                         .build(),
-///                     GetPolicyDocumentStatementArgs.builder()
-///                         .sid("Get bucket policy needed for trails")
-///                         .effect("Allow")
-///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                             .type("AWS")
-///                             .identifiers(main.arn())
-///                             .build())
-///                         .actions("s3:GetBucketAcl")
-///                         .resources(bucketArn1)
+///         final var allowCloudtrailLogging = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///             .statements(
+///                 GetPolicyDocumentStatementArgs.builder()
+///                     .sid("Put bucket policy needed for trails")
+///                     .effect("Allow")
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers(main.arn())
 ///                         .build())
-///                 .build());
-///         });
+///                     .actions("s3:PutObject")
+///                     .resources(bucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
+///                     .build(),
+///                 GetPolicyDocumentStatementArgs.builder()
+///                     .sid("Get bucket policy needed for trails")
+///                     .effect("Allow")
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers(main.arn())
+///                         .build())
+///                     .actions("s3:GetBucketAcl")
+///                     .resources(bucket.arn())
+///                     .build())
+///             .build());
 ///
 ///         var allowCloudtrailLoggingBucketPolicy = new BucketPolicy("allowCloudtrailLoggingBucketPolicy", BucketPolicyArgs.builder()
 ///             .bucket(bucket.id())
-///             .policy(allowCloudtrailLogging.json())
+///             .policy(allowCloudtrailLogging.applyValue(_allowCloudtrailLogging -> _allowCloudtrailLogging.json()))
 ///             .build());
 ///
 ///     }

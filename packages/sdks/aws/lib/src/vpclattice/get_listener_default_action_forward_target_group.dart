@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionForwardTargetGroup {
+  /// ID or ARN of the target group.
   final pulumi.Input<String> targetGroupIdentifier;
+  /// Weight assigned to the target group that determines the proportion of traffic it receives.
   final pulumi.Input<int> weight;
 
   /// Creates a new [GetListenerDefaultActionForwardTargetGroup].
-  /// [targetGroupIdentifier] Required.
-  /// [weight] Required.
+  /// [targetGroupIdentifier] ID or ARN of the target group.
+  /// [weight] Weight assigned to the target group that determines the proportion of traffic it receives.
   const GetListenerDefaultActionForwardTargetGroup({
     required this.targetGroupIdentifier,
     required this.weight,
@@ -28,4 +30,3 @@ class GetListenerDefaultActionForwardTargetGroup {
     );
   }
 }
-

@@ -7,10 +7,10 @@ import 'cluster_state.dart';
 /// applied to the entire cluster of Neptune Cluster Instances.
 ///
 /// Changes to a Neptune Cluster can occur when you manually change a
-/// parameter, such as `backup_retention_period`, and are reflected in the next maintenance
+/// parameter, such as `backupRetentionPeriod`, and are reflected in the next maintenance
 /// window. Because of this, this provider may report a difference in its planning
 /// phase because a modification has not yet taken place. You can use the
-/// `apply_immediately` flag to instruct the service to apply the change immediately
+/// `applyImmediately` flag to instruct the service to apply the change immediately
 /// (see documentation below).
 ///
 /// ## Example Usage
@@ -90,6 +90,25 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_neptune_cluster" "default" {
+///   cluster_identifier                  = "neptune-cluster-demo"
+///   engine                              = "neptune"
+///   backup_retention_period             = 5
+///   preferred_backup_window             = "07:00-09:00"
+///   skip_final_snapshot                 = true
+///   iam_database_authentication_enabled = true
+///   apply_immediately                   = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +117,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.neptune.Cluster;
 /// import com.pulumi.aws.neptune.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,7 +169,7 @@ import 'cluster_state.dart';
 /// $ pulumi import aws:neptune/cluster:Cluster example my-cluster
 /// ```
 class Cluster extends pulumi.CustomResource {
-  /// Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engine_version` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
+  /// Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engineVersion` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
   late final pulumi.Output<bool> allowMajorVersionUpgrade;
   /// Whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
   late final pulumi.Output<bool> applyImmediately;
@@ -162,7 +181,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<int?> backupRetentionPeriod;
   /// Cluster identifier. If omitted, Terraform will assign a random, unique identifier.
   late final pulumi.Output<String> clusterIdentifier;
-  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
+  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `clusterIdentifier`.
   late final pulumi.Output<String> clusterIdentifierPrefix;
   /// List of Neptune Instances that are a part of this cluster
   late final pulumi.Output<List<String>> clusterMembers;
@@ -190,11 +209,11 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> iamDatabaseAuthenticationEnabled;
   /// List of ARNs for the IAM roles to associate to the Neptune Cluster.
   late final pulumi.Output<List<String>?> iamRoles;
-  /// ARN for the KMS encryption key. When specifying `kms_key_arn`, `storage_encrypted` needs to be set to true.
+  /// ARN for the KMS encryption key. When specifying `kmsKeyArn`, `storageEncrypted` needs to be set to true.
   late final pulumi.Output<String> kmsKeyArn;
   /// Cluster parameter group to associate with the cluster.
   late final pulumi.Output<String> neptuneClusterParameterGroupName;
-  /// Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engine_version`.
+  /// Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engineVersion`.
   late final pulumi.Output<String?> neptuneInstanceParameterGroupName;
   /// Neptune subnet group to associate with this Neptune instance.
   late final pulumi.Output<String> neptuneSubnetGroupName;
@@ -212,7 +231,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> replicationSourceIdentifier;
   /// If set, create the Neptune cluster as a serverless one. See Serverless for example block attributes.
   late final pulumi.Output<ClusterServerlessV2ScalingConfiguration?> serverlessV2ScalingConfiguration;
-  /// Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
+  /// Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
   late final pulumi.Output<bool?> skipFinalSnapshot;
   /// Whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a Neptune cluster snapshot, or the ARN when specifying a Neptune snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   late final pulumi.Output<String?> snapshotIdentifier;
@@ -220,9 +239,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> storageEncrypted;
   /// Storage type associated with the cluster `standard/iopt1`. Default: `standard`.
   late final pulumi.Output<String> storageType;
-  /// Map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the Neptune cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// List of VPC security groups to associate with the Cluster
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;

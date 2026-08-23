@@ -6,12 +6,12 @@ import 'rule_group_rule_group_rule_variables_ip_set_ip_set.dart';
 class RuleGroupRuleGroupRuleVariablesIpSet {
   /// A configuration block that defines a set of IP addresses. See IP Set below for details.
   final pulumi.Input<RuleGroupRuleGroupRuleVariablesIpSetIpSet> ipSet;
-  /// A unique alphanumeric string to identify the `ip_set`.
+  /// A unique alphanumeric string to identify the `ipSet`.
   final pulumi.Input<String> key;
 
   /// Creates a new [RuleGroupRuleGroupRuleVariablesIpSet].
   /// [ipSet] A configuration block that defines a set of IP addresses. See IP Set below for details.
-  /// [key] A unique alphanumeric string to identify the `ip_set`.
+  /// [key] A unique alphanumeric string to identify the `ipSet`.
   const RuleGroupRuleGroupRuleVariablesIpSet({
     required this.ipSet,
     required this.key,
@@ -31,4 +31,3 @@ class RuleGroupRuleGroupRuleVariablesIpSet {
     );
   }
 }
-

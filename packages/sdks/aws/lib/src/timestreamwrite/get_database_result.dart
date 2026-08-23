@@ -7,8 +7,6 @@ class GetDatabaseResult {
   final String arn;
   /// Creation time of database.
   final String createdTime;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// The ARN of the KMS key used to encrypt the data stored in the database.
   final String kmsKeyId;
   /// Last time database was updated.
@@ -21,7 +19,6 @@ class GetDatabaseResult {
   /// Creates a new [GetDatabaseResult].
   /// [arn] The ARN that uniquely identifies this database.
   /// [createdTime] Creation time of database.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [kmsKeyId] The ARN of the KMS key used to encrypt the data stored in the database.
   /// [lastUpdatedTime] Last time database was updated.
   /// [name] Required.
@@ -30,7 +27,6 @@ class GetDatabaseResult {
   const GetDatabaseResult({
     required this.arn,
     required this.createdTime,
-    required this.id,
     required this.kmsKeyId,
     required this.lastUpdatedTime,
     required this.name,
@@ -42,7 +38,6 @@ class GetDatabaseResult {
     return <String, dynamic>{
       'arn': arn,
       'createdTime': createdTime,
-      'id': id,
       'kmsKeyId': kmsKeyId,
       'lastUpdatedTime': lastUpdatedTime,
       'name': name,
@@ -55,7 +50,6 @@ class GetDatabaseResult {
     return GetDatabaseResult(
       arn: map['arn'] as String,
       createdTime: map['createdTime'] as String,
-      id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       name: map['name'] as String,
@@ -64,4 +58,3 @@ class GetDatabaseResult {
     );
   }
 }
-

@@ -51,6 +51,10 @@ import 'configuration_policy_association_state.dart';
 ///     targetId: "ou-abcd-12345678",
 ///     policyId: exampleConfigurationPolicy.id,
 /// });
+/// const selfManagedExample = new aws.securityhub.ConfigurationPolicyAssociation("self_managed_example", {
+///     targetId: "123456789012",
+///     policyId: "SELF_MANAGED_SECURITY_HUB",
+/// });
 /// ```
 /// ```python
 /// import pulumi
@@ -87,6 +91,9 @@ import 'configuration_policy_association_state.dart';
 /// ou_example = aws.securityhub.ConfigurationPolicyAssociation("ou_example",
 ///     target_id="ou-abcd-12345678",
 ///     policy_id=example_configuration_policy.id)
+/// self_managed_example = aws.securityhub.ConfigurationPolicyAssociation("self_managed_example",
+///     target_id="123456789012",
+///     policy_id="SELF_MANAGED_SECURITY_HUB")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -160,6 +167,12 @@ import 'configuration_policy_association_state.dart';
 ///         PolicyId = exampleConfigurationPolicy.Id,
 ///     });
 ///
+///     var selfManagedExample = new Aws.SecurityHub.ConfigurationPolicyAssociation("self_managed_example", new()
+///     {
+///         TargetId = "123456789012",
+///         PolicyId = "SELF_MANAGED_SECURITY_HUB",
+///     });
+///
 /// });
 /// ```
 /// ```go
@@ -211,27 +224,83 @@ import 'configuration_policy_association_state.dart';
 /// 		}
 /// 		_, err = securityhub.NewConfigurationPolicyAssociation(ctx, "account_example", &securityhub.ConfigurationPolicyAssociationArgs{
 /// 			TargetId: pulumi.String("123456789012"),
-/// 			PolicyId: exampleConfigurationPolicy.ID(),
+/// 			PolicyId: exampleConfigurationPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = securityhub.NewConfigurationPolicyAssociation(ctx, "root_example", &securityhub.ConfigurationPolicyAssociationArgs{
 /// 			TargetId: pulumi.String("r-abcd"),
-/// 			PolicyId: exampleConfigurationPolicy.ID(),
+/// 			PolicyId: exampleConfigurationPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = securityhub.NewConfigurationPolicyAssociation(ctx, "ou_example", &securityhub.ConfigurationPolicyAssociationArgs{
 /// 			TargetId: pulumi.String("ou-abcd-12345678"),
-/// 			PolicyId: exampleConfigurationPolicy.ID(),
+/// 			PolicyId: exampleConfigurationPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = securityhub.NewConfigurationPolicyAssociation(ctx, "self_managed_example", &securityhub.ConfigurationPolicyAssociationArgs{
+/// 			TargetId: pulumi.String("123456789012"),
+/// 			PolicyId: pulumi.String("SELF_MANAGED_SECURITY_HUB"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_findingaggregator" "example" {
+///   linking_mode = "ALL_REGIONS"
+/// }
+/// resource "aws_securityhub_organizationconfiguration" "example" {
+///   depends_on            = [aws_securityhub_findingaggregator.example]
+///   auto_enable           = false
+///   auto_enable_standards = "NONE"
+///   organization_configuration = {
+///     configuration_type = "CENTRAL"
+///   }
+/// }
+/// resource "aws_securityhub_configurationpolicy" "example" {
+///   depends_on  = [aws_securityhub_organizationconfiguration.example]
+///   name        = "Example"
+///   description = "This is an example configuration policy"
+///   configuration_policy = {
+///     service_enabled       = true
+///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
+///     security_controls_configuration = {
+///       disabled_control_identifiers = []
+///     }
+///   }
+/// }
+/// resource "aws_securityhub_configurationpolicyassociation" "account_example" {
+///   target_id = "123456789012"
+///   policy_id = aws_securityhub_configurationpolicy.example.id
+/// }
+/// resource "aws_securityhub_configurationpolicyassociation" "root_example" {
+///   target_id = "r-abcd"
+///   policy_id = aws_securityhub_configurationpolicy.example.id
+/// }
+/// resource "aws_securityhub_configurationpolicyassociation" "ou_example" {
+///   target_id = "ou-abcd-12345678"
+///   policy_id = aws_securityhub_configurationpolicy.example.id
+/// }
+/// resource "aws_securityhub_configurationpolicyassociation" "self_managed_example" {
+///   target_id = "123456789012"
+///   policy_id = "SELF_MANAGED_SECURITY_HUB"
 /// }
 /// ```
 /// ```java
@@ -252,8 +321,8 @@ import 'configuration_policy_association_state.dart';
 /// import com.pulumi.aws.securityhub.ConfigurationPolicyAssociation;
 /// import com.pulumi.aws.securityhub.ConfigurationPolicyAssociationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -310,6 +379,11 @@ import 'configuration_policy_association_state.dart';
 ///             .policyId(exampleConfigurationPolicy.id())
 ///             .build());
 ///
+///         var selfManagedExample = new ConfigurationPolicyAssociation("selfManagedExample", ConfigurationPolicyAssociationArgs.builder()
+///             .targetId("123456789012")
+///             .policyId("SELF_MANAGED_SECURITY_HUB")
+///             .build());
+///
 ///     }
 /// }
 /// ```
@@ -364,18 +438,36 @@ import 'configuration_policy_association_state.dart';
 ///     properties:
 ///       targetId: ou-abcd-12345678
 ///       policyId: ${exampleConfigurationPolicy.id}
+///   selfManagedExample:
+///     type: aws:securityhub:ConfigurationPolicyAssociation
+///     name: self_managed_example
+///     properties:
+///       targetId: '123456789012'
+///       policyId: SELF_MANAGED_SECURITY_HUB
 /// ```
 ///
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an existing Security Hub enabled account using the target id. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `targetId` (String) Identifier of the target account, organizational unit, or the root that is associated with the configuration.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Security Hub configuration policy associations using `targetId`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation example_account_association 123456789012
+/// $ pulumi import aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation example 123456789012
 /// ```
 class ConfigurationPolicyAssociation extends pulumi.CustomResource {
-  /// The universally unique identifier (UUID) of the configuration policy.
+  /// The universally unique identifier (UUID) of the configuration policy, or `SELF_MANAGED_SECURITY_HUB` for a self-managed configuration.
   late final pulumi.Output<String> policyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

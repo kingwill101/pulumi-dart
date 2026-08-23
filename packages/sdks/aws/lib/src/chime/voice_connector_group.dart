@@ -134,11 +134,11 @@ import 'voice_connector_group_state.dart';
 /// 			Name: pulumi.String("test-group"),
 /// 			Connectors: chime.VoiceConnectorGroupConnectorArray{
 /// 				&chime.VoiceConnectorGroupConnectorArgs{
-/// 					VoiceConnectorId: vc1.ID(),
+/// 					VoiceConnectorId: vc1.ID().ToIDOutput().ToStringOutput(),
 /// 					Priority:         pulumi.Int(1),
 /// 				},
 /// 				&chime.VoiceConnectorGroupConnectorArgs{
-/// 					VoiceConnectorId: vc2.ID(),
+/// 					VoiceConnectorId: vc2.ID().ToIDOutput().ToStringOutput(),
 /// 					Priority:         pulumi.Int(3),
 /// 				},
 /// 			},
@@ -148,6 +148,37 @@ import 'voice_connector_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_voiceconnector" "vc1" {
+///   name               = "connector-test-1"
+///   require_encryption = true
+///   aws_region         = "us-east-1"
+/// }
+/// resource "aws_chime_voiceconnector" "vc2" {
+///   name               = "connector-test-2"
+///   require_encryption = true
+///   aws_region         = "us-west-2"
+/// }
+/// resource "aws_chime_voiceconnectorgroup" "group" {
+///   name = "test-group"
+///   connectors {
+///     voice_connector_id = aws_chime_voiceconnector.vc1.id
+///     priority           = 1
+///   }
+///   connectors {
+///     voice_connector_id = aws_chime_voiceconnector.vc2.id
+///     priority           = 3
+///   }
 /// }
 /// ```
 /// ```java
@@ -161,8 +192,8 @@ import 'voice_connector_group_state.dart';
 /// import com.pulumi.aws.chime.VoiceConnectorGroup;
 /// import com.pulumi.aws.chime.VoiceConnectorGroupArgs;
 /// import com.pulumi.aws.chime.inputs.VoiceConnectorGroupConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

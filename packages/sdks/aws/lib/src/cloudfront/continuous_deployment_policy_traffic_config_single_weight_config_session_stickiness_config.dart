@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig {
-  /// The amount of time in seconds after which sessions will cease if no requests are received. Valid values are `300` - `3600` (5–60 minutes). The value must be less than or equal to `maximum_ttl`.
+  /// The amount of time in seconds after which sessions will cease if no requests are received. Valid values are `300` - `3600` (5–60 minutes). The value must be less than or equal to `maximumTtl`.
   final pulumi.Input<int> idleTtl;
-  /// The maximum amount of time in seconds to consider requests from the viewer as being part of the same session. Valid values are `300` - `3600` (5–60 minutes). The value must be greater than or equal to `idle_ttl`.
+  /// The maximum amount of time in seconds to consider requests from the viewer as being part of the same session. Valid values are `300` - `3600` (5–60 minutes). The value must be greater than or equal to `idleTtl`.
   final pulumi.Input<int> maximumTtl;
 
   /// Creates a new [ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig].
-  /// [idleTtl] The amount of time in seconds after which sessions will cease if no requests are received. Valid values are `300` - `3600` (5–60 minutes). The value must be less than or equal to `maximum_ttl`.
-  /// [maximumTtl] The maximum amount of time in seconds to consider requests from the viewer as being part of the same session. Valid values are `300` - `3600` (5–60 minutes). The value must be greater than or equal to `idle_ttl`.
+  /// [idleTtl] The amount of time in seconds after which sessions will cease if no requests are received. Valid values are `300` - `3600` (5–60 minutes). The value must be less than or equal to `maximumTtl`.
+  /// [maximumTtl] The maximum amount of time in seconds to consider requests from the viewer as being part of the same session. Valid values are `300` - `3600` (5–60 minutes). The value must be greater than or equal to `idleTtl`.
   const ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig({
     required this.idleTtl,
     required this.maximumTtl,
@@ -30,4 +30,3 @@ class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickiness
     );
   }
 }
-

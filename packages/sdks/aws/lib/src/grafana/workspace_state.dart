@@ -6,7 +6,7 @@ import 'workspace_vpc_configuration.dart';
 
 /// Input properties used for looking up and filtering Workspace resources.
 class WorkspaceState {
-  /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
+  /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
   final pulumi.Input<String>? accountAccessType;
   /// The Amazon Resource Name (ARN) of the Grafana workspace.
   final pulumi.Input<String>? arn;
@@ -14,14 +14,16 @@ class WorkspaceState {
   final pulumi.Input<List<String>>? authenticationProviders;
   /// The configuration string for the workspace that you create. For more information about the format and configuration options available, see [Working in your Grafana workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
   final pulumi.Input<String>? configuration;
-  /// The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, XRAY`
+  /// The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, `XRAY`
   final pulumi.Input<List<String>>? dataSources;
   /// The workspace description.
   final pulumi.Input<String>? description;
   /// The endpoint of the Grafana workspace.
   final pulumi.Input<String>? endpoint;
-  /// Specifies the version of Grafana to support in the new workspace. Supported values are `8.4`, `9.4` and `10.4`. If not specified, defaults to the latest version.
+  /// Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4` and `12.4`. If not specified, defaults to the latest version.
   final pulumi.Input<String>? grafanaVersion;
+  /// The ARN of the AWS KMS key for encrypting workspace data.
+  final pulumi.Input<String>? kmsKeyId;
   /// The Grafana workspace name.
   final pulumi.Input<String>? name;
   /// Configuration for network access to your workspace.See Network Access Control below.
@@ -43,22 +45,23 @@ class WorkspaceState {
   final pulumi.Input<String>? samlConfigurationStatus;
   /// The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
   final pulumi.Input<String>? stackSetName;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to. See VPC Configuration below.
   final pulumi.Input<WorkspaceVpcConfiguration>? vpcConfiguration;
 
   /// Creates a new [WorkspaceState].
-  /// [accountAccessType] The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
+  /// [accountAccessType] The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
   /// [arn] The Amazon Resource Name (ARN) of the Grafana workspace.
   /// [authenticationProviders] The authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
   /// [configuration] The configuration string for the workspace that you create. For more information about the format and configuration options available, see [Working in your Grafana workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
-  /// [dataSources] The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, XRAY`
+  /// [dataSources] The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, `XRAY`
   /// [description] The workspace description.
   /// [endpoint] The endpoint of the Grafana workspace.
-  /// [grafanaVersion] Specifies the version of Grafana to support in the new workspace. Supported values are `8.4`, `9.4` and `10.4`. If not specified, defaults to the latest version.
+  /// [grafanaVersion] Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4` and `12.4`. If not specified, defaults to the latest version.
+  /// [kmsKeyId] The ARN of the AWS KMS key for encrypting workspace data.
   /// [name] The Grafana workspace name.
   /// [networkAccessControl] Configuration for network access to your workspace.See Network Access Control below.
   /// [notificationDestinations] The notification destinations. If a data source is specified here, Amazon Managed Grafana will create IAM roles and permissions needed to use these destinations. Must be set to `SNS`.
@@ -69,8 +72,8 @@ class WorkspaceState {
   /// [roleArn] The IAM role ARN that the workspace assumes.
   /// [samlConfigurationStatus] Optional.
   /// [stackSetName] The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcConfiguration] The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to. See VPC Configuration below.
   const WorkspaceState({
     this.accountAccessType,
@@ -81,6 +84,7 @@ class WorkspaceState {
     this.description,
     this.endpoint,
     this.grafanaVersion,
+    this.kmsKeyId,
     this.name,
     this.networkAccessControl,
     this.notificationDestinations,
@@ -106,6 +110,7 @@ class WorkspaceState {
       'description': ?description,
       'endpoint': ?endpoint,
       'grafanaVersion': ?grafanaVersion,
+      'kmsKeyId': ?kmsKeyId,
       'name': ?name,
       'networkAccessControl': ?pulumi.Input.mapOptionalInputValue<WorkspaceNetworkAccessControl, Map<String, dynamic>>(networkAccessControl, (value) => value.toMap()),
       'notificationDestinations': ?notificationDestinations,
@@ -132,6 +137,7 @@ class WorkspaceState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       grafanaVersion: (() { final guardedValue = map['grafanaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkAccessControl: (() { final guardedValue = map['networkAccessControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspaceNetworkAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       notificationDestinations: (() { final guardedValue = map['notificationDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -148,4 +154,3 @@ class WorkspaceState {
     );
   }
 }
-

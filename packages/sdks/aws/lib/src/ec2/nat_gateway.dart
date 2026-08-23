@@ -4,7 +4,7 @@ import 'nat_gateway_state.dart';
 
 /// Provides a resource to create a VPC NAT Gateway.
 ///
-/// !&gt; **WARNING:** You should not use the `aws.ec2.NatGateway` resource that has `secondary_allocation_ids` in conjunction with an `aws.ec2.NatGatewayEipAssociation` resource. Doing so may cause perpetual differences, and result in associations being overwritten.
+/// &gt; **WARNING:** You should not use the `aws.ec2.NatGateway` resource that has `secondaryAllocationIds` in conjunction with an `aws.ec2.NatGatewayEipAssociation` resource. Doing so may cause perpetual differences, and result in associations being overwritten.
 ///
 /// ## Example Usage
 ///
@@ -89,6 +89,24 @@ import 'nat_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_natgateway" "example" {
+///   depends_on    = [exampleAwsInternetGateway]
+///   allocation_id = exampleAwsEip.id
+///   subnet_id     = exampleAwsSubnet.id
+///   tags = {
+///     "Name" = "gw NAT"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +116,8 @@ import 'nat_gateway_state.dart';
 /// import com.pulumi.aws.ec2.NatGateway;
 /// import com.pulumi.aws.ec2.NatGatewayArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,6 +230,22 @@ import 'nat_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_natgateway" "example" {
+///   allocation_id                  = exampleAwsEip.id
+///   subnet_id                      = exampleAwsSubnet.id
+///   secondary_allocation_ids       = [secondary.id]
+///   secondary_private_ip_addresses = ["10.0.1.5"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +254,8 @@ import 'nat_gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NatGateway;
 /// import com.pulumi.aws.ec2.NatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,6 +348,20 @@ import 'nat_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_natgateway" "example" {
+///   connectivity_type = "private"
+///   subnet_id         = exampleAwsSubnet.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +370,8 @@ import 'nat_gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NatGateway;
 /// import com.pulumi.aws.ec2.NatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -414,6 +462,21 @@ import 'nat_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_natgateway" "example" {
+///   connectivity_type                  = "private"
+///   subnet_id                          = exampleAwsSubnet.id
+///   secondary_private_ip_address_count = 7
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -422,8 +485,8 @@ import 'nat_gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NatGateway;
 /// import com.pulumi.aws.ec2.NatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,13 +594,13 @@ import 'nat_gateway_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInternetGateway(ctx, "example", &ec2.InternetGatewayArgs{
-/// 			VpcId: example.ID(),
+/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNatGateway(ctx, "example", &ec2.NatGatewayArgs{
-/// 			VpcId:            example.ID(),
+/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityMode: pulumi.String("regional"),
 /// 		})
 /// 		if err != nil {
@@ -545,6 +608,29 @@ import 'nat_gateway_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_internetgateway" "example" {
+///   vpc_id = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_ec2_natgateway" "example" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_mode = "regional"
 /// }
 /// ```
 /// ```java
@@ -561,8 +647,8 @@ import 'nat_gateway_state.dart';
 /// import com.pulumi.aws.ec2.InternetGatewayArgs;
 /// import com.pulumi.aws.ec2.NatGateway;
 /// import com.pulumi.aws.ec2.NatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -629,8 +715,8 @@ import 'nat_gateway_state.dart';
 /// const example = new aws.ec2.Vpc("example", {cidrBlock: "10.0.0.0/16"});
 /// const exampleInternetGateway = new aws.ec2.InternetGateway("example", {vpcId: example.id});
 /// const exampleEip: aws.ec2.Eip[] = [];
-/// for (const range = {value: 0}; range.value < 3; range.value++) {
-///     exampleEip.push(new aws.ec2.Eip(`example-${range.value}`, {domain: "vpc"}));
+/// for (let range = 0; range < 3; range++) {
+///     exampleEip.push(new aws.ec2.Eip(`example-${range}`, {domain: "vpc"}));
 /// }
 /// const exampleNatGateway = new aws.ec2.NatGateway("example", {
 ///     vpcId: example.id,
@@ -652,14 +738,15 @@ import 'nat_gateway_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// available = aws.get_availability_zones()
 /// example = aws.ec2.Vpc("example", cidr_block="10.0.0.0/16")
 /// example_internet_gateway = aws.ec2.InternetGateway("example", vpc_id=example.id)
-/// example_eip = []
-/// for range in [{"value": i} for i in range(0, 3)]:
-///     example_eip.append(aws.ec2.Eip(f"example-{range['value']}", domain="vpc"))
+/// example_eip: list[aws.ec2.Eip] = []
+/// for example_eip_range in [{"value": i} for i in range(0, 3)]:
+///     example_eip.append(aws.ec2.Eip(f"example-{example_eip_range['value']}", domain="vpc"))
 /// example_nat_gateway = aws.ec2.NatGateway("example",
 ///     vpc_id=example.id,
 ///     availability_mode="regional",
@@ -758,7 +845,7 @@ import 'nat_gateway_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInternetGateway(ctx, "example", &ec2.InternetGatewayArgs{
-/// 			VpcId: example.ID(),
+/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -776,19 +863,19 @@ import 'nat_gateway_state.dart';
 /// 			exampleEip = append(exampleEip, __res)
 /// 		}
 /// 		_, err = ec2.NewNatGateway(ctx, "example", &ec2.NatGatewayArgs{
-/// 			VpcId:            example.ID(),
+/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityMode: pulumi.String("regional"),
 /// 			AvailabilityZoneAddresses: ec2.NatGatewayAvailabilityZoneAddressArray{
 /// 				&ec2.NatGatewayAvailabilityZoneAddressArgs{
 /// 					AllocationIds: pulumi.StringArray{
-/// 						exampleEip[0].ID(),
+/// 						exampleEip[0].ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 					AvailabilityZone: pulumi.String(available.Names[0]),
 /// 				},
 /// 				&ec2.NatGatewayAvailabilityZoneAddressArgs{
 /// 					AllocationIds: pulumi.StringArray{
-/// 						exampleEip[1].ID(),
-/// 						exampleEip[2].ID(),
+/// 						exampleEip[1].ID().ToIDOutput().ToStringOutput(),
+/// 						exampleEip[2].ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 					AvailabilityZone: pulumi.String(available.Names[1]),
 /// 				},
@@ -799,6 +886,41 @@ import 'nat_gateway_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_internetgateway" "example" {
+///   vpc_id = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_ec2_eip" "example" {
+///   count  = 3
+///   domain = "vpc"
+/// }
+/// resource "aws_ec2_natgateway" "example" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_mode = "regional"
+///   availability_zone_addresses {
+///     allocation_ids    = [aws_ec2_eip.example[0].id]
+///     availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   }
+///   availability_zone_addresses {
+///     allocation_ids    = [aws_ec2_eip.example[1].id, aws_ec2_eip.example[2].id]
+///     availability_zone = data.aws_getavailabilityzones.available.names[1]
+///   }
 /// }
 /// ```
 /// ```java
@@ -819,8 +941,8 @@ import 'nat_gateway_state.dart';
 /// import com.pulumi.aws.ec2.NatGatewayArgs;
 /// import com.pulumi.aws.ec2.inputs.NatGatewayAvailabilityZoneAddressArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -910,13 +1032,25 @@ import 'nat_gateway_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the NAT Gateway.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import NAT Gateways using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/natGateway:NatGateway private_gw nat-05dba92075d71c408
 /// ```
 class NatGateway extends pulumi.CustomResource {
-  /// The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivity_type` is set to `public` and `availability_mode` is set to `zonal`. When `availability_mode` is set to `regional`, this must not be set; instead, use the `availability_zone_address` block to specify EIPs for each AZ.
+  /// The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivityType` is set to `public` and `availabilityMode` is set to `zonal`. When `availabilityMode` is set to `regional`, this must not be set; instead, use the `availabilityZoneAddress` block to specify EIPs for each AZ.
   late final pulumi.Output<String?> allocationId;
   /// Association ID of the Elastic IP address.
   late final pulumi.Output<String> associationId;
@@ -926,9 +1060,9 @@ class NatGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> autoScalingIps;
   /// Specifies whether to create a zonal (single-AZ) or regional (multi-AZ) NAT gateway. Valid values are `zonal` and `regional`. Defaults to `zonal`.
   late final pulumi.Output<String> availabilityMode;
-  /// Repeatable configuration block for the Elastic IP addresses (EIPs) and availability zones for the regional NAT gateway. When not specified, the regional NAT gateway will automatically expand to new AZs and associate EIPs upon detection of an elastic network interface (auto mode). When specified, auto-expansion is disabled (manual mode). See `availability_zone_address` below for details.
+  /// Repeatable configuration block for the Elastic IP addresses (EIPs) and availability zones for the regional NAT gateway. When not specified, the regional NAT gateway will automatically expand to new AZs and associate EIPs upon detection of an elastic network interface (auto mode). When specified, auto-expansion is disabled (manual mode). See `availabilityZoneAddress` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> availabilityZoneAddresses;
-  /// Connectivity type for the NAT Gateway. Valid values are `private` and `public`. When `availability_mode` is set to `regional`, this must be set to `public`. Defaults to `public`.
+  /// Connectivity type for the NAT Gateway. Valid values are `private` and `public`. When `availabilityMode` is set to `regional`, this must be set to `public`. Defaults to `public`.
   late final pulumi.Output<String?> connectivityType;
   /// ID of the network interface.
   late final pulumi.Output<String> networkInterfaceId;
@@ -949,13 +1083,13 @@ class NatGateway extends pulumi.CustomResource {
   late final pulumi.Output<int> secondaryPrivateIpAddressCount;
   /// A list of secondary private IPv4 addresses to assign to the NAT Gateway. To remove all secondary private addresses an empty list should be specified.
   late final pulumi.Output<List<String>> secondaryPrivateIpAddresses;
-  /// The Subnet ID of the subnet in which to place the NAT Gateway. Required when `availability_mode` is set to `zonal`. Must not be set when `availability_mode` is set to `regional`.
+  /// The Subnet ID of the subnet in which to place the NAT Gateway. Required when `availabilityMode` is set to `zonal`. Must not be set when `availabilityMode` is set to `regional`.
   late final pulumi.Output<String?> subnetId;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// VPC ID where this NAT Gateway will be created. Required when `availability_mode` is set to `regional`.
+  /// VPC ID where this NAT Gateway will be created. Required when `availabilityMode` is set to `regional`.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [NatGateway].

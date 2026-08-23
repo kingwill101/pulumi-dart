@@ -29,7 +29,7 @@ import 'log_destination_policy_state.dart';
 /// });
 /// const testDestinationPolicyLogDestinationPolicy = new aws.cloudwatch.LogDestinationPolicy("test_destination_policy", {
 ///     destinationName: testDestination.name,
-///     accessPolicy: testDestinationPolicy.apply(testDestinationPolicy => testDestinationPolicy.json),
+///     accessPolicy: testDestinationPolicy.json,
 /// });
 /// ```
 /// ```python
@@ -148,15 +148,44 @@ import 'log_destination_policy_state.dart';
 /// 		}, nil)
 /// 		_, err = cloudwatch.NewLogDestinationPolicy(ctx, "test_destination_policy", &cloudwatch.LogDestinationPolicyArgs{
 /// 			DestinationName: testDestination.Name,
-/// 			AccessPolicy: pulumi.String(testDestinationPolicy.ApplyT(func(testDestinationPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &testDestinationPolicy.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			AccessPolicy:    testDestinationPolicy.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "testDestinationPolicy" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["123456789012"]
+///     }
+///     actions   = ["logs:PutSubscriptionFilter"]
+///     resources = [aws_cloudwatch_logdestination.test_destination.arn]
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logdestination" "test_destination" {
+///   name       = "test_destination"
+///   role_arn   = iamForCloudwatch.arn
+///   target_arn = kinesisForCloudwatch.arn
+/// }
+/// resource "aws_cloudwatch_logdestinationpolicy" "test_destination_policy" {
+///   destination_name = aws_cloudwatch_logdestination.test_destination.name
+///   access_policy    = data.aws_iam_getpolicydocument.testDestinationPolicy.json
 /// }
 /// ```
 /// ```java
@@ -169,10 +198,12 @@ import 'log_destination_policy_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogDestinationArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.LogDestinationPolicy;
 /// import com.pulumi.aws.cloudwatch.LogDestinationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,7 +276,19 @@ import 'log_destination_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Logs destination policies using the `destination_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `destinationName` (String) Name of the destination.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Destination Policies using `destinationName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy test_destination_policy test_destination

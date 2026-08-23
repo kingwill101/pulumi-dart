@@ -5,13 +5,13 @@ import 'resource_set_resource_dns_target_resource_target_resource_nlb_resource.d
 import 'resource_set_resource_dns_target_resource_target_resource_r53_resource.dart';
 
 class ResourceSetResourceDnsTargetResourceTargetResource {
-  /// NLB resource a DNS Target Resource points to. Required if `r53_resource` is not set.
+  /// NLB resource a DNS Target Resource points to. Required if `r53Resource` is not set.
   final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResourceNlbResource>? nlbResource;
   /// Route53 resource a DNS Target Resource record points to.
   final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResourceR53Resource>? r53Resource;
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResource].
-  /// [nlbResource] NLB resource a DNS Target Resource points to. Required if `r53_resource` is not set.
+  /// [nlbResource] NLB resource a DNS Target Resource points to. Required if `r53Resource` is not set.
   /// [r53Resource] Route53 resource a DNS Target Resource record points to.
   const ResourceSetResourceDnsTargetResourceTargetResource({
     this.nlbResource,
@@ -32,4 +32,3 @@ class ResourceSetResourceDnsTargetResourceTargetResource {
     );
   }
 }
-

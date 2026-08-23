@@ -65,6 +65,21 @@ import 'receipt_filter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_receiptfilter" "filter" {
+///   name   = "block-spammer"
+///   cidr   = "10.10.10.10"
+///   policy = "Block"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'receipt_filter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.ReceiptFilter;
 /// import com.pulumi.aws.ses.ReceiptFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

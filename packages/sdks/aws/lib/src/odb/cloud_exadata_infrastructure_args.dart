@@ -10,47 +10,47 @@ import 'cloud_exadata_infrastructure_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_odb_cloud_exadata_infrastructure_cloud_exadata_infrastructure_args_doc}
 class CloudExadataInfrastructureArgs {
-  /// The name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// Name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? availabilityZone;
-  /// The AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  ///
-  /// The following arguments are optional:
+  /// AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<String> availabilityZoneId;
-  /// The number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// Number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
   final pulumi.Input<int>? computeCount;
-  /// The email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// Email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource. See `customerContactsToSendToOci` Block below.
   final pulumi.Input<List<CloudExadataInfrastructureCustomerContactsToSendToOci>>? customerContactsToSendToOcis;
-  /// The database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// Database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? databaseServerType;
-  /// The user-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
+  /// User-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
   final pulumi.Input<String> displayName;
   /// The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window
   final pulumi.Input<CloudExadataInfrastructureMaintenanceWindow> maintenanceWindow;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// Model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
   final pulumi.Input<String> shape;
-  /// The number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// Number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<int>? storageCount;
-  /// The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// Storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? storageServerType;
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<CloudExadataInfrastructureTimeouts>? timeouts;
 
   /// Creates a new [CloudExadataInfrastructureArgs].
-  /// [availabilityZone] The name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  /// [availabilityZoneId] The AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  /// [computeCount] The number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
-  /// [customerContactsToSendToOcis] The email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource.
-  /// [databaseServerType] The database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
-  /// [displayName] The user-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
+  /// [availabilityZone] Name of the Availability Zone (AZ) where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// [availabilityZoneId] AZ ID of the AZ where the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// [computeCount] Number of compute instances that the Exadata infrastructure is located. Changing this will force terraform to create new resource.
+  /// [customerContactsToSendToOcis] Email addresses of contacts to receive notification from Oracle about maintenance updates for the Exadata infrastructure. Changing this will force terraform to create new resource. See `customerContactsToSendToOci` Block below.
+  /// [databaseServerType] Database server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// [displayName] User-friendly name for the Exadata infrastructure. Changing this will force terraform to create a new resource.
   /// [maintenanceWindow] The scheduling details for the maintenance window. Patching and system updates take place during the maintenance window
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [shape] The model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
-  /// [storageCount] The number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
-  /// [storageServerType] The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
-  /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [shape] Model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// [storageCount] Number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
+  /// [storageServerType] Storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
+  /// [tags] Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const CloudExadataInfrastructureArgs({
     this.availabilityZone,
@@ -104,4 +104,3 @@ class CloudExadataInfrastructureArgs {
     );
   }
 }
-

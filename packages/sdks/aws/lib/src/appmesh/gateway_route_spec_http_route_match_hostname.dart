@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteMatchHostname {
-  /// Exact host name to match on.
+  /// Exact query parameter to match on.
   final pulumi.Input<String>? exact;
   /// Specified ending characters of the host name to match on.
   final pulumi.Input<String>? suffix;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHostname].
-  /// [exact] Exact host name to match on.
+  /// [exact] Exact query parameter to match on.
   /// [suffix] Specified ending characters of the host name to match on.
   const GatewayRouteSpecHttpRouteMatchHostname({
     this.exact,
@@ -30,4 +30,3 @@ class GatewayRouteSpecHttpRouteMatchHostname {
     );
   }
 }
-

@@ -64,6 +64,19 @@ import 'get_vault_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_backup_getframework" "example" {
+///   name = "my_example_backup_framework_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'get_vault_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.BackupFunctions;
 /// import com.pulumi.aws.backup.inputs.GetFrameworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +182,19 @@ Future<GetFrameworkResult> getFramework(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_backup_getplan" "example" {
+///   plan_id = "my_example_backup_plan_id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +203,8 @@ Future<GetFrameworkResult> getFramework(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.BackupFunctions;
 /// import com.pulumi.aws.backup.inputs.GetPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,6 +300,19 @@ Future<GetPlanResult> getPlan(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_backup_getreportplan" "example" {
+///   name = "my_example_backup_report_plan_name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,8 +321,8 @@ Future<GetPlanResult> getPlan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.BackupFunctions;
 /// import com.pulumi.aws.backup.inputs.GetReportPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -383,6 +422,20 @@ Future<GetReportPlanResult> getReportPlan(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_backup_getselection" "example" {
+///   plan_id      = exampleAwsBackupPlan.id
+///   selection_id = "selection-id-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +444,8 @@ Future<GetReportPlanResult> getReportPlan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.BackupFunctions;
 /// import com.pulumi.aws.backup.inputs.GetSelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -490,6 +543,19 @@ Future<GetSelectionResult> getSelection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_backup_getvault" "example" {
+///   name = "example_backup_vault"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -498,8 +564,8 @@ Future<GetSelectionResult> getSelection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.BackupFunctions;
 /// import com.pulumi.aws.backup.inputs.GetVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

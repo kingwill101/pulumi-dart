@@ -3,6 +3,7 @@
 
 /// Result data returned by getVpcLink.
 class GetVpcLinkResult {
+  /// ARN of the VPC Link.
   final String arn;
   /// Description of the VPC link.
   final String description;
@@ -20,7 +21,7 @@ class GetVpcLinkResult {
   final List<String> targetArns;
 
   /// Creates a new [GetVpcLinkResult].
-  /// [arn] Required.
+  /// [arn] ARN of the VPC Link.
   /// [description] Description of the VPC link.
   /// [id] Set to the ID of the found API Gateway VPC Link.
   /// [name] Required.
@@ -69,4 +70,3 @@ class GetVpcLinkResult {
     );
   }
 }
-

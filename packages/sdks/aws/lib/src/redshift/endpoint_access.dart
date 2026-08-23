@@ -65,6 +65,21 @@ import 'endpoint_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_endpointaccess" "example" {
+///   endpoint_name      = "example"
+///   subnet_group_name  = exampleAwsRedshiftSubnetGroup.id
+///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'endpoint_access_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.EndpointAccess;
 /// import com.pulumi.aws.redshift.EndpointAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

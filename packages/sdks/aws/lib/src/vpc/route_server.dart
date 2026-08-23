@@ -73,6 +73,22 @@ import 'route_server_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpc_routeserver" "test" {
+///   amazon_side_asn = 65534
+///   tags = {
+///     "Name" = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +97,8 @@ import 'route_server_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.RouteServer;
 /// import com.pulumi.aws.vpc.RouteServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,6 +207,25 @@ import 'route_server_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpc_routeserver" "test" {
+///   amazon_side_asn           = 65534
+///   persist_routes            = "enable"
+///   persist_routes_duration   = 2
+///   sns_notifications_enabled = true
+///   tags = {
+///     "Name" = "Main Route Server"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +234,8 @@ import 'route_server_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.RouteServer;
 /// import com.pulumi.aws.vpc.RouteServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,7 +274,7 @@ import 'route_server_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC (Virtual Private Cloud) Route Server using the `route_server_id`. For example:
+/// Using `pulumi import`, import VPC (Virtual Private Cloud) Route Server using the `routeServerId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/routeServer:RouteServer example rs-12345678
@@ -253,7 +288,7 @@ class RouteServer extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Indicates whether routes should be persisted after all BGP sessions are terminated. Valid values are `enable`, `disable`, `reset`
   late final pulumi.Output<String> persistRoutes;
-  /// The number of minutes a route server will wait after BGP is re-established to unpersist the routes in the FIB and RIB. Value must be in the range of 1-5. Required if `persist_routes` is enabled.
+  /// The number of minutes a route server will wait after BGP is re-established to unpersist the routes in the FIB and RIB. Value must be in the range of 1-5. Required if `persistRoutes` is enabled.
   late final pulumi.Output<int?> persistRoutesDuration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -263,9 +298,9 @@ class RouteServer extends pulumi.CustomResource {
   late final pulumi.Output<bool> snsNotificationsEnabled;
   /// The ARN of the SNS topic where notifications are published.
   late final pulumi.Output<String> snsTopicArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<RouteServerTimeouts?> timeouts;
 

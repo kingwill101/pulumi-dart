@@ -6,7 +6,7 @@ import 'subscription_state.dart';
 ///
 /// &gt; This resource creates a subscription to AWS Shield Advanced, which requires a 1 year subscription commitment with a monthly fee. Refer to the [AWS Shield Pricing](https://aws.amazon.com/shield/pricing/) page for more details.
 ///
-/// &gt; Destruction of this resource will set `auto_renew` to `DISABLED`. Automatic renewal can only be disabled during the last 30 days of a subscription. To unsubscribe outside of this window, you must contact AWS Support. Set `skip_destroy` to `true` to skip modifying the `auto_renew` argument during destruction.
+/// &gt; Destruction of this resource will set `autoRenew` to `DISABLED`. Automatic renewal can only be disabled during the last 30 days of a subscription. To unsubscribe outside of this window, you must contact AWS Support. Set `skipDestroy` to `true` to skip modifying the `autoRenew` argument during destruction.
 ///
 /// ## Example Usage
 ///
@@ -60,6 +60,19 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_shield_subscription" "example" {
+///   auto_renew = "ENABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.shield.Subscription;
 /// import com.pulumi.aws.shield.SubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -107,7 +120,7 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// Toggle for automated renewal of the subscription. Valid values are `ENABLED` or `DISABLED`. Default is `ENABLED`.
   late final pulumi.Output<String> autoRenew;
-  /// Skip attempting to disable automated renewal upon destruction. If set to `true`, the `auto_renew` value will be left as-is and the resource will simply be removed from state.
+  /// Skip attempting to disable automated renewal upon destruction. If set to `true`, the `autoRenew` value will be left as-is and the resource will simply be removed from state.
   late final pulumi.Output<bool?> skipDestroy;
 
   /// Creates a new [Subscription].

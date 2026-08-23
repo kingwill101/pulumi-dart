@@ -53,6 +53,18 @@ import 'get_images_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecrpublic_getauthorizationtoken" "token" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +73,8 @@ import 'get_images_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecrpublic.EcrpublicFunctions;
 /// import com.pulumi.aws.ecrpublic.inputs.GetAuthorizationTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,7 +140,7 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
 /// import pulumi_std as std
 ///
 /// example = aws.ecrpublic.get_images(repository_name="my-public-repository")
-/// pulumi.export("imageDigests", [img.digest for img in example.images if img.digest != None])
+/// pulumi.export("imageDigests", [img.digest for img in example.images if img.digest is not None])
 /// pulumi.export("imageTags", std.distinct(input=std.flatten(input=[img.tags for img in example.images]).result).result)
 /// ```
 /// ```csharp
@@ -163,6 +175,29 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
 ///         })).Apply(invoke => invoke.Result),
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_ecrpublic_getimages" "example" {
+///   repository_name = "my-public-repository"
+/// }
+///
+/// output "imageDigests" {
+///   value = [for img in data.aws_ecrpublic_getimages.example.images : img.digest if img.digest != null]
+/// }
+/// output "imageTags" {
+///   value = distinct(flatten([for img in data.aws_ecrpublic_getimages.example.images : img.tags]))
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecrpublic_get_images_get_images_args_doc}
 /// [options] Invoke options controlling this call.

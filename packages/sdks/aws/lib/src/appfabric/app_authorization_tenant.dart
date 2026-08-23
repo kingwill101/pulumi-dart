@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationTenant {
-  /// The display name of the tenant.
+  /// Display name of the tenant.
   final pulumi.Input<String> tenantDisplayName;
-  /// The ID of the application tenant.
+  /// ID of the application tenant.
   final pulumi.Input<String> tenantIdentifier;
 
   /// Creates a new [AppAuthorizationTenant].
-  /// [tenantDisplayName] The display name of the tenant.
-  /// [tenantIdentifier] The ID of the application tenant.
+  /// [tenantDisplayName] Display name of the tenant.
+  /// [tenantIdentifier] ID of the application tenant.
   const AppAuthorizationTenant({
     required this.tenantDisplayName,
     required this.tenantIdentifier,
@@ -30,4 +30,3 @@ class AppAuthorizationTenant {
     );
   }
 }
-

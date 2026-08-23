@@ -6,7 +6,7 @@ import 'managed_policy_attachment_state.dart';
 ///
 /// &gt; **NOTE:** Creating this resource will automatically [Provision the Permission Set](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ProvisionPermissionSet.html) to apply the corresponding updates to all assigned accounts.
 ///
-/// !&gt; **WARNING:** Do not use this resource together with the `aws.ssoadmin.ManagedPolicyAttachmentsExclusive` resource for the same permission set. Doing so will cause a conflict and will lead to managed policies being removed.
+/// &gt; **WARNING:** Do not use this resource together with the `aws.ssoadmin.ManagedPolicyAttachmentsExclusive` resource for the same permission set. Doing so will cause a conflict and will lead to managed policies being removed.
 ///
 /// ## Example Usage
 ///
@@ -99,6 +99,28 @@ import 'managed_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_permissionset" "example" {
+///   name         = "Example"
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// resource "aws_ssoadmin_managedpolicyattachment" "example" {
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   managed_policy_arn = "arn:aws:iam::aws:policy/AlexaForBusinessDeviceSetup"
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +133,8 @@ import 'managed_policy_attachment_state.dart';
 /// import com.pulumi.aws.ssoadmin.PermissionSetArgs;
 /// import com.pulumi.aws.ssoadmin.ManagedPolicyAttachment;
 /// import com.pulumi.aws.ssoadmin.ManagedPolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,7 +188,7 @@ import 'managed_policy_attachment_state.dart';
 ///
 /// ### With Account Assignment
 ///
-/// &gt; Because destruction of a managed policy attachment resource also re-provisions the associated permission set to all accounts, explicitly indicating the dependency with the account assignment resource via the `depends_on` meta argument is necessary to ensure proper deletion order when these resources are used together.
+/// &gt; Because destruction of a managed policy attachment resource also re-provisions the associated permission set to all accounts, explicitly indicating the dependency with the account assignment resource via the `dependsOn` meta argument is necessary to ensure proper deletion order when these resources are used together.
 ///
 ///
 /// ```typescript
@@ -327,6 +349,42 @@ import 'managed_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_permissionset" "example" {
+///   name         = "Example"
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// resource "aws_identitystore_group" "example" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   display_name      = "Admin"
+///   description       = "Admin Group"
+/// }
+/// resource "aws_ssoadmin_accountassignment" "example" {
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   principal_id       = aws_identitystore_group.example.group_id
+///   principal_type     = "GROUP"
+///   target_id          = "123456789012"
+///   target_type        = "AWS_ACCOUNT"
+/// }
+/// resource "aws_ssoadmin_managedpolicyattachment" "example" {
+///   depends_on         = [aws_ssoadmin_accountassignment.example]
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   managed_policy_arn = "arn:aws:iam::aws:policy/AlexaForBusinessDeviceSetup"
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +402,8 @@ import 'managed_policy_attachment_state.dart';
 /// import com.pulumi.aws.ssoadmin.ManagedPolicyAttachment;
 /// import com.pulumi.aws.ssoadmin.ManagedPolicyAttachmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,7 +494,7 @@ import 'managed_policy_attachment_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SSO Managed Policy Attachments using the `managed_policy_arn`, `permission_set_arn`, and `instance_arn` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import SSO Managed Policy Attachments using the `managedPolicyArn`, `permissionSetArn`, and `instanceArn` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssoadmin/managedPolicyAttachment:ManagedPolicyAttachment example arn:aws:iam::aws:policy/AlexaForBusinessDeviceSetup,arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72

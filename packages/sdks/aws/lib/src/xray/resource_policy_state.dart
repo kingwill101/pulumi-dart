@@ -12,7 +12,7 @@ class ResourcePolicyState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? policyDocument;
-  /// name of the resource policy. Must be unique within a specific Amazon Web Services account.
+  /// Name of the resource policy. Must be unique within a specific Amazon Web Services account.
   final pulumi.Input<String>? policyName;
   /// Specifies a specific policy revision, to ensure an atomic create operation. By default the resource policy is created if it does not exist, or updated with an incremented revision id. The revision id is unique to each policy in the account. If the policy revision id does not match the latest revision id, the operation will fail with an InvalidPolicyRevisionIdException exception. You can also provide a PolicyRevisionId of 0. In this case, the operation will fail with an InvalidPolicyRevisionIdException exception if a resource policy with the same name already exists.
   final pulumi.Input<String>? policyRevisionId;
@@ -23,7 +23,7 @@ class ResourcePolicyState {
   /// [bypassPolicyLockoutCheck] Flag to indicate whether to bypass the resource policy lockout safety check. Setting this value to true increases the risk that the policy becomes unmanageable. Do not set this value to true indiscriminately. Use this parameter only when you include a policy in the request and you intend to prevent the principal that is making the request from making a subsequent PutResourcePolicy request. The default value is `false`.
   /// [lastUpdatedTime] When the policy was last updated, in Unix time seconds.
   /// [policyDocument] JSON string of the resource policy or resource policy document, which can be up to 5kb in size.
-  /// [policyName] name of the resource policy. Must be unique within a specific Amazon Web Services account.
+  /// [policyName] Name of the resource policy. Must be unique within a specific Amazon Web Services account.
   /// [policyRevisionId] Specifies a specific policy revision, to ensure an atomic create operation. By default the resource policy is created if it does not exist, or updated with an incremented revision id. The revision id is unique to each policy in the account. If the policy revision id does not match the latest revision id, the operation will fail with an InvalidPolicyRevisionIdException exception. You can also provide a PolicyRevisionId of 0. In this case, the operation will fail with an InvalidPolicyRevisionIdException exception if a resource policy with the same name already exists.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ResourcePolicyState({
@@ -57,4 +57,3 @@ class ResourcePolicyState {
     );
   }
 }
-

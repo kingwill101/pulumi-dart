@@ -67,6 +67,21 @@ import 'application_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssoadmin_applicationassignment" "example" {
+///   application_arn = exampleAwsSsoadminApplication.arn
+///   principal_id    = exampleAwsIdentitystoreUser.userId
+///   principal_type  = "USER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'application_assignment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.ApplicationAssignment;
 /// import com.pulumi.aws.ssoadmin.ApplicationAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +184,21 @@ import 'application_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssoadmin_applicationassignment" "example" {
+///   application_arn = exampleAwsSsoadminApplication.arn
+///   principal_id    = exampleAwsIdentitystoreGroup.groupId
+///   principal_type  = "GROUP"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +207,8 @@ import 'application_assignment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssoadmin.ApplicationAssignment;
 /// import com.pulumi.aws.ssoadmin.ApplicationAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -10,7 +10,7 @@ import 'default_security_group_state.dart';
 ///
 /// This resource treats its inline rules as absolute; only the rules defined inline are created, and any additions/removals external to this resource will result in diff shown. For these reasons, this resource is incompatible with the `aws.ec2.SecurityGroupRule` resource.
 ///
-/// For more information about default security groups, see the AWS documentation on [Default Security Groups][aws-default-security-groups]. To manage normal security groups, see the `aws.ec2.SecurityGroup` resource.
+/// For more information about default security groups, see the AWS documentation on [Default Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#default-security-group). To manage normal security groups, see the `aws.ec2.SecurityGroup` resource.
 ///
 /// ## Example Usage
 ///
@@ -118,7 +118,7 @@ import 'default_security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "default", &ec2.DefaultSecurityGroupArgs{
-/// 			VpcId: mainvpc.ID(),
+/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
 /// 			Ingress: ec2.DefaultSecurityGroupIngressArray{
 /// 				&ec2.DefaultSecurityGroupIngressArgs{
 /// 					Protocol: pulumi.String("-1"),
@@ -145,6 +145,34 @@ import 'default_security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "mainvpc" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_defaultsecuritygroup" "default" {
+///   vpc_id = aws_ec2_vpc.mainvpc.id
+///   ingress {
+///     protocol  = -1
+///     self      = true
+///     from_port = 0
+///     to_port   = 0
+///   }
+///   egress {
+///     from_port   = 0
+///     to_port     = 0
+///     protocol    = "-1"
+///     cidr_blocks = ["0.0.0.0/0"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +185,8 @@ import 'default_security_group_state.dart';
 /// import com.pulumi.aws.ec2.DefaultSecurityGroupArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultSecurityGroupIngressArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultSecurityGroupEgressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,7 +326,7 @@ import 'default_security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "default", &ec2.DefaultSecurityGroupArgs{
-/// 			VpcId: mainvpc.ID(),
+/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
 /// 			Ingress: ec2.DefaultSecurityGroupIngressArray{
 /// 				&ec2.DefaultSecurityGroupIngressArgs{
 /// 					Protocol: pulumi.String("-1"),
@@ -315,6 +343,28 @@ import 'default_security_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "mainvpc" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_defaultsecuritygroup" "default" {
+///   vpc_id = aws_ec2_vpc.mainvpc.id
+///   ingress {
+///     protocol  = -1
+///     self      = true
+///     from_port = 0
+///     to_port   = 0
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +376,8 @@ import 'default_security_group_state.dart';
 /// import com.pulumi.aws.ec2.DefaultSecurityGroup;
 /// import com.pulumi.aws.ec2.DefaultSecurityGroupArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultSecurityGroupIngressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -402,11 +452,11 @@ class DefaultSecurityGroup extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<bool?> revokeRulesOnDelete;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// VPC ID. **Note that changing the `vpc_id` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
+  /// VPC ID. **Note that changing the `vpcId` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [DefaultSecurityGroup].

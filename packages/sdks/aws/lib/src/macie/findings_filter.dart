@@ -126,6 +126,31 @@ import 'findings_filter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_macie2_account" "example" {
+/// }
+/// resource "aws_macie_findingsfilter" "test" {
+///   depends_on  = [testAwsMacie2Account]
+///   name        = "NAME OF THE FINDINGS FILTER"
+///   description = "DESCRIPTION"
+///   position    = 1
+///   action      = "ARCHIVE"
+///   finding_criteria = {
+///     criterions = [{
+///       "field" = "region"
+///       "eqs"   = [current.region]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,9 +161,10 @@ import 'findings_filter_state.dart';
 /// import com.pulumi.aws.macie.FindingsFilter;
 /// import com.pulumi.aws.macie.FindingsFilterArgs;
 /// import com.pulumi.aws.macie.inputs.FindingsFilterFindingCriteriaArgs;
+/// import com.pulumi.aws.macie.inputs.FindingsFilterFindingCriteriaCriterionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,7 +226,7 @@ import 'findings_filter_state.dart';
 /// $ pulumi import aws:macie/findingsFilter:FindingsFilter example abcd1
 /// ```
 class FindingsFilter extends pulumi.CustomResource {
-  /// The action to perform on findings that meet the filter criteria (`finding_criteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
+  /// The action to perform on findings that meet the filter criteria (`findingCriteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
   late final pulumi.Output<String> action;
   /// The Amazon Resource Name (ARN) of the Findings Filter.
   late final pulumi.Output<String> arn;
@@ -208,7 +234,7 @@ class FindingsFilter extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The criteria to use to filter findings.
   late final pulumi.Output<FindingsFilterFindingCriteria> findingCriteria;
-  /// A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -216,9 +242,9 @@ class FindingsFilter extends pulumi.CustomResource {
   late final pulumi.Output<int> position;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [FindingsFilter].

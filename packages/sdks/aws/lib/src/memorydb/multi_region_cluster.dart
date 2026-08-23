@@ -117,6 +117,31 @@ import 'multi_region_cluster_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_memorydb_multiregioncluster" "example" {
+///   multi_region_cluster_name_suffix = "example"
+///   node_type                        = "db.r7g.xlarge"
+/// }
+/// resource "aws_memorydb_cluster" "example" {
+///   acl_name                   = exampleAwsMemorydbAcl.id
+///   auto_minor_version_upgrade = false
+///   name                       = "example"
+///   node_type                  = "db.t4g.small"
+///   num_shards                 = 2
+///   security_group_ids         = [exampleAwsSecurityGroup.id]
+///   snapshot_retention_limit   = 7
+///   subnet_group_name          = exampleAwsMemorydbSubnetGroup.id
+///   multi_region_cluster_name  = aws_memorydb_multiregioncluster.example.multi_region_cluster_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'multi_region_cluster_timeouts.dart';
 /// import com.pulumi.aws.memorydb.MultiRegionClusterArgs;
 /// import com.pulumi.aws.memorydb.Cluster;
 /// import com.pulumi.aws.memorydb.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,7 +211,7 @@ import 'multi_region_cluster_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a cluster using the `multi_region_cluster_name`. For example:
+/// Using `pulumi import`, import a cluster using the `multiRegionClusterName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:memorydb/multiRegionCluster:MultiRegionCluster example virxk-example
@@ -215,9 +240,9 @@ class MultiRegionCluster extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<MultiRegionClusterTimeouts?> timeouts;
   /// A flag to enable in-transit encryption on the cluster.

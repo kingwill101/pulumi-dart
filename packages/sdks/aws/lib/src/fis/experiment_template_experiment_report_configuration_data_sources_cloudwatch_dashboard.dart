@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard {
-  /// The ARN of the CloudWatch dashboard.
+  /// ARN of the CloudWatch dashboard.
   final pulumi.Input<String>? dashboardArn;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard].
-  /// [dashboardArn] The ARN of the CloudWatch dashboard.
+  /// [dashboardArn] ARN of the CloudWatch dashboard.
   const ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard({
     this.dashboardArn,
   });
@@ -24,4 +24,3 @@ class ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashbo
     );
   }
 }
-

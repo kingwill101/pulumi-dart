@@ -6,7 +6,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 ///
 /// &gt; **NOTE:** Destroying an `aws.s3.BucketServerSideEncryptionConfiguration` resource resets the bucket to [Amazon S3 bucket default encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html).
 ///
-/// &gt; **NOTE:** Starting in March 2026, Amazon S3 will automatically block server-side encryption with customer-provided keys (SSE-C) for all new buckets. Use the `blocked_encryption_types` argument to manage this behavior. For more information, see the [SSE-C changes FAQ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-s3-c-encryption-setting-faq.html).
+/// &gt; **NOTE:** Starting in April 2026, Amazon S3 will automatically block server-side encryption with customer-provided keys (SSE-C) for all new buckets. Use the `blockedEncryptionTypes` argument to manage this behavior. For more information, see the [SSE-C changes FAQ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-s3-c-encryption-setting-faq.html).
 ///
 /// ## Example Usage
 ///
@@ -109,7 +109,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketServerSideEncryptionConfiguration(ctx, "example", &s3.BucketServerSideEncryptionConfigurationArgs{
-/// 			Bucket: mybucket.ID(),
+/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketServerSideEncryptionConfigurationRuleArray{
 /// 				&s3.BucketServerSideEncryptionConfigurationRuleArgs{
 /// 					ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
@@ -126,6 +126,32 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "mykey" {
+///   description             = "This key is used to encrypt bucket objects"
+///   deletion_window_in_days = 10
+/// }
+/// resource "aws_s3_bucket" "mybucket" {
+///   bucket = "mybucket"
+/// }
+/// resource "aws_s3_bucketserversideencryptionconfiguration" "example" {
+///   bucket = aws_s3_bucket.mybucket.id
+///   rules {
+///     apply_server_side_encryption_by_default = {
+///       kms_master_key_id = aws_kms_key.mykey.arn
+///       sse_algorithm     = "aws:kms"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +166,8 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,7 +333,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketServerSideEncryptionConfiguration(ctx, "example", &s3.BucketServerSideEncryptionConfigurationArgs{
-/// 			Bucket: mybucket.ID(),
+/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: s3.BucketServerSideEncryptionConfigurationRuleArray{
 /// 				&s3.BucketServerSideEncryptionConfigurationRuleArgs{
 /// 					ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
@@ -328,6 +354,34 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "mykey" {
+///   description             = "This key is used to encrypt bucket objects"
+///   deletion_window_in_days = 10
+/// }
+/// resource "aws_s3_bucket" "mybucket" {
+///   bucket = "mybucket"
+/// }
+/// resource "aws_s3_bucketserversideencryptionconfiguration" "example" {
+///   bucket = aws_s3_bucket.mybucket.id
+///   rules {
+///     apply_server_side_encryption_by_default = {
+///       kms_master_key_id = aws_kms_key.mykey.arn
+///       sse_algorithm     = "aws:kms"
+///     }
+///     bucket_key_enabled       = true
+///     blocked_encryption_types = ["SSE-C"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -342,8 +396,8 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -414,14 +468,14 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
-/// **Using `pulumi import` to import** S3 bucket server-side encryption configuration using the `bucket` or using the `bucket` and `expected_bucket_owner` separated by a comma (`,`). For example:
+/// **Using `pulumi import` to import** S3 bucket server-side encryption configuration using the `bucket` or using the `bucket` and `expectedBucketOwner` separated by a comma (`,`). For example:
 ///
 /// If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`:
 ///
@@ -429,7 +483,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// $ pulumi import aws:s3/bucketServerSideEncryptionConfigurationV2:BucketServerSideEncryptionConfigurationV2 example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketServerSideEncryptionConfigurationV2:BucketServerSideEncryptionConfigurationV2 example bucket-name,123456789012

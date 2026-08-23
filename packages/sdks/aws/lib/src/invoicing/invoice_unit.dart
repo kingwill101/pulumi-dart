@@ -102,6 +102,27 @@ import 'invoice_unit_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_invoicing_invoiceunit" "example" {
+///   name             = "example-unit"
+///   description      = "Example invoice unit"
+///   invoice_receiver = "123456789012"
+///   rules {
+///     linked_accounts = ["098765432109"]
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +132,8 @@ import 'invoice_unit_timeouts.dart';
 /// import com.pulumi.aws.invoicing.InvoiceUnit;
 /// import com.pulumi.aws.invoicing.InvoiceUnitArgs;
 /// import com.pulumi.aws.invoicing.inputs.InvoiceUnitRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,6 +176,13 @@ import 'invoice_unit_timeouts.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the invoice unit.
+///
+///
 /// Using `pulumi import`, import Invoice Units using the ARN. For example:
 ///
 /// ```sh
@@ -177,9 +205,9 @@ class InvoiceUnit extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Whether tax inheritance is disabled for this invoice unit.
   late final pulumi.Output<bool> taxInheritanceDisabled;

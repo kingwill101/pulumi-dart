@@ -68,6 +68,20 @@ import 'event_permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventpermission" "DevAccountAccess" {
+///   principal    = "123456789012"
+///   statement_id = "DevAccountAccess"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +90,8 @@ import 'event_permission_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.EventPermission;
 /// import com.pulumi.aws.cloudwatch.EventPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,6 +200,25 @@ import 'event_permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventpermission" "OrganizationAccess" {
+///   principal    = "*"
+///   statement_id = "OrganizationAccess"
+///   condition = {
+///     key   = "aws:PrincipalOrgID"
+///     type  = "StringEquals"
+///     value = example.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +228,8 @@ import 'event_permission_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventPermission;
 /// import com.pulumi.aws.cloudwatch.EventPermissionArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventPermissionConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,10 +271,22 @@ import 'event_permission_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EventBridge permissions using the `event_bus_name/statement_id` (if you omit `event_bus_name`, the `default` event bus will be used). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `statementId` (String) Statement ID of the EventBridge permission.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Permissions `eventBusName` and `statementId` separated by a forward slash (`/`) (if you omit `eventBusName`, the `default` event bus will be used). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/eventPermission:EventPermission DevAccountAccess example-event-bus/DevAccountAccess
+/// $ pulumi import aws:cloudwatch/eventPermission:EventPermission example example-event-bus/DevAccountAccess
 /// ```
 class EventPermission extends pulumi.CustomResource {
   /// The action that you are enabling the other account to perform. Defaults to `events:PutEvents`.

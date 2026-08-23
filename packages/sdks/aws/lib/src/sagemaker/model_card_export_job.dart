@@ -78,6 +78,23 @@ import 'model_card_export_job_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_modelcardexportjob" "example" {
+///   model_card_export_job_name = "my-model-card-export-job"
+///   model_card_name            = exampleAwsSagemakerModelCard.modelCardName
+///   output_config = {
+///     s3_output_path ="s3://${test.example}/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +104,8 @@ import 'model_card_export_job_timeouts.dart';
 /// import com.pulumi.aws.sagemaker.ModelCardExportJob;
 /// import com.pulumi.aws.sagemaker.ModelCardExportJobArgs;
 /// import com.pulumi.aws.sagemaker.inputs.ModelCardExportJobOutputConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -125,7 +142,7 @@ import 'model_card_export_job_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import model card export jobs using the `model_card_export_job_arn`. For example:
+/// Using `pulumi import`, import model card export jobs using the `modelCardExportJobArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/modelCardExportJob:ModelCardExportJob example arn:aws:sagemaker:us-west-2:123456789012:model-card/my-model-card/export-job/my-model-card-export-job

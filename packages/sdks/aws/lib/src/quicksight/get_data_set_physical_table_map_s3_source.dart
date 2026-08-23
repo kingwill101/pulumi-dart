@@ -35,4 +35,3 @@ class GetDataSetPhysicalTableMapS3Source {
     );
   }
 }
-

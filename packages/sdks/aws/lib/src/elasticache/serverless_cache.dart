@@ -106,7 +106,7 @@ import 'serverless_cache_timeouts.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range testAwsSubnet {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := elasticache.NewServerlessCache(ctx, "example", &elasticache.ServerlessCacheArgs{
 /// Engine: pulumi.String("memcached"),
@@ -144,6 +144,34 @@ import 'serverless_cache_timeouts.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_serverlesscache" "example" {
+///   engine = "memcached"
+///   name   = "example"
+///   cache_usage_limits = {
+///     data_storage = {
+///       maximum = 10
+///       unit    = "GB"
+///     }
+///     ecpu_per_seconds = [{
+///       "maximum" = 5000
+///     }]
+///   }
+///   description          = "Test Server"
+///   kms_key_id           = test.arn
+///   major_engine_version = "1.6"
+///   security_group_ids   = [testAwsSecurityGroup.id]
+///   subnet_ids           = testAwsSubnet[*].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +182,9 @@ import 'serverless_cache_timeouts.dart';
 /// import com.pulumi.aws.elasticache.ServerlessCacheArgs;
 /// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsArgs;
 /// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsEcpuPerSecondArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,7 +324,7 @@ import 'serverless_cache_timeouts.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range testAwsSubnet {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := elasticache.NewServerlessCache(ctx, "example", &elasticache.ServerlessCacheArgs{
 /// Engine: pulumi.String("redis"),
@@ -335,6 +364,36 @@ import 'serverless_cache_timeouts.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_serverlesscache" "example" {
+///   engine = "redis"
+///   name   = "example"
+///   cache_usage_limits = {
+///     data_storage = {
+///       maximum = 10
+///       unit    = "GB"
+///     }
+///     ecpu_per_seconds = [{
+///       "maximum" = 5000
+///     }]
+///   }
+///   daily_snapshot_time      = "09:00"
+///   description              = "Test Server"
+///   kms_key_id               = test.arn
+///   major_engine_version     = "7"
+///   snapshot_retention_limit = 1
+///   security_group_ids       = [testAwsSecurityGroup.id]
+///   subnet_ids               = testAwsSubnet[*].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +404,9 @@ import 'serverless_cache_timeouts.dart';
 /// import com.pulumi.aws.elasticache.ServerlessCacheArgs;
 /// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsArgs;
 /// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsEcpuPerSecondArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -488,7 +548,7 @@ import 'serverless_cache_timeouts.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range testAwsSubnet {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := elasticache.NewServerlessCache(ctx, "example", &elasticache.ServerlessCacheArgs{
 /// Engine: pulumi.String("valkey"),
@@ -528,6 +588,36 @@ import 'serverless_cache_timeouts.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_serverlesscache" "example" {
+///   engine = "valkey"
+///   name   = "example"
+///   cache_usage_limits = {
+///     data_storage = {
+///       maximum = 10
+///       unit    = "GB"
+///     }
+///     ecpu_per_seconds = [{
+///       "maximum" = 5000
+///     }]
+///   }
+///   daily_snapshot_time      = "09:00"
+///   description              = "Test Server"
+///   kms_key_id               = test.arn
+///   major_engine_version     = "7"
+///   snapshot_retention_limit = 1
+///   security_group_ids       = [testAwsSecurityGroup.id]
+///   subnet_ids               = testAwsSubnet[*].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -538,8 +628,9 @@ import 'serverless_cache_timeouts.dart';
 /// import com.pulumi.aws.elasticache.ServerlessCacheArgs;
 /// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsArgs;
 /// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.elasticache.inputs.ServerlessCacheCacheUsageLimitsEcpuPerSecondArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -587,7 +678,7 @@ import 'serverless_cache_timeouts.dart';
 class ServerlessCache extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the serverless cache.
   late final pulumi.Output<String> arn;
-  /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cache_usage_limits` Block for details.
+  /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
   late final pulumi.Output<ServerlessCacheCacheUsageLimits?> cacheUsageLimits;
   /// Timestamp of when the serverless cache was created.
   late final pulumi.Output<String> createTime;
@@ -610,7 +701,9 @@ class ServerlessCache extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// Represents the information required for client programs to connect to a cache node. See `reader_endpoint` Block for details.
+  /// IP protocol version used by the serverless cache. Valid values are `ipv4`, `ipv6`, or `dualStack`. `ipv6` is only supported with IPv6-only subnets. If not specified, defaults to `ipv4`, unless all provided subnets are IPv6-only, in which case it defaults to `ipv6`.
+  late final pulumi.Output<String> networkType;
+  /// Represents the information required for client programs to connect to a cache node. See `readerEndpoint` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>> readerEndpoints;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -624,7 +717,7 @@ class ServerlessCache extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// A list of the identifiers of the subnets where the VPC endpoint for the serverless cache will be deployed. All the subnetIds must belong to the same VPC.
   late final pulumi.Output<List<String>> subnetIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ServerlessCacheTimeouts?> timeouts;
@@ -656,6 +749,7 @@ class ServerlessCache extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     majorEngineVersion = registerOutput<String>('majorEngineVersion');
     this.name = registerOutput<String>('name');
+    networkType = registerOutput<String>('networkType');
     readerEndpoints = registerOutput<List<Map<String, dynamic>>>('readerEndpoints');
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
@@ -703,6 +797,7 @@ class ServerlessCache extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     majorEngineVersion = registerOutput<String>('majorEngineVersion');
     this.name = registerOutput<String>('name');
+    networkType = registerOutput<String>('networkType');
     readerEndpoints = registerOutput<List<Map<String, dynamic>>>('readerEndpoints');
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');

@@ -24,4 +24,3 @@ class AgentcoreOauth2CredentialProviderClientSecretArn {
     );
   }
 }
-

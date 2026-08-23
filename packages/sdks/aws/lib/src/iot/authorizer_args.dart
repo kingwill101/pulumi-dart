@@ -19,7 +19,7 @@ class AuthorizerArgs {
   final pulumi.Input<bool>? signingDisabled;
   /// The status of Authorizer request at creation. Valid values: `ACTIVE`, `INACTIVE`. Default: `ACTIVE`.
   final pulumi.Input<String>? status;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.
   final pulumi.Input<String>? tokenKeyName;
@@ -33,7 +33,7 @@ class AuthorizerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [signingDisabled] Specifies whether AWS IoT validates the token signature in an authorization request. Default: `false`.
   /// [status] The status of Authorizer request at creation. Valid values: `ACTIVE`, `INACTIVE`. Default: `ACTIVE`.
-  /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tokenKeyName] The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.
   /// [tokenSigningPublicKeys] The public keys used to verify the digital signature returned by your custom authentication service. This value is required if signing is enabled in your authorizer.
   const AuthorizerArgs({
@@ -76,4 +76,3 @@ class AuthorizerArgs {
     );
   }
 }
-

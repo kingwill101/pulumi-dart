@@ -66,6 +66,19 @@ import 'get_replication_task_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_dms_getcertificate" "example" {
+///   certificate_id = test.certificateId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +87,8 @@ import 'get_replication_task_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.DmsFunctions;
 /// import com.pulumi.aws.dms.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,6 +186,19 @@ Future<GetCertificateResult> getCertificate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_dms_getendpoint" "test" {
+///   endpoint_id = "test_id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +207,8 @@ Future<GetCertificateResult> getCertificate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.DmsFunctions;
 /// import com.pulumi.aws.dms.inputs.GetEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,6 +304,19 @@ Future<GetEndpointResult> getEndpoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_dms_getreplicationinstance" "test" {
+///   replication_instance_id = testAwsDmsReplicationInstance.replicationInstanceId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +325,8 @@ Future<GetEndpointResult> getEndpoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.DmsFunctions;
 /// import com.pulumi.aws.dms.inputs.GetReplicationInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,6 +424,19 @@ Future<GetReplicationInstanceResult> getReplicationInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_dms_getreplicationsubnetgroup" "test" {
+///   replication_subnet_group_id = testAwsDmsReplicationSubnetGroup.replicationSubnetGroupId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -393,8 +445,8 @@ Future<GetReplicationInstanceResult> getReplicationInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.DmsFunctions;
 /// import com.pulumi.aws.dms.inputs.GetReplicationSubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -492,6 +544,19 @@ Future<GetReplicationSubnetGroupResult> getReplicationSubnetGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_dms_getreplicationtask" "test" {
+///   replication_task_id = testAwsDmsReplicationTask.replicationTaskId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -500,8 +565,8 @@ Future<GetReplicationSubnetGroupResult> getReplicationSubnetGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.DmsFunctions;
 /// import com.pulumi.aws.dms.inputs.GetReplicationTaskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

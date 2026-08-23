@@ -58,6 +58,19 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_grafana_getworkspace" "example" {
+///   workspace_id = "g-2054c75a02"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.grafana.GrafanaFunctions;
 /// import com.pulumi.aws.grafana.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

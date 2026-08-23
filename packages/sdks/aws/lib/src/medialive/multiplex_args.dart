@@ -20,7 +20,7 @@ class MultiplexArgs {
   final pulumi.Input<String>? region;
   /// Whether to start the Multiplex. Defaults to `false`.
   final pulumi.Input<bool>? startMultiplex;
-  /// A map of tags to assign to the Multiplex. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the Multiplex. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [MultiplexArgs].
@@ -29,7 +29,7 @@ class MultiplexArgs {
   /// [name] name of Multiplex.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [startMultiplex] Whether to start the Multiplex. Defaults to `false`.
-  /// [tags] A map of tags to assign to the Multiplex. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the Multiplex. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const MultiplexArgs({
     required this.availabilityZones,
     this.multiplexSettings,
@@ -61,4 +61,3 @@ class MultiplexArgs {
     );
   }
 }
-

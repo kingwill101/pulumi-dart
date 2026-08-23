@@ -11,10 +11,10 @@ import 'analytics_application_inputs_starting_position_configuration.dart';
 class AnalyticsApplicationInputs {
   /// The ARN of the Kinesis Analytics Application.
   final pulumi.Input<String>? id;
-  /// The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesis_stream`.
+  /// The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesisStream`.
   /// See Kinesis Firehose below for more details.
   final pulumi.Input<AnalyticsApplicationInputsKinesisFirehose>? kinesisFirehose;
-  /// The Kinesis Stream configuration for the streaming source. Conflicts with `kinesis_firehose`.
+  /// The Kinesis Stream configuration for the streaming source. Conflicts with `kinesisFirehose`.
   /// See Kinesis Stream below for more details.
   final pulumi.Input<AnalyticsApplicationInputsKinesisStream>? kinesisStream;
   /// The Name Prefix to use when creating an in-application stream.
@@ -34,8 +34,8 @@ class AnalyticsApplicationInputs {
 
   /// Creates a new [AnalyticsApplicationInputs].
   /// [id] The ARN of the Kinesis Analytics Application.
-  /// [kinesisFirehose] The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesis_stream`.
-  /// [kinesisStream] The Kinesis Stream configuration for the streaming source. Conflicts with `kinesis_firehose`.
+  /// [kinesisFirehose] The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesisStream`.
+  /// [kinesisStream] The Kinesis Stream configuration for the streaming source. Conflicts with `kinesisFirehose`.
   /// [namePrefix] The Name Prefix to use when creating an in-application stream.
   /// [parallelism] The number of Parallel in-application streams to create.
   /// [processingConfiguration] The Processing Configuration to transform records as they are received from the stream.
@@ -82,4 +82,3 @@ class AnalyticsApplicationInputs {
     );
   }
 }
-

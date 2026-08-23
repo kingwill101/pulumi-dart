@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleScope {
-  /// The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `compliance_resource_types`.
+  /// The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `complianceResourceTypes`.
   final pulumi.Input<String>? complianceResourceId;
-  /// A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `compliance_resource_id`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
+  /// A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `complianceResourceId`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
   final pulumi.Input<List<String>>? complianceResourceTypes;
   /// The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.
   final pulumi.Input<String>? tagKey;
@@ -13,8 +13,8 @@ class RuleScope {
   final pulumi.Input<String>? tagValue;
 
   /// Creates a new [RuleScope].
-  /// [complianceResourceId] The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `compliance_resource_types`.
-  /// [complianceResourceTypes] A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `compliance_resource_id`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
+  /// [complianceResourceId] The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `complianceResourceTypes`.
+  /// [complianceResourceTypes] A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `complianceResourceId`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
   /// [tagKey] The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.
   /// [tagValue] The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule.
   const RuleScope({
@@ -42,4 +42,3 @@ class RuleScope {
     );
   }
 }
-

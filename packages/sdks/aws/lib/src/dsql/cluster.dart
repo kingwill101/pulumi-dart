@@ -74,6 +74,22 @@ import 'cluster_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dsql_cluster" "example" {
+///   deletion_protection_enabled = true
+///   tags = {
+///     "Name" = "TestCluster"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'cluster_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dsql.Cluster;
 /// import com.pulumi.aws.dsql.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,7 +145,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool> deletionProtectionEnabled;
   /// Encryption configuration details for the DSQL Cluster.
   late final pulumi.Output<List<Map<String, dynamic>>> encryptionDetails;
-  /// Destroys cluster even if `deletion_protection_enabled` is set to `true`.
+  /// Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// Default value is `false`.
   late final pulumi.Output<bool> forceDestroy;
   /// Cluster Identifier.
@@ -142,7 +158,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Set of tags to be associated with the AWS DSQL Cluster resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ClusterTimeouts?> timeouts;
   /// The DSQL Cluster's VPC endpoint service name.

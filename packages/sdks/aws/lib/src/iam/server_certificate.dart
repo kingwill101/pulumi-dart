@@ -11,7 +11,7 @@ import 'server_certificate_state.dart';
 /// - AWS OpsWorks
 ///
 /// For information about server certificates in IAM, see [Managing Server
-/// Certificates][2] in AWS Documentation.
+/// Certificates](https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html) in AWS Documentation.
 ///
 /// ## Example Usage
 ///
@@ -102,6 +102,24 @@ import 'server_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_servercertificate" "test_cert" {
+///   name             = "some_test_cert"
+///   certificate_body = file("self-ca-cert.pem")
+///   private_key      = file("test-key.pem")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +130,8 @@ import 'server_certificate_state.dart';
 /// import com.pulumi.aws.iam.ServerCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,6 +257,21 @@ import 'server_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_servercertificate" "test_cert_alt" {
+///   name             = "alt_test_cert"
+///   certificate_body = "-----BEGIN CERTIFICATE-----\n[......] # cert contents\n-----END CERTIFICATE-----\n"
+///   private_key      = "-----BEGIN RSA PRIVATE KEY-----\n[......] # cert contents\n-----END RSA PRIVATE KEY-----\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +280,8 @@ import 'server_certificate_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.ServerCertificate;
 /// import com.pulumi.aws.iam.ServerCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,8 +332,8 @@ import 'server_certificate_state.dart';
 ///
 /// Some properties of an IAM Server Certificates cannot be updated while they are
 /// in use. In order for the provider to effectively manage a Certificate in this situation, it is
-/// recommended you utilize the `name_prefix` attribute and enable the
-/// `create_before_destroy`. This will allow this provider
+/// recommended you utilize the `namePrefix` attribute and enable the
+/// `createBeforeDestroy` lifecycle block. This will allow Pulumi
 /// to create a new, updated `aws.iam.ServerCertificate` resource and replace it in
 /// dependant resources before attempting to destroy the old version.
 ///
@@ -311,9 +344,6 @@ import 'server_certificate_state.dart';
 /// ```sh
 /// $ pulumi import aws:iam/serverCertificate:ServerCertificate certificate example.com-certificate-until-2018
 /// ```
-///
-/// [1]: https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html
-/// [2]: https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingServerCerts.html
 class ServerCertificate extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the server certificate.
   late final pulumi.Output<String> arn;
@@ -338,11 +368,11 @@ class ServerCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> path;
   /// The contents of the private key in PEM-encoded format.
   late final pulumi.Output<String> privateKey;
-  /// Map of resource tags for the server certificate. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the server certificate. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// &gt; **NOTE:** AWS performs behind-the-scenes modifications to some certificate files if they do not adhere to a specific format. These modifications will result in this provider forever believing that it needs to update the resources since the local and AWS file contents will not match after theses modifications occur. In order to prevent this from happening you must ensure that all your PEM-encoded files use UNIX line-breaks and that `certificate_body` contains only one certificate. All other certificates should go in `certificate_chain`. It is common for some Certificate Authorities to issue certificate files that have DOS line-breaks and that are actually multiple certificates concatenated together in order to form a full certificate chain.
+  /// &gt; **NOTE:** AWS performs behind-the-scenes modifications to some certificate files if they do not adhere to a specific format. These modifications will result in this provider forever believing that it needs to update the resources since the local and AWS file contents will not match after theses modifications occur. In order to prevent this from happening you must ensure that all your PEM-encoded files use UNIX line-breaks and that `certificateBody` contains only one certificate. All other certificates should go in `certificateChain`. It is common for some Certificate Authorities to issue certificate files that have DOS line-breaks and that are actually multiple certificates concatenated together in order to form a full certificate chain.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) when the server certificate was uploaded.
   late final pulumi.Output<String> uploadDate;

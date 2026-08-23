@@ -75,6 +75,21 @@ import 'dx_gateway_attachment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_dxgatewayattachment" "test" {
+///   core_network_id            = testAwsNetworkmanagerCoreNetworkPolicyAttachment.coreNetworkId
+///   direct_connect_gateway_arn ="arn:aws:directconnect::${current.accountId}:dx-gateway/${testAwsDxGateway.id}"
+///   edge_locations             = [currentAwsRegion.region]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +98,8 @@ import 'dx_gateway_attachment_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.DxGatewayAttachment;
 /// import com.pulumi.aws.networkmanager.DxGatewayAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,9 +164,9 @@ class DxGatewayAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String> segmentName;
   /// State of the attachment.
   late final pulumi.Output<String> state;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<DxGatewayAttachmentTimeouts?> timeouts;
 

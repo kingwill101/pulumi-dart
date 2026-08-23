@@ -81,6 +81,23 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecs_cluster" "foo" {
+///   name = "white-hart"
+///   settings {
+///     name  = "containerInsights"
+///     value = "enabled"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +107,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.ecs.Cluster;
 /// import com.pulumi.aws.ecs.ClusterArgs;
 /// import com.pulumi.aws.ecs.inputs.ClusterSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,6 +274,36 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "example"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_ecs_cluster" "test" {
+///   name = "example"
+///   configuration = {
+///     execute_command_configuration = {
+///       kms_key_id = aws_kms_key.example.arn
+///       logging    = "OVERRIDE"
+///       log_configuration = {
+///         cloud_watch_encryption_enabled = true
+///         cloud_watch_log_group_name     = aws_cloudwatch_loggroup.example.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -272,8 +319,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.ecs.inputs.ClusterConfigurationArgs;
 /// import com.pulumi.aws.ecs.inputs.ClusterConfigurationExecuteCommandConfigurationArgs;
 /// import com.pulumi.aws.ecs.inputs.ClusterConfigurationExecuteCommandConfigurationLogConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -634,7 +681,7 @@ import 'cluster_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Enable IAM User Permissions",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": "*",
 /// 					},
 /// 					"Action":   "kms:*",
@@ -643,13 +690,13 @@ import 'cluster_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow generate data key access for Fargate tasks.",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "fargate.amazonaws.com",
 /// 					},
 /// 					"Action": []string{
 /// 						"kms:GenerateDataKeyWithoutPlaintext",
 /// 					},
-/// 					"Condition": map[string]interface{}{
+/// 					"Condition": map[string]map[string]interface{}{
 /// 						"StringEquals": map[string]interface{}{
 /// 							"kms:EncryptionContext:aws:ecs:clusterAccount": []*string{
 /// 								current.AccountId,
@@ -664,7 +711,7 @@ import 'cluster_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow grant creation permission for Fargate tasks.",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "fargate.amazonaws.com",
 /// 					},
 /// 					"Action": []string{
@@ -679,7 +726,7 @@ import 'cluster_state.dart';
 /// 								"example",
 /// 							},
 /// 						},
-/// 						"ForAllValues:StringEquals": map[string]interface{}{
+/// 						"ForAllValues:StringEquals": map[string][]string{
 /// 							"kms:GrantOperations": []string{
 /// 								"Decrypt",
 /// 							},
@@ -695,8 +742,8 @@ import 'cluster_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleKeyPolicy, err := kms.NewKeyPolicy(ctx, "example", &kms.KeyPolicyArgs{
-/// 			KeyId:  example.ID(),
-/// 			Policy: pulumi.String(json0),
+/// 			KeyId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -718,6 +765,79 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "example"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_kms_keypolicy" "example" {
+///   key_id = aws_kms_key.example.id
+///   policy = jsonencode({
+///     "Id" = "ECSClusterFargatePolicy"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" = "*"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow generate data key access for Fargate tasks."
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "fargate.amazonaws.com"
+///       }
+///       "Action" = ["kms:GenerateDataKeyWithoutPlaintext"]
+///       "Condition" = {
+///         "StringEquals" = {
+///           "kms:EncryptionContext:aws:ecs:clusterAccount" = [data.aws_getcalleridentity.current.account_id]
+///           "kms:EncryptionContext:aws:ecs:clusterName"    = ["example"]
+///         }
+///       }
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow grant creation permission for Fargate tasks."
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "fargate.amazonaws.com"
+///       }
+///       "Action" = ["kms:CreateGrant"]
+///       "Condition" = {
+///         "StringEquals" = {
+///           "kms:EncryptionContext:aws:ecs:clusterAccount" = [data.aws_getcalleridentity.current.account_id]
+///           "kms:EncryptionContext:aws:ecs:clusterName"    = ["example"]
+///         }
+///         "ForAllValues:StringEquals" = {
+///           "kms:GrantOperations" = ["Decrypt"]
+///         }
+///       }
+///       "Resource" = "*"
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// resource "aws_ecs_cluster" "test" {
+///   depends_on = [aws_kms_keypolicy.example]
+///   name       = "example"
+///   configuration = {
+///     managed_storage_configuration = {
+///       fargate_ephemeral_storage_kms_key_id = aws_kms_key.example.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -736,8 +856,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.ecs.inputs.ClusterConfigurationManagedStorageConfigurationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -912,13 +1032,13 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Default Service Connect namespace. See `service_connect_defaults` Block for details.
+  /// Default Service Connect namespace. See `serviceConnectDefaults` Block for details.
   late final pulumi.Output<ClusterServiceConnectDefaults?> serviceConnectDefaults;
   /// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. See `setting` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>> settings;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Cluster].

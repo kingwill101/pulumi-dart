@@ -111,6 +111,29 @@ import 'job_queue_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_jobqueue" "test_queue" {
+///   name     = "tf-test-batch-job-queue"
+///   state    = "ENABLED"
+///   priority = 1
+///   compute_environment_orders {
+///     order               = 1
+///     compute_environment = testEnvironment1.arn
+///   }
+///   compute_environment_orders {
+///     order               = 2
+///     compute_environment = testEnvironment2.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +143,8 @@ import 'job_queue_timeouts.dart';
 /// import com.pulumi.aws.batch.JobQueue;
 /// import com.pulumi.aws.batch.JobQueueArgs;
 /// import com.pulumi.aws.batch.inputs.JobQueueComputeEnvironmentOrderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,6 +354,41 @@ import 'job_queue_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_schedulingpolicy" "example" {
+///   name = "example"
+///   fair_share_policy = {
+///     compute_reservation = 1
+///     share_decay_seconds = 3600
+///     share_distributions = [{
+///       "shareIdentifier" = "A1*"
+///       "weightFactor"    = 0.1
+///     }]
+///   }
+/// }
+/// resource "aws_batch_jobqueue" "example" {
+///   name                  = "tf-test-batch-job-queue"
+///   scheduling_policy_arn = aws_batch_schedulingpolicy.example.arn
+///   state                 = "ENABLED"
+///   priority              = 1
+///   compute_environment_orders {
+///     order               = 1
+///     compute_environment = testEnvironment1.arn
+///   }
+///   compute_environment_orders {
+///     order               = 2
+///     compute_environment = testEnvironment2.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -340,11 +398,12 @@ import 'job_queue_timeouts.dart';
 /// import com.pulumi.aws.batch.SchedulingPolicy;
 /// import com.pulumi.aws.batch.SchedulingPolicyArgs;
 /// import com.pulumi.aws.batch.inputs.SchedulingPolicyFairSharePolicyArgs;
+/// import com.pulumi.aws.batch.inputs.SchedulingPolicyFairSharePolicyShareDistributionArgs;
 /// import com.pulumi.aws.batch.JobQueue;
 /// import com.pulumi.aws.batch.JobQueueArgs;
 /// import com.pulumi.aws.batch.inputs.JobQueueComputeEnvironmentOrderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,9 +506,9 @@ class JobQueue extends pulumi.CustomResource {
   late final pulumi.Output<String?> schedulingPolicyArn;
   /// The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
   late final pulumi.Output<String> state;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<JobQueueTimeouts?> timeouts;
 

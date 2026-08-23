@@ -36,4 +36,3 @@ class SecondarySubnetIpv4CidrBlockAssociation {
     );
   }
 }
-

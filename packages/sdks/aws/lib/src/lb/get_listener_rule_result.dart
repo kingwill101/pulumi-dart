@@ -15,8 +15,6 @@ class GetListenerRuleResult {
   /// Set of conditions associated with the rule.
   /// Detailed below.
   final List<GetListenerRuleCondition>? conditions;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   final String listenerArn;
   final int priority;
   final String region;
@@ -29,7 +27,6 @@ class GetListenerRuleResult {
   /// [actions] List of actions associated with the rule, sorted by `order`.
   /// [arn] ARN of the target group.
   /// [conditions] Set of conditions associated with the rule.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [listenerArn] Required.
   /// [priority] Required.
   /// [region] Required.
@@ -39,7 +36,6 @@ class GetListenerRuleResult {
     this.actions,
     required this.arn,
     this.conditions,
-    required this.id,
     required this.listenerArn,
     required this.priority,
     required this.region,
@@ -52,7 +48,6 @@ class GetListenerRuleResult {
       'actions': ?(() { final guardedValue = actions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetListenerRuleAction, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'arn': arn,
       'conditions': ?(() { final guardedValue = conditions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetListenerRuleCondition, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
       'listenerArn': listenerArn,
       'priority': priority,
       'region': region,
@@ -66,7 +61,6 @@ class GetListenerRuleResult {
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerRuleAction>(guardedValue, (value) => GetListenerRuleAction.fromMap((value as Map).cast<String, dynamic>())); })(),
       arn: map['arn'] as String,
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerRuleCondition>(guardedValue, (value) => GetListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
       listenerArn: map['listenerArn'] as String,
       priority: map['priority'] as int,
       region: map['region'] as String,
@@ -75,4 +69,3 @@ class GetListenerRuleResult {
     );
   }
 }
-

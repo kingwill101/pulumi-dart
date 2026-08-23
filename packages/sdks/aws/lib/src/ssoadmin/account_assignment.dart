@@ -148,6 +148,40 @@ import 'account_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_ssoadmin_getpermissionset" "exampleGetPermissionSet" {
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   name         = "AWSReadOnlyAccess"
+/// }
+/// data "aws_identitystore_getgroup" "exampleGetGroup" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   alternate_identifier = {
+///     unique_attribute = {
+///       attribute_path  = "DisplayName"
+///       attribute_value = "ExampleGroup"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssoadmin_accountassignment" "example" {
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   permission_set_arn = data.aws_ssoadmin_getpermissionset.exampleGetPermissionSet.arn
+///   principal_id       = data.aws_identitystore_getgroup.exampleGetGroup.group_id
+///   principal_type     = "GROUP"
+///   target_id          = "123456789012"
+///   target_type        = "AWS_ACCOUNT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +197,8 @@ import 'account_assignment_state.dart';
 /// import com.pulumi.aws.identitystore.inputs.GetGroupAlternateIdentifierUniqueAttributeArgs;
 /// import com.pulumi.aws.ssoadmin.AccountAssignment;
 /// import com.pulumi.aws.ssoadmin.AccountAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,7 +277,7 @@ import 'account_assignment_state.dart';
 ///
 /// ### With Managed Policy Attachment
 ///
-/// &gt; Because destruction of a managed policy attachment resource also re-provisions the associated permission set to all accounts, explicitly indicating the dependency with the account assignment resource via the `depends_on` meta argument is necessary to ensure proper deletion order when these resources are used together.
+/// &gt; Because destruction of a managed policy attachment resource also re-provisions the associated permission set to all accounts, explicitly indicating the dependency with the account assignment resource via the `dependsOn` meta argument is necessary to ensure proper deletion order when these resources are used together.
 ///
 ///
 /// ```typescript
@@ -404,6 +438,42 @@ import 'account_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_permissionset" "example" {
+///   name         = "Example"
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// resource "aws_identitystore_group" "example" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   display_name      = "Admin"
+///   description       = "Admin Group"
+/// }
+/// resource "aws_ssoadmin_accountassignment" "example" {
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   principal_id       = aws_identitystore_group.example.group_id
+///   principal_type     = "GROUP"
+///   target_id          = "123456789012"
+///   target_type        = "AWS_ACCOUNT"
+/// }
+/// resource "aws_ssoadmin_managedpolicyattachment" "example" {
+///   depends_on         = [aws_ssoadmin_accountassignment.example]
+///   instance_arn       = data.aws_ssoadmin_getinstances.example.arns[0]
+///   managed_policy_arn = "arn:aws:iam::aws:policy/AlexaForBusinessDeviceSetup"
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -421,8 +491,8 @@ import 'account_assignment_state.dart';
 /// import com.pulumi.aws.ssoadmin.ManagedPolicyAttachment;
 /// import com.pulumi.aws.ssoadmin.ManagedPolicyAttachmentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -513,7 +583,24 @@ import 'account_assignment_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SSO Account Assignments using the `principal_id`, `principal_type`, `target_id`, `target_type`, `permission_set_arn`, `instance_arn` separated by commas (`,`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `instanceArn` (String) ARN of the SSO Instance.
+/// * `permissionSetArn` (String) ARN of the Permission Set.
+/// * `principalId` (String) Identifier of the principal in IAM Identity Center.
+/// * `principalType` (String) Type of principal. Valid values are `USER` and `GROUP`.
+/// * `targetId` (String) AWS account identifier.
+/// * `targetType` (String) Target type. Valid value is `AWS_ACCOUNT`.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import SSO Account Assignments using the `principalId`, `principalType`, `targetId`, `targetType`, `permissionSetArn`, `instanceArn` separated by commas (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssoadmin/accountAssignment:AccountAssignment example f81d4fae-7dec-11d0-a765-00a0c91e6bf6,GROUP,1234567890,AWS_ACCOUNT,arn:aws:sso:::permissionSet/ssoins-0123456789abcdef/ps-0123456789abcdef,arn:aws:sso:::instance/ssoins-0123456789abcdef

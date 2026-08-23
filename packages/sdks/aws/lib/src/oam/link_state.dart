@@ -11,7 +11,7 @@ class LinkState {
   final pulumi.Input<String>? label;
   /// Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
   final pulumi.Input<String>? labelTemplate;
-  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
+  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `linkConfiguration` Block for details.
   final pulumi.Input<LinkLinkConfiguration>? linkConfiguration;
   /// ID string that AWS generated as part of the link ARN.
   final pulumi.Input<String>? linkId;
@@ -25,7 +25,7 @@ class LinkState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? sinkIdentifier;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -33,13 +33,13 @@ class LinkState {
   /// [arn] ARN of the link.
   /// [label] Label that is assigned to this link.
   /// [labelTemplate] Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
-  /// [linkConfiguration] Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
+  /// [linkConfiguration] Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `linkConfiguration` Block for details.
   /// [linkId] ID string that AWS generated as part of the link ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTypes] Types of data that the source account shares with the monitoring account.
   /// [sinkArn] ARN of the sink that is used for this link.
   /// [sinkIdentifier] Identifier of the sink to use to create this link.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   const LinkState({
     this.arn,
@@ -87,4 +87,3 @@ class LinkState {
     );
   }
 }
-

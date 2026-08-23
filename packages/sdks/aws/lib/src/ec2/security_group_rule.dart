@@ -6,9 +6,9 @@ import 'security_group_rule_state.dart';
 ///
 /// &gt; **NOTE:** Avoid using the `aws.ec2.SecurityGroupRule` resource, as it struggles with managing multiple CIDR blocks, and, due to the historical lack of unique IDs, tags and descriptions. To avoid these problems, use the current best practice of the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources with one CIDR block per rule.
 ///
-/// !&gt; **WARNING:** You should not use the `aws.ec2.SecurityGroupRule` resource in conjunction with `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or with an `aws.ec2.SecurityGroup` resource that has in-line rules. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
+/// &gt; **WARNING:** You should not use the `aws.ec2.SecurityGroupRule` resource in conjunction with `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or with an `aws.ec2.SecurityGroup` resource that has in-line rules. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
 ///
-/// &gt; **NOTE:** Setting `protocol = "all"` or `protocol = -1` with `from_port` and `to_port` will result in the EC2 API creating a security group rule with all ports open. This API behavior cannot be controlled by this provider and may generate warnings in the future.
+/// &gt; **NOTE:** Setting `protocol = "all"` or `protocol = -1` with `fromPort` and `toPort` will result in the EC2 API creating a security group rule with all ports open. This API behavior cannot be controlled by this provider and may generate warnings in the future.
 ///
 /// &gt; **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
 ///
@@ -101,6 +101,25 @@ import 'security_group_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygrouprule" "example" {
+///   type              = "ingress"
+///   from_port         = 0
+///   to_port           = 65535
+///   protocol          = "tcp"
+///   cidr_blocks       = [exampleAwsVpc.cidrBlock]
+///   ipv6_cidr_blocks  = [exampleAwsVpc.ipv6CidrBlock]
+///   security_group_id = "sg-123456"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +128,8 @@ import 'security_group_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.SecurityGroupRule;
 /// import com.pulumi.aws.ec2.SecurityGroupRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -248,6 +267,27 @@ import 'security_group_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_securitygrouprule" "allow_all" {
+///   type              = "egress"
+///   to_port           = 0
+///   protocol          = "-1"
+///   prefix_list_ids   = [aws_ec2_vpcendpoint.my_endpoint.prefix_list_id]
+///   from_port         = 0
+///   security_group_id = "sg-123456"
+/// }
+/// # ...
+/// resource "aws_ec2_vpcendpoint" "my_endpoint" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -257,8 +297,8 @@ import 'security_group_rule_state.dart';
 /// import com.pulumi.aws.ec2.VpcEndpoint;
 /// import com.pulumi.aws.ec2.SecurityGroupRule;
 /// import com.pulumi.aws.ec2.SecurityGroupRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -306,7 +346,7 @@ import 'security_group_rule_state.dart';
 ///
 ///
 /// You can also find a specific Prefix List using the `aws.ec2.getPrefixList`
-/// or `ec2_managed_prefix_list` data sources:
+/// or `ec2ManagedPrefixList` data sources:
 ///
 ///
 /// ```typescript
@@ -414,6 +454,31 @@ import 'security_group_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_ec2_getprefixlist" "s3" {
+///   name ="com.amazonaws.${data.aws_getregion.current.region}.s3"
+/// }
+///
+/// resource "aws_ec2_securitygrouprule" "s3_gateway_egress" {
+///   description       = "S3 Gateway Egress"
+///   type              = "egress"
+///   security_group_id = "sg-123456"
+///   from_port         = 443
+///   to_port           = 443
+///   protocol          = "tcp"
+///   prefix_list_ids   = [data.aws_ec2_getprefixlist.s3.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -426,8 +491,8 @@ import 'security_group_rule_state.dart';
 /// import com.pulumi.aws.ec2.inputs.GetPrefixListArgs;
 /// import com.pulumi.aws.ec2.SecurityGroupRule;
 /// import com.pulumi.aws.ec2.SecurityGroupRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -506,7 +571,7 @@ import 'security_group_rule_state.dart';
 /// Import a rule that has itself and an IPv6 CIDR block as sources:
 ///
 ///
-/// **Using `pulumi import` to import** Security Group Rules using the `security_group_id`, `type`, `protocol`, `from_port`, `to_port`, and source(s)/destination(s) (such as a `cidr_block`) separated by underscores (`_`). All parts are required. For example:
+/// **Using `pulumi import` to import** Security Group Rules using the `securityGroupId`, `type`, `protocol`, `fromPort`, `toPort`, and source(s)/destination(s) (such as a `cidrBlock`) separated by underscores (`_`). All parts are required. For example:
 ///
 /// **NOTE:** Not all rule permissions (e.g., not all of a rule's CIDR blocks) need to be imported for this provider to manage rule permissions. However, importing some of a rule's permissions but not others, and then making changes to the rule will result in the creation of an additional rule to capture the updated permissions. Rule permissions that were not imported are left intact in the original rule.
 ///
@@ -552,28 +617,28 @@ import 'security_group_rule_state.dart';
 /// $ pulumi import aws:ec2/securityGroupRule:SecurityGroupRule rule_name sg-656c65616e6f72_ingress_tcp_80_80_self_2001:db8::/48
 /// ```
 class SecurityGroupRule extends pulumi.CustomResource {
-  /// List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
+  /// List of CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
   late final pulumi.Output<List<String>?> cidrBlocks;
   /// Description of the rule.
   late final pulumi.Output<String?> description;
   /// Start port (or ICMP type number if protocol is "icmp" or "icmpv6").
   late final pulumi.Output<int> fromPort;
-  /// List of IPv6 CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
+  /// List of IPv6 CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
   late final pulumi.Output<List<String>?> ipv6CidrBlocks;
   /// List of Prefix List IDs.
   late final pulumi.Output<List<String>?> prefixListIds;
   /// Protocol. If not icmp, icmpv6, tcp, udp, or all use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
   late final pulumi.Output<String> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// &gt; **Note** Although `cidr_blocks`, `ipv6_cidr_blocks`, `prefix_list_ids`, and `source_security_group_id` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
+  /// &gt; **Note** Although `cidrBlocks`, `ipv6CidrBlocks`, `prefixListIds`, and `sourceSecurityGroupId` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
   late final pulumi.Output<String> region;
   /// Security group to apply this rule to.
   late final pulumi.Output<String> securityGroupId;
   /// If the `aws.ec2.SecurityGroupRule` resource has a single source or destination then this is the AWS Security Group Rule resource ID. Otherwise it is empty.
   late final pulumi.Output<String> securityGroupRuleId;
-  /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `source_security_group_id`.
+  /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `sourceSecurityGroupId`.
   late final pulumi.Output<bool?> self;
-  /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `self`.
+  /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `self`.
   late final pulumi.Output<String> sourceSecurityGroupId;
   /// End port (or ICMP code if protocol is "icmp").
   late final pulumi.Output<int> toPort;

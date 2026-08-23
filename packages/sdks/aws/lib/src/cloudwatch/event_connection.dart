@@ -95,6 +95,27 @@ import 'event_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventconnection" "test" {
+///   name               = "ngrok-connection"
+///   description        = "A connection description"
+///   authorization_type = "API_KEY"
+///   auth_parameters = {
+///     api_key = {
+///       key   = "x-signature"
+///       value = "1234"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'event_connection_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventConnectionArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersApiKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,8 +169,7 @@ import 'event_connection_state.dart';
 /// ```
 ///
 ///
-///
-/// ### Basic Authorization
+/// ### Example Usage Basic Authorization
 ///
 ///
 /// ```typescript
@@ -236,6 +256,27 @@ import 'event_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventconnection" "test" {
+///   name               = "ngrok-connection"
+///   description        = "A connection description"
+///   authorization_type = "BASIC"
+///   auth_parameters = {
+///     basic = {
+///       username = "user"
+///       password = "Pass1234!"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +287,8 @@ import 'event_connection_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventConnectionArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersBasicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,8 +330,7 @@ import 'event_connection_state.dart';
 /// ```
 ///
 ///
-///
-/// ### OAuth Authorization
+/// ### Example Usage OAuth Authorization
 ///
 ///
 /// ```typescript
@@ -481,6 +521,48 @@ import 'event_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventconnection" "test" {
+///   name               = "ngrok-connection"
+///   description        = "A connection description"
+///   authorization_type = "OAUTH_CLIENT_CREDENTIALS"
+///   auth_parameters = {
+///     oauth = {
+///       authorization_endpoint = "https://auth.url.com/endpoint"
+///       http_method            = "GET"
+///       client_parameters = {
+///         client_id     = "1234567890"
+///         client_secret = "Pass1234!"
+///       }
+///       oauth_http_parameters = {
+///         bodies = [{
+///           "key"           = "body-parameter-key"
+///           "value"         = "body-parameter-value"
+///           "isValueSecret" = false
+///         }]
+///         headers = [{
+///           "key"           = "header-parameter-key"
+///           "value"         = "header-parameter-value"
+///           "isValueSecret" = false
+///         }]
+///         query_strings = [{
+///           "key"           = "query-string-parameter-key"
+///           "value"         = "query-string-parameter-value"
+///           "isValueSecret" = false
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -493,8 +575,11 @@ import 'event_connection_state.dart';
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthClientParametersArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthOauthHttpParametersArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthOauthHttpParametersBodyArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthOauthHttpParametersHeaderArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthOauthHttpParametersQueryStringArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -573,8 +658,7 @@ import 'event_connection_state.dart';
 /// ```
 ///
 ///
-///
-/// ### Invocation Http Parameters
+/// ### Example Usage Invocation Http Parameters
 ///
 ///
 /// ```typescript
@@ -773,6 +857,48 @@ import 'event_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventconnection" "test" {
+///   name               = "ngrok-connection"
+///   description        = "A connection description"
+///   authorization_type = "BASIC"
+///   auth_parameters = {
+///     basic = {
+///       username = "user"
+///       password = "Pass1234!"
+///     }
+///     invocation_http_parameters = {
+///       bodies = [{
+///         "key"           = "body-parameter-key"
+///         "value"         = "body-parameter-value"
+///         "isValueSecret" = false
+///         }, {
+///         "key"           = "body-parameter-key2"
+///         "value"         = "body-parameter-value2"
+///         "isValueSecret" = true
+///       }]
+///       headers = [{
+///         "key"           = "header-parameter-key"
+///         "value"         = "header-parameter-value"
+///         "isValueSecret" = false
+///       }]
+///       query_strings = [{
+///         "key"           = "query-string-parameter-key"
+///         "value"         = "query-string-parameter-value"
+///         "isValueSecret" = false
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -784,8 +910,11 @@ import 'event_connection_state.dart';
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersBasicArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersInvocationHttpParametersArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersInvocationHttpParametersBodyArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersInvocationHttpParametersHeaderArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersInvocationHttpParametersQueryStringArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -866,8 +995,290 @@ import 'event_connection_state.dart';
 /// ```
 ///
 ///
+/// ### Example Usage OAuth Authorization with Connectivity Parameters
 ///
-/// ### CMK Encryption
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.cloudwatch.EventConnection("test", {
+///     name: "private-api-connection",
+///     description: "A connection to a private API",
+///     authorizationType: "OAUTH_CLIENT_CREDENTIALS",
+///     authParameters: {
+///         connectivityParameters: {
+///             resourceParameters: {
+///                 resourceConfigurationArn: "arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910",
+///             },
+///         },
+///         oauth: {
+///             authorizationEndpoint: "https://private-api.example.com/auth",
+///             httpMethod: "POST",
+///             clientParameters: {
+///                 clientId: "1234567890",
+///                 clientSecret: "Pass1234!",
+///             },
+///             oauthHttpParameters: {
+///                 bodies: [{
+///                     key: "grant_type",
+///                     value: "client_credentials",
+///                     isValueSecret: false,
+///                 }],
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.cloudwatch.EventConnection("test",
+///     name="private-api-connection",
+///     description="A connection to a private API",
+///     authorization_type="OAUTH_CLIENT_CREDENTIALS",
+///     auth_parameters={
+///         "connectivity_parameters": {
+///             "resource_parameters": {
+///                 "resource_configuration_arn": "arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910",
+///             },
+///         },
+///         "oauth": {
+///             "authorization_endpoint": "https://private-api.example.com/auth",
+///             "http_method": "POST",
+///             "client_parameters": {
+///                 "client_id": "1234567890",
+///                 "client_secret": "Pass1234!",
+///             },
+///             "oauth_http_parameters": {
+///                 "bodies": [{
+///                     "key": "grant_type",
+///                     "value": "client_credentials",
+///                     "is_value_secret": False,
+///                 }],
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var test = new Aws.CloudWatch.EventConnection("test", new()
+///     {
+///         Name = "private-api-connection",
+///         Description = "A connection to a private API",
+///         AuthorizationType = "OAUTH_CLIENT_CREDENTIALS",
+///         AuthParameters = new Aws.CloudWatch.Inputs.EventConnectionAuthParametersArgs
+///         {
+///             ConnectivityParameters = new Aws.CloudWatch.Inputs.EventConnectionAuthParametersConnectivityParametersArgs
+///             {
+///                 ResourceParameters = new Aws.CloudWatch.Inputs.EventConnectionAuthParametersConnectivityParametersResourceParametersArgs
+///                 {
+///                     ResourceConfigurationArn = "arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910",
+///                 },
+///             },
+///             Oauth = new Aws.CloudWatch.Inputs.EventConnectionAuthParametersOauthArgs
+///             {
+///                 AuthorizationEndpoint = "https://private-api.example.com/auth",
+///                 HttpMethod = "POST",
+///                 ClientParameters = new Aws.CloudWatch.Inputs.EventConnectionAuthParametersOauthClientParametersArgs
+///                 {
+///                     ClientId = "1234567890",
+///                     ClientSecret = "Pass1234!",
+///                 },
+///                 OauthHttpParameters = new Aws.CloudWatch.Inputs.EventConnectionAuthParametersOauthOauthHttpParametersArgs
+///                 {
+///                     Bodies = new[]
+///                     {
+///                         new Aws.CloudWatch.Inputs.EventConnectionAuthParametersOauthOauthHttpParametersBodyArgs
+///                         {
+///                             Key = "grant_type",
+///                             Value = "client_credentials",
+///                             IsValueSecret = false,
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudwatch.NewEventConnection(ctx, "test", &cloudwatch.EventConnectionArgs{
+/// 			Name:              pulumi.String("private-api-connection"),
+/// 			Description:       pulumi.String("A connection to a private API"),
+/// 			AuthorizationType: pulumi.String("OAUTH_CLIENT_CREDENTIALS"),
+/// 			AuthParameters: &cloudwatch.EventConnectionAuthParametersArgs{
+/// 				ConnectivityParameters: &cloudwatch.EventConnectionAuthParametersConnectivityParametersArgs{
+/// 					ResourceParameters: &cloudwatch.EventConnectionAuthParametersConnectivityParametersResourceParametersArgs{
+/// 						ResourceConfigurationArn: pulumi.String("arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910"),
+/// 					},
+/// 				},
+/// 				Oauth: &cloudwatch.EventConnectionAuthParametersOauthArgs{
+/// 					AuthorizationEndpoint: pulumi.String("https://private-api.example.com/auth"),
+/// 					HttpMethod:            pulumi.String("POST"),
+/// 					ClientParameters: &cloudwatch.EventConnectionAuthParametersOauthClientParametersArgs{
+/// 						ClientId:     pulumi.String("1234567890"),
+/// 						ClientSecret: pulumi.String("Pass1234!"),
+/// 					},
+/// 					OauthHttpParameters: &cloudwatch.EventConnectionAuthParametersOauthOauthHttpParametersArgs{
+/// 						Bodies: cloudwatch.EventConnectionAuthParametersOauthOauthHttpParametersBodyArray{
+/// 							&cloudwatch.EventConnectionAuthParametersOauthOauthHttpParametersBodyArgs{
+/// 								Key:           pulumi.String("grant_type"),
+/// 								Value:         pulumi.String("client_credentials"),
+/// 								IsValueSecret: pulumi.Bool(false),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventconnection" "test" {
+///   name               = "private-api-connection"
+///   description        = "A connection to a private API"
+///   authorization_type = "OAUTH_CLIENT_CREDENTIALS"
+///   auth_parameters = {
+///     connectivity_parameters = {
+///       resource_parameters = {
+///         resource_configuration_arn = "arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910"
+///       }
+///     }
+///     oauth = {
+///       authorization_endpoint = "https://private-api.example.com/auth"
+///       http_method            = "POST"
+///       client_parameters = {
+///         client_id     = "1234567890"
+///         client_secret = "Pass1234!"
+///       }
+///       oauth_http_parameters = {
+///         bodies = [{
+///           "key"           = "grant_type"
+///           "value"         = "client_credentials"
+///           "isValueSecret" = false
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.cloudwatch.EventConnection;
+/// import com.pulumi.aws.cloudwatch.EventConnectionArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersConnectivityParametersArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersConnectivityParametersResourceParametersArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthClientParametersArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthOauthHttpParametersArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersOauthOauthHttpParametersBodyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var test = new EventConnection("test", EventConnectionArgs.builder()
+///             .name("private-api-connection")
+///             .description("A connection to a private API")
+///             .authorizationType("OAUTH_CLIENT_CREDENTIALS")
+///             .authParameters(EventConnectionAuthParametersArgs.builder()
+///                 .connectivityParameters(EventConnectionAuthParametersConnectivityParametersArgs.builder()
+///                     .resourceParameters(EventConnectionAuthParametersConnectivityParametersResourceParametersArgs.builder()
+///                         .resourceConfigurationArn("arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910")
+///                         .build())
+///                     .build())
+///                 .oauth(EventConnectionAuthParametersOauthArgs.builder()
+///                     .authorizationEndpoint("https://private-api.example.com/auth")
+///                     .httpMethod("POST")
+///                     .clientParameters(EventConnectionAuthParametersOauthClientParametersArgs.builder()
+///                         .clientId("1234567890")
+///                         .clientSecret("Pass1234!")
+///                         .build())
+///                     .oauthHttpParameters(EventConnectionAuthParametersOauthOauthHttpParametersArgs.builder()
+///                         .bodies(EventConnectionAuthParametersOauthOauthHttpParametersBodyArgs.builder()
+///                             .key("grant_type")
+///                             .value("client_credentials")
+///                             .isValueSecret(false)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   test:
+///     type: aws:cloudwatch:EventConnection
+///     properties:
+///       name: private-api-connection
+///       description: A connection to a private API
+///       authorizationType: OAUTH_CLIENT_CREDENTIALS
+///       authParameters:
+///         connectivityParameters:
+///           resourceParameters:
+///             resourceConfigurationArn: arn:aws:vpc-lattice:us-east-1:12345678910:resourceconfiguration/rcfg-12345678910
+///         oauth:
+///           authorizationEndpoint: https://private-api.example.com/auth
+///           httpMethod: POST
+///           clientParameters:
+///             clientId: '1234567890'
+///             clientSecret: Pass1234!
+///           oauthHttpParameters:
+///             bodies:
+///               - key: grant_type
+///                 value: client_credentials
+///                 isValueSecret: false
+/// ```
+///
+///
+/// ### Example Usage CMK Encryption
 ///
 ///
 /// ```typescript
@@ -1113,7 +1524,7 @@ import 'event_connection_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Enable IAM User Permissions",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:%v:iam::%v:root", currentGetPartition.Partition, current.AccountId),
 /// 					},
 /// 					"Action":   "kms:*",
@@ -1122,7 +1533,7 @@ import 'event_connection_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "Allow use of the key",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:%v:iam::%v:root", currentGetPartition.Partition, current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -1131,7 +1542,7 @@ import 'event_connection_state.dart';
 /// 						"kms:GenerateDataKey",
 /// 					},
 /// 					"Resource": "*",
-/// 					"Condition": map[string]interface{}{
+/// 					"Condition": map[string]map[string]interface{}{
 /// 						"StringLike": map[string]interface{}{
 /// 							"kms:ViaService": "secretsmanager.*.amazonaws.com",
 /// 							"kms:EncryptionContext:SecretARN": []string{
@@ -1148,7 +1559,7 @@ import 'event_connection_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = kms.NewKey(ctx, "test", &kms.KeyArgs{
 /// 			DeletionWindowInDays: pulumi.Int(7),
-/// 			Policy:               pulumi.String(json0),
+/// 			Policy:               json0,
 /// 			Tags: pulumi.StringMap{
 /// 				"EventBridgeApiDestinations": pulumi.String("true"),
 /// 			},
@@ -1175,6 +1586,66 @@ import 'event_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_kms_key" "test" {
+///   deletion_window_in_days = 7
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "key-policy-example"
+///     "Statement" = [{
+///       "Sid"    = "Enable IAM User Permissions"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = "kms:*"
+///       "Resource" = "*"
+///       }, {
+///       "Sid"    = "Allow use of the key"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = ["kms:DescribeKey", "kms:Decrypt", "kms:GenerateDataKey"]
+///       "Resource" = "*"
+///       "Condition" = {
+///         "StringLike" = {
+///           "kms:ViaService"                  = "secretsmanager.*.amazonaws.com"
+///           "kms:EncryptionContext:SecretARN" = ["arn:aws:secretsmanager:*:*:secret:events!connection/*"]
+///         }
+///       }
+///     }]
+///   })
+///   tags = {
+///     "EventBridgeApiDestinations" = "true"
+///   }
+/// }
+/// resource "aws_cloudwatch_eventconnection" "test" {
+///   name               = "ngrok-connection"
+///   description        = "A connection description"
+///   authorization_type = "BASIC"
+///   auth_parameters = {
+///     basic = {
+///       username = "user"
+///       password = "Pass1234!"
+///     }
+///   }
+///   kms_key_identifier = example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1191,8 +1662,8 @@ import 'event_connection_state.dart';
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventConnectionAuthParametersBasicArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1325,10 +1796,22 @@ import 'event_connection_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EventBridge EventBridge connection using the `name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the connection.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Connections using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/eventConnection:EventConnection test ngrok-connection
+/// $ pulumi import aws:cloudwatch/eventConnection:EventConnection example example-connection
 /// ```
 class EventConnection extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the connection.

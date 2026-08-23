@@ -30,4 +30,3 @@ class GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig {
     );
   }
 }
-

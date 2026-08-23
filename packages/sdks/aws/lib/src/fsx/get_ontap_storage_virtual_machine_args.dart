@@ -11,18 +11,17 @@ class GetOntapStorageVirtualMachineArgs {
   /// Configuration block. Detailed below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineFilter>>? filters;
   /// Identifier of the storage virtual machine (e.g. `svm-12345678`).
-  ///
-  /// The arguments of this data source act as filters for querying the available ONTAP Storage Virtual Machines in the current region. The given filters must match exactly one Storage Virtual Machine whose data will be exported as attributes.
   final pulumi.Input<String>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+  /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetOntapStorageVirtualMachineArgs].
   /// [filters] Configuration block. Detailed below.
   /// [id] Identifier of the storage virtual machine (e.g. `svm-12345678`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Optional.
+  /// [tags] Map of tags assigned to the resource.
   const GetOntapStorageVirtualMachineArgs({
     this.filters,
     this.id,
@@ -48,4 +47,3 @@ class GetOntapStorageVirtualMachineArgs {
     );
   }
 }
-

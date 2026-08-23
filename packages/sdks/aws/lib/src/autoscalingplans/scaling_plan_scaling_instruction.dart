@@ -6,16 +6,16 @@ import 'scaling_plan_scaling_instruction_predefined_load_metric_specification.da
 import 'scaling_plan_scaling_instruction_target_tracking_configuration.dart';
 
 class ScalingPlanScalingInstruction {
-  /// Customized load metric to use for predictive scaling. You must specify either `customized_load_metric_specification` or `predefined_load_metric_specification` when configuring predictive scaling.
+  /// Customized load metric to use for predictive scaling. You must specify either `customizedLoadMetricSpecification` or `predefinedLoadMetricSpecification` when configuring predictive scaling.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_CustomizedLoadMetricSpecification.html).
   final pulumi.Input<ScalingPlanScalingInstructionCustomizedLoadMetricSpecification>? customizedLoadMetricSpecification;
   /// Boolean controlling whether dynamic scaling by AWS Auto Scaling is disabled. Defaults to `false`.
   final pulumi.Input<bool>? disableDynamicScaling;
-  /// Maximum capacity of the resource. The exception to this upper limit is if you specify a non-default setting for `predictive_scaling_max_capacity_behavior`.
+  /// Maximum capacity of the resource. The exception to this upper limit is if you specify a non-default setting for `predictiveScalingMaxCapacityBehavior`.
   final pulumi.Input<int> maxCapacity;
   /// Minimum capacity of the resource.
   final pulumi.Input<int> minCapacity;
-  /// Predefined load metric to use for predictive scaling. You must specify either `predefined_load_metric_specification` or `customized_load_metric_specification` when configuring predictive scaling.
+  /// Predefined load metric to use for predictive scaling. You must specify either `predefinedLoadMetricSpecification` or `customizedLoadMetricSpecification` when configuring predictive scaling.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_PredefinedLoadMetricSpecification.html).
   final pulumi.Input<ScalingPlanScalingInstructionPredefinedLoadMetricSpecification>? predefinedLoadMetricSpecification;
   /// Defines the behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity specified for the resource.
@@ -40,11 +40,11 @@ class ScalingPlanScalingInstruction {
   final pulumi.Input<List<ScalingPlanScalingInstructionTargetTrackingConfiguration>> targetTrackingConfigurations;
 
   /// Creates a new [ScalingPlanScalingInstruction].
-  /// [customizedLoadMetricSpecification] Customized load metric to use for predictive scaling. You must specify either `customized_load_metric_specification` or `predefined_load_metric_specification` when configuring predictive scaling.
+  /// [customizedLoadMetricSpecification] Customized load metric to use for predictive scaling. You must specify either `customizedLoadMetricSpecification` or `predefinedLoadMetricSpecification` when configuring predictive scaling.
   /// [disableDynamicScaling] Boolean controlling whether dynamic scaling by AWS Auto Scaling is disabled. Defaults to `false`.
-  /// [maxCapacity] Maximum capacity of the resource. The exception to this upper limit is if you specify a non-default setting for `predictive_scaling_max_capacity_behavior`.
+  /// [maxCapacity] Maximum capacity of the resource. The exception to this upper limit is if you specify a non-default setting for `predictiveScalingMaxCapacityBehavior`.
   /// [minCapacity] Minimum capacity of the resource.
-  /// [predefinedLoadMetricSpecification] Predefined load metric to use for predictive scaling. You must specify either `predefined_load_metric_specification` or `customized_load_metric_specification` when configuring predictive scaling.
+  /// [predefinedLoadMetricSpecification] Predefined load metric to use for predictive scaling. You must specify either `predefinedLoadMetricSpecification` or `customizedLoadMetricSpecification` when configuring predictive scaling.
   /// [predictiveScalingMaxCapacityBehavior] Defines the behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity specified for the resource.
   /// [predictiveScalingMaxCapacityBuffer] Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity.
   /// [predictiveScalingMode] Predictive scaling mode. Valid values: `ForecastAndScale`, `ForecastOnly`.
@@ -109,4 +109,3 @@ class ScalingPlanScalingInstruction {
     );
   }
 }
-

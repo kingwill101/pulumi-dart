@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreAgentRuntimeProtocolConfiguration {
-  /// Server protocol for the agent runtime. Valid values: `HTTP`, `MCP`, `A2A`.
+  /// Server protocol for the agent runtime. Valid values: `HTTP`, `MCP`, `A2A`, `AGUI`.
   final pulumi.Input<String>? serverProtocol;
 
   /// Creates a new [AgentcoreAgentRuntimeProtocolConfiguration].
-  /// [serverProtocol] Server protocol for the agent runtime. Valid values: `HTTP`, `MCP`, `A2A`.
+  /// [serverProtocol] Server protocol for the agent runtime. Valid values: `HTTP`, `MCP`, `A2A`, `AGUI`.
   const AgentcoreAgentRuntimeProtocolConfiguration({
     this.serverProtocol,
   });
@@ -24,4 +24,3 @@ class AgentcoreAgentRuntimeProtocolConfiguration {
     );
   }
 }
-

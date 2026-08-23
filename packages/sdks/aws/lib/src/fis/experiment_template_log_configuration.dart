@@ -5,17 +5,17 @@ import 'experiment_template_log_configuration_cloudwatch_logs_configuration.dart
 import 'experiment_template_log_configuration_s3_configuration.dart';
 
 class ExperimentTemplateLogConfiguration {
-  /// The configuration for experiment logging to Amazon CloudWatch Logs. See below.
+  /// Configuration for experiment logging to Amazon CloudWatch Logs. See below.
   final pulumi.Input<ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration>? cloudwatchLogsConfiguration;
-  /// The schema version. See [documentation](https://docs.aws.amazon.com/fis/latest/userguide/monitoring-logging.html#experiment-log-schema) for the list of schema versions.
+  /// Schema version. See [documentation](https://docs.aws.amazon.com/fis/latest/userguide/monitoring-logging.html#experiment-log-schema) for the list of schema versions.
   final pulumi.Input<int> logSchemaVersion;
-  /// The configuration for experiment logging to Amazon S3. See below.
+  /// Configuration for experiment logging to Amazon S3. See below.
   final pulumi.Input<ExperimentTemplateLogConfigurationS3Configuration>? s3Configuration;
 
   /// Creates a new [ExperimentTemplateLogConfiguration].
-  /// [cloudwatchLogsConfiguration] The configuration for experiment logging to Amazon CloudWatch Logs. See below.
-  /// [logSchemaVersion] The schema version. See [documentation](https://docs.aws.amazon.com/fis/latest/userguide/monitoring-logging.html#experiment-log-schema) for the list of schema versions.
-  /// [s3Configuration] The configuration for experiment logging to Amazon S3. See below.
+  /// [cloudwatchLogsConfiguration] Configuration for experiment logging to Amazon CloudWatch Logs. See below.
+  /// [logSchemaVersion] Schema version. See [documentation](https://docs.aws.amazon.com/fis/latest/userguide/monitoring-logging.html#experiment-log-schema) for the list of schema versions.
+  /// [s3Configuration] Configuration for experiment logging to Amazon S3. See below.
   const ExperimentTemplateLogConfiguration({
     this.cloudwatchLogsConfiguration,
     required this.logSchemaVersion,
@@ -38,4 +38,3 @@ class ExperimentTemplateLogConfiguration {
     );
   }
 }
-

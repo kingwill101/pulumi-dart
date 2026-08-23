@@ -14,15 +14,18 @@ class KeyValueStoreArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+  final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<KeyValueStoreTimeouts>? timeouts;
 
   /// Creates a new [KeyValueStoreArgs].
   /// [comment] Comment.
   /// [name] Unique name for your CloudFront KeyValueStore.
+  /// [tags] Optional.
   /// [timeouts] Optional.
   const KeyValueStoreArgs({
     this.comment,
     this.name,
+    this.tags,
     this.timeouts,
   });
 
@@ -30,6 +33,7 @@ class KeyValueStoreArgs {
     return <String, dynamic>{
       'comment': ?comment,
       'name': ?name,
+      'tags': ?tags,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<KeyValueStoreTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
@@ -38,8 +42,8 @@ class KeyValueStoreArgs {
     return KeyValueStoreArgs(
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyValueStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

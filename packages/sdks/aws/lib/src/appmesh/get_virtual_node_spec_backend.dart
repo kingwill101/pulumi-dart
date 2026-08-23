@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_backend_virtual_service.dart';
 
 class GetVirtualNodeSpecBackend {
+  /// Virtual service used as a backend for a virtual node. See `spec.backend.virtual_service` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendVirtualService>> virtualServices;
 
   /// Creates a new [GetVirtualNodeSpecBackend].
-  /// [virtualServices] Required.
+  /// [virtualServices] Virtual service used as a backend for a virtual node. See `spec.backend.virtual_service` Block for details.
   const GetVirtualNodeSpecBackend({
     required this.virtualServices,
   });
@@ -24,4 +25,3 @@ class GetVirtualNodeSpecBackend {
     );
   }
 }
-

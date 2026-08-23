@@ -89,7 +89,7 @@ import 'vpc_ipam_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamScope(ctx, "example", &ec2.VpcIpamScopeArgs{
-/// 			IpamId:      example.ID(),
+/// 			IpamId:      example.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("Another Scope"),
 /// 		})
 /// 		if err != nil {
@@ -97,6 +97,28 @@ import 'vpc_ipam_scope_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+/// }
+/// resource "aws_ec2_vpcipamscope" "example" {
+///   ipam_id     = aws_ec2_vpcipam.example.id
+///   description = "Another Scope"
 /// }
 /// ```
 /// ```java
@@ -112,8 +134,8 @@ import 'vpc_ipam_scope_state.dart';
 /// import com.pulumi.aws.ec2.inputs.VpcIpamOperatingRegionArgs;
 /// import com.pulumi.aws.ec2.VpcIpamScope;
 /// import com.pulumi.aws.ec2.VpcIpamScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,7 +187,7 @@ import 'vpc_ipam_scope_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import IPAMs using the `scope_id`. For example:
+/// Using `pulumi import`, import IPAMs using the `scopeId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/vpcIpamScope:VpcIpamScope example ipam-scope-0513c69f283d11dfb
@@ -186,7 +208,7 @@ class VpcIpamScope extends pulumi.CustomResource {
   late final pulumi.Output<int> poolCount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

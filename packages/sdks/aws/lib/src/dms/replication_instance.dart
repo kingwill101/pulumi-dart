@@ -7,7 +7,7 @@ import 'replication_instance_state.dart';
 ///
 /// ## Example Usage
 ///
-/// Create required roles and then create a DMS instance, setting the depends_on to the required role policy attachments.
+/// Create required roles and then create a DMS instance, setting the dependsOn to the required role policy attachments.
 ///
 ///
 /// ```typescript
@@ -359,6 +359,76 @@ import 'replication_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "dmsAssumeRole" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       identifiers = ["dms.amazonaws.com"]
+///       type        = "Service"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "dms-access-for-endpoint" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.dmsAssumeRole.json
+///   name               = "dms-access-for-endpoint"
+/// }
+/// resource "aws_iam_rolepolicyattachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"
+///   role       = aws_iam_role.dms-access-for-endpoint.name
+/// }
+/// resource "aws_iam_role" "dms-cloudwatch-logs-role" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.dmsAssumeRole.json
+///   name               = "dms-cloudwatch-logs-role"
+/// }
+/// resource "aws_iam_rolepolicyattachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
+///   role       = aws_iam_role.dms-cloudwatch-logs-role.name
+/// }
+/// resource "aws_iam_role" "dms-vpc-role" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.dmsAssumeRole.json
+///   name               = "dms-vpc-role"
+/// }
+/// resource "aws_iam_rolepolicyattachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
+///   role       = aws_iam_role.dms-vpc-role.name
+/// }
+/// # Create a new replication instance
+/// resource "aws_dms_replicationinstance" "test" {
+///   depends_on                   = [aws_iam_rolepolicyattachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role, aws_iam_rolepolicyattachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole, aws_iam_rolepolicyattachment.dms-vpc-role-AmazonDMSVPCManagementRole]
+///   allocated_storage            = 20
+///   apply_immediately            = true
+///   auto_minor_version_upgrade   = true
+///   availability_zone            = "us-west-2c"
+///   engine_version               = "3.1.4"
+///   kms_key_arn                  = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
+///   multi_az                     = false
+///   preferred_maintenance_window = "sun:10:30-sun:14:30"
+///   publicly_accessible          = true
+///   replication_instance_class   = "dms.t3.micro"
+///   replication_instance_id      = "test-dms-replication-instance-tf"
+///   replication_subnet_group_id  = test-dms-replication-subnet-group-tf.id
+///   tags = {
+///     "Name" = "test"
+///   }
+///   vpc_security_group_ids = ["sg-12345678"]
+/// }
+/// # Database Migration Service requires the below IAM Roles to be created before
+/// # replication instances can be created. See the DMS Documentation for
+/// # additional information: https://docs.aws.amazon.com/dms/latest/userguide/security-iam.html#CHAP_Security.APIRole
+/// #  * dms-vpc-role
+/// #  * dms-cloudwatch-logs-role
+/// #  * dms-access-for-endpoint
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -367,6 +437,8 @@ import 'replication_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -374,8 +446,8 @@ import 'replication_instance_state.dart';
 /// import com.pulumi.aws.dms.ReplicationInstance;
 /// import com.pulumi.aws.dms.ReplicationInstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -539,7 +611,7 @@ import 'replication_instance_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import replication instances using the `replication_instance_id`. For example:
+/// Using `pulumi import`, import replication instances using the `replicationInstanceId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dms/replicationInstance:ReplicationInstance test test-dms-replication-instance-tf
@@ -561,9 +633,9 @@ class ReplicationInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> engineVersion;
   /// Configuration block for settings required for Kerberos authentication. See below.
   late final pulumi.Output<ReplicationInstanceKerberosAuthenticationSettings?> kerberosAuthenticationSettings;
-  /// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+  /// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
   late final pulumi.Output<String> kmsKeyArn;
-  /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availability_zone` parameter if the `multi_az` parameter is set to `true`.
+  /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availabilityZone` parameter if the `multiAz` parameter is set to `true`.
   late final pulumi.Output<bool> multiAz;
   /// The type of IP address protocol used by a replication instance. Valid values: `IPV4`, `DUAL`.
   late final pulumi.Output<String> networkType;
@@ -585,9 +657,9 @@ class ReplicationInstance extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> replicationInstancePublicIps;
   /// A subnet group to associate with the replication instance.
   late final pulumi.Output<String> replicationSubnetGroupId;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A list of VPC security group IDs to be used with the replication instance. The VPC security groups must work with the VPC containing the replication instance.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;

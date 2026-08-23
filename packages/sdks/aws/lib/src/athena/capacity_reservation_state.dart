@@ -15,9 +15,9 @@ class CapacityReservationState {
   final pulumi.Input<String>? region;
   /// Status of the capacity reservation.
   final pulumi.Input<String>? status;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Number of data processing units requested. Must be at least `24` units.
   ///
@@ -31,8 +31,8 @@ class CapacityReservationState {
   /// [name] Name of the capacity reservation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of the capacity reservation.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targetDpus] Number of data processing units requested. Must be at least `24` units.
   /// [timeouts] Optional.
   const CapacityReservationState({
@@ -75,4 +75,3 @@ class CapacityReservationState {
     );
   }
 }
-

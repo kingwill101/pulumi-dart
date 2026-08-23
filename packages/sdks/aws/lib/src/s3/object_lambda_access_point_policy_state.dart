@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ObjectLambdaAccessPointPolicy resources.
 class ObjectLambdaAccessPointPolicyState {
-  /// The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   final pulumi.Input<String>? accountId;
-  /// Indicates whether this access point currently has a policy that allows public access.
+  /// Whether this access point currently has a policy that allows public access.
   final pulumi.Input<bool>? hasPublicAccessPolicy;
-  /// The name of the Object Lambda Access Point.
+  /// Name of the Object Lambda Access Point.
   final pulumi.Input<String>? name;
-  /// The Object Lambda Access Point resource policy document.
+  /// Object Lambda Access Point resource policy document.
   final pulumi.Input<String>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [ObjectLambdaAccessPointPolicyState].
-  /// [accountId] The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
-  /// [hasPublicAccessPolicy] Indicates whether this access point currently has a policy that allows public access.
-  /// [name] The name of the Object Lambda Access Point.
-  /// [policy] The Object Lambda Access Point resource policy document.
+  /// [accountId] AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// [hasPublicAccessPolicy] Whether this access point currently has a policy that allows public access.
+  /// [name] Name of the Object Lambda Access Point.
+  /// [policy] Object Lambda Access Point resource policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ObjectLambdaAccessPointPolicyState({
     this.accountId,
@@ -49,4 +49,3 @@ class ObjectLambdaAccessPointPolicyState {
     );
   }
 }
-

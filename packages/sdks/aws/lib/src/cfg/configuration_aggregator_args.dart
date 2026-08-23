@@ -17,9 +17,9 @@ class ConfigurationAggregatorArgs {
   final pulumi.Input<ConfigurationAggregatorOrganizationAggregationSource>? organizationAggregationSource;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Either `account_aggregation_source` or `organization_aggregation_source` must be specified.
+  /// Either `accountAggregationSource` or `organizationAggregationSource` must be specified.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ConfigurationAggregatorArgs].
@@ -27,7 +27,7 @@ class ConfigurationAggregatorArgs {
   /// [name] The name of the configuration aggregator.
   /// [organizationAggregationSource] The organization to aggregate config data from as documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ConfigurationAggregatorArgs({
     this.accountAggregationSource,
     this.name,
@@ -56,4 +56,3 @@ class ConfigurationAggregatorArgs {
     );
   }
 }
-

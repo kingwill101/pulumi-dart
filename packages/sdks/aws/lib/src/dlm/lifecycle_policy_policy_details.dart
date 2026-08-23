@@ -13,7 +13,7 @@ class LifecyclePolicyPolicyDetails {
   final pulumi.Input<bool>? copyTags;
   /// How often the policy should run and create snapshots or AMIs. valid values range from `1` to `7`. Default value is `1`.
   final pulumi.Input<int>? createInterval;
-  /// The event that triggers the event-based policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `event_source` configuration block.
+  /// The event that triggers the event-based policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `eventSource` configuration block.
   final pulumi.Input<LifecyclePolicyPolicyDetailsEventSource>? eventSource;
   /// Specifies exclusion parameters for volumes or instances for which you do not want to create snapshots or AMIs.  See the `exclusions` configuration block.
   final pulumi.Input<LifecyclePolicyPolicyDetailsExclusions>? exclusions;
@@ -34,16 +34,16 @@ class LifecyclePolicyPolicyDetails {
   final pulumi.Input<int>? retainInterval;
   /// See the `schedule` configuration block.
   final pulumi.Input<List<LifecyclePolicyPolicyDetailsSchedule>>? schedules;
-  /// A map of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted. Required when `policy_type` is `EBS_SNAPSHOT_MANAGEMENT` or `IMAGE_MANAGEMENT`. Must not be specified when `policy_type` is `EVENT_BASED_POLICY`.
+  /// A map of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted. Required when `policyType` is `EBS_SNAPSHOT_MANAGEMENT` or `IMAGE_MANAGEMENT`. Must not be specified when `policyType` is `EVENT_BASED_POLICY`.
   ///
-  /// &gt; Note: You cannot have overlapping lifecycle policies that share the same `target_tags`. Pulumi is unable to detect this at plan time but it will fail during apply.
+  /// &gt; Note: You cannot have overlapping lifecycle policies that share the same `targetTags`. Pulumi is unable to detect this at plan time but it will fail during apply.
   final pulumi.Input<Map<String, String>>? targetTags;
 
   /// Creates a new [LifecyclePolicyPolicyDetails].
   /// [action] The actions to be performed when the event-based policy is triggered. You can specify only one action per policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `action` configuration block.
   /// [copyTags] Optional.
   /// [createInterval] How often the policy should run and create snapshots or AMIs. valid values range from `1` to `7`. Default value is `1`.
-  /// [eventSource] The event that triggers the event-based policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `event_source` configuration block.
+  /// [eventSource] The event that triggers the event-based policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `eventSource` configuration block.
   /// [exclusions] Specifies exclusion parameters for volumes or instances for which you do not want to create snapshots or AMIs.  See the `exclusions` configuration block.
   /// [extendDeletion] snapshot or AMI retention behavior for the policy if the source volume or instance is deleted, or if the policy enters the error, disabled, or deleted state. Default value is `false`.
   /// [parameters] Optional.
@@ -54,7 +54,7 @@ class LifecyclePolicyPolicyDetails {
   /// [resourceTypes] A list of resource types that should be targeted by the lifecycle policy. Valid values are `VOLUME` and `INSTANCE`.
   /// [retainInterval] Specifies how long the policy should retain snapshots or AMIs before deleting them. valid values range from `2` to `14`. Default value is `7`.
   /// [schedules] See the `schedule` configuration block.
-  /// [targetTags] A map of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted. Required when `policy_type` is `EBS_SNAPSHOT_MANAGEMENT` or `IMAGE_MANAGEMENT`. Must not be specified when `policy_type` is `EVENT_BASED_POLICY`.
+  /// [targetTags] A map of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted. Required when `policyType` is `EBS_SNAPSHOT_MANAGEMENT` or `IMAGE_MANAGEMENT`. Must not be specified when `policyType` is `EVENT_BASED_POLICY`.
   const LifecyclePolicyPolicyDetails({
     this.action,
     this.copyTags,
@@ -113,4 +113,3 @@ class LifecyclePolicyPolicyDetails {
     );
   }
 }
-

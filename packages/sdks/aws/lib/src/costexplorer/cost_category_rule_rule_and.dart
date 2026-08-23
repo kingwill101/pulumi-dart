@@ -19,7 +19,7 @@ class CostCategoryRuleRuleAnd {
   final pulumi.Input<CostCategoryRuleRuleAndNot>? not;
   /// Return results that match both `Dimension` object.
   final pulumi.Input<List<CostCategoryRuleRuleAndOr>>? ors;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<CostCategoryRuleRuleAndTags>? tags;
 
   /// Creates a new [CostCategoryRuleRuleAnd].
@@ -28,7 +28,7 @@ class CostCategoryRuleRuleAnd {
   /// [dimension] Configuration block for the specific `Dimension` to use for `Expression`. See below.
   /// [not] Return results that match both `Dimension` object.
   /// [ors] Return results that match both `Dimension` object.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const CostCategoryRuleRuleAnd({
     this.ands,
     this.costCategory,
@@ -60,4 +60,3 @@ class CostCategoryRuleRuleAnd {
     );
   }
 }
-

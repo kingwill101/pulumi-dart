@@ -5,14 +5,14 @@ import 'analyzer_configuration_internal_access.dart';
 import 'analyzer_configuration_unused_access.dart';
 
 class AnalyzerConfiguration {
-  /// Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internal_access` Block for details.
+  /// Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internalAccess` Block for details.
   final pulumi.Input<AnalyzerConfigurationInternalAccess>? internalAccess;
-  /// Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unused_access` Block for details.
+  /// Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unusedAccess` Block for details.
   final pulumi.Input<AnalyzerConfigurationUnusedAccess>? unusedAccess;
 
   /// Creates a new [AnalyzerConfiguration].
-  /// [internalAccess] Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internal_access` Block for details.
-  /// [unusedAccess] Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unused_access` Block for details.
+  /// [internalAccess] Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internalAccess` Block for details.
+  /// [unusedAccess] Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unusedAccess` Block for details.
   const AnalyzerConfiguration({
     this.internalAccess,
     this.unusedAccess,
@@ -32,4 +32,3 @@ class AnalyzerConfiguration {
     );
   }
 }
-

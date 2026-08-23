@@ -73,6 +73,22 @@ import 'project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_project" "example" {
+///   project_name = "example"
+///   service_catalog_provisioning_details = {
+///     product_id = exampleAwsServicecatalogProduct.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'project_state.dart';
 /// import com.pulumi.aws.sagemaker.Project;
 /// import com.pulumi.aws.sagemaker.ProjectArgs;
 /// import com.pulumi.aws.sagemaker.inputs.ProjectServiceCatalogProvisioningDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,7 +134,7 @@ import 'project_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SageMaker AI Projects using the `project_name`. For example:
+/// Using `pulumi import`, import SageMaker AI Projects using the `projectName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/project:Project example example
@@ -136,9 +152,9 @@ class Project extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The product ID and provisioning artifact ID to provision a service catalog. See Service Catalog Provisioning Details below.
   late final pulumi.Output<ProjectServiceCatalogProvisioningDetails> serviceCatalogProvisioningDetails;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Project].

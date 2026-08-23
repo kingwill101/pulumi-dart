@@ -33,7 +33,7 @@ class VpcIpamPoolArgs {
   final pulumi.Input<String>? locale;
   /// The IP address source for pools in the public scope. Only used for provisioning IP address CIDRs to pools in the public scope. Valid values are `byoip` or `amazon`. Default is `byoip`.
   final pulumi.Input<String>? publicIpSource;
-  /// Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if `address_family = "ipv6"` and `public_ip_source = "byoip"`, default is `false`. This option is not available for IPv4 pool space or if `public_ip_source = "amazon"`. Setting this argument to `true` when it is not available may result in erroneous differences being reported.
+  /// Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if `addressFamily = "ipv6"` and `publicIpSource = "byoip"`, default is `false`. This option is not available for IPv4 pool space or if `publicIpSource = "amazon"`. Setting this argument to `true` when it is not available may result in erroneous differences being reported.
   final pulumi.Input<bool>? publiclyAdvertisable;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -41,7 +41,7 @@ class VpcIpamPoolArgs {
   final pulumi.Input<String>? sourceIpamPoolId;
   /// Resource to use to use to configure a resource planning IPAM Pool. If configured, the `locale` of the parent pool must match the region that the vpc resides in.
   final pulumi.Input<VpcIpamPoolSourceResource>? sourceResource;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VpcIpamPoolArgs].
@@ -57,11 +57,11 @@ class VpcIpamPoolArgs {
   /// [ipamScopeId] The ID of the scope in which you would like to create the IPAM pool.
   /// [locale] The locale in which you would like to create the IPAM pool. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. Possible values: Any AWS region, such as `us-east-1`.
   /// [publicIpSource] The IP address source for pools in the public scope. Only used for provisioning IP address CIDRs to pools in the public scope. Valid values are `byoip` or `amazon`. Default is `byoip`.
-  /// [publiclyAdvertisable] Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if `address_family = "ipv6"` and `public_ip_source = "byoip"`, default is `false`. This option is not available for IPv4 pool space or if `public_ip_source = "amazon"`. Setting this argument to `true` when it is not available may result in erroneous differences being reported.
+  /// [publiclyAdvertisable] Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if `addressFamily = "ipv6"` and `publicIpSource = "byoip"`, default is `false`. This option is not available for IPv4 pool space or if `publicIpSource = "amazon"`. Setting this argument to `true` when it is not available may result in erroneous differences being reported.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceIpamPoolId] The ID of the source IPAM pool. Use this argument to create a child pool within an existing pool.
   /// [sourceResource] Resource to use to use to configure a resource planning IPAM Pool. If configured, the `locale` of the parent pool must match the region that the vpc resides in.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const VpcIpamPoolArgs({
     required this.addressFamily,
     this.allocationDefaultNetmaskLength,
@@ -126,4 +126,3 @@ class VpcIpamPoolArgs {
     );
   }
 }
-

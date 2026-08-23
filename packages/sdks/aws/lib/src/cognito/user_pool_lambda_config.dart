@@ -8,11 +8,11 @@ import 'user_pool_lambda_config_pre_token_generation_config.dart';
 class UserPoolLambdaConfig {
   /// ARN of the lambda creating an authentication challenge.
   final pulumi.Input<String>? createAuthChallenge;
-  /// A custom email sender AWS Lambda trigger. See custom_email_sender Below.
+  /// A custom email sender AWS Lambda trigger. See customEmailSender Below.
   final pulumi.Input<UserPoolLambdaConfigCustomEmailSender>? customEmailSender;
   /// Custom Message AWS Lambda trigger.
   final pulumi.Input<String>? customMessage;
-  /// A custom SMS sender AWS Lambda trigger. See custom_sms_sender Below.
+  /// A custom SMS sender AWS Lambda trigger. See customSmsSender Below.
   final pulumi.Input<UserPoolLambdaConfigCustomSmsSender>? customSmsSender;
   /// Defines the authentication challenge.
   final pulumi.Input<String>? defineAuthChallenge;
@@ -26,7 +26,7 @@ class UserPoolLambdaConfig {
   final pulumi.Input<String>? preAuthentication;
   /// Pre-registration AWS Lambda trigger.
   final pulumi.Input<String>? preSignUp;
-  /// Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the lambda_arn of `pre_token_generation_config`.
+  /// Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the lambdaArn of `preTokenGenerationConfig`.
   final pulumi.Input<String>? preTokenGeneration;
   /// Allow to customize access tokens. See pre_token_configuration_type
   final pulumi.Input<UserPoolLambdaConfigPreTokenGenerationConfig>? preTokenGenerationConfig;
@@ -37,16 +37,16 @@ class UserPoolLambdaConfig {
 
   /// Creates a new [UserPoolLambdaConfig].
   /// [createAuthChallenge] ARN of the lambda creating an authentication challenge.
-  /// [customEmailSender] A custom email sender AWS Lambda trigger. See custom_email_sender Below.
+  /// [customEmailSender] A custom email sender AWS Lambda trigger. See customEmailSender Below.
   /// [customMessage] Custom Message AWS Lambda trigger.
-  /// [customSmsSender] A custom SMS sender AWS Lambda trigger. See custom_sms_sender Below.
+  /// [customSmsSender] A custom SMS sender AWS Lambda trigger. See customSmsSender Below.
   /// [defineAuthChallenge] Defines the authentication challenge.
   /// [kmsKeyId] The Amazon Resource Name of Key Management Service Customer master keys. Amazon Cognito uses the key to encrypt codes and temporary passwords sent to CustomEmailSender and CustomSMSSender.
   /// [postAuthentication] Post-authentication AWS Lambda trigger.
   /// [postConfirmation] Post-confirmation AWS Lambda trigger.
   /// [preAuthentication] Pre-authentication AWS Lambda trigger.
   /// [preSignUp] Pre-registration AWS Lambda trigger.
-  /// [preTokenGeneration] Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the lambda_arn of `pre_token_generation_config`.
+  /// [preTokenGeneration] Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the lambdaArn of `preTokenGenerationConfig`.
   /// [preTokenGenerationConfig] Allow to customize access tokens. See pre_token_configuration_type
   /// [userMigration] User migration Lambda config type.
   /// [verifyAuthChallengeResponse] Verifies the authentication challenge response.
@@ -105,4 +105,3 @@ class UserPoolLambdaConfig {
     );
   }
 }
-

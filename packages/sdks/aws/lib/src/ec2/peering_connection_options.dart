@@ -113,15 +113,15 @@ import 'peering_connection_options_state.dart';
 /// 			return err
 /// 		}
 /// 		fooVpcPeeringConnection, err := ec2.NewVpcPeeringConnection(ctx, "foo", &ec2.VpcPeeringConnectionArgs{
-/// 			VpcId:      foo.ID(),
-/// 			PeerVpcId:  bar.ID(),
+/// 			VpcId:      foo.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVpcId:  bar.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoAccept: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewPeeringConnectionOptions(ctx, "foo", &ec2.PeeringConnectionOptionsArgs{
-/// 			VpcPeeringConnectionId: fooVpcPeeringConnection.ID(),
+/// 			VpcPeeringConnectionId: fooVpcPeeringConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			Accepter: &ec2.PeeringConnectionOptionsAccepterArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
@@ -131,6 +131,33 @@ import 'peering_connection_options_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "foo" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_vpc" "bar" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+///   vpc_id      = aws_ec2_vpc.foo.id
+///   peer_vpc_id = aws_ec2_vpc.bar.id
+///   auto_accept = true
+/// }
+/// resource "aws_ec2_peeringconnectionoptions" "foo" {
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnection.foo.id
+///   accepter = {
+///     allow_remote_vpc_dns_resolution = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -146,8 +173,8 @@ import 'peering_connection_options_state.dart';
 /// import com.pulumi.aws.ec2.PeeringConnectionOptions;
 /// import com.pulumi.aws.ec2.PeeringConnectionOptionsArgs;
 /// import com.pulumi.aws.ec2.inputs.PeeringConnectionOptionsAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,8 +427,8 @@ import 'peering_connection_options_state.dart';
 /// 		}
 /// 		// Requester's side of the connection.
 /// 		peerVpcPeeringConnection, err := ec2.NewVpcPeeringConnection(ctx, "peer", &ec2.VpcPeeringConnectionArgs{
-/// 			VpcId:       main.ID(),
-/// 			PeerVpcId:   peerVpc.ID(),
+/// 			VpcId:       main.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVpcId:   peerVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerOwnerId: pulumi.String(peer.AccountId),
 /// 			AutoAccept:  pulumi.Bool(false),
 /// 			Tags: pulumi.StringMap{
@@ -413,7 +440,7 @@ import 'peering_connection_options_state.dart';
 /// 		}
 /// 		// Accepter's side of the connection.
 /// 		peerVpcPeeringConnectionAccepter, err := ec2.NewVpcPeeringConnectionAccepter(ctx, "peer", &ec2.VpcPeeringConnectionAccepterArgs{
-/// 			VpcPeeringConnectionId: peerVpcPeeringConnection.ID(),
+/// 			VpcPeeringConnectionId: peerVpcPeeringConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoAccept:             pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
 /// 				"Side": pulumi.String("Accepter"),
@@ -423,7 +450,7 @@ import 'peering_connection_options_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewPeeringConnectionOptions(ctx, "requester", &ec2.PeeringConnectionOptionsArgs{
-/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID(),
+/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID().ToIDOutput().ToStringOutput(),
 /// 			Requester: &ec2.PeeringConnectionOptionsRequesterArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
@@ -432,7 +459,7 @@ import 'peering_connection_options_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewPeeringConnectionOptions(ctx, "accepter", &ec2.PeeringConnectionOptionsArgs{
-/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID(),
+/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID().ToIDOutput().ToStringOutput(),
 /// 			Accepter: &ec2.PeeringConnectionOptionsAccepterArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
@@ -442,6 +469,59 @@ import 'peering_connection_options_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "peer" {
+/// }
+///
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block           = "10.0.0.0/16"
+///   enable_dns_support   = true
+///   enable_dns_hostnames = true
+/// }
+/// resource "aws_ec2_vpc" "peer" {
+///   cidr_block           = "10.1.0.0/16"
+///   enable_dns_support   = true
+///   enable_dns_hostnames = true
+/// }
+/// # Requester's side of the connection.
+/// resource "aws_ec2_vpcpeeringconnection" "peer" {
+///   vpc_id        = aws_ec2_vpc.main.id
+///   peer_vpc_id   = aws_ec2_vpc.peer.id
+///   peer_owner_id = data.aws_getcalleridentity.peer.account_id
+///   auto_accept   = false
+///   tags = {
+///     "Side" = "Requester"
+///   }
+/// }
+/// # Accepter's side of the connection.
+/// resource "aws_ec2_vpcpeeringconnectionaccepter" "peer" {
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnection.peer.id
+///   auto_accept               = true
+///   tags = {
+///     "Side" = "Accepter"
+///   }
+/// }
+/// resource "aws_ec2_peeringconnectionoptions" "requester" {
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnectionaccepter.peer.id
+///   requester = {
+///     allow_remote_vpc_dns_resolution = true
+///   }
+/// }
+/// resource "aws_ec2_peeringconnectionoptions" "accepter" {
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnectionaccepter.peer.id
+///   accepter = {
+///     allow_remote_vpc_dns_resolution = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -462,8 +542,8 @@ import 'peering_connection_options_state.dart';
 /// import com.pulumi.aws.ec2.PeeringConnectionOptionsArgs;
 /// import com.pulumi.aws.ec2.inputs.PeeringConnectionOptionsRequesterArgs;
 /// import com.pulumi.aws.ec2.inputs.PeeringConnectionOptionsAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,9 +4,9 @@ import 'tag_state.dart';
 
 /// Manages an individual Organizations resource tag. This resource should only be used in cases where Organizations resources are created outside Terraform (e.g., Organizations Accounts implicitly created by AWS Control Tower).
 ///
-/// &gt; **NOTE:** This tagging resource should not be combined with the Terraform resource for managing the parent resource. For example, using `aws.organizations.Account` and `aws.organizations.Tag` to manage tags of the same Organizations account will cause a perpetual difference where the `aws.organizations.Account` resource will try to remove the tag being added by the `aws.organizations.Tag` resource. However, if the parent resource is created in the same configuration (i.e., if you have no other choice), you should add `ignore_changes = [tags]` in the parent resource's lifecycle block. This ensures that Terraform ignores differences in tags managed via the separate tagging resource, avoiding the perpetual difference mentioned above.
+/// &gt; **NOTE:** This tagging resource should not be combined with the Terraform resource for managing the parent resource. For example, using `aws.organizations.Account` and `aws.organizations.Tag` to manage tags of the same Organizations account will cause a perpetual difference where the `aws.organizations.Account` resource will try to remove the tag being added by the `aws.organizations.Tag` resource. However, if the parent resource is created in the same configuration (i.e., if you have no other choice), you should add `ignoreChanges = [tags]` in the parent resource's lifecycle block. This ensures that Terraform ignores differences in tags managed via the separate tagging resource, avoiding the perpetual difference mentioned above.
 ///
-/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignoreTags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -86,7 +86,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = organizations.NewTag(ctx, "example", &organizations.TagArgs{
-/// 			ResourceId: exampleOrganizationalUnit.ID(),
+/// 			ResourceId: exampleOrganizationalUnit.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:        pulumi.String("ExampleKey"),
 /// 			Value:      pulumi.String("ExampleValue"),
 /// 		})
@@ -95,6 +95,28 @@ import 'tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "example" {
+/// }
+///
+/// resource "aws_organizations_organizationalunit" "example" {
+///   name      = "ExampleOU"
+///   parent_id = data.aws_organizations_getorganization.example.roots[0].id
+/// }
+/// resource "aws_organizations_tag" "example" {
+///   resource_id = aws_organizations_organizationalunit.example.id
+///   key         = "ExampleKey"
+///   value       = "ExampleValue"
 /// }
 /// ```
 /// ```java
@@ -109,8 +131,8 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.organizations.OrganizationalUnitArgs;
 /// import com.pulumi.aws.organizations.Tag;
 /// import com.pulumi.aws.organizations.TagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -10,20 +10,20 @@ class AggregateAuthorizationState {
   final pulumi.Input<String>? arn;
   /// The region authorized to collect aggregated data.
   final pulumi.Input<String>? authorizedAwsRegion;
-  /// The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
+  /// The region authorized to collect aggregated data. Use `authorizedAwsRegion` instead.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [AggregateAuthorizationState].
   /// [accountId] Account ID.
   /// [arn] The ARN of the authorization
   /// [authorizedAwsRegion] The region authorized to collect aggregated data.
-  /// [region] The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [region] The region authorized to collect aggregated data. Use `authorizedAwsRegion` instead.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const AggregateAuthorizationState({
     this.accountId,
     this.arn,
@@ -55,4 +55,3 @@ class AggregateAuthorizationState {
     );
   }
 }
-

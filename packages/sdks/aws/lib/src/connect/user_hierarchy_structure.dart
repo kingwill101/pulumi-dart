@@ -83,6 +83,24 @@ import 'user_hierarchy_structure_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_userhierarchystructure" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   hierarchy_structure = {
+///     level_one = {
+///       name = "levelone"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +111,8 @@ import 'user_hierarchy_structure_state.dart';
 /// import com.pulumi.aws.connect.UserHierarchyStructureArgs;
 /// import com.pulumi.aws.connect.inputs.UserHierarchyStructureHierarchyStructureArgs;
 /// import com.pulumi.aws.connect.inputs.UserHierarchyStructureHierarchyStructureLevelOneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,6 +275,36 @@ import 'user_hierarchy_structure_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_userhierarchystructure" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   hierarchy_structure = {
+///     level_one = {
+///       name = "levelone"
+///     }
+///     level_two = {
+///       name = "leveltwo"
+///     }
+///     level_three = {
+///       name = "levelthree"
+///     }
+///     level_four = {
+///       name = "levelfour"
+///     }
+///     level_five = {
+///       name = "levelfive"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -271,8 +319,8 @@ import 'user_hierarchy_structure_state.dart';
 /// import com.pulumi.aws.connect.inputs.UserHierarchyStructureHierarchyStructureLevelThreeArgs;
 /// import com.pulumi.aws.connect.inputs.UserHierarchyStructureHierarchyStructureLevelFourArgs;
 /// import com.pulumi.aws.connect.inputs.UserHierarchyStructureHierarchyStructureLevelFiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,13 +378,13 @@ import 'user_hierarchy_structure_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect User Hierarchy Structures using the `instance_id`. For example:
+/// Using `pulumi import`, import Amazon Connect User Hierarchy Structures using the `instanceId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/userHierarchyStructure:UserHierarchyStructure example f1288a1f-6193-445a-b47e-af739b2
 /// ```
 class UserHierarchyStructure extends pulumi.CustomResource {
-  /// A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
+  /// A block that defines the hierarchy structure's levels. The `hierarchyStructure` block is documented below.
   late final pulumi.Output<UserHierarchyStructureHierarchyStructure> hierarchyStructure;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;

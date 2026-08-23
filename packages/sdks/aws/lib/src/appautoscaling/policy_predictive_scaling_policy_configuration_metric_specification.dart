@@ -9,29 +9,28 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification_pred
 import 'policy_predictive_scaling_policy_configuration_metric_specification_predefined_scaling_metric_specification.dart';
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecification {
-  /// Customized capacity metric specification. See supported fields below.
+  /// Customized capacity metric specification. See `predictive_scaling_policy_configuration.metric_specification.customized_capacity_metric_specification` Block for details.
   final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecification>? customizedCapacityMetricSpecification;
-  /// Customized load metric specification. See supported fields below.
+  /// Customized load metric specification. See `predictive_scaling_policy_configuration.metric_specification.customized_load_metric_specification` Block for details.
   final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification>? customizedLoadMetricSpecification;
-  /// Customized scaling metric specification. See supported fields below.
+  /// Customized scaling metric specification. See `predictive_scaling_policy_configuration.metric_specification.customized_scaling_metric_specification` Block for details.
   final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecification>? customizedScalingMetricSpecification;
-  /// Predefined load metric specification. See supported fields below.
+  /// Predefined load metric specification. See `predictive_scaling_policy_configuration.metric_specification.predefined_load_metric_specification` Block for details.
   final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification>? predefinedLoadMetricSpecification;
-  /// Predefined metric pair specification that determines the appropriate scaling metric and load metric to use. See supported fields below.
+  /// Predefined metric pair specification that determines the appropriate scaling metric and load metric to use. See `predictive_scaling_policy_configuration.metric_specification.predefined_metric_pair_specification` Block for details.
   final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedMetricPairSpecification>? predefinedMetricPairSpecification;
-  /// Predefined scaling metric specification. See supported fields below.
+  /// Predefined scaling metric specification. See `predictive_scaling_policy_configuration.metric_specification.predefined_scaling_metric_specification` Block for details.
   final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification>? predefinedScalingMetricSpecification;
-  /// Target utilization.
   final pulumi.Input<String> targetValue;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecification].
-  /// [customizedCapacityMetricSpecification] Customized capacity metric specification. See supported fields below.
-  /// [customizedLoadMetricSpecification] Customized load metric specification. See supported fields below.
-  /// [customizedScalingMetricSpecification] Customized scaling metric specification. See supported fields below.
-  /// [predefinedLoadMetricSpecification] Predefined load metric specification. See supported fields below.
-  /// [predefinedMetricPairSpecification] Predefined metric pair specification that determines the appropriate scaling metric and load metric to use. See supported fields below.
-  /// [predefinedScalingMetricSpecification] Predefined scaling metric specification. See supported fields below.
-  /// [targetValue] Target utilization.
+  /// [customizedCapacityMetricSpecification] Customized capacity metric specification. See `predictive_scaling_policy_configuration.metric_specification.customized_capacity_metric_specification` Block for details.
+  /// [customizedLoadMetricSpecification] Customized load metric specification. See `predictive_scaling_policy_configuration.metric_specification.customized_load_metric_specification` Block for details.
+  /// [customizedScalingMetricSpecification] Customized scaling metric specification. See `predictive_scaling_policy_configuration.metric_specification.customized_scaling_metric_specification` Block for details.
+  /// [predefinedLoadMetricSpecification] Predefined load metric specification. See `predictive_scaling_policy_configuration.metric_specification.predefined_load_metric_specification` Block for details.
+  /// [predefinedMetricPairSpecification] Predefined metric pair specification that determines the appropriate scaling metric and load metric to use. See `predictive_scaling_policy_configuration.metric_specification.predefined_metric_pair_specification` Block for details.
+  /// [predefinedScalingMetricSpecification] Predefined scaling metric specification. See `predictive_scaling_policy_configuration.metric_specification.predefined_scaling_metric_specification` Block for details.
+  /// [targetValue] Required.
   const PolicyPredictiveScalingPolicyConfigurationMetricSpecification({
     this.customizedCapacityMetricSpecification,
     this.customizedLoadMetricSpecification,
@@ -66,4 +65,3 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecification {
     );
   }
 }
-

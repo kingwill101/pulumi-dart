@@ -62,7 +62,7 @@ import 'instance_fleet_state.dart';
 ///     cluster_id=cluster["id"],
 ///     instance_type_configs=[
 ///         {
-///             "bid_price_as_percentage_of_on_demand_price": 100,
+///             "bid_price_as_percentage_of_on_demand_price": float(100),
 ///             "ebs_configs": [{
 ///                 "size": 100,
 ///                 "type": "gp2",
@@ -72,7 +72,7 @@ import 'instance_fleet_state.dart';
 ///             "weighted_capacity": 1,
 ///         },
 ///         {
-///             "bid_price_as_percentage_of_on_demand_price": 100,
+///             "bid_price_as_percentage_of_on_demand_price": float(100),
 ///             "ebs_configs": [{
 ///                 "size": 100,
 ///                 "type": "gp2",
@@ -217,6 +217,50 @@ import 'instance_fleet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_instancefleet" "task" {
+///   cluster_id = cluster.id
+///   instance_type_configs {
+///     bid_price_as_percentage_of_on_demand_price = 100
+///     ebs_configs {
+///       size                 = 100
+///       type                 = "gp2"
+///       volumes_per_instance = 1
+///     }
+///     instance_type     = "m4.xlarge"
+///     weighted_capacity = 1
+///   }
+///   instance_type_configs {
+///     bid_price_as_percentage_of_on_demand_price = 100
+///     ebs_configs {
+///       size                 = 100
+///       type                 = "gp2"
+///       volumes_per_instance = 1
+///     }
+///     instance_type     = "m4.2xlarge"
+///     weighted_capacity = 2
+///   }
+///   launch_specifications = {
+///     spot_specifications = [{
+///       "allocationStrategy"     = "capacity-optimized"
+///       "blockDurationMinutes"   = 0
+///       "timeoutAction"          = "TERMINATE_CLUSTER"
+///       "timeoutDurationMinutes" = 10
+///     }]
+///   }
+///   name                      = "task fleet"
+///   target_on_demand_capacity = 1
+///   target_spot_capacity      = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,9 +270,11 @@ import 'instance_fleet_state.dart';
 /// import com.pulumi.aws.emr.InstanceFleet;
 /// import com.pulumi.aws.emr.InstanceFleetArgs;
 /// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigArgs;
+/// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs;
 /// import com.pulumi.aws.emr.inputs.InstanceFleetLaunchSpecificationsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.emr.inputs.InstanceFleetLaunchSpecificationsSpotSpecificationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

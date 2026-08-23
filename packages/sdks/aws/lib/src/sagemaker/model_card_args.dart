@@ -19,7 +19,7 @@ class ModelCardArgs {
   final pulumi.Input<String>? region;
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
   final pulumi.Input<ModelCardSecurityConfig>? securityConfig;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ModelCardTimeouts>? timeouts;
 
@@ -29,7 +29,7 @@ class ModelCardArgs {
   /// [modelCardStatus] Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityConfig] KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
-  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const ModelCardArgs({
     required this.content,
@@ -65,4 +65,3 @@ class ModelCardArgs {
     );
   }
 }
-

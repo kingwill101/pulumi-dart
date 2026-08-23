@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField {
-  /// The name of the password field.
   final pulumi.Input<String> identifier;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField].
-  /// [identifier] The name of the password field.
+  /// [identifier] Required.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField({
     required this.identifier,
   });
@@ -24,4 +23,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

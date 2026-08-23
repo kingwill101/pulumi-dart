@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_knowledge_base_inference_configuration_text.dart';
 
 class AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration {
+  /// Contains inference configurations for a text prompt. See Text Inference Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText>? text;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration].
-  /// [text] Optional.
+  /// [text] Contains inference configurations for a text prompt. See Text Inference Configuration for more information.
   const AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration({
     this.text,
   });
@@ -24,4 +25,3 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration {
     );
   }
 }
-

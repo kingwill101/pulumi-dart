@@ -65,6 +65,22 @@ import 'delegated_admin_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_inspector2_delegatedadminaccount" "example" {
+///   account_id = data.aws_getcalleridentity.current.account_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +91,8 @@ import 'delegated_admin_account_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.inspector2.DelegatedAdminAccount;
 /// import com.pulumi.aws.inspector2.DelegatedAdminAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +130,7 @@ import 'delegated_admin_account_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Inspector Delegated Admin Account using the `account_id`. For example:
+/// Using `pulumi import`, import Inspector Delegated Admin Account using the `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:inspector2/delegatedAdminAccount:DelegatedAdminAccount example 123456789012

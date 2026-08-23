@@ -52,6 +52,18 @@ import 'access_grants_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -59,8 +71,8 @@ import 'access_grants_instance_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3control.AccessGrantsInstance;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,6 +146,19 @@ import 'access_grants_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_accessgrantsinstance" "example" {
+///   identity_center_arn = "arn:aws:sso:::instance/ssoins-890759e9c7bfdc1d"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +167,8 @@ import 'access_grants_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3control.AccessGrantsInstance;
 /// import com.pulumi.aws.s3control.AccessGrantsInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,7 +198,7 @@ import 'access_grants_instance_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Access Grants instances using the `account_id`. For example:
+/// Using `pulumi import`, import S3 Access Grants instances using the `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrantsInstance:AccessGrantsInstance example 123456789012
@@ -183,17 +208,17 @@ class AccessGrantsInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> accessGrantsInstanceArn;
   /// Unique ID of the S3 Access Grants instance.
   late final pulumi.Output<String> accessGrantsInstanceId;
-  /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> accountId;
-  /// The ARN of the AWS IAM Identity Center instance application; a subresource of the original Identity Center instance.
+  /// ARN of the AWS IAM Identity Center instance application; a subresource of the original Identity Center instance.
   late final pulumi.Output<String> identityCenterApplicationArn;
-  /// The ARN of the AWS IAM Identity Center instance associated with the S3 Access Grants instance.
+  /// ARN of the AWS IAM Identity Center instance associated with the S3 Access Grants instance.
   late final pulumi.Output<String?> identityCenterArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AccessGrantsInstance].

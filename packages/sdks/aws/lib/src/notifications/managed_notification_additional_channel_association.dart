@@ -83,6 +83,24 @@ import 'managed_notification_additional_channel_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_notifications_contactsemailcontact" "example" {
+///   name          = "example-contact"
+///   email_address = "example@example.com"
+/// }
+/// resource "aws_notifications_managednotificationadditionalchannelassociation" "example" {
+///   channel_arn              = aws_notifications_contactsemailcontact.example.arn
+///   managed_notification_arn = "arn:aws:notifications::123456789012:managed-notification-configuration/category/AWS-Health/sub-category/Security"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +111,8 @@ import 'managed_notification_additional_channel_association_state.dart';
 /// import com.pulumi.aws.notifications.ContactsEmailContactArgs;
 /// import com.pulumi.aws.notifications.ManagedNotificationAdditionalChannelAssociation;
 /// import com.pulumi.aws.notifications.ManagedNotificationAdditionalChannelAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

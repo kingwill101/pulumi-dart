@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupCapacityReservationSpecificationCapacityReservationTarget {
-  /// List of On-Demand Capacity Reservation Ids. Conflicts with `capacity_reservation_resource_group_arns`.
+  /// List of On-Demand Capacity Reservation Ids. Conflicts with `capacityReservationResourceGroupArns`.
   final pulumi.Input<List<String>>? capacityReservationIds;
-  /// List of On-Demand Capacity Reservation Resource Group Arns. Conflicts with `capacity_reservation_ids`.
+  /// List of On-Demand Capacity Reservation Resource Group Arns. Conflicts with `capacityReservationIds`.
   final pulumi.Input<List<String>>? capacityReservationResourceGroupArns;
 
   /// Creates a new [GroupCapacityReservationSpecificationCapacityReservationTarget].
-  /// [capacityReservationIds] List of On-Demand Capacity Reservation Ids. Conflicts with `capacity_reservation_resource_group_arns`.
-  /// [capacityReservationResourceGroupArns] List of On-Demand Capacity Reservation Resource Group Arns. Conflicts with `capacity_reservation_ids`.
+  /// [capacityReservationIds] List of On-Demand Capacity Reservation Ids. Conflicts with `capacityReservationResourceGroupArns`.
+  /// [capacityReservationResourceGroupArns] List of On-Demand Capacity Reservation Resource Group Arns. Conflicts with `capacityReservationIds`.
   const GroupCapacityReservationSpecificationCapacityReservationTarget({
     this.capacityReservationIds,
     this.capacityReservationResourceGroupArns,
@@ -30,4 +30,3 @@ class GroupCapacityReservationSpecificationCapacityReservationTarget {
     );
   }
 }
-

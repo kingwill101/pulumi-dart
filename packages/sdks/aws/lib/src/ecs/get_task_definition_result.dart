@@ -13,72 +13,72 @@ class GetTaskDefinitionResult {
   final String arn;
   /// ARN of the Task Definition with the trailing `revision` removed. This may be useful for situations where the latest task definition is always desired. If a revision isn't specified, the latest ACTIVE revision is used. See the [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html#ECS-StartTask-request-taskDefinition) for details.
   final String arnWithoutRevision;
-  /// A list of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
+  /// List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
   final String containerDefinitions;
-  /// Number of cpu units used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
+  /// Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   final String cpu;
   /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   final bool enableFaultInjection;
-  /// The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
+  /// Amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See `ephemeralStorage` Block.
   final List<GetTaskDefinitionEphemeralStorage> ephemeralStorages;
   /// ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
   final String executionRoleArn;
-  /// A unique name for your task definition.
+  /// Unique name for your task definition.
   /// The following arguments are optional:
   final String family;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   /// IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
   final String ipcMode;
-  /// Amount (in MiB) of memory used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
+  /// Amount (in MiB) of memory used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   final String memory;
   /// Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
   final String networkMode;
   /// Process namespace to use for the containers in the task. The valid values are `host` and `task`.
   final String pidMode;
-  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
+  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`. See `placementConstraints` Block.
   final List<GetTaskDefinitionPlacementConstraint> placementConstraints;
-  /// Configuration block for the App Mesh proxy. Detailed below.
+  /// Configuration block for the App Mesh proxy. See `proxyConfiguration` Block.
   final List<GetTaskDefinitionProxyConfiguration> proxyConfigurations;
   final String region;
   /// Set of launch types required by the task. The valid values are `EC2` and `FARGATE`.
   final List<String> requiresCompatibilities;
   /// Revision of the task in a particular family.
   final int revision;
-  /// Configuration block for runtime_platform that containers in your task may use.
+  /// Configuration block for runtimePlatform that containers in your task may use.
   final List<GetTaskDefinitionRuntimePlatform> runtimePlatforms;
   /// Status of the task definition.
   final String status;
   final String taskDefinition;
   /// ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   final String taskRoleArn;
-  /// Configuration block for volumes that containers in your task may use. Detailed below.
+  /// Configuration block for volumes that containers in your task may use. See `volume` Block for details.
   final List<GetTaskDefinitionVolume> volumes;
 
   /// Creates a new [GetTaskDefinitionResult].
   /// [arn] ARN of the task definition.
   /// [arnWithoutRevision] ARN of the Task Definition with the trailing `revision` removed. This may be useful for situations where the latest task definition is always desired. If a revision isn't specified, the latest ACTIVE revision is used. See the [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html#ECS-StartTask-request-taskDefinition) for details.
-  /// [containerDefinitions] A list of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
-  /// [cpu] Number of cpu units used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
+  /// [containerDefinitions] List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
+  /// [cpu] Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   /// [enableFaultInjection] Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
-  /// [ephemeralStorages] The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
+  /// [ephemeralStorages] Amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See `ephemeralStorage` Block.
   /// [executionRoleArn] ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
-  /// [family] A unique name for your task definition.
+  /// [family] Unique name for your task definition.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipcMode] IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
-  /// [memory] Amount (in MiB) of memory used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
+  /// [memory] Amount (in MiB) of memory used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   /// [networkMode] Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
   /// [pidMode] Process namespace to use for the containers in the task. The valid values are `host` and `task`.
-  /// [placementConstraints] Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
-  /// [proxyConfigurations] Configuration block for the App Mesh proxy. Detailed below.
+  /// [placementConstraints] Configuration block for rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`. See `placementConstraints` Block.
+  /// [proxyConfigurations] Configuration block for the App Mesh proxy. See `proxyConfiguration` Block.
   /// [region] Required.
   /// [requiresCompatibilities] Set of launch types required by the task. The valid values are `EC2` and `FARGATE`.
   /// [revision] Revision of the task in a particular family.
-  /// [runtimePlatforms] Configuration block for runtime_platform that containers in your task may use.
+  /// [runtimePlatforms] Configuration block for runtimePlatform that containers in your task may use.
   /// [status] Status of the task definition.
   /// [taskDefinition] Required.
   /// [taskRoleArn] ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
-  /// [volumes] Configuration block for volumes that containers in your task may use. Detailed below.
+  /// [volumes] Configuration block for volumes that containers in your task may use. See `volume` Block for details.
   const GetTaskDefinitionResult({
     required this.arn,
     required this.arnWithoutRevision,
@@ -161,4 +161,3 @@ class GetTaskDefinitionResult {
     );
   }
 }
-

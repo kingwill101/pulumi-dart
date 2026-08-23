@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterArgs {
   /// The type of HSM module in the cluster. Currently, `hsm1.medium` and `hsm2m.medium` are supported.
   final pulumi.Input<String> hsmType;
-  /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsm_type` is `hsm2m.medium`.
+  /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsmType` is `hsm2m.medium`.
   final pulumi.Input<String>? mode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -17,16 +17,16 @@ class ClusterArgs {
   final pulumi.Input<String>? sourceBackupIdentifier;
   /// The IDs of subnets in which cluster will operate.
   final pulumi.Input<List<String>> subnetIds;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ClusterArgs].
   /// [hsmType] The type of HSM module in the cluster. Currently, `hsm1.medium` and `hsm2m.medium` are supported.
-  /// [mode] The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsm_type` is `hsm2m.medium`.
+  /// [mode] The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsmType` is `hsm2m.medium`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceBackupIdentifier] ID of Cloud HSM v2 cluster backup to be restored.
   /// [subnetIds] The IDs of subnets in which cluster will operate.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ClusterArgs({
     required this.hsmType,
     this.mode,
@@ -58,4 +58,3 @@ class ClusterArgs {
     );
   }
 }
-

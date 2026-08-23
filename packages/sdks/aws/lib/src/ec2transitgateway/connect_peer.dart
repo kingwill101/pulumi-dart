@@ -81,13 +81,32 @@ import 'connect_peer_state.dart';
 /// 			InsideCidrBlocks: pulumi.StringArray{
 /// 				pulumi.String("169.254.100.0/29"),
 /// 			},
-/// 			TransitGatewayAttachmentId: example.ID(),
+/// 			TransitGatewayAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_connect" "example" {
+///   transport_attachment_id = exampleAwsEc2TransitGatewayVpcAttachment.id
+///   transit_gateway_id      = exampleAwsEc2TransitGateway.id
+/// }
+/// resource "aws_ec2transitgateway_connectpeer" "example" {
+///   peer_address                  = "10.1.2.3"
+///   inside_cidr_blocks            = ["169.254.100.0/29"]
+///   transit_gateway_attachment_id = aws_ec2transitgateway_connect.example.id
 /// }
 /// ```
 /// ```java
@@ -100,8 +119,8 @@ import 'connect_peer_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.ConnectArgs;
 /// import com.pulumi.aws.ec2transitgateway.ConnectPeer;
 /// import com.pulumi.aws.ec2transitgateway.ConnectPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,15 +182,15 @@ class ConnectPeer extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> bgpTransitGatewayAddresses;
   /// The CIDR block that will be used for addressing within the tunnel. It must contain exactly one IPv4 CIDR block and up to one IPv6 CIDR block. The IPv4 CIDR block must be /29 size and must be within 169.254.0.0/16 range, with exception of: 169.254.0.0/29, 169.254.1.0/29, 169.254.2.0/29, 169.254.3.0/29, 169.254.4.0/29, 169.254.5.0/29, 169.254.169.248/29. The IPv6 CIDR block must be /125 size and must be within fd00::/8. The first IP from each CIDR block is assigned for customer gateway, the second and third is for Transit Gateway (An example: from range 169.254.100.0/29, .1 is assigned to customer gateway and .2 and .3 are assigned to Transit Gateway)
   late final pulumi.Output<List<String>> insideCidrBlocks;
-  /// The IP addressed assigned to customer device, which will be used as tunnel endpoint. It can be IPv4 or IPv6 address, but must be the same address family as `transit_gateway_address`
+  /// The IP addressed assigned to customer device, which will be used as tunnel endpoint. It can be IPv4 or IPv6 address, but must be the same address family as `transitGatewayAddress`
   late final pulumi.Output<String> peerAddress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value tags for the EC2 Transit Gateway Connect Peer. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Connect Peer. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The IP address assigned to Transit Gateway, which will be used as tunnel endpoint. This address must be from associated Transit Gateway CIDR block. The address must be from the same address family as `peer_address`. If not set explicitly, it will be selected from associated Transit Gateway CIDR blocks
+  /// The IP address assigned to Transit Gateway, which will be used as tunnel endpoint. This address must be from associated Transit Gateway CIDR block. The address must be from the same address family as `peerAddress`. If not set explicitly, it will be selected from associated Transit Gateway CIDR blocks
   late final pulumi.Output<String> transitGatewayAddress;
   /// The Transit Gateway Connect
   late final pulumi.Output<String> transitGatewayAttachmentId;

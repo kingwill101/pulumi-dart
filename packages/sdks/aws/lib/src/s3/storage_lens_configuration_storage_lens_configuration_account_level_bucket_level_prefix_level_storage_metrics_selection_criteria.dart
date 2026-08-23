@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria {
-  /// The delimiter of the selection criteria being used.
+  /// Delimiter of the selection criteria being used.
   final pulumi.Input<String>? delimiter;
-  /// The max depth of the selection criteria.
+  /// Max depth of the selection criteria.
   final pulumi.Input<int>? maxDepth;
-  /// The minimum number of storage bytes percentage whose metrics will be selected.
+  /// Minimum number of storage bytes percentage whose metrics will be selected.
   final pulumi.Input<double>? minStorageBytesPercentage;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria].
-  /// [delimiter] The delimiter of the selection criteria being used.
-  /// [maxDepth] The max depth of the selection criteria.
-  /// [minStorageBytesPercentage] The minimum number of storage bytes percentage whose metrics will be selected.
+  /// [delimiter] Delimiter of the selection criteria being used.
+  /// [maxDepth] Max depth of the selection criteria.
+  /// [minStorageBytesPercentage] Minimum number of storage bytes percentage whose metrics will be selected.
   const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria({
     this.delimiter,
     this.maxDepth,
@@ -36,4 +36,3 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
     );
   }
 }
-

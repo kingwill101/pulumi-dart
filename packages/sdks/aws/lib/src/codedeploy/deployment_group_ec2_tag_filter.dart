@@ -9,7 +9,7 @@ class DeploymentGroupEc2TagFilter {
   final pulumi.Input<String>? type;
   /// The value of the tag filter.
   ///
-  /// Multiple occurrences of `ec2_tag_filter` are allowed, where any instance that matches to at least one of the tag filters is selected.
+  /// Multiple occurrences of `ec2TagFilter` are allowed, where any instance that matches to at least one of the tag filters is selected.
   final pulumi.Input<String>? value;
 
   /// Creates a new [DeploymentGroupEc2TagFilter].
@@ -38,4 +38,3 @@ class DeploymentGroupEc2TagFilter {
     );
   }
 }
-

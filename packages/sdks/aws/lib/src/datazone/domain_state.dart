@@ -26,14 +26,14 @@ class DomainState {
   final pulumi.Input<String>? region;
   /// ID of the root domain unit.
   final pulumi.Input<String>? rootDomainUnitId;
-  /// ARN of the service role used by DataZone. Required when `domain_version` is set to `V2`.
+  /// ARN of the service role used by DataZone. Required when `domainVersion` is set to `V2`.
   final pulumi.Input<String>? serviceRole;
   /// Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.
   final pulumi.Input<DomainSingleSignOn>? singleSignOn;
   /// Whether to skip the deletion check for the Domain.
   final pulumi.Input<bool>? skipDeletionCheck;
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<DomainTimeouts>? timeouts;
 
@@ -47,11 +47,11 @@ class DomainState {
   /// [portalUrl] URL of the data portal for the Domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootDomainUnitId] ID of the root domain unit.
-  /// [serviceRole] ARN of the service role used by DataZone. Required when `domain_version` is set to `V2`.
+  /// [serviceRole] ARN of the service role used by DataZone. Required when `domainVersion` is set to `V2`.
   /// [singleSignOn] Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.
   /// [skipDeletionCheck] Whether to skip the deletion check for the Domain.
   /// [tags] Optional.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const DomainState({
     this.arn,
@@ -111,4 +111,3 @@ class DomainState {
     );
   }
 }
-

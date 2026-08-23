@@ -4,7 +4,7 @@ import 'resource_share_associations_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of principal and resource associations for an AWS RAM (Resource Access Manager) Resource Share.
 ///
-/// !&gt; This resource takes exclusive ownership over principal and resource associations for a resource share. This includes removal of principals and resources which are not explicitly configured.
+/// &gt; This resource takes exclusive ownership over principal and resource associations for a resource share. This includes removal of principals and resources which are not explicitly configured.
 ///
 /// &gt; Destruction of this resource will disassociate all configured principals and resources from the resource share.
 ///
@@ -122,7 +122,7 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     exampleVpc.ID(),
+/// 			VpcId:     exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -145,6 +145,32 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_resourceshare" "example" {
+///   name                      = "example"
+///   allow_external_principals = true
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id     = aws_ec2_vpc.example.id
+///   cidr_block = "10.0.1.0/24"
+/// }
+/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
+///   resource_share_arn = aws_ram_resourceshare.example.arn
+///   principals         = ["111111111111", "222222222222"]
+///   resource_arns      = [aws_ec2_subnet.example.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +185,8 @@ import 'resource_share_associations_exclusive_state.dart';
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusive;
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,14 +265,14 @@ import 'resource_share_associations_exclusive_state.dart';
 /// const example = new aws.ram.ResourceShare("example", {name: "example"});
 /// const exampleVpc = new aws.ec2.Vpc("example", {cidrBlock: "10.0.0.0/16"});
 /// const exampleSubnet: aws.ec2.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range.value}`, {
+/// for (let range = 0; range < 2; range++) {
+///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range}`, {
 ///         vpcId: exampleVpc.id,
-///         cidrBlock: exampleVpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
-///             input: cidrBlock,
+///         cidrBlock: std.cidrsubnetOutput({
+///             input: exampleVpc.cidrBlock,
 ///             newbits: 8,
-///             netnum: range.value,
-///         })).apply(invoke => invoke.result),
+///             netnum: range,
+///         }).result,
 ///     }));
 /// }
 /// const exampleResourceShareAssociationsExclusive = new aws.ram.ResourceShareAssociationsExclusive("example", {
@@ -257,18 +283,19 @@ import 'resource_share_associations_exclusive_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
 /// example = aws.ram.ResourceShare("example", name="example")
 /// example_vpc = aws.ec2.Vpc("example", cidr_block="10.0.0.0/16")
-/// example_subnet = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     example_subnet.append(aws.ec2.Subnet(f"example-{range['value']}",
+/// example_subnet: list[aws.ec2.Subnet] = []
+/// for example_subnet_range in [{"value": i} for i in range(0, 2)]:
+///     example_subnet.append(aws.ec2.Subnet(f"example-{example_subnet_range['value']}",
 ///         vpc_id=example_vpc.id,
-///         cidr_block=example_vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+///         cidr_block=std.cidrsubnet_output(input=example_vpc.cidr_block,
 ///             newbits=8,
-///             netnum=range["value"])).apply(lambda invoke: invoke.result)))
+///             netnum=example_subnet_range["value"]).result))
 /// example_resource_share_associations_exclusive = aws.ram.ResourceShareAssociationsExclusive("example",
 ///     resource_share_arn=example.arn,
 ///     principals=[example_aws_organizations_organization["arn"]],
@@ -300,12 +327,12 @@ import 'resource_share_associations_exclusive_state.dart';
 ///         exampleSubnet.Add(new Aws.Ec2.Subnet($"example-{range.Value}", new()
 ///         {
 ///             VpcId = exampleVpc.Id,
-///             CidrBlock = exampleVpc.CidrBlock.Apply(cidrBlock => Std.Cidrsubnet.Invoke(new()
+///             CidrBlock = Std.Cidrsubnet.Invoke(new()
 ///             {
-///                 Input = cidrBlock,
+///                 Input = exampleVpc.CidrBlock,
 ///                 Newbits = 8,
 ///                 Netnum = range.Value,
-///             })).Apply(invoke => invoke.Result),
+///             }).Apply(invoke => invoke.Result),
 ///         }));
 ///     }
 ///     var exampleResourceShareAssociationsExclusive = new Aws.Ram.ResourceShareAssociationsExclusive("example", new()
@@ -331,60 +358,83 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := ram.NewResourceShare(ctx, "example", &ram.ResourceShareArgs{
-/// Name: pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := ram.NewResourceShare(ctx, "example", &ram.ResourceShareArgs{
+/// 			Name: pulumi.String("example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleVpc, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
+/// 			CidrBlock: pulumi.String("10.0.0.0/16"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		var exampleSubnet []*ec2.Subnet
+/// 		for index := 0; index < 2; index++ {
+/// 			key0 := index
+/// 			val0 := index
+/// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
+/// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// 					Input:   exampleVpc.CidrBlock,
+/// 					Newbits: pulumi.Int(8),
+/// 					Netnum:  pulumi.Int(val0),
+/// 				}, nil).Result(),
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			exampleSubnet = append(exampleSubnet, __res)
+/// 		}
+/// 		var splat0 pulumi.StringArray
+/// 		for _, val0 := range exampleSubnet {
+/// 			splat0 = append(splat0, val0.Arn)
+/// 		}
+/// 		_, err = ram.NewResourceShareAssociationsExclusive(ctx, "example", &ram.ResourceShareAssociationsExclusiveArgs{
+/// 			ResourceShareArn: example.Arn,
+/// 			Principals: pulumi.StringArray{
+/// 				exampleAwsOrganizationsOrganization.Arn,
+/// 			},
+/// 			ResourceArns: splat0,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// exampleVpc, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
-/// CidrBlock: pulumi.String("10.0.0.0/16"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: cidrBlock,
-/// Newbits: 8,
-/// Netnum: val0,
-/// }, nil)
-/// if err != nil {
-/// return err
+///
+/// resource "aws_ram_resourceshare" "example" {
+///   name = "example"
 /// }
-/// var exampleSubnet []*ec2.Subnet
-/// for index := 0; index < 2; index++ {
-///     key0 := index
-///     _ := index
-/// __res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// VpcId: exampleVpc.ID(),
-/// CidrBlock: pulumi.String(exampleVpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
 /// }
-/// exampleSubnet = append(exampleSubnet, __res)
+/// resource "aws_ec2_subnet" "example" {
+///   count      = 2
+///   vpc_id     = aws_ec2_vpc.example.id
+///   cidr_block = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
 /// }
-/// var splat0 pulumi.StringArray
-/// for _, val0 := range exampleSubnet {
-/// splat0 = append(splat0, val0.Arn)
-/// }
-/// _, err = ram.NewResourceShareAssociationsExclusive(ctx, "example", &ram.ResourceShareAssociationsExclusiveArgs{
-/// ResourceShareArn: example.Arn,
-/// Principals: pulumi.StringArray{
-/// exampleAwsOrganizationsOrganization.Arn,
-/// },
-/// ResourceArns: splat0,
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
+/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
+///   resource_share_arn = aws_ram_resourceshare.example.arn
+///   principals         = [exampleAwsOrganizationsOrganization.arn]
+///   resource_arns      = aws_ec2_subnet.example[*].arn
 /// }
 /// ```
 /// ```java
@@ -404,8 +454,8 @@ import 'resource_share_associations_exclusive_state.dart';
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusive;
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusiveArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -428,11 +478,11 @@ import 'resource_share_associations_exclusive_state.dart';
 ///         for (var i = 0; i < 2; i++) {
 ///             new Subnet("exampleSubnet-" + i, SubnetArgs.builder()
 ///                 .vpcId(exampleVpc.id())
-///                 .cidrBlock(exampleVpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                     .input(_cidrBlock)
+///                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                     .input(exampleVpc.cidrBlock())
 ///                     .newbits(8)
 ///                     .netnum(range.value())
-///                     .build())).applyValue(_invoke -> _invoke.result()))
+///                     .build()).applyValue(_invoke -> _invoke.result()))
 ///                 .build());
 ///
 ///
@@ -607,6 +657,36 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_resourceshare" "example" {
+///   name                      = "example-service-share"
+///   allow_external_principals = true
+/// }
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   type = "ROOT"
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+/// }
+/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
+///   resource_share_arn = aws_ram_resourceshare.example.arn
+///   principals         = ["pca-connector-ad.amazonaws.com"]
+///   resource_arns      = [aws_acmpca_certificateauthority.example.arn]
+///   sources            = ["111111111111", "222222222222"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +701,8 @@ import 'resource_share_associations_exclusive_state.dart';
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs;
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusive;
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,7 +776,7 @@ import 'resource_share_associations_exclusive_state.dart';
 ///
 /// ### Disallow All Associations
 ///
-/// To automatically remove any configured associations, omit the `principals` and `resource_arns` arguments or set them to empty lists.
+/// To automatically remove any configured associations, omit the `principals` and `resourceArns` arguments or set them to empty lists.
 ///
 /// &gt; This will not **prevent** associations from being created via Terraform (or any other interface). This resource enables bringing associations into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
@@ -748,6 +828,19 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_resourceshareassociationsexclusive" "example" {
+///   resource_share_arn = exampleAwsRamResourceShare.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -756,8 +849,8 @@ import 'resource_share_associations_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusive;
 /// import com.pulumi.aws.ram.ResourceShareAssociationsExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,27 +880,28 @@ import 'resource_share_associations_exclusive_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import RAM Resource Share Association Exclusive using the `resource_share_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `resourceShareArn` (String) Amazon Resource Name (ARN) of the RAM resource share.
+///
+///
+/// Using `pulumi import`, import RAM Resource Share Association Exclusive using the `resourceShareArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive example arn:aws:ram:eu-west-1:123456789012:resource-share/73da1ab9-b94a-4ba3-8eb4-45917f7f4b12
 /// ```
 class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
-  /// A set of principals to associate with the resource share. Principals not configured in this argument will be removed. Valid values include:
-  /// * AWS account ID (exactly 12 digits, e.g., `123456789012`)
-  /// * AWS Organizations Organization ARN (e.g., `arn:aws:organizations::123456789012:organization/o-exampleorgid`)
-  /// * AWS Organizations Organizational Unit ARN (e.g., `arn:aws:organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid`)
-  /// * IAM role ARN (e.g., `arn:aws:iam::123456789012:role/example-role`)
-  /// * IAM user ARN (e.g., `arn:aws:iam::123456789012:user/example-user`)
-  /// * Service principal (e.g., `ec2.amazonaws.com`)
+  /// Set of principals to associate with the resource share. Principals not configured in this argument will be removed. Valid values include: AWS account ID (exactly 12 digits, e.g., `123456789012`), AWS Organizations Organization ARN (e.g., `arn:aws:organizations::123456789012:organization/o-exampleorgid`), AWS Organizations Organizational Unit ARN (e.g., `arn:aws:organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid`), IAM role ARN (e.g., `arn:aws:iam::123456789012:role/example-role`), IAM user ARN (e.g., `arn:aws:iam::123456789012:user/example-user`), or service principal (e.g., `ec2.amazonaws.com`).
   late final pulumi.Output<List<String>?> principals;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A set of Amazon Resource Names (ARNs) of resources to associate with the resource share. Resources not configured in this argument will be removed.
+  /// Set of Amazon Resource Names (ARNs) of resources to associate with the resource share. Resources not configured in this argument will be removed.
   late final pulumi.Output<List<String>?> resourceArns;
-  /// The Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
+  /// Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
   late final pulumi.Output<String> resourceShareArn;
-  /// A set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
+  /// Set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
   late final pulumi.Output<List<String>?> sources;
 
   /// Creates a new [ResourceShareAssociationsExclusive].

@@ -5,14 +5,17 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_text_input_variable.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText {
+  /// A cache checkpoint within a template configuration. See Cache Point for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextCachePoint>? cachePoint;
+  /// A list of variables in the prompt template. See Input Variable for more information.
   final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable>>? inputVariables;
+  /// The message for the prompt.
   final pulumi.Input<String> text;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText].
-  /// [cachePoint] Optional.
-  /// [inputVariables] Optional.
-  /// [text] Required.
+  /// [cachePoint] A cache checkpoint within a template configuration. See Cache Point for more information.
+  /// [inputVariables] A list of variables in the prompt template. See Input Variable for more information.
+  /// [text] The message for the prompt.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText({
     this.cachePoint,
     this.inputVariables,
@@ -35,4 +38,3 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     );
   }
 }
-

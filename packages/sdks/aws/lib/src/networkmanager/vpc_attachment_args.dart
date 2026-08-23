@@ -16,7 +16,7 @@ class VpcAttachmentArgs {
   final pulumi.Input<String>? routingPolicyLabel;
   /// Subnet ARNs of the VPC attachment.
   final pulumi.Input<List<String>> subnetArns;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// ARN of the VPC.
   ///
@@ -28,7 +28,7 @@ class VpcAttachmentArgs {
   /// [options] Options for the VPC attachment. See below.
   /// [routingPolicyLabel] The routing policy label to apply to the VPC attachment for traffic routing decisions. Maximum length of 256 characters.
   /// [subnetArns] Subnet ARNs of the VPC attachment.
-  /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcArn] ARN of the VPC.
   const VpcAttachmentArgs({
     required this.coreNetworkId,
@@ -61,4 +61,3 @@ class VpcAttachmentArgs {
     );
   }
 }
-

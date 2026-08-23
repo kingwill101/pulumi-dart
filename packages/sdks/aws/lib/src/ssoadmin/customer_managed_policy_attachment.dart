@@ -5,7 +5,7 @@ import 'customer_managed_policy_attachment_state.dart';
 
 /// Provides a customer managed policy attachment for a Single Sign-On (SSO) Permission Set resource
 ///
-/// !&gt; **WARNING:** Do not use this resource together with the `aws.ssoadmin.CustomerManagedPolicyAttachmentsExclusive` resource for the same permission set. Doing so will cause a conflict and will lead to customer managed policies being removed.
+/// &gt; **WARNING:** Do not use this resource together with the `aws.ssoadmin.CustomerManagedPolicyAttachmentsExclusive` resource for the same permission set. Doing so will cause a conflict and will lead to customer managed policies being removed.
 ///
 /// &gt; **NOTE:** Creating this resource will automatically [Provision the Permission Set](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ProvisionPermissionSet.html) to apply the corresponding updates to all assigned accounts.
 ///
@@ -185,6 +185,43 @@ import 'customer_managed_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_permissionset" "example" {
+///   name         = "Example"
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// resource "aws_iam_policy" "example" {
+///   name        = "TestPolicy"
+///   description = "My test policy"
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["ec2:Describe*"]
+///       "Effect"   = "Allow"
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// resource "aws_ssoadmin_customermanagedpolicyattachment" "example" {
+///   instance_arn       = aws_ssoadmin_permissionset.example.instance_arn
+///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   customer_managed_policy_reference = {
+///     name = aws_iam_policy.example.name
+///     path = "/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +238,8 @@ import 'customer_managed_policy_attachment_state.dart';
 /// import com.pulumi.aws.ssoadmin.CustomerManagedPolicyAttachmentArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.CustomerManagedPolicyAttachmentCustomerManagedPolicyReferenceArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,7 +326,7 @@ import 'customer_managed_policy_attachment_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SSO Managed Policy Attachments using the `name`, `path`, `permission_set_arn`, and `instance_arn` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import SSO Managed Policy Attachments using the `name`, `path`, `permissionSetArn`, and `instanceArn` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment example TestPolicy,/,arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72

@@ -83,6 +83,24 @@ import 'task_task_report_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_task" "example" {
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
+///   options = {
+///     bytes_per_second = -1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +110,8 @@ import 'task_task_report_config.dart';
 /// import com.pulumi.aws.datasync.Task;
 /// import com.pulumi.aws.datasync.TaskArgs;
 /// import com.pulumi.aws.datasync.inputs.TaskOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,8 +148,7 @@ import 'task_task_report_config.dart';
 /// ```
 ///
 ///
-///
-/// ### With Scheduling
+/// ### Example Usage with Scheduling
 ///
 ///
 /// ```typescript
@@ -205,6 +222,24 @@ import 'task_task_report_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_task" "example" {
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
+///   schedule = {
+///     schedule_expression = "cron(0 12 ? * SUN,WED *)"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +249,8 @@ import 'task_task_report_config.dart';
 /// import com.pulumi.aws.datasync.Task;
 /// import com.pulumi.aws.datasync.TaskArgs;
 /// import com.pulumi.aws.datasync.inputs.TaskScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,8 +287,7 @@ import 'task_task_report_config.dart';
 /// ```
 ///
 ///
-///
-/// ### With Filtering
+/// ### Example Usage with Filtering
 ///
 ///
 /// ```typescript
@@ -348,6 +382,29 @@ import 'task_task_report_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_task" "example" {
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
+///   excludes = {
+///     filter_type = "SIMPLE_PATTERN"
+///     value       = "/folder1|/folder2"
+///   }
+///   includes = {
+///     filter_type = "SIMPLE_PATTERN"
+///     value       = "/folder1|/folder2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +415,8 @@ import 'task_task_report_config.dart';
 /// import com.pulumi.aws.datasync.TaskArgs;
 /// import com.pulumi.aws.datasync.inputs.TaskExcludesArgs;
 /// import com.pulumi.aws.datasync.inputs.TaskIncludesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -405,8 +462,7 @@ import 'task_task_report_config.dart';
 /// ```
 ///
 ///
-///
-/// ### With Enhanced Task Mode
+/// ### Example Usage with Enhanced Task Mode
 ///
 ///
 /// ```typescript
@@ -496,6 +552,28 @@ import 'task_task_report_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_task" "example" {
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
+///   task_mode                = "ENHANCED"
+///   options = {
+///     gid               = "NONE"
+///     posix_permissions = "NONE"
+///     uid               = "NONE"
+///     verify_mode       = "ONLY_FILES_TRANSFERRED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -505,8 +583,8 @@ import 'task_task_report_config.dart';
 /// import com.pulumi.aws.datasync.Task;
 /// import com.pulumi.aws.datasync.TaskArgs;
 /// import com.pulumi.aws.datasync.inputs.TaskOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -586,15 +664,15 @@ class Task extends pulumi.CustomResource {
   late final pulumi.Output<TaskSchedule?> schedule;
   /// Amazon Resource Name (ARN) of source DataSync Location.
   late final pulumi.Output<String> sourceLocationArn;
-  /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// One of the following task modes for your data transfer:
   /// * `BASIC` (default) - Transfer files or objects between Amazon Web Services storage and on-premises, edge, or other cloud storage.
   /// * `ENHANCED` - Transfer virtually unlimited numbers of objects with enhanced metrics, more detailed logs, and higher performance than Basic mode. Currently available for transfers between Amazon S3 locations.
   late final pulumi.Output<String> taskMode;
-  /// Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
+  /// Configuration block containing the configuration of a DataSync Task Report. See `taskReportConfig` below.
   late final pulumi.Output<TaskTaskReportConfig?> taskReportConfig;
 
   /// Creates a new [Task].

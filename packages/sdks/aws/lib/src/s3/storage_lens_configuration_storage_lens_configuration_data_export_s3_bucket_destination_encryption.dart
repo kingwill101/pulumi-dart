@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_lens_configuration_storage_lens_configuration_data_export_s3_bucket_destination_encryption_sse_kms.dart';
 
 class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption {
-  /// SSE-KMS encryption. See SSE KMS below for more details.
+  /// SSE-KMS encryption. See `sseKms` below for more details.
   final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms>? sseKms;
   /// SSE-S3 encryption. An empty configuration block `{}` should be used.
   final pulumi.Input<List<Map<String, dynamic>>>? sseS3s;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption].
-  /// [sseKms] SSE-KMS encryption. See SSE KMS below for more details.
+  /// [sseKms] SSE-KMS encryption. See `sseKms` below for more details.
   /// [sseS3s] SSE-S3 encryption. An empty configuration block `{}` should be used.
   const StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption({
     this.sseKms,
@@ -31,4 +31,3 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
     );
   }
 }
-

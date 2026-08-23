@@ -96,6 +96,27 @@ import 'size_constraint_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafregional_sizeconstraintset" "size_constraint_set" {
+///   name = "tfsize_constraints"
+///   size_constraints {
+///     text_transformation = "NONE"
+///     comparison_operator = "EQ"
+///     size                = "4096"
+///     field_to_match = {
+///       type = "BODY"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +127,8 @@ import 'size_constraint_set_state.dart';
 /// import com.pulumi.aws.wafregional.SizeConstraintSetArgs;
 /// import com.pulumi.aws.wafregional.inputs.SizeConstraintSetSizeConstraintArgs;
 /// import com.pulumi.aws.wafregional.inputs.SizeConstraintSetSizeConstraintFieldToMatchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

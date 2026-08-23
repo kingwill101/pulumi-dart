@@ -6,6 +6,8 @@ import 'get_access_points_result.dart';
 import 'get_account_public_access_block_args.dart';
 import 'get_account_public_access_block_result.dart';
 import 'get_bucket_args.dart';
+import 'get_bucket_notification_args.dart';
+import 'get_bucket_notification_result.dart';
 import 'get_bucket_object_args.dart';
 import 'get_bucket_object_lock_configuration_args.dart';
 import 'get_bucket_object_lock_configuration_result.dart';
@@ -17,9 +19,19 @@ import 'get_bucket_policy_result.dart';
 import 'get_bucket_replication_configuration_args.dart';
 import 'get_bucket_replication_configuration_result.dart';
 import 'get_bucket_result.dart';
+import 'get_buckets_args.dart';
+import 'get_buckets_result.dart';
 import 'get_canonical_user_id_result.dart';
 import 'get_directory_buckets_args.dart';
 import 'get_directory_buckets_result.dart';
+import 'get_files_access_point_args.dart';
+import 'get_files_access_point_result.dart';
+import 'get_files_file_system_args.dart';
+import 'get_files_file_system_result.dart';
+import 'get_files_file_systems_args.dart';
+import 'get_files_file_systems_result.dart';
+import 'get_files_mount_target_args.dart';
+import 'get_files_mount_target_result.dart';
 import 'get_multi_region_access_point_args.dart';
 import 'get_multi_region_access_point_result.dart';
 import 'get_multi_region_access_points_args.dart';
@@ -83,6 +95,19 @@ import 'get_objects_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getaccesspoint" "example" {
+///   name = "example-access-point"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +116,8 @@ import 'get_objects_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.S3Functions;
 /// import com.pulumi.aws.s3.inputs.GetAccessPointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,6 +206,18 @@ Future<GetAccessPointResult> getAccessPoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getaccountpublicaccessblock" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +226,8 @@ Future<GetAccessPointResult> getAccessPoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.S3Functions;
 /// import com.pulumi.aws.s3.inputs.GetAccountPublicAccessBlockArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -351,6 +388,32 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucket" "selected" {
+///   bucket = "bucket.test.com"
+/// }
+/// data "aws_route53_getzone" "testZone" {
+///   name = "test.com."
+/// }
+///
+/// resource "aws_route53_record" "example" {
+///   zone_id = data.aws_route53_getzone.testZone.id
+///   name    = "bucket"
+///   type    = "A"
+///   aliases {
+///     name    = data.aws_s3_getbucket.selected.website_domain
+///     zone_id = data.aws_s3_getbucket.selected.hosted_zone_id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -364,8 +427,8 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -507,6 +570,26 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucket" "selected" {
+///   bucket = "a-test-bucket"
+/// }
+///
+/// resource "aws_cloudfront_distribution" "test" {
+///   origins {
+///     domain_name = data.aws_s3_getbucket.selected.bucket_domain_name
+///     origin_id   = "s3-selected-bucket"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -518,8 +601,8 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 /// import com.pulumi.aws.cloudfront.Distribution;
 /// import com.pulumi.aws.cloudfront.DistributionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionOriginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,6 +658,693 @@ Future<GetBucketResult> getBucket(
   return GetBucketResult.fromMap(result);
 }
 
+/// Provides details about the notification configuration of an S3 bucket.
+///
+/// Useful when `aws.s3.BucketNotification` is the right resource but the bucket already has notifications you do not manage. Read the existing notifications with this data source and re-emit them — alongside your own — in a single `aws.s3.BucketNotification` resource. See issue #501 for the longer story. For sharing a bucket across many independent consumers, enabling EventBridge on the resource is usually a better fit.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.s3.getBucketNotification({
+///     bucket: "example-bucket",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.get_bucket_notification(bucket="example-bucket")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.S3.GetBucketNotification.Invoke(new()
+///     {
+///         Bucket = "example-bucket",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.LookupBucketNotification(ctx, &s3.LookupBucketNotificationArgs{
+/// 			Bucket: "example-bucket",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketnotification" "example" {
+///   bucket = "example-bucket"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetBucketNotificationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = S3Functions.getBucketNotification(GetBucketNotificationArgs.builder()
+///             .bucket("example-bucket")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:s3:getBucketNotification
+///       arguments:
+///         bucket: example-bucket
+/// ```
+///
+///
+/// ### Conditionally Subscribe via EventBridge
+///
+/// When the bucket forwards events to Amazon EventBridge, independent consumers can subscribe with their own `aws.cloudwatch.EventRule` resources. Use this data source to subscribe only when EventBridge is in fact enabled on the bucket.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// export = async () => {
+///     const shared = await aws.s3.getBucketNotification({
+///         bucket: "shared-bucket",
+///     });
+///     const s3ObjectCreated: aws.cloudwatch.EventRule[] = [];
+///     for (let range = 0; range < (shared.eventbridge ? 1 : 0); range++) {
+///         s3ObjectCreated.push(new aws.cloudwatch.EventRule(`s3_object_created-${range}`, {
+///             name: "shared-bucket-object-created",
+///             description: "S3 object-created events from the shared bucket.",
+///             eventPattern: JSON.stringify({
+///                 source: ["aws.s3"],
+///                 "detail-type": ["Object Created"],
+///                 detail: {
+///                     bucket: {
+///                         name: [shared.bucket],
+///                     },
+///                 },
+///             }),
+///         }));
+///     }
+/// }
+/// ```
+/// ```python
+/// import pulumi
+/// from typing import Any
+/// import json
+/// import pulumi_aws as aws
+///
+/// shared = aws.s3.get_bucket_notification(bucket="shared-bucket")
+/// s3_object_created: list[aws.cloudwatch.EventRule] = []
+/// for s3_object_created_range in [{"value": i} for i in range(0, 1 if shared.eventbridge else 0)]:
+///     s3_object_created.append(aws.cloudwatch.EventRule(f"s3_object_created-{s3_object_created_range['value']}",
+///         name="shared-bucket-object-created",
+///         description="S3 object-created events from the shared bucket.",
+///         event_pattern=json.dumps({
+///             "source": ["aws.s3"],
+///             "detail-type": ["Object Created"],
+///             "detail": {
+///                 "bucket": {
+///                     "name": [shared.bucket],
+///                 },
+///             },
+///         })))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using System.Threading.Tasks;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(async() =>
+/// {
+///     var shared = await Aws.S3.GetBucketNotification.InvokeAsync(new()
+///     {
+///         Bucket = "shared-bucket",
+///     });
+///
+///     var s3ObjectCreated = new List<Aws.CloudWatch.EventRule>();
+///     for (var rangeIndex = 0; rangeIndex < shared.Eventbridge ? 1 : 0; rangeIndex++)
+///     {
+///         var range = new { Value = rangeIndex };
+///         s3ObjectCreated.Add(new Aws.CloudWatch.EventRule($"s3_object_created-{range.Value}", new()
+///         {
+///             Name = "shared-bucket-object-created",
+///             Description = "S3 object-created events from the shared bucket.",
+///             EventPattern = JsonSerializer.Serialize(new Dictionary<string, object?>
+///             {
+///                 ["source"] = new[]
+///                 {
+///                     "aws.s3",
+///                 },
+///                 ["detail-type"] = new[]
+///                 {
+///                     "Object Created",
+///                 },
+///                 ["detail"] = new Dictionary<string, object?>
+///                 {
+///                     ["bucket"] = new Dictionary<string, object?>
+///                     {
+///                         ["name"] = new[]
+///                         {
+///                             shared.Bucket,
+///                         },
+///                     },
+///                 },
+///             }),
+///         }));
+///     }
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		shared, err := s3.LookupBucketNotification(ctx, &s3.LookupBucketNotificationArgs{
+/// 			Bucket: "shared-bucket",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"source": []string{
+/// 				"aws.s3",
+/// 			},
+/// 			"detail-type": []string{
+/// 				"Object Created",
+/// 			},
+/// 			"detail": map[string]map[string][]*string{
+/// 				"bucket": map[string][]*string{
+/// 					"name": []*string{
+/// 						shared.Bucket,
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		var tmp0 int
+/// 		if pulumi.Bool(shared.Eventbridge) {
+/// 			tmp0 = 1
+/// 		} else {
+/// 			tmp0 = 0
+/// 		}
+/// 		var s3ObjectCreated []*cloudwatch.EventRule
+/// 		for index := 0; index < tmp0; index++ {
+/// 			key0 := index
+/// 			_ := index
+/// 			__res, err := cloudwatch.NewEventRule(ctx, fmt.Sprintf("s3_object_created-%v", key0), &cloudwatch.EventRuleArgs{
+/// 				Name:         pulumi.String("shared-bucket-object-created"),
+/// 				Description:  pulumi.String("S3 object-created events from the shared bucket."),
+/// 				EventPattern: json0,
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			s3ObjectCreated = append(s3ObjectCreated, __res)
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketnotification" "shared" {
+///   bucket = "shared-bucket"
+/// }
+///
+/// resource "aws_cloudwatch_eventrule" "s3_object_created" {
+///   count       = data.aws_s3_getbucketnotification.shared.eventbridge ? 1 : 0
+///   name        = "shared-bucket-object-created"
+///   description = "S3 object-created events from the shared bucket."
+///   event_pattern = jsonencode({
+///     "source"      = ["aws.s3"]
+///     "detail-type" = ["Object Created"]
+///     "detail" = {
+///       "bucket" = {
+///         "name" = [data.aws_s3_getbucketnotification.shared.bucket]
+///       }
+///     }
+///   })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetBucketNotificationArgs;
+/// import com.pulumi.aws.cloudwatch.EventRule;
+/// import com.pulumi.aws.cloudwatch.EventRuleArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import com.pulumi.codegen.internal.KeyedValue;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var shared = S3Functions.getBucketNotification(GetBucketNotificationArgs.builder()
+///             .bucket("shared-bucket")
+///             .build());
+///
+///         for (var i = 0; i < shared.eventbridge() ? 1 : 0; i++) {
+///             new EventRule("s3ObjectCreated-" + i, EventRuleArgs.builder()
+///                 .name("shared-bucket-object-created")
+///                 .description("S3 object-created events from the shared bucket.")
+///                 .eventPattern(serializeJson(
+///                     jsonObject(
+///                         jsonProperty("source", jsonArray("aws.s3")),
+///                         jsonProperty("detail-type", jsonArray("Object Created")),
+///                         jsonProperty("detail", jsonObject(
+///                             jsonProperty("bucket", jsonObject(
+///                                 jsonProperty("name", jsonArray(shared.bucket()))
+///                             ))
+///                         ))
+///                     )))
+///                 .build());
+///
+///
+/// }
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   s3ObjectCreated:
+///     type: aws:cloudwatch:EventRule
+///     name: s3_object_created
+///     properties:
+///       name: shared-bucket-object-created
+///       description: S3 object-created events from the shared bucket.
+///       eventPattern:
+///         fn::toJSON:
+///           source:
+///             - aws.s3
+///           detail-type:
+///             - Object Created
+///           detail:
+///             bucket:
+///               name:
+///                 - ${shared.bucket}
+///     options: {}
+/// variables:
+///   shared:
+///     fn::invoke:
+///       function: aws:s3:getBucketNotification
+///       arguments:
+///         bucket: shared-bucket
+/// ```
+///
+///
+/// ### Read Existing Notifications and Re-emit Them
+///
+/// The S3 [`PutBucketNotificationConfiguration`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotificationConfiguration.html) API replaces the entire notification configuration on every call, so a single `aws.s3.BucketNotification` resource owns the bucket. To preserve notifications already on the bucket — or to mirror one bucket's configuration onto another — read them with this data source and pass them through `dynamic` blocks. The data source's output shape matches the resource's input shape, so each block forwards directly.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const existing = aws.s3.getBucketNotification({
+///     bucket: exampleAwsS3Bucket.id,
+/// });
+/// const example = new aws.s3.BucketNotification("example", {
+///     lambdaFunctions: .map(entry => ({
+///         id: entry.value.id,
+///         lambdaFunctionArn: entry.value.lambdaFunctionArn,
+///         events: entry.value.events,
+///         filterPrefix: entry.value.filterPrefix,
+///         filterSuffix: entry.value.filterSuffix,
+///     })),
+///     queues: .map(entry2 => ({
+///         id: entry2.value.id,
+///         queueArn: entry2.value.queueArn,
+///         events: entry2.value.events,
+///         filterPrefix: entry2.value.filterPrefix,
+///         filterSuffix: entry2.value.filterSuffix,
+///     })),
+///     topics: .map(entry3 => ({
+///         id: entry3.value.id,
+///         topicArn: entry3.value.topicArn,
+///         events: entry3.value.events,
+///         filterPrefix: entry3.value.filterPrefix,
+///         filterSuffix: entry3.value.filterSuffix,
+///     })),
+///     bucket: exampleAwsS3Bucket.id,
+///     eventbridge: existing.then(existing => existing.eventbridge),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// existing = aws.s3.get_bucket_notification(bucket=example_aws_s3_bucket["id"])
+/// example = aws.s3.BucketNotification("example",
+///     lambda_functions=[{"key": k, "value": v} for k, v in sorted(existing.lambda_functions.items())].apply(lambda entries: [aws.s3.BucketNotificationLambdaFunctionArgs(
+///         id=entry["value"].id,
+///         lambda_function_arn=entry["value"].lambda_function_arn,
+///         events=entry["value"].events,
+///         filter_prefix=entry["value"].filter_prefix,
+///         filter_suffix=entry["value"].filter_suffix,
+///     ) for entry in entries]),
+///     queues=[{"key": k, "value": v} for k, v in sorted(existing.queues.items())].apply(lambda entries: [aws.s3.BucketNotificationQueueArgs(
+///         id=entry2["value"].id,
+///         queue_arn=entry2["value"].queue_arn,
+///         events=entry2["value"].events,
+///         filter_prefix=entry2["value"].filter_prefix,
+///         filter_suffix=entry2["value"].filter_suffix,
+///     ) for entry2 in entries]),
+///     topics=[{"key": k, "value": v} for k, v in sorted(existing.topics.items())].apply(lambda entries: [aws.s3.BucketNotificationTopicArgs(
+///         id=entry3["value"].id,
+///         topic_arn=entry3["value"].topic_arn,
+///         events=entry3["value"].events,
+///         filter_prefix=entry3["value"].filter_prefix,
+///         filter_suffix=entry3["value"].filter_suffix,
+///     ) for entry3 in entries]),
+///     bucket=example_aws_s3_bucket["id"],
+///     eventbridge=existing.eventbridge)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var existing = Aws.S3.GetBucketNotification.Invoke(new()
+///     {
+///         Bucket = exampleAwsS3Bucket.Id,
+///     });
+///
+///     var example = new Aws.S3.BucketNotification("example", new()
+///     {
+///         LambdaFunctions = ,
+///         Queues = ,
+///         Topics = ,
+///         Bucket = exampleAwsS3Bucket.Id,
+///         Eventbridge = existing.Apply(getBucketNotificationResult => getBucketNotificationResult.Eventbridge),
+///     });
+///
+/// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketnotification" "existing" {
+///   bucket = exampleAwsS3Bucket.id
+/// }
+///
+/// resource "aws_s3_bucketnotification" "example" {
+///   dynamic "lambda_functions" {
+///     for_each = entries(data.aws_s3_getbucketnotification.existing.lambda_functions)
+///     content {
+///       id                  = lambda_functions.value.value.id
+///       lambda_function_arn = lambda_functions.value.value.lambdaFunctionArn
+///       events              = lambda_functions.value.value.events
+///       filter_prefix       = lambda_functions.value.value.filterPrefix
+///       filter_suffix       = lambda_functions.value.value.filterSuffix
+///     }
+///   }
+///   dynamic "queues" {
+///     for_each = entries(data.aws_s3_getbucketnotification.existing.queues)
+///     content {
+///       id            = queues.value.value.id
+///       queue_arn     = queues.value.value.queueArn
+///       events        = queues.value.value.events
+///       filter_prefix = queues.value.value.filterPrefix
+///       filter_suffix = queues.value.value.filterSuffix
+///     }
+///   }
+///   dynamic "topics" {
+///     for_each = entries(data.aws_s3_getbucketnotification.existing.topics)
+///     content {
+///       id            = topics.value.value.id
+///       topic_arn     = topics.value.value.topicArn
+///       events        = topics.value.value.events
+///       filter_prefix = topics.value.value.filterPrefix
+///       filter_suffix = topics.value.value.filterSuffix
+///     }
+///   }
+///   bucket      = exampleAwsS3Bucket.id
+///   eventbridge = data.aws_s3_getbucketnotification.existing.eventbridge
+/// }
+/// ```
+///
+///
+/// To add a new rule alongside existing ones, exclude IDs your resource owns from the iteration to avoid duplicates, and declare those rules separately:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.s3.BucketNotification("example", {
+///     lambdaFunctions: [{
+///         id: "my-team-rule",
+///         lambdaFunctionArn: mine.arn,
+///         events: ["s3:ObjectRemoved:*"],
+///     }],
+///     bucket: exampleAwsS3Bucket.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.BucketNotification("example",
+///     lambda_functions=[{
+///         "id": "my-team-rule",
+///         "lambda_function_arn": mine["arn"],
+///         "events": ["s3:ObjectRemoved:*"],
+///     }],
+///     bucket=example_aws_s3_bucket["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.S3.BucketNotification("example", new()
+///     {
+///         LambdaFunctions = new[]
+///         {
+///             new Aws.S3.Inputs.BucketNotificationLambdaFunctionArgs
+///             {
+///                 Id = "my-team-rule",
+///                 LambdaFunctionArn = mine.Arn,
+///                 Events = new[]
+///                 {
+///                     "s3:ObjectRemoved:*",
+///                 },
+///             },
+///         },
+///         Bucket = exampleAwsS3Bucket.Id,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.NewBucketNotification(ctx, "example", &s3.BucketNotificationArgs{
+/// 			LambdaFunctions: s3.BucketNotificationLambdaFunctionArray{
+/// 				&s3.BucketNotificationLambdaFunctionArgs{
+/// 					Id:                pulumi.String("my-team-rule"),
+/// 					LambdaFunctionArn: pulumi.Any(mine.Arn),
+/// 					Events: pulumi.StringArray{
+/// 						pulumi.String("s3:ObjectRemoved:*"),
+/// 					},
+/// 				},
+/// 			},
+/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketnotification" "example" {
+///   lambda_functions {
+///     id                  = "my-team-rule"
+///     lambda_function_arn = mine.arn
+///     events              = ["s3:ObjectRemoved:*"]
+///   }
+///   bucket = exampleAwsS3Bucket.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.BucketNotification;
+/// import com.pulumi.aws.s3.BucketNotificationArgs;
+/// import com.pulumi.aws.s3.inputs.BucketNotificationLambdaFunctionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new BucketNotification("example", BucketNotificationArgs.builder()
+///             .lambdaFunctions(BucketNotificationLambdaFunctionArgs.builder()
+///                 .id("my-team-rule")
+///                 .lambdaFunctionArn(mine.arn())
+///                 .events("s3:ObjectRemoved:*")
+///                 .build())
+///             .bucket(exampleAwsS3Bucket.id())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:s3:BucketNotification
+///     properties:
+///       lambdaFunctions:
+///         - id: my-team-rule
+///           lambdaFunctionArn: ${mine.arn}
+///           events:
+///             - s3:ObjectRemoved:*
+///       bucket: ${exampleAwsS3Bucket.id}
+/// ```
+///
+///
+/// &gt; **Note:** The S3 API has no per-rule mutation primitive and no compare-and-swap, so two `pulumi up` runs from different state files writing to the same bucket can still race. For independent consumers of one bucket, EventBridge is generally a better fit.
+/// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_bucket_notification_get_bucket_notification_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetBucketNotificationResult> getBucketNotification(
+  GetBucketNotificationArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:s3/getBucketNotification:getBucketNotification',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetBucketNotificationResult.fromMap(result);
+}
+
 /// &gt; **NOTE:** The `aws.s3.BucketObject` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.BucketObjectv2` instead, where new features and fixes will be added.
 ///
 /// The S3 object data source allows access to the metadata and
@@ -598,7 +1368,7 @@ Future<GetBucketResult> getBucket(
 /// ## Example Usage
 ///
 /// The following example retrieves a text object (which must have a `Content-Type`
-/// value starting with `text/`) and uses it as the `user_data` for an EC2 instance:
+/// value starting with `text/`) and uses it as the `userData` for an EC2 instance:
 ///
 ///
 /// ```typescript
@@ -679,6 +1449,26 @@ Future<GetBucketResult> getBucket(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketobject" "bootstrapScript" {
+///   bucket = "ourcorp-deploy-config"
+///   key    = "ec2-bootstrap-script.sh"
+/// }
+///
+/// resource "aws_ec2_instance" "example" {
+///   instance_type = "t2.micro"
+///   ami           = "ami-2757f631"
+///   user_data     = data.aws_s3_getbucketobject.bootstrapScript.body
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -689,8 +1479,8 @@ Future<GetBucketResult> getBucket(
 /// import com.pulumi.aws.s3.inputs.GetBucketObjectArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -735,7 +1525,7 @@ Future<GetBucketResult> getBucket(
 ///
 ///
 /// The following, more-complex example retrieves only the metadata for a zip
-/// file stored in S3, which is then used to pass the most recent `version_id`
+/// file stored in S3, which is then used to pass the most recent `versionId`
 /// to AWS Lambda for use as a function implementation. More information about
 /// Lambda functions is available in the documentation for
 /// `aws.lambda.Function`.
@@ -809,7 +1599,7 @@ Future<GetBucketResult> getBucket(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		lambda, err := s3.LookupBucketObject(ctx, &s3.LookupBucketObjectArgs{
+/// 		lambda2, err := s3.LookupBucketObject(ctx, &s3.LookupBucketObjectArgs{
 /// 			Bucket: "ourcorp-lambda-functions",
 /// 			Key:    "hello-world.zip",
 /// 		}, nil)
@@ -817,9 +1607,9 @@ Future<GetBucketResult> getBucket(
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunction(ctx, "test_lambda", &lambda.FunctionArgs{
-/// 			S3Bucket:        pulumi.String(lambda.Id),
-/// 			S3Key:           pulumi.String(lambda.Key),
-/// 			S3ObjectVersion: pulumi.String(lambda.VersionId),
+/// 			S3Bucket:        pulumi.String(lambda2.Id),
+/// 			S3Key:           pulumi.String(lambda2.Key),
+/// 			S3ObjectVersion: pulumi.String(lambda2.VersionId),
 /// 			Name:            pulumi.String("lambda_function_name"),
 /// 			Role:            pulumi.Any(iamForLambda.Arn),
 /// 			Handler:         pulumi.String("exports.test"),
@@ -829,6 +1619,29 @@ Future<GetBucketResult> getBucket(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketobject" "lambda" {
+///   bucket = "ourcorp-lambda-functions"
+///   key    = "hello-world.zip"
+/// }
+///
+/// resource "aws_lambda_function" "test_lambda" {
+///   s3_bucket         = data.aws_s3_getbucketobject.lambda.id
+///   s3_key            = data.aws_s3_getbucketobject.lambda.key
+///   s3_object_version = data.aws_s3_getbucketobject.lambda.version_id
+///   name              = "lambda_function_name"
+///   role              = iamForLambda.arn
+///   handler           = "exports.test"
 /// }
 /// ```
 /// ```java
@@ -841,8 +1654,8 @@ Future<GetBucketResult> getBucket(
 /// import com.pulumi.aws.s3.inputs.GetBucketObjectArgs;
 /// import com.pulumi.aws.lambda.Function;
 /// import com.pulumi.aws.lambda.FunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -962,6 +1775,19 @@ Future<GetBucketObjectResult> getBucketObject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketobjectlockconfiguration" "example" {
+///   bucket = "example-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -970,8 +1796,8 @@ Future<GetBucketObjectResult> getBucketObject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.S3Functions;
 /// import com.pulumi.aws.s3.inputs.GetBucketObjectLockConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1015,7 +1841,7 @@ Future<GetBucketObjectLockConfigurationResult> getBucketObjectLockConfiguration(
 
 /// &gt; **NOTE:** The `aws.s3.getBucketObjects` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.getObjects` instead, where new features and fixes will be added.
 ///
-/// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
+/// &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
 ///
 /// The objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_bucket_objects_get_bucket_objects_args_doc}
@@ -1096,6 +1922,23 @@ Future<GetBucketObjectsResult> getBucketObjects(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketpolicy" "example" {
+///   bucket = "example-bucket-name"
+/// }
+///
+/// output "foo" {
+///   value = data.aws_s3_getbucketpolicy.example.policy
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1104,8 +1947,8 @@ Future<GetBucketObjectsResult> getBucketObjects(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.S3Functions;
 /// import com.pulumi.aws.s3.inputs.GetBucketPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1206,6 +2049,19 @@ Future<GetBucketPolicyResult> getBucketPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbucketreplicationconfiguration" "example" {
+///   bucket = "example-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1214,8 +2070,8 @@ Future<GetBucketPolicyResult> getBucketPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.S3Functions;
 /// import com.pulumi.aws.s3.inputs.GetBucketReplicationConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1255,6 +2111,233 @@ Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguratio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketReplicationConfigurationResult.fromMap(result);
+}
+
+/// Provides details about AWS S3 (Simple Storage) buckets with optional filters.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.s3.getBuckets({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.get_buckets()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.S3.GetBuckets.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.GetBuckets(ctx, &s3.GetBucketsArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbuckets" "example" {
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetBucketsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = S3Functions.getBuckets(GetBucketsArgs.builder()
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:s3:getBuckets
+///       arguments: {}
+/// ```
+///
+///
+/// ### Full Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.s3.getBuckets({
+///     bucketRegion: "us-west-2",
+///     maxBuckets: 3,
+///     prefix: "tf-",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.get_buckets(bucket_region="us-west-2",
+///     max_buckets=3,
+///     prefix="tf-")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.S3.GetBuckets.Invoke(new()
+///     {
+///         BucketRegion = "us-west-2",
+///         MaxBuckets = 3,
+///         Prefix = "tf-",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.GetBuckets(ctx, &s3.GetBucketsArgs{
+/// 			BucketRegion: pulumi.StringRef("us-west-2"),
+/// 			MaxBuckets:   pulumi.IntRef(3),
+/// 			Prefix:       pulumi.StringRef("tf-"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getbuckets" "example" {
+///   bucket_region = "us-west-2"
+///   max_buckets   = 3
+///   prefix        = "tf-"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetBucketsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = S3Functions.getBuckets(GetBucketsArgs.builder()
+///             .bucketRegion("us-west-2")
+///             .maxBuckets(3)
+///             .prefix("tf-")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:s3:getBuckets
+///       arguments:
+///         bucketRegion: us-west-2
+///         maxBuckets: 3
+///         prefix: tf-
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_buckets_get_buckets_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetBucketsResult> getBuckets(
+  GetBucketsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:s3/getBuckets:getBuckets',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetBucketsResult.fromMap(result);
 }
 
 /// The Canonical User ID data source allows access to the [canonical user ID](http://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html)
@@ -1314,6 +2397,22 @@ Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguratio
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getcanonicaluserid" "current" {
+/// }
+///
+/// output "canonicalUserId" {
+///   value = data.aws_s3_getcanonicaluserid.current.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1321,8 +2420,8 @@ Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguratio
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.S3Functions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1410,6 +2509,18 @@ Future<GetCanonicalUserIdResult> getCanonicalUserId(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getdirectorybuckets" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1418,8 +2529,8 @@ Future<GetCanonicalUserIdResult> getCanonicalUserId(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.S3Functions;
 /// import com.pulumi.aws.s3.inputs.GetDirectoryBucketsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1459,6 +2570,468 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
   return GetDirectoryBucketsResult.fromMap(result);
 }
 
+/// Data source for managing an S3 Files Access Point.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.s3.getFilesAccessPoint({
+///     id: "fsap-1234567890abcdef0",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.get_files_access_point(id="fsap-1234567890abcdef0")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.S3.GetFilesAccessPoint.Invoke(new()
+///     {
+///         Id = "fsap-1234567890abcdef0",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.LookupFilesAccessPoint(ctx, &s3.LookupFilesAccessPointArgs{
+/// 			Id: "fsap-1234567890abcdef0",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getfilesaccesspoint" "example" {
+///   id = "fsap-1234567890abcdef0"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetFilesAccessPointArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = S3Functions.getFilesAccessPoint(GetFilesAccessPointArgs.builder()
+///             .id("fsap-1234567890abcdef0")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:s3:getFilesAccessPoint
+///       arguments:
+///         id: fsap-1234567890abcdef0
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_files_access_point_get_files_access_point_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFilesAccessPointResult> getFilesAccessPoint(
+  GetFilesAccessPointArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:s3/getFilesAccessPoint:getFilesAccessPoint',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFilesAccessPointResult.fromMap(result);
+}
+
+/// Get information on an S3 Files File System.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.s3.getFilesFileSystem({
+///     id: "fs-1234567890abcdef0",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.get_files_file_system(id="fs-1234567890abcdef0")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.S3.GetFilesFileSystem.Invoke(new()
+///     {
+///         Id = "fs-1234567890abcdef0",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.LookupFilesFileSystem(ctx, &s3.LookupFilesFileSystemArgs{
+/// 			Id: "fs-1234567890abcdef0",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getfilesfilesystem" "example" {
+///   id = "fs-1234567890abcdef0"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetFilesFileSystemArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = S3Functions.getFilesFileSystem(GetFilesFileSystemArgs.builder()
+///             .id("fs-1234567890abcdef0")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:s3:getFilesFileSystem
+///       arguments:
+///         id: fs-1234567890abcdef0
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_files_file_system_get_files_file_system_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFilesFileSystemResult> getFilesFileSystem(
+  GetFilesFileSystemArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:s3/getFilesFileSystem:getFilesFileSystem',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFilesFileSystemResult.fromMap(result);
+}
+
+/// Provides details about S3 Files File Systems.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.s3.getFilesFileSystems({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.get_files_file_systems()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.S3.GetFilesFileSystems.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.GetFilesFileSystems(ctx, &s3.GetFilesFileSystemsArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getfilesfilesystems" "example" {
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetFilesFileSystemsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = S3Functions.getFilesFileSystems(GetFilesFileSystemsArgs.builder()
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:s3:getFilesFileSystems
+///       arguments: {}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_files_file_systems_get_files_file_systems_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFilesFileSystemsResult> getFilesFileSystems(
+  GetFilesFileSystemsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:s3/getFilesFileSystems:getFilesFileSystems',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFilesFileSystemsResult.fromMap(result);
+}
+
+/// Provides details about an S3 Files Mount Target.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.s3.getFilesMountTarget({
+///     id: "fsmt-1234567890abcdef0",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.get_files_mount_target(id="fsmt-1234567890abcdef0")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.S3.GetFilesMountTarget.Invoke(new()
+///     {
+///         Id = "fsmt-1234567890abcdef0",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := s3.LookupFilesMountTarget(ctx, &s3.LookupFilesMountTargetArgs{
+/// 			Id: "fsmt-1234567890abcdef0",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getfilesmounttarget" "example" {
+///   id = "fsmt-1234567890abcdef0"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.S3Functions;
+/// import com.pulumi.aws.s3.inputs.GetFilesMountTargetArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = S3Functions.getFilesMountTarget(GetFilesMountTargetArgs.builder()
+///             .id("fsmt-1234567890abcdef0")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:s3:getFilesMountTarget
+///       arguments:
+///         id: fsmt-1234567890abcdef0
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_files_mount_target_get_files_mount_target_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFilesMountTargetResult> getFilesMountTarget(
+  GetFilesMountTargetArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:s3/getFilesMountTarget:getFilesMountTarget',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFilesMountTargetResult.fromMap(result);
+}
+
 /// The S3 object data source allows access to the metadata and
 /// _optionally_ (see below) content of an object stored inside S3 bucket.
 ///
@@ -1481,7 +3054,7 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 /// ## Example Usage
 ///
 /// The following example retrieves a text object (which must have a `Content-Type`
-/// value starting with `text/`) and uses it as the `user_data` for an EC2 instance:
+/// value starting with `text/`) and uses it as the `userData` for an EC2 instance:
 ///
 ///
 /// ```typescript
@@ -1562,6 +3135,26 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getobject" "bootstrapScript" {
+///   bucket = "ourcorp-deploy-config"
+///   key    = "ec2-bootstrap-script.sh"
+/// }
+///
+/// resource "aws_ec2_instance" "example" {
+///   instance_type = "t2.micro"
+///   ami           = "ami-2757f631"
+///   user_data     = data.aws_s3_getobject.bootstrapScript.body
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1572,8 +3165,8 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 /// import com.pulumi.aws.s3.inputs.GetObjectArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1618,7 +3211,7 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 ///
 ///
 /// The following, more-complex example retrieves only the metadata for a zip
-/// file stored in S3, which is then used to pass the most recent `version_id`
+/// file stored in S3, which is then used to pass the most recent `versionId`
 /// to AWS Lambda for use as a function implementation. More information about
 /// Lambda functions is available in the documentation for
 /// `aws.lambda.Function`.
@@ -1692,7 +3285,7 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		lambda, err := s3.GetObject(ctx, &s3.GetObjectArgs{
+/// 		lambda2, err := s3.GetObject(ctx, &s3.GetObjectArgs{
 /// 			Bucket: "ourcorp-lambda-functions",
 /// 			Key:    "hello-world.zip",
 /// 		}, nil)
@@ -1700,9 +3293,9 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunction(ctx, "test_lambda", &lambda.FunctionArgs{
-/// 			S3Bucket:        pulumi.String(lambda.Bucket),
-/// 			S3Key:           pulumi.String(lambda.Key),
-/// 			S3ObjectVersion: pulumi.String(lambda.VersionId),
+/// 			S3Bucket:        pulumi.String(lambda2.Bucket),
+/// 			S3Key:           pulumi.String(lambda2.Key),
+/// 			S3ObjectVersion: pulumi.String(lambda2.VersionId),
 /// 			Name:            pulumi.String("lambda_function_name"),
 /// 			Role:            pulumi.Any(iamForLambda.Arn),
 /// 			Handler:         pulumi.String("exports.test"),
@@ -1712,6 +3305,29 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getobject" "lambda" {
+///   bucket = "ourcorp-lambda-functions"
+///   key    = "hello-world.zip"
+/// }
+///
+/// resource "aws_lambda_function" "test_lambda" {
+///   s3_bucket         = data.aws_s3_getobject.lambda.bucket
+///   s3_key            = data.aws_s3_getobject.lambda.key
+///   s3_object_version = data.aws_s3_getobject.lambda.version_id
+///   name              = "lambda_function_name"
+///   role              = iamForLambda.arn
+///   handler           = "exports.test"
 /// }
 /// ```
 /// ```java
@@ -1724,8 +3340,8 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 /// import com.pulumi.aws.s3.inputs.GetObjectArgs;
 /// import com.pulumi.aws.lambda.Function;
 /// import com.pulumi.aws.lambda.FunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1789,7 +3405,7 @@ Future<GetObjectResult> getObject(
   return GetObjectResult.fromMap(result);
 }
 
-/// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+/// &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
 ///
 /// The objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_objects_get_objects_args_doc}
@@ -1856,6 +3472,18 @@ Future<GetObjectsResult> getObjects(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3control_getaccesspoints" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1864,8 +3492,8 @@ Future<GetObjectsResult> getObjects(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3control.S3controlFunctions;
 /// import com.pulumi.aws.s3control.inputs.GetAccessPointsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1944,6 +3572,19 @@ Future<GetObjectsResult> getObjects(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3control_getaccesspoints" "example" {
+///   bucket = exampleAwsS3Bucket.bucket
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1952,8 +3593,8 @@ Future<GetObjectsResult> getObjects(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3control.S3controlFunctions;
 /// import com.pulumi.aws.s3control.inputs.GetAccessPointsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2049,6 +3690,19 @@ Future<GetAccessPointsResult> getAccessPoints(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3control_getmultiregionaccesspoint" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2057,8 +3711,8 @@ Future<GetAccessPointsResult> getAccessPoints(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3control.S3controlFunctions;
 /// import com.pulumi.aws.s3control.inputs.GetMultiRegionAccessPointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2149,6 +3803,18 @@ Future<GetMultiRegionAccessPointResult> getMultiRegionAccessPoint(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3control_getmultiregionaccesspoints" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2157,8 +3823,8 @@ Future<GetMultiRegionAccessPointResult> getMultiRegionAccessPoint(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3control.S3controlFunctions;
 /// import com.pulumi.aws.s3control.inputs.GetMultiRegionAccessPointsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

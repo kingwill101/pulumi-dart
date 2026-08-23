@@ -38,7 +38,7 @@ class ClusterState {
   /// [Nodes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.concepts.cluster.html#DAX.concepts.nodes) for supported node types
   final pulumi.Input<String>? nodeType;
   /// List of node objects including `id`, `address`, `port` and
-  /// `availability_zone`. Referenceable e.g., as
+  /// `availabilityZone`. Referenceable e.g., as
   /// `${aws_dax_cluster.test.nodes.0.address}`
   final pulumi.Input<List<ClusterNode>>? nodes;
   /// An Amazon Resource Name (ARN) of an
@@ -64,9 +64,9 @@ class ClusterState {
   /// Name of the subnet group to be used for the
   /// cluster
   final pulumi.Input<String>? subnetGroupName;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ClusterState].
@@ -89,8 +89,8 @@ class ClusterState {
   /// [securityGroupIds] One or more VPC security groups associated
   /// [serverSideEncryption] Encrypt at rest options
   /// [subnetGroupName] Name of the subnet group to be used for the
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ClusterState({
     this.arn,
     this.availabilityZones,
@@ -167,4 +167,3 @@ class ClusterState {
     );
   }
 }
-

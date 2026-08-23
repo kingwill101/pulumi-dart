@@ -125,6 +125,34 @@ import 'scheduled_action_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "dynamodb" {
+///   max_capacity       = 100
+///   min_capacity       = 5
+///   resource_id        = "table/tableName"
+///   scalable_dimension = "dynamodb:table:ReadCapacityUnits"
+///   service_namespace  = "dynamodb"
+/// }
+/// resource "aws_appautoscaling_scheduledaction" "dynamodb" {
+///   name               = "dynamodb"
+///   service_namespace  = aws_appautoscaling_target.dynamodb.service_namespace
+///   resource_id        = aws_appautoscaling_target.dynamodb.resource_id
+///   scalable_dimension = aws_appautoscaling_target.dynamodb.scalable_dimension
+///   schedule           = "at(2006-01-02T15:04:05)"
+///   scalable_target_action = {
+///     min_capacity = 1
+///     max_capacity = 200
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +164,8 @@ import 'scheduled_action_state.dart';
 /// import com.pulumi.aws.appautoscaling.ScheduledAction;
 /// import com.pulumi.aws.appautoscaling.ScheduledActionArgs;
 /// import com.pulumi.aws.appautoscaling.inputs.ScheduledActionScalableTargetActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,6 +343,34 @@ import 'scheduled_action_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appautoscaling_target" "ecs" {
+///   max_capacity       = 4
+///   min_capacity       = 1
+///   resource_id        = "service/clusterName/serviceName"
+///   scalable_dimension = "ecs:service:DesiredCount"
+///   service_namespace  = "ecs"
+/// }
+/// resource "aws_appautoscaling_scheduledaction" "ecs" {
+///   name               = "ecs"
+///   service_namespace  = aws_appautoscaling_target.ecs.service_namespace
+///   resource_id        = aws_appautoscaling_target.ecs.resource_id
+///   scalable_dimension = aws_appautoscaling_target.ecs.scalable_dimension
+///   schedule           = "at(2006-01-02T15:04:05)"
+///   scalable_target_action = {
+///     min_capacity = 1
+///     max_capacity = 10
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +382,8 @@ import 'scheduled_action_state.dart';
 /// import com.pulumi.aws.appautoscaling.ScheduledAction;
 /// import com.pulumi.aws.appautoscaling.ScheduledActionArgs;
 /// import com.pulumi.aws.appautoscaling.inputs.ScheduledActionScalableTargetActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -406,7 +462,7 @@ class ScheduledAction extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceNamespace;
   /// Date and time for the scheduled action to start in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
   late final pulumi.Output<String?> startTime;
-  /// Time zone used when setting a scheduled action by using an at or cron expression. Does not affect timezone for `start_time` and `end_time`. Valid values are the [canonical names of the IANA time zones supported by Joda-Time](https://www.joda.org/joda-time/timezones.html), such as `Etc/GMT+9` or `Pacific/Tahiti`. Default is `UTC`.
+  /// Time zone used when setting a scheduled action by using an at or cron expression. Does not affect timezone for `startTime` and `endTime`. Valid values are the [canonical names of the IANA time zones supported by Joda-Time](https://www.joda.org/joda-time/timezones.html), such as `Etc/GMT+9` or `Pacific/Tahiti`. Default is `UTC`.
   late final pulumi.Output<String?> timezone;
 
   /// Creates a new [ScheduledAction].

@@ -116,6 +116,30 @@ import 'key_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_paymentcryptography_key" "test" {
+///   exportable = true
+///   key_attributes {
+///     key_algorithm = "TDES_3KEY"
+///     key_class     = "SYMMETRIC_KEY"
+///     key_usage     = "TR31_P0_PIN_ENCRYPTION_KEY"
+///     key_modes_of_uses {
+///       decrypt = true
+///       encrypt = true
+///       wrap    = true
+///       unwrap  = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +149,9 @@ import 'key_timeouts.dart';
 /// import com.pulumi.aws.paymentcryptography.Key;
 /// import com.pulumi.aws.paymentcryptography.KeyArgs;
 /// import com.pulumi.aws.paymentcryptography.inputs.KeyKeyAttributeArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.paymentcryptography.inputs.KeyKeyAttributeKeyModesOfUseArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,9 +235,9 @@ class Key extends pulumi.CustomResource {
   late final pulumi.Output<String> keyState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<KeyTimeouts?> timeouts;
 

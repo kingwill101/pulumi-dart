@@ -15,7 +15,7 @@ class RepositoryArgs {
   final pulumi.Input<String>? region;
   /// Name of the repository.
   final pulumi.Input<String> repositoryName;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [RepositoryArgs].
@@ -23,7 +23,7 @@ class RepositoryArgs {
   /// [forceDestroy] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repositoryName] Name of the repository.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const RepositoryArgs({
     this.catalogData,
     this.forceDestroy,
@@ -52,4 +52,3 @@ class RepositoryArgs {
     );
   }
 }
-

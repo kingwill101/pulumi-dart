@@ -13,7 +13,11 @@ class GetLocalGatewayVirtualInterfaceResult {
   final int localBgpAsn;
   /// Identifier of the EC2 Local Gateway.
   final String localGatewayId;
+  /// Identifier of the EC2 Local Gateway Virtual Interface Group.
+  final String localGatewayVirtualInterfaceGroupId;
   final List<String> localGatewayVirtualInterfaceIds;
+  /// Identifier of the Outpost LAG.
+  final String outpostLagId;
   /// Peer address.
   final String peerAddress;
   /// Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the peer.
@@ -29,7 +33,9 @@ class GetLocalGatewayVirtualInterfaceResult {
   /// [localAddress] Local address.
   /// [localBgpAsn] Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the EC2 Local Gateway.
   /// [localGatewayId] Identifier of the EC2 Local Gateway.
+  /// [localGatewayVirtualInterfaceGroupId] Identifier of the EC2 Local Gateway Virtual Interface Group.
   /// [localGatewayVirtualInterfaceIds] Required.
+  /// [outpostLagId] Identifier of the Outpost LAG.
   /// [peerAddress] Peer address.
   /// [peerBgpAsn] Border Gateway Protocol (BGP) Autonomous System Number (ASN) of the peer.
   /// [region] Required.
@@ -41,7 +47,9 @@ class GetLocalGatewayVirtualInterfaceResult {
     required this.localAddress,
     required this.localBgpAsn,
     required this.localGatewayId,
+    required this.localGatewayVirtualInterfaceGroupId,
     required this.localGatewayVirtualInterfaceIds,
+    required this.outpostLagId,
     required this.peerAddress,
     required this.peerBgpAsn,
     required this.region,
@@ -56,7 +64,9 @@ class GetLocalGatewayVirtualInterfaceResult {
       'localAddress': localAddress,
       'localBgpAsn': localBgpAsn,
       'localGatewayId': localGatewayId,
+      'localGatewayVirtualInterfaceGroupId': localGatewayVirtualInterfaceGroupId,
       'localGatewayVirtualInterfaceIds': localGatewayVirtualInterfaceIds,
+      'outpostLagId': outpostLagId,
       'peerAddress': peerAddress,
       'peerBgpAsn': peerBgpAsn,
       'region': region,
@@ -72,7 +82,9 @@ class GetLocalGatewayVirtualInterfaceResult {
       localAddress: map['localAddress'] as String,
       localBgpAsn: map['localBgpAsn'] as int,
       localGatewayId: map['localGatewayId'] as String,
+      localGatewayVirtualInterfaceGroupId: map['localGatewayVirtualInterfaceGroupId'] as String,
       localGatewayVirtualInterfaceIds: (map['localGatewayVirtualInterfaceIds'] as List).cast<String>(),
+      outpostLagId: map['outpostLagId'] as String,
       peerAddress: map['peerAddress'] as String,
       peerBgpAsn: map['peerBgpAsn'] as int,
       region: map['region'] as String,
@@ -81,4 +93,3 @@ class GetLocalGatewayVirtualInterfaceResult {
     );
   }
 }
-

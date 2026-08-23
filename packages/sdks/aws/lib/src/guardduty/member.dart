@@ -87,7 +87,7 @@ import 'member_state.dart';
 /// 		}
 /// 		_, err = guardduty.NewMember(ctx, "member", &guardduty.MemberArgs{
 /// 			AccountId:         member.AccountId,
-/// 			DetectorId:        primary.ID(),
+/// 			DetectorId:        primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Email:             pulumi.String("required@example.com"),
 /// 			Invite:            pulumi.Bool(true),
 /// 			InvitationMessage: pulumi.String("please accept guardduty invitation"),
@@ -97,6 +97,29 @@ import 'member_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "primary" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_detector" "member" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_member" "member" {
+///   account_id         = aws_guardduty_detector.member.account_id
+///   detector_id        = aws_guardduty_detector.primary.id
+///   email              = "required@example.com"
+///   invite             = true
+///   invitation_message = "please accept guardduty invitation"
 /// }
 /// ```
 /// ```java
@@ -109,8 +132,8 @@ import 'member_state.dart';
 /// import com.pulumi.aws.guardduty.DetectorArgs;
 /// import com.pulumi.aws.guardduty.Member;
 /// import com.pulumi.aws.guardduty.MemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,7 +204,7 @@ class Member extends pulumi.CustomResource {
   late final pulumi.Output<String> email;
   /// Message for invitation.
   late final pulumi.Output<String?> invitationMessage;
-  /// Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
+  /// Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationshipStatus` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
   late final pulumi.Output<bool?> invite;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

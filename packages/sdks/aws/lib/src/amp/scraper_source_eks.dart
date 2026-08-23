@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScraperSourceEks {
+  /// ARN of the source EKS cluster.
   final pulumi.Input<String> clusterArn;
   /// List of the security group IDs for the Amazon EKS cluster VPC configuration.
   final pulumi.Input<List<String>>? securityGroupIds;
@@ -10,7 +11,7 @@ class ScraperSourceEks {
   final pulumi.Input<List<String>> subnetIds;
 
   /// Creates a new [ScraperSourceEks].
-  /// [clusterArn] Required.
+  /// [clusterArn] ARN of the source EKS cluster.
   /// [securityGroupIds] List of the security group IDs for the Amazon EKS cluster VPC configuration.
   /// [subnetIds] List of subnet IDs. Must be in at least two different availability zones.
   const ScraperSourceEks({
@@ -35,4 +36,3 @@ class ScraperSourceEks {
     );
   }
 }
-

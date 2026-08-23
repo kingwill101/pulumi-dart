@@ -126,4 +126,3 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings {
     );
   }
 }
-

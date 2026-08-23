@@ -70,6 +70,22 @@ import 'agentcore_token_vault_cmk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoretokenvaultcmk" "example" {
+///   kms_configuration = {
+///     key_type    = "CustomerManagedKey"
+///     kms_key_arn = exampleAwsKmsKey.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +95,8 @@ import 'agentcore_token_vault_cmk_state.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreTokenVaultCmk;
 /// import com.pulumi.aws.bedrock.AgentcoreTokenVaultCmkArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreTokenVaultCmkKmsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,7 +137,7 @@ import 'agentcore_token_vault_cmk_state.dart';
 /// $ pulumi import aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk example "default"
 /// ```
 class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
-  /// KMS configuration for the token vault. See `kms_configuration` below.
+  /// KMS configuration for the token vault. See `kmsConfiguration` below.
   late final pulumi.Output<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

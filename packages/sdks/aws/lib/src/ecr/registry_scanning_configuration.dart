@@ -99,6 +99,26 @@ import 'registry_scanning_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_registryscanningconfiguration" "configuration" {
+///   scan_type = "ENHANCED"
+///   rules {
+///     scan_frequency = "CONTINUOUS_SCAN"
+///     repository_filters {
+///       filter      = "example"
+///       filter_type = "WILDCARD"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +128,9 @@ import 'registry_scanning_configuration_state.dart';
 /// import com.pulumi.aws.ecr.RegistryScanningConfiguration;
 /// import com.pulumi.aws.ecr.RegistryScanningConfigurationArgs;
 /// import com.pulumi.aws.ecr.inputs.RegistryScanningConfigurationRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ecr.inputs.RegistryScanningConfigurationRuleRepositoryFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +302,33 @@ import 'registry_scanning_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_registryscanningconfiguration" "test" {
+///   scan_type = "ENHANCED"
+///   rules {
+///     scan_frequency = "SCAN_ON_PUSH"
+///     repository_filters {
+///       filter      = "*"
+///       filter_type = "WILDCARD"
+///     }
+///   }
+///   rules {
+///     scan_frequency = "CONTINUOUS_SCAN"
+///     repository_filters {
+///       filter      = "example"
+///       filter_type = "WILDCARD"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -290,8 +338,9 @@ import 'registry_scanning_configuration_state.dart';
 /// import com.pulumi.aws.ecr.RegistryScanningConfiguration;
 /// import com.pulumi.aws.ecr.RegistryScanningConfigurationArgs;
 /// import com.pulumi.aws.ecr.inputs.RegistryScanningConfigurationRuleArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ecr.inputs.RegistryScanningConfigurationRuleRepositoryFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,7 +394,7 @@ import 'registry_scanning_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ECR Scanning Configurations using the `registry_id`. For example:
+/// Using `pulumi import`, import ECR Scanning Configurations using the `registryId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecr/registryScanningConfiguration:RegistryScanningConfiguration example 123456789012

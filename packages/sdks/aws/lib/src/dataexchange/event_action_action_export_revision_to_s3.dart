@@ -9,7 +9,7 @@ class EventActionActionExportRevisionToS3 {
   /// Described in `encryption` Configuration Block below.
   final pulumi.Input<EventActionActionExportRevisionToS3Encryption>? encryption;
   /// Configures the S3 destination of the exported revision.
-  /// Described in `revision_destination` Configuration Block below.
+  /// Described in `revisionDestination` Configuration Block below.
   final pulumi.Input<EventActionActionExportRevisionToS3RevisionDestination> revisionDestination;
 
   /// Creates a new [EventActionActionExportRevisionToS3].
@@ -34,4 +34,3 @@ class EventActionActionExportRevisionToS3 {
     );
   }
 }
-

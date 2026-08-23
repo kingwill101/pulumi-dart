@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScraperRoleConfiguration {
-  /// The Amazon Resource Name (ARN) of the source role configuration. Must be an IAM role ARN.
+  /// ARN of the source role configuration. Must be an IAM role ARN.
   final pulumi.Input<String>? sourceRoleArn;
-  /// The Amazon Resource Name (ARN) of the target role configuration. Must be an IAM role ARN.
+  /// ARN of the target role configuration. Must be an IAM role ARN.
   final pulumi.Input<String>? targetRoleArn;
 
   /// Creates a new [ScraperRoleConfiguration].
-  /// [sourceRoleArn] The Amazon Resource Name (ARN) of the source role configuration. Must be an IAM role ARN.
-  /// [targetRoleArn] The Amazon Resource Name (ARN) of the target role configuration. Must be an IAM role ARN.
+  /// [sourceRoleArn] ARN of the source role configuration. Must be an IAM role ARN.
+  /// [targetRoleArn] ARN of the target role configuration. Must be an IAM role ARN.
   const ScraperRoleConfiguration({
     this.sourceRoleArn,
     this.targetRoleArn,
@@ -30,4 +30,3 @@ class ScraperRoleConfiguration {
     );
   }
 }
-

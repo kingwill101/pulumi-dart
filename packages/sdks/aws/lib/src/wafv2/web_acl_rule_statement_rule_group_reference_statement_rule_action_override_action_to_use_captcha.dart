@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_override_action_to_use_captcha_custom_request_handling.dart';
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha {
-  /// Defines custom handling for the web request. See `custom_request_handling` below for details.
+  /// Custom request handling configuration. See Custom Request Handling below.
   final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptchaCustomRequestHandling>? customRequestHandling;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha].
-  /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
+  /// [customRequestHandling] Custom request handling configuration. See Custom Request Handling below.
   const WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha({
     this.customRequestHandling,
   });
@@ -25,4 +25,3 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
     );
   }
 }
-

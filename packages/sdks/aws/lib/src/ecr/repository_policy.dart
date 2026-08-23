@@ -202,6 +202,35 @@ import 'repository_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "new policy"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["123456789012"]
+///     }
+///     actions = ["ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage", "ecr:BatchCheckLayerAvailability", "ecr:PutImage", "ecr:InitiateLayerUpload", "ecr:UploadLayerPart", "ecr:CompleteLayerUpload", "ecr:DescribeRepositories", "ecr:GetRepositoryPolicy", "ecr:ListImages", "ecr:DeleteRepository", "ecr:BatchDeleteImage", "ecr:SetRepositoryPolicy", "ecr:DeleteRepositoryPolicy"]
+///   }
+/// }
+///
+/// resource "aws_ecr_repository" "example" {
+///   name = "example-repo"
+/// }
+/// resource "aws_ecr_repositorypolicy" "example" {
+///   repository = aws_ecr_repository.example.name
+///   policy     = data.aws_iam_getpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,10 +241,12 @@ import 'repository_policy_state.dart';
 /// import com.pulumi.aws.ecr.RepositoryArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.ecr.RepositoryPolicy;
 /// import com.pulumi.aws.ecr.RepositoryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,7 +349,7 @@ import 'repository_policy_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///

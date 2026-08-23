@@ -10,7 +10,7 @@ import 'records_exclusive_timeouts.dart';
 /// {@macro pulumi_route53_records_exclusive_records_exclusive_args_doc}
 class RecordsExclusiveArgs {
   /// A list of all resource record sets associated with the hosted zone.
-  /// See `resource_record_set` below.
+  /// See `resourceRecordSet` below.
   final pulumi.Input<List<RecordsExclusiveResourceRecordSet>>? resourceRecordSets;
   final pulumi.Input<RecordsExclusiveTimeouts>? timeouts;
   /// ID of the hosted zone containing the resource record sets.
@@ -44,4 +44,3 @@ class RecordsExclusiveArgs {
     );
   }
 }
-

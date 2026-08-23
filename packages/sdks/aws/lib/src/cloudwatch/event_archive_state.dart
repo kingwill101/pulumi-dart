@@ -8,7 +8,7 @@ class EventArchiveState {
   final pulumi.Input<String>? arn;
   /// Description for the archive.
   final pulumi.Input<String>? description;
-  /// Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `event_source_arn`.
+  /// Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `eventSourceArn`.
   final pulumi.Input<String>? eventPattern;
   /// ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive.
   final pulumi.Input<String>? eventSourceArn;
@@ -24,7 +24,7 @@ class EventArchiveState {
   /// Creates a new [EventArchiveState].
   /// [arn] ARN of the archive.
   /// [description] Description for the archive.
-  /// [eventPattern] Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `event_source_arn`.
+  /// [eventPattern] Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `eventSourceArn`.
   /// [eventSourceArn] ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive.
   /// [kmsKeyIdentifier] Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this archive. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
   /// [name] Name of the archive. The archive name cannot exceed 48 characters.
@@ -67,4 +67,3 @@ class EventArchiveState {
     );
   }
 }
-

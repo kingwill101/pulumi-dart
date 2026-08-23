@@ -3,8 +3,10 @@ import 'get_connection_args.dart';
 import 'get_connection_result.dart';
 import 'get_connections_args.dart';
 import 'get_connections_result.dart';
+import 'get_core_network_args.dart';
 import 'get_core_network_policy_document_args.dart';
 import 'get_core_network_policy_document_result.dart';
+import 'get_core_network_result.dart';
 import 'get_device_args.dart';
 import 'get_device_result.dart';
 import 'get_devices_args.dart';
@@ -80,6 +82,20 @@ import 'get_sites_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getconnection" "example" {
+///   global_network_id = globalNetworkId
+///   connection_id     = connectionId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +104,8 @@ import 'get_sites_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,7 +205,7 @@ Future<GetConnectionResult> getConnection(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.GetConnections(ctx, &networkmanager.GetConnectionsArgs{
 /// 			GlobalNetworkId: globalNetworkId,
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Env": "test",
 /// 			},
 /// 		}, nil)
@@ -200,6 +216,22 @@ Future<GetConnectionResult> getConnection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getconnections" "example" {
+///   global_network_id = globalNetworkId
+///   tags = {
+///     "Env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -208,8 +240,8 @@ Future<GetConnectionResult> getConnection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetConnectionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -254,7 +286,127 @@ Future<GetConnectionsResult> getConnections(
   return GetConnectionsResult.fromMap(result);
 }
 
-/// Generates a Core Network policy document in JSON format for use with resources that expect core network policy documents such as `awscc_networkmanager_core_network`. It follows the API definition from the [core-network-policy documentation](https://docs.aws.amazon.com/vpc/latest/cloudwan/cloudwan-policies-json.html).
+/// Provides details about an AWS Network Manager Core Network.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.networkmanager.getCoreNetwork({
+///     coreNetworkId: "core-network-0123456789abcdef0",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.networkmanager.get_core_network(core_network_id="core-network-0123456789abcdef0")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.NetworkManager.GetCoreNetwork.Invoke(new()
+///     {
+///         CoreNetworkId = "core-network-0123456789abcdef0",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/networkmanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := networkmanager.LookupCoreNetwork(ctx, &networkmanager.LookupCoreNetworkArgs{
+/// 			CoreNetworkId: "core-network-0123456789abcdef0",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getcorenetwork" "example" {
+///   core_network_id = "core-network-0123456789abcdef0"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = NetworkmanagerFunctions.getCoreNetwork(GetCoreNetworkArgs.builder()
+///             .coreNetworkId("core-network-0123456789abcdef0")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:networkmanager:getCoreNetwork
+///       arguments:
+///         coreNetworkId: core-network-0123456789abcdef0
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_networkmanager_get_core_network_get_core_network_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetCoreNetworkResult> getCoreNetwork(
+  GetCoreNetworkArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:networkmanager/getCoreNetwork:getCoreNetwork',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetCoreNetworkResult.fromMap(result);
+}
+
+/// Generates a Core Network policy document in JSON format for use with resources that expect core network policy documents such as `awsccNetworkmanagerCoreNetwork`. It follows the API definition from the [core-network-policy documentation](https://docs.aws.amazon.com/vpc/latest/cloudwan/cloudwan-policies-json.html).
 ///
 /// Using this data source to generate policy documents is *optional*. It is also valid to use literal JSON strings in your configuration or to use the `file` interpolation function to read a raw JSON policy document from a file.
 ///
@@ -603,6 +755,74 @@ Future<GetConnectionsResult> getConnections(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getcorenetworkpolicydocument" "test" {
+///   core_network_configurations {
+///     vpn_ecmp_support = false
+///     asn_ranges       = ["64512-64555"]
+///     edge_locations {
+///       location = "us-east-1"
+///       asn      = 64512
+///     }
+///     edge_locations {
+///       location = "eu-central-1"
+///       asn      = 64513
+///     }
+///   }
+///   segments {
+///     name                          = "shared"
+///     description                   = "Segment for shared services"
+///     require_attachment_acceptance = true
+///   }
+///   segments {
+///     name                          = "prod"
+///     description                   = "Segment for prod services"
+///     require_attachment_acceptance = true
+///   }
+///   segment_actions {
+///     action      = "share"
+///     mode        = "attachment-route"
+///     segment     = "shared"
+///     share_withs = ["*"]
+///   }
+///   attachment_policies {
+///     rule_number     = 100
+///     condition_logic = "or"
+///     conditions {
+///       type     = "tag-value"
+///       operator = "equals"
+///       key      = "segment"
+///       value    = "shared"
+///     }
+///     action = {
+///       association_method = "constant"
+///       segment            = "shared"
+///     }
+///   }
+///   attachment_policies {
+///     rule_number     = 200
+///     condition_logic = "or"
+///     conditions {
+///       type     = "tag-value"
+///       operator = "equals"
+///       key      = "segment"
+///       value    = "prod"
+///     }
+///     action = {
+///       association_method = "constant"
+///       segment            = "prod"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -611,8 +831,15 @@ Future<GetConnectionsResult> getConnections(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -891,6 +1118,20 @@ Future<GetCoreNetworkPolicyDocumentResult> getCoreNetworkPolicyDocument(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getdevice" "example" {
+///   global_network_id = globalNetworkId
+///   device_id         = deviceId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -899,8 +1140,8 @@ Future<GetCoreNetworkPolicyDocumentResult> getCoreNetworkPolicyDocument(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetDeviceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1000,7 +1241,7 @@ Future<GetDeviceResult> getDevice(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.GetDevices(ctx, &networkmanager.GetDevicesArgs{
 /// 			GlobalNetworkId: globalNetworkId,
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Env": "test",
 /// 			},
 /// 		}, nil)
@@ -1011,6 +1252,22 @@ Future<GetDeviceResult> getDevice(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getdevices" "example" {
+///   global_network_id = globalNetworkId
+///   tags = {
+///     "Env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1019,8 +1276,8 @@ Future<GetDeviceResult> getDevice(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetDevicesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1119,6 +1376,19 @@ Future<GetDevicesResult> getDevices(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getglobalnetwork" "example" {
+///   global_network_id = globalNetworkId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1127,8 +1397,8 @@ Future<GetDevicesResult> getDevices(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetGlobalNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1222,7 +1492,7 @@ Future<GetGlobalNetworkResult> getGlobalNetwork(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.GetGlobalNetworks(ctx, &networkmanager.GetGlobalNetworksArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Env": "test",
 /// 			},
 /// 		}, nil)
@@ -1233,6 +1503,21 @@ Future<GetGlobalNetworkResult> getGlobalNetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getglobalnetworks" "example" {
+///   tags = {
+///     "Env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1241,8 +1526,8 @@ Future<GetGlobalNetworkResult> getGlobalNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetGlobalNetworksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1343,6 +1628,20 @@ Future<GetGlobalNetworksResult> getGlobalNetworks(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getlink" "example" {
+///   global_network_id = globalNetworkId
+///   link_id           = linkId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1351,8 +1650,8 @@ Future<GetGlobalNetworksResult> getGlobalNetworks(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1452,7 +1751,7 @@ Future<GetLinkResult> getLink(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.GetLinks(ctx, &networkmanager.GetLinksArgs{
 /// 			GlobalNetworkId: globalNetworkId,
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Env": "test",
 /// 			},
 /// 		}, nil)
@@ -1463,6 +1762,22 @@ Future<GetLinkResult> getLink(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getlinks" "example" {
+///   global_network_id = globalNetworkId
+///   tags = {
+///     "Env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1471,8 +1786,8 @@ Future<GetLinkResult> getLink(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetLinksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1575,6 +1890,20 @@ Future<GetLinksResult> getLinks(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getsite" "example" {
+///   global_network_id = globalNetworkId
+///   site_id           = siteId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1583,8 +1912,8 @@ Future<GetLinksResult> getLinks(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1684,7 +2013,7 @@ Future<GetSiteResult> getSite(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.GetSites(ctx, &networkmanager.GetSitesArgs{
 /// 			GlobalNetworkId: globalNetworkId,
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"Env": "test",
 /// 			},
 /// 		}, nil)
@@ -1695,6 +2024,22 @@ Future<GetSiteResult> getSite(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_networkmanager_getsites" "example" {
+///   global_network_id = globalNetworkId
+///   tags = {
+///     "Env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1703,8 +2048,8 @@ Future<GetSiteResult> getSite(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetSitesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

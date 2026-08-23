@@ -14,14 +14,14 @@ class KxEnvironmentArgs {
   /// Description for the KX environment.
   final pulumi.Input<String>? description;
   /// KMS key ID to encrypt your data in the FinSpace environment.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String> kmsKeyId;
   /// Name of the KX environment that you want to create.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
   final pulumi.Input<KxEnvironmentTransitGatewayConfiguration>? transitGatewayConfiguration;
@@ -32,7 +32,7 @@ class KxEnvironmentArgs {
   /// [kmsKeyId] KMS key ID to encrypt your data in the FinSpace environment.
   /// [name] Name of the KX environment that you want to create.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayConfiguration] Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
   const KxEnvironmentArgs({
     this.customDnsConfigurations,
@@ -68,4 +68,3 @@ class KxEnvironmentArgs {
     );
   }
 }
-

@@ -60,6 +60,19 @@ import 'get_route53_health_checks_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_arcregionswitch_getplan" "example" {
+///   arn = "arn:aws:arcregionswitch:us-west-2:123456789012:plan/example-plan"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_route53_health_checks_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.arcregionswitch.ArcregionswitchFunctions;
 /// import com.pulumi.aws.arcregionswitch.inputs.GetPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +180,19 @@ Future<GetPlanResult> getPlan(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_arcregionswitch_getroute53healthchecks" "example" {
+///   plan_arn = "arn:aws:arc-region-switch::123456789012:plan/example-plan:abc123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +201,8 @@ Future<GetPlanResult> getPlan(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.arcregionswitch.ArcregionswitchFunctions;
 /// import com.pulumi.aws.arcregionswitch.inputs.GetRoute53HealthChecksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

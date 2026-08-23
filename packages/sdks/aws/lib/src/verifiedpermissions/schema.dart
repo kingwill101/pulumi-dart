@@ -85,8 +85,8 @@ import 'schema_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"Namespace": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]map[string]interface{}{
+/// 			"Namespace": map[string]map[string]interface{}{
 /// 				"entityTypes": map[string]interface{}{},
 /// 				"actions":     map[string]interface{}{},
 /// 			},
@@ -108,6 +108,27 @@ import 'schema_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedpermissions_schema" "example" {
+///   policy_store_id = exampleAwsVerifiedpermissionsPolicyStore.policyStoreId
+///   definition = {
+///     value = jsonencode({
+///       "Namespace" = {
+///         "entityTypes" = {}
+///         "actions"     = {}
+///       }
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +139,8 @@ import 'schema_state.dart';
 /// import com.pulumi.aws.verifiedpermissions.SchemaArgs;
 /// import com.pulumi.aws.verifiedpermissions.inputs.SchemaDefinitionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,10 +189,10 @@ import 'schema_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Verified Permissions Policy Store Schema using the `policy_store_id`. For example:
+/// Using `pulumi import`, import Verified Permissions Policy Store Schema using the `policyStoreId`. For example:
 ///
 /// ```sh
-///  $ pulumi import aws:verifiedpermissions/schema:Schema example DxQg2j8xvXJQ1tQCYNWj9T
+/// $ pulumi import aws:verifiedpermissions/schema:Schema example DxQg2j8xvXJQ1tQCYNWj9T
 /// ```
 class Schema extends pulumi.CustomResource {
   /// The definition of the schema.

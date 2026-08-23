@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
-  /// The content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
+  /// Content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
   final pulumi.Input<String> contentType;
   /// Description of the model. Must be between 1 and 128 characters in length.
   final pulumi.Input<String>? description;
@@ -22,7 +22,7 @@ class ModelArgs {
 
   /// Creates a new [ModelArgs].
   /// [apiId] API identifier.
-  /// [contentType] The content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
+  /// [contentType] Content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
   /// [description] Description of the model. Must be between 1 and 128 characters in length.
   /// [name] Name of the model. Must be alphanumeric. Must be between 1 and 128 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -58,4 +58,3 @@ class ModelArgs {
     );
   }
 }
-

@@ -88,6 +88,22 @@ class GetEbsVolumesFilter {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// data "aws_ebs_getebsvolumes" "tenOrTwentyGbVolumes" {
+  ///   filters {
+  ///     name   = "size"
+  ///     values = ["10", "20"]
+  ///   }
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -96,8 +112,9 @@ class GetEbsVolumesFilter {
   /// import com.pulumi.core.Output;
   /// import com.pulumi.aws.ebs.EbsFunctions;
   /// import com.pulumi.aws.ebs.inputs.GetEbsVolumesArgs;
-  /// import java.util.List;
+  /// import com.pulumi.aws.ebs.inputs.GetEbsVolumesFilterArgs;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -160,4 +177,3 @@ class GetEbsVolumesFilter {
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'vpc_ipam_pool_cidr_state.dart';
 
 /// Provisions a CIDR from an IPAM address pool.
 ///
-/// &gt; **NOTE:** Provisioning Public IPv4 or Public IPv6 require [steps outside the scope of this resource](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#prepare-for-byoip). The resource accepts `message` and `signature` as part of the `cidr_authorization_context` attribute but those must be generated ahead of time. Public IPv6 CIDRs that are provisioned into a Pool with `publicly_advertisable = true` and all public IPv4 CIDRs also require creating a Route Origin Authorization (ROA) object in your Regional Internet Registry (RIR).
+/// &gt; **NOTE:** Provisioning Public IPv4 or Public IPv6 require [steps outside the scope of this resource](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#prepare-for-byoip). The resource accepts `message` and `signature` as part of the `cidrAuthorizationContext` attribute but those must be generated ahead of time. Public IPv6 CIDRs that are provisioned into a Pool with `publiclyAdvertisable = true` and all public IPv4 CIDRs also require creating a Route Origin Authorization (ROA) object in your Regional Internet Registry (RIR).
 ///
 /// &gt; **NOTE:** In order to deprovision CIDRs all Allocations must be released. Allocations created by a VPC take up to 30 minutes to be released. However, for IPAM to properly manage the removal of allocation records created by VPCs and other resources, you must [grant it permissions](https://docs.aws.amazon.com/vpc/latest/ipam/choose-single-user-or-orgs-ipam.html) in
 /// either a single account or organizationally. If you are unable to deprovision a cidr after waiting over 30 minutes, you may be missing the Service Linked Role.
@@ -119,7 +119,7 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidr(ctx, "example", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: exampleVpcIpamPool.ID(),
+/// 			IpamPoolId: exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -127,6 +127,33 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+/// }
+/// resource "aws_ec2_vpcipampool" "example" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
+///   locale         = data.aws_getregion.current.region
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "example" {
+///   ipam_pool_id = aws_ec2_vpcipampool.example.id
+///   cidr         = "172.20.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -144,8 +171,8 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpamPoolArgs;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidr;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,7 +358,7 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPoolCidr(ctx, "ipv6_test_public", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId:    ipv6TestPublic.ID(),
+/// 			IpamPoolId:    ipv6TestPublic.ID().ToIDOutput().ToStringOutput(),
 /// 			NetmaskLength: pulumi.Int(52),
 /// 		})
 /// 		if err != nil {
@@ -339,6 +366,37 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+/// }
+/// resource "aws_ec2_vpcipampool" "ipv6_test_public" {
+///   address_family        = "ipv6"
+///   ipam_scope_id         = aws_ec2_vpcipam.example.public_default_scope_id
+///   locale                = "us-east-1"
+///   description           = "public ipv6"
+///   publicly_advertisable = false
+///   public_ip_source      = "amazon"
+///   aws_service           = "ec2"
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "ipv6_test_public" {
+///   ipam_pool_id   = aws_ec2_vpcipampool.ipv6_test_public.id
+///   netmask_length = 52
 /// }
 /// ```
 /// ```java
@@ -356,8 +414,8 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpamPoolArgs;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidr;
 /// import com.pulumi.aws.ec2.VpcIpamPoolCidrArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,9 +496,9 @@ import 'vpc_ipam_pool_cidr_state.dart';
 /// $ pulumi import aws:ec2/vpcIpamPoolCidr:VpcIpamPoolCidr example 172.20.0.0/24_ipam-pool-0e634f5a1517cccdc
 /// ```
 class VpcIpamPoolCidr extends pulumi.CustomResource {
-  /// The CIDR you want to assign to the pool. Conflicts with `netmask_length`.
+  /// The CIDR you want to assign to the pool. Conflicts with `netmaskLength`.
   late final pulumi.Output<String> cidr;
-  /// A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP. This is not stored in the state file. See cidr_authorization_context for more information.
+  /// A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP. This is not stored in the state file. See cidrAuthorizationContext for more information.
   late final pulumi.Output<VpcIpamPoolCidrCidrAuthorizationContext?> cidrAuthorizationContext;
   /// The unique ID generated by AWS for the pool cidr. Typically this is the resource `id` but this attribute was added to the API calls after the fact and is therefore not used as the resource id.
   late final pulumi.Output<String> ipamPoolCidrId;

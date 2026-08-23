@@ -81,6 +81,24 @@ import 'phone_number_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_phonenumber" "example" {
+///   target_arn   = exampleAwsConnectInstance.arn
+///   country_code = "US"
+///   type         = "DID"
+///   tags = {
+///     "hello" = "world"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +107,8 @@ import 'phone_number_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.PhoneNumber;
 /// import com.pulumi.aws.connect.PhoneNumberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,6 +208,22 @@ import 'phone_number_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_phonenumber" "example" {
+///   target_arn   = exampleAwsConnectInstance.arn
+///   country_code = "US"
+///   type         = "DID"
+///   description  = "example description"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +232,8 @@ import 'phone_number_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.PhoneNumber;
 /// import com.pulumi.aws.connect.PhoneNumberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,6 +332,22 @@ import 'phone_number_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_phonenumber" "example" {
+///   target_arn   = exampleAwsConnectInstance.arn
+///   country_code = "US"
+///   type         = "DID"
+///   prefix       = "+18005"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +356,8 @@ import 'phone_number_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.PhoneNumber;
 /// import com.pulumi.aws.connect.PhoneNumberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -351,7 +401,7 @@ import 'phone_number_state.dart';
 ///
 /// #### Optional
 ///
-/// - `account_id` (String) AWS Account where this resource is managed.
+/// - `accountId` (String) AWS Account where this resource is managed.
 /// - `region` (String) Region where this resource is managed.
 ///
 ///
@@ -375,9 +425,9 @@ class PhoneNumber extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-  /// Tags to apply to the Phone Number. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Phone Number. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   late final pulumi.Output<String> targetArn;

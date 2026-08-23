@@ -7,13 +7,13 @@ import 'inventory_schedule.dart';
 
 /// Input properties used for looking up and filtering Inventory resources.
 class InventoryState {
-  /// Name of the source bucket that inventory lists the objects for.
+  /// Name of the source bucket that inventory lists the objects for. Both general purpose and directory buckets are supported.
   final pulumi.Input<String>? bucket;
-  /// Contains information about where to publish the inventory results (documented below).
+  /// Where to publish the inventory results. See `destination` Block below.
   final pulumi.Input<InventoryDestination>? destination;
-  /// Specifies whether the inventory is enabled or disabled.
+  /// Whether to enable the inventory.
   final pulumi.Input<bool>? enabled;
-  /// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
+  /// Inventory filter. The inventory only includes objects that meet the filter's criteria. See `filter` Block below.
   final pulumi.Input<InventoryFilter>? filter;
   /// Object versions to include in the inventory list. Valid values: `All`, `Current`.
   final pulumi.Input<String>? includedObjectVersions;
@@ -23,19 +23,21 @@ class InventoryState {
   final pulumi.Input<List<String>>? optionalFields;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the schedule for generating inventory results (documented below).
+  /// Schedule for generating inventory results. See `schedule` Block below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<InventorySchedule>? schedule;
 
   /// Creates a new [InventoryState].
-  /// [bucket] Name of the source bucket that inventory lists the objects for.
-  /// [destination] Contains information about where to publish the inventory results (documented below).
-  /// [enabled] Specifies whether the inventory is enabled or disabled.
-  /// [filter] Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
+  /// [bucket] Name of the source bucket that inventory lists the objects for. Both general purpose and directory buckets are supported.
+  /// [destination] Where to publish the inventory results. See `destination` Block below.
+  /// [enabled] Whether to enable the inventory.
+  /// [filter] Inventory filter. The inventory only includes objects that meet the filter's criteria. See `filter` Block below.
   /// [includedObjectVersions] Object versions to include in the inventory list. Valid values: `All`, `Current`.
   /// [name] Unique identifier of the inventory configuration for the bucket.
   /// [optionalFields] List of optional fields that are included in the inventory results. Please refer to the S3 [documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_InventoryConfiguration.html#AmazonS3-Type-InventoryConfiguration-OptionalFields) for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [schedule] Specifies the schedule for generating inventory results (documented below).
+  /// [schedule] Schedule for generating inventory results. See `schedule` Block below.
   const InventoryState({
     this.bucket,
     this.destination,
@@ -76,4 +78,3 @@ class InventoryState {
     );
   }
 }
-

@@ -95,6 +95,23 @@ import 'organizations_features_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["iam.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_iam_organizationsfeatures" "example" {
+///   enabled_features = ["RootCredentialsManagement", "RootSessions"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +122,8 @@ import 'organizations_features_state.dart';
 /// import com.pulumi.aws.organizations.OrganizationArgs;
 /// import com.pulumi.aws.iam.OrganizationsFeatures;
 /// import com.pulumi.aws.iam.OrganizationsFeaturesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_route_spec_grpc_route_action_target.dart';
 
 class GatewayRouteSpecGrpcRouteAction {
-  /// Target that traffic is routed to when a request matches the gateway route.
+  /// Target that traffic is routed to when a request matches the gateway route. See `spec.http2_route.action.target` Block for details.
   final pulumi.Input<GatewayRouteSpecGrpcRouteActionTarget> target;
 
   /// Creates a new [GatewayRouteSpecGrpcRouteAction].
-  /// [target] Target that traffic is routed to when a request matches the gateway route.
+  /// [target] Target that traffic is routed to when a request matches the gateway route. See `spec.http2_route.action.target` Block for details.
   const GatewayRouteSpecGrpcRouteAction({
     required this.target,
   });
@@ -25,4 +25,3 @@ class GatewayRouteSpecGrpcRouteAction {
     );
   }
 }
-

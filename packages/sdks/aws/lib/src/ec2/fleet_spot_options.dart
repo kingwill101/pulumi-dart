@@ -8,7 +8,7 @@ class FleetSpotOptions {
   final pulumi.Input<String>? allocationStrategy;
   /// Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
   final pulumi.Input<String>? instanceInterruptionBehavior;
-  /// Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
+  /// Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocationStrategy` is set to `lowestPrice`. Default: `1`.
   final pulumi.Input<int>? instancePoolsToUseCount;
   /// Nested argument containing maintenance strategies for managing your Spot Instances that are at an elevated risk of being interrupted. Defined below.
   final pulumi.Input<FleetSpotOptionsMaintenanceStrategies>? maintenanceStrategies;
@@ -24,7 +24,7 @@ class FleetSpotOptions {
   /// Creates a new [FleetSpotOptions].
   /// [allocationStrategy] How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`, `capacity-optimized`, `capacity-optimized-prioritized` and `price-capacity-optimized`. Default: `lowestPrice`.
   /// [instanceInterruptionBehavior] Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
-  /// [instancePoolsToUseCount] Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
+  /// [instancePoolsToUseCount] Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocationStrategy` is set to `lowestPrice`. Default: `1`.
   /// [maintenanceStrategies] Nested argument containing maintenance strategies for managing your Spot Instances that are at an elevated risk of being interrupted. Defined below.
   /// [maxTotalPrice] The maximum amount per hour for Spot Instances that you're willing to pay.
   /// [minTargetCapacity] The minimum target capacity for Spot Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type `instant`.
@@ -67,4 +67,3 @@ class FleetSpotOptions {
     );
   }
 }
-

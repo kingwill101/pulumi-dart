@@ -7,7 +7,7 @@ import 'integration_timeouts.dart';
 class IntegrationState {
   /// Set of non-secret key–value pairs that contains additional contextual information about the data.
   /// For more information, see the [User Guide](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
-  /// You can only include this parameter if you specify the `kms_key_id` parameter.
+  /// You can only include this parameter if you specify the `kmsKeyId` parameter.
   final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
   /// ARN of the Integration.
   final pulumi.Input<String>? arn;
@@ -17,17 +17,17 @@ class IntegrationState {
   final pulumi.Input<String>? integrationName;
   /// KMS key identifier for the key to use to encrypt the integration.
   /// If you don't specify an encryption key, Redshift uses a default AWS owned key.
-  /// You can only include this parameter if `source_arn` references a DynamoDB table.
+  /// You can only include this parameter if `sourceArn` references a DynamoDB table.
   final pulumi.Input<String>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// ARN of the database to use as the source for replication. You can specify a DynamoDB table or an S3 bucket.
   final pulumi.Input<String>? sourceArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/redshift/create-integration.html).
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// ARN of the Redshift data warehouse to use as the target for replication.
   ///
@@ -43,8 +43,8 @@ class IntegrationState {
   /// [kmsKeyId] KMS key identifier for the key to use to encrypt the integration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceArn] ARN of the database to use as the source for replication. You can specify a DynamoDB table or an S3 bucket.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targetArn] ARN of the Redshift data warehouse to use as the target for replication.
   /// [timeouts] Optional.
   const IntegrationState({
@@ -93,4 +93,3 @@ class IntegrationState {
     );
   }
 }
-

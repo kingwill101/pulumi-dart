@@ -5,7 +5,7 @@ import 'findings_filter_finding_criteria.dart';
 
 /// Input properties used for looking up and filtering FindingsFilter resources.
 class FindingsFilterState {
-  /// The action to perform on findings that meet the filter criteria (`finding_criteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
+  /// The action to perform on findings that meet the filter criteria (`findingCriteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
   final pulumi.Input<String>? action;
   /// The Amazon Resource Name (ARN) of the Findings Filter.
   final pulumi.Input<String>? arn;
@@ -13,7 +13,7 @@ class FindingsFilterState {
   final pulumi.Input<String>? description;
   /// The criteria to use to filter findings.
   final pulumi.Input<FindingsFilterFindingCriteria>? findingCriteria;
-  /// A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
@@ -21,22 +21,22 @@ class FindingsFilterState {
   final pulumi.Input<int>? position;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [FindingsFilterState].
-  /// [action] The action to perform on findings that meet the filter criteria (`finding_criteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
+  /// [action] The action to perform on findings that meet the filter criteria (`findingCriteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
   /// [arn] The Amazon Resource Name (ARN) of the Findings Filter.
   /// [description] A custom description of the filter. The description can contain as many as 512 characters.
   /// [findingCriteria] The criteria to use to filter findings.
-  /// [name] A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [position] The position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const FindingsFilterState({
     this.action,
     this.arn,
@@ -80,4 +80,3 @@ class FindingsFilterState {
     );
   }
 }
-

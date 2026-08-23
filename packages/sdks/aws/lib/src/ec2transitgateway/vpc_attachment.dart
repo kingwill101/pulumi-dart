@@ -70,6 +70,21 @@ import 'vpc_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_vpcattachment" "example" {
+///   subnet_ids         = [exampleAwsSubnet.id]
+///   transit_gateway_id = exampleAwsEc2TransitGateway.id
+///   vpc_id             = exampleAwsVpc.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'vpc_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.VpcAttachment;
 /// import com.pulumi.aws.ec2transitgateway.VpcAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,9 +149,9 @@ class VpcAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String> securityGroupReferencingSupport;
   /// Identifiers of EC2 Subnets.
   late final pulumi.Output<List<String>> subnetIds;
-  /// Key-value tags for the EC2 Transit Gateway VPC Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway VPC Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`. **Setting this argument to** `false` will cause Terraform to remove the default association if it exists. This argument does not simply “ignore” the association; it actively manages (adds or removes) the association in AWS to match the value in your configuration. Do not attempt to manage the same association with both this resource and `aws.ec2transitgateway.RouteTableAssociation`, as this will cause perpetual diffs and resource churn. Use conditional logic to ensure only one resource manages the association at a time.
   late final pulumi.Output<bool> transitGatewayDefaultRouteTableAssociation;

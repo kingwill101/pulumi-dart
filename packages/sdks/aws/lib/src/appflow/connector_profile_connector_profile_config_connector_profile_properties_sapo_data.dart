@@ -4,28 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_profile_connector_profile_config_connector_profile_properties_sapo_data_oauth_properties.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
-  /// The location of the SAPOData resource.
+  /// Location of the SAPOData resource.
   final pulumi.Input<String> applicationHostUrl;
-  /// The application path to catalog service.
+  /// Application path to catalog service.
   final pulumi.Input<String> applicationServicePath;
-  /// The client number for the client creating the connection.
+  /// Client number for the client creating the connection.
   final pulumi.Input<String> clientNumber;
-  /// The logon language of SAPOData instance.
+  /// Logon language of the SAPOData instance.
   final pulumi.Input<String>? logonLanguage;
-  /// The SAPOData OAuth properties required for OAuth type authentication.
+  /// SAPOData OAuth properties required for OAuth type authentication. See `connector_profile_config.connector_profile_properties.sapo_data.oauth_properties` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties>? oauthProperties;
-  /// The port number of the SAPOData instance.
+  /// Port number of the SAPOData instance.
   final pulumi.Input<int> portNumber;
+  /// Snowflake Private Link service name to be used for private data transfers.
   final pulumi.Input<String>? privateLinkServiceName;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData].
-  /// [applicationHostUrl] The location of the SAPOData resource.
-  /// [applicationServicePath] The application path to catalog service.
-  /// [clientNumber] The client number for the client creating the connection.
-  /// [logonLanguage] The logon language of SAPOData instance.
-  /// [oauthProperties] The SAPOData OAuth properties required for OAuth type authentication.
-  /// [portNumber] The port number of the SAPOData instance.
-  /// [privateLinkServiceName] Optional.
+  /// [applicationHostUrl] Location of the SAPOData resource.
+  /// [applicationServicePath] Application path to catalog service.
+  /// [clientNumber] Client number for the client creating the connection.
+  /// [logonLanguage] Logon language of the SAPOData instance.
+  /// [oauthProperties] SAPOData OAuth properties required for OAuth type authentication. See `connector_profile_config.connector_profile_properties.sapo_data.oauth_properties` Block for details.
+  /// [portNumber] Port number of the SAPOData instance.
+  /// [privateLinkServiceName] Snowflake Private Link service name to be used for private data transfers.
   const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData({
     required this.applicationHostUrl,
     required this.applicationServicePath,
@@ -60,4 +61,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
     );
   }
 }
-

@@ -12,17 +12,20 @@ class CertificateArgs {
   final pulumi.Input<String>? certificateAuthorityArn;
   final pulumi.Input<String>? certificateBody;
   final pulumi.Input<String>? certificateChain;
-  /// Fully qualified domain name (FQDN) in the certificate.
+  /// Domain to be validated
   final pulumi.Input<String>? domainName;
   final pulumi.Input<String>? earlyRenewalDuration;
   final pulumi.Input<String>? keyAlgorithm;
   final pulumi.Input<CertificateOptions>? options;
   final pulumi.Input<String>? privateKey;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  final pulumi.Input<String>? privateKeyWo;
+  final pulumi.Input<int>? privateKeyWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * Creating an Amazon issued certificate
   final pulumi.Input<String>? region;
   final pulumi.Input<List<String>>? subjectAlternativeNames;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? validationMethod;
   final pulumi.Input<List<CertificateValidationOption>>? validationOptions;
@@ -31,14 +34,16 @@ class CertificateArgs {
   /// [certificateAuthorityArn] Optional.
   /// [certificateBody] Optional.
   /// [certificateChain] Optional.
-  /// [domainName] Fully qualified domain name (FQDN) in the certificate.
+  /// [domainName] Domain to be validated
   /// [earlyRenewalDuration] Optional.
   /// [keyAlgorithm] Optional.
   /// [options] Optional.
   /// [privateKey] Optional.
+  /// [privateKeyWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// [privateKeyWoVersion] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subjectAlternativeNames] Optional.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [validationMethod] Optional.
   /// [validationOptions] Optional.
   const CertificateArgs({
@@ -50,6 +55,8 @@ class CertificateArgs {
     this.keyAlgorithm,
     this.options,
     this.privateKey,
+    this.privateKeyWo,
+    this.privateKeyWoVersion,
     this.region,
     this.subjectAlternativeNames,
     this.tags,
@@ -67,6 +74,8 @@ class CertificateArgs {
       'keyAlgorithm': ?keyAlgorithm,
       'options': ?pulumi.Input.mapOptionalInputValue<CertificateOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
       'privateKey': ?privateKey,
+      'privateKeyWo': ?privateKeyWo,
+      'privateKeyWoVersion': ?privateKeyWoVersion,
       'region': ?region,
       'subjectAlternativeNames': ?subjectAlternativeNames,
       'tags': ?tags,
@@ -85,6 +94,8 @@ class CertificateArgs {
       keyAlgorithm: (() { final guardedValue = map['keyAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKeyWo: (() { final guardedValue = map['privateKeyWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -93,4 +104,3 @@ class CertificateArgs {
     );
   }
 }
-

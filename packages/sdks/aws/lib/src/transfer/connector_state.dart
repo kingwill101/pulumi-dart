@@ -7,43 +7,43 @@ import 'connector_sftp_config.dart';
 
 /// Input properties used for looking up and filtering Connector resources.
 class ConnectorState {
-  /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
   final pulumi.Input<String>? accessRole;
-  /// The ARN of the connector.
+  /// ARN of the connector.
   final pulumi.Input<String>? arn;
-  /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
+  /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `as2Config` Block below.
   final pulumi.Input<ConnectorAs2Config>? as2Config;
-  /// The unique identifier for the AS2 profile or SFTP Profile.
+  /// Unique identifier for the AS2 profile or SFTP Profile.
   final pulumi.Input<String>? connectorId;
-  /// Specifies the egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. Fields documented below.
+  /// Egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. See `egressConfig` Block below.
   final pulumi.Input<ConnectorEgressConfig>? egressConfig;
-  /// The IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
+  /// IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
   final pulumi.Input<String>? loggingRole;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Name of the security policy for the connector.
   final pulumi.Input<String>? securityPolicyName;
-  /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
+  /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `sftpConfig` Block below.
   final pulumi.Input<ConnectorSftpConfig>? sftpConfig;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
+  /// URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
   final pulumi.Input<String>? url;
 
   /// Creates a new [ConnectorState].
-  /// [accessRole] The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
-  /// [arn] The ARN of the connector.
-  /// [as2Config] Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
-  /// [connectorId] The unique identifier for the AS2 profile or SFTP Profile.
-  /// [egressConfig] Specifies the egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. Fields documented below.
-  /// [loggingRole] The IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
+  /// [accessRole] IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// [arn] ARN of the connector.
+  /// [as2Config] Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `as2Config` Block below.
+  /// [connectorId] Unique identifier for the AS2 profile or SFTP Profile.
+  /// [egressConfig] Egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. See `egressConfig` Block below.
+  /// [loggingRole] IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityPolicyName] Name of the security policy for the connector.
-  /// [sftpConfig] Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [sftpConfig] Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `sftpConfig` Block below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  /// [url] The URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
+  /// [url] URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
   const ConnectorState({
     this.accessRole,
     this.arn,
@@ -93,4 +93,3 @@ class ConnectorState {
     );
   }
 }
-

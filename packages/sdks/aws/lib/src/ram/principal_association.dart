@@ -86,6 +86,23 @@ import 'principal_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_resourceshare" "example" {
+///   allow_external_principals = true
+/// }
+/// resource "aws_ram_principalassociation" "example" {
+///   principal          = "111111111111"
+///   resource_share_arn = aws_ram_resourceshare.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +113,8 @@ import 'principal_association_state.dart';
 /// import com.pulumi.aws.ram.ResourceShareArgs;
 /// import com.pulumi.aws.ram.PrincipalAssociation;
 /// import com.pulumi.aws.ram.PrincipalAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -193,6 +210,20 @@ import 'principal_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_principalassociation" "example" {
+///   principal          = exampleAwsOrganizationsOrganization.arn
+///   resource_share_arn = exampleAwsRamResourceShare.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +232,8 @@ import 'principal_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ram.PrincipalAssociation;
 /// import com.pulumi.aws.ram.PrincipalAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,11 +271,11 @@ import 'principal_association_state.dart';
 /// $ pulumi import aws:ram/principalAssociation:PrincipalAssociation example arn:aws:ram:eu-west-1:123456789012:resource-share/73da1ab9-b94a-4ba3-8eb4-45917f7f4b12,123456789012
 /// ```
 class PrincipalAssociation extends pulumi.CustomResource {
-  /// The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
+  /// Principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
   late final pulumi.Output<String> principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the resource share.
+  /// Amazon Resource Name (ARN) of the resource share.
   late final pulumi.Output<String> resourceShareArn;
 
   /// Creates a new [PrincipalAssociation].

@@ -23,7 +23,7 @@ class ProfileArgs {
   final pulumi.Input<List<String>>? roleArns;
   /// A session policy that applies to the trust boundary of the vended session credentials.
   final pulumi.Input<String>? sessionPolicy;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ProfileArgs].
@@ -35,7 +35,7 @@ class ProfileArgs {
   /// [requireInstanceProperties] Specifies whether instance properties are required in [CreateSession](https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/API_CreateSession.html) requests with this profile.
   /// [roleArns] A list of IAM roles that this profile can assume
   /// [sessionPolicy] A session policy that applies to the trust boundary of the vended session credentials.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ProfileArgs({
     this.acceptRoleSessionName,
     this.durationSeconds,
@@ -76,4 +76,3 @@ class ProfileArgs {
     );
   }
 }
-

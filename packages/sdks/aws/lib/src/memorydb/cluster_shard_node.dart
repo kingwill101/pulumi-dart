@@ -9,14 +9,14 @@ class ClusterShardNode {
   /// The date and time when the node was created. Example: `2022-01-01T21:00:00Z`.
   final pulumi.Input<String>? createTime;
   final pulumi.Input<List<ClusterShardNodeEndpoint>>? endpoints;
-  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
 
   /// Creates a new [ClusterShardNode].
   /// [availabilityZone] The Availability Zone in which the node resides.
   /// [createTime] The date and time when the node was created. Example: `2022-01-01T21:00:00Z`.
   /// [endpoints] Optional.
-  /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   const ClusterShardNode({
     this.availabilityZone,
     this.createTime,
@@ -42,4 +42,3 @@ class ClusterShardNode {
     );
   }
 }
-

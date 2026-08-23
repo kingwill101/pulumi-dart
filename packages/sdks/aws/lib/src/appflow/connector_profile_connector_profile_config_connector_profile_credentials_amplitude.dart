@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude {
+  /// Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.
   final pulumi.Input<String> apiKey;
-  /// The Secret Access Key portion of the credentials.
+  /// Secret Access Key portion of the credentials.
   final pulumi.Input<String> secretKey;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude].
-  /// [apiKey] Required.
-  /// [secretKey] The Secret Access Key portion of the credentials.
+  /// [apiKey] Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.
+  /// [secretKey] Secret Access Key portion of the credentials.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude({
     required this.apiKey,
     required this.secretKey,
@@ -29,4 +30,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude
     );
   }
 }
-

@@ -6,12 +6,12 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
   final pulumi.Input<bool>? allowInterrupt;
-  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   final pulumi.Input<List<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureResponseMessageGroup>>? messageGroups;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
-  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   const V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureResponse({
     this.allowInterrupt,
     this.messageGroups,
@@ -31,4 +31,3 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
     );
   }
 }
-

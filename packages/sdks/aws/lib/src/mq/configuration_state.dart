@@ -24,9 +24,11 @@ class ConfigurationState {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Set to `true` if you do not wish the configuration to be deleted at destroy time, and instead just remove the configuration from the Terraform state. Default is `false`.
+  final pulumi.Input<bool>? skipDestroy;
+  /// Key-value map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ConfigurationState].
@@ -39,8 +41,9 @@ class ConfigurationState {
   /// [latestRevision] Latest revision of the configuration.
   /// [name] Name of the configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [skipDestroy] Set to `true` if you do not wish the configuration to be deleted at destroy time, and instead just remove the configuration from the Terraform state. Default is `false`.
+  /// [tags] Key-value map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ConfigurationState({
     this.arn,
     this.authenticationStrategy,
@@ -51,6 +54,7 @@ class ConfigurationState {
     this.latestRevision,
     this.name,
     this.region,
+    this.skipDestroy,
     this.tags,
     this.tagsAll,
   });
@@ -66,6 +70,7 @@ class ConfigurationState {
       'latestRevision': ?latestRevision,
       'name': ?name,
       'region': ?region,
+      'skipDestroy': ?skipDestroy,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
     };
@@ -82,9 +87,9 @@ class ConfigurationState {
       latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

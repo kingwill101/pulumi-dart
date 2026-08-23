@@ -20,7 +20,7 @@ class GetClusterSnapshotResult {
   final String id;
   final bool? includePublic;
   final bool? includeShared;
-  /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// If storageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   final String kmsKeyId;
   /// License model information for the restored DB cluster.
   final String licenseModel;
@@ -52,7 +52,7 @@ class GetClusterSnapshotResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [includePublic] Optional.
   /// [includeShared] Optional.
-  /// [kmsKeyId] If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// [kmsKeyId] If storageEncrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   /// [licenseModel] License model information for the restored DB cluster.
   /// [mostRecent] Optional.
   /// [port] Port that the DB cluster was listening on at the time of the snapshot.
@@ -143,4 +143,3 @@ class GetClusterSnapshotResult {
     );
   }
 }
-

@@ -72,6 +72,23 @@ import 'authorize_vpc_endpoint_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_opensearch_authorizevpcendpointaccess" "test" {
+///   domain_name = testAwsOpensearchDomain.domainName
+///   account     = data.aws_getcalleridentity.current.account_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +99,8 @@ import 'authorize_vpc_endpoint_access_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.opensearch.AuthorizeVpcEndpointAccess;
 /// import com.pulumi.aws.opensearch.AuthorizeVpcEndpointAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,7 +140,7 @@ import 'authorize_vpc_endpoint_access_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearch Authorize Vpc Endpoint Access using the `domain_name` and `account` separated by a comma (,). For example:
+/// Using `pulumi import`, import OpenSearch Authorize Vpc Endpoint Access using the `domainName` and `account` separated by a comma (,). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess example authorize_vpc_endpoint_access-id-12345678,123456789012
@@ -131,7 +148,7 @@ import 'authorize_vpc_endpoint_access_state.dart';
 class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
   /// AWS account ID to grant access to.
   late final pulumi.Output<String> account;
-  /// Information about the Amazon Web Services account or service that was provided access to the domain. See authorized principal attribute for further details.
+  /// Information about the Amazon Web Services account or service that was provided access to the domain. See `authorizedPrincipal` Block for further details.
   late final pulumi.Output<List<Map<String, dynamic>>> authorizedPrincipals;
   /// Name of OpenSearch Service domain to provide access to.
   late final pulumi.Output<String> domainName;

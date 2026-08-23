@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProxyTargetArgs {
   /// DB cluster identifier.
   ///
-  /// **NOTE:** Either `db_instance_identifier` or `db_cluster_identifier` should be specified and both should not be specified together
+  /// **NOTE:** Either `dbInstanceIdentifier` or `dbClusterIdentifier` should be specified and both should not be specified together
   final pulumi.Input<String>? dbClusterIdentifier;
   /// DB instance identifier.
   final pulumi.Input<String>? dbInstanceIdentifier;
@@ -54,4 +54,3 @@ class ProxyTargetArgs {
     );
   }
 }
-

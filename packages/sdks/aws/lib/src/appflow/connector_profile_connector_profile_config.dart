@@ -5,14 +5,14 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 import 'connector_profile_connector_profile_config_connector_profile_properties.dart';
 
 class ConnectorProfileConnectorProfileConfig {
-  /// The connector-specific credentials required by each connector. See Connector Profile Credentials for more details.
+  /// Connector-specific credentials required by each connector. See `connectorProfileCredentials` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentials> connectorProfileCredentials;
-  /// The connector-specific properties of the profile configuration. See Connector Profile Properties for more details.
+  /// Connector-specific properties of the profile configuration. See `connectorProfileProperties` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileProperties> connectorProfileProperties;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfig].
-  /// [connectorProfileCredentials] The connector-specific credentials required by each connector. See Connector Profile Credentials for more details.
-  /// [connectorProfileProperties] The connector-specific properties of the profile configuration. See Connector Profile Properties for more details.
+  /// [connectorProfileCredentials] Connector-specific credentials required by each connector. See `connectorProfileCredentials` Block for details.
+  /// [connectorProfileProperties] Connector-specific properties of the profile configuration. See `connectorProfileProperties` Block for details.
   const ConnectorProfileConnectorProfileConfig({
     required this.connectorProfileCredentials,
     required this.connectorProfileProperties,
@@ -32,4 +32,3 @@ class ConnectorProfileConnectorProfileConfig {
     );
   }
 }
-

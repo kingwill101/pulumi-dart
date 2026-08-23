@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication_sasl.dart';
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication {
-  /// Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
+  /// Configuration block for specifying SASL client authentication. See clientAuthentication sasl Argument Reference below.
   final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>? sasl;
-  /// Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
+  /// Configuration block for specifying TLS client authentication. See clientAuthentication tls Argument Reference below.
   final pulumi.Input<bool>? tls;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication].
-  /// [sasl] Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
-  /// [tls] Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
+  /// [sasl] Configuration block for specifying SASL client authentication. See clientAuthentication sasl Argument Reference below.
+  /// [tls] Configuration block for specifying TLS client authentication. See clientAuthentication tls Argument Reference below.
   const ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication({
     this.sasl,
     this.tls,
@@ -31,4 +31,3 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
     );
   }
 }
-

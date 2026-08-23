@@ -4,7 +4,7 @@ import 'scram_secret_association_state.dart';
 
 /// Associates SCRAM secrets stored in the Secrets Manager service with a Managed Streaming for Kafka (MSK) cluster.
 ///
-/// !&gt; This resource takes exclusive ownership over SCRAM secrets associated with a cluster. This includes removal of SCRAM secrets which are not explicitly configured. To prevent persistent drift, ensure any `aws.msk.SingleScramSecretAssociation` resources managed alongside this resource are included in the `secret_arn_list` argument.
+/// &gt; This resource takes exclusive ownership over SCRAM secrets associated with a cluster. This includes removal of SCRAM secrets which are not explicitly configured. To prevent persistent drift, ensure any `aws.msk.SingleScramSecretAssociation` resources managed alongside this resource are included in the `secretArnList` argument.
 ///
 /// &gt; **Note:** The following assumes the MSK cluster has SASL/SCRAM authentication enabled. See below for example usage or refer to the [Username/Password Authentication](https://docs.aws.amazon.com/msk/latest/developerguide/msk-password.html) section of the MSK Developer Guide for more details.
 ///
@@ -63,7 +63,7 @@ import 'scram_secret_association_state.dart';
 /// });
 /// const exampleSecretPolicy = new aws.secretsmanager.SecretPolicy("example", {
 ///     secretArn: exampleSecret.arn,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// ```
 /// ```python
@@ -241,7 +241,7 @@ import 'scram_secret_association_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"username": "user",
 /// 			"password": "pass",
 /// 		})
@@ -250,7 +250,7 @@ import 'scram_secret_association_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleSecretVersion, err := secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     exampleSecret.ID(),
+/// 			SecretId:     exampleSecret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -291,15 +291,67 @@ import 'scram_secret_association_state.dart';
 /// 		}, nil)
 /// 		_, err = secretsmanager.NewSecretPolicy(ctx, "example", &secretsmanager.SecretPolicyArgs{
 /// 			SecretArn: exampleSecret.Arn,
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Policy:    example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "AWSKafkaResourcePolicy"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["kafka.amazonaws.com"]
+///     }
+///     actions   = ["secretsmanager:getSecretValue"]
+///     resources = [aws_secretsmanager_secret.example.arn]
+///   }
+/// }
+///
+/// resource "aws_msk_scramsecretassociation" "example" {
+///   depends_on       = [aws_secretsmanager_secretversion.example]
+///   cluster_arn      = aws_msk_cluster.example.arn
+///   secret_arn_lists = [aws_secretsmanager_secret.example.arn]
+/// }
+/// resource "aws_msk_cluster" "example" {
+///   cluster_name = "example"
+///   client_authentication = {
+///     sasl = {
+///       scram = true
+///     }
+///   }
+/// }
+/// resource "aws_secretsmanager_secret" "example" {
+///   name       = "AmazonMSK_example"
+///   kms_key_id = aws_kms_key.example.key_id
+/// }
+/// resource "aws_kms_key" "example" {
+///   description = "Example Key for MSK Cluster Scram Secret Association"
+/// }
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id = aws_secretsmanager_secret.example.id
+///   secret_string = jsonencode({
+///     "username" = "user"
+///     "password" = "pass"
+///   })
+/// }
+/// resource "aws_secretsmanager_secretpolicy" "example" {
+///   secret_arn = aws_secretsmanager_secret.example.arn
+///   policy     = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -322,12 +374,14 @@ import 'scram_secret_association_state.dart';
 /// import com.pulumi.aws.msk.ScramSecretAssociationArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.secretsmanager.SecretPolicy;
 /// import com.pulumi.aws.secretsmanager.SecretPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

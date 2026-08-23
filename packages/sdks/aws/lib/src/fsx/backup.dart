@@ -4,7 +4,9 @@ import 'backup_state.dart';
 
 /// Provides a FSx Backup resource.
 ///
-/// ## Lustre Example
+/// ## Example Usage
+///
+/// ### Lustre Example
 ///
 ///
 /// ```typescript
@@ -73,13 +75,32 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			FileSystemId: exampleLustreFileSystem.ID(),
+/// 			FileSystemId: exampleLustreFileSystem.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_backup" "example" {
+///   file_system_id = aws_fsx_lustrefilesystem.example.id
+/// }
+/// resource "aws_fsx_lustrefilesystem" "example" {
+///   storage_capacity            = 1200
+///   subnet_ids                  = exampleAwsSubnet.id
+///   deployment_type             = "PERSISTENT_1"
+///   per_unit_storage_throughput = 50
 /// }
 /// ```
 /// ```java
@@ -92,8 +113,8 @@ import 'backup_state.dart';
 /// import com.pulumi.aws.fsx.LustreFileSystemArgs;
 /// import com.pulumi.aws.fsx.Backup;
 /// import com.pulumi.aws.fsx.BackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,7 +157,7 @@ import 'backup_state.dart';
 /// ```
 ///
 ///
-/// ## Windows Example
+/// ### Windows Example
 ///
 ///
 /// ```typescript
@@ -214,13 +235,33 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			FileSystemId: exampleWindowsFileSystem.ID(),
+/// 			FileSystemId: exampleWindowsFileSystem.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_backup" "example" {
+///   file_system_id = aws_fsx_windowsfilesystem.example.id
+/// }
+/// resource "aws_fsx_windowsfilesystem" "example" {
+///   active_directory_id = eample.id
+///   skip_final_backup   = true
+///   storage_capacity    = 32
+///   subnet_ids          = [example1.id]
+///   throughput_capacity = 8
 /// }
 /// ```
 /// ```java
@@ -233,8 +274,8 @@ import 'backup_state.dart';
 /// import com.pulumi.aws.fsx.WindowsFileSystemArgs;
 /// import com.pulumi.aws.fsx.Backup;
 /// import com.pulumi.aws.fsx.BackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,7 +321,7 @@ import 'backup_state.dart';
 /// ```
 ///
 ///
-/// ## ONTAP Example
+/// ### ONTAP Example
 ///
 ///
 /// ```typescript
@@ -353,13 +394,33 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			VolumeId: exampleOntapVolume.ID(),
+/// 			VolumeId: exampleOntapVolume.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_backup" "example" {
+///   volume_id = aws_fsx_ontapvolume.example.id
+/// }
+/// resource "aws_fsx_ontapvolume" "example" {
+///   name                       = "example"
+///   junction_path              = "/example"
+///   size_in_megabytes          = 1024
+///   storage_efficiency_enabled = true
+///   storage_virtual_machine_id = test.id
 /// }
 /// ```
 /// ```java
@@ -372,8 +433,8 @@ import 'backup_state.dart';
 /// import com.pulumi.aws.fsx.OntapVolumeArgs;
 /// import com.pulumi.aws.fsx.Backup;
 /// import com.pulumi.aws.fsx.BackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,7 +479,7 @@ import 'backup_state.dart';
 /// ```
 ///
 ///
-/// ## OpenZFS Example
+/// ### OpenZFS Example
 ///
 ///
 /// ```typescript
@@ -492,13 +553,32 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			FileSystemId: exampleOpenZfsFileSystem.ID(),
+/// 			FileSystemId: exampleOpenZfsFileSystem.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_backup" "example" {
+///   file_system_id = aws_fsx_openzfsfilesystem.example.id
+/// }
+/// resource "aws_fsx_openzfsfilesystem" "example" {
+///   storage_capacity    = 64
+///   subnet_ids          = [exampleAwsSubnet.id]
+///   deployment_type     = "SINGLE_AZ_1"
+///   throughput_capacity = 64
 /// }
 /// ```
 /// ```java
@@ -511,8 +591,8 @@ import 'backup_state.dart';
 /// import com.pulumi.aws.fsx.OpenZfsFileSystemArgs;
 /// import com.pulumi.aws.fsx.Backup;
 /// import com.pulumi.aws.fsx.BackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -566,23 +646,21 @@ import 'backup_state.dart';
 class Backup extends pulumi.CustomResource {
   /// Amazon Resource Name of the backup.
   late final pulumi.Output<String> arn;
-  /// The ID of the file system to back up. Required if backing up Lustre or Windows file systems.
+  /// ID of the file system to back up. Required if backing up Lustre or Windows file systems.
   late final pulumi.Output<String?> fileSystemId;
-  /// The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the backup of the Amazon FSx file system's data at rest.
+  /// ID of the AWS Key Management Service (AWS KMS) key used to encrypt the backup of the Amazon FSx file system's data at rest.
   late final pulumi.Output<String> kmsKeyId;
   /// AWS account identifier that created the file system.
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copyTagsToBackups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The type of the file system backup.
+  /// Type of the file system backup.
   late final pulumi.Output<String> type;
-  /// The ID of the volume to back up. Required if backing up a ONTAP Volume.
-  ///
-  /// Note - One of `file_system_id` or `volume_id` can be specified. `file_system_id` is used for Lustre and Windows, `volume_id` is used for ONTAP.
+  /// ID of the volume to back up. Required if backing up a ONTAP Volume.
   late final pulumi.Output<String?> volumeId;
 
   /// Creates a new [Backup].

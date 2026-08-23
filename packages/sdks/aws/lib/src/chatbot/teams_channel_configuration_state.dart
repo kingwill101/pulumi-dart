@@ -25,7 +25,7 @@ class TeamsChannelConfigurationState {
   final pulumi.Input<List<String>>? snsTopicArns;
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// ID of the Microsoft Team authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.
   final pulumi.Input<String>? teamId;
@@ -50,7 +50,7 @@ class TeamsChannelConfigurationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snsTopicArns] ARNs of the SNS topics that deliver notifications to AWS Chatbot.
   /// [tags] Map of tags assigned to the resource.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [teamId] ID of the Microsoft Team authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.
   /// [teamName] Name of the Microsoft Teams team.
   /// [tenantId] ID of the Microsoft Teams tenant.
@@ -117,4 +117,3 @@ class TeamsChannelConfigurationState {
     );
   }
 }
-

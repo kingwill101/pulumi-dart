@@ -173,6 +173,29 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name       = "example"
+///   repository = "https://github.com/example/app"
+///   build_spec = "version: 0.1\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - yarn install\n    build:\n      commands:\n        - yarn run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - '**/*'\n  cache:\n    paths:\n      - node_modules/**/*\n"
+///   custom_rules {
+///     source = "/<*>"
+///     status = "404"
+///     target = "/index.html"
+///   }
+///   environment_variables = {
+///     "ENV" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +205,8 @@ import 'app_state.dart';
 /// import com.pulumi.aws.amplify.App;
 /// import com.pulumi.aws.amplify.AppArgs;
 /// import com.pulumi.aws.amplify.inputs.AppCustomRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,7 +285,7 @@ import 'app_state.dart';
 ///
 /// ### Repository with Tokens
 ///
-/// If you create a new Amplify App with the `repository` argument, you also need to set `oauth_token` or `access_token` for authentication. For GitHub, get a [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) and set `access_token` as follows:
+/// If you create a new Amplify App with the `repository` argument, you also need to set `oauthToken` or `accessToken` for authentication. For GitHub, get a [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) and set `accessToken` as follows:
 ///
 ///
 /// ```typescript
@@ -323,6 +346,21 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name         = "example"
+///   repository   = "https://github.com/example/app"
+///   access_token = "..."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +369,8 @@ import 'app_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.amplify.App;
 /// import com.pulumi.aws.amplify.AppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +402,7 @@ import 'app_state.dart';
 /// ```
 ///
 ///
-/// You can omit `access_token` if you import an existing Amplify App created by the Amplify Console (using OAuth for authentication).
+/// You can omit `accessToken` if you import an existing Amplify App created by the Amplify Console (using OAuth for authentication).
 ///
 /// ### Auto Branch Creation
 ///
@@ -453,6 +491,25 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name                        = "example"
+///   enable_auto_branch_creation = true
+///   # The default patterns added by the Amplify Console.
+///   auto_branch_creation_patterns = ["*", "*/**"]
+///   auto_branch_creation_config = {
+///     enable_auto_build = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -462,8 +519,8 @@ import 'app_state.dart';
 /// import com.pulumi.aws.amplify.App;
 /// import com.pulumi.aws.amplify.AppArgs;
 /// import com.pulumi.aws.amplify.inputs.AppAutoBranchCreationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -580,6 +637,24 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name                   = "example"
+///   enable_basic_auth      = true
+///   basic_auth_credentials = base64encode("username1:password1")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -590,8 +665,8 @@ import 'app_state.dart';
 /// import com.pulumi.aws.amplify.AppArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -734,6 +809,29 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "example"
+///   custom_rules {
+///     source = "/api/<*>"
+///     status = "200"
+///     target = "https://api.example.com/api/<*>"
+///   }
+///   custom_rules {
+///     source = "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>"
+///     status = "200"
+///     target = "/index.html"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -743,8 +841,8 @@ import 'app_state.dart';
 /// import com.pulumi.aws.amplify.App;
 /// import com.pulumi.aws.amplify.AppArgs;
 /// import com.pulumi.aws.amplify.inputs.AppCustomRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -856,6 +954,22 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "example"
+///   environment_variables = {
+///     "_CUSTOM_IMAGE" = "node:16"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -864,8 +978,8 @@ import 'app_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.amplify.App;
 /// import com.pulumi.aws.amplify.AppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1005,6 +1119,20 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name           = "example"
+///   custom_headers = "customHeaders:\n  - pattern: '**'\n    headers:\n      - key: 'Strict-Transport-Security'\n        value: 'max-age=31536000; includeSubDomains'\n      - key: 'X-Frame-Options'\n        value: 'SAMEORIGIN'\n      - key: 'X-XSS-Protection'\n        value: '1; mode=block'\n      - key: 'X-Content-Type-Options'\n        value: 'nosniff'\n      - key: 'Content-Security-Policy'\n        value: \\\"default-src 'self'\\\"\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1013,8 +1141,8 @@ import 'app_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.amplify.App;
 /// import com.pulumi.aws.amplify.AppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1137,6 +1265,22 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "example"
+///   job_config = {
+///     build_compute_type = "STANDARD_8GB"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1146,8 +1290,8 @@ import 'app_state.dart';
 /// import com.pulumi.aws.amplify.App;
 /// import com.pulumi.aws.amplify.AppArgs;
 /// import com.pulumi.aws.amplify.inputs.AppJobConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1194,7 +1338,7 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String?> accessToken;
   /// ARN of the Amplify app.
   late final pulumi.Output<String> arn;
-  /// Automated branch creation configuration for an Amplify app. See `auto_branch_creation_config` Block for details.
+  /// Automated branch creation configuration for an Amplify app. See `autoBranchCreationConfig` Block for details.
   late final pulumi.Output<AppAutoBranchCreationConfig> autoBranchCreationConfig;
   /// Automated branch creation glob patterns for an Amplify app.
   late final pulumi.Output<List<String>?> autoBranchCreationPatterns;
@@ -1202,13 +1346,13 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String?> basicAuthCredentials;
   /// The [build specification](https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html) (build spec) for an Amplify app.
   late final pulumi.Output<String> buildSpec;
-  /// Cache configuration for the Amplify app. See `cache_config` Block for details.
+  /// Cache configuration for the Amplify app. See `cacheConfig` Block for details.
   late final pulumi.Output<AppCacheConfig> cacheConfig;
   /// AWS Identity and Access Management (IAM) SSR compute role for an Amplify app.
   late final pulumi.Output<String?> computeRoleArn;
   /// The [custom HTTP headers](https://docs.aws.amazon.com/amplify/latest/userguide/custom-headers.html) for an Amplify app.
   late final pulumi.Output<String> customHeaders;
-  /// Custom rewrite and redirect rules for an Amplify app. See `custom_rule` Block for details.
+  /// Custom rewrite and redirect rules for an Amplify app. See `customRule` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
   /// Default domain for the Amplify app.
   late final pulumi.Output<String> defaultDomain;
@@ -1226,7 +1370,7 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> environmentVariables;
   /// AWS Identity and Access Management (IAM) service role for an Amplify app.
   late final pulumi.Output<String?> iamServiceRoleArn;
-  /// Used to configure the [Amplify Application build instance compute type](https://docs.aws.amazon.com/amplify/latest/APIReference/API_JobConfig.html#amplify-Type-JobConfig-buildComputeType). See `job_config` Block for details.
+  /// Used to configure the [Amplify Application build instance compute type](https://docs.aws.amazon.com/amplify/latest/APIReference/API_JobConfig.html#amplify-Type-JobConfig-buildComputeType). See `jobConfig` Block for details.
   late final pulumi.Output<AppJobConfig> jobConfig;
   /// Name for an Amplify app.
   late final pulumi.Output<String> name;
@@ -1234,15 +1378,15 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String?> oauthToken;
   /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`. Default value: `WEB`.
   late final pulumi.Output<String?> platform;
-  /// Describes the information about a production branch for an Amplify app. A `production_branch` block is documented below.
+  /// Describes the information about a production branch for an Amplify app. A `productionBranch` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> productionBranches;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Repository for an Amplify app.
   late final pulumi.Output<String?> repository;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [App].

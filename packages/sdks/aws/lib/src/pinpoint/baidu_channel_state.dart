@@ -6,9 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BaiduChannelState {
   /// Platform credential API key from Baidu.
   final pulumi.Input<String>? apiKey;
-  /// The application ID.
+  /// Application ID.
   final pulumi.Input<String>? applicationId;
-  /// Specifies whether to enable the channel. Defaults to `true`.
+  /// Whether to enable the channel. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -17,8 +17,8 @@ class BaiduChannelState {
 
   /// Creates a new [BaiduChannelState].
   /// [apiKey] Platform credential API key from Baidu.
-  /// [applicationId] The application ID.
-  /// [enabled] Specifies whether to enable the channel. Defaults to `true`.
+  /// [applicationId] Application ID.
+  /// [enabled] Whether to enable the channel. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretKey] Platform credential Secret key from Baidu.
   const BaiduChannelState({
@@ -49,4 +49,3 @@ class BaiduChannelState {
     );
   }
 }
-

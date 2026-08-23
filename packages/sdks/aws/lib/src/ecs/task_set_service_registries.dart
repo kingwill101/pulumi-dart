@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskSetServiceRegistries {
-  /// The container name value, already specified in the task definition, to be used for your service discovery service.
+  /// Container name value, already specified in the task definition, to be used for your service discovery service.
   final pulumi.Input<String>? containerName;
-  /// The port value, already specified in the task definition, to be used for your service discovery service.
+  /// Port value, already specified in the task definition, to be used for your service discovery service.
   final pulumi.Input<int>? containerPort;
-  /// The port value used if your Service Discovery service specified an SRV record.
+  /// Port value used if your Service Discovery service specified an SRV record.
   final pulumi.Input<int>? port;
-  /// The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`aws.servicediscovery.Service` resource). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html).
+  /// ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service (`aws.servicediscovery.Service` resource). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html).
   final pulumi.Input<String> registryArn;
 
   /// Creates a new [TaskSetServiceRegistries].
-  /// [containerName] The container name value, already specified in the task definition, to be used for your service discovery service.
-  /// [containerPort] The port value, already specified in the task definition, to be used for your service discovery service.
-  /// [port] The port value used if your Service Discovery service specified an SRV record.
-  /// [registryArn] The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`aws.servicediscovery.Service` resource). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html).
+  /// [containerName] Container name value, already specified in the task definition, to be used for your service discovery service.
+  /// [containerPort] Port value, already specified in the task definition, to be used for your service discovery service.
+  /// [port] Port value used if your Service Discovery service specified an SRV record.
+  /// [registryArn] ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service (`aws.servicediscovery.Service` resource). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html).
   const TaskSetServiceRegistries({
     this.containerName,
     this.containerPort,
@@ -42,4 +42,3 @@ class TaskSetServiceRegistries {
     );
   }
 }
-

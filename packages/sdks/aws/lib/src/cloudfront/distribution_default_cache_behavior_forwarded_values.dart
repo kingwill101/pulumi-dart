@@ -10,14 +10,14 @@ class DistributionDefaultCacheBehaviorForwardedValues {
   final pulumi.Input<List<String>>? headers;
   /// Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache behavior.
   final pulumi.Input<bool> queryString;
-  /// When specified, along with a value of `true` for `query_string`, all query strings are forwarded, however only the query string keys listed in this argument are cached. When omitted with a value of `true` for `query_string`, all query string keys are cached.
+  /// When specified, along with a value of `true` for `queryString`, all query strings are forwarded, however only the query string keys listed in this argument are cached. When omitted with a value of `true` for `queryString`, all query string keys are cached.
   final pulumi.Input<List<String>>? queryStringCacheKeys;
 
   /// Creates a new [DistributionDefaultCacheBehaviorForwardedValues].
   /// [cookies] The forwarded values cookies that specifies how CloudFront handles cookies (maximum one).
   /// [headers] Headers, if any, that you want CloudFront to vary upon for this cache behavior. Specify `*` to include all headers.
   /// [queryString] Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache behavior.
-  /// [queryStringCacheKeys] When specified, along with a value of `true` for `query_string`, all query strings are forwarded, however only the query string keys listed in this argument are cached. When omitted with a value of `true` for `query_string`, all query string keys are cached.
+  /// [queryStringCacheKeys] When specified, along with a value of `true` for `queryString`, all query strings are forwarded, however only the query string keys listed in this argument are cached. When omitted with a value of `true` for `queryString`, all query string keys are cached.
   const DistributionDefaultCacheBehaviorForwardedValues({
     required this.cookies,
     this.headers,
@@ -43,4 +43,3 @@ class DistributionDefaultCacheBehaviorForwardedValues {
     );
   }
 }
-

@@ -6,15 +6,15 @@ import 'task_definition_volume_fsx_windows_file_server_volume_configuration_auth
 class TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
   /// Configuration block for authorization for the Amazon FSx for Windows File Server file system detailed below.
   final pulumi.Input<TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig> authorizationConfig;
-  /// The Amazon FSx for Windows File Server file system ID to use.
+  /// Amazon FSx for Windows File Server file system ID to use.
   final pulumi.Input<String> fileSystemId;
-  /// The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
+  /// Directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
   final pulumi.Input<String> rootDirectory;
 
   /// Creates a new [TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration].
   /// [authorizationConfig] Configuration block for authorization for the Amazon FSx for Windows File Server file system detailed below.
-  /// [fileSystemId] The Amazon FSx for Windows File Server file system ID to use.
-  /// [rootDirectory] The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
+  /// [fileSystemId] Amazon FSx for Windows File Server file system ID to use.
+  /// [rootDirectory] Directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
   const TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration({
     required this.authorizationConfig,
     required this.fileSystemId,
@@ -37,4 +37,3 @@ class TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
     );
   }
 }
-

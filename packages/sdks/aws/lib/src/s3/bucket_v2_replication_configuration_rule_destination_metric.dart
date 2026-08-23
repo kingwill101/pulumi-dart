@@ -30,4 +30,3 @@ class BucketV2ReplicationConfigurationRuleDestinationMetric {
     );
   }
 }
-

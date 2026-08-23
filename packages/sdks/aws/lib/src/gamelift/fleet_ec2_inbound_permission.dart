@@ -9,14 +9,14 @@ class FleetEc2InboundPermission {
   final pulumi.Input<String> ipRange;
   /// Network communication protocol used by the fleetE.g., `TCP` or `UDP`
   final pulumi.Input<String> protocol;
-  /// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `from_port`.
+  /// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
   final pulumi.Input<int> toPort;
 
   /// Creates a new [FleetEc2InboundPermission].
   /// [fromPort] Starting value for a range of allowed port numbers.
   /// [ipRange] Range of allowed IP addresses expressed in CIDR notationE.g., `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
   /// [protocol] Network communication protocol used by the fleetE.g., `TCP` or `UDP`
-  /// [toPort] Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `from_port`.
+  /// [toPort] Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
   const FleetEc2InboundPermission({
     required this.fromPort,
     required this.ipRange,
@@ -42,4 +42,3 @@ class FleetEc2InboundPermission {
     );
   }
 }
-

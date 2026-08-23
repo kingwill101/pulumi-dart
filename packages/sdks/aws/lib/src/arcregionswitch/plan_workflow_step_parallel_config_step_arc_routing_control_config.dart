@@ -8,7 +8,7 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfig {
   final pulumi.Input<String>? crossAccountRole;
   /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
-  /// List of regions and their routing controls. See Region and Routing Controls below.
+  /// Regions and their routing controls. See `regionAndRoutingControls` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl>>? regionAndRoutingControls;
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
@@ -16,7 +16,7 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfig {
   /// Creates a new [PlanWorkflowStepParallelConfigStepArcRoutingControlConfig].
   /// [crossAccountRole] ARN of the cross-account role to assume.
   /// [externalId] External ID for cross-account role assumption.
-  /// [regionAndRoutingControls] List of regions and their routing controls. See Region and Routing Controls below.
+  /// [regionAndRoutingControls] Regions and their routing controls. See `regionAndRoutingControls` Block for details.
   /// [timeoutMinutes] Timeout in minutes.
   const PlanWorkflowStepParallelConfigStepArcRoutingControlConfig({
     this.crossAccountRole,
@@ -43,4 +43,3 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfig {
     );
   }
 }
-

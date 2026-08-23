@@ -9,46 +9,48 @@ import 'get_job_definition_timeout.dart';
 /// Result data returned by getJobDefinition.
 class GetJobDefinitionResult {
   final String? arn;
+  /// ARN prefix of the job definition.
   final String arnPrefix;
-  /// The orchestration type of the compute environment.
+  /// Orchestration type of the compute environment.
   final String containerOrchestrationType;
-  /// An object with various properties that are specific to Amazon EKS based jobs. This must not be specified for Amazon ECS based job definitions.
+  /// Properties that are specific to Amazon EKS based jobs. This must not be specified for Amazon ECS based job definitions. See `eksProperties` below.
   final List<GetJobDefinitionEksProperty> eksProperties;
-  /// The ARN
+  /// ARN
   final String id;
-  /// The name of the volume.
+  /// Name of the volume.
   final String? name;
-  /// An object with various properties specific to multi-node parallel jobs. If you specify node properties for a job, it becomes a multi-node parallel job. For more information, see Multi-node Parallel Jobs in the AWS Batch User Guide. If the job definition's type parameter is container, then you must specify either containerProperties or nodeProperties.
+  /// Properties specific to multi-node parallel jobs. See `nodeProperties` below.
   final List<GetJobDefinitionNodeProperty> nodeProperties;
   final String region;
-  /// The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that's specified during a SubmitJob operation overrides the retry strategy defined here. If a job is terminated due to a timeout, it isn't retried.
+  /// Retry strategy to use for failed jobs that are submitted with this job definition. See `retryStrategy` below.
   final List<GetJobDefinitionRetryStrategy> retryStrategies;
   final int? revision;
-  /// The scheduling priority for jobs that are submitted with this job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority.
+  /// Scheduling priority for jobs that are submitted with this job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority.
   final int schedulingPriority;
   final String? status;
+  /// Map of tags assigned to the resource.
   final Map<String, String> tags;
-  /// The timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it isn't retried. The minimum value for the timeout is 60 seconds.
+  /// Timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. See `timeout` below.
   final List<GetJobDefinitionTimeout> timeouts;
-  /// The type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
+  /// Type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
   final String type;
 
   /// Creates a new [GetJobDefinitionResult].
   /// [arn] Optional.
-  /// [arnPrefix] Required.
-  /// [containerOrchestrationType] The orchestration type of the compute environment.
-  /// [eksProperties] An object with various properties that are specific to Amazon EKS based jobs. This must not be specified for Amazon ECS based job definitions.
-  /// [id] The ARN
-  /// [name] The name of the volume.
-  /// [nodeProperties] An object with various properties specific to multi-node parallel jobs. If you specify node properties for a job, it becomes a multi-node parallel job. For more information, see Multi-node Parallel Jobs in the AWS Batch User Guide. If the job definition's type parameter is container, then you must specify either containerProperties or nodeProperties.
+  /// [arnPrefix] ARN prefix of the job definition.
+  /// [containerOrchestrationType] Orchestration type of the compute environment.
+  /// [eksProperties] Properties that are specific to Amazon EKS based jobs. This must not be specified for Amazon ECS based job definitions. See `eksProperties` below.
+  /// [id] ARN
+  /// [name] Name of the volume.
+  /// [nodeProperties] Properties specific to multi-node parallel jobs. See `nodeProperties` below.
   /// [region] Required.
-  /// [retryStrategies] The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that's specified during a SubmitJob operation overrides the retry strategy defined here. If a job is terminated due to a timeout, it isn't retried.
+  /// [retryStrategies] Retry strategy to use for failed jobs that are submitted with this job definition. See `retryStrategy` below.
   /// [revision] Optional.
-  /// [schedulingPriority] The scheduling priority for jobs that are submitted with this job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority.
+  /// [schedulingPriority] Scheduling priority for jobs that are submitted with this job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority.
   /// [status] Optional.
-  /// [tags] Required.
-  /// [timeouts] The timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it isn't retried. The minimum value for the timeout is 60 seconds.
-  /// [type] The type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
+  /// [tags] Map of tags assigned to the resource.
+  /// [timeouts] Timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. See `timeout` below.
+  /// [type] Type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
   const GetJobDefinitionResult({
     this.arn,
     required this.arnPrefix,
@@ -107,4 +109,3 @@ class GetJobDefinitionResult {
     );
   }
 }
-

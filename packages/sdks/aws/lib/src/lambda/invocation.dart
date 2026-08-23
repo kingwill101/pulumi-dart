@@ -64,7 +64,7 @@ import 'invocation_state.dart';
 ///             "debug": False,
 ///         },
 ///     }))
-/// pulumi.export("initializationResult", std.jsondecode_output(input=example_invocation.result).apply(lambda invoke: invoke.result["status"]))
+/// pulumi.export("initializationResult", std.jsondecode_output(input=example_invocation.result).result["status"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -155,10 +155,47 @@ import 'invocation_state.dart';
 /// ctx.Export("initializationResult", std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
 /// Input: exampleInvocation.Result,
 /// }, nil).ApplyT(func(invoke std.JsondecodeResult) (*interface{}, error) {
-/// return invoke.Result.Status, nil
+/// val := invoke.Result.Status
+/// return &val, nil
 /// }).(pulumi.Interface{}PtrOutput))
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// # Lambda function to invoke
+/// resource "aws_lambda_function" "example" {
+///   code    = fileArchive("function.zip")
+///   name    = "data_processor"
+///   role    = lambdaRole.arn
+///   handler = "index.handler"
+///   runtime = "python3.12"
+/// }
+/// # Invoke the function once during resource creation
+/// resource "aws_lambda_invocation" "example" {
+///   function_name = aws_lambda_function.example.name
+///   input = jsonencode({
+///     "operation" = "initialize"
+///     "config" = {
+///       "environment" = "production"
+///       "debug"       = false
+///     }
+///   })
+/// }
+/// # Use the result in other resources
+/// output "initializationResult" {
+///   value = jsondecode(aws_lambda_invocation.example.result)["status"]
 /// }
 /// ```
 /// ```java
@@ -175,8 +212,8 @@ import 'invocation_state.dart';
 /// import com.pulumi.std.inputs.JsondecodeArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,7 +260,7 @@ import 'invocation_state.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: data_processor
 ///       role: ${lambdaRole.arn}
 ///       handler: index.handler
@@ -268,7 +305,7 @@ import 'invocation_state.dart';
 ///                 environment: environment,
 ///                 timestamp: std.timestamp({}).then(invoke => invoke.result),
 ///             }),
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///     },
 ///     input: JSON.stringify({
 ///         operation: "process_data",
@@ -290,7 +327,7 @@ import 'invocation_state.dart';
 ///         "config_hash": std.sha256_output(input=json.dumps({
 ///             "environment": environment,
 ///             "timestamp": std.timestamp().result,
-///         })).apply(lambda invoke: invoke.result),
+///         })).result,
 ///     },
 ///     input=json.dumps({
 ///         "operation": "process_data",
@@ -367,11 +404,9 @@ import 'invocation_state.dart';
 /// 			FunctionName: pulumi.Any(exampleAwsLambdaFunction.FunctionName),
 /// 			Triggers: pulumi.StringMap{
 /// 				"function_version": pulumi.Any(exampleAwsLambdaFunction.Version),
-/// 				"config_hash": pulumi.String(std.Sha256Output(ctx, std.Sha256OutputArgs{
-/// 					Input: pulumi.String(json0),
-/// 				}, nil).ApplyT(func(invoke std.Sha256Result) (*string, error) {
-/// 					return invoke.Result, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				"config_hash": std.Sha256Output(ctx, std.Sha256OutputArgs{
+/// 					Input: json0,
+/// 				}, nil).Result(),
 /// 			},
 /// 			Input: pulumi.String(json1),
 /// 		})
@@ -380,6 +415,34 @@ import 'invocation_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_invocation" "example" {
+///   function_name = exampleAwsLambdaFunction.functionName
+///   triggers = {
+///     "function_version" = exampleAwsLambdaFunction.version
+///     "config_hash" = sha256(jsonencode({
+///       "environment" = environment
+///       "timestamp"   = timestamp()
+///     }))
+///   }
+///   input = jsonencode({
+///     "operation"   = "process_data"
+///     "environment" = environment
+///     "batch_id"    = batchId.result
+///   })
 /// }
 /// ```
 /// ```java
@@ -394,8 +457,8 @@ import 'invocation_state.dart';
 /// import com.pulumi.std.inputs.TimestampArgs;
 /// import com.pulumi.std.inputs.Sha256Args;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -560,6 +623,28 @@ import 'invocation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_invocation" "example" {
+///   function_name = exampleAwsLambdaFunction.functionName
+///   input = jsonencode({
+///     "resource_name" = "database_setup"
+///     "database_url"  = exampleAwsDbInstance.endpoint
+///     "credentials" = {
+///       "username" = dbUsername
+///       "password" = dbPassword
+///     }
+///   })
+///   lifecycle_scope = "CRUD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -569,8 +654,8 @@ import 'invocation_state.dart';
 /// import com.pulumi.aws.lambda.Invocation;
 /// import com.pulumi.aws.lambda.InvocationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -616,12 +701,12 @@ import 'invocation_state.dart';
 /// ```
 ///
 ///
-/// &gt; **Note:** `lifecycle_scope = "CRUD"` will inject a key `tf` in the input event to pass lifecycle information! This allows the Lambda function to handle different lifecycle transitions uniquely. If you need to use a key `tf` in your own input JSON, the default key name can be overridden with the `pulumi_key` argument.
+/// &gt; **Note:** `lifecycleScope = "CRUD"` will inject a key `tf` in the input event to pass lifecycle information! This allows the Lambda function to handle different lifecycle transitions uniquely. If you need to use a key `tf` in your own input JSON, the default key name can be overridden with the `pulumiKey` argument.
 ///
 /// The lifecycle key gets added with subkeys:
 ///
 /// * `action` - Action Pulumi performs on the resource. Values are `create`, `update`, or `delete`.
-/// * `prev_input` - Input JSON payload from the previous invocation. This can be used to handle update and delete events.
+/// * `prevInput` - Input JSON payload from the previous invocation. This can be used to handle update and delete events.
 ///
 /// When the resource from the CRUD example above is created, the Lambda will receive the following JSON payload:
 ///
@@ -640,7 +725,7 @@ import 'invocation_state.dart';
 /// }
 /// ```
 ///
-/// If the `database_url` changes, the Lambda will be invoked again with:
+/// If the `databaseUrl` changes, the Lambda will be invoked again with:
 ///
 /// ```json
 /// {
@@ -697,7 +782,7 @@ import 'invocation_state.dart';
 /// ```
 ///
 /// Because it is not possible to retrieve previous invocations, during the next update Pulumi will update the resource calling again the function.
-/// To compute the `result_hash`, it is necessary to hash it with the standard `md5` hash function.
+/// To compute the `resultHash`, it is necessary to hash it with the standard `md5` hash function.
 class Invocation extends pulumi.CustomResource {
   /// Name of the Lambda function.
   late final pulumi.Output<String> functionName;

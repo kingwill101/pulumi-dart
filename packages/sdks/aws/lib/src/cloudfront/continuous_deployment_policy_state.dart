@@ -14,9 +14,9 @@ class ContinuousDeploymentPolicyState {
   final pulumi.Input<String>? etag;
   /// Date and time the continuous deployment policy was last modified.
   final pulumi.Input<String>? lastModifiedTime;
-  /// CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
+  /// CloudFront domain name of the staging distribution. See `stagingDistributionDnsNames`.
   final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames>? stagingDistributionDnsNames;
-  /// Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
+  /// Parameters for routing production traffic from primary to staging distributions. See `trafficConfig`.
   final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig;
 
   /// Creates a new [ContinuousDeploymentPolicyState].
@@ -24,8 +24,8 @@ class ContinuousDeploymentPolicyState {
   /// [enabled] Whether this continuous deployment policy is enabled.
   /// [etag] Current version of the continuous distribution policy.
   /// [lastModifiedTime] Date and time the continuous deployment policy was last modified.
-  /// [stagingDistributionDnsNames] CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
-  /// [trafficConfig] Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
+  /// [stagingDistributionDnsNames] CloudFront domain name of the staging distribution. See `stagingDistributionDnsNames`.
+  /// [trafficConfig] Parameters for routing production traffic from primary to staging distributions. See `trafficConfig`.
   const ContinuousDeploymentPolicyState({
     this.arn,
     this.enabled,
@@ -57,4 +57,3 @@ class ContinuousDeploymentPolicyState {
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'document_parameter.dart';
 class DocumentState {
   /// The Amazon Resource Name (ARN) of the document.
   final pulumi.Input<String>? arn;
-  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
+  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
   final pulumi.Input<List<DocumentAttachmentsSource>>? attachmentsSources;
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   final pulumi.Input<String>? content;
@@ -46,9 +46,9 @@ class DocumentState {
   final pulumi.Input<String>? schemaVersion;
   /// The status of the SSM document. Valid values: `Creating`, `Active`, `Updating`, `Deleting`, `Failed`.
   final pulumi.Input<String>? status;
-  /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   final pulumi.Input<String>? targetType;
@@ -57,7 +57,7 @@ class DocumentState {
 
   /// Creates a new [DocumentState].
   /// [arn] The Amazon Resource Name (ARN) of the document.
-  /// [attachmentsSources] One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
+  /// [attachmentsSources] One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
   /// [content] The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   /// [createdDate] The date the document was created.
   /// [defaultVersion] The default version of the document.
@@ -76,8 +76,8 @@ class DocumentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [schemaVersion] The schema version of the document.
   /// [status] The status of the SSM document. Valid values: `Creating`, `Active`, `Updating`, `Deleting`, `Failed`.
-  /// [tags] A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the object. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targetType] The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   /// [versionName] The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
   const DocumentState({
@@ -165,4 +165,3 @@ class DocumentState {
     );
   }
 }
-

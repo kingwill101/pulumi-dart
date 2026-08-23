@@ -36,4 +36,3 @@ class TableImportTableS3BucketSource {
     );
   }
 }
-

@@ -24,7 +24,7 @@ class ComputeEnvironmentArgs {
   final pulumi.Input<String>? serviceRole;
   /// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   final pulumi.Input<String>? state;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   final pulumi.Input<String> type;
@@ -39,7 +39,7 @@ class ComputeEnvironmentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceRole] The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
   /// [state] The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   /// [updatePolicy] Specifies the infrastructure update policy for the compute environment. See details below.
   const ComputeEnvironmentArgs({
@@ -85,4 +85,3 @@ class ComputeEnvironmentArgs {
     );
   }
 }
-

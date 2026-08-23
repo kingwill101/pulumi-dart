@@ -16,9 +16,9 @@ class VirtualNodeArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Virtual node specification to apply.
+  /// Virtual node specification to apply. See `spec` Block for details.
   final pulumi.Input<VirtualNodeSpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VirtualNodeArgs].
@@ -26,8 +26,8 @@ class VirtualNodeArgs {
   /// [meshOwner] AWS account ID of the service mesh's owner. Defaults to the account ID the AWS provider is currently connected to.
   /// [name] Name to use for the virtual node. Must be between 1 and 255 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [spec] Virtual node specification to apply.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [spec] Virtual node specification to apply. See `spec` Block for details.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const VirtualNodeArgs({
     required this.meshName,
     this.meshOwner,
@@ -59,4 +59,3 @@ class VirtualNodeArgs {
     );
   }
 }
-

@@ -65,6 +65,20 @@ import 'instance_automated_backups_replication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instanceautomatedbackupsreplication" "default" {
+///   source_db_instance_arn = "arn:aws:rds:us-west-2:123456789012:db:mydatabase"
+///   retention_period       = 14
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'instance_automated_backups_replication_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.InstanceAutomatedBackupsReplication;
 /// import com.pulumi.aws.rds.InstanceAutomatedBackupsReplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -104,7 +118,7 @@ import 'instance_automated_backups_replication_state.dart';
 /// ```
 ///
 ///
-/// ## Encrypting the automated backup with KMS
+/// ### Encrypting the automated backup with KMS
 ///
 ///
 /// ```typescript
@@ -161,6 +175,20 @@ import 'instance_automated_backups_replication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instanceautomatedbackupsreplication" "default" {
+///   source_db_instance_arn = "arn:aws:rds:us-west-2:123456789012:db:mydatabase"
+///   kms_key_id             = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +197,8 @@ import 'instance_automated_backups_replication_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.InstanceAutomatedBackupsReplication;
 /// import com.pulumi.aws.rds.InstanceAutomatedBackupsReplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,7 +228,7 @@ import 'instance_automated_backups_replication_state.dart';
 /// ```
 ///
 ///
-/// ## Example including a RDS DB instance
+/// ### Example including a RDS DB instance
 ///
 ///
 /// ```typescript
@@ -327,6 +355,36 @@ import 'instance_automated_backups_replication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage       = 10
+///   identifier              = "mydb"
+///   engine                  = "postgres"
+///   engine_version          = "13.4"
+///   instance_class          = "db.t3.micro"
+///   db_name                 = "mydb"
+///   username                = "masterusername"
+///   password                = "mustbeeightcharacters"
+///   backup_retention_period = 7
+///   storage_encrypted       = true
+///   skip_final_snapshot     = true
+/// }
+/// resource "aws_kms_key" "default" {
+///   description = "Encryption key for automated backups"
+/// }
+/// resource "aws_rds_instanceautomatedbackupsreplication" "default" {
+///   source_db_instance_arn = aws_rds_instance.default.arn
+///   kms_key_id             = aws_kms_key.default.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +397,8 @@ import 'instance_automated_backups_replication_state.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.rds.InstanceAutomatedBackupsReplication;
 /// import com.pulumi.aws.rds.InstanceAutomatedBackupsReplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

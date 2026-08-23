@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_lightsail_key_pair_key_pair_args_doc}
 class KeyPairArgs {
-  /// Name of the Lightsail Key Pair. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the Lightsail Key Pair. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
@@ -17,18 +17,18 @@ class KeyPairArgs {
   final pulumi.Input<String>? publicKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// &gt; **Note:** A PGP key is not required, however it is strongly encouraged. Without a PGP key, the private key material will be stored in state unencrypted. `pgp_key` is ignored if `public_key` is supplied.
+  /// &gt; **Note:** A PGP key is not required, however it is strongly encouraged. Without a PGP key, the private key material will be stored in state unencrypted. `pgpKey` is ignored if `publicKey` is supplied.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [KeyPairArgs].
-  /// [name] Name of the Lightsail Key Pair. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the Lightsail Key Pair. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [pgpKey] PGP key to encrypt the resulting private key material. Only used when creating a new key pair.
   /// [publicKey] Public key material. This public key will be imported into Lightsail.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const KeyPairArgs({
     this.name,
     this.namePrefix,
@@ -60,4 +60,3 @@ class KeyPairArgs {
     );
   }
 }
-

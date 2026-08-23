@@ -65,6 +65,20 @@ import 'dedicated_ip_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_dedicatedipassignment" "example" {
+///   ip                    = "0.0.0.0"
+///   destination_pool_name = "my-pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'dedicated_ip_assignment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.DedicatedIpAssignment;
 /// import com.pulumi.aws.sesv2.DedicatedIpAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,7 +120,7 @@ import 'dedicated_ip_assignment_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SESv2 (Simple Email V2) Dedicated IP Assignment using the `id`, which is a comma-separated string made up of `ip` and `destination_pool_name`. For example:
+/// Using `pulumi import`, import SESv2 (Simple Email V2) Dedicated IP Assignment using the `id`, which is a comma-separated string made up of `ip` and `destinationPoolName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment example "0.0.0.0,my-pool"

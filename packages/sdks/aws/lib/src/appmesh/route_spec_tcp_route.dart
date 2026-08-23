@@ -6,16 +6,17 @@ import 'route_spec_tcp_route_match.dart';
 import 'route_spec_tcp_route_timeout.dart';
 
 class RouteSpecTcpRoute {
-  /// Action to take if a match is determined.
+  /// Action to take if a match is determined. See `spec.tcp_route.action` Block for details.
   final pulumi.Input<RouteSpecTcpRouteAction> action;
+  /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
   final pulumi.Input<RouteSpecTcpRouteMatch>? match;
-  /// Types of timeouts.
+  /// Types of timeouts. See `spec.tcp_route.timeout` Block for details.
   final pulumi.Input<RouteSpecTcpRouteTimeout>? timeout;
 
   /// Creates a new [RouteSpecTcpRoute].
-  /// [action] Action to take if a match is determined.
-  /// [match] Optional.
-  /// [timeout] Types of timeouts.
+  /// [action] Action to take if a match is determined. See `spec.tcp_route.action` Block for details.
+  /// [match] Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
+  /// [timeout] Types of timeouts. See `spec.tcp_route.timeout` Block for details.
   const RouteSpecTcpRoute({
     required this.action,
     this.match,
@@ -38,4 +39,3 @@ class RouteSpecTcpRoute {
     );
   }
 }
-

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_action_allow_custom_request_handling.dart';
 
 class WebAclRuleActionAllow {
-  /// Defines custom handling for the web request. See `custom_request_handling` below for details.
+  /// Custom request handling configuration. See Custom Request Handling below.
   final pulumi.Input<WebAclRuleActionAllowCustomRequestHandling>? customRequestHandling;
 
   /// Creates a new [WebAclRuleActionAllow].
-  /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
+  /// [customRequestHandling] Custom request handling configuration. See Custom Request Handling below.
   const WebAclRuleActionAllow({
     this.customRequestHandling,
   });
@@ -25,4 +25,3 @@ class WebAclRuleActionAllow {
     );
   }
 }
-

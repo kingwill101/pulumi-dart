@@ -17,11 +17,11 @@ class ExperimentTemplateArgs {
   final pulumi.Input<List<ExperimentTemplateAction>> actions;
   /// Description for the experiment template.
   final pulumi.Input<String> description;
-  /// The experiment options for the experiment template. See experiment_options below for more details!
+  /// Experiment options for the experiment template. See experimentOptions below for more details!
   final pulumi.Input<ExperimentTemplateExperimentOptions>? experimentOptions;
-  /// The configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
+  /// Configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
   final pulumi.Input<ExperimentTemplateExperimentReportConfiguration>? experimentReportConfiguration;
-  /// The configuration for experiment logging. See below.
+  /// Configuration for experiment logging. See below.
   final pulumi.Input<ExperimentTemplateLogConfiguration>? logConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -31,7 +31,7 @@ class ExperimentTemplateArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<ExperimentTemplateStopCondition>> stopConditions;
-  /// Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Target of an action. See below.
   final pulumi.Input<List<ExperimentTemplateTarget>>? targets;
@@ -39,13 +39,13 @@ class ExperimentTemplateArgs {
   /// Creates a new [ExperimentTemplateArgs].
   /// [actions] Action to be performed during an experiment. See below.
   /// [description] Description for the experiment template.
-  /// [experimentOptions] The experiment options for the experiment template. See experiment_options below for more details!
-  /// [experimentReportConfiguration] The configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
-  /// [logConfiguration] The configuration for experiment logging. See below.
+  /// [experimentOptions] Experiment options for the experiment template. See experimentOptions below for more details!
+  /// [experimentReportConfiguration] Configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
+  /// [logConfiguration] Configuration for experiment logging. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of an IAM role that grants the AWS FIS service permission to perform service actions on your behalf.
   /// [stopConditions] When an ongoing experiment should be stopped. See below.
-  /// [tags] Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] Target of an action. See below.
   const ExperimentTemplateArgs({
     required this.actions,
@@ -90,4 +90,3 @@ class ExperimentTemplateArgs {
     );
   }
 }
-

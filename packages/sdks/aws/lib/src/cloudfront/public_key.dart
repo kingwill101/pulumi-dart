@@ -80,6 +80,24 @@ import 'public_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_publickey" "example" {
+///   comment     = "test public key"
+///   encoded_key = file("public_key.pem")
+///   name        = "test_key"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +108,8 @@ import 'public_key_state.dart';
 /// import com.pulumi.aws.cloudfront.PublicKeyArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,7 +168,7 @@ class PublicKey extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The name for the public key. Conflicts with `name`.
   ///
-  /// **NOTE:** When setting `encoded_key` value, there needs a newline at the end of string. Otherwise, multiple runs of pulumi will want to recreate the `aws.cloudfront.PublicKey` resource.
+  /// **NOTE:** When setting `encodedKey` value, there needs a newline at the end of string. Otherwise, multiple runs of pulumi will want to recreate the `aws.cloudfront.PublicKey` resource.
   late final pulumi.Output<String> namePrefix;
 
   /// Creates a new [PublicKey].

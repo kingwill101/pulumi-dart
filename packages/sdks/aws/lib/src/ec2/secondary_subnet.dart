@@ -102,7 +102,7 @@ import 'secondary_subnet_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSecondarySubnet(ctx, "example", &ec2.SecondarySubnetArgs{
-/// 			SecondaryNetworkId: example.ID(),
+/// 			SecondaryNetworkId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Ipv4CidrBlock:      pulumi.String("10.0.1.0/24"),
 /// 			AvailabilityZone:   pulumi.String("us-west-2a"),
 /// 			Tags: pulumi.StringMap{
@@ -116,6 +116,31 @@ import 'secondary_subnet_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_secondarynetwork" "example" {
+///   ipv4_cidr_block = "10.0.0.0/16"
+///   network_type    = "rdma"
+///   tags = {
+///     "Name" = "example-secondary-network"
+///   }
+/// }
+/// resource "aws_ec2_secondarysubnet" "example" {
+///   secondary_network_id = aws_ec2_secondarynetwork.example.id
+///   ipv4_cidr_block      = "10.0.1.0/24"
+///   availability_zone    = "us-west-2a"
+///   tags = {
+///     "Name" = "example-secondary-subnet"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'secondary_subnet_timeouts.dart';
 /// import com.pulumi.aws.ec2.SecondaryNetworkArgs;
 /// import com.pulumi.aws.ec2.SecondarySubnet;
 /// import com.pulumi.aws.ec2.SecondarySubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,7 +337,7 @@ import 'secondary_subnet_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSecondarySubnet(ctx, "example", &ec2.SecondarySubnetArgs{
-/// 			SecondaryNetworkId: example.ID(),
+/// 			SecondaryNetworkId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Ipv4CidrBlock:      pulumi.String("10.0.1.0/24"),
 /// 			AvailabilityZoneId: pulumi.String(available.ZoneIds[0]),
 /// 			Tags: pulumi.StringMap{
@@ -326,6 +351,39 @@ import 'secondary_subnet_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+///
+/// resource "aws_ec2_secondarynetwork" "example" {
+///   ipv4_cidr_block = "10.0.0.0/16"
+///   network_type    = "rdma"
+///   tags = {
+///     "Name" = "example-secondary-network"
+///   }
+/// }
+/// resource "aws_ec2_secondarysubnet" "example" {
+///   secondary_network_id = aws_ec2_secondarynetwork.example.id
+///   ipv4_cidr_block      = "10.0.1.0/24"
+///   availability_zone_id = data.aws_getavailabilityzones.available.zone_ids[0]
+///   tags = {
+///     "Name" = "example-secondary-subnet"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -334,12 +392,13 @@ import 'secondary_subnet_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.ec2.SecondaryNetwork;
 /// import com.pulumi.aws.ec2.SecondaryNetworkArgs;
 /// import com.pulumi.aws.ec2.SecondarySubnet;
 /// import com.pulumi.aws.ec2.SecondarySubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -416,7 +475,7 @@ import 'secondary_subnet_timeouts.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -428,9 +487,9 @@ import 'secondary_subnet_timeouts.dart';
 class SecondarySubnet extends pulumi.CustomResource {
   /// ARN of the secondary subnet.
   late final pulumi.Output<String> arn;
-  /// Availability Zone for the secondary subnet. Cannot be specified with `availability_zone_id`.
+  /// Availability Zone for the secondary subnet. Cannot be specified with `availabilityZoneId`.
   late final pulumi.Output<String> availabilityZone;
-  /// ID of the Availability Zone for the secondary subnet. This option is preferred over `availability_zone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availability_zone`.
+  /// ID of the Availability Zone for the secondary subnet. This option is preferred over `availabilityZone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availabilityZone`.
   late final pulumi.Output<String> availabilityZoneId;
   /// IPv4 CIDR block for the secondary subnet. The CIDR block size must be between `/12` and `/28`.
   late final pulumi.Output<String> ipv4CidrBlock;
@@ -448,9 +507,9 @@ class SecondarySubnet extends pulumi.CustomResource {
   late final pulumi.Output<String> secondarySubnetId;
   /// State of the IPv4 CIDR block association.
   late final pulumi.Output<String> state;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SecondarySubnetTimeouts?> timeouts;
 

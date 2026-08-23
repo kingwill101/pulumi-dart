@@ -20,7 +20,7 @@ class DevEndpointState {
   final pulumi.Input<String>? glueVersion;
   /// The name of this endpoint. It must be unique in your account.
   final pulumi.Input<String>? name;
-  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
+  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `workerType`.
   final pulumi.Input<int>? numberOfNodes;
   /// The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
   final pulumi.Input<int>? numberOfWorkers;
@@ -44,9 +44,9 @@ class DevEndpointState {
   final pulumi.Input<String>? status;
   /// The subnet ID for the new endpoint to use.
   final pulumi.Input<String>? subnetId;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// he ID of the VPC used by this endpoint.
   final pulumi.Input<String>? vpcId;
@@ -66,7 +66,7 @@ class DevEndpointState {
   /// [failureReason] The reason for a current failure in this endpoint.
   /// [glueVersion] Specifies the versions of Python and Apache Spark to use. Defaults to AWS Glue version 0.9.
   /// [name] The name of this endpoint. It must be unique in your account.
-  /// [numberOfNodes] The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
+  /// [numberOfNodes] The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `workerType`.
   /// [numberOfWorkers] The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
   /// [privateAddress] A private IP address to access the endpoint within a VPC, if this endpoint is created within one.
   /// [publicAddress] The public IP address used by this endpoint. The PublicAddress field is present only when you create a non-VPC endpoint.
@@ -78,8 +78,8 @@ class DevEndpointState {
   /// [securityGroupIds] Security group IDs for the security groups to be used by this endpoint.
   /// [status] The current status of this endpoint.
   /// [subnetId] The subnet ID for the new endpoint to use.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcId] he ID of the VPC used by this endpoint.
   /// [workerType] The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
   /// [yarnEndpointAddress] The YARN endpoint address used by this endpoint.
@@ -175,4 +175,3 @@ class DevEndpointState {
     );
   }
 }
-

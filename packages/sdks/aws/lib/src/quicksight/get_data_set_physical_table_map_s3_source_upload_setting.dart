@@ -43,4 +43,3 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
     );
   }
 }
-

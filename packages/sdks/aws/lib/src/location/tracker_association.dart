@@ -87,6 +87,26 @@ import 'tracker_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_location_geofencecollection" "example" {
+///   collection_name = "example"
+/// }
+/// resource "aws_location_tracker" "example" {
+///   tracker_name = "example"
+/// }
+/// resource "aws_location_trackerassociation" "example" {
+///   consumer_arn = aws_location_geofencecollection.example.collection_arn
+///   tracker_name = aws_location_tracker.example.tracker_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +119,8 @@ import 'tracker_association_state.dart';
 /// import com.pulumi.aws.location.TrackerArgs;
 /// import com.pulumi.aws.location.TrackerAssociation;
 /// import com.pulumi.aws.location.TrackerAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

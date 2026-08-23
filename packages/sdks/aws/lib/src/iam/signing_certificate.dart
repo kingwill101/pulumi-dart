@@ -79,6 +79,23 @@ import 'signing_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_signingcertificate" "test_cert" {
+///   username         = "some_test_cert"
+///   certificate_body = file("self-ca-cert.pem")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +106,8 @@ import 'signing_certificate_state.dart';
 /// import com.pulumi.aws.iam.SigningCertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +211,20 @@ import 'signing_certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_signingcertificate" "test_cert_alt" {
+///   username         = "some_test_cert"
+///   certificate_body = "-----BEGIN CERTIFICATE-----\n[......] # cert contents\n-----END CERTIFICATE-----\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +233,8 @@ import 'signing_certificate_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.SigningCertificate;
 /// import com.pulumi.aws.iam.SigningCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

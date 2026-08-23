@@ -69,6 +69,22 @@ import 'studio_session_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_studiosessionmapping" "example" {
+///   studio_id          = exampleAwsEmrStudio.id
+///   identity_type      = "USER"
+///   identity_id        = "example"
+///   session_policy_arn = exampleAwsIamPolicy.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'studio_session_mapping_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.StudioSessionMapping;
 /// import com.pulumi.aws.emr.StudioSessionMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

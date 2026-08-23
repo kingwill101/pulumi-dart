@@ -81,7 +81,7 @@ import 'mount_target_state.dart';
 /// 			return err
 /// 		}
 /// 		alphaSubnet, err := ec2.NewSubnet(ctx, "alpha", &ec2.SubnetArgs{
-/// 			VpcId:            foo.ID(),
+/// 			VpcId:            foo.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -90,13 +90,35 @@ import 'mount_target_state.dart';
 /// 		}
 /// 		_, err = efs.NewMountTarget(ctx, "alpha", &efs.MountTargetArgs{
 /// 			FileSystemId: pulumi.Any(fooAwsEfsFileSystem.Id),
-/// 			SubnetId:     alphaSubnet.ID(),
+/// 			SubnetId:     alphaSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_mounttarget" "alpha" {
+///   file_system_id = fooAwsEfsFileSystem.id
+///   subnet_id      = aws_ec2_subnet.alpha.id
+/// }
+/// resource "aws_ec2_vpc" "foo" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "alpha" {
+///   vpc_id            = aws_ec2_vpc.foo.id
+///   availability_zone = "us-west-2a"
+///   cidr_block        = "10.0.1.0/24"
 /// }
 /// ```
 /// ```java
@@ -111,8 +133,8 @@ import 'mount_target_state.dart';
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.aws.efs.MountTarget;
 /// import com.pulumi.aws.efs.MountTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,7 +208,7 @@ class MountTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> ipAddress;
   /// IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.
   late final pulumi.Output<String> ipAddressType;
-  /// IPv6 address to use. Valid only when `ip_address_type` is set to `IPV6_ONLY` or `DUAL_STACK`.
+  /// IPv6 address to use. Valid only when `ipAddressType` is set to `IPV6_ONLY` or `DUAL_STACK`.
   late final pulumi.Output<String> ipv6Address;
   /// The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   late final pulumi.Output<String> mountTargetDnsName;

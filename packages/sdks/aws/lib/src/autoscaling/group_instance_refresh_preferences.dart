@@ -6,7 +6,7 @@ import 'group_instance_refresh_preferences_alarm_specification.dart';
 class GroupInstanceRefreshPreferences {
   /// Alarm Specification for Instance Refresh.
   final pulumi.Input<GroupInstanceRefreshPreferencesAlarmSpecification>? alarmSpecification;
-  /// Automatically rollback if instance refresh fails. Defaults to `false`. This option may only be set to `true` when specifying a `launch_template` or `mixed_instances_policy`.
+  /// Automatically rollback if instance refresh fails. Defaults to `false`. This option may only be set to `true` when specifying a `launchTemplate` or `mixedInstancesPolicy`.
   final pulumi.Input<bool>? autoRollback;
   /// Number of seconds to wait after a checkpoint. Defaults to `3600`.
   final pulumi.Input<String>? checkpointDelay;
@@ -27,7 +27,7 @@ class GroupInstanceRefreshPreferences {
 
   /// Creates a new [GroupInstanceRefreshPreferences].
   /// [alarmSpecification] Alarm Specification for Instance Refresh.
-  /// [autoRollback] Automatically rollback if instance refresh fails. Defaults to `false`. This option may only be set to `true` when specifying a `launch_template` or `mixed_instances_policy`.
+  /// [autoRollback] Automatically rollback if instance refresh fails. Defaults to `false`. This option may only be set to `true` when specifying a `launchTemplate` or `mixedInstancesPolicy`.
   /// [checkpointDelay] Number of seconds to wait after a checkpoint. Defaults to `3600`.
   /// [checkpointPercentages] List of percentages for each checkpoint. Values must be unique and in ascending order. To replace all instances, the final number must be `100`.
   /// [instanceWarmup] Number of seconds until a newly launched instance is configured and ready to use. Default behavior is to use the Auto Scaling Group's health check grace period.
@@ -79,4 +79,3 @@ class GroupInstanceRefreshPreferences {
     );
   }
 }
-

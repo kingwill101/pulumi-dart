@@ -88,6 +88,19 @@ Future<GetAssetResult> getAsset(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getassets" "example" {
+///   arn = exampleAwsOutpostsOutpost.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +109,8 @@ Future<GetAssetResult> getAsset(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetAssetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,6 +200,20 @@ Future<GetAssetResult> getAsset(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getassets" "example" {
+///   arn             = exampleAwsOutpostsOutpost.arn
+///   host_id_filters = ["h-x38g5n0yd2a0ueb61"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +222,8 @@ Future<GetAssetResult> getAsset(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetAssetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,6 +316,20 @@ Future<GetAssetResult> getAsset(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getassets" "example" {
+///   arn               = exampleAwsOutpostsOutpost.arn
+///   status_id_filters = ["ACTIVE"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -297,8 +338,8 @@ Future<GetAssetResult> getAsset(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetAssetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,6 +438,19 @@ Future<GetAssetsResult> getAssets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getoutpost" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -405,8 +459,8 @@ Future<GetAssetsResult> getAssets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetOutpostArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -464,7 +518,7 @@ Future<GetOutpostResult> getOutpost(
 ///         "m5.4xlarge",
 ///     ],
 /// });
-/// const exampleEc2Instance = new aws.index.Ec2Instance("example", {instanceType: example.instanceType});
+/// const exampleInstance = new aws.ec2.Instance("example", {instanceType: aws.ec2.InstanceType[example.then(example => example.instanceType)]});
 /// ```
 /// ```python
 /// import pulumi
@@ -475,7 +529,7 @@ Future<GetOutpostResult> getOutpost(
 ///         "m5.large",
 ///         "m5.4xlarge",
 ///     ])
-/// example_ec2_instance = aws.index.Ec2Instance("example", instance_type=example.instance_type)
+/// example_instance = aws.ec2.Instance("example", instance_type=aws.ec2.InstanceType(example.instance_type))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -495,9 +549,9 @@ Future<GetOutpostResult> getOutpost(
 ///         },
 ///     });
 ///
-///     var exampleEc2Instance = new Aws.Index.Ec2Instance("example", new()
+///     var exampleInstance = new Aws.Ec2.Instance("example", new()
 ///     {
-///         InstanceType = example.Apply(getOutpostInstanceTypeResult => getOutpostInstanceTypeResult.InstanceType),
+///         InstanceType = example.Apply(getOutpostInstanceTypeResult => getOutpostInstanceTypeResult.InstanceType).Apply(System.Enum.Parse<Aws.Ec2.InstanceType>),
 ///     });
 ///
 /// });
@@ -506,7 +560,7 @@ Future<GetOutpostResult> getOutpost(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/outposts"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -523,14 +577,32 @@ Future<GetOutpostResult> getOutpost(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = aws.NewEc2Instance(ctx, "example", &aws.Ec2InstanceArgs{
-/// 			InstanceType: example.InstanceType,
+/// 		_, err = ec2.NewInstance(ctx, "example", &ec2.InstanceArgs{
+/// 			InstanceType: example.InstanceType.ApplyT(func(x *string) ec2.InstanceType { return ec2.InstanceType(*x) }).(ec2.InstanceTypeOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getoutpostinstancetype" "example" {
+///   arn                      = exampleAwsOutpostsOutpost.arn
+///   preferred_instance_types = ["m5.large", "m5.4xlarge"]
+/// }
+///
+/// resource "aws_ec2_instance" "example" {
+///   instance_type = data.aws_outposts_getoutpostinstancetype.example.instance_type
 /// }
 /// ```
 /// ```java
@@ -541,10 +613,10 @@ Future<GetOutpostResult> getOutpost(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetOutpostInstanceTypeArgs;
-/// import com.pulumi.aws.Ec2Instance;
-/// import com.pulumi.aws.Ec2InstanceArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2.Instance;
+/// import com.pulumi.aws.ec2.InstanceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -563,7 +635,7 @@ Future<GetOutpostResult> getOutpost(
 ///                 "m5.4xlarge")
 ///             .build());
 ///
-///         var exampleEc2Instance = new Ec2Instance("exampleEc2Instance", Ec2InstanceArgs.builder()
+///         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
 ///             .instanceType(example.instanceType())
 ///             .build());
 ///
@@ -572,8 +644,8 @@ Future<GetOutpostResult> getOutpost(
 /// ```
 /// ```yaml
 /// resources:
-///   exampleEc2Instance:
-///     type: aws:Ec2Instance
+///   exampleInstance:
+///     type: aws:ec2:Instance
 ///     name: example
 ///     properties:
 ///       instanceType: ${example.instanceType}
@@ -656,6 +728,19 @@ Future<GetOutpostInstanceTypeResult> getOutpostInstanceType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getoutpostinstancetypes" "example" {
+///   arn = exampleAwsOutpostsOutpost.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -664,8 +749,8 @@ Future<GetOutpostInstanceTypeResult> getOutpostInstanceType(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetOutpostInstanceTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -761,6 +846,19 @@ Future<GetOutpostInstanceTypesResult> getOutpostInstanceTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getoutposts" "example" {
+///   site_id = id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -769,8 +867,8 @@ Future<GetOutpostInstanceTypesResult> getOutpostInstanceTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetOutpostsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -866,6 +964,19 @@ Future<GetOutpostsResult> getOutposts(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getsite" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -874,8 +985,8 @@ Future<GetOutpostsResult> getOutposts(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -964,6 +1075,18 @@ Future<GetSiteResult> getSite(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_outposts_getsites" "all" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -972,8 +1095,8 @@ Future<GetSiteResult> getSite(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.outposts.OutpostsFunctions;
 /// import com.pulumi.aws.outposts.inputs.GetSitesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

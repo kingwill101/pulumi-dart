@@ -10,22 +10,22 @@ class KxUserArgs {
   /// Unique identifier for the KX environment.
   final pulumi.Input<String> environmentId;
   /// IAM role ARN to be associated with the user.
+  final pulumi.Input<String> iamRole;
+  /// Unique identifier for the user.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String> iamRole;
-  /// A unique identifier for the user.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [KxUserArgs].
   /// [environmentId] Unique identifier for the KX environment.
   /// [iamRole] IAM role ARN to be associated with the user.
-  /// [name] A unique identifier for the user.
+  /// [name] Unique identifier for the user.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const KxUserArgs({
     required this.environmentId,
     required this.iamRole,
@@ -54,4 +54,3 @@ class KxUserArgs {
     );
   }
 }
-

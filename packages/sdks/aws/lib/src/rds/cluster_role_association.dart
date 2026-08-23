@@ -68,6 +68,21 @@ import 'cluster_role_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_clusterroleassociation" "example" {
+///   db_cluster_identifier = exampleAwsRdsCluster.id
+///   feature_name          = "S3_INTEGRATION"
+///   role_arn              = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'cluster_role_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.ClusterRoleAssociation;
 /// import com.pulumi.aws.rds.ClusterRoleAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

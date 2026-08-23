@@ -61,6 +61,20 @@ import 'group_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_groupmembership" "example" {
+///   group_name  = "all-access-users"
+///   member_name = "john_smith"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'group_membership_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.GroupMembership;
 /// import com.pulumi.aws.quicksight.GroupMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

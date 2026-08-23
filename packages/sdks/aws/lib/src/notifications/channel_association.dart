@@ -103,6 +103,28 @@ import 'channel_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_notifications_notificationconfiguration" "example" {
+///   name        = "example-notification-config"
+///   description = "Example notification configuration"
+/// }
+/// resource "aws_notifications_contactsemailcontact" "example" {
+///   name          = "example-contact"
+///   email_address = "example@example.com"
+/// }
+/// resource "aws_notifications_channelassociation" "example" {
+///   arn                            = aws_notifications_contactsemailcontact.example.arn
+///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +137,8 @@ import 'channel_association_state.dart';
 /// import com.pulumi.aws.notifications.ContactsEmailContactArgs;
 /// import com.pulumi.aws.notifications.ChannelAssociation;
 /// import com.pulumi.aws.notifications.ChannelAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

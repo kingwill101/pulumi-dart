@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_fms_admin_account_admin_account_args_doc}
 class AdminAccountArgs {
-  /// The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
+  /// AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
   final pulumi.Input<String>? accountId;
 
   /// Creates a new [AdminAccountArgs].
-  /// [accountId] The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
+  /// [accountId] AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
   const AdminAccountArgs({
     this.accountId,
   });
@@ -28,4 +28,3 @@ class AdminAccountArgs {
     );
   }
 }
-

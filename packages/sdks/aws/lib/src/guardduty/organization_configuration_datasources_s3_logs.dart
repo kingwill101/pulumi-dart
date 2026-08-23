@@ -24,4 +24,3 @@ class OrganizationConfigurationDatasourcesS3Logs {
     );
   }
 }
-

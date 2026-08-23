@@ -5,7 +5,7 @@ import 'function_url_state.dart';
 
 /// Manages a Lambda function URL. Creates a dedicated HTTP(S) endpoint for a Lambda function to enable direct invocation via HTTP requests.
 ///
-/// &gt; **NOTE:** When [`authorization_type` is `"NONE"`](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html#urls-auth-none) the `lambda:InvokeFunctionUrl` permission allowing a public endpoint and `lambda:InvokeFunction` permission with the `InvokedViaFunctionUrl` flag set to `true` are automatically added to the Lambda function on creation. These policies are NOT removed from AWS when the resource is destroyed.
+/// &gt; **NOTE:** When [`authorizationType` is `"NONE"`](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html#urls-auth-none) the `lambda:InvokeFunctionUrl` permission allowing a public endpoint and `lambda:InvokeFunction` permission with the `InvokedViaFunctionUrl` flag set to `true` are automatically added to the Lambda function on creation. These policies are NOT removed from AWS when the resource is destroyed.
 ///
 /// ## Example Usage
 ///
@@ -66,6 +66,20 @@ import 'function_url_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_functionurl" "example" {
+///   function_name      = exampleAwsLambdaFunction.functionName
+///   authorization_type = "NONE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'function_url_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.FunctionUrl;
 /// import com.pulumi.aws.lambda.FunctionUrlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -247,6 +261,30 @@ import 'function_url_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_functionurl" "example" {
+///   function_name      = exampleAwsLambdaFunction.functionName
+///   qualifier          = "my_alias"
+///   authorization_type = "AWS_IAM"
+///   invoke_mode        = "RESPONSE_STREAM"
+///   cors = {
+///     allow_credentials = true
+///     allow_origins     = ["https://example.com"]
+///     allow_methods     = ["GET", "POST"]
+///     allow_headers     = ["date", "keep-alive"]
+///     expose_headers    = ["keep-alive", "date"]
+///     max_age           = 86400
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -256,8 +294,8 @@ import 'function_url_state.dart';
 /// import com.pulumi.aws.lambda.FunctionUrl;
 /// import com.pulumi.aws.lambda.FunctionUrlArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionUrlCorsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -321,7 +359,7 @@ import 'function_url_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Lambda function URLs using the `function_name` or `function_name/qualifier`. For example:
+/// Using `pulumi import`, import Lambda function URLs using the `functionName` or `function_name/qualifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lambda/functionUrl:FunctionUrl example example

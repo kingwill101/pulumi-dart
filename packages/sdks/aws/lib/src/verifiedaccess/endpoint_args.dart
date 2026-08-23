@@ -39,7 +39,7 @@ class EndpointArgs {
   final pulumi.Input<List<String>>? securityGroupIds;
   /// The options in use for server side encryption.
   final pulumi.Input<EndpointSseSpecification>? sseSpecification;
-  /// Key-value tags for the Verified Access Endpoint. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Verified Access Endpoint. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The ID of the Verified Access group to associate the endpoint with.
   ///
@@ -61,7 +61,7 @@ class EndpointArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupIds] List of the the security groups IDs to associate with the Verified Access endpoint.
   /// [sseSpecification] The options in use for server side encryption.
-  /// [tags] Key-value tags for the Verified Access Endpoint. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the Verified Access Endpoint. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [verifiedAccessGroupId] The ID of the Verified Access group to associate the endpoint with.
   const EndpointArgs({
     this.applicationDomain,
@@ -124,4 +124,3 @@ class EndpointArgs {
     );
   }
 }
-

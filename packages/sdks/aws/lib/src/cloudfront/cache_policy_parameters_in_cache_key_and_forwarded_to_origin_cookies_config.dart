@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_config_cookies.dart';
 
 class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
-  /// Whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `cookie_behavior` are `none`, `whitelist`, `allExcept`, and `all`.
+  /// Whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `cookieBehavior` are `none`, `whitelist`, `allExcept`, and `all`.
   final pulumi.Input<String> cookieBehavior;
   /// Object that contains a list of cookie names. See Items for more information.
   final pulumi.Input<CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies>? cookies;
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig].
-  /// [cookieBehavior] Whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `cookie_behavior` are `none`, `whitelist`, `allExcept`, and `all`.
+  /// [cookieBehavior] Whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `cookieBehavior` are `none`, `whitelist`, `allExcept`, and `all`.
   /// [cookies] Object that contains a list of cookie names. See Items for more information.
   const CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig({
     required this.cookieBehavior,
@@ -31,4 +31,3 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
     );
   }
 }
-

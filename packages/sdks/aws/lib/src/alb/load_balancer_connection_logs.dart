@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerConnectionLogs {
   /// S3 bucket name to store the logs in.
   final pulumi.Input<String> bucket;
-  /// Boolean to enable / disable `connection_logs`. Defaults to `false`, even when `bucket` is specified.
+  /// Boolean to enable / disable `connectionLogs`. Defaults to `false`, even when `bucket` is specified.
   final pulumi.Input<bool>? enabled;
   /// S3 bucket prefix. Logs are stored in the root if not configured.
   final pulumi.Input<String>? prefix;
 
   /// Creates a new [LoadBalancerConnectionLogs].
   /// [bucket] S3 bucket name to store the logs in.
-  /// [enabled] Boolean to enable / disable `connection_logs`. Defaults to `false`, even when `bucket` is specified.
+  /// [enabled] Boolean to enable / disable `connectionLogs`. Defaults to `false`, even when `bucket` is specified.
   /// [prefix] S3 bucket prefix. Logs are stored in the root if not configured.
   const LoadBalancerConnectionLogs({
     required this.bucket,
@@ -36,4 +36,3 @@ class LoadBalancerConnectionLogs {
     );
   }
 }
-

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_copy_override_provider_default_tags.dart';
 
 class ObjectCopyOverrideProvider {
-  /// Override the provider `default_tags` configuration block.
+  /// Configuration block to override the provider `defaultTags` configuration block. See `defaultTags` Block below.
   final pulumi.Input<ObjectCopyOverrideProviderDefaultTags>? defaultTags;
 
   /// Creates a new [ObjectCopyOverrideProvider].
-  /// [defaultTags] Override the provider `default_tags` configuration block.
+  /// [defaultTags] Configuration block to override the provider `defaultTags` configuration block. See `defaultTags` Block below.
   const ObjectCopyOverrideProvider({
     this.defaultTags,
   });
@@ -25,4 +25,3 @@ class ObjectCopyOverrideProvider {
     );
   }
 }
-

@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_prefix_list_entry_args.dart';
 import 'managed_prefix_list_entry_state.dart';
 
-/// Use the `aws_prefix_list_entry` resource to manage a managed prefix list entry.
+/// Use the `aws.ec2.ManagedPrefixListEntry` resource to manage a managed prefix list entry.
 ///
 /// &gt; **NOTE:** Pulumi currently provides two resources for managing Managed Prefix Lists and Managed Prefix List Entries. The standalone resource, Managed Prefix List Entry, is used to manage a single entry. The Managed Prefix List resource is used to manage multiple entries defined in-line. It is important to note that you cannot use a Managed Prefix List with in-line rules in conjunction with any Managed Prefix List Entry resources. This will result in a conflict of entries and will cause the entries to be overwritten.
 ///
@@ -99,13 +99,36 @@ import 'managed_prefix_list_entry_state.dart';
 /// 		_, err = ec2.NewManagedPrefixListEntry(ctx, "entry_1", &ec2.ManagedPrefixListEntryArgs{
 /// 			Cidr:         pulumi.Any(exampleAwsVpc.CidrBlock),
 /// 			Description:  pulumi.String("Primary"),
-/// 			PrefixListId: example.ID(),
+/// 			PrefixListId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_managedprefixlist" "example" {
+///   name           = "All VPC CIDR-s"
+///   address_family = "IPv4"
+///   max_entries    = 5
+///   tags = {
+///     "Env" = "live"
+///   }
+/// }
+/// resource "aws_ec2_managedprefixlistentry" "entry_1" {
+///   cidr           = exampleAwsVpc.cidrBlock
+///   description    = "Primary"
+///   prefix_list_id = aws_ec2_managedprefixlist.example.id
 /// }
 /// ```
 /// ```java
@@ -118,8 +141,8 @@ import 'managed_prefix_list_entry_state.dart';
 /// import com.pulumi.aws.ec2.ManagedPrefixListArgs;
 /// import com.pulumi.aws.ec2.ManagedPrefixListEntry;
 /// import com.pulumi.aws.ec2.ManagedPrefixListEntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,7 +192,7 @@ import 'managed_prefix_list_entry_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import prefix list entries using `prefix_list_id` and `cidr` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import prefix list entries using `prefixListId` and `cidr` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry default pl-0570a1d2d725c16be,10.0.3.0/24

@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount {
+  /// Maximum number of network interfaces.
   final pulumi.Input<int>? max;
+  /// Minimum number of network interfaces.
   final pulumi.Input<int>? min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount].
-  /// [max] Optional.
-  /// [min] Optional.
+  /// [max] Maximum number of network interfaces.
+  /// [min] Minimum number of network interfaces.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount({
     this.max,
     this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

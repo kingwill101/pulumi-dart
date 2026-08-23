@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UsagePlanThrottleSettings {
+  /// API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
   final pulumi.Input<int>? burstLimit;
+  /// API request steady-state rate limit.
   final pulumi.Input<double>? rateLimit;
 
   /// Creates a new [UsagePlanThrottleSettings].
-  /// [burstLimit] Optional.
-  /// [rateLimit] Optional.
+  /// [burstLimit] API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+  /// [rateLimit] API request steady-state rate limit.
   const UsagePlanThrottleSettings({
     this.burstLimit,
     this.rateLimit,
@@ -28,4 +30,3 @@ class UsagePlanThrottleSettings {
     );
   }
 }
-

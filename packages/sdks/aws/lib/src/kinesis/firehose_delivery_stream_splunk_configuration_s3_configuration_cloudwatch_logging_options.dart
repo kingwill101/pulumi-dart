@@ -36,4 +36,3 @@ class FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationCloudwatchLoggingO
     );
   }
 }
-

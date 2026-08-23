@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyContainerResource {
-  /// The type and quantity of the resources to reserve for the container.
+  /// Type and quantity of the resources to reserve for the container.
   final pulumi.Input<Map<String, String>> limits;
-  /// The type and quantity of the resources to request for the container.
+  /// Type and quantity of the resources to request for the container.
   final pulumi.Input<Map<String, String>> requests;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyContainerResource].
-  /// [limits] The type and quantity of the resources to reserve for the container.
-  /// [requests] The type and quantity of the resources to request for the container.
+  /// [limits] Type and quantity of the resources to reserve for the container.
+  /// [requests] Type and quantity of the resources to request for the container.
   const GetJobDefinitionEksPropertyPodPropertyContainerResource({
     required this.limits,
     required this.requests,
@@ -30,4 +30,3 @@ class GetJobDefinitionEksPropertyPodPropertyContainerResource {
     );
   }
 }
-

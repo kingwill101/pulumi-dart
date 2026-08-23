@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_kafka_cluster_apache_kafka_cluster.dart';
 
 class ConnectorKafkaCluster {
-  /// The Apache Kafka cluster to which the connector is connected. See `apache_kafka_cluster` Block for details.
+  /// The Apache Kafka cluster to which the connector is connected. See `apacheKafkaCluster` Block for details.
   final pulumi.Input<ConnectorKafkaClusterApacheKafkaCluster> apacheKafkaCluster;
 
   /// Creates a new [ConnectorKafkaCluster].
-  /// [apacheKafkaCluster] The Apache Kafka cluster to which the connector is connected. See `apache_kafka_cluster` Block for details.
+  /// [apacheKafkaCluster] The Apache Kafka cluster to which the connector is connected. See `apacheKafkaCluster` Block for details.
   const ConnectorKafkaCluster({
     required this.apacheKafkaCluster,
   });
@@ -25,4 +25,3 @@ class ConnectorKafkaCluster {
     );
   }
 }
-

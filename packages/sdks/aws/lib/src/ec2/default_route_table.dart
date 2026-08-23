@@ -4,7 +4,7 @@ import 'default_route_table_state.dart';
 
 /// Provides a resource to manage a default route table of a VPC. This resource can manage the default route table of the default or a non-default VPC.
 ///
-/// &gt; **NOTE:** This is an advanced resource with special caveats. Please read this document in its entirety before using this resource. The `aws.ec2.DefaultRouteTable` resource behaves differently from normal resources. This provider does not _create_ this resource but instead attempts to "adopt" it into management. **Do not** use both `aws.ec2.DefaultRouteTable` to manage a default route table **and** `aws.ec2.MainRouteTableAssociation` with the same VPC due to possible route conflicts. See aws.ec2.MainRouteTableAssociation documentation for more details.
+/// &gt; **NOTE:** This is an advanced resource with special caveats. Please read this document in its entirety before using this resource. The `aws.ec2.DefaultRouteTable` resource behaves differently from normal resources. Terraform does not _create_ this resource but instead attempts to "adopt" it into management. **Do not** use both `aws.ec2.DefaultRouteTable` to manage a default route table **and** `aws.ec2.MainRouteTableAssociation` with the same VPC due to possible route conflicts. See aws.ec2.MainRouteTableAssociation documentation for more details.
 ///
 /// Every VPC has a default route table that can be managed but not destroyed. When the provider first adopts a default route table, it **immediately removes all defined routes**. It then proceeds to create any routes specified in the configuration. This step is required so that only the routes specified in the configuration exist in the default route table.
 ///
@@ -119,6 +119,30 @@ import 'default_route_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_defaultroutetable" "example" {
+///   default_route_table_id = exampleAwsVpc.defaultRouteTableId
+///   routes {
+///     cidr_block = "10.0.1.0/24"
+///     gateway_id = exampleAwsInternetGateway.id
+///   }
+///   routes {
+///     ipv6_cidr_block        = "::/0"
+///     egress_only_gateway_id = exampleAwsEgressOnlyInternetGateway.id
+///   }
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +152,8 @@ import 'default_route_table_state.dart';
 /// import com.pulumi.aws.ec2.DefaultRouteTable;
 /// import com.pulumi.aws.ec2.DefaultRouteTableArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultRouteTableRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,6 +268,22 @@ import 'default_route_table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_defaultroutetable" "example" {
+///   default_route_table_id = exampleAwsVpc.defaultRouteTableId
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +292,8 @@ import 'default_route_table_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.DefaultRouteTable;
 /// import com.pulumi.aws.ec2.DefaultRouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,13 +328,11 @@ import 'default_route_table_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Default VPC route tables using the `vpc_id`. For example:
+/// Using `pulumi import`, import Default VPC route tables using the `vpcId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/defaultRouteTable:DefaultRouteTable example vpc-33cc44dd
 /// ```
-///
-/// [tf-main-route-table-association]: /docs/providers/aws/r/main_route_table_association.html
 class DefaultRouteTable extends pulumi.CustomResource {
   /// The ARN of the route table.
   late final pulumi.Output<String> arn;
@@ -310,9 +348,9 @@ class DefaultRouteTable extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Set of objects. Detailed below
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the VPC.
   late final pulumi.Output<String> vpcId;

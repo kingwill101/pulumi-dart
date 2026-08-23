@@ -34,9 +34,9 @@ class ClusterSnapshotCopyState {
   final pulumi.Input<bool>? storageEncrypted;
   /// Specifies the storage type associated with DB cluster snapshot.
   final pulumi.Input<String>? storageType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Identifier for the snapshot.
   ///
@@ -62,8 +62,8 @@ class ClusterSnapshotCopyState {
   /// [sourceDbClusterSnapshotIdentifier] Identifier of the source snapshot.
   /// [storageEncrypted] Specifies whether the DB cluster snapshot is encrypted.
   /// [storageType] Specifies the storage type associated with DB cluster snapshot.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targetDbClusterSnapshotIdentifier] Identifier for the snapshot.
   /// [timeouts] Optional.
   /// [vpcId] Provides the VPC ID associated with the DB cluster snapshot.
@@ -140,4 +140,3 @@ class ClusterSnapshotCopyState {
     );
   }
 }
-

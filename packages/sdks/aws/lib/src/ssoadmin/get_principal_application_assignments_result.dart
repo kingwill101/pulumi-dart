@@ -5,7 +5,7 @@ import 'get_principal_application_assignments_application_assignment.dart';
 
 /// Result data returned by getPrincipalApplicationAssignments.
 class GetPrincipalApplicationAssignmentsResult {
-  /// List of principals assigned to the application. See the `application_assignments` attribute reference below.
+  /// List of principals assigned to the application. See the `applicationAssignments` attribute reference below.
   final List<GetPrincipalApplicationAssignmentsApplicationAssignment>? applicationAssignments;
   final String id;
   final String instanceArn;
@@ -16,7 +16,7 @@ class GetPrincipalApplicationAssignmentsResult {
   final String region;
 
   /// Creates a new [GetPrincipalApplicationAssignmentsResult].
-  /// [applicationAssignments] List of principals assigned to the application. See the `application_assignments` attribute reference below.
+  /// [applicationAssignments] List of principals assigned to the application. See the `applicationAssignments` attribute reference below.
   /// [id] Required.
   /// [instanceArn] Required.
   /// [principalId] An identifier for an object in IAM Identity Center, such as a user or group.
@@ -53,4 +53,3 @@ class GetPrincipalApplicationAssignmentsResult {
     );
   }
 }
-

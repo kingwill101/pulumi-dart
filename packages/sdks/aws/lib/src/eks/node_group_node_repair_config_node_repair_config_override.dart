@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeGroupNodeRepairConfigNodeRepairConfigOverride {
-  /// Minimum time in minutes to wait before attempting to repair a node with the specified `node_monitoring_condition` and `node_unhealthy_reason`.
+  /// Minimum time in minutes to wait before attempting to repair a node with the specified `nodeMonitoringCondition` and `nodeUnhealthyReason`.
   final pulumi.Input<int> minRepairWaitTimeMins;
   /// Unhealthy condition reported by the node monitoring agent that this override applies to.
   final pulumi.Input<String> nodeMonitoringCondition;
@@ -13,7 +13,7 @@ class NodeGroupNodeRepairConfigNodeRepairConfigOverride {
   final pulumi.Input<String> repairAction;
 
   /// Creates a new [NodeGroupNodeRepairConfigNodeRepairConfigOverride].
-  /// [minRepairWaitTimeMins] Minimum time in minutes to wait before attempting to repair a node with the specified `node_monitoring_condition` and `node_unhealthy_reason`.
+  /// [minRepairWaitTimeMins] Minimum time in minutes to wait before attempting to repair a node with the specified `nodeMonitoringCondition` and `nodeUnhealthyReason`.
   /// [nodeMonitoringCondition] Unhealthy condition reported by the node monitoring agent that this override applies to.
   /// [nodeUnhealthyReason] Reason reported by the node monitoring agent that this override applies to.
   /// [repairAction] Repair action to take for nodes when all of the specified conditions are met. Valid values are defined by the EKS API.
@@ -42,4 +42,3 @@ class NodeGroupNodeRepairConfigNodeRepairConfigOverride {
     );
   }
 }
-

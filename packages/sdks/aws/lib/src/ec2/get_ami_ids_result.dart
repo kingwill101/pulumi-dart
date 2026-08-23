@@ -9,7 +9,7 @@ class GetAmiIdsResult {
   final List<GetAmiIdsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// is set to the list of AMI IDs, sorted by creation time according to `sort_ascending`.
+  /// List of AMI IDs, sorted by creation time according to `sortAscending`.
   final List<String> ids;
   final bool? includeDeprecated;
   final String? nameRegex;
@@ -21,7 +21,7 @@ class GetAmiIdsResult {
   /// [executableUsers] Optional.
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] is set to the list of AMI IDs, sorted by creation time according to `sort_ascending`.
+  /// [ids] List of AMI IDs, sorted by creation time according to `sortAscending`.
   /// [includeDeprecated] Optional.
   /// [nameRegex] Optional.
   /// [owners] Required.
@@ -67,4 +67,3 @@ class GetAmiIdsResult {
     );
   }
 }
-

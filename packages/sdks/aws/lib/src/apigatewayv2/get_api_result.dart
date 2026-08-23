@@ -8,31 +8,28 @@ class GetApiResult {
   /// URI of the API, of the form `https://{api-id}.execute-api.{region}.amazonaws.com` for HTTP APIs and `wss://{api-id}.execute-api.{region}.amazonaws.com` for WebSocket APIs.
   final String apiEndpoint;
   final String apiId;
-  /// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
-  /// Applicable for WebSocket APIs.
+  /// [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions). Applicable for WebSocket APIs.
   final String apiKeySelectionExpression;
   /// ARN of the API.
   final String arn;
-  /// Cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html).
-  /// Applicable for HTTP APIs.
+  /// Cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs. See below.
   final List<GetApiCorsConfiguration> corsConfigurations;
   /// Description of the API.
   final String description;
   /// Whether clients can invoke the API by using the default `execute-api` endpoint.
   final bool disableExecuteApiEndpoint;
-  /// ARN prefix to be used in an `aws.lambda.Permission`'s `source_arn` attribute
-  /// or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
-  /// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
+  /// ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html). See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
   final String executionArn;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  /// IP address types that can invoke an API.
   final String ipAddressType;
   /// Name of the API.
   final String name;
   /// API protocol.
   final String protocolType;
   final String region;
-  /// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
+  /// [Route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
   final String routeSelectionExpression;
   /// Map of resource tags.
   final Map<String, String> tags;
@@ -42,18 +39,18 @@ class GetApiResult {
   /// Creates a new [GetApiResult].
   /// [apiEndpoint] URI of the API, of the form `https://{api-id}.execute-api.{region}.amazonaws.com` for HTTP APIs and `wss://{api-id}.execute-api.{region}.amazonaws.com` for WebSocket APIs.
   /// [apiId] Required.
-  /// [apiKeySelectionExpression] An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
+  /// [apiKeySelectionExpression] [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions). Applicable for WebSocket APIs.
   /// [arn] ARN of the API.
-  /// [corsConfigurations] Cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html).
+  /// [corsConfigurations] Cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html). Applicable for HTTP APIs. See below.
   /// [description] Description of the API.
   /// [disableExecuteApiEndpoint] Whether clients can invoke the API by using the default `execute-api` endpoint.
-  /// [executionArn] ARN prefix to be used in an `aws.lambda.Permission`'s `source_arn` attribute
+  /// [executionArn] ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html). See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipAddressType] Required.
+  /// [ipAddressType] IP address types that can invoke an API.
   /// [name] Name of the API.
   /// [protocolType] API protocol.
   /// [region] Required.
-  /// [routeSelectionExpression] The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
+  /// [routeSelectionExpression] [Route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
   /// [tags] Map of resource tags.
   /// [version] Version identifier for the API.
   const GetApiResult({
@@ -117,4 +114,3 @@ class GetApiResult {
     );
   }
 }
-

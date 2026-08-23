@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationConfigurationArgs {
   /// When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s Detective delegated administrator and Detective is enabled in that AWS Region.
   final pulumi.Input<bool> autoEnable;
-  /// ARN of the behavior graph.
+  /// ARN of the Detective behavior graph.
   final pulumi.Input<String> graphArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [OrganizationConfigurationArgs].
   /// [autoEnable] When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s Detective delegated administrator and Detective is enabled in that AWS Region.
-  /// [graphArn] ARN of the behavior graph.
+  /// [graphArn] ARN of the Detective behavior graph.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const OrganizationConfigurationArgs({
     required this.autoEnable,
@@ -40,4 +40,3 @@ class OrganizationConfigurationArgs {
     );
   }
 }
-

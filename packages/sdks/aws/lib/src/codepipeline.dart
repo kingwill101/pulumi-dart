@@ -11,6 +11,7 @@ export 'codepipeline/pipeline_artifact_store.dart';
 export 'codepipeline/pipeline_artifact_store_encryption_key.dart';
 export 'codepipeline/pipeline_stage.dart';
 export 'codepipeline/pipeline_stage_action.dart';
+export 'codepipeline/pipeline_stage_action_output_artifacts_for_compute_action.dart';
 export 'codepipeline/pipeline_stage_before_entry.dart';
 export 'codepipeline/pipeline_stage_before_entry_condition.dart';
 export 'codepipeline/pipeline_stage_before_entry_condition_rule.dart';

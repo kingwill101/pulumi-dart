@@ -14,7 +14,7 @@ class RuntimeManagementConfigState {
   final pulumi.Input<String>? qualifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
+  /// ARN of the runtime version. Only required when `updateRuntimeOn` is `Manual`.
   final pulumi.Input<String>? runtimeVersionArn;
   /// Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
   final pulumi.Input<String>? updateRuntimeOn;
@@ -24,7 +24,7 @@ class RuntimeManagementConfigState {
   /// [functionName] Name or ARN of the Lambda function.
   /// [qualifier] Version of the function. This can be `$LATEST` or a published version number. If omitted, this resource will manage the runtime configuration for `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [runtimeVersionArn] ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
+  /// [runtimeVersionArn] ARN of the runtime version. Only required when `updateRuntimeOn` is `Manual`.
   /// [updateRuntimeOn] Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
   const RuntimeManagementConfigState({
     this.functionArn,
@@ -57,4 +57,3 @@ class RuntimeManagementConfigState {
     );
   }
 }
-

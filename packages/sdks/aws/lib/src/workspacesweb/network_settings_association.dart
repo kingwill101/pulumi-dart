@@ -28,25 +28,25 @@ import 'network_settings_association_state.dart';
 ///     },
 /// });
 /// const exampleSubnet: aws.ec2.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range.value}`, {
+/// for (let range = 0; range < 2; range++) {
+///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range}`, {
 ///         vpcId: example.id,
-///         cidrBlock: example.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
-///             input: cidrBlock,
+///         cidrBlock: std.cidrsubnetOutput({
+///             input: example.cidrBlock,
 ///             newbits: 8,
-///             netnum: range.value,
-///         })).apply(invoke => invoke.result),
-///         availabilityZone: available.then(available => available.names[range.value]),
+///             netnum: range,
+///         }).result,
+///         availabilityZone: available.then(available => available.names[range]),
 ///         tags: {
 ///             Name: "example",
 ///         },
 ///     }));
 /// }
 /// const exampleSecurityGroup: aws.ec2.SecurityGroup[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     exampleSecurityGroup.push(new aws.ec2.SecurityGroup(`example-${range.value}`, {
+/// for (let range = 0; range < 2; range++) {
+///     exampleSecurityGroup.push(new aws.ec2.SecurityGroup(`example-${range}`, {
 ///         vpcId: example.id,
-///         name: `example-${range.value}`,
+///         name: `example-${range}`,
 ///         tags: {
 ///             Name: "example",
 ///         },
@@ -71,6 +71,7 @@ import 'network_settings_association_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
@@ -84,22 +85,22 @@ import 'network_settings_association_state.dart';
 ///     tags={
 ///         "Name": "example",
 ///     })
-/// example_subnet = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     example_subnet.append(aws.ec2.Subnet(f"example-{range['value']}",
+/// example_subnet: list[aws.ec2.Subnet] = []
+/// for example_subnet_range in [{"value": i} for i in range(0, 2)]:
+///     example_subnet.append(aws.ec2.Subnet(f"example-{example_subnet_range['value']}",
 ///         vpc_id=example.id,
-///         cidr_block=example.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+///         cidr_block=std.cidrsubnet_output(input=example.cidr_block,
 ///             newbits=8,
-///             netnum=range["value"])).apply(lambda invoke: invoke.result),
-///         availability_zone=available.names[range["value"]],
+///             netnum=example_subnet_range["value"]).result,
+///         availability_zone=available.names[example_subnet_range["value"]],
 ///         tags={
 ///             "Name": "example",
 ///         }))
-/// example_security_group = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     example_security_group.append(aws.ec2.SecurityGroup(f"example-{range['value']}",
+/// example_security_group: list[aws.ec2.SecurityGroup] = []
+/// for example_security_group_range in [{"value": i} for i in range(0, 2)]:
+///     example_security_group.append(aws.ec2.SecurityGroup(f"example-{example_security_group_range['value']}",
 ///         vpc_id=example.id,
-///         name=f"example-{range['value']}",
+///         name=f"example-{example_security_group_range['value']}",
 ///         tags={
 ///             "Name": "example",
 ///         }))
@@ -159,12 +160,12 @@ import 'network_settings_association_state.dart';
 ///         exampleSubnet.Add(new Aws.Ec2.Subnet($"example-{range.Value}", new()
 ///         {
 ///             VpcId = example.Id,
-///             CidrBlock = example.CidrBlock.Apply(cidrBlock => Std.Cidrsubnet.Invoke(new()
+///             CidrBlock = Std.Cidrsubnet.Invoke(new()
 ///             {
-///                 Input = cidrBlock,
+///                 Input = example.CidrBlock,
 ///                 Newbits = 8,
 ///                 Netnum = range.Value,
-///             })).Apply(invoke => invoke.Result),
+///             }).Apply(invoke => invoke.Result),
 ///             AvailabilityZone = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names)[range.Value],
 ///             Tags =
 ///             {
@@ -226,104 +227,154 @@ import 'network_settings_association_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// State: pulumi.StringRef("available"),
-/// Filters: []aws.GetAvailabilityZonesFilter{
-/// {
-/// Name: "opt-in-status",
-/// Values: []string{
-/// "opt-in-not-required",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+/// 			State: pulumi.StringRef("available"),
+/// 			Filters: []aws.GetAvailabilityZonesFilter{
+/// 				{
+/// 					Name: "opt-in-status",
+/// 					Values: []string{
+/// 						"opt-in-not-required",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
+/// 			CidrBlock: pulumi.String("10.0.0.0/16"),
+/// 			Tags: pulumi.StringMap{
+/// 				"Name": pulumi.String("example"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		var exampleSubnet []*ec2.Subnet
+/// 		for index := 0; index < 2; index++ {
+/// 			key0 := index
+/// 			val0 := index
+/// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
+/// 				VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// 					Input:   example.CidrBlock,
+/// 					Newbits: pulumi.Int(8),
+/// 					Netnum:  pulumi.Int(val0),
+/// 				}, nil).Result(),
+/// 				AvailabilityZone: pulumi.String(available.Names[val0]),
+/// 				Tags: pulumi.StringMap{
+/// 					"Name": pulumi.String("example"),
+/// 				},
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			exampleSubnet = append(exampleSubnet, __res)
+/// 		}
+/// 		var exampleSecurityGroup []*ec2.SecurityGroup
+/// 		for index := 0; index < 2; index++ {
+/// 			key0 := index
+/// 			val0 := index
+/// 			__res, err := ec2.NewSecurityGroup(ctx, fmt.Sprintf("example-%v", key0), &ec2.SecurityGroupArgs{
+/// 				VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				Name:  pulumi.Sprintf("example-%v", val0),
+/// 				Tags: pulumi.StringMap{
+/// 					"Name": pulumi.String("example"),
+/// 				},
+/// 			})
+/// 			if err != nil {
+/// 				return err
+/// 			}
+/// 			exampleSecurityGroup = append(exampleSecurityGroup, __res)
+/// 		}
+/// 		examplePortal, err := workspacesweb.NewPortal(ctx, "example", &workspacesweb.PortalArgs{
+/// 			DisplayName: pulumi.String("example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleNetworkSettings, err := workspacesweb.NewNetworkSettings(ctx, "example", &workspacesweb.NetworkSettingsArgs{
+/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleSubnet[0].ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSubnet[1].ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 			SecurityGroupIds: pulumi.StringArray{
+/// 				exampleSecurityGroup[0].ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSecurityGroup[1].ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = workspacesweb.NewNetworkSettingsAssociation(ctx, "example", &workspacesweb.NetworkSettingsAssociationArgs{
+/// 			NetworkSettingsArn: exampleNetworkSettings.NetworkSettingsArn,
+/// 			PortalArn:          examplePortal.PortalArn,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// example, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
-/// CidrBlock: pulumi.String("10.0.0.0/16"),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("example"),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: cidrBlock,
-/// Newbits: 8,
-/// Netnum: val0,
-/// }, nil)
-/// if err != nil {
-/// return err
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
 /// }
-/// var exampleSubnet []*ec2.Subnet
-/// for index := 0; index < 2; index++ {
-///     key0 := index
-///     val0 := index
-/// __res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// VpcId: example.ID(),
-/// CidrBlock: pulumi.String(example.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// AvailabilityZone: pulumi.String(available.Names[val0]),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("example"),
-/// },
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+///   tags = {
+///     "Name" = "example"
+///   }
 /// }
-/// exampleSubnet = append(exampleSubnet, __res)
+/// resource "aws_ec2_subnet" "example" {
+///   count             = 2
+///   vpc_id            = aws_ec2_vpc.example.id
+///   cidr_block        = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
+///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   tags = {
+///     "Name" = "example"
+///   }
 /// }
-/// var exampleSecurityGroup []*ec2.SecurityGroup
-/// for index := 0; index < 2; index++ {
-///     key0 := index
-///     val0 := index
-/// __res, err := ec2.NewSecurityGroup(ctx, fmt.Sprintf("example-%v", key0), &ec2.SecurityGroupArgs{
-/// VpcId: example.ID(),
-/// Name: pulumi.Sprintf("example-%v", val0),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("example"),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_ec2_securitygroup" "example" {
+///   count  = 2
+///   vpc_id = aws_ec2_vpc.example.id
+///   name   ="example-${count.index}"
+///   tags = {
+///     "Name" = "example"
+///   }
 /// }
-/// exampleSecurityGroup = append(exampleSecurityGroup, __res)
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
 /// }
-/// examplePortal, err := workspacesweb.NewPortal(ctx, "example", &workspacesweb.PortalArgs{
-/// DisplayName: pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
+/// resource "aws_workspacesweb_networksettings" "example" {
+///   vpc_id             = aws_ec2_vpc.example.id
+///   subnet_ids         = [aws_ec2_subnet.example[0].id, aws_ec2_subnet.example[1].id]
+///   security_group_ids = [aws_ec2_securitygroup.example[0].id, aws_ec2_securitygroup.example[1].id]
 /// }
-/// exampleNetworkSettings, err := workspacesweb.NewNetworkSettings(ctx, "example", &workspacesweb.NetworkSettingsArgs{
-/// VpcId: example.ID(),
-/// SubnetIds: pulumi.StringArray{
-/// exampleSubnet[0].ID(),
-/// exampleSubnet[1].ID(),
-/// },
-/// SecurityGroupIds: pulumi.StringArray{
-/// exampleSecurityGroup[0].ID(),
-/// exampleSecurityGroup[1].ID(),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = workspacesweb.NewNetworkSettingsAssociation(ctx, "example", &workspacesweb.NetworkSettingsAssociationArgs{
-/// NetworkSettingsArn: exampleNetworkSettings.NetworkSettingsArn,
-/// PortalArn: examplePortal.PortalArn,
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
+/// resource "aws_workspacesweb_networksettingsassociation" "example" {
+///   network_settings_arn = aws_workspacesweb_networksettings.example.network_settings_arn
+///   portal_arn           = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
 /// ```java
@@ -334,6 +385,7 @@ import 'network_settings_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.ec2.Vpc;
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.Subnet;
@@ -349,8 +401,8 @@ import 'network_settings_association_state.dart';
 /// import com.pulumi.aws.workspacesweb.NetworkSettingsAssociation;
 /// import com.pulumi.aws.workspacesweb.NetworkSettingsAssociationArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,11 +430,11 @@ import 'network_settings_association_state.dart';
 ///         for (var i = 0; i < 2; i++) {
 ///             new Subnet("exampleSubnet-" + i, SubnetArgs.builder()
 ///                 .vpcId(example.id())
-///                 .cidrBlock(example.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                     .input(_cidrBlock)
+///                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                     .input(example.cidrBlock())
 ///                     .newbits(8)
 ///                     .netnum(range.value())
-///                     .build())).applyValue(_invoke -> _invoke.result()))
+///                     .build()).applyValue(_invoke -> _invoke.result()))
 ///                 .availabilityZone(available.names()[range.value()])
 ///                 .tags(Map.of("Name", "example"))
 ///                 .build());

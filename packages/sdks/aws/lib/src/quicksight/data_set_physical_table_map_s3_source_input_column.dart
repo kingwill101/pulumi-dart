@@ -30,4 +30,3 @@ class DataSetPhysicalTableMapS3SourceInputColumn {
     );
   }
 }
-

@@ -18,11 +18,11 @@ class SubscriberArgs {
   final pulumi.Input<List<SubscriberSource>> sources;
   /// The description for your subscriber account in Security Lake.
   final pulumi.Input<String>? subscriberDescription;
-  /// The AWS identity used to access your data. See `subscriber_identity` Block below.
+  /// The AWS identity used to access your data. See `subscriberIdentity` Block below.
   final pulumi.Input<SubscriberSubscriberIdentity> subscriberIdentity;
   /// The name of your Security Lake subscriber account.
   final pulumi.Input<String>? subscriberName;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<SubscriberTimeouts>? timeouts;
 
@@ -31,9 +31,9 @@ class SubscriberArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sources] The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
   /// [subscriberDescription] The description for your subscriber account in Security Lake.
-  /// [subscriberIdentity] The AWS identity used to access your data. See `subscriber_identity` Block below.
+  /// [subscriberIdentity] The AWS identity used to access your data. See `subscriberIdentity` Block below.
   /// [subscriberName] The name of your Security Lake subscriber account.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const SubscriberArgs({
     this.accessType,
@@ -72,4 +72,3 @@ class SubscriberArgs {
     );
   }
 }
-

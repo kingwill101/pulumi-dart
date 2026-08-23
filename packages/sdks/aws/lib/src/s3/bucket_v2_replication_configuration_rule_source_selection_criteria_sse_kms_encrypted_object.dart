@@ -24,4 +24,3 @@ class BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncrypted
     );
   }
 }
-

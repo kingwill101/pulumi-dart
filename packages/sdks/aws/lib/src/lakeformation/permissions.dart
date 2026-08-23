@@ -11,11 +11,13 @@ import 'permissions_table_with_columns.dart';
 
 /// Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3. Permissions are granted to a principal, in a Data Catalog, relative to a Lake Formation resource, which includes the Data Catalog, databases, tables, LF-tags, and LF-tag policies. For more information, see [Security and Access Control to Metadata and Data in Lake Formation](https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
 ///
-/// !&gt; **WARNING:** Lake Formation permissions are not in effect by default within AWS. Using this resource will not secure your data and will result in errors if you do not change the security settings for existing resources and the default security settings for new resources. See Default Behavior and `IAMAllowedPrincipals` for additional details.
+/// &gt; **WARNING:** Lake Formation permissions are not in effect by default within AWS. Using this resource will not secure your data and will result in errors if you do not change the security settings for existing resources and the default security settings for new resources. See Default Behavior and `IAMAllowedPrincipals` for additional details.
 ///
 /// &gt; **NOTE:** In general, the `principal` should _NOT_ be a Lake Formation administrator or the entity (e.g., IAM role) that is running the deployment. Administrators have implicit permissions. These should be managed by granting or not granting administrator rights using `aws.lakeformation.DataLakeSettings`, _not_ with this resource.
 ///
-/// ## Default Behavior and `IAMAllowedPrincipals`
+/// ## Example Usage
+///
+/// ### Default Behavior and `IAMAllowedPrincipals`
 ///
 /// **_Lake Formation permissions are not in effect by default within AWS._** `IAMAllowedPrincipals` (i.e., `IAM_ALLOWED_PRINCIPALS`) conflicts with individual Lake Formation permissions (i.e., non-`IAMAllowedPrincipals` permissions), will cause unexpected behavior, and may result in errors.
 ///
@@ -24,7 +26,7 @@ import 'permissions_table_with_columns.dart';
 /// 1. Use this resource (`aws.lakeformation.Permissions`), change the default security settings using `aws.lakeformation.DataLakeSettings`, and remove existing `IAMAllowedPrincipals` permissions
 /// 2. Use `IAMAllowedPrincipals` without `aws.lakeformation.Permissions`
 ///
-/// This example shows removing the `IAMAllowedPrincipals` default security settings and making the caller a Lake Formation admin. Since `create_database_default_permissions` and `create_table_default_permissions` are not set in the `aws.lakeformation.DataLakeSettings` resource, they are cleared.
+/// This example shows removing the `IAMAllowedPrincipals` default security settings and making the caller a Lake Formation admin. Since `createDatabaseDefaultPermissions` and `createTableDefaultPermissions` are not set in the `aws.lakeformation.DataLakeSettings` resource, they are cleared.
 ///
 ///
 /// ```typescript
@@ -104,6 +106,25 @@ import 'permissions_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getsessioncontext" "currentGetSessionContext" {
+///   arn = data.aws_getcalleridentity.current.arn
+/// }
+///
+/// resource "aws_lakeformation_datalakesettings" "test" {
+///   admins = [data.aws_iam_getsessioncontext.currentGetSessionContext.issuer_arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +137,8 @@ import 'permissions_table_with_columns.dart';
 /// import com.pulumi.aws.iam.inputs.GetSessionContextArgs;
 /// import com.pulumi.aws.lakeformation.DataLakeSettings;
 /// import com.pulumi.aws.lakeformation.DataLakeSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,6 +350,38 @@ import 'permissions_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_catalogdatabase" "example" {
+///   name = "sadabate"
+/// }
+/// resource "aws_glue_catalogtable" "example" {
+///   name          = "abelt"
+///   database_name = test.name
+///   storage_descriptor = {
+///     columns = [{
+///       "name" = "event"
+///       "type" = "string"
+///     }]
+///   }
+/// }
+/// resource "aws_lakeformation_permissions" "example" {
+///   permissions = ["SELECT"]
+///   principal   = "arn:aws:iam:us-east-1:123456789012:user/SanHolo"
+///   table_with_columns = {
+///     database_name = aws_glue_catalogtable.example.database_name
+///     name          = aws_glue_catalogtable.example.name
+///     column_names  = ["event"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -340,11 +393,12 @@ import 'permissions_table_with_columns.dart';
 /// import com.pulumi.aws.glue.CatalogTable;
 /// import com.pulumi.aws.glue.CatalogTableArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorArgs;
+/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorColumnArgs;
 /// import com.pulumi.aws.lakeformation.Permissions;
 /// import com.pulumi.aws.lakeformation.PermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.PermissionsTableWithColumnsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -421,7 +475,7 @@ import 'permissions_table_with_columns.dart';
 /// | ---- | ---- |
 /// | `SELECT` column wildcard (i.e., all columns) | `SELECT` on `"event"` (as expected) |
 ///
-/// ## `ALLIAMPrincipals` group
+/// ### `ALLIAMPrincipals` group
 ///
 /// AllIAMPrincipals is a pseudo-entity group that acts like a Lake Formation principal. The group includes all IAMs in the account that is defined.
 ///
@@ -511,6 +565,25 @@ import 'permissions_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_permissions" "example" {
+///   permissions = ["SELECT"]
+///   principal   = "123456789012:IAMPrincipals"
+///   table_with_columns = {
+///     database_name = exampleAwsGlueCatalogTable.databaseName
+///     name          = exampleAwsGlueCatalogTable.name
+///     column_names  = ["event"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -520,8 +593,8 @@ import 'permissions_table_with_columns.dart';
 /// import com.pulumi.aws.lakeformation.Permissions;
 /// import com.pulumi.aws.lakeformation.PermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.PermissionsTableWithColumnsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -562,15 +635,13 @@ import 'permissions_table_with_columns.dart';
 /// ```
 ///
 ///
-/// ## Using Lake Formation Permissions
+/// ### Using Lake Formation Permissions
 ///
 /// Lake Formation grants implicit permissions to data lake administrators, database creators, and table creators. These implicit permissions cannot be revoked _per se_. If this resource reads implicit permissions, it will attempt to revoke them, which causes an error when the resource is destroyed.
 ///
-/// There are two ways to avoid these errors. First, and the way we recommend, is to avoid using this resource with principals that have implicit permissions. A second, error-prone option, is to grant explicit permissions (and `permissions_with_grant_option`) to "overwrite" a principal's implicit permissions, which you can then revoke with this resource. For more information, see [Implicit Lake Formation Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/implicit-permissions.html).
+/// There are two ways to avoid these errors. First, and the way we recommend, is to avoid using this resource with principals that have implicit permissions. A second, error-prone option, is to grant explicit permissions (and `permissionsWithGrantOption`) to "overwrite" a principal's implicit permissions, which you can then revoke with this resource. For more information, see [Implicit Lake Formation Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/implicit-permissions.html).
 ///
-/// If the `principal` is also a data lake administrator, AWS grants implicit permissions that can cause errors using this resource. For example, AWS implicitly grants a `principal`/administrator `permissions` and `permissions_with_grant_option` of `ALL`, `ALTER`, `DELETE`, `DESCRIBE`, `DROP`, `INSERT`, and `SELECT` on a table. If you use this resource to explicitly grant the `principal`/administrator `permissions` but _not_ `permissions_with_grant_option` of `ALL`, `ALTER`, `DELETE`, `DESCRIBE`, `DROP`, `INSERT`, and `SELECT` on the table, this resource will read the implicit `permissions_with_grant_option` and attempt to revoke them when the resource is destroyed. Doing so will cause an `InvalidInputException: No permissions revoked` error because you cannot revoke implicit permissions _per se_. To workaround this problem, explicitly grant the `principal`/administrator `permissions` _and_ `permissions_with_grant_option`, which can then be revoked. Similarly, granting a `principal`/administrator permissions on a table with columns and providing `column_names`, will result in a `InvalidInputException: Permissions modification is invalid` error because you are narrowing the implicit permissions. Instead, set `wildcard` to `true` and remove the `column_names`.
-///
-/// ## Example Usage
+/// If the `principal` is also a data lake administrator, AWS grants implicit permissions that can cause errors using this resource. For example, AWS implicitly grants a `principal`/administrator `permissions` and `permissionsWithGrantOption` of `ALL`, `ALTER`, `DELETE`, `DESCRIBE`, `DROP`, `INSERT`, and `SELECT` on a table. If you use this resource to explicitly grant the `principal`/administrator `permissions` but _not_ `permissionsWithGrantOption` of `ALL`, `ALTER`, `DELETE`, `DESCRIBE`, `DROP`, `INSERT`, and `SELECT` on the table, this resource will read the implicit `permissionsWithGrantOption` and attempt to revoke them when the resource is destroyed. Doing so will cause an `InvalidInputException: No permissions revoked` error because you cannot revoke implicit permissions _per se_. To workaround this problem, explicitly grant the `principal`/administrator `permissions` _and_ `permissionsWithGrantOption`, which can then be revoked. Similarly, granting a `principal`/administrator permissions on a table with columns and providing `columnNames`, will result in a `InvalidInputException: Permissions modification is invalid` error because you are narrowing the implicit permissions. Instead, set `wildcard` to `true` and remove the `columnNames`.
 ///
 /// ### Grant Permissions For A Lake Formation S3 Resource
 ///
@@ -647,6 +718,23 @@ import 'permissions_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_permissions" "example" {
+///   principal   = workflowRole.arn
+///   permissions = ["DATA_LOCATION_ACCESS"]
+///   data_location = {
+///     arn = exampleAwsLakeformationResource.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -656,8 +744,8 @@ import 'permissions_table_with_columns.dart';
 /// import com.pulumi.aws.lakeformation.Permissions;
 /// import com.pulumi.aws.lakeformation.PermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.PermissionsDataLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -784,6 +872,24 @@ import 'permissions_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_permissions" "example" {
+///   principal   = workflowRole.arn
+///   permissions = ["CREATE_TABLE", "ALTER", "DROP"]
+///   database = {
+///     name       = exampleAwsGlueCatalogDatabase.name
+///     catalog_id = "110376042874"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -793,8 +899,8 @@ import 'permissions_table_with_columns.dart';
 /// import com.pulumi.aws.lakeformation.Permissions;
 /// import com.pulumi.aws.lakeformation.PermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.PermissionsDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -985,6 +1091,30 @@ import 'permissions_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_permissions" "test" {
+///   principal   = salesRole.arn
+///   permissions = ["CREATE_TABLE", "ALTER", "DROP"]
+///   lf_tag_policy = {
+///     resource_type = "DATABASE"
+///     expressions = [{
+///       "key"    = "Team"
+///       "values" = ["Sales"]
+///       }, {
+///       "key"    = "Environment"
+///       "values" = ["Dev", "Production"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -994,8 +1124,9 @@ import 'permissions_table_with_columns.dart';
 /// import com.pulumi.aws.lakeformation.Permissions;
 /// import com.pulumi.aws.lakeformation.PermissionsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.PermissionsLfTagPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lakeformation.inputs.PermissionsLfTagPolicyExpressionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

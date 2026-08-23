@@ -88,6 +88,22 @@ import 'allowed_images_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_allowedimagessettings" "example" {
+///   state = "enabled"
+///   image_criterions {
+///     image_providers = ["amazon"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +113,8 @@ import 'allowed_images_settings_state.dart';
 /// import com.pulumi.aws.ec2.AllowedImagesSettings;
 /// import com.pulumi.aws.ec2.AllowedImagesSettingsArgs;
 /// import com.pulumi.aws.ec2.inputs.AllowedImagesSettingsImageCriterionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,6 +232,22 @@ import 'allowed_images_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_allowedimagessettings" "example" {
+///   state = "audit-mode"
+///   image_criterions {
+///     image_providers = ["amazon", "123456789012"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -225,8 +257,8 @@ import 'allowed_images_settings_state.dart';
 /// import com.pulumi.aws.ec2.AllowedImagesSettings;
 /// import com.pulumi.aws.ec2.AllowedImagesSettingsArgs;
 /// import com.pulumi.aws.ec2.inputs.AllowedImagesSettingsImageCriterionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,7 +303,7 @@ import 'allowed_images_settings_state.dart';
 /// $ pulumi import aws:ec2/allowedImagesSettings:AllowedImagesSettings example us-east-1
 /// ```
 class AllowedImagesSettings extends pulumi.CustomResource {
-  /// List of image criteria. Maximum of 10 criterion blocks allowed. See `image_criterion` below.
+  /// List of image criteria. Maximum of 10 criterion blocks allowed. See `imageCriterion` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> imageCriterions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

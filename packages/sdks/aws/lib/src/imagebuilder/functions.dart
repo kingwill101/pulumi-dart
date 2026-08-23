@@ -80,6 +80,19 @@ import 'get_infrastructure_configurations_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getcomponent" "example" {
+///   arn = "arn:aws:imagebuilder:us-west-2:aws:component/amazon-cloudwatch-agent-linux/1.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +101,8 @@ import 'get_infrastructure_configurations_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetComponentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,6 +225,23 @@ Future<GetComponentResult> getComponent(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getcomponents" "example" {
+///   owner = "Self"
+///   filters {
+///     name   = "platform"
+///     values = ["Linux"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -220,8 +250,9 @@ Future<GetComponentResult> getComponent(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetComponentsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.GetComponentsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,6 +356,19 @@ Future<GetComponentsResult> getComponents(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getcontainerrecipe" "example" {
+///   arn = "arn:aws:imagebuilder:us-east-1:aws:container-recipe/example/1.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -333,8 +377,8 @@ Future<GetComponentsResult> getComponents(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetContainerRecipeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -457,6 +501,23 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getcontainerrecipes" "example" {
+///   owner = "Self"
+///   filters {
+///     name   = "platform"
+///     values = ["Linux"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -465,8 +526,9 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetContainerRecipesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.GetContainerRecipesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -570,6 +632,19 @@ Future<GetContainerRecipesResult> getContainerRecipes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getdistributionconfiguration" "example" {
+///   arn = "arn:aws:imagebuilder:us-west-2:aws:distribution-configuration/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -578,8 +653,8 @@ Future<GetContainerRecipesResult> getContainerRecipes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetDistributionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -698,6 +773,22 @@ Future<GetDistributionConfigurationResult> getDistributionConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getdistributionconfigurations" "example" {
+///   filters {
+///     name   = "name"
+///     values = ["example"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -706,8 +797,9 @@ Future<GetDistributionConfigurationResult> getDistributionConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetDistributionConfigurationsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.GetDistributionConfigurationsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -811,6 +903,19 @@ Future<GetDistributionConfigurationsResult> getDistributionConfigurations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getimage" "example" {
+///   arn = "arn:aws:imagebuilder:us-west-2:aws:image/amazon-linux-2-x86/x.x.x"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -819,8 +924,8 @@ Future<GetDistributionConfigurationsResult> getDistributionConfigurations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -916,6 +1021,19 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getimagepipeline" "example" {
+///   arn = "arn:aws:imagebuilder:us-west-2:aws:image-pipeline/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -924,8 +1042,8 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetImagePipelineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1044,6 +1162,22 @@ Future<GetImagePipelineResult> getImagePipeline(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getimagepipelines" "example" {
+///   filters {
+///     name   = "name"
+///     values = ["example"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1052,8 +1186,9 @@ Future<GetImagePipelineResult> getImagePipeline(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetImagePipelinesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.GetImagePipelinesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1155,6 +1290,19 @@ Future<GetImagePipelinesResult> getImagePipelines(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getimagerecipe" "example" {
+///   arn = "arn:aws:imagebuilder:us-east-1:aws:image-recipe/example/1.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1163,8 +1311,8 @@ Future<GetImagePipelinesResult> getImagePipelines(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetImageRecipeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1287,6 +1435,23 @@ Future<GetImageRecipeResult> getImageRecipe(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getimagerecipes" "example" {
+///   owner = "Self"
+///   filters {
+///     name   = "platform"
+///     values = ["Linux"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1295,8 +1460,9 @@ Future<GetImageRecipeResult> getImageRecipe(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetImageRecipesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.GetImageRecipesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1400,6 +1566,19 @@ Future<GetImageRecipesResult> getImageRecipes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getinfrastructureconfiguration" "example" {
+///   arn = "arn:aws:imagebuilder:us-west-2:aws:infrastructure-configuration/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1408,8 +1587,8 @@ Future<GetImageRecipesResult> getImageRecipes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetInfrastructureConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1528,6 +1707,22 @@ Future<GetInfrastructureConfigurationResult> getInfrastructureConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_imagebuilder_getinfrastructureconfigurations" "example" {
+///   filters {
+///     name   = "name"
+///     values = ["example"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1536,8 +1731,9 @@ Future<GetInfrastructureConfigurationResult> getInfrastructureConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.ImagebuilderFunctions;
 /// import com.pulumi.aws.imagebuilder.inputs.GetInfrastructureConfigurationsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.GetInfrastructureConfigurationsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

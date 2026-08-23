@@ -80,7 +80,7 @@ import 'connect_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2transitgateway.NewConnect(ctx, "attachment", &ec2transitgateway.ConnectArgs{
-/// 			TransportAttachmentId: example.ID(),
+/// 			TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			TransitGatewayId:      pulumi.Any(exampleAwsEc2TransitGateway.Id),
 /// 		})
 /// 		if err != nil {
@@ -88,6 +88,25 @@ import 'connect_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_vpcattachment" "example" {
+///   subnet_ids         = [exampleAwsSubnet.id]
+///   transit_gateway_id = exampleAwsEc2TransitGateway.id
+///   vpc_id             = exampleAwsVpc.id
+/// }
+/// resource "aws_ec2transitgateway_connect" "attachment" {
+///   transport_attachment_id = aws_ec2transitgateway_vpcattachment.example.id
+///   transit_gateway_id      = exampleAwsEc2TransitGateway.id
 /// }
 /// ```
 /// ```java
@@ -100,8 +119,8 @@ import 'connect_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.VpcAttachmentArgs;
 /// import com.pulumi.aws.ec2transitgateway.Connect;
 /// import com.pulumi.aws.ec2transitgateway.ConnectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,9 +175,9 @@ class Connect extends pulumi.CustomResource {
   late final pulumi.Output<String?> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value tags for the EC2 Transit Gateway Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Connect. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Boolean whether the Connect should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   late final pulumi.Output<bool?> transitGatewayDefaultRouteTableAssociation;

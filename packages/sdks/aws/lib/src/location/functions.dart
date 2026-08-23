@@ -70,6 +70,19 @@ import 'get_tracker_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_location_getgeofencecollection" "example" {
+///   collection_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +91,8 @@ import 'get_tracker_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.location.LocationFunctions;
 /// import com.pulumi.aws.location.inputs.GetGeofenceCollectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,6 +188,19 @@ Future<GetGeofenceCollectionResult> getGeofenceCollection(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_location_getmap" "example" {
+///   map_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +209,8 @@ Future<GetGeofenceCollectionResult> getGeofenceCollection(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.location.LocationFunctions;
 /// import com.pulumi.aws.location.inputs.GetMapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,6 +306,19 @@ Future<GetMapResult> getMap(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_location_getplaceindex" "example" {
+///   index_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -288,8 +327,8 @@ Future<GetMapResult> getMap(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.location.LocationFunctions;
 /// import com.pulumi.aws.location.inputs.GetPlaceIndexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,6 +424,19 @@ Future<GetPlaceIndexResult> getPlaceIndex(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_location_getroutecalculator" "example" {
+///   calculator_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -393,8 +445,8 @@ Future<GetPlaceIndexResult> getPlaceIndex(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.location.LocationFunctions;
 /// import com.pulumi.aws.location.inputs.GetRouteCalculatorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -490,6 +542,19 @@ Future<GetRouteCalculatorResult> getRouteCalculator(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_location_gettracker" "example" {
+///   tracker_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -498,8 +563,8 @@ Future<GetRouteCalculatorResult> getRouteCalculator(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.location.LocationFunctions;
 /// import com.pulumi.aws.location.inputs.GetTrackerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -601,6 +666,20 @@ Future<GetTrackerResult> getTracker(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_location_gettrackerassociation" "example" {
+///   consumer_arn = "arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer"
+///   tracker_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -609,8 +688,8 @@ Future<GetTrackerResult> getTracker(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.location.LocationFunctions;
 /// import com.pulumi.aws.location.inputs.GetTrackerAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -710,6 +789,19 @@ Future<GetTrackerAssociationResult> getTrackerAssociation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_location_gettrackerassociations" "example" {
+///   tracker_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -718,8 +810,8 @@ Future<GetTrackerAssociationResult> getTrackerAssociation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.location.LocationFunctions;
 /// import com.pulumi.aws.location.inputs.GetTrackerAssociationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

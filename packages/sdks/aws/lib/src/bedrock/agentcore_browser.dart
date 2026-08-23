@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_browser_args.dart';
+import 'agentcore_browser_browser_signing.dart';
 import 'agentcore_browser_network_configuration.dart';
 import 'agentcore_browser_recording.dart';
 import 'agentcore_browser_state.dart';
@@ -79,6 +80,23 @@ import 'agentcore_browser_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorebrowser" "example" {
+///   name        = "example-browser"
+///   description = "Browser for web data extraction"
+///   network_configuration = {
+///     network_mode = "PUBLIC"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +106,8 @@ import 'agentcore_browser_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreBrowser;
 /// import com.pulumi.aws.bedrock.AgentcoreBrowserArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreBrowserNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +247,27 @@ import 'agentcore_browser_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorebrowser" "vpc_example" {
+///   name        = "vpc-browser"
+///   description = "Browser with VPC configuration"
+///   network_configuration = {
+///     network_mode = "VPC"
+///     vpc_config = {
+///       security_groups = ["sg-12345678"]
+///       subnets         = ["subnet-12345678", "subnet-87654321"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +278,8 @@ import 'agentcore_browser_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreBrowserArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreBrowserNetworkConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreBrowserNetworkConfigurationVpcConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -492,6 +531,49 @@ import 'agentcore_browser_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["bedrock-agentcore.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "bedrock-agentcore-browser-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_s3_bucket" "recording" {
+///   bucket = "browser-recording-bucket"
+/// }
+/// resource "aws_bedrock_agentcorebrowser" "example" {
+///   name               = "example-browser"
+///   description        = "Browser with recording enabled"
+///   execution_role_arn = aws_iam_role.example.arn
+///   network_configuration = {
+///     network_mode = "PUBLIC"
+///   }
+///   recording = {
+///     enabled = true
+///     s3_location = {
+///       bucket = aws_s3_bucket.recording.bucket
+///       prefix = "browser-sessions/"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -500,6 +582,8 @@ import 'agentcore_browser_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.s3.Bucket;
@@ -509,8 +593,8 @@ import 'agentcore_browser_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreBrowserNetworkConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreBrowserRecordingArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreBrowserRecordingS3LocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -614,13 +698,19 @@ class AgentcoreBrowser extends pulumi.CustomResource {
   late final pulumi.Output<String> browserArn;
   /// Unique identifier of the Browser.
   late final pulumi.Output<String> browserId;
+  /// Browser signing configuration that enables cryptographic agent identification using HTTP message signatures. See `browserSigning` below.
+  late final pulumi.Output<AgentcoreBrowserBrowserSigning?> browserSigning;
+  /// Certificates to install in the browser. See `certificate` below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
   /// Description of the browser.
   late final pulumi.Output<String?> description;
+  /// Enterprise policy files to apply to the browser. See `enterprisePolicy` below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> enterprisePolicies;
   /// ARN of the IAM role that the browser assumes for execution.
   late final pulumi.Output<String?> executionRoleArn;
   /// Name of the browser.
   late final pulumi.Output<String> name;
-  /// Network configuration for the browser. See `network_configuration` below.
+  /// Network configuration for the browser. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<AgentcoreBrowserNetworkConfiguration> networkConfiguration;
@@ -628,9 +718,9 @@ class AgentcoreBrowser extends pulumi.CustomResource {
   late final pulumi.Output<AgentcoreBrowserRecording?> recording;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreBrowserTimeouts?> timeouts;
 
@@ -650,7 +740,10 @@ class AgentcoreBrowser extends pulumi.CustomResource {
         ) {
     browserArn = registerOutput<String>('browserArn');
     browserId = registerOutput<String>('browserId');
+    browserSigning = registerOutput<AgentcoreBrowserBrowserSigning?>('browserSigning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserBrowserSigning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
     description = registerOutput<String?>('description');
+    enterprisePolicies = registerOutput<List<Map<String, dynamic>>?>('enterprisePolicies');
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -686,7 +779,10 @@ class AgentcoreBrowser extends pulumi.CustomResource {
         ) {
     browserArn = registerOutput<String>('browserArn');
     browserId = registerOutput<String>('browserId');
+    browserSigning = registerOutput<AgentcoreBrowserBrowserSigning?>('browserSigning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserBrowserSigning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
     description = registerOutput<String?>('description');
+    enterprisePolicies = registerOutput<List<Map<String, dynamic>>?>('enterprisePolicies');
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

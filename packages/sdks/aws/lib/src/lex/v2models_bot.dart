@@ -156,7 +156,7 @@ import 'v2models_bot_timeouts.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "lexv2.amazonaws.com",
 /// 					},
 /// 				},
@@ -198,6 +198,46 @@ import 'v2models_bot_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsbot" "example" {
+///   name        = "example"
+///   description = "Example description"
+///   data_privacies {
+///     child_directed = false
+///   }
+///   idle_session_ttl_in_seconds = 60
+///   role_arn                    = aws_iam_role.example.arn
+///   type                        = "Bot"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "lexv2.amazonaws.com"
+///       }
+///     }]
+///   })
+///   tags = {
+///     "created_by" = "aws"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +250,8 @@ import 'v2models_bot_timeouts.dart';
 /// import com.pulumi.aws.lex.V2modelsBotArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsBotDataPrivacyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -297,13 +337,13 @@ import 'v2models_bot_timeouts.dart';
 /// ```
 class V2modelsBot extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
-  /// Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `data_privacy`
+  /// Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `dataPrivacy`
   late final pulumi.Output<List<Map<String, dynamic>>> dataPrivacies;
   /// Description of the bot. It appears in lists to help you identify a particular bot.
   late final pulumi.Output<String?> description;
   /// Time, in seconds, that Amazon Lex should keep information about a user's conversation with the bot. You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.
   late final pulumi.Output<int> idleSessionTtlInSeconds;
-  /// List of bot members in a network to be created. See `bot_members`.
+  /// List of bot members in a network to be created. See `botMembers`.
   late final pulumi.Output<List<Map<String, dynamic>>?> members;
   /// Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.
   late final pulumi.Output<String> name;

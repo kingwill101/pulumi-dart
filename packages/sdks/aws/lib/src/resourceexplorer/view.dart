@@ -113,6 +113,29 @@ import 'view_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_resourceexplorer_index" "example" {
+///   type = "LOCAL"
+/// }
+/// resource "aws_resourceexplorer_view" "example" {
+///   depends_on = [aws_resourceexplorer_index.example]
+///   name       = "exampleview"
+///   filters = {
+///     filter_string = "resourcetype:ec2:instance"
+///   }
+///   included_properties {
+///     name = "tags"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +149,8 @@ import 'view_state.dart';
 /// import com.pulumi.aws.resourceexplorer.inputs.ViewFiltersArgs;
 /// import com.pulumi.aws.resourceexplorer.inputs.ViewIncludedPropertyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,9 +231,9 @@ class View extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The root ARN of the account, an organizational unit (OU), or an organization ARN. If left empty, the default is account.
   late final pulumi.Output<String> scope;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [View].

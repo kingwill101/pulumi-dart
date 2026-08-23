@@ -166,6 +166,40 @@ import 'image_recipe_systems_manager_agent.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_imagebuilder_imagerecipe" "example" {
+///   block_device_mappings {
+///     device_name = "/dev/xvdb"
+///     ebs = {
+///       delete_on_termination = true
+///       volume_size           = 100
+///       volume_type           = "gp2"
+///     }
+///   }
+///   components {
+///     component_arn = exampleAwsImagebuilderComponent.arn
+///     parameters {
+///       name  = "Parameter1"
+///       value = "Value1"
+///     }
+///     parameters {
+///       name  = "Parameter2"
+///       value = "Value2"
+///     }
+///   }
+///   name         = "example"
+///   parent_image ="arn:${current.partition}:imagebuilder:${currentAwsRegion.region}:aws:image/amazon-linux-2-x86/x.x.x"
+///   version      = "1.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +211,9 @@ import 'image_recipe_systems_manager_agent.dart';
 /// import com.pulumi.aws.imagebuilder.inputs.ImageRecipeBlockDeviceMappingArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.ImageRecipeBlockDeviceMappingEbsArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.ImageRecipeComponentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.imagebuilder.inputs.ImageRecipeComponentParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,9 +317,9 @@ class ImageRecipe extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Configuration block for the Systems Manager Agent installed by default by Image Builder. Detailed below.
   late final pulumi.Output<ImageRecipeSystemsManagerAgent> systemsManagerAgent;
-  /// Key-value map of resource tags for the image recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the image recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Base64 encoded user data. Use this to provide commands or a command script to run when you launch your build instance.
   late final pulumi.Output<String> userDataBase64;

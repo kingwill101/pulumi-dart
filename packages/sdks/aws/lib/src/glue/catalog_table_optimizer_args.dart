@@ -18,7 +18,7 @@ class CatalogTableOptimizerArgs {
   final pulumi.Input<String>? region;
   /// The name of the table.
   final pulumi.Input<String> tableName;
-  /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
+  /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
   final pulumi.Input<String> type;
 
   /// Creates a new [CatalogTableOptimizerArgs].
@@ -27,7 +27,7 @@ class CatalogTableOptimizerArgs {
   /// [databaseName] The name of the database in the catalog in which the table resides.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] The name of the table.
-  /// [type] The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
+  /// [type] The type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
   const CatalogTableOptimizerArgs({
     required this.catalogId,
     required this.configuration,
@@ -59,4 +59,3 @@ class CatalogTableOptimizerArgs {
     );
   }
 }
-

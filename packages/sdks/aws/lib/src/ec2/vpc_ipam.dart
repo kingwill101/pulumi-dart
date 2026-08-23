@@ -99,6 +99,28 @@ import 'vpc_ipam_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipam" "main" {
+///   description = "My IPAM"
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
+///   tags = {
+///     "Test" = "Main"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +132,8 @@ import 'vpc_ipam_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpam;
 /// import com.pulumi.aws.ec2.VpcIpamArgs;
 /// import com.pulumi.aws.ec2.inputs.VpcIpamOperatingRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,9 +226,9 @@ import 'vpc_ipam_state.dart';
 ///     ipam_regions,
 /// ]).result).result
 /// main = aws.ec2.VpcIpam("main",
-///     operating_regions=[{"key": k, "value": v} for k, v in all_ipam_regions].apply(lambda entries: [{
-///         "regionName": entry["value"],
-///     } for entry in entries]),
+///     operating_regions=[{"key": k, "value": v} for k, v in sorted(all_ipam_regions.items())].apply(lambda entries: [aws.ec2.VpcIpamOperatingRegionArgs(
+///         region_name=entry["value"],
+///     ) for entry in entries]),
 ///     description="multi region ipam")
 /// ```
 /// ```csharp
@@ -256,6 +278,42 @@ import 'vpc_ipam_state.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "std_concat" "invoke_1" {
+///   input = [[data.aws_getregion.current.region], var.ipamRegions]
+/// }
+///
+/// resource "aws_ec2_vpcipam" "main" {
+///   dynamic "operating_regions" {
+///     for_each = entries(local.allIpamRegions)
+///     content {
+///       region_name = operating_regions.value.value
+///     }
+///   }
+///   description = "multi region ipam"
+/// }
+/// variable "ipamRegions" {
+///   type    = list(any)
+///   default = ["us-east-1", "us-west-2"]
+/// }
+/// # ensure current provider region is an operating_regions entry
+/// locals {
+///   allIpamRegions = distinct(data.std_concat.invoke_1.result)
+/// }
+/// ```
 ///
 ///
 /// ## Import
@@ -280,7 +338,7 @@ class VpcIpam extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enablePrivateGua;
   /// AWS account that is charged for active IP addresses managed in IPAM. Valid values are `ipam-owner` (default) and `resource-owner`.
   late final pulumi.Output<String> meteredAccount;
-  /// Determines which locales can be chosen when you create pools. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the region_name parameter. You **must** set your provider block region as an operating_region.
+  /// Determines which locales can be chosen when you create pools. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the regionName parameter. You **must** set your provider block region as an operating_region.
   late final pulumi.Output<List<Map<String, dynamic>>> operatingRegions;
   /// The ID of the IPAM's private scope. A scope is a top-level container in IPAM. Each scope represents an IP-independent network. Scopes enable you to represent networks where you have overlapping IP space. When you create an IPAM, IPAM automatically creates two scopes: public and private. The private scope is intended for private IP space. The public scope is intended for all internet-routable IP space.
   late final pulumi.Output<String> privateDefaultScopeId;
@@ -291,9 +349,9 @@ class VpcIpam extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The number of scopes in the IPAM.
   late final pulumi.Output<int> scopeCount;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// specifies the IPAM tier. Valid options include `free` and `advanced`. Default is `advanced`.
   late final pulumi.Output<String?> tier;

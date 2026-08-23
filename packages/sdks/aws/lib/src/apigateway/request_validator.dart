@@ -69,6 +69,22 @@ import 'request_validator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_requestvalidator" "example" {
+///   name                        = "example"
+///   rest_api                    = exampleAwsApiGatewayRestApi.id
+///   validate_request_body       = true
+///   validate_request_parameters = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +93,8 @@ import 'request_validator_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigateway.RequestValidator;
 /// import com.pulumi.aws.apigateway.RequestValidatorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceZeroEtlAccess {
+  /// CIDR range for the Zero-ETL access.
   final pulumi.Input<String> cidr;
-  /// The status of the network resource.
+  /// Status of the Zero-ETL access.
   final pulumi.Input<String> status;
 
   /// Creates a new [NetworkManagedServiceZeroEtlAccess].
-  /// [cidr] Required.
-  /// [status] The status of the network resource.
+  /// [cidr] CIDR range for the Zero-ETL access.
+  /// [status] Status of the Zero-ETL access.
   const NetworkManagedServiceZeroEtlAccess({
     required this.cidr,
     required this.status,
@@ -29,4 +30,3 @@ class NetworkManagedServiceZeroEtlAccess {
     );
   }
 }
-

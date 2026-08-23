@@ -8,8 +8,8 @@ class RecordsExclusiveResourceRecordSetCidrRoutingConfig {
   final pulumi.Input<String> collectionId;
   /// CIDR collection location name.
   /// See the `aws.route53.CidrLocation` resource for more details.
-  /// A `location_name` with an asterisk `"*"` can be used to create a default CIDR record.
-  /// `collection_id` is still required for a default record.
+  /// A `locationName` with an asterisk `"*"` can be used to create a default CIDR record.
+  /// `collectionId` is still required for a default record.
   final pulumi.Input<String> locationName;
 
   /// Creates a new [RecordsExclusiveResourceRecordSetCidrRoutingConfig].
@@ -34,4 +34,3 @@ class RecordsExclusiveResourceRecordSetCidrRoutingConfig {
     );
   }
 }
-

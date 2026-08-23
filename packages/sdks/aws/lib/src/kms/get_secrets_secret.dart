@@ -11,7 +11,7 @@ class GetSecretsSecret {
   final pulumi.Input<List<String>>? grantTokens;
   /// Specifies the KMS key that AWS KMS uses to decrypt the ciphertext. This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key.
   ///
-  /// For more information on `context` and `grant_tokens` see the [KMS
+  /// For more information on `context` and `grantTokens` see the [KMS
   /// Concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html)
   final pulumi.Input<String>? keyId;
   /// Name to export this secret under in the attributes.
@@ -57,4 +57,3 @@ class GetSecretsSecret {
     );
   }
 }
-

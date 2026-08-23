@@ -4,16 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_rule_match_http_match_path_match_match.dart';
 
 class ListenerRuleMatchHttpMatchPathMatch {
-  /// Indicates whether the match is case sensitive.
-  /// Default is `false`.
+  /// Whether the match is case sensitive. Default is `false`.
   final pulumi.Input<bool>? caseSensitive;
-  /// The header match type.
-  /// See Path Match `match` Block for details.
+  /// Path match type. See `match.http_match.path_match.match` Block for details.
   final pulumi.Input<ListenerRuleMatchHttpMatchPathMatchMatch> match;
 
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatch].
-  /// [caseSensitive] Indicates whether the match is case sensitive.
-  /// [match] The header match type.
+  /// [caseSensitive] Whether the match is case sensitive. Default is `false`.
+  /// [match] Path match type. See `match.http_match.path_match.match` Block for details.
   const ListenerRuleMatchHttpMatchPathMatch({
     this.caseSensitive,
     required this.match,
@@ -33,4 +31,3 @@ class ListenerRuleMatchHttpMatchPathMatch {
     );
   }
 }
-

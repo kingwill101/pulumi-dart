@@ -64,6 +64,20 @@ import 'default_credit_specification_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_defaultcreditspecification" "example" {
+///   instance_family = "t2"
+///   cpu_credits     = "standard"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'default_credit_specification_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.DefaultCreditSpecification;
 /// import com.pulumi.aws.ec2.DefaultCreditSpecificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -105,7 +119,7 @@ import 'default_credit_specification_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EC2 (Elastic Compute Cloud) Default Credit Specification using the `instance_family`. For example:
+/// Using `pulumi import`, import EC2 (Elastic Compute Cloud) Default Credit Specification using the `instanceFamily`. For example:
 ///
 /// ```console
 /// % pulumi import aws_ec2_default_credit_specification.example t2

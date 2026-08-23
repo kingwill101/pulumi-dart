@@ -29,7 +29,7 @@ class RegisteredDomainState {
   final pulumi.Input<String>? domainName;
   /// The date when the registration for the domain is set to expire.
   final pulumi.Input<String>? expirationDate;
-  /// The list of nameservers for the domain. See `name_server` Blocks for more details.
+  /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
   final pulumi.Input<List<RegisteredDomainNameServer>>? nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainRegistrantContact>? registrantContact;
@@ -43,9 +43,9 @@ class RegisteredDomainState {
   final pulumi.Input<String>? reseller;
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
   final pulumi.Input<List<String>>? statusLists;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Details about the domain technical contact. See Contact Blocks for more details.
   final pulumi.Input<RegisteredDomainTechContact>? techContact;
@@ -53,7 +53,7 @@ class RegisteredDomainState {
   final pulumi.Input<bool>? techPrivacy;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
-  /// &gt; **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
+  /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
   final pulumi.Input<bool>? transferLock;
   /// The last updated date of the domain as found in the response to a WHOIS query.
   final pulumi.Input<String>? updatedDate;
@@ -71,15 +71,15 @@ class RegisteredDomainState {
   /// [creationDate] The date when the domain was created as found in the response to a WHOIS query.
   /// [domainName] The name of the registered domain.
   /// [expirationDate] The date when the registration for the domain is set to expire.
-  /// [nameServers] The list of nameservers for the domain. See `name_server` Blocks for more details.
+  /// [nameServers] The list of nameservers for the domain. See `nameServer` Blocks for more details.
   /// [registrantContact] Details about the domain registrant. See Contact Blocks for more details.
   /// [registrantPrivacy] Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
   /// [registrarName] Name of the registrar of the domain as identified in the registry.
   /// [registrarUrl] Web address of the registrar.
   /// [reseller] Reseller of the domain.
   /// [statusLists] List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [techContact] Details about the domain technical contact. See Contact Blocks for more details.
   /// [techPrivacy] Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
   /// [transferLock] Whether the domain is locked for transfer. Default: `true`.
@@ -170,4 +170,3 @@ class RegisteredDomainState {
     );
   }
 }
-

@@ -137,7 +137,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		foo, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID(),
+/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -145,7 +145,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		barSubnet, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID(),
+/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2b"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -157,10 +157,10 @@ import 'directory_vpc_settings.dart';
 /// 			Password: pulumi.String("SuperSecretPassw0rd"),
 /// 			Size:     pulumi.String("Small"),
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// 				VpcId: main.ID(),
+/// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					foo.ID(),
-/// 					barSubnet.ID(),
+/// 					foo.ID().ToIDOutput().ToStringOutput(),
+/// 					barSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -172,6 +172,41 @@ import 'directory_vpc_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_directory" "bar" {
+///   name     = "corp.notexample.com"
+///   password = "SuperSecretPassw0rd"
+///   size     = "Small"
+///   vpc_settings = {
+///     vpc_id     = aws_ec2_vpc.main.id
+///     subnet_ids = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
+///   }
+///   tags = {
+///     "Project" = "foo"
+///   }
+/// }
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "foo" {
+///   vpc_id            = aws_ec2_vpc.main.id
+///   availability_zone = "us-west-2a"
+///   cidr_block        = "10.0.1.0/24"
+/// }
+/// resource "aws_ec2_subnet" "bar" {
+///   vpc_id            = aws_ec2_vpc.main.id
+///   availability_zone = "us-west-2b"
+///   cidr_block        = "10.0.2.0/24"
 /// }
 /// ```
 /// ```java
@@ -187,8 +222,8 @@ import 'directory_vpc_settings.dart';
 /// import com.pulumi.aws.directoryservice.Directory;
 /// import com.pulumi.aws.directoryservice.DirectoryArgs;
 /// import com.pulumi.aws.directoryservice.inputs.DirectoryVpcSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,7 +434,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		foo, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID(),
+/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -407,7 +442,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		barSubnet, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID(),
+/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2b"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -420,10 +455,10 @@ import 'directory_vpc_settings.dart';
 /// 			Edition:  pulumi.String("Standard"),
 /// 			Type:     pulumi.String("MicrosoftAD"),
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// 				VpcId: main.ID(),
+/// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					foo.ID(),
-/// 					barSubnet.ID(),
+/// 					foo.ID().ToIDOutput().ToStringOutput(),
+/// 					barSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -435,6 +470,42 @@ import 'directory_vpc_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_directory" "bar" {
+///   name     = "corp.notexample.com"
+///   password = "SuperSecretPassw0rd"
+///   edition  = "Standard"
+///   type     = "MicrosoftAD"
+///   vpc_settings = {
+///     vpc_id     = aws_ec2_vpc.main.id
+///     subnet_ids = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
+///   }
+///   tags = {
+///     "Project" = "foo"
+///   }
+/// }
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "foo" {
+///   vpc_id            = aws_ec2_vpc.main.id
+///   availability_zone = "us-west-2a"
+///   cidr_block        = "10.0.1.0/24"
+/// }
+/// resource "aws_ec2_subnet" "bar" {
+///   vpc_id            = aws_ec2_vpc.main.id
+///   availability_zone = "us-west-2b"
+///   cidr_block        = "10.0.2.0/24"
 /// }
 /// ```
 /// ```java
@@ -450,8 +521,8 @@ import 'directory_vpc_settings.dart';
 /// import com.pulumi.aws.directoryservice.Directory;
 /// import com.pulumi.aws.directoryservice.DirectoryArgs;
 /// import com.pulumi.aws.directoryservice.inputs.DirectoryVpcSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -663,7 +734,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		foo, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID(),
+/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -671,7 +742,7 @@ import 'directory_vpc_settings.dart';
 /// 			return err
 /// 		}
 /// 		bar, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            main.ID(),
+/// 			VpcId:            main.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2b"),
 /// 			CidrBlock:        pulumi.String("10.0.2.0/24"),
 /// 		})
@@ -689,10 +760,10 @@ import 'directory_vpc_settings.dart';
 /// 				},
 /// 				CustomerUsername: pulumi.String("Admin"),
 /// 				SubnetIds: pulumi.StringArray{
-/// 					foo.ID(),
-/// 					bar.ID(),
+/// 					foo.ID().ToIDOutput().ToStringOutput(),
+/// 					bar.ID().ToIDOutput().ToStringOutput(),
 /// 				},
-/// 				VpcId: main.ID(),
+/// 				VpcId: main.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -700,6 +771,41 @@ import 'directory_vpc_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_directory" "connector" {
+///   name     = "corp.notexample.com"
+///   password = "SuperSecretPassw0rd"
+///   size     = "Small"
+///   type     = "ADConnector"
+///   connect_settings = {
+///     customer_dns_ips  = ["A.B.C.D"]
+///     customer_username = "Admin"
+///     subnet_ids        = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
+///     vpc_id            = aws_ec2_vpc.main.id
+///   }
+/// }
+/// resource "aws_ec2_vpc" "main" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "foo" {
+///   vpc_id            = aws_ec2_vpc.main.id
+///   availability_zone = "us-west-2a"
+///   cidr_block        = "10.0.1.0/24"
+/// }
+/// resource "aws_ec2_subnet" "bar" {
+///   vpc_id            = aws_ec2_vpc.main.id
+///   availability_zone = "us-west-2b"
+///   cidr_block        = "10.0.2.0/24"
 /// }
 /// ```
 /// ```java
@@ -715,8 +821,8 @@ import 'directory_vpc_settings.dart';
 /// import com.pulumi.aws.directoryservice.Directory;
 /// import com.pulumi.aws.directoryservice.DirectoryArgs;
 /// import com.pulumi.aws.directoryservice.inputs.DirectoryConnectSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -808,7 +914,7 @@ import 'directory_vpc_settings.dart';
 class Directory extends pulumi.CustomResource {
   /// The access URL for the directory, such as `http://alias.awsapps.com`.
   late final pulumi.Output<String> accessUrl;
-  /// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enable_sso`.
+  /// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
   late final pulumi.Output<String> alias;
   /// Connector related information about the directory. Fields documented below.
   late final pulumi.Output<DirectoryConnectSettings?> connectSettings;
@@ -820,6 +926,8 @@ class Directory extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> dnsIpAddresses;
   /// The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise`.
   late final pulumi.Output<String> edition;
+  /// Enables access to directory data via the Directory Service Data API for the specified directory. For more information, see [Directory Service Data API Reference](https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html).
+  late final pulumi.Output<bool?> enableDirectoryDataAccess;
   /// Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
   late final pulumi.Output<bool?> enableSso;
   /// The fully qualified name for the directory, such as `corp.example.com`
@@ -834,9 +942,9 @@ class Directory extends pulumi.CustomResource {
   late final pulumi.Output<String> shortName;
   /// (For `SimpleAD` and `ADConnector` types) The size of the directory (`Small` or `Large` are accepted values). `Large` by default.
   late final pulumi.Output<String> size;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
   late final pulumi.Output<String?> type;
@@ -864,6 +972,7 @@ class Directory extends pulumi.CustomResource {
     desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
     dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
     edition = registerOutput<String>('edition');
+    enableDirectoryDataAccess = registerOutput<bool?>('enableDirectoryDataAccess');
     enableSso = registerOutput<bool?>('enableSso');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
@@ -907,6 +1016,7 @@ class Directory extends pulumi.CustomResource {
     desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
     dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
     edition = registerOutput<String>('edition');
+    enableDirectoryDataAccess = registerOutput<bool?>('enableDirectoryDataAccess');
     enableSso = registerOutput<bool?>('enableSso');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');

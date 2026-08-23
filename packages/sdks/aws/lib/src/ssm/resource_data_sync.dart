@@ -12,8 +12,15 @@ import 'resource_data_sync_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const hogeBucket = new aws.s3.Bucket("hoge", {bucket: "tf-test-bucket-1234"});
-/// const hoge = aws.iam.getPolicyDocument({
+/// const exampleBucket = new aws.s3.Bucket("example", {bucket: "example"});
+/// const exampleResourceDataSync = new aws.ssm.ResourceDataSync("example", {
+///     name: "example",
+///     s3Destination: {
+///         bucketName: exampleBucket.bucket,
+///         region: exampleBucket.region,
+///     },
+/// });
+/// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
 ///         {
 ///             sid: "SSMBucketPermissionsCheck",
@@ -23,7 +30,7 @@ import 'resource_data_sync_state.dart';
 ///                 identifiers: ["ssm.amazonaws.com"],
 ///             }],
 ///             actions: ["s3:GetBucketAcl"],
-///             resources: ["arn:aws:s3:::tf-test-bucket-1234"],
+///             resources: [exampleBucket.arn],
 ///         },
 ///         {
 ///             sid: "SSMBucketDelivery",
@@ -33,7 +40,7 @@ import 'resource_data_sync_state.dart';
 ///                 identifiers: ["ssm.amazonaws.com"],
 ///             }],
 ///             actions: ["s3:PutObject"],
-///             resources: ["arn:aws:s3:::tf-test-bucket-1234/*"],
+///             resources: [pulumi.interpolate`${exampleBucket.arn}/*`],
 ///             conditions: [{
 ///                 test: "StringEquals",
 ///                 variable: "s3:x-amz-acl",
@@ -42,24 +49,23 @@ import 'resource_data_sync_state.dart';
 ///         },
 ///     ],
 /// });
-/// const hogeBucketPolicy = new aws.s3.BucketPolicy("hoge", {
-///     bucket: hogeBucket.id,
-///     policy: hoge.then(hoge => hoge.json),
-/// });
-/// const foo = new aws.ssm.ResourceDataSync("foo", {
-///     name: "foo",
-///     s3Destination: {
-///         bucketName: hogeBucket.bucket,
-///         region: hogeBucket.region,
-///     },
+/// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
+///     bucket: exampleBucket.bucket,
+///     policy: example.json,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// hoge_bucket = aws.s3.Bucket("hoge", bucket="tf-test-bucket-1234")
-/// hoge = aws.iam.get_policy_document(statements=[
+/// example_bucket = aws.s3.Bucket("example", bucket="example")
+/// example_resource_data_sync = aws.ssm.ResourceDataSync("example",
+///     name="example",
+///     s3_destination={
+///         "bucket_name": example_bucket.bucket,
+///         "region": example_bucket.region,
+///     })
+/// example = aws.iam.get_policy_document_output(statements=[
 ///     {
 ///         "sid": "SSMBucketPermissionsCheck",
 ///         "effect": "Allow",
@@ -68,7 +74,7 @@ import 'resource_data_sync_state.dart';
 ///             "identifiers": ["ssm.amazonaws.com"],
 ///         }],
 ///         "actions": ["s3:GetBucketAcl"],
-///         "resources": ["arn:aws:s3:::tf-test-bucket-1234"],
+///         "resources": [example_bucket.arn],
 ///     },
 ///     {
 ///         "sid": "SSMBucketDelivery",
@@ -78,7 +84,7 @@ import 'resource_data_sync_state.dart';
 ///             "identifiers": ["ssm.amazonaws.com"],
 ///         }],
 ///         "actions": ["s3:PutObject"],
-///         "resources": ["arn:aws:s3:::tf-test-bucket-1234/*"],
+///         "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/*")],
 ///         "conditions": [{
 ///             "test": "StringEquals",
 ///             "variable": "s3:x-amz-acl",
@@ -86,15 +92,9 @@ import 'resource_data_sync_state.dart';
 ///         }],
 ///     },
 /// ])
-/// hoge_bucket_policy = aws.s3.BucketPolicy("hoge",
-///     bucket=hoge_bucket.id,
-///     policy=hoge.json)
-/// foo = aws.ssm.ResourceDataSync("foo",
-///     name="foo",
-///     s3_destination={
-///         "bucket_name": hoge_bucket.bucket,
-///         "region": hoge_bucket.region,
-///     })
+/// example_bucket_policy = aws.s3.BucketPolicy("example",
+///     bucket=example_bucket.bucket,
+///     policy=example.json)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -104,12 +104,22 @@ import 'resource_data_sync_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var hogeBucket = new Aws.S3.Bucket("hoge", new()
+///     var exampleBucket = new Aws.S3.Bucket("example", new()
 ///     {
-///         BucketName = "tf-test-bucket-1234",
+///         BucketName = "example",
 ///     });
 ///
-///     var hoge = Aws.Iam.GetPolicyDocument.Invoke(new()
+///     var exampleResourceDataSync = new Aws.Ssm.ResourceDataSync("example", new()
+///     {
+///         Name = "example",
+///         S3Destination = new Aws.Ssm.Inputs.ResourceDataSyncS3DestinationArgs
+///         {
+///             BucketName = exampleBucket.BucketName,
+///             Region = exampleBucket.Region,
+///         },
+///     });
+///
+///     var example = Aws.Iam.GetPolicyDocument.Invoke(new()
 ///     {
 ///         Statements = new[]
 ///         {
@@ -134,7 +144,7 @@ import 'resource_data_sync_state.dart';
 ///                 },
 ///                 Resources = new[]
 ///                 {
-///                     "arn:aws:s3:::tf-test-bucket-1234",
+///                     exampleBucket.Arn,
 ///                 },
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
@@ -158,7 +168,7 @@ import 'resource_data_sync_state.dart';
 ///                 },
 ///                 Resources = new[]
 ///                 {
-///                     "arn:aws:s3:::tf-test-bucket-1234/*",
+///                     $"{exampleBucket.Arn}/*",
 ///                 },
 ///                 Conditions = new[]
 ///                 {
@@ -176,20 +186,10 @@ import 'resource_data_sync_state.dart';
 ///         },
 ///     });
 ///
-///     var hogeBucketPolicy = new Aws.S3.BucketPolicy("hoge", new()
+///     var exampleBucketPolicy = new Aws.S3.BucketPolicy("example", new()
 ///     {
-///         Bucket = hogeBucket.Id,
-///         Policy = hoge.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
-///     });
-///
-///     var foo = new Aws.Ssm.ResourceDataSync("foo", new()
-///     {
-///         Name = "foo",
-///         S3Destination = new Aws.Ssm.Inputs.ResourceDataSyncS3DestinationArgs
-///         {
-///             BucketName = hogeBucket.BucketName,
-///             Region = hogeBucket.Region,
-///         },
+///         Bucket = exampleBucket.BucketName,
+///         Policy = example.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///     });
 ///
 /// });
@@ -198,6 +198,8 @@ import 'resource_data_sync_state.dart';
 /// package main
 ///
 /// import (
+/// 	"fmt"
+///
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ssm"
@@ -206,83 +208,134 @@ import 'resource_data_sync_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		hogeBucket, err := s3.NewBucket(ctx, "hoge", &s3.BucketArgs{
-/// 			Bucket: pulumi.String("tf-test-bucket-1234"),
+/// 		exampleBucket, err := s3.NewBucket(ctx, "example", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		hoge, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// 			Statements: []iam.GetPolicyDocumentStatement{
-/// 				{
-/// 					Sid:    pulumi.StringRef("SSMBucketPermissionsCheck"),
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "Service",
-/// 							Identifiers: []string{
-/// 								"ssm.amazonaws.com",
+/// 		_, err = ssm.NewResourceDataSync(ctx, "example", &ssm.ResourceDataSyncArgs{
+/// 			Name: pulumi.String("example"),
+/// 			S3Destination: &ssm.ResourceDataSyncS3DestinationArgs{
+/// 				BucketName: exampleBucket.Bucket,
+/// 				Region:     exampleBucket.Region,
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Sid:    pulumi.String("SSMBucketPermissionsCheck"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("ssm.amazonaws.com"),
 /// 							},
 /// 						},
 /// 					},
-/// 					Actions: []string{
-/// 						"s3:GetBucketAcl",
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:GetBucketAcl"),
 /// 					},
-/// 					Resources: []string{
-/// 						"arn:aws:s3:::tf-test-bucket-1234",
+/// 					Resources: pulumi.StringArray{
+/// 						exampleBucket.Arn,
 /// 					},
 /// 				},
-/// 				{
-/// 					Sid:    pulumi.StringRef("SSMBucketDelivery"),
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "Service",
-/// 							Identifiers: []string{
-/// 								"ssm.amazonaws.com",
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Sid:    pulumi.String("SSMBucketDelivery"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("ssm.amazonaws.com"),
 /// 							},
 /// 						},
 /// 					},
-/// 					Actions: []string{
-/// 						"s3:PutObject",
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
 /// 					},
-/// 					Resources: []string{
-/// 						"arn:aws:s3:::tf-test-bucket-1234/*",
+/// 					Resources: pulumi.StringArray{
+/// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/*", arn), nil
+/// 						}).(pulumi.StringOutput),
 /// 					},
-/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// 						{
-/// 							Test:     "StringEquals",
-/// 							Variable: "s3:x-amz-acl",
-/// 							Values: []string{
-/// 								"bucket-owner-full-control",
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("s3:x-amz-acl"),
+/// 							Values: pulumi.StringArray{
+/// 								pulumi.String("bucket-owner-full-control"),
 /// 							},
 /// 						},
 /// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = s3.NewBucketPolicy(ctx, "hoge", &s3.BucketPolicyArgs{
-/// 			Bucket: hogeBucket.ID(),
-/// 			Policy: pulumi.String(hoge.Json),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = ssm.NewResourceDataSync(ctx, "foo", &ssm.ResourceDataSyncArgs{
-/// 			Name: pulumi.String("foo"),
-/// 			S3Destination: &ssm.ResourceDataSyncS3DestinationArgs{
-/// 				BucketName: hogeBucket.Bucket,
-/// 				Region:     hogeBucket.Region,
-/// 			},
+/// 		_, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
+/// 			Bucket: exampleBucket.Bucket,
+/// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "SSMBucketPermissionsCheck"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ssm.amazonaws.com"]
+///     }
+///     actions   = ["s3:GetBucketAcl"]
+///     resources = [aws_s3_bucket.example.arn]
+///   }
+///   statements {
+///     sid    = "SSMBucketDelivery"
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["ssm.amazonaws.com"]
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.example.arn}/*"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "s3:x-amz-acl"
+///       values   = ["bucket-owner-full-control"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_resourcedatasync" "example" {
+///   name = "example"
+///   s3_destination = {
+///     bucket_name = aws_s3_bucket.example.bucket
+///     region      = aws_s3_bucket.example.region
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.bucket
+///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -293,15 +346,18 @@ import 'resource_data_sync_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.Bucket;
 /// import com.pulumi.aws.s3.BucketArgs;
-/// import com.pulumi.aws.iam.IamFunctions;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import com.pulumi.aws.s3.BucketPolicy;
-/// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.ssm.ResourceDataSync;
 /// import com.pulumi.aws.ssm.ResourceDataSyncArgs;
 /// import com.pulumi.aws.ssm.inputs.ResourceDataSyncS3DestinationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.s3.BucketPolicy;
+/// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,11 +369,19 @@ import 'resource_data_sync_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var hogeBucket = new Bucket("hogeBucket", BucketArgs.builder()
-///             .bucket("tf-test-bucket-1234")
+///         var exampleBucket = new Bucket("exampleBucket", BucketArgs.builder()
+///             .bucket("example")
 ///             .build());
 ///
-///         final var hoge = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         var exampleResourceDataSync = new ResourceDataSync("exampleResourceDataSync", ResourceDataSyncArgs.builder()
+///             .name("example")
+///             .s3Destination(ResourceDataSyncS3DestinationArgs.builder()
+///                 .bucketName(exampleBucket.bucket())
+///                 .region(exampleBucket.region())
+///                 .build())
+///             .build());
+///
+///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .sid("SSMBucketPermissionsCheck")
@@ -327,7 +391,7 @@ import 'resource_data_sync_state.dart';
 ///                         .identifiers("ssm.amazonaws.com")
 ///                         .build())
 ///                     .actions("s3:GetBucketAcl")
-///                     .resources("arn:aws:s3:::tf-test-bucket-1234")
+///                     .resources(exampleBucket.arn())
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .sid("SSMBucketDelivery")
@@ -337,7 +401,7 @@ import 'resource_data_sync_state.dart';
 ///                         .identifiers("ssm.amazonaws.com")
 ///                         .build())
 ///                     .actions("s3:PutObject")
-///                     .resources("arn:aws:s3:::tf-test-bucket-1234/*")
+///                     .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
 ///                         .variable("s3:x-amz-acl")
@@ -346,17 +410,9 @@ import 'resource_data_sync_state.dart';
 ///                     .build())
 ///             .build());
 ///
-///         var hogeBucketPolicy = new BucketPolicy("hogeBucketPolicy", BucketPolicyArgs.builder()
-///             .bucket(hogeBucket.id())
-///             .policy(hoge.json())
-///             .build());
-///
-///         var foo = new ResourceDataSync("foo", ResourceDataSyncArgs.builder()
-///             .name("foo")
-///             .s3Destination(ResourceDataSyncS3DestinationArgs.builder()
-///                 .bucketName(hogeBucket.bucket())
-///                 .region(hogeBucket.region())
-///                 .build())
+///         var exampleBucketPolicy = new BucketPolicy("exampleBucketPolicy", BucketPolicyArgs.builder()
+///             .bucket(exampleBucket.bucket())
+///             .policy(example.applyValue(_example -> _example.json()))
 ///             .build());
 ///
 ///     }
@@ -364,26 +420,27 @@ import 'resource_data_sync_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   hogeBucket:
-///     type: aws:s3:Bucket
-///     name: hoge
-///     properties:
-///       bucket: tf-test-bucket-1234
-///   hogeBucketPolicy:
-///     type: aws:s3:BucketPolicy
-///     name: hoge
-///     properties:
-///       bucket: ${hogeBucket.id}
-///       policy: ${hoge.json}
-///   foo:
+///   exampleResourceDataSync:
 ///     type: aws:ssm:ResourceDataSync
+///     name: example
 ///     properties:
-///       name: foo
+///       name: example
 ///       s3Destination:
-///         bucketName: ${hogeBucket.bucket}
-///         region: ${hogeBucket.region}
+///         bucketName: ${exampleBucket.bucket}
+///         region: ${exampleBucket.region}
+///   exampleBucket:
+///     type: aws:s3:Bucket
+///     name: example
+///     properties:
+///       bucket: example
+///   exampleBucketPolicy:
+///     type: aws:s3:BucketPolicy
+///     name: example
+///     properties:
+///       bucket: ${exampleBucket.bucket}
+///       policy: ${example.json}
 /// variables:
-///   hoge:
+///   example:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
@@ -397,7 +454,7 @@ import 'resource_data_sync_state.dart';
 ///             actions:
 ///               - s3:GetBucketAcl
 ///             resources:
-///               - arn:aws:s3:::tf-test-bucket-1234
+///               - ${exampleBucket.arn}
 ///           - sid: SSMBucketDelivery
 ///             effect: Allow
 ///             principals:
@@ -407,7 +464,7 @@ import 'resource_data_sync_state.dart';
 ///             actions:
 ///               - s3:PutObject
 ///             resources:
-///               - arn:aws:s3:::tf-test-bucket-1234/*
+///               - ${exampleBucket.arn}/*
 ///             conditions:
 ///               - test: StringEquals
 ///                 variable: s3:x-amz-acl

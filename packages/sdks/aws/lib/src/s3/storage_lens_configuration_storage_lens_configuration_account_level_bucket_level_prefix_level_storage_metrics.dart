@@ -6,12 +6,12 @@ import 'storage_lens_configuration_storage_lens_configuration_account_level_buck
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics {
   /// Whether prefix-level storage metrics are enabled.
   final pulumi.Input<bool>? enabled;
-  /// Selection criteria. See Selection Criteria below for more details.
+  /// Selection criteria. See `selectionCriteria` below for more details.
   final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria>? selectionCriteria;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics].
   /// [enabled] Whether prefix-level storage metrics are enabled.
-  /// [selectionCriteria] Selection criteria. See Selection Criteria below for more details.
+  /// [selectionCriteria] Selection criteria. See `selectionCriteria` below for more details.
   const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics({
     this.enabled,
     this.selectionCriteria,
@@ -31,4 +31,3 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
     );
   }
 }
-

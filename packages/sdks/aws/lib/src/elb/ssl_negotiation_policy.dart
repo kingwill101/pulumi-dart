@@ -212,7 +212,7 @@ import 'ssl_negotiation_policy_state.dart';
 /// 		}
 /// 		_, err = elb.NewSslNegotiationPolicy(ctx, "foo", &elb.SslNegotiationPolicyArgs{
 /// 			Name:         pulumi.String("foo-policy"),
-/// 			LoadBalancer: lb.ID(),
+/// 			LoadBalancer: lb.ID().ToIDOutput().ToStringOutput(),
 /// 			LbPort:       pulumi.Int(443),
 /// 			Attributes: elb.SslNegotiationPolicyAttributeArray{
 /// 				&elb.SslNegotiationPolicyAttributeArgs{
@@ -252,6 +252,60 @@ import 'ssl_negotiation_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elb_loadbalancer" "lb" {
+///   name               = "test-lb"
+///   availability_zones = ["us-east-1a"]
+///   listeners {
+///     instance_port      = 8000
+///     instance_protocol  = "https"
+///     lb_port            = 443
+///     lb_protocol        = "https"
+///     ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
+///   }
+/// }
+/// resource "aws_elb_sslnegotiationpolicy" "foo" {
+///   name          = "foo-policy"
+///   load_balancer = aws_elb_loadbalancer.lb.id
+///   lb_port       = 443
+///   attributes {
+///     name  = "Protocol-TLSv1"
+///     value = "false"
+///   }
+///   attributes {
+///     name  = "Protocol-TLSv1.1"
+///     value = "false"
+///   }
+///   attributes {
+///     name  = "Protocol-TLSv1.2"
+///     value = "true"
+///   }
+///   attributes {
+///     name  = "Server-Defined-Cipher-Order"
+///     value = "true"
+///   }
+///   attributes {
+///     name  = "ECDHE-RSA-AES128-GCM-SHA256"
+///     value = "true"
+///   }
+///   attributes {
+///     name  = "AES128-GCM-SHA256"
+///     value = "true"
+///   }
+///   attributes {
+///     name  = "EDH-RSA-DES-CBC3-SHA"
+///     value = "false"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -264,8 +318,8 @@ import 'ssl_negotiation_policy_state.dart';
 /// import com.pulumi.aws.elb.SslNegotiationPolicy;
 /// import com.pulumi.aws.elb.SslNegotiationPolicyArgs;
 /// import com.pulumi.aws.elb.inputs.SslNegotiationPolicyAttributeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

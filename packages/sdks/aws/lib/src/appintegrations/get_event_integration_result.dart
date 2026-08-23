@@ -5,13 +5,13 @@ import 'get_event_integration_event_filter.dart';
 
 /// Result data returned by getEventIntegration.
 class GetEventIntegrationResult {
-  /// The ARN of the AppIntegrations Event Integration.
+  /// ARN of the AppIntegrations Event Integration.
   final String arn;
-  /// The description of the Event Integration.
+  /// Description of the Event Integration.
   final String description;
-  /// A block that defines the configuration information for the event filter. The Event Filter block is documented below.
+  /// Block that defines the configuration information for the event filter. The Event Filter block is documented below.
   final List<GetEventIntegrationEventFilter> eventFilters;
-  /// The EventBridge bus.
+  /// EventBridge bus.
   final String eventbridgeBus;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -21,10 +21,10 @@ class GetEventIntegrationResult {
   final Map<String, String> tags;
 
   /// Creates a new [GetEventIntegrationResult].
-  /// [arn] The ARN of the AppIntegrations Event Integration.
-  /// [description] The description of the Event Integration.
-  /// [eventFilters] A block that defines the configuration information for the event filter. The Event Filter block is documented below.
-  /// [eventbridgeBus] The EventBridge bus.
+  /// [arn] ARN of the AppIntegrations Event Integration.
+  /// [description] Description of the Event Integration.
+  /// [eventFilters] Block that defines the configuration information for the event filter. The Event Filter block is documented below.
+  /// [eventbridgeBus] EventBridge bus.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
@@ -66,4 +66,3 @@ class GetEventIntegrationResult {
     );
   }
 }
-

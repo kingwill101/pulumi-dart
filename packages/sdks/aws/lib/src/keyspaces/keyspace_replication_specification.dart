@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyspaceReplicationSpecification {
-  /// Replication regions. If `replication_strategy` is `MULTI_REGION`, `region_list` requires the current Region and at least one additional AWS Region where the keyspace is going to be replicated in.
+  /// Replication regions. If `replicationStrategy` is `MULTI_REGION`, `regionList` requires the current Region and at least one additional AWS Region where the keyspace is going to be replicated in.
   final pulumi.Input<List<String>>? regionLists;
   /// Replication strategy. Valid values: `SINGLE_REGION` and `MULTI_REGION`.
   final pulumi.Input<String>? replicationStrategy;
 
   /// Creates a new [KeyspaceReplicationSpecification].
-  /// [regionLists] Replication regions. If `replication_strategy` is `MULTI_REGION`, `region_list` requires the current Region and at least one additional AWS Region where the keyspace is going to be replicated in.
+  /// [regionLists] Replication regions. If `replicationStrategy` is `MULTI_REGION`, `regionList` requires the current Region and at least one additional AWS Region where the keyspace is going to be replicated in.
   /// [replicationStrategy] Replication strategy. Valid values: `SINGLE_REGION` and `MULTI_REGION`.
   const KeyspaceReplicationSpecification({
     this.regionLists,
@@ -30,4 +30,3 @@ class KeyspaceReplicationSpecification {
     );
   }
 }
-

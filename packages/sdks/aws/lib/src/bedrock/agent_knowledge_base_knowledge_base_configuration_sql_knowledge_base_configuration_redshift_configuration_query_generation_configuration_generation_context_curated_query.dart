@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery {
   /// Example natural language query.
   final pulumi.Input<String> naturalLanguage;
-  /// SQL equivalent of `natural_language`.
+  /// SQL equivalent of `naturalLanguage`.
   final pulumi.Input<String> sql;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery].
   /// [naturalLanguage] Example natural language query.
-  /// [sql] SQL equivalent of `natural_language`.
+  /// [sql] SQL equivalent of `naturalLanguage`.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery({
     required this.naturalLanguage,
     required this.sql,
@@ -30,4 +30,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
     );
   }
 }
-

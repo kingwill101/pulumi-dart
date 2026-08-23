@@ -100,6 +100,27 @@ import 'geo_match_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafregional_geomatchset" "geo_match_set" {
+///   name = "geo_match_set"
+///   geo_match_constraints {
+///     type  = "Country"
+///     value = "US"
+///   }
+///   geo_match_constraints {
+///     type  = "Country"
+///     value = "CA"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +130,8 @@ import 'geo_match_set_state.dart';
 /// import com.pulumi.aws.wafregional.GeoMatchSet;
 /// import com.pulumi.aws.wafregional.GeoMatchSetArgs;
 /// import com.pulumi.aws.wafregional.inputs.GeoMatchSetGeoMatchConstraintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,9 +182,9 @@ import 'geo_match_set_state.dart';
 /// $ pulumi import aws:wafregional/geoMatchSet:GeoMatchSet geo_match_set a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class GeoMatchSet extends pulumi.CustomResource {
-  /// The Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
+  /// Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
   late final pulumi.Output<List<Map<String, dynamic>>?> geoMatchConstraints;
-  /// The name or description of the Geo Match Set.
+  /// Name or description of the Geo Match Set.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

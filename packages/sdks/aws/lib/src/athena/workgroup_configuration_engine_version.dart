@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationEngineVersion {
-  /// The engine version on which the query runs. If `selected_engine_version` is set to `AUTO`, the effective engine version is chosen by Athena.
+  /// The engine version on which the query runs. If `selectedEngineVersion` is set to `AUTO`, the effective engine version is chosen by Athena.
   final pulumi.Input<String>? effectiveEngineVersion;
   /// Requested engine version. Defaults to `AUTO`.
   final pulumi.Input<String>? selectedEngineVersion;
 
   /// Creates a new [WorkgroupConfigurationEngineVersion].
-  /// [effectiveEngineVersion] The engine version on which the query runs. If `selected_engine_version` is set to `AUTO`, the effective engine version is chosen by Athena.
+  /// [effectiveEngineVersion] The engine version on which the query runs. If `selectedEngineVersion` is set to `AUTO`, the effective engine version is chosen by Athena.
   /// [selectedEngineVersion] Requested engine version. Defaults to `AUTO`.
   const WorkgroupConfigurationEngineVersion({
     this.effectiveEngineVersion,
@@ -30,4 +30,3 @@ class WorkgroupConfigurationEngineVersion {
     );
   }
 }
-

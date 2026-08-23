@@ -28,7 +28,7 @@ import 'multi_region_access_point_policy_state.dart';
 ///     name: std.splitOutput({
 ///         separator: ":",
 ///         text: example.id,
-///     }).apply(invoke => invoke.result)[1],
+///     }).result[1],
 ///     policy: pulumi.jsonStringify({
 ///         Version: "2012-10-17",
 ///         Statement: [{
@@ -63,7 +63,7 @@ import 'multi_region_access_point_policy_state.dart';
 /// })
 /// example_multi_region_access_point_policy = aws.s3control.MultiRegionAccessPointPolicy("example", details={
 ///     "name": std.split_output(separator=":",
-///         text=example.id).apply(lambda invoke: invoke.result)[1],
+///         text=example.id).result[1],
 ///     "policy": pulumi.Output.json_dumps({
 ///         "Version": "2012-10-17",
 ///         "Statement": [{
@@ -157,6 +157,135 @@ import 'multi_region_access_point_policy_state.dart';
 ///
 /// });
 /// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3control"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetPartition, err := aws.GetPartition(ctx, &aws.GetPartitionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		fooBucket, err := s3.NewBucket(ctx, "foo_bucket", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("example-bucket-foo"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := s3control.NewMultiRegionAccessPoint(ctx, "example", &s3control.MultiRegionAccessPointArgs{
+/// 			Details: &s3control.MultiRegionAccessPointDetailsArgs{
+/// 				Name: pulumi.String("example"),
+/// 				Regions: s3control.MultiRegionAccessPointDetailsRegionArray{
+/// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
+/// 						Bucket: fooBucket.ID().ToIDOutput().ToStringOutput(),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = s3control.NewMultiRegionAccessPointPolicy(ctx, "example", &s3control.MultiRegionAccessPointPolicyArgs{
+/// 			Details: &s3control.MultiRegionAccessPointPolicyDetailsArgs{
+/// 				Name: std.SplitOutput(ctx, std.SplitOutputArgs{
+/// 					Separator: pulumi.String(":"),
+/// 					Text:      example.ID().ToIDOutput().ToStringOutput(),
+/// 				}, nil).Result()[1],
+/// 				Policy: example.Alias.ApplyT(func(alias string) (pulumi.String, error) {
+/// 					var _zero pulumi.String
+/// 					tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 						"Version": "2012-10-17",
+/// 						"Statement": []map[string]interface{}{
+/// 							map[string]interface{}{
+/// 								"Sid":    "Example",
+/// 								"Effect": "Allow",
+/// 								"Principal": map[string]interface{}{
+/// 									"AWS": current.AccountId,
+/// 								},
+/// 								"Action": []string{
+/// 									"s3:GetObject",
+/// 									"s3:PutObject",
+/// 								},
+/// 								"Resource": fmt.Sprintf("arn:%v:s3::%v:accesspoint/%v/object/*", currentGetPartition.Partition, current.AccountId, alias),
+/// 							},
+/// 						},
+/// 					})
+/// 					if err != nil {
+/// 						return _zero, err
+/// 					}
+/// 					json0 := string(tmpJSON0)
+/// 					return pulumi.String(json0), nil
+/// 				}).(pulumi.StringOutput),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_s3_bucket" "foo_bucket" {
+///   bucket = "example-bucket-foo"
+/// }
+/// resource "aws_s3control_multiregionaccesspoint" "example" {
+///   details = {
+///     name = "example"
+///     regions = [{
+///       "bucket" = aws_s3_bucket.foo_bucket.id
+///     }]
+///   }
+/// }
+/// resource "aws_s3control_multiregionaccesspointpolicy" "example" {
+///   details = {
+///     name = element(split(":", aws_s3control_multiregionaccesspoint.example.id), 1)
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Sid"    = "Example"
+///         "Effect" = "Allow"
+///         "Principal" = {
+///           "AWS" = data.aws_getcalleridentity.current.account_id
+///         }
+///         "Action"   = ["s3:GetObject", "s3:PutObject"]
+///         "Resource" ="arn:${data.aws_getpartition.currentGetPartition.partition}:s3::${data.aws_getcalleridentity.current.account_id}:accesspoint/${aws_s3control_multiregionaccesspoint.example.alias}/object/*"
+///       }]
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,14 +300,15 @@ import 'multi_region_access_point_policy_state.dart';
 /// import com.pulumi.aws.s3control.MultiRegionAccessPoint;
 /// import com.pulumi.aws.s3control.MultiRegionAccessPointArgs;
 /// import com.pulumi.aws.s3control.inputs.MultiRegionAccessPointDetailsArgs;
+/// import com.pulumi.aws.s3control.inputs.MultiRegionAccessPointDetailsRegionArgs;
 /// import com.pulumi.aws.s3control.MultiRegionAccessPointPolicy;
 /// import com.pulumi.aws.s3control.MultiRegionAccessPointPolicyArgs;
 /// import com.pulumi.aws.s3control.inputs.MultiRegionAccessPointPolicyDetailsArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.SplitArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,19 +421,19 @@ import 'multi_region_access_point_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Multi-Region Access Point Policies using the `account_id` and `name` of the Multi-Region Access Point separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Multi-Region Access Point Policies using the `accountId` and `name` of the Multi-Region Access Point separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy example 123456789012:example
 /// ```
 class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
-  /// The AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
+  /// AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-  /// A configuration block containing details about the policy for the Multi-Region Access Point. See Details Configuration Block below for more details
+  /// Configuration block containing details about the policy for the Multi-Region Access Point. See `details` Block below for more details
   late final pulumi.Output<MultiRegionAccessPointPolicyDetails> details;
-  /// The last established policy for the Multi-Region Access Point.
+  /// Last established policy for the Multi-Region Access Point.
   late final pulumi.Output<String> established;
-  /// The proposed policy for the Multi-Region Access Point.
+  /// Proposed policy for the Multi-Region Access Point.
   late final pulumi.Output<String> proposed;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

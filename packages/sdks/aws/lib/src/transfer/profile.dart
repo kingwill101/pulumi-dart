@@ -72,6 +72,21 @@ import 'profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_profile" "example" {
+///   as2_id          = "example"
+///   certificate_ids = [exampleAwsTransferCertificate.certificateId]
+///   usage           = "LOCAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +95,8 @@ import 'profile_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.Profile;
 /// import com.pulumi.aws.transfer.ProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,25 +131,25 @@ import 'profile_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer AS2 Profile using the `profile_id`. For example:
+/// Using `pulumi import`, import Transfer AS2 Profile using the `profileId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/profile:Profile example p-4221a88afd5f4362a
 /// ```
 class Profile extends pulumi.CustomResource {
-  /// The ARN of the profile.
+  /// ARN of the profile.
   late final pulumi.Output<String> arn;
-  /// The As2Id is the AS2 name as defined in the RFC 4130. For inbound ttransfers this is the AS2 From Header for the AS2 messages sent from the partner. For Outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. his ID cannot include spaces.
+  /// AS2 name as defined in RFC 4130. For inbound transfers this is the AS2 From Header for the AS2 messages sent from the partner. For outbound messages this is the AS2 To Header for the AS2 messages sent to the partner. This ID cannot include spaces.
   late final pulumi.Output<String> as2Id;
-  /// The list of certificate Ids from the imported certificate operation.
+  /// List of certificate IDs from the imported certificate operation.
   late final pulumi.Output<List<String>?> certificateIds;
-  /// The unique identifier for the AS2 profile.
+  /// Unique identifier for the AS2 profile.
   late final pulumi.Output<String> profileId;
-  /// The profile type should be LOCAL or PARTNER.
+  /// Profile type. Valid values are `LOCAL` or `PARTNER`.
   late final pulumi.Output<String> profileType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

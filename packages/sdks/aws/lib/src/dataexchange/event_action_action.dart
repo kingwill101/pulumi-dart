@@ -5,7 +5,7 @@ import 'event_action_action_export_revision_to_s3.dart';
 
 class EventActionAction {
   /// Configuration for an Export Revision to S3 action.
-  /// Described in `export_revision_to_s3` Configuration Block
+  /// Described in `exportRevisionToS3` Configuration Block
   final pulumi.Input<EventActionActionExportRevisionToS3> exportRevisionToS3;
 
   /// Creates a new [EventActionAction].
@@ -26,4 +26,3 @@ class EventActionAction {
     );
   }
 }
-

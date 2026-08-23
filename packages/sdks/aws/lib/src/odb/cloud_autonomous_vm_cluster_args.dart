@@ -9,69 +9,69 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_odb_cloud_autonomous_vm_cluster_cloud_autonomous_vm_cluster_args_doc}
 class CloudAutonomousVmClusterArgs {
-  /// The data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB. Changing this will force terraform to create new resource.
+  /// Data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB. Changing this will force terraform to create new resource.
   final pulumi.Input<double> autonomousDataStorageSizeInTbs;
-  /// Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
+  /// Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   final pulumi.Input<String>? cloudExadataInfrastructureArn;
-  /// Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
+  /// Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   final pulumi.Input<String>? cloudExadataInfrastructureId;
-  /// The number of CPU cores enabled per node in the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// Number of CPU cores enabled per node in the Autonomous VM cluster. Changing this will force terraform to create new resource.
   final pulumi.Input<int> cpuCoreCountPerNode;
-  /// The database servers in the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// Database servers in the Autonomous VM cluster. Changing this will force terraform to create new resource.
   final pulumi.Input<List<String>> dbServers;
-  /// The description of the Autonomous VM cluster.
+  /// Description of the Autonomous VM cluster.
   final pulumi.Input<String>? description;
-  /// The display name of the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// Display name of the Autonomous VM cluster. Changing this will force terraform to create new resource.
   final pulumi.Input<String> displayName;
-  /// Indicates whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// Whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster. Changing this will force terraform to create new resource.
   final pulumi.Input<bool>? isMtlsEnabledVmCluster;
-  /// The license model for the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE. Changing this will force terraform to create new resource.
+  /// License model for the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? licenseModel;
-  /// The maintenance window of the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  ///
-  /// The following arguments are optional:
+  /// Maintenance window of the Autonomous VM cluster. Changing this will force terraform to create new resource.
   final pulumi.Input<CloudAutonomousVmClusterMaintenanceWindow> maintenanceWindow;
-  /// The amount of memory allocated per Oracle Compute Unit, in GB. Changing this will force terraform to create new resource.
+  /// Amount of memory allocated per Oracle Compute Unit, in GB. Changing this will force terraform to create new resource.
   final pulumi.Input<int> memoryPerOracleComputeUnitInGbs;
-  /// ARN of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
+  /// ARN of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   final pulumi.Input<String>? odbNetworkArn;
-  /// Unique identifier of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Changing this will create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
+  /// Unique identifier of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Changing this will create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   final pulumi.Input<String>? odbNetworkId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The SCAN listener port for non-TLS (TCP) protocol. The default is 1521. Changing this will force terraform to create new resource.
+  /// SCAN listener port for non-TLS (TCP) protocol. The default is 1521. Changing this will force terraform to create new resource.
   final pulumi.Input<int> scanListenerPortNonTls;
-  /// The SCAN listener port for TLS (TCP) protocol. The default is 2484. Changing this will force terraform to create new resource.
+  /// SCAN listener port for TLS (TCP) protocol. The default is 2484. Changing this will force terraform to create new resource.
   final pulumi.Input<int> scanListenerPortTls;
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The time zone of the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// Time zone of the Autonomous VM cluster. Changing this will force terraform to create new resource.
   final pulumi.Input<String>? timeZone;
   final pulumi.Input<CloudAutonomousVmClusterTimeouts>? timeouts;
-  /// The total number of Autonomous Container Databases that can be created with the allocated local storage. Changing this will force terraform to create new resource.
+  /// Total number of Autonomous Container Databases that can be created with the allocated local storage. Changing this will force terraform to create new resource.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<int> totalContainerDatabases;
 
   /// Creates a new [CloudAutonomousVmClusterArgs].
-  /// [autonomousDataStorageSizeInTbs] The data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB. Changing this will force terraform to create new resource.
-  /// [cloudExadataInfrastructureArn] Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
-  /// [cloudExadataInfrastructureId] Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
-  /// [cpuCoreCountPerNode] The number of CPU cores enabled per node in the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  /// [dbServers] The database servers in the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  /// [description] The description of the Autonomous VM cluster.
-  /// [displayName] The display name of the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  /// [isMtlsEnabledVmCluster] Indicates whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  /// [licenseModel] The license model for the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE. Changing this will force terraform to create new resource.
-  /// [maintenanceWindow] The maintenance window of the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  /// [memoryPerOracleComputeUnitInGbs] The amount of memory allocated per Oracle Compute Unit, in GB. Changing this will force terraform to create new resource.
-  /// [odbNetworkArn] ARN of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
-  /// [odbNetworkId] Unique identifier of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Changing this will create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
+  /// [autonomousDataStorageSizeInTbs] Data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB. Changing this will force terraform to create new resource.
+  /// [cloudExadataInfrastructureArn] Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
+  /// [cloudExadataInfrastructureId] Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
+  /// [cpuCoreCountPerNode] Number of CPU cores enabled per node in the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// [dbServers] Database servers in the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// [description] Description of the Autonomous VM cluster.
+  /// [displayName] Display name of the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// [isMtlsEnabledVmCluster] Whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// [licenseModel] License model for the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE. Changing this will force terraform to create new resource.
+  /// [maintenanceWindow] Maintenance window of the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// [memoryPerOracleComputeUnitInGbs] Amount of memory allocated per Oracle Compute Unit, in GB. Changing this will force terraform to create new resource.
+  /// [odbNetworkArn] ARN of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
+  /// [odbNetworkId] Unique identifier of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Changing this will create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [scanListenerPortNonTls] The SCAN listener port for non-TLS (TCP) protocol. The default is 1521. Changing this will force terraform to create new resource.
-  /// [scanListenerPortTls] The SCAN listener port for TLS (TCP) protocol. The default is 2484. Changing this will force terraform to create new resource.
-  /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [timeZone] The time zone of the Autonomous VM cluster. Changing this will force terraform to create new resource.
+  /// [scanListenerPortNonTls] SCAN listener port for non-TLS (TCP) protocol. The default is 1521. Changing this will force terraform to create new resource.
+  /// [scanListenerPortTls] SCAN listener port for TLS (TCP) protocol. The default is 2484. Changing this will force terraform to create new resource.
+  /// [tags] Map of tags to assign to the exadata infrastructure. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [timeZone] Time zone of the Autonomous VM cluster. Changing this will force terraform to create new resource.
   /// [timeouts] Optional.
-  /// [totalContainerDatabases] The total number of Autonomous Container Databases that can be created with the allocated local storage. Changing this will force terraform to create new resource.
+  /// [totalContainerDatabases] Total number of Autonomous Container Databases that can be created with the allocated local storage. Changing this will force terraform to create new resource.
   const CloudAutonomousVmClusterArgs({
     required this.autonomousDataStorageSizeInTbs,
     this.cloudExadataInfrastructureArn,
@@ -145,4 +145,3 @@ class CloudAutonomousVmClusterArgs {
     );
   }
 }
-

@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful {
-  /// Behavior when ungraceful. Valid values: `skip`.
   final pulumi.Input<String> behavior;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful].
-  /// [behavior] Behavior when ungraceful. Valid values: `skip`.
+  /// [behavior] Required.
   const PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful({
     required this.behavior,
   });
@@ -24,4 +23,3 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful {
     );
   }
 }
-

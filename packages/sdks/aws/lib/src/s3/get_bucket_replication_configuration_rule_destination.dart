@@ -7,23 +7,29 @@ import 'get_bucket_replication_configuration_rule_destination_metric.dart';
 import 'get_bucket_replication_configuration_rule_destination_replication_time.dart';
 
 class GetBucketReplicationConfigurationRuleDestination {
+  /// Configuration block that specifies the overrides to use for object owners on replication. See `accessControlTranslation` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation>> accessControlTranslations;
+  /// Account ID used to specify the replica ownership.
   final pulumi.Input<String> account;
-  /// The name of the bucket to get the replication configuration for.
+  /// Name of the bucket to get the replication configuration for.
   final pulumi.Input<String> bucket;
+  /// Configuration block that provides information about encryption. See `encryptionConfiguration` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration>> encryptionConfigurations;
+  /// Configuration block that specifies replication metrics-related settings. See `metrics` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationMetric>> metrics;
+  /// Configuration block that specifies S3 Replication Time Control (S3 RTC). See `replicationTime` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationReplicationTime>> replicationTimes;
+  /// Storage class used to store the object.
   final pulumi.Input<String> storageClass;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestination].
-  /// [accessControlTranslations] Required.
-  /// [account] Required.
-  /// [bucket] The name of the bucket to get the replication configuration for.
-  /// [encryptionConfigurations] Required.
-  /// [metrics] Required.
-  /// [replicationTimes] Required.
-  /// [storageClass] Required.
+  /// [accessControlTranslations] Configuration block that specifies the overrides to use for object owners on replication. See `accessControlTranslation` Block below.
+  /// [account] Account ID used to specify the replica ownership.
+  /// [bucket] Name of the bucket to get the replication configuration for.
+  /// [encryptionConfigurations] Configuration block that provides information about encryption. See `encryptionConfiguration` Block below.
+  /// [metrics] Configuration block that specifies replication metrics-related settings. See `metrics` Block below.
+  /// [replicationTimes] Configuration block that specifies S3 Replication Time Control (S3 RTC). See `replicationTime` Block below.
+  /// [storageClass] Storage class used to store the object.
   const GetBucketReplicationConfigurationRuleDestination({
     required this.accessControlTranslations,
     required this.account,
@@ -58,4 +64,3 @@ class GetBucketReplicationConfigurationRuleDestination {
     );
   }
 }
-

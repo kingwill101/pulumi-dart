@@ -8,7 +8,7 @@ import 'access_policy_association_access_scope.dart';
 /// {@endtemplate}
 /// {@macro pulumi_eks_access_policy_association_access_policy_association_args_doc}
 class AccessPolicyAssociationArgs {
-  /// The configuration block to determine the scope of the access. See `access_scope` Block below.
+  /// The configuration block to determine the scope of the access. See `accessScope` Block below.
   final pulumi.Input<AccessPolicyAssociationAccessScope> accessScope;
   /// Name of the EKS Cluster.
   final pulumi.Input<String> clusterName;
@@ -20,7 +20,7 @@ class AccessPolicyAssociationArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [AccessPolicyAssociationArgs].
-  /// [accessScope] The configuration block to determine the scope of the access. See `access_scope` Block below.
+  /// [accessScope] The configuration block to determine the scope of the access. See `accessScope` Block below.
   /// [clusterName] Name of the EKS Cluster.
   /// [policyArn] The ARN of the access policy that you're associating.
   /// [principalArn] The IAM Principal ARN which requires Authentication access to the EKS cluster.
@@ -53,4 +53,3 @@ class AccessPolicyAssociationArgs {
     );
   }
 }
-

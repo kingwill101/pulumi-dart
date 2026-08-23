@@ -319,15 +319,15 @@ import 'provisioning_template_state.dart';
 /// 			TemplateBody: devicePolicyPolicy.Name.ApplyT(func(name string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 					"Parameters": map[string]interface{}{
-/// 						"SerialNumber": map[string]interface{}{
+/// 					"Parameters": map[string]map[string]string{
+/// 						"SerialNumber": map[string]string{
 /// 							"Type": "String",
 /// 						},
 /// 					},
-/// 					"Resources": map[string]interface{}{
+/// 					"Resources": map[string]map[string]interface{}{
 /// 						"certificate": map[string]interface{}{
 /// 							"Properties": map[string]interface{}{
-/// 								"CertificateId": map[string]interface{}{
+/// 								"CertificateId": map[string]string{
 /// 									"Ref": "AWS::IoT::Certificate::Id",
 /// 								},
 /// 								"Status": "Active",
@@ -335,7 +335,7 @@ import 'provisioning_template_state.dart';
 /// 							"Type": "AWS::IoT::Certificate",
 /// 						},
 /// 						"policy": map[string]interface{}{
-/// 							"Properties": map[string]interface{}{
+/// 							"Properties": map[string]string{
 /// 								"PolicyName": name,
 /// 							},
 /// 							"Type": "AWS::IoT::Policy",
@@ -356,6 +356,75 @@ import 'provisioning_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "iotAssumeRolePolicy" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["iot.amazonaws.com"]
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "devicePolicy" {
+///   statements {
+///     actions   = ["iot:Subscribe"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "iot_fleet_provisioning" {
+///   name               = "IoTProvisioningServiceRole"
+///   path               = "/service-role/"
+///   assume_role_policy = data.aws_iam_getpolicydocument.iotAssumeRolePolicy.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "iot_fleet_provisioning_registration" {
+///   role       = aws_iam_role.iot_fleet_provisioning.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSIoTThingsRegistration"
+/// }
+/// resource "aws_iot_policy" "device_policy" {
+///   name   = "DevicePolicy"
+///   policy = data.aws_iam_getpolicydocument.devicePolicy.json
+/// }
+/// resource "aws_iot_provisioningtemplate" "fleet" {
+///   name                  = "FleetTemplate"
+///   description           = "My provisioning template"
+///   provisioning_role_arn = aws_iam_role.iot_fleet_provisioning.arn
+///   enabled               = true
+///   template_body = jsonencode({
+///     "Parameters" = {
+///       "SerialNumber" = {
+///         "Type" = "String"
+///       }
+///     }
+///     "Resources" = {
+///       "certificate" = {
+///         "Properties" = {
+///           "CertificateId" = {
+///             "Ref" = "AWS::IoT::Certificate::Id"
+///           }
+///           "Status" = "Active"
+///         }
+///         "Type" = "AWS::IoT::Certificate"
+///       }
+///       "policy" = {
+///         "Properties" = {
+///           "PolicyName" = aws_iot_policy.device_policy.name
+///         }
+///         "Type" = "AWS::IoT::Policy"
+///       }
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -364,6 +433,8 @@ import 'provisioning_template_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -373,8 +444,8 @@ import 'provisioning_template_state.dart';
 /// import com.pulumi.aws.iot.ProvisioningTemplate;
 /// import com.pulumi.aws.iot.ProvisioningTemplateArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -546,9 +617,9 @@ class ProvisioningTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String> provisioningRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The JSON formatted contents of the fleet provisioning template.
   late final pulumi.Output<String> templateBody;

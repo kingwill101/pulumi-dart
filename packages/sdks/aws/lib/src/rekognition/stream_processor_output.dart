@@ -5,14 +5,14 @@ import 'stream_processor_output_kinesis_data_stream.dart';
 import 'stream_processor_output_s3_destination.dart';
 
 class StreamProcessorOutput {
-  /// The Amazon Kinesis Data Streams stream to which the Amazon Rekognition stream processor streams the analysis results. See `kinesis_data_stream`.
+  /// Amazon Kinesis Data Streams stream to which the Amazon Rekognition stream processor streams the analysis results. See `kinesisDataStream`.
   final pulumi.Input<StreamProcessorOutputKinesisDataStream>? kinesisDataStream;
-  /// The Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation. See `s3_destination`.
+  /// Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation. See `s3Destination`.
   final pulumi.Input<StreamProcessorOutputS3Destination>? s3Destination;
 
   /// Creates a new [StreamProcessorOutput].
-  /// [kinesisDataStream] The Amazon Kinesis Data Streams stream to which the Amazon Rekognition stream processor streams the analysis results. See `kinesis_data_stream`.
-  /// [s3Destination] The Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation. See `s3_destination`.
+  /// [kinesisDataStream] Amazon Kinesis Data Streams stream to which the Amazon Rekognition stream processor streams the analysis results. See `kinesisDataStream`.
+  /// [s3Destination] Amazon S3 bucket location to which Amazon Rekognition publishes the detailed inference results of a video analysis operation. See `s3Destination`.
   const StreamProcessorOutput({
     this.kinesisDataStream,
     this.s3Destination,
@@ -32,4 +32,3 @@ class StreamProcessorOutput {
     );
   }
 }
-

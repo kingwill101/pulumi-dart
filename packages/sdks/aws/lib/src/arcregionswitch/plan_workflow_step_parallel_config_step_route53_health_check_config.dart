@@ -12,7 +12,7 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
   final pulumi.Input<String> hostedZoneId;
   /// DNS record name.
   final pulumi.Input<String> recordName;
-  /// Configuration block for record sets. See Record Set below.
+  /// Configuration block for record sets. See `recordSet` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>>? recordSets;
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
@@ -22,7 +22,7 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
   /// [externalId] External ID for cross-account role assumption.
   /// [hostedZoneId] Route53 hosted zone ID.
   /// [recordName] DNS record name.
-  /// [recordSets] Configuration block for record sets. See Record Set below.
+  /// [recordSets] Configuration block for record sets. See `recordSet` Block for details.
   /// [timeoutMinutes] Timeout in minutes.
   const PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig({
     this.crossAccountRole,
@@ -55,4 +55,3 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
     );
   }
 }
-

@@ -35,7 +35,7 @@ class SnapshotImportState {
   final pulumi.Input<String>? storageTier;
   /// A map of tags to assign to the snapshot.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   final pulumi.Input<int>? temporaryRestoreDays;
@@ -59,7 +59,7 @@ class SnapshotImportState {
   /// [roleName] The name of the IAM Role the VM Import/Export service will assume. This role needs certain permissions. See https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#vmimport-role. Default: `vmimport`
   /// [storageTier] The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
   /// [tags] A map of tags to assign to the snapshot.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   /// [volumeId] Optional.
   /// [volumeSize] The size of the drive in GiBs.
@@ -133,4 +133,3 @@ class SnapshotImportState {
     );
   }
 }
-

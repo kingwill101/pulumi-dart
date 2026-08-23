@@ -18,9 +18,9 @@ class AnomalySubscriptionState {
   final pulumi.Input<String>? name;
   /// A subscriber configuration. Multiple subscribers can be defined.
   final pulumi.Input<List<AnomalySubscriptionSubscriber>>? subscribers;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
   final pulumi.Input<AnomalySubscriptionThresholdExpression>? thresholdExpression;
@@ -32,8 +32,8 @@ class AnomalySubscriptionState {
   /// [monitorArnLists] A list of cost anomaly monitors.
   /// [name] The name for the subscription.
   /// [subscribers] A subscriber configuration. Multiple subscribers can be defined.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [thresholdExpression] An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
   const AnomalySubscriptionState({
     this.accountId,
@@ -75,4 +75,3 @@ class AnomalySubscriptionState {
     );
   }
 }
-

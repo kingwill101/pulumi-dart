@@ -34,7 +34,7 @@ import 'rest_api_policy_state.dart';
 /// });
 /// const testRestApiPolicy = new aws.apigateway.RestApiPolicy("test", {
 ///     restApiId: testRestApi.id,
-///     policy: test.apply(test => test.json),
+///     policy: test.json,
 /// });
 /// ```
 /// ```python
@@ -175,16 +175,48 @@ import 'rest_api_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = apigateway.NewRestApiPolicy(ctx, "test", &apigateway.RestApiPolicyArgs{
-/// 			RestApiId: testRestApi.ID(),
-/// 			Policy: pulumi.String(test.ApplyT(func(test iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &test.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			RestApiId: testRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy:    test.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "test" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["execute-api:Invoke"]
+///     resources = ["${aws_apigateway_restapi.test.execution_arn}/*"]
+///     conditions {
+///       test     = "IpAddress"
+///       variable = "aws:SourceIp"
+///       values   = ["123.123.123.123/32"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "test" {
+///   name = "example-rest-api"
+/// }
+/// resource "aws_apigateway_restapipolicy" "test" {
+///   rest_api_id = aws_apigateway_restapi.test.id
+///   policy      = data.aws_iam_getpolicydocument.test.json
 /// }
 /// ```
 /// ```java
@@ -197,10 +229,13 @@ import 'rest_api_policy_state.dart';
 /// import com.pulumi.aws.apigateway.RestApiArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.apigateway.RestApiPolicy;
 /// import com.pulumi.aws.apigateway.RestApiPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

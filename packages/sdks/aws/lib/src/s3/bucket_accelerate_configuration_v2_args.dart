@@ -46,4 +46,3 @@ class BucketAccelerateConfigurationV2Args {
     );
   }
 }
-

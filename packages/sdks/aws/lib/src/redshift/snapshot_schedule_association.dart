@@ -110,14 +110,40 @@ import 'snapshot_schedule_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = redshift.NewSnapshotScheduleAssociation(ctx, "default", &redshift.SnapshotScheduleAssociationArgs{
-/// 			ClusterIdentifier:  _default.ID(),
-/// 			ScheduleIdentifier: defaultSnapshotSchedule.ID(),
+/// 			ClusterIdentifier:  _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ScheduleIdentifier: defaultSnapshotSchedule.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_cluster" "default" {
+///   cluster_identifier = "tf-redshift-cluster"
+///   database_name      = "mydb"
+///   master_username    = "foo"
+///   master_password    = "Mustbe8characters"
+///   node_type          = "dc1.large"
+///   cluster_type       = "single-node"
+/// }
+/// resource "aws_redshift_snapshotschedule" "default" {
+///   identifier  = "tf-redshift-snapshot-schedule"
+///   definitions = ["rate(12 hours)"]
+/// }
+/// resource "aws_redshift_snapshotscheduleassociation" "default" {
+///   cluster_identifier  = aws_redshift_cluster.default.id
+///   schedule_identifier = aws_redshift_snapshotschedule.default.id
 /// }
 /// ```
 /// ```java
@@ -132,8 +158,8 @@ import 'snapshot_schedule_association_state.dart';
 /// import com.pulumi.aws.redshift.SnapshotScheduleArgs;
 /// import com.pulumi.aws.redshift.SnapshotScheduleAssociation;
 /// import com.pulumi.aws.redshift.SnapshotScheduleAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DevEnvironmentRepository {
   /// The name of the branch in a source repository.
   ///
-  /// persistent storage (` persistent_storage`) supports the following:
+  /// persistent storage (` persistentStorage`) supports the following:
   final pulumi.Input<String>? branchName;
   /// The name of the source repository.
   final pulumi.Input<String> repositoryName;
@@ -32,4 +32,3 @@ class DevEnvironmentRepository {
     );
   }
 }
-

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort {
-  /// The lower limit of the port range. This must be less than or equal to the `to_port`.
+  /// The lower limit of the port range. This must be less than or equal to the `toPort`.
   final pulumi.Input<int> fromPort;
-  /// The upper limit of the port range. This must be greater than or equal to the `from_port`.
+  /// The upper limit of the port range. This must be greater than or equal to the `fromPort`.
   final pulumi.Input<int>? toPort;
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort].
-  /// [fromPort] The lower limit of the port range. This must be less than or equal to the `to_port`.
-  /// [toPort] The upper limit of the port range. This must be greater than or equal to the `from_port`.
+  /// [fromPort] The lower limit of the port range. This must be less than or equal to the `toPort`.
+  /// [toPort] The upper limit of the port range. This must be greater than or equal to the `fromPort`.
   const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort({
     required this.fromPort,
     this.toPort,
@@ -30,4 +30,3 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
     );
   }
 }
-

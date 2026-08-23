@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration {
-  /// Configurations for a knowledge base connected to an Amazon Redshift database. See `redshift_configuration` block for details.
+  /// Configurations for a knowledge base connected to an Amazon Redshift database. See `redshiftConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration>? redshiftConfiguration;
   /// Type of SQL database to connect to the knowledge base. Valid values: `REDSHIFT`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration].
-  /// [redshiftConfiguration] Configurations for a knowledge base connected to an Amazon Redshift database. See `redshift_configuration` block for details.
+  /// [redshiftConfiguration] Configurations for a knowledge base connected to an Amazon Redshift database. See `redshiftConfiguration` block for details.
   /// [type] Type of SQL database to connect to the knowledge base. Valid values: `REDSHIFT`.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration({
     this.redshiftConfiguration,
@@ -31,4 +31,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration 
     );
   }
 }
-

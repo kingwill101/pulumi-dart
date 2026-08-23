@@ -134,6 +134,34 @@ import 'configuration_set_event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_configurationset" "example" {
+///   configuration_set_name = "example"
+/// }
+/// resource "aws_sesv2_configurationseteventdestination" "example" {
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
+///   event_destination = {
+///     cloud_watch_destination = {
+///       dimension_configurations = [{
+///         "defaultDimensionValue" = "example"
+///         "dimensionName"         = "example"
+///         "dimensionValueSource"  = "MESSAGE_TAG"
+///       }]
+///     }
+///     enabled              = true
+///     matching_event_types = ["SEND"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +174,9 @@ import 'configuration_set_event_destination_state.dart';
 /// import com.pulumi.aws.sesv2.ConfigurationSetEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfigurationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,6 +343,31 @@ import 'configuration_set_event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudwatch_geteventbus" "default" {
+///   name = "default"
+/// }
+///
+/// resource "aws_sesv2_configurationseteventdestination" "example" {
+///   configuration_set_name = exampleAwsSesv2ConfigurationSet.configurationSetName
+///   event_destination_name = "example"
+///   event_destination = {
+///     event_bridge_destination = {
+///       event_bus_arn = data.aws_cloudwatch_geteventbus.default.arn
+///     }
+///     enabled              = true
+///     matching_event_types = ["SEND"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +380,8 @@ import 'configuration_set_event_destination_state.dart';
 /// import com.pulumi.aws.sesv2.ConfigurationSetEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationEventBridgeDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,6 +543,31 @@ import 'configuration_set_event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_configurationset" "example" {
+///   configuration_set_name = "example"
+/// }
+/// resource "aws_sesv2_configurationseteventdestination" "example" {
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
+///   event_destination = {
+///     kinesis_firehose_destination = {
+///       delivery_stream_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
+///       iam_role_arn        = exampleAwsIamRole.arn
+///     }
+///     enabled              = true
+///     matching_event_types = ["SEND"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -501,8 +580,8 @@ import 'configuration_set_event_destination_state.dart';
 /// import com.pulumi.aws.sesv2.ConfigurationSetEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -556,7 +635,7 @@ import 'configuration_set_event_destination_state.dart';
 /// ```
 ///
 ///
-/// ### Pinpoint Destination
+/// ### End User Messaging Destination
 ///
 ///
 /// ```typescript
@@ -661,6 +740,30 @@ import 'configuration_set_event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_configurationset" "example" {
+///   configuration_set_name = "example"
+/// }
+/// resource "aws_sesv2_configurationseteventdestination" "example" {
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
+///   event_destination = {
+///     pinpoint_destination = {
+///       application_arn = exampleAwsPinpointApp.arn
+///     }
+///     enabled              = true
+///     matching_event_types = ["SEND"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -673,8 +776,8 @@ import 'configuration_set_event_destination_state.dart';
 /// import com.pulumi.aws.sesv2.ConfigurationSetEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationPinpointDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -831,6 +934,30 @@ import 'configuration_set_event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_configurationset" "example" {
+///   configuration_set_name = "example"
+/// }
+/// resource "aws_sesv2_configurationseteventdestination" "example" {
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
+///   event_destination = {
+///     sns_destination = {
+///       topic_arn = exampleAwsSnsTopic.arn
+///     }
+///     enabled              = true
+///     matching_event_types = ["SEND"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -843,8 +970,8 @@ import 'configuration_set_event_destination_state.dart';
 /// import com.pulumi.aws.sesv2.ConfigurationSetEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationArgs;
 /// import com.pulumi.aws.sesv2.inputs.ConfigurationSetEventDestinationEventDestinationSnsDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -906,9 +1033,9 @@ import 'configuration_set_event_destination_state.dart';
 class ConfigurationSetEventDestination extends pulumi.CustomResource {
   /// The name of the configuration set.
   late final pulumi.Output<String> configurationSetName;
-  /// A name that identifies the event destination within the configuration set.
+  /// An object that defines the event destination. See `eventDestination` Block for details.
   late final pulumi.Output<ConfigurationSetEventDestinationEventDestination> eventDestination;
-  /// An object that defines the event destination. See `event_destination` Block for details.
+  /// A name that identifies the event destination within the configuration set.
   late final pulumi.Output<String> eventDestinationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

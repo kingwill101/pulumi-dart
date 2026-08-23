@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_condition_condition.dart';
 
 class AgentFlowDefinitionNodeConfigurationCondition {
+  /// A list of conditions. See Condition Config for more information.
   final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationConditionCondition>>? conditions;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationCondition].
-  /// [conditions] Optional.
+  /// [conditions] A list of conditions. See Condition Config for more information.
   const AgentFlowDefinitionNodeConfigurationCondition({
     this.conditions,
   });
@@ -24,4 +25,3 @@ class AgentFlowDefinitionNodeConfigurationCondition {
     );
   }
 }
-

@@ -55,6 +55,18 @@ import 'get_response_plan_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssmincidents_getreplicationset" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +75,8 @@ import 'get_response_plan_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssmincidents.SsmincidentsFunctions;
 /// import com.pulumi.aws.ssmincidents.inputs.GetReplicationSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,6 +170,19 @@ Future<GetReplicationSetResult> getReplicationSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmincidents_responseplan" "example" {
+///   arn = "exampleARN"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +191,8 @@ Future<GetReplicationSetResult> getReplicationSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssmincidents.ResponsePlan;
 /// import com.pulumi.aws.ssmincidents.ResponsePlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

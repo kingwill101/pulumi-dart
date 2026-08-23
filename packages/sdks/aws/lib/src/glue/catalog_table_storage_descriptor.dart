@@ -28,11 +28,11 @@ class CatalogTableStorageDescriptor {
   final pulumi.Input<Map<String, String>>? parameters;
   /// Object that references a schema stored in the AWS Glue Schema Registry. When creating a table, you can pass an empty list of columns for the schema, and instead use a schema reference. See Schema Reference below.
   final pulumi.Input<CatalogTableStorageDescriptorSchemaReference>? schemaReference;
-  /// Configuration block for serialization and deserialization ("SerDe") information. See `ser_de_info` below.
+  /// Configuration block for serialization and deserialization ("SerDe") information. See `serDeInfo` below.
   final pulumi.Input<CatalogTableStorageDescriptorSerDeInfo>? serDeInfo;
-  /// Configuration block with information about values that appear very frequently in a column (skewed values). See `skewed_info` below.
+  /// Configuration block with information about values that appear very frequently in a column (skewed values). See `skewedInfo` below.
   final pulumi.Input<CatalogTableStorageDescriptorSkewedInfo>? skewedInfo;
-  /// Configuration block for the sort order of each bucket in the table. See `sort_columns` below.
+  /// Configuration block for the sort order of each bucket in the table. See `sortColumns` below.
   final pulumi.Input<List<CatalogTableStorageDescriptorSortColumn>>? sortColumns;
   /// Whether the table data is stored in subdirectories.
   final pulumi.Input<bool>? storedAsSubDirectories;
@@ -48,9 +48,9 @@ class CatalogTableStorageDescriptor {
   /// [outputFormat] Output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
   /// [parameters] User-supplied properties in key-value form.
   /// [schemaReference] Object that references a schema stored in the AWS Glue Schema Registry. When creating a table, you can pass an empty list of columns for the schema, and instead use a schema reference. See Schema Reference below.
-  /// [serDeInfo] Configuration block for serialization and deserialization ("SerDe") information. See `ser_de_info` below.
-  /// [skewedInfo] Configuration block with information about values that appear very frequently in a column (skewed values). See `skewed_info` below.
-  /// [sortColumns] Configuration block for the sort order of each bucket in the table. See `sort_columns` below.
+  /// [serDeInfo] Configuration block for serialization and deserialization ("SerDe") information. See `serDeInfo` below.
+  /// [skewedInfo] Configuration block with information about values that appear very frequently in a column (skewed values). See `skewedInfo` below.
+  /// [sortColumns] Configuration block for the sort order of each bucket in the table. See `sortColumns` below.
   /// [storedAsSubDirectories] Whether the table data is stored in subdirectories.
   const CatalogTableStorageDescriptor({
     this.additionalLocations,
@@ -107,4 +107,3 @@ class CatalogTableStorageDescriptor {
     );
   }
 }
-

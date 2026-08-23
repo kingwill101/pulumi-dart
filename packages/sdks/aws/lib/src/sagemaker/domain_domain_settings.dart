@@ -6,23 +6,23 @@ import 'domain_domain_settings_rstudio_server_pro_domain_settings.dart';
 import 'domain_domain_settings_trusted_identity_propagation_settings.dart';
 
 class DomainDomainSettings {
-  /// A collection of settings that configure the domain’s Docker interaction. see `docker_settings` Block below.
+  /// A collection of settings that configure the domain’s Docker interaction. see `dockerSettings` Block below.
   final pulumi.Input<DomainDomainSettingsDockerSettings>? dockerSettings;
   /// The configuration for attaching a SageMaker AI user profile name to the execution role as a sts:SourceIdentity key [AWS Docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html). Valid values are `USER_PROFILE_NAME` and `DISABLED`.
   final pulumi.Input<String>? executionRoleIdentityConfig;
-  /// A collection of settings that configure the RStudioServerPro Domain-level app. see `r_studio_server_pro_domain_settings` Block below.
+  /// A collection of settings that configure the RStudioServerPro Domain-level app. see `rStudioServerProDomainSettings` Block below.
   final pulumi.Input<DomainDomainSettingsRStudioServerProDomainSettings>? rStudioServerProDomainSettings;
   /// The security groups for the Amazon Virtual Private Cloud that the Domain uses for communication between Domain-level apps and user apps.
   final pulumi.Input<List<String>>? securityGroupIds;
-  /// Configuration for trusted identity propagation. See the `trusted_identity_propagation_settings` Block below.
+  /// Configuration for trusted identity propagation. See the `trustedIdentityPropagationSettings` Block below.
   final pulumi.Input<DomainDomainSettingsTrustedIdentityPropagationSettings>? trustedIdentityPropagationSettings;
 
   /// Creates a new [DomainDomainSettings].
-  /// [dockerSettings] A collection of settings that configure the domain’s Docker interaction. see `docker_settings` Block below.
+  /// [dockerSettings] A collection of settings that configure the domain’s Docker interaction. see `dockerSettings` Block below.
   /// [executionRoleIdentityConfig] The configuration for attaching a SageMaker AI user profile name to the execution role as a sts:SourceIdentity key [AWS Docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html). Valid values are `USER_PROFILE_NAME` and `DISABLED`.
-  /// [rStudioServerProDomainSettings] A collection of settings that configure the RStudioServerPro Domain-level app. see `r_studio_server_pro_domain_settings` Block below.
+  /// [rStudioServerProDomainSettings] A collection of settings that configure the RStudioServerPro Domain-level app. see `rStudioServerProDomainSettings` Block below.
   /// [securityGroupIds] The security groups for the Amazon Virtual Private Cloud that the Domain uses for communication between Domain-level apps and user apps.
-  /// [trustedIdentityPropagationSettings] Configuration for trusted identity propagation. See the `trusted_identity_propagation_settings` Block below.
+  /// [trustedIdentityPropagationSettings] Configuration for trusted identity propagation. See the `trustedIdentityPropagationSettings` Block below.
   const DomainDomainSettings({
     this.dockerSettings,
     this.executionRoleIdentityConfig,
@@ -51,4 +51,3 @@ class DomainDomainSettings {
     );
   }
 }
-

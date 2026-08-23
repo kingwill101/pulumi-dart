@@ -89,6 +89,24 @@ import 'crawler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_crawler" "example" {
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
+///   dynamodb_targets {
+///     path = "table-name"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +116,8 @@ import 'crawler_state.dart';
 /// import com.pulumi.aws.glue.Crawler;
 /// import com.pulumi.aws.glue.CrawlerArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerDynamodbTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +237,25 @@ import 'crawler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_crawler" "example" {
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
+///   jdbc_targets {
+///     connection_name = exampleAwsGlueConnection.name
+///     path            = "database-name/%"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +265,8 @@ import 'crawler_state.dart';
 /// import com.pulumi.aws.glue.Crawler;
 /// import com.pulumi.aws.glue.CrawlerArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerJdbcTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,6 +384,24 @@ import 'crawler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_crawler" "example" {
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
+///   s3_targets {
+///     path ="s3://${exampleAwsS3Bucket.bucket}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -356,8 +411,8 @@ import 'crawler_state.dart';
 /// import com.pulumi.aws.glue.Crawler;
 /// import com.pulumi.aws.glue.CrawlerArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerS3TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -523,6 +578,29 @@ import 'crawler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_crawler" "example" {
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
+///   catalog_targets {
+///     database_name = exampleAwsGlueCatalogDatabase.name
+///     tables        = [exampleAwsGlueCatalogTable.name]
+///   }
+///   schema_change_policy = {
+///     delete_behavior = "LOG"
+///   }
+///   configuration = "{\n  \\\"Version\\\":1.0,\n  \\\"Grouping\\\": {\n    \\\"TableGroupingPolicy\\\": \\\"CombineCompatibleSchemas\\\"\n  }\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -533,8 +611,8 @@ import 'crawler_state.dart';
 /// import com.pulumi.aws.glue.CrawlerArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerCatalogTargetArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerSchemaChangePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -677,6 +755,25 @@ import 'crawler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_crawler" "example" {
+///   database_name = exampleAwsGlueCatalogDatabase.name
+///   name          = "example"
+///   role          = exampleAwsIamRole.arn
+///   mongodb_targets {
+///     connection_name = exampleAwsGlueConnection.name
+///     path            = "database-name/%"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -686,8 +783,8 @@ import 'crawler_state.dart';
 /// import com.pulumi.aws.glue.Crawler;
 /// import com.pulumi.aws.glue.CrawlerArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerMongodbTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -836,11 +933,11 @@ import 'crawler_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"Grouping": map[string]interface{}{
+/// 			"Grouping": map[string]string{
 /// 				"TableGroupingPolicy": "CombineCompatibleSchemas",
 /// 			},
-/// 			"CrawlerOutput": map[string]interface{}{
-/// 				"Partitions": map[string]interface{}{
+/// 			"CrawlerOutput": map[string]map[string]string{
+/// 				"Partitions": map[string]string{
 /// 					"AddOrUpdateBehavior": "InheritFromTable",
 /// 				},
 /// 			},
@@ -870,6 +967,37 @@ import 'crawler_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_crawler" "events_crawler" {
+///   database_name = glueDatabase.name
+///   schedule      = "cron(0 1 * * ? *)"
+///   name          ="events_crawler_${environmentName}"
+///   role          = glueRole.arn
+///   tags          = tags
+///   configuration = jsonencode({
+///     "Grouping" = {
+///       "TableGroupingPolicy" = "CombineCompatibleSchemas"
+///     }
+///     "CrawlerOutput" = {
+///       "Partitions" = {
+///         "AddOrUpdateBehavior" = "InheritFromTable"
+///       }
+///     }
+///     "Version" = 1
+///   })
+///   s3_targets {
+///     path ="s3://${dataLakeBucket.bucket}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -880,8 +1008,8 @@ import 'crawler_state.dart';
 /// import com.pulumi.aws.glue.CrawlerArgs;
 /// import com.pulumi.aws.glue.inputs.CrawlerS3TargetArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -997,11 +1125,11 @@ class Crawler extends pulumi.CustomResource {
   late final pulumi.Output<String?> securityConfiguration;
   /// The table prefix used for catalog tables that are created.
   late final pulumi.Output<String?> tablePrefix;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// &gt; **NOTE:** Must specify at least one of `dynamodb_target`, `jdbc_target`, `s3_target`, `mongodb_target` or `catalog_target`.
+  /// &gt; **NOTE:** Must specify at least one of `dynamodbTarget`, `jdbcTarget`, `s3Target`, `mongodbTarget` or `catalogTarget`.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Crawler].

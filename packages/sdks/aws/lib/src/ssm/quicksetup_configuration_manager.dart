@@ -28,7 +28,7 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 ///     label: baseline.baselineName,
 ///     description: baseline.baselineDescription,
 ///     disabled: !baseline.defaultBaseline,
-/// } }))));
+/// } }), {})));
 /// const exampleQuicksetupConfigurationManager = new aws.ssm.QuicksetupConfigurationManager("example", {
 ///     name: "example",
 ///     configurationDefinition: {
@@ -166,17 +166,71 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+/// data "aws_ssm_getpatchbaselines" "example" {
+///   default_baselines = true
+/// }
+///
+/// resource "aws_ssm_quicksetupconfigurationmanager" "example" {
+///   name = "example"
+///   configuration_definition = {
+///     local_deployment_administration_role_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:role/AWS-QuickSetup-PatchPolicy-LocalAdministrationRole"
+///     local_deployment_execution_role_name     = "AWS-QuickSetup-PatchPolicy-LocalExecutionRole"
+///     type                                     = "AWSQuickSetupType-PatchPolicy"
+///     parameters = {
+///       "ConfigurationOptionsPatchOperation"   = "Scan"
+///       "ConfigurationOptionsScanValue"        = "cron(0 1 * * ? *)"
+///       "ConfigurationOptionsScanNextInterval" = "false"
+///       "PatchBaselineRegion"                  = data.aws_getregion.currentGetRegion.region
+///       "PatchBaselineUseDefault"              = "default"
+///       "PatchPolicyName"                      = "example"
+///       "SelectedPatchBaselines"               = local.selectedPatchBaselines
+///       "OutputLogEnableS3"                    = "false"
+///       "RateControlConcurrency"               = "10%"
+///       "RateControlErrorThreshold"            = "2%"
+///       "IsPolicyAttachAllowed"                = "false"
+///       "TargetAccounts"                       = data.aws_getcalleridentity.current.account_id
+///       "TargetRegions"                        = data.aws_getregion.currentGetRegion.region
+///       "TargetType"                           = "*"
+///     }
+///   }
+/// }
+/// # transform the output of the aws_ssm_patch_baselines data source
+/// # into the format expected by the SelectedPatchBaselines parameter
+/// locals {
+///   selectedPatchBaselines = jsonencode({for baseline in data.aws_ssm_getpatchbaselines.example.baseline_identities : baseline.operatingSystem => {
+///     "value"       = baseline.baselineId
+///     "label"       = baseline.baselineName
+///     "description" = baseline.baselineDescription
+///     "disabled"    = ! baseline.defaultBaseline
+///   } })
+/// }
+/// ```
 ///
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SSM Quick Setup Configuration Manager using the `manager_arn`. For example:
+/// Using `pulumi import`, import SSM Quick Setup Configuration Manager using the `managerArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssm/quicksetupConfigurationManager:QuicksetupConfigurationManager example arn:aws:ssm-quicksetup:us-east-1:012345678901:configuration-manager/abcd-1234
 /// ```
 class QuicksetupConfigurationManager extends pulumi.CustomResource {
-  /// Definition of the Quick Setup configuration that the configuration manager deploys. See `configuration_definition` below.
+  /// Definition of the Quick Setup configuration that the configuration manager deploys. See `configurationDefinition` below.
   late final pulumi.Output<QuicksetupConfigurationManagerConfigurationDefinition> configurationDefinition;
   /// Description of the configuration manager.
   late final pulumi.Output<String> description;
@@ -188,11 +242,11 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A summary of the state of the configuration manager. This includes deployment statuses, association statuses, drift statuses, health checks, and more. See `status_summaries` below.
+  /// A summary of the state of the configuration manager. This includes deployment statuses, association statuses, drift statuses, health checks, and more. See `statusSummaries` below.
   late final pulumi.Output<List<Map<String, dynamic>>> statusSummaries;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<QuicksetupConfigurationManagerTimeouts?> timeouts;
 

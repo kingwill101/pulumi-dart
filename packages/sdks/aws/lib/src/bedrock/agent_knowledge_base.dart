@@ -143,6 +143,38 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
+///   knowledge_base_configuration = {
+///     vector_knowledge_base_configuration = {
+///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
+///     }
+///     type = "VECTOR"
+///   }
+///   storage_configuration = {
+///     type = "OPENSEARCH_SERVERLESS"
+///     opensearch_serverless_configuration = {
+///       collection_arn    = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"
+///       vector_index_name = "bedrock-knowledge-base-default-index"
+///       field_mapping = {
+///         vector_field   = "bedrock-knowledge-base-default-vector"
+///         text_field     = "AMAZON_BEDROCK_TEXT_CHUNK"
+///         metadata_field = "AMAZON_BEDROCK_METADATA"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +188,8 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,6 +333,26 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "kendra_example" {
+///   name     = "example-kendra-kb"
+///   role_arn = example.arn
+///   knowledge_base_configuration = {
+///     type = "KENDRA"
+///     kendra_knowledge_base_configuration = {
+///       kendra_index_arn = "arn:aws:kendra:us-east-1:123456789012:index/example-index-id"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +363,8 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentKnowledgeBaseArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -514,6 +566,44 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   name     = "example-kb"
+///   role_arn = exampleAwsIamRole.arn
+///   knowledge_base_configuration = {
+///     type = "SQL"
+///     sql_knowledge_base_configuration = {
+///       type = "REDSHIFT"
+///       redshift_configuration = {
+///         query_engine_configuration = {
+///           type = "PROVISIONED"
+///           provisioned_configuration = {
+///             cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
+///             auth_configuration = {
+///               type          = "USERNAME"
+///               database_user = exampleAwsRedshiftCluster.masterUsername
+///             }
+///           }
+///         }
+///         storage_configuration = {
+///           type = "REDSHIFT"
+///           redshift_configuration = {
+///             database_name = exampleAwsRedshiftCluster.databaseName
+///           }
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -530,8 +620,8 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -739,6 +829,39 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
+///   knowledge_base_configuration = {
+///     vector_knowledge_base_configuration = {
+///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
+///     }
+///     type = "VECTOR"
+///   }
+///   storage_configuration = {
+///     type = "OPENSEARCH_MANAGED_CLUSTER"
+///     opensearch_managed_cluster_configuration = {
+///       domain_arn        = "arn:aws:es:us-west-2:123456789012:domain/example-domain"
+///       domain_endpoint   = "https://search-example-domain.us-west-2.es.amazonaws.com"
+///       vector_index_name = "example_index"
+///       field_mapping = {
+///         metadata_field = "metadata"
+///         text_field     = "chunks"
+///         vector_field   = "embedding"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -752,8 +875,8 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -833,6 +956,16 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                 bedrockEmbeddingModelConfiguration: {
 ///                     dimensions: 1024,
 ///                     embeddingDataType: "FLOAT32",
+///                     audio: {
+///                         segmentationConfiguration: {
+///                             fixedLengthDuration: 60,
+///                         },
+///                     },
+///                     video: {
+///                         segmentationConfiguration: {
+///                             fixedLengthDuration: 60,
+///                         },
+///                     },
 ///                 },
 ///             },
 ///             supplementalDataStorageConfiguration: {
@@ -874,6 +1007,16 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                 "bedrock_embedding_model_configuration": {
 ///                     "dimensions": 1024,
 ///                     "embedding_data_type": "FLOAT32",
+///                     "audio": {
+///                         "segmentation_configuration": {
+///                             "fixed_length_duration": 60,
+///                         },
+///                     },
+///                     "video": {
+///                         "segmentation_configuration": {
+///                             "fixed_length_duration": 60,
+///                         },
+///                     },
 ///                 },
 ///             },
 ///             "supplemental_data_storage_configuration": {
@@ -923,6 +1066,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                     {
 ///                         Dimensions = 1024,
 ///                         EmbeddingDataType = "FLOAT32",
+///                         Audio = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioArgs
+///                         {
+///                             SegmentationConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfigurationArgs
+///                             {
+///                                 FixedLengthDuration = 60,
+///                             },
+///                         },
+///                         Video = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoArgs
+///                         {
+///                             SegmentationConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoSegmentationConfigurationArgs
+///                             {
+///                                 FixedLengthDuration = 60,
+///                             },
+///                         },
 ///                     },
 ///                 },
 ///                 SupplementalDataStorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationArgs
@@ -978,12 +1135,22 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 						BedrockEmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs{
 /// 							Dimensions:        pulumi.Int(1024),
 /// 							EmbeddingDataType: pulumi.String("FLOAT32"),
+/// 							Audio: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioArgs{
+/// 								SegmentationConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfigurationArgs{
+/// 									FixedLengthDuration: pulumi.Int(60),
+/// 								},
+/// 							},
+/// 							Video: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoArgs{
+/// 								SegmentationConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoSegmentationConfigurationArgs{
+/// 									FixedLengthDuration: pulumi.Int(60),
+/// 								},
+/// 							},
 /// 						},
 /// 					},
 /// 					SupplementalDataStorageConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationArgs{
 /// 						StorageLocation: map[string]interface{}{
 /// 							"type": "S3",
-/// 							"s3Location": map[string]interface{}{
+/// 							"s3Location": map[string]string{
 /// 								"uri": "s3://my-bucket/chunk-processor/",
 /// 							},
 /// 						},
@@ -1011,6 +1178,62 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
+///   knowledge_base_configuration = {
+///     vector_knowledge_base_configuration = {
+///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
+///       embedding_model_configuration = {
+///         bedrock_embedding_model_configuration = {
+///           dimensions          = 1024
+///           embedding_data_type = "FLOAT32"
+///           audio = {
+///             segmentation_configuration = {
+///               fixed_length_duration = 60
+///             }
+///           }
+///           video = {
+///             segmentation_configuration = {
+///               fixed_length_duration = 60
+///             }
+///           }
+///         }
+///       }
+///       supplemental_data_storage_configuration = {
+///         storage_location = {
+///           "type" = "S3"
+///           "s3Location" = {
+///             "uri" = "s3://my-bucket/chunk-processor/"
+///           }
+///         }
+///       }
+///     }
+///     type = "VECTOR"
+///   }
+///   storage_configuration = {
+///     type = "OPENSEARCH_SERVERLESS"
+///     opensearch_serverless_configuration = {
+///       collection_arn    = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"
+///       vector_index_name = "bedrock-knowledge-base-default-index"
+///       field_mapping = {
+///         vector_field   = "bedrock-knowledge-base-default-vector"
+///         text_field     = "AMAZON_BEDROCK_TEXT_CHUNK"
+///         metadata_field = "AMAZON_BEDROCK_METADATA"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1023,12 +1246,16 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoSegmentationConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1050,6 +1277,16 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                         .bedrockEmbeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs.builder()
 ///                             .dimensions(1024)
 ///                             .embeddingDataType("FLOAT32")
+///                             .audio(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioArgs.builder()
+///                                 .segmentationConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfigurationArgs.builder()
+///                                     .fixedLengthDuration(60)
+///                                     .build())
+///                                 .build())
+///                             .video(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoArgs.builder()
+///                                 .segmentationConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoSegmentationConfigurationArgs.builder()
+///                                     .fixedLengthDuration(60)
+///                                     .build())
+///                                 .build())
 ///                             .build())
 ///                         .build())
 ///                     .supplementalDataStorageConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationArgs.builder()
@@ -1092,6 +1329,12 @@ import 'agent_knowledge_base_timeouts.dart';
 ///             bedrockEmbeddingModelConfiguration:
 ///               dimensions: 1024
 ///               embeddingDataType: FLOAT32
+///               audio:
+///                 segmentationConfiguration:
+///                   fixedLengthDuration: 60
+///               video:
+///                 segmentationConfiguration:
+///                   fixedLengthDuration: 60
 ///           supplementalDataStorageConfiguration:
 ///             storageLocation:
 ///               type: S3
@@ -1291,6 +1534,48 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_vectorsvectorbucket" "example" {
+///   vector_bucket_name = "example-bucket"
+/// }
+/// resource "aws_s3_vectorsindex" "example" {
+///   index_name         = "example-index"
+///   vector_bucket_name = aws_s3_vectorsvectorbucket.example.vector_bucket_name
+///   data_type          = "float32"
+///   dimension          = 256
+///   distance_metric    = "euclidean"
+/// }
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   name     = "example-s3vectors-kb"
+///   role_arn = exampleAwsIamRole.arn
+///   knowledge_base_configuration = {
+///     vector_knowledge_base_configuration = {
+///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
+///       embedding_model_configuration = {
+///         bedrock_embedding_model_configuration = {
+///           dimensions          = 256
+///           embedding_data_type = "FLOAT32"
+///         }
+///       }
+///     }
+///     type = "VECTOR"
+///   }
+///   storage_configuration = {
+///     type = "S3_VECTORS"
+///     s3_vectors_configuration = {
+///       index_arn = aws_s3_vectorsindex.example.index_arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1309,8 +1594,8 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationS3VectorsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1396,6 +1681,358 @@ import 'agent_knowledge_base_timeouts.dart';
 /// ```
 ///
 ///
+/// ### Managed Knowledge Base
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.bedrock.AgentKnowledgeBase("example", {
+///     name: "example-managed-kb",
+///     roleArn: exampleAwsIamRole.arn,
+///     knowledgeBaseConfiguration: {
+///         type: "MANAGED",
+///         managedKnowledgeBaseConfiguration: {
+///             embeddingModelType: "MANAGED",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.bedrock.AgentKnowledgeBase("example",
+///     name="example-managed-kb",
+///     role_arn=example_aws_iam_role["arn"],
+///     knowledge_base_configuration={
+///         "type": "MANAGED",
+///         "managed_knowledge_base_configuration": {
+///             "embedding_model_type": "MANAGED",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
+///     {
+///         Name = "example-managed-kb",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
+///         {
+///             Type = "MANAGED",
+///             ManagedKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs
+///             {
+///                 EmbeddingModelType = "MANAGED",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
+/// 			Name:    pulumi.String("example-managed-kb"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
+/// 				Type: pulumi.String("MANAGED"),
+/// 				ManagedKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs{
+/// 					EmbeddingModelType: pulumi.String("MANAGED"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   name     = "example-managed-kb"
+///   role_arn = exampleAwsIamRole.arn
+///   knowledge_base_configuration = {
+///     type = "MANAGED"
+///     managed_knowledge_base_configuration = {
+///       embedding_model_type = "MANAGED"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentKnowledgeBase;
+/// import com.pulumi.aws.bedrock.AgentKnowledgeBaseArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
+///             .name("example-managed-kb")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
+///                 .type("MANAGED")
+///                 .managedKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs.builder()
+///                     .embeddingModelType("MANAGED")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:bedrock:AgentKnowledgeBase
+///     properties:
+///       name: example-managed-kb
+///       roleArn: ${exampleAwsIamRole.arn}
+///       knowledgeBaseConfiguration:
+///         type: MANAGED
+///         managedKnowledgeBaseConfiguration:
+///           embeddingModelType: MANAGED
+/// ```
+///
+///
+/// ### Managed Knowledge Base with Custom Embedding Model
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.bedrock.AgentKnowledgeBase("example", {
+///     name: "example-managed-multilingual-kb",
+///     roleArn: exampleAwsIamRole.arn,
+///     knowledgeBaseConfiguration: {
+///         type: "MANAGED",
+///         managedKnowledgeBaseConfiguration: {
+///             embeddingModelType: "CUSTOM",
+///             embeddingModelArn: "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
+///             embeddingModelConfiguration: {
+///                 bedrockEmbeddingModelConfiguration: {
+///                     dimensions: 1024,
+///                 },
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.bedrock.AgentKnowledgeBase("example",
+///     name="example-managed-multilingual-kb",
+///     role_arn=example_aws_iam_role["arn"],
+///     knowledge_base_configuration={
+///         "type": "MANAGED",
+///         "managed_knowledge_base_configuration": {
+///             "embedding_model_type": "CUSTOM",
+///             "embedding_model_arn": "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
+///             "embedding_model_configuration": {
+///                 "bedrock_embedding_model_configuration": {
+///                     "dimensions": 1024,
+///                 },
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
+///     {
+///         Name = "example-managed-multilingual-kb",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
+///         {
+///             Type = "MANAGED",
+///             ManagedKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs
+///             {
+///                 EmbeddingModelType = "CUSTOM",
+///                 EmbeddingModelArn = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
+///                 EmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs
+///                 {
+///                     BedrockEmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs
+///                     {
+///                         Dimensions = 1024,
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
+/// 			Name:    pulumi.String("example-managed-multilingual-kb"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
+/// 				Type: pulumi.String("MANAGED"),
+/// 				ManagedKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs{
+/// 					EmbeddingModelType: pulumi.String("CUSTOM"),
+/// 					EmbeddingModelArn:  pulumi.String("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3"),
+/// 					EmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs{
+/// 						BedrockEmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs{
+/// 							Dimensions: pulumi.Int(1024),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   name     = "example-managed-multilingual-kb"
+///   role_arn = exampleAwsIamRole.arn
+///   knowledge_base_configuration = {
+///     type = "MANAGED"
+///     managed_knowledge_base_configuration = {
+///       embedding_model_type = "CUSTOM"
+///       embedding_model_arn  = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3"
+///       embedding_model_configuration = {
+///         bedrock_embedding_model_configuration = {
+///           dimensions = 1024
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentKnowledgeBase;
+/// import com.pulumi.aws.bedrock.AgentKnowledgeBaseArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
+///             .name("example-managed-multilingual-kb")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
+///                 .type("MANAGED")
+///                 .managedKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs.builder()
+///                     .embeddingModelType("CUSTOM")
+///                     .embeddingModelArn("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3")
+///                     .embeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs.builder()
+///                         .bedrockEmbeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs.builder()
+///                             .dimensions(1024)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:bedrock:AgentKnowledgeBase
+///     properties:
+///       name: example-managed-multilingual-kb
+///       roleArn: ${exampleAwsIamRole.arn}
+///       knowledgeBaseConfiguration:
+///         type: MANAGED
+///         managedKnowledgeBaseConfiguration:
+///           embeddingModelType: CUSTOM
+///           embeddingModelArn: arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3
+///           embeddingModelConfiguration:
+///             bedrockEmbeddingModelConfiguration:
+///               dimensions: 1024
+/// ```
+///
+///
 /// ## Import
 ///
 /// Using `pulumi import`, import Agents for Amazon Bedrock Knowledge Base using the knowledge base ID. For example:
@@ -1411,7 +2048,7 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
   /// Description of the knowledge base.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<List<String>> failureReasons;
-  /// Details about the embeddings configuration of the knowledge base. See `knowledge_base_configuration` block for details.
+  /// Details about the embeddings configuration of the knowledge base. See `knowledgeBaseConfiguration` block for details.
   late final pulumi.Output<AgentKnowledgeBaseKnowledgeBaseConfiguration> knowledgeBaseConfiguration;
   /// Name of the knowledge base.
   late final pulumi.Output<String> name;
@@ -1421,11 +2058,11 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
-  /// Details about the storage configuration of the knowledge base. See `storage_configuration` block for details.
+  /// Details about the storage configuration of the knowledge base. See `storageConfiguration` block for details.
   late final pulumi.Output<AgentKnowledgeBaseStorageConfiguration?> storageConfiguration;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentKnowledgeBaseTimeouts?> timeouts;
   /// Time at which the knowledge base was last updated.

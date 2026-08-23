@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItemsItems {
   /// Description of the array items.
   final pulumi.Input<String>? description;
-  /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
+  /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `propertiesJson`.
   final pulumi.Input<String>? itemsJson;
-  /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
+  /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `itemsJson`.
   final pulumi.Input<String>? propertiesJson;
   /// Data type of the array items.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItemsItems].
   /// [description] Description of the array items.
-  /// [itemsJson] JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
-  /// [propertiesJson] JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
+  /// [itemsJson] JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `propertiesJson`.
+  /// [propertiesJson] JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `itemsJson`.
   /// [type] Data type of the array items.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItemsItems({
     this.description,
@@ -42,4 +42,3 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadI
     );
   }
 }
-

@@ -104,6 +104,28 @@ import 'fleet_target_capacity_specification.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_fleet" "example" {
+///   launch_template_configs {
+///     launch_template_specification = {
+///       launch_template_id = exampleAwsLaunchTemplate.id
+///       version            = exampleAwsLaunchTemplate.latestVersion
+///     }
+///   }
+///   target_capacity_specification = {
+///     default_target_capacity_type = "spot"
+///     total_target_capacity        = 5
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +137,8 @@ import 'fleet_target_capacity_specification.dart';
 /// import com.pulumi.aws.ec2.inputs.FleetLaunchTemplateConfigArgs;
 /// import com.pulumi.aws.ec2.inputs.FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs;
 /// import com.pulumi.aws.ec2.inputs.FleetTargetCapacitySpecificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,9 +213,9 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<bool?> replaceUnhealthyInstances;
   /// Nested argument containing Spot configurations. Defined below.
   late final pulumi.Output<FleetSpotOptions?> spotOptions;
-  /// Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Nested argument containing target capacity configurations. Defined below.
   late final pulumi.Output<FleetTargetCapacitySpecification> targetCapacitySpecification;

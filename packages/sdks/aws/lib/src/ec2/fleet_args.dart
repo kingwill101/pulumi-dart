@@ -34,7 +34,7 @@ class FleetArgs {
   final pulumi.Input<bool>? replaceUnhealthyInstances;
   /// Nested argument containing Spot configurations. Defined below.
   final pulumi.Input<FleetSpotOptions>? spotOptions;
-  /// Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Nested argument containing target capacity configurations. Defined below.
   final pulumi.Input<FleetTargetCapacitySpecification> targetCapacitySpecification;
@@ -61,7 +61,7 @@ class FleetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replaceUnhealthyInstances] Whether EC2 Fleet should replace unhealthy instances. Defaults to `false`. Supported only for fleets of type `maintain`.
   /// [spotOptions] Nested argument containing Spot configurations. Defined below.
-  /// [tags] Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetCapacitySpecification] Nested argument containing target capacity configurations. Defined below.
   /// [terminateInstances] Whether to terminate instances for an EC2 Fleet if it is deleted successfully. Defaults to `false`.
   /// [terminateInstancesWithExpiration] Whether running instances should be terminated when the EC2 Fleet expires. Defaults to `false`.
@@ -135,4 +135,3 @@ class FleetArgs {
     );
   }
 }
-

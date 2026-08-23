@@ -79,6 +79,23 @@ import 'project_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datazone_project" "test" {
+///   domain_id           = testAwsDatazoneDomain.id
+///   glossary_terms      = ["2N8w6XJCwZf"]
+///   name                = "name"
+///   description         = "desc"
+///   skip_deletion_check = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +104,8 @@ import 'project_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datazone.Project;
 /// import com.pulumi.aws.datazone.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,6 +199,20 @@ import 'project_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datazone_project" "test" {
+///   domain_identifier = testAwsDatazoneDomain.id
+///   name              = "name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +221,8 @@ import 'project_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datazone.Project;
 /// import com.pulumi.aws.datazone.ProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,7 +254,20 @@ import 'project_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DataZone Project using a colon-delimited string combining `domain_id` and `id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainIdentifier` - (String) Identifier of the DataZone domain.
+/// * `id` - (String) ID of the project.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import DataZone Project using a colon-delimited string combining `domainId` and `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datazone/project:Project example domain-1234:project-1234

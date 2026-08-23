@@ -8,15 +8,17 @@ import 'firewall_policy_firewall_policy_stateless_custom_action.dart';
 import 'firewall_policy_firewall_policy_stateless_rule_group_reference.dart';
 
 class FirewallPolicyFirewallPolicy {
+  /// Boolean indicating whether to prevent TCP and TLS packets from reaching destination servers until TLS Inspection has evaluated Server Name Indication (SNI) rules. If `true`, `tlsInspectionConfigurationArn` is required. Default value: `false`.
+  final pulumi.Input<bool>? enableTlsSessionHolding;
   /// . Contains variables that you can use to override default Suricata settings in your firewall policy. See Rule Variables for details.
   final pulumi.Input<FirewallPolicyFirewallPolicyPolicyVariables>? policyVariables;
-  /// Set of actions to take on a packet if it does not match any stateful rules in the policy. This can only be specified if the policy has a `stateful_engine_options` block with a `rule_order` value of `STRICT_ORDER`. Value values: `aws:drop_strict`, `aws:drop_established`, `aws:drop_established_app_layer`, `aws:alert_strict`, `aws:alert_established, `aws:alert_established_app_layer`. For more information, see [Strict evaluation order](https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html#suricata-strict-rule-evaluation-order.html) in the AWS Network Firewall Developer Guide.
+  /// Set of actions to take on a packet if it does not match any stateful rules in the policy. This can only be specified if the policy has a `statefulEngineOptions` block with a `ruleOrder` value of `STRICT_ORDER`. Value values: `aws:drop_strict`, `aws:drop_established`, `aws:drop_established_app_layer`, `aws:alert_strict`, `aws:alert_established, `aws:alert_established_app_layer`. For more information, see [Strict evaluation order](https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html#suricata-strict-rule-evaluation-order.html) in the AWS Network Firewall Developer Guide.
   final pulumi.Input<List<String>>? statefulDefaultActions;
   /// A configuration block that defines options on how the policy handles stateful rules. See Stateful Engine Options below for details.
   final pulumi.Input<FirewallPolicyFirewallPolicyStatefulEngineOptions>? statefulEngineOptions;
   /// Set of configuration blocks containing references to the stateful rule groups that are used in the policy. See Stateful Rule Group Reference below for details.
   final pulumi.Input<List<FirewallPolicyFirewallPolicyStatefulRuleGroupReference>>? statefulRuleGroupReferences;
-  /// Set of configuration blocks describing the custom action definitions that are available for use in the firewall policy's `stateless_default_actions`. See Stateless Custom Action below for details.
+  /// Set of configuration blocks describing the custom action definitions that are available for use in the firewall policy's `statelessDefaultActions`. See Stateless Custom Action below for details.
   final pulumi.Input<List<FirewallPolicyFirewallPolicyStatelessCustomAction>>? statelessCustomActions;
   /// Set of actions to take on a packet if it does not match any of the stateless rules in the policy. You must specify one of the standard actions including: `aws:drop`, `aws:pass`, or `aws:forward_to_sfe`.
   /// In addition, you can specify custom actions that are compatible with your standard action choice. If you want non-matching packets to be forwarded for stateful inspection, specify `aws:forward_to_sfe`.
@@ -30,16 +32,18 @@ class FirewallPolicyFirewallPolicy {
   final pulumi.Input<String>? tlsInspectionConfigurationArn;
 
   /// Creates a new [FirewallPolicyFirewallPolicy].
+  /// [enableTlsSessionHolding] Boolean indicating whether to prevent TCP and TLS packets from reaching destination servers until TLS Inspection has evaluated Server Name Indication (SNI) rules. If `true`, `tlsInspectionConfigurationArn` is required. Default value: `false`.
   /// [policyVariables] . Contains variables that you can use to override default Suricata settings in your firewall policy. See Rule Variables for details.
-  /// [statefulDefaultActions] Set of actions to take on a packet if it does not match any stateful rules in the policy. This can only be specified if the policy has a `stateful_engine_options` block with a `rule_order` value of `STRICT_ORDER`. Value values: `aws:drop_strict`, `aws:drop_established`, `aws:drop_established_app_layer`, `aws:alert_strict`, `aws:alert_established, `aws:alert_established_app_layer`. For more information, see [Strict evaluation order](https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html#suricata-strict-rule-evaluation-order.html) in the AWS Network Firewall Developer Guide.
+  /// [statefulDefaultActions] Set of actions to take on a packet if it does not match any stateful rules in the policy. This can only be specified if the policy has a `statefulEngineOptions` block with a `ruleOrder` value of `STRICT_ORDER`. Value values: `aws:drop_strict`, `aws:drop_established`, `aws:drop_established_app_layer`, `aws:alert_strict`, `aws:alert_established, `aws:alert_established_app_layer`. For more information, see [Strict evaluation order](https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html#suricata-strict-rule-evaluation-order.html) in the AWS Network Firewall Developer Guide.
   /// [statefulEngineOptions] A configuration block that defines options on how the policy handles stateful rules. See Stateful Engine Options below for details.
   /// [statefulRuleGroupReferences] Set of configuration blocks containing references to the stateful rule groups that are used in the policy. See Stateful Rule Group Reference below for details.
-  /// [statelessCustomActions] Set of configuration blocks describing the custom action definitions that are available for use in the firewall policy's `stateless_default_actions`. See Stateless Custom Action below for details.
+  /// [statelessCustomActions] Set of configuration blocks describing the custom action definitions that are available for use in the firewall policy's `statelessDefaultActions`. See Stateless Custom Action below for details.
   /// [statelessDefaultActions] Set of actions to take on a packet if it does not match any of the stateless rules in the policy. You must specify one of the standard actions including: `aws:drop`, `aws:pass`, or `aws:forward_to_sfe`.
   /// [statelessFragmentDefaultActions] Set of actions to take on a fragmented packet if it does not match any of the stateless rules in the policy. You must specify one of the standard actions including: `aws:drop`, `aws:pass`, or `aws:forward_to_sfe`.
   /// [statelessRuleGroupReferences] Set of configuration blocks containing references to the stateless rule groups that are used in the policy. See Stateless Rule Group Reference below for details.
   /// [tlsInspectionConfigurationArn] The (ARN) of the TLS Inspection policy to attach to the FW Policy.  This must be added at creation of the resource per AWS documentation. "You can only add a TLS inspection configuration to a new policy, not to an existing policy."  This cannot be removed from a FW Policy.
   const FirewallPolicyFirewallPolicy({
+    this.enableTlsSessionHolding,
     this.policyVariables,
     this.statefulDefaultActions,
     this.statefulEngineOptions,
@@ -53,6 +57,7 @@ class FirewallPolicyFirewallPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'enableTlsSessionHolding': ?enableTlsSessionHolding,
       'policyVariables': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyFirewallPolicyPolicyVariables, Map<String, dynamic>>(policyVariables, (value) => value.toMap()),
       'statefulDefaultActions': ?statefulDefaultActions,
       'statefulEngineOptions': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyFirewallPolicyStatefulEngineOptions, Map<String, dynamic>>(statefulEngineOptions, (value) => value.toMap()),
@@ -67,6 +72,7 @@ class FirewallPolicyFirewallPolicy {
 
   factory FirewallPolicyFirewallPolicy.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicy(
+      enableTlsSessionHolding: (() { final guardedValue = map['enableTlsSessionHolding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       policyVariables: (() { final guardedValue = map['policyVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyFirewallPolicyPolicyVariables.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statefulDefaultActions: (() { final guardedValue = map['statefulDefaultActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       statefulEngineOptions: (() { final guardedValue = map['statefulEngineOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyFirewallPolicyStatefulEngineOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -79,4 +85,3 @@ class FirewallPolicyFirewallPolicy {
     );
   }
 }
-

@@ -4,9 +4,9 @@ import 'eip_state.dart';
 
 /// Provides an Elastic IP resource.
 ///
-/// &gt; **Note:** EIP may require IGW to exist prior to association. Use `depends_on` to set an explicit dependency on the IGW.
+/// &gt; **Note:** EIP may require IGW to exist prior to association. Use `dependsOn` to set an explicit dependency on the IGW.
 ///
-/// &gt; **Note:** Do not use `network_interface` to associate the EIP to `aws.lb.LoadBalancer` or `aws.ec2.NatGateway` resources. Instead use the `allocation_id` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
+/// &gt; **Note:** Do not use `networkInterface` to associate the EIP to `aws.lb.LoadBalancer` or `aws.ec2.NatGateway` resources. Instead use the `allocationId` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
 ///
 /// ## Example Usage
 ///
@@ -67,6 +67,20 @@ import 'eip_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_eip" "lb" {
+///   instance = web.id
+///   domain   = "vpc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +89,8 @@ import 'eip_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Eip;
 /// import com.pulumi.aws.ec2.EipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,7 +220,7 @@ import 'eip_state.dart';
 /// 		}
 /// 		_, err = ec2.NewEip(ctx, "one", &ec2.EipArgs{
 /// 			Domain:                 pulumi.String("vpc"),
-/// 			NetworkInterface:       multi_ip.ID(),
+/// 			NetworkInterface:       multi_ip.ID().ToIDOutput().ToStringOutput(),
 /// 			AssociateWithPrivateIp: pulumi.String("10.0.0.10"),
 /// 		})
 /// 		if err != nil {
@@ -214,7 +228,7 @@ import 'eip_state.dart';
 /// 		}
 /// 		_, err = ec2.NewEip(ctx, "two", &ec2.EipArgs{
 /// 			Domain:                 pulumi.String("vpc"),
-/// 			NetworkInterface:       multi_ip.ID(),
+/// 			NetworkInterface:       multi_ip.ID().ToIDOutput().ToStringOutput(),
 /// 			AssociateWithPrivateIp: pulumi.String("10.0.0.11"),
 /// 		})
 /// 		if err != nil {
@@ -222,6 +236,30 @@ import 'eip_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkinterface" "multi-ip" {
+///   subnet_id   = main.id
+///   private_ips = ["10.0.0.10", "10.0.0.11"]
+/// }
+/// resource "aws_ec2_eip" "one" {
+///   domain                    = "vpc"
+///   network_interface         = aws_ec2_networkinterface.multi-ip.id
+///   associate_with_private_ip = "10.0.0.10"
+/// }
+/// resource "aws_ec2_eip" "two" {
+///   domain                    = "vpc"
+///   network_interface         = aws_ec2_networkinterface.multi-ip.id
+///   associate_with_private_ip = "10.0.0.11"
 /// }
 /// ```
 /// ```java
@@ -234,8 +272,8 @@ import 'eip_state.dart';
 /// import com.pulumi.aws.ec2.NetworkInterfaceArgs;
 /// import com.pulumi.aws.ec2.Eip;
 /// import com.pulumi.aws.ec2.EipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,13 +461,13 @@ import 'eip_state.dart';
 /// 			return err
 /// 		}
 /// 		gw, err := ec2.NewInternetGateway(ctx, "gw", &ec2.InternetGatewayArgs{
-/// 			VpcId: _default.ID(),
+/// 			VpcId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		myTestSubnet, err := ec2.NewSubnet(ctx, "my_test_subnet", &ec2.SubnetArgs{
-/// 			VpcId:               _default.ID(),
+/// 			VpcId:               _default.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock:           pulumi.String("10.0.0.0/24"),
 /// 			MapPublicIpOnLaunch: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -442,14 +480,14 @@ import 'eip_state.dart';
 /// 			Ami:          pulumi.String("ami-5189a661"),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
 /// 			PrivateIp:    pulumi.String("10.0.0.12"),
-/// 			SubnetId:     myTestSubnet.ID(),
+/// 			SubnetId:     myTestSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewEip(ctx, "bar", &ec2.EipArgs{
 /// 			Domain:                 pulumi.String("vpc"),
-/// 			Instance:               foo.ID(),
+/// 			Instance:               foo.ID().ToIDOutput().ToStringOutput(),
 /// 			AssociateWithPrivateIp: pulumi.String("10.0.0.12"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			gw,
@@ -459,6 +497,41 @@ import 'eip_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "default" {
+///   cidr_block           = "10.0.0.0/16"
+///   enable_dns_hostnames = true
+/// }
+/// resource "aws_ec2_internetgateway" "gw" {
+///   vpc_id = aws_ec2_vpc.default.id
+/// }
+/// resource "aws_ec2_subnet" "my_test_subnet" {
+///   depends_on              = [aws_ec2_internetgateway.gw]
+///   vpc_id                  = aws_ec2_vpc.default.id
+///   cidr_block              = "10.0.0.0/24"
+///   map_public_ip_on_launch = true
+/// }
+/// resource "aws_ec2_instance" "foo" {
+///   ami           = "ami-5189a661"
+///   instance_type = "t2.micro"
+///   private_ip    = "10.0.0.12"
+///   subnet_id     = aws_ec2_subnet.my_test_subnet.id
+/// }
+/// resource "aws_ec2_eip" "bar" {
+///   depends_on                = [aws_ec2_internetgateway.gw]
+///   domain                    = "vpc"
+///   instance                  = aws_ec2_instance.foo.id
+///   associate_with_private_ip = "10.0.0.12"
 /// }
 /// ```
 /// ```java
@@ -478,8 +551,8 @@ import 'eip_state.dart';
 /// import com.pulumi.aws.ec2.Eip;
 /// import com.pulumi.aws.ec2.EipArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -623,6 +696,20 @@ import 'eip_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_eip" "byoip-ip" {
+///   domain           = "vpc"
+///   public_ipv4_pool = "ipv4pool-ec2-012345"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -631,8 +718,8 @@ import 'eip_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Eip;
 /// import com.pulumi.aws.ec2.EipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -719,6 +806,20 @@ import 'eip_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_eip" "ipam-ip" {
+///   domain       = "vpc"
+///   ipam_pool_id = "ipam-pool-07ccc86aa41bef7ce"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -727,8 +828,8 @@ import 'eip_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Eip;
 /// import com.pulumi.aws.ec2.EipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -760,10 +861,22 @@ import 'eip_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Allocation ID that identifies the Elastic IP.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import EIPs in a VPC using their Allocation ID. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:ec2/eip:Eip bar eipalloc-00a10e96
+/// $ pulumi import aws:ec2/eip:Eip example eipalloc-00a10e96
 /// ```
 class Eip extends pulumi.CustomResource {
   /// IP address from an EC2 BYOIP pool. This option is only available for VPC EIPs.
@@ -806,15 +919,15 @@ class Eip extends pulumi.CustomResource {
   late final pulumi.Output<String> publicIpv4Pool;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// &gt; **NOTE:** You can specify either the `instance` ID or the `network_interface` ID, but not both.
+  /// &gt; **NOTE:** You can specify either the `instance` ID or the `networkInterface` ID, but not both.
   /// Including both will **not** return an error from the AWS API, but will have undefined behavior.
-  /// See the relevant [AssociateAddress API Call][1] for more information.
+  /// See the relevant [AssociateAddress API Call](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateAddress.html) for more information.
   ///
-  /// &gt; **NOTE:** Specifying both `public_ipv4_pool` and `address` won't cause an error, however, only `address` will be used if both options are defined as the API only requires one of the two.
+  /// &gt; **NOTE:** Specifying both `publicIpv4Pool` and `address` won't cause an error, however, only `address` will be used if both options are defined as the API only requires one of the two.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Eip].

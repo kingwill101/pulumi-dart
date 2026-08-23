@@ -14,13 +14,14 @@ class GetCertificateAuthorityResult {
   final String certificateSigningRequest;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  /// Level of security of the key storage endpoint of the certificate authority.
   final String keyStorageSecurityStandard;
   /// Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
   final String notAfter;
   /// Date and time before which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
   final String notBefore;
   final String region;
-  /// Nested attribute containing revocation configuration.
+  /// Nested attribute containing revocation configuration. See `revocationConfiguration` below.
   final List<GetCertificateAuthorityRevocationConfiguration> revocationConfigurations;
   /// Serial number of the certificate authority. Only available after the certificate authority certificate has been imported.
   final String serial;
@@ -39,11 +40,11 @@ class GetCertificateAuthorityResult {
   /// [certificateChain] Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. Only available after the certificate authority certificate has been imported.
   /// [certificateSigningRequest] The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [keyStorageSecurityStandard] Required.
+  /// [keyStorageSecurityStandard] Level of security of the key storage endpoint of the certificate authority.
   /// [notAfter] Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
   /// [notBefore] Date and time before which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
   /// [region] Required.
-  /// [revocationConfigurations] Nested attribute containing revocation configuration.
+  /// [revocationConfigurations] Nested attribute containing revocation configuration. See `revocationConfiguration` below.
   /// [serial] Serial number of the certificate authority. Only available after the certificate authority certificate has been imported.
   /// [status] Status of the certificate authority.
   /// [tags] Key-value map of user-defined tags that are attached to the certificate authority.
@@ -107,4 +108,3 @@ class GetCertificateAuthorityResult {
     );
   }
 }
-

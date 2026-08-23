@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_s3_vectors_vector_bucket_policy_vectors_vector_bucket_policy_args_doc}
 class VectorsVectorBucketPolicyArgs {
-  /// The policy document.
+  /// Policy document.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -17,7 +17,7 @@ class VectorsVectorBucketPolicyArgs {
   final pulumi.Input<String> vectorBucketArn;
 
   /// Creates a new [VectorsVectorBucketPolicyArgs].
-  /// [policy] The policy document.
+  /// [policy] Policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vectorBucketArn] ARN of the vector bucket.
   const VectorsVectorBucketPolicyArgs({
@@ -42,4 +42,3 @@ class VectorsVectorBucketPolicyArgs {
     );
   }
 }
-

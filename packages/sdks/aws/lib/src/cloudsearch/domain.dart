@@ -157,6 +157,40 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudsearch_domain" "example" {
+///   name = "example-domain"
+///   scaling_parameters = {
+///     desired_instance_type = "search.medium"
+///   }
+///   index_fields {
+///     name            = "headline"
+///     type            = "text"
+///     search          = true
+///     return          = true
+///     sort            = true
+///     highlight       = false
+///     analysis_scheme = "_en_default_"
+///   }
+///   index_fields {
+///     name          = "price"
+///     type          = "double"
+///     search        = true
+///     facet         = true
+///     return        = true
+///     sort          = true
+///     source_fields = "headline"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +201,8 @@ import 'domain_state.dart';
 /// import com.pulumi.aws.cloudsearch.DomainArgs;
 /// import com.pulumi.aws.cloudsearch.inputs.DomainScalingParametersArgs;
 /// import com.pulumi.aws.cloudsearch.inputs.DomainIndexFieldArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

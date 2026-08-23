@@ -21,7 +21,7 @@ class InvoiceUnitArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<InvoiceUnitRule>>? rules;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Whether tax inheritance is disabled for this invoice unit.
   final pulumi.Input<bool>? taxInheritanceDisabled;
@@ -33,7 +33,7 @@ class InvoiceUnitArgs {
   /// [name] Unique name of the invoice unit. Cannot be changed after creation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] Configuration block for invoice unit rules. See `rule` below.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [taxInheritanceDisabled] Whether tax inheritance is disabled for this invoice unit.
   /// [timeouts] Optional.
   const InvoiceUnitArgs({
@@ -73,4 +73,3 @@ class InvoiceUnitArgs {
     );
   }
 }
-

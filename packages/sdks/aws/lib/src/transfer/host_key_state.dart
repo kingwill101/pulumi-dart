@@ -11,7 +11,7 @@ class HostKeyState {
   /// Private key portion of an SSH key pair.
   final pulumi.Input<String>? hostKeyBody;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only private key portion of an SSH key pair, guaranteed not to be written to plan or state artifacts. One of `host_key_body` or `host_key_body_wo` must be configured.
+  /// Write-only private key portion of an SSH key pair, guaranteed not to be written to plan or state artifacts. One of `hostKeyBody` or `hostKeyBodyWo` must be configured.
   final pulumi.Input<String>? hostKeyBodyWo;
   /// Public key fingerprint.
   final pulumi.Input<String>? hostKeyFingerprint;
@@ -21,9 +21,9 @@ class HostKeyState {
   final pulumi.Input<String>? region;
   /// Server ID.
   final pulumi.Input<String>? serverId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [HostKeyState].
@@ -35,8 +35,8 @@ class HostKeyState {
   /// [hostKeyId] ID of the host key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serverId] Server ID.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const HostKeyState({
     this.arn,
     this.description,
@@ -80,4 +80,3 @@ class HostKeyState {
     );
   }
 }
-

@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAmiProductCode {
+  /// The product code.
   final pulumi.Input<String> productCodeId;
+  /// The type of product code.
   final pulumi.Input<String> productCodeType;
 
   /// Creates a new [GetAmiProductCode].
-  /// [productCodeId] Required.
-  /// [productCodeType] Required.
+  /// [productCodeId] The product code.
+  /// [productCodeType] The type of product code.
   const GetAmiProductCode({
     required this.productCodeId,
     required this.productCodeType,
@@ -28,4 +30,3 @@ class GetAmiProductCode {
     );
   }
 }
-

@@ -43,9 +43,9 @@ class SavingsPlanState {
   final pulumi.Input<String>? start;
   /// The current state of the Savings Plan (e.g., `active`, `queued`, `retired`).
   final pulumi.Input<String>? state;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The duration of the term, in seconds.
   final pulumi.Input<int>? termDurationInSeconds;
@@ -72,8 +72,8 @@ class SavingsPlanState {
   /// [savingsPlanType] The type of Savings Plan (e.g., `Compute`, `EC2Instance`).
   /// [start] The start time of the Savings Plan in RFC3339 format.
   /// [state] The current state of the Savings Plan (e.g., `active`, `queued`, `retired`).
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [termDurationInSeconds] The duration of the term, in seconds.
   /// [timeouts] Optional.
   /// [upfrontPaymentAmount] The up-front payment amount.
@@ -159,4 +159,3 @@ class SavingsPlanState {
     );
   }
 }
-

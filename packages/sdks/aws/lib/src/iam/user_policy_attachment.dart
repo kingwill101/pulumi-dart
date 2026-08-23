@@ -100,6 +100,28 @@ import 'user_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_user" "user" {
+///   name = "test-user"
+/// }
+/// resource "aws_iam_policy" "policy" {
+///   name        = "test-policy"
+///   description = "A test policy"
+///   policy      = "{ ... policy JSON ... }"
+/// }
+/// resource "aws_iam_userpolicyattachment" "test-attach" {
+///   user       = aws_iam_user.user.name
+///   policy_arn = aws_iam_policy.policy.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +134,8 @@ import 'user_policy_attachment_state.dart';
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.iam.UserPolicyAttachment;
 /// import com.pulumi.aws.iam.UserPolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,10 +187,22 @@ import 'user_policy_attachment_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `user` (String) Name of the IAM user.
+/// * `policyArn` (String) ARN of the IAM policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
 /// Using `pulumi import`, import IAM user policy attachments using the user name and policy arn separated by `/`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:iam/userPolicyAttachment:UserPolicyAttachment test-attach test-user/arn:aws:iam::xxxxxxxxxxxx:policy/test-policy
+/// $ pulumi import aws:iam/userPolicyAttachment:UserPolicyAttachment example test-user/arn:aws:iam::xxxxxxxxxxxx:policy/test-policy
 /// ```
 class UserPolicyAttachment extends pulumi.CustomResource {
   /// The ARN of the policy you want to apply

@@ -26,7 +26,7 @@ class TrustProviderArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<TrustProviderSseSpecification>? sseSpecification;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The type of trust provider can be either user or device-based.
   ///
@@ -44,7 +44,7 @@ class TrustProviderArgs {
   /// [policyReferenceName] The identifier to be used when working with policy rules.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sseSpecification] Optional.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trustProviderType] The type of trust provider can be either user or device-based.
   /// [userTrustProviderType] The type of user-based trust provider.
   const TrustProviderArgs({
@@ -93,4 +93,3 @@ class TrustProviderArgs {
     );
   }
 }
-

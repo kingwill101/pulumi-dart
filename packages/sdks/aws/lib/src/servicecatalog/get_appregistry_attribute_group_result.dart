@@ -11,7 +11,7 @@ class GetAppregistryAttributeGroupResult {
   final String id;
   final String name;
   final String region;
-  /// A map of tags assigned to the Attribute Group. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the Attribute Group. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String> tags;
 
   /// Creates a new [GetAppregistryAttributeGroupResult].
@@ -21,7 +21,7 @@ class GetAppregistryAttributeGroupResult {
   /// [id] Required.
   /// [name] Required.
   /// [region] Required.
-  /// [tags] A map of tags assigned to the Attribute Group. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags assigned to the Attribute Group. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const GetAppregistryAttributeGroupResult({
     required this.arn,
     required this.attributes,
@@ -56,4 +56,3 @@ class GetAppregistryAttributeGroupResult {
     );
   }
 }
-

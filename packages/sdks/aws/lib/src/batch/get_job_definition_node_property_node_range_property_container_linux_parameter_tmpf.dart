@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
-  /// The absolute file path in the container where the tmpfs volume is mounted.
+  /// Path on the container where the host volume is mounted.
   final pulumi.Input<String> containerPath;
-  /// The list of tmpfs volume mount options.
+  /// List of tmpfs volume mount options.
   final pulumi.Input<List<String>> mountOptions;
-  /// The size (in MiB) of the tmpfs volume.
+  /// Size (in MiB) of the tmpfs volume.
   final pulumi.Input<int> size;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf].
-  /// [containerPath] The absolute file path in the container where the tmpfs volume is mounted.
-  /// [mountOptions] The list of tmpfs volume mount options.
-  /// [size] The size (in MiB) of the tmpfs volume.
+  /// [containerPath] Path on the container where the host volume is mounted.
+  /// [mountOptions] List of tmpfs volume mount options.
+  /// [size] Size (in MiB) of the tmpfs volume.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf({
     required this.containerPath,
     required this.mountOptions,
@@ -36,4 +36,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
     );
   }
 }
-

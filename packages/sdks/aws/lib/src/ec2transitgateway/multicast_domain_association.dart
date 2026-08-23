@@ -96,28 +96,54 @@ import 'multicast_domain_association_state.dart';
 /// 			SubnetIds: pulumi.StringArray{
 /// 				exampleAwsSubnet.Id,
 /// 			},
-/// 			TransitGatewayId: example.ID(),
+/// 			TransitGatewayId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VpcId:            pulumi.Any(exampleAwsVpc.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleMulticastDomain, err := ec2transitgateway.NewMulticastDomain(ctx, "example", &ec2transitgateway.MulticastDomainArgs{
-/// 			TransitGatewayId: example.ID(),
+/// 			TransitGatewayId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2transitgateway.NewMulticastDomainAssociation(ctx, "example", &ec2transitgateway.MulticastDomainAssociationArgs{
 /// 			SubnetId:                        pulumi.Any(exampleAwsSubnet.Id),
-/// 			TransitGatewayAttachmentId:      exampleVpcAttachment.ID(),
-/// 			TransitGatewayMulticastDomainId: exampleMulticastDomain.ID(),
+/// 			TransitGatewayAttachmentId:      exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayMulticastDomainId: exampleMulticastDomain.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+///   multicast_support = "enable"
+/// }
+/// resource "aws_ec2transitgateway_vpcattachment" "example" {
+///   subnet_ids         = [exampleAwsSubnet.id]
+///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   vpc_id             = exampleAwsVpc.id
+/// }
+/// resource "aws_ec2transitgateway_multicastdomain" "example" {
+///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+/// }
+/// resource "aws_ec2transitgateway_multicastdomainassociation" "example" {
+///   subnet_id                           = exampleAwsSubnet.id
+///   transit_gateway_attachment_id       = aws_ec2transitgateway_vpcattachment.example.id
+///   transit_gateway_multicast_domain_id = aws_ec2transitgateway_multicastdomain.example.id
 /// }
 /// ```
 /// ```java
@@ -134,8 +160,8 @@ import 'multicast_domain_association_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.MulticastDomainArgs;
 /// import com.pulumi.aws.ec2transitgateway.MulticastDomainAssociation;
 /// import com.pulumi.aws.ec2transitgateway.MulticastDomainAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

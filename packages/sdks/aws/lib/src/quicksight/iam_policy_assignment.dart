@@ -86,6 +86,24 @@ import 'iam_policy_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_iampolicyassignment" "example" {
+///   assignment_name   = "example"
+///   assignment_status = "ENABLED"
+///   policy_arn        = exampleAwsIamPolicy.arn
+///   identities = {
+///     users = [exampleAwsQuicksightUser.userName]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'iam_policy_assignment_state.dart';
 /// import com.pulumi.aws.quicksight.IamPolicyAssignment;
 /// import com.pulumi.aws.quicksight.IamPolicyAssignmentArgs;
 /// import com.pulumi.aws.quicksight.inputs.IamPolicyAssignmentIdentitiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

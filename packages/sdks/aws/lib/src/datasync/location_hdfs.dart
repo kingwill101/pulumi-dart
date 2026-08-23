@@ -95,6 +95,25 @@ import 'location_hdfs_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_locationhdfs" "example" {
+///   agent_arns          = [exampleAwsDatasyncAgent.arn]
+///   authentication_type = "SIMPLE"
+///   simple_user         = "example"
+///   name_nodes {
+///     hostname = exampleAwsInstance.privateDns
+///     port     = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'location_hdfs_state.dart';
 /// import com.pulumi.aws.datasync.LocationHdfs;
 /// import com.pulumi.aws.datasync.LocationHdfsArgs;
 /// import com.pulumi.aws.datasync.inputs.LocationHdfsNameNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,6 +286,30 @@ import 'location_hdfs_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_locationhdfs" "example" {
+///   agent_arns          = [exampleAwsDatasyncAgent.arn]
+///   authentication_type = "KERBEROS"
+///   name_nodes {
+///     hostname = exampleAwsInstance.privateDns
+///     port     = 80
+///   }
+///   kerberos_principal     = "user@example.com"
+///   kerberos_keytab_base64 = filebase64("user.keytab")
+///   kerberos_krb5_conf     = file("krb5.conf")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +322,8 @@ import 'location_hdfs_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,33 +404,33 @@ class LocationHdfs extends pulumi.CustomResource {
   late final pulumi.Output<String?> authenticationType;
   /// The size of data blocks to write into the HDFS cluster. The block size must be a multiple of 512 bytes. The default block size is 128 mebibytes (MiB).
   late final pulumi.Output<int?> blockSize;
-  /// The Kerberos key table (keytab) that contains mappings between the defined Kerberos principal and the encrypted keys. Use `kerberos_keytab_base64` instead whenever the value is not a valid UTF-8 string. If `KERBEROS` is specified for `authentication_type`, this parameter (or `kerberos_keytab_base64`) is required.
+  /// The Kerberos key table (keytab) that contains mappings between the defined Kerberos principal and the encrypted keys. Use `kerberosKeytabBase64` instead whenever the value is not a valid UTF-8 string. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKeytabBase64`) is required.
   late final pulumi.Output<String?> kerberosKeytab;
-  /// Use instead of `kerberos_keytab` to pass base64-encoded binary data directly. If `KERBEROS` is specified for `authentication_type`, this parameter (or `kerberos_keytab`) is required.
+  /// Use instead of `kerberosKeytab` to pass base64-encoded binary data directly. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKeytab`) is required.
   late final pulumi.Output<String?> kerberosKeytabBase64;
-  /// The krb5.conf file that contains the Kerberos configuration information. Use `kerberos_krb5_conf_base64` instead whenever the value is not a valid UTF-8 string. If `KERBEROS` is specified for `authentication_type`, this parameter (or `kerberos_krb5_conf_base64`) is required.
+  /// The krb5.conf file that contains the Kerberos configuration information. Use `kerberosKrb5ConfBase64` instead whenever the value is not a valid UTF-8 string. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKrb5ConfBase64`) is required.
   late final pulumi.Output<String?> kerberosKrb5Conf;
-  /// Use instead of `kerberos_krb5_conf` to pass base64-encoded binary data directly. If `KERBEROS` is specified for `authentication_type`, this parameter (or `kerberos_krb5_conf`) is required.
+  /// Use instead of `kerberosKrb5Conf` to pass base64-encoded binary data directly. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKrb5Conf`) is required.
   late final pulumi.Output<String?> kerberosKrb5ConfBase64;
-  /// The Kerberos principal with access to the files and folders on the HDFS cluster. If `KERBEROS` is specified for `authentication_type`, this parameter is required.
+  /// The Kerberos principal with access to the files and folders on the HDFS cluster. If `KERBEROS` is specified for `authenticationType`, this parameter is required.
   late final pulumi.Output<String?> kerberosPrincipal;
   /// The URI of the HDFS cluster's Key Management Server (KMS).
   late final pulumi.Output<String?> kmsKeyProviderUri;
   /// The NameNode that manages the HDFS namespace. The NameNode performs operations such as opening, closing, and renaming files and directories. The NameNode contains the information to map blocks of data to the DataNodes. You can use only one NameNode. See configuration below.
   late final pulumi.Output<List<Map<String, dynamic>>> nameNodes;
-  /// The Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer protection settings configured on the Hadoop Distributed File System (HDFS) cluster. If `qop_configuration` isn't specified, `rpc_protection` and `data_transfer_protection` default to `PRIVACY`. If you set RpcProtection or DataTransferProtection, the other parameter assumes the same value.  See configuration below.
+  /// The Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer protection settings configured on the Hadoop Distributed File System (HDFS) cluster. If `qopConfiguration` isn't specified, `rpcProtection` and `dataTransferProtection` default to `PRIVACY`. If you set RpcProtection or DataTransferProtection, the other parameter assumes the same value.  See configuration below.
   late final pulumi.Output<LocationHdfsQopConfiguration> qopConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The number of DataNodes to replicate the data to when writing to the HDFS cluster. By default, data is replicated to three DataNodes.
   late final pulumi.Output<int?> replicationFactor;
-  /// The user name used to identify the client on the host operating system. If `SIMPLE` is specified for `authentication_type`, this parameter is required.
+  /// The user name used to identify the client on the host operating system. If `SIMPLE` is specified for `authenticationType`, this parameter is required.
   late final pulumi.Output<String?> simpleUser;
   /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
   late final pulumi.Output<String?> subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> uri;
 

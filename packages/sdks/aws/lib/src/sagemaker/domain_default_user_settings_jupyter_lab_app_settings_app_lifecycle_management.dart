@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_default_user_settings_jupyter_lab_app_settings_app_lifecycle_management_idle_settings.dart';
 
 class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
-  /// Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
+  /// Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
   final pulumi.Input<DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
 
   /// Creates a new [DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement].
-  /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
+  /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
   const DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
@@ -25,4 +25,3 @@ class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
     );
   }
 }
-

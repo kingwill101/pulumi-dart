@@ -7,22 +7,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ec2_route_table_association_route_table_association_args_doc}
 class RouteTableAssociationArgs {
-  /// The gateway ID to create an association. Conflicts with `subnet_id`.
+  /// The gateway ID to create an association. Conflicts with `subnetId`.
   final pulumi.Input<String>? gatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// The ID of the routing table to associate with.
   ///
-  /// &gt; **NOTE:** Please note that one of either `subnet_id` or `gateway_id` is required.
+  /// &gt; **NOTE:** Please note that one of either `subnetId` or `gatewayId` is required.
   final pulumi.Input<String> routeTableId;
-  /// The subnet ID to create an association. Conflicts with `gateway_id`.
+  /// The subnet ID to create an association. Conflicts with `gatewayId`.
   final pulumi.Input<String>? subnetId;
 
   /// Creates a new [RouteTableAssociationArgs].
-  /// [gatewayId] The gateway ID to create an association. Conflicts with `subnet_id`.
+  /// [gatewayId] The gateway ID to create an association. Conflicts with `subnetId`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeTableId] The ID of the routing table to associate with.
-  /// [subnetId] The subnet ID to create an association. Conflicts with `gateway_id`.
+  /// [subnetId] The subnet ID to create an association. Conflicts with `gatewayId`.
   const RouteTableAssociationArgs({
     this.gatewayId,
     this.region,
@@ -48,4 +48,3 @@ class RouteTableAssociationArgs {
     );
   }
 }
-

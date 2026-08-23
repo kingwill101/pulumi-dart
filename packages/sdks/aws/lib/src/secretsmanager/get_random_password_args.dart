@@ -9,33 +9,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRandomPasswordArgs {
   /// String of the characters that you don't want in the password.
   final pulumi.Input<String>? excludeCharacters;
-  /// Specifies whether to exclude lowercase letters from the password.
+  /// Whether to exclude lowercase letters from the password.
   final pulumi.Input<bool>? excludeLowercase;
-  /// Specifies whether to exclude numbers from the password.
+  /// Whether to exclude numbers from the password.
   final pulumi.Input<bool>? excludeNumbers;
-  /// Specifies whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ .``
+  /// Whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ .``
   final pulumi.Input<bool>? excludePunctuation;
-  /// Specifies whether to exclude uppercase letters from the password.
+  /// Whether to exclude uppercase letters from the password.
   final pulumi.Input<bool>? excludeUppercase;
-  /// Specifies whether to include the space character.
+  /// Whether to include the space character.
   final pulumi.Input<bool>? includeSpace;
   /// Length of the password.
   final pulumi.Input<int>? passwordLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.
+  /// Whether to include at least one upper and lowercase letter, one number, and one punctuation.
   final pulumi.Input<bool>? requireEachIncludedType;
 
   /// Creates a new [GetRandomPasswordArgs].
   /// [excludeCharacters] String of the characters that you don't want in the password.
-  /// [excludeLowercase] Specifies whether to exclude lowercase letters from the password.
-  /// [excludeNumbers] Specifies whether to exclude numbers from the password.
-  /// [excludePunctuation] Specifies whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ .``
-  /// [excludeUppercase] Specifies whether to exclude uppercase letters from the password.
-  /// [includeSpace] Specifies whether to include the space character.
+  /// [excludeLowercase] Whether to exclude lowercase letters from the password.
+  /// [excludeNumbers] Whether to exclude numbers from the password.
+  /// [excludePunctuation] Whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ .``
+  /// [excludeUppercase] Whether to exclude uppercase letters from the password.
+  /// [includeSpace] Whether to include the space character.
   /// [passwordLength] Length of the password.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [requireEachIncludedType] Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.
+  /// [requireEachIncludedType] Whether to include at least one upper and lowercase letter, one number, and one punctuation.
   const GetRandomPasswordArgs({
     this.excludeCharacters,
     this.excludeLowercase,
@@ -76,4 +76,3 @@ class GetRandomPasswordArgs {
     );
   }
 }
-

@@ -11,8 +11,6 @@ class GetCapacityBlockOfferingResult {
   /// The currency of the payment for the Capacity Block.
   final String currencyCode;
   final String endDateRange;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   final int instanceCount;
   final String instanceType;
   final String region;
@@ -28,7 +26,6 @@ class GetCapacityBlockOfferingResult {
   /// [capacityDurationHours] Required.
   /// [currencyCode] The currency of the payment for the Capacity Block.
   /// [endDateRange] Required.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceCount] Required.
   /// [instanceType] Required.
   /// [region] Required.
@@ -41,7 +38,6 @@ class GetCapacityBlockOfferingResult {
     required this.capacityDurationHours,
     required this.currencyCode,
     required this.endDateRange,
-    required this.id,
     required this.instanceCount,
     required this.instanceType,
     required this.region,
@@ -57,7 +53,6 @@ class GetCapacityBlockOfferingResult {
       'capacityDurationHours': capacityDurationHours,
       'currencyCode': currencyCode,
       'endDateRange': endDateRange,
-      'id': id,
       'instanceCount': instanceCount,
       'instanceType': instanceType,
       'region': region,
@@ -74,7 +69,6 @@ class GetCapacityBlockOfferingResult {
       capacityDurationHours: map['capacityDurationHours'] as int,
       currencyCode: map['currencyCode'] as String,
       endDateRange: map['endDateRange'] as String,
-      id: map['id'] as String,
       instanceCount: map['instanceCount'] as int,
       instanceType: map['instanceType'] as String,
       region: map['region'] as String,
@@ -84,4 +78,3 @@ class GetCapacityBlockOfferingResult {
     );
   }
 }
-

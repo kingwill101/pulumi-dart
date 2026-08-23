@@ -140,13 +140,46 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 		}
 /// 		_, err = cloudfront.NewDistribution(ctx, "production", &cloudfront.DistributionArgs{
 /// 			Enabled:                      pulumi.Bool(true),
-/// 			ContinuousDeploymentPolicyId: example.ID(),
+/// 			ContinuousDeploymentPolicyId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distribution" "staging" {
+///   enabled = true
+///   staging = true
+/// }
+/// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
+///   enabled = true
+///   staging_distribution_dns_names = {
+///     items    = [aws_cloudfront_distribution.staging.domain_name]
+///     quantity = 1
+///   }
+///   traffic_config = {
+///     type = "SingleWeight"
+///     single_weight_config = {
+///       weight = "0.01"
+///     }
+///   }
+/// }
+/// resource "aws_cloudfront_distribution" "production" {
+///   enabled = true
+///   # NOTE: A continuous deployment policy cannot be associated to distribution
+///   # on creation. Set this argument once the resource exists.
+///   continuous_deployment_policy_id = aws_cloudfront_continuousdeploymentpolicy.example.id
 /// }
 /// ```
 /// ```java
@@ -162,8 +195,8 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyTrafficConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -348,6 +381,33 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
+///   enabled = true
+///   staging_distribution_dns_names = {
+///     items    = [staging.domainName]
+///     quantity = 1
+///   }
+///   traffic_config = {
+///     type = "SingleWeight"
+///     single_weight_config = {
+///       weight = "0.01"
+///       session_stickiness_config = {
+///         idle_ttl    = 300
+///         maximum_ttl = 600
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -360,8 +420,8 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyTrafficConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -519,6 +579,30 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
+///   enabled = true
+///   staging_distribution_dns_names = {
+///     items    = [staging.domainName]
+///     quantity = 1
+///   }
+///   traffic_config = {
+///     type = "SingleHeader"
+///     single_header_config = {
+///       header = "aws-cf-cd-example"
+///       value  = "example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -530,8 +614,8 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyTrafficConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,9 +679,9 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Date and time the continuous deployment policy was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-  /// CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
+  /// CloudFront domain name of the staging distribution. See `stagingDistributionDnsNames`.
   late final pulumi.Output<ContinuousDeploymentPolicyStagingDistributionDnsNames> stagingDistributionDnsNames;
-  /// Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
+  /// Parameters for routing production traffic from primary to staging distributions. See `trafficConfig`.
   late final pulumi.Output<ContinuousDeploymentPolicyTrafficConfig?> trafficConfig;
 
   /// Creates a new [ContinuousDeploymentPolicy].

@@ -5,14 +5,14 @@ import 'gateway_route_spec_http2_route_action_rewrite.dart';
 import 'gateway_route_spec_http2_route_action_target.dart';
 
 class GatewayRouteSpecHttp2RouteAction {
-  /// Gateway route action to rewrite.
+  /// Gateway route action to rewrite. See `spec.http2_route.action.rewrite` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewrite>? rewrite;
-  /// Target that traffic is routed to when a request matches the gateway route.
+  /// Target that traffic is routed to when a request matches the gateway route. See `spec.http2_route.action.target` Block for details.
   final pulumi.Input<GatewayRouteSpecHttp2RouteActionTarget> target;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteAction].
-  /// [rewrite] Gateway route action to rewrite.
-  /// [target] Target that traffic is routed to when a request matches the gateway route.
+  /// [rewrite] Gateway route action to rewrite. See `spec.http2_route.action.rewrite` Block for details.
+  /// [target] Target that traffic is routed to when a request matches the gateway route. See `spec.http2_route.action.target` Block for details.
   const GatewayRouteSpecHttp2RouteAction({
     this.rewrite,
     required this.target,
@@ -32,4 +32,3 @@ class GatewayRouteSpecHttp2RouteAction {
     );
   }
 }
-

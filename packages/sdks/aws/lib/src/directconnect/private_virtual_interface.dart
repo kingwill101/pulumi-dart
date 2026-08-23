@@ -73,6 +73,23 @@ import 'private_virtual_interface_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_privatevirtualinterface" "foo" {
+///   connection_id  = "dxcon-zzzzzzzz"
+///   name           = "vif-foo"
+///   vlan           = 4094
+///   address_family = "ipv4"
+///   bgp_asn        = 65352
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +98,8 @@ import 'private_virtual_interface_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.PrivateVirtualInterface;
 /// import com.pulumi.aws.directconnect.PrivateVirtualInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,9 +173,9 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Indicates whether to enable or disable SiteLink.
   late final pulumi.Output<bool?> sitelinkEnabled;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VLAN ID.
   late final pulumi.Output<int> vlan;

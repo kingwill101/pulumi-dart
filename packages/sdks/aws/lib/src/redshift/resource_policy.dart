@@ -98,7 +98,7 @@ import 'resource_policy_state.dart';
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": "arn:aws:iam::12345678901:root",
 /// 					},
 /// 					"Action":   "redshift:CreateInboundIntegration",
@@ -122,6 +122,31 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_resourcepolicy" "example" {
+///   resource_arn = exampleAwsRedshiftCluster.clusterNamespaceArn
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" = "arn:aws:iam::12345678901:root"
+///       }
+///       "Action"   = "redshift:CreateInboundIntegration"
+///       "Resource" = exampleAwsRedshiftCluster.clusterNamespaceArn
+///       "Sid"      = ""
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,8 +156,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.aws.redshift.ResourcePolicy;
 /// import com.pulumi.aws.redshift.ResourcePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,7 +210,7 @@ import 'resource_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Resource Policies using the `resource_arn`. For example:
+/// Using `pulumi import`, import Redshift Resource Policies using the `resourceArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/resourcePolicy:ResourcePolicy example example

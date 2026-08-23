@@ -3,19 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_gateway_authorizer_configuration.dart';
 import 'agentcore_gateway_interceptor_configuration.dart';
+import 'agentcore_gateway_policy_engine_configuration.dart';
 import 'agentcore_gateway_protocol_configuration.dart';
 import 'agentcore_gateway_timeouts.dart';
 import 'agentcore_gateway_workload_identity_detail.dart';
 
 /// Input properties used for looking up and filtering AgentcoreGateway resources.
 class AgentcoreGatewayState {
-  /// Configuration for request authorization. Required when `authorizer_type` is set to `CUSTOM_JWT`. See `authorizer_configuration` below.
+  /// Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
   final pulumi.Input<AgentcoreGatewayAuthorizerConfiguration>? authorizerConfiguration;
-  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizer_configuration` block is required.
+  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   final pulumi.Input<String>? authorizerType;
   /// Description of the gateway.
   final pulumi.Input<String>? description;
-  /// Exception level for the gateway. Valid values: `INFO`, `WARN`, `ERROR`.
+  /// Exception level for the gateway. Valid values: `DEBUG`.
   final pulumi.Input<String>? exceptionLevel;
   /// ARN of the Gateway.
   final pulumi.Input<String>? gatewayArn;
@@ -23,15 +24,17 @@ class AgentcoreGatewayState {
   final pulumi.Input<String>? gatewayId;
   /// URL endpoint for the gateway.
   final pulumi.Input<String>? gatewayUrl;
-  /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptor_configuration` below.
+  /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptorConfiguration` below.
   final pulumi.Input<List<AgentcoreGatewayInterceptorConfiguration>>? interceptorConfigurations;
   /// ARN of the KMS key used to encrypt the gateway data.
   final pulumi.Input<String>? kmsKeyArn;
   /// Name of the gateway.
   final pulumi.Input<String>? name;
-  /// Protocol-specific configuration for the gateway. See `protocol_configuration` below.
+  /// Configuration for a policy engine associated with the gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies. See `policyEngineConfiguration` below.
+  final pulumi.Input<AgentcoreGatewayPolicyEngineConfiguration>? policyEngineConfiguration;
+  /// Protocol-specific configuration for the gateway. See `protocolConfiguration` below.
   final pulumi.Input<AgentcoreGatewayProtocolConfiguration>? protocolConfiguration;
-  /// Protocol type for the gateway. Valid values: `MCP`.
+  /// Protocol type for the gateway. Valid values: `MCP`. Omit this argument to create a gateway that routes traffic directly to HTTP targets such as AgentCore Runtime agents (see `aws.bedrock.AgentcoreGatewayTarget` `target_configuration.http`).
   final pulumi.Input<String>? protocolType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -39,33 +42,34 @@ class AgentcoreGatewayState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? roleArn;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<AgentcoreGatewayTimeouts>? timeouts;
-  /// Workload identity details for the gateway. See `workload_identity_details` below.
+  /// Workload identity details for the gateway. See `workloadIdentityDetails` below.
   final pulumi.Input<List<AgentcoreGatewayWorkloadIdentityDetail>>? workloadIdentityDetails;
 
   /// Creates a new [AgentcoreGatewayState].
-  /// [authorizerConfiguration] Configuration for request authorization. Required when `authorizer_type` is set to `CUSTOM_JWT`. See `authorizer_configuration` below.
-  /// [authorizerType] Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizer_configuration` block is required.
+  /// [authorizerConfiguration] Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
+  /// [authorizerType] Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   /// [description] Description of the gateway.
-  /// [exceptionLevel] Exception level for the gateway. Valid values: `INFO`, `WARN`, `ERROR`.
+  /// [exceptionLevel] Exception level for the gateway. Valid values: `DEBUG`.
   /// [gatewayArn] ARN of the Gateway.
   /// [gatewayId] Unique identifier of the Gateway.
   /// [gatewayUrl] URL endpoint for the gateway.
-  /// [interceptorConfigurations] List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptor_configuration` below.
+  /// [interceptorConfigurations] List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptorConfiguration` below.
   /// [kmsKeyArn] ARN of the KMS key used to encrypt the gateway data.
   /// [name] Name of the gateway.
-  /// [protocolConfiguration] Protocol-specific configuration for the gateway. See `protocol_configuration` below.
-  /// [protocolType] Protocol type for the gateway. Valid values: `MCP`.
+  /// [policyEngineConfiguration] Configuration for a policy engine associated with the gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies. See `policyEngineConfiguration` below.
+  /// [protocolConfiguration] Protocol-specific configuration for the gateway. See `protocolConfiguration` below.
+  /// [protocolType] Protocol type for the gateway. Valid values: `MCP`. Omit this argument to create a gateway that routes traffic directly to HTTP targets such as AgentCore Runtime agents (see `aws.bedrock.AgentcoreGatewayTarget` `target_configuration.http`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the IAM role that the gateway assumes to access AWS services.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
-  /// [workloadIdentityDetails] Workload identity details for the gateway. See `workload_identity_details` below.
+  /// [workloadIdentityDetails] Workload identity details for the gateway. See `workloadIdentityDetails` below.
   const AgentcoreGatewayState({
     this.authorizerConfiguration,
     this.authorizerType,
@@ -77,6 +81,7 @@ class AgentcoreGatewayState {
     this.interceptorConfigurations,
     this.kmsKeyArn,
     this.name,
+    this.policyEngineConfiguration,
     this.protocolConfiguration,
     this.protocolType,
     this.region,
@@ -99,6 +104,7 @@ class AgentcoreGatewayState {
       'interceptorConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentcoreGatewayInterceptorConfiguration>, List<Map<String, dynamic>>>(interceptorConfigurations, (value) => pulumi.Input.encodeList<AgentcoreGatewayInterceptorConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kmsKeyArn': ?kmsKeyArn,
       'name': ?name,
+      'policyEngineConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayPolicyEngineConfiguration, Map<String, dynamic>>(policyEngineConfiguration, (value) => value.toMap()),
       'protocolConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayProtocolConfiguration, Map<String, dynamic>>(protocolConfiguration, (value) => value.toMap()),
       'protocolType': ?protocolType,
       'region': ?region,
@@ -122,6 +128,7 @@ class AgentcoreGatewayState {
       interceptorConfigurations: (() { final guardedValue = map['interceptorConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(guardedValue, (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyEngineConfiguration: (() { final guardedValue = map['policyEngineConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayPolicyEngineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocolConfiguration: (() { final guardedValue = map['protocolConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -133,4 +140,3 @@ class AgentcoreGatewayState {
     );
   }
 }
-

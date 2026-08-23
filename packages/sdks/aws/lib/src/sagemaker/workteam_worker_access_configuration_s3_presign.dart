@@ -25,4 +25,3 @@ class WorkteamWorkerAccessConfigurationS3Presign {
     );
   }
 }
-

@@ -80,14 +80,14 @@ import 'webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		master, err := amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:      example.ID(),
+/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchName: pulumi.String("master"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewWebhook(ctx, "master", &amplify.WebhookArgs{
-/// 			AppId:       example.ID(),
+/// 			AppId:       example.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchName:  master.BranchName,
 /// 			Description: pulumi.String("triggermaster"),
 /// 		})
@@ -96,6 +96,28 @@ import 'webhook_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amplify_app" "example" {
+///   name = "app"
+/// }
+/// resource "aws_amplify_branch" "master" {
+///   app_id      = aws_amplify_app.example.id
+///   branch_name = "master"
+/// }
+/// resource "aws_amplify_webhook" "master" {
+///   app_id      = aws_amplify_app.example.id
+///   branch_name = aws_amplify_branch.master.branch_name
+///   description = "triggermaster"
 /// }
 /// ```
 /// ```java
@@ -110,8 +132,8 @@ import 'webhook_state.dart';
 /// import com.pulumi.aws.amplify.BranchArgs;
 /// import com.pulumi.aws.amplify.Webhook;
 /// import com.pulumi.aws.amplify.WebhookArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

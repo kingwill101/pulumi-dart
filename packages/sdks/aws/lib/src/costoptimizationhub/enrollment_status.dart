@@ -53,6 +53,18 @@ import 'enrollment_status_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costoptimizationhub_enrollmentstatus" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -60,8 +72,8 @@ import 'enrollment_status_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costoptimizationhub.EnrollmentStatus;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,6 +147,19 @@ import 'enrollment_status_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costoptimizationhub_enrollmentstatus" "example" {
+///   include_member_accounts = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +168,8 @@ import 'enrollment_status_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costoptimizationhub.EnrollmentStatus;
 /// import com.pulumi.aws.costoptimizationhub.EnrollmentStatusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

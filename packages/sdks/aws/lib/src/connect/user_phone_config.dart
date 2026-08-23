@@ -7,7 +7,7 @@ class UserPhoneConfig {
   final pulumi.Input<int>? afterContactWorkTimeLimit;
   /// When Auto-Accept Call is enabled for an available agent, the agent connects to contacts automatically.
   final pulumi.Input<bool>? autoAccept;
-  /// The phone number for the user's desk phone. Required if `phone_type` is set as `DESK_PHONE`.
+  /// The phone number for the user's desk phone. Required if `phoneType` is set as `DESK_PHONE`.
   final pulumi.Input<String>? deskPhoneNumber;
   /// The phone type. Valid values are `DESK_PHONE` and `SOFT_PHONE`.
   final pulumi.Input<String> phoneType;
@@ -15,7 +15,7 @@ class UserPhoneConfig {
   /// Creates a new [UserPhoneConfig].
   /// [afterContactWorkTimeLimit] The After Call Work (ACW) timeout setting, in seconds. Minimum value of 0.
   /// [autoAccept] When Auto-Accept Call is enabled for an available agent, the agent connects to contacts automatically.
-  /// [deskPhoneNumber] The phone number for the user's desk phone. Required if `phone_type` is set as `DESK_PHONE`.
+  /// [deskPhoneNumber] The phone number for the user's desk phone. Required if `phoneType` is set as `DESK_PHONE`.
   /// [phoneType] The phone type. Valid values are `DESK_PHONE` and `SOFT_PHONE`.
   const UserPhoneConfig({
     this.afterContactWorkTimeLimit,
@@ -42,4 +42,3 @@ class UserPhoneConfig {
     );
   }
 }
-

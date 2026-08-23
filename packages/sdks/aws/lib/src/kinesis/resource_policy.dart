@@ -134,6 +134,38 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_resourcepolicy" "example" {
+///   resource_arn = exampleAwsKinesisStream.arn
+///   policy       ="{
+///   \"Version\": \"2012-10-17\",
+///   \"Id\": \"writePolicy\",
+///   \"Statement\": [{
+///     \"Sid\": \"writestatement\",
+///     \"Effect\": \"Allow\",
+///     \"Principal\": {
+///       \"AWS\": \"123456789456\"
+///     },
+///     \"Action\": [
+///       \"kinesis:DescribeStreamSummary\",
+///       \"kinesis:ListShards\",
+///       \"kinesis:PutRecord\",
+///       \"kinesis:PutRecords\"
+///     ],
+///     \"Resource\": \"${exampleAwsKinesisStream.arn}\"
+///   }]
+/// }
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +174,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.ResourcePolicy;
 /// import com.pulumi.aws.kinesis.ResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,10 +248,10 @@ import 'resource_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Kinesis stream.
+/// - `resourceArn` (String) Amazon Resource Name (ARN) of the Kinesis stream.
 ///
 ///
-/// Using `pulumi import`, import Kinesis resource policies using the `resource_arn`. For example:
+/// Using `pulumi import`, import Kinesis resource policies using the `resourceArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:kinesis/resourcePolicy:ResourcePolicy example arn:aws:kinesis:us-west-2:123456789012:stream/example

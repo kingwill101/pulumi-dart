@@ -42,4 +42,3 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2Provid
     );
   }
 }
-

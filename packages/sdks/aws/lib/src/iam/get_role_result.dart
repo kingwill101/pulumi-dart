@@ -22,7 +22,7 @@ class GetRoleResult {
   final String path;
   /// The ARN of the policy that is used to set the permissions boundary for the role.
   final String permissionsBoundary;
-  /// Contains information about the last time that an IAM role was used. See `role_last_used` for details.
+  /// Contains information about the last time that an IAM role was used. See `roleLastUsed` for details.
   final List<GetRoleRoleLastUsed> roleLastUseds;
   /// Tags attached to the role.
   final Map<String, String> tags;
@@ -39,7 +39,7 @@ class GetRoleResult {
   /// [name] Required.
   /// [path] Path to the role.
   /// [permissionsBoundary] The ARN of the policy that is used to set the permissions boundary for the role.
-  /// [roleLastUseds] Contains information about the last time that an IAM role was used. See `role_last_used` for details.
+  /// [roleLastUseds] Contains information about the last time that an IAM role was used. See `roleLastUsed` for details.
   /// [tags] Tags attached to the role.
   /// [uniqueId] Stable and unique string identifying the role.
   const GetRoleResult({
@@ -91,4 +91,3 @@ class GetRoleResult {
     );
   }
 }
-

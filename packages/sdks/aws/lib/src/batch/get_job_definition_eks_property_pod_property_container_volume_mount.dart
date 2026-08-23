@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyContainerVolumeMount {
-  /// The path on the container where the volume is mounted.
+  /// Path on the container where the volume is mounted.
   final pulumi.Input<String> mountPath;
-  /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
   /// If this value is true, the container has read-only access to the volume.
   final pulumi.Input<bool> readOnly;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyContainerVolumeMount].
-  /// [mountPath] The path on the container where the volume is mounted.
-  /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// [mountPath] Path on the container where the volume is mounted.
+  /// [name] Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   /// [readOnly] If this value is true, the container has read-only access to the volume.
   const GetJobDefinitionEksPropertyPodPropertyContainerVolumeMount({
     required this.mountPath,
@@ -36,4 +36,3 @@ class GetJobDefinitionEksPropertyPodPropertyContainerVolumeMount {
     );
   }
 }
-

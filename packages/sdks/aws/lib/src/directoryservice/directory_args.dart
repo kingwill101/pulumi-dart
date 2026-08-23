@@ -9,7 +9,7 @@ import 'directory_vpc_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_directoryservice_directory_directory_args_doc}
 class DirectoryArgs {
-  /// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enable_sso`.
+  /// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
   final pulumi.Input<String>? alias;
   /// Connector related information about the directory. Fields documented below.
   final pulumi.Input<DirectoryConnectSettings>? connectSettings;
@@ -19,6 +19,8 @@ class DirectoryArgs {
   final pulumi.Input<int>? desiredNumberOfDomainControllers;
   /// The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise`.
   final pulumi.Input<String>? edition;
+  /// Enables access to directory data via the Directory Service Data API for the specified directory. For more information, see [Directory Service Data API Reference](https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html).
+  final pulumi.Input<bool>? enableDirectoryDataAccess;
   /// Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
   final pulumi.Input<bool>? enableSso;
   /// The fully qualified name for the directory, such as `corp.example.com`
@@ -31,7 +33,7 @@ class DirectoryArgs {
   final pulumi.Input<String>? shortName;
   /// (For `SimpleAD` and `ADConnector` types) The size of the directory (`Small` or `Large` are accepted values). `Large` by default.
   final pulumi.Input<String>? size;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
   final pulumi.Input<String>? type;
@@ -39,18 +41,19 @@ class DirectoryArgs {
   final pulumi.Input<DirectoryVpcSettings>? vpcSettings;
 
   /// Creates a new [DirectoryArgs].
-  /// [alias] The alias for the directory (must be unique amongst all aliases in AWS). Required for `enable_sso`.
+  /// [alias] The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
   /// [connectSettings] Connector related information about the directory. Fields documented below.
   /// [description] A textual description for the directory.
   /// [desiredNumberOfDomainControllers] The number of domain controllers desired in the directory. Minimum value of `2`. Scaling of domain controllers is only supported for `MicrosoftAD` directories.
   /// [edition] The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise`.
+  /// [enableDirectoryDataAccess] Enables access to directory data via the Directory Service Data API for the specified directory. For more information, see [Directory Service Data API Reference](https://docs.aws.amazon.com/directoryservicedata/latest/DirectoryServiceDataAPIReference/Welcome.html).
   /// [enableSso] Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
   /// [name] The fully qualified name for the directory, such as `corp.example.com`
   /// [password] The password for the directory administrator or connector user.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [shortName] The short name of the directory, such as `CORP`.
   /// [size] (For `SimpleAD` and `ADConnector` types) The size of the directory (`Small` or `Large` are accepted values). `Large` by default.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
   /// [vpcSettings] VPC related information about the directory. Fields documented below.
   const DirectoryArgs({
@@ -59,6 +62,7 @@ class DirectoryArgs {
     this.description,
     this.desiredNumberOfDomainControllers,
     this.edition,
+    this.enableDirectoryDataAccess,
     this.enableSso,
     required this.name,
     required this.password,
@@ -77,6 +81,7 @@ class DirectoryArgs {
       'description': ?description,
       'desiredNumberOfDomainControllers': ?desiredNumberOfDomainControllers,
       'edition': ?edition,
+      'enableDirectoryDataAccess': ?enableDirectoryDataAccess,
       'enableSso': ?enableSso,
       'name': name,
       'password': password,
@@ -96,6 +101,7 @@ class DirectoryArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredNumberOfDomainControllers: (() { final guardedValue = map['desiredNumberOfDomainControllers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableDirectoryDataAccess: (() { final guardedValue = map['enableDirectoryDataAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableSso: (() { final guardedValue = map['enableSso']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
@@ -108,4 +114,3 @@ class DirectoryArgs {
     );
   }
 }
-

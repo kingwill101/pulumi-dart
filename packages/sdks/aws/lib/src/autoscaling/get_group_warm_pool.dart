@@ -6,6 +6,7 @@ import 'get_group_warm_pool_instance_reuse_policy.dart';
 class GetGroupWarmPool {
   /// List of instance reuse policy objects.
   final pulumi.Input<List<GetGroupWarmPoolInstanceReusePolicy>> instanceReusePolicies;
+  /// Total maximum number of instances that are allowed to be in the warm pool or in any state except Terminated for the Auto Scaling group.
   final pulumi.Input<int> maxGroupPreparedCapacity;
   /// Minimum number of instances to maintain in the warm pool.
   final pulumi.Input<int> minSize;
@@ -14,7 +15,7 @@ class GetGroupWarmPool {
 
   /// Creates a new [GetGroupWarmPool].
   /// [instanceReusePolicies] List of instance reuse policy objects.
-  /// [maxGroupPreparedCapacity] Required.
+  /// [maxGroupPreparedCapacity] Total maximum number of instances that are allowed to be in the warm pool or in any state except Terminated for the Auto Scaling group.
   /// [minSize] Minimum number of instances to maintain in the warm pool.
   /// [poolState] Instance state to transition to after the lifecycle actions are complete.
   const GetGroupWarmPool({
@@ -42,4 +43,3 @@ class GetGroupWarmPool {
     );
   }
 }
-

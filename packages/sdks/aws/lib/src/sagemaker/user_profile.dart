@@ -64,6 +64,20 @@ import 'user_profile_user_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_userprofile" "example" {
+///   domain_id         = test.id
+///   user_profile_name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'user_profile_user_settings.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.UserProfile;
 /// import com.pulumi.aws.sagemaker.UserProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -109,12 +123,12 @@ import 'user_profile_user_settings.dart';
 ///
 /// #### Required
 ///
-/// * `domain_id` (String) SageMaker domain ID.
-/// * `user_profile_name` (String) Name of the user profile.
+/// * `domainId` (String) SageMaker domain ID.
+/// * `userProfileName` (String) Name of the user profile.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -132,13 +146,13 @@ class UserProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> homeEfsFileSystemUid;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A specifier for the type of value specified in `single_sign_on_user_value`. Currently, the only supported value is `UserName`. If the Domain's AuthMode is SSO, this field is required. If the Domain's AuthMode is not SSO, this field cannot be specified.
+  /// A specifier for the type of value specified in `singleSignOnUserValue`. Currently, the only supported value is `UserName`. If the Domain's AuthMode is SSO, this field is required. If the Domain's AuthMode is not SSO, this field cannot be specified.
   late final pulumi.Output<String?> singleSignOnUserIdentifier;
   /// The username of the associated AWS Single Sign-On User for this User Profile. If the Domain's AuthMode is SSO, this field is required, and must match a valid username of a user in your directory. If the Domain's AuthMode is not SSO, this field cannot be specified.
   late final pulumi.Output<String?> singleSignOnUserValue;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The name for the User Profile.
   late final pulumi.Output<String> userProfileName;

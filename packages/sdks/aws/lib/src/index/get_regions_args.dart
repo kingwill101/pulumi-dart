@@ -12,13 +12,13 @@ class GetRegionsArgs {
   final pulumi.Input<bool>? allRegions;
   /// Configuration block(s) to use as filters. Detailed below.
   final pulumi.Input<List<GetRegionsFilter>>? filters;
-  /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
+  /// (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final pulumi.Input<String>? id;
 
   /// Creates a new [GetRegionsArgs].
   /// [allRegions] If true the source will query all regions regardless of availability.
   /// [filters] Configuration block(s) to use as filters. Detailed below.
-  /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
+  /// [id] (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   const GetRegionsArgs({
     this.allRegions,
     this.filters,
@@ -41,4 +41,3 @@ class GetRegionsArgs {
     );
   }
 }
-

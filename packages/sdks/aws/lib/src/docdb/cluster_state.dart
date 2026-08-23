@@ -17,13 +17,13 @@ class ClusterState {
   final pulumi.Input<String>? arn;
   /// A list of EC2 Availability Zones that instances in the DB cluster can be created in.
   /// DocumentDB automatically assigns 3 AZs if less than 3 AZs are configured, which will show as a difference requiring resource recreation next pulumi up.
-  /// We recommend specifying 3 AZs or using the `lifecycle` configuration block `ignore_changes` argument if necessary.
+  /// We recommend specifying 3 AZs or using the `lifecycle` configuration block `ignoreChanges` argument if necessary.
   final pulumi.Input<List<String>>? availabilityZones;
   /// The days to retain backups for. Default `1`
   final pulumi.Input<int>? backupRetentionPeriod;
   /// The cluster identifier. If omitted, the provider will assign a random, unique identifier.
   final pulumi.Input<String>? clusterIdentifier;
-  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
+  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `clusterIdentifier`.
   final pulumi.Input<String>? clusterIdentifierPrefix;
   /// List of DocumentDB Instances that are a part of this cluster
   final pulumi.Input<List<String>>? clusterMembers;
@@ -52,18 +52,18 @@ class ClusterState {
   final pulumi.Input<String>? globalClusterIdentifier;
   /// The Route53 Hosted Zone ID of the endpoint
   final pulumi.Input<String>? hostedZoneId;
-  /// The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
+  /// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.
   final pulumi.Input<String>? kmsKeyId;
-  /// Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `master_password` or `master_password_wo` is provided.
+  /// Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `masterPassword` or `masterPasswordWo` is provided.
   final pulumi.Input<bool>? manageMasterUserPassword;
   /// Password for the master DB user. Note that this may
-  /// show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `master_password_wo` and `manage_master_user_password`.
+  /// show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
   final pulumi.Input<String>? masterPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Password for the master DB user. Note that this may
-  /// show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `master_password` and `manage_master_user_password`.
+  /// show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`.
   final pulumi.Input<String>? masterPasswordWo;
-  /// Used together with `master_password_wo` to trigger an update. Increment this value when an update to the `master_password_wo` is required.
+  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
   final pulumi.Input<int>? masterPasswordWoVersion;
   final pulumi.Input<List<ClusterMasterUserSecret>>? masterUserSecrets;
   /// Username for the master DB user.
@@ -85,7 +85,7 @@ class ClusterState {
   final pulumi.Input<ClusterRestoreToPointInTime>? restoreToPointInTime;
   /// Scaling configuration of an Amazon DocumentDB Serverless cluster. See Serverless V2 Scaling Configuration below for details.
   final pulumi.Input<ClusterServerlessV2ScalingConfiguration>? serverlessV2ScalingConfiguration;
-  /// Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
+  /// Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
   final pulumi.Input<bool>? skipFinalSnapshot;
   /// Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   final pulumi.Input<String>? snapshotIdentifier;
@@ -93,9 +93,9 @@ class ClusterState {
   final pulumi.Input<bool>? storageEncrypted;
   /// The storage type to associate with the DB cluster. Valid values: `standard`, `iopt1`.
   final pulumi.Input<String>? storageType;
-  /// A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the DB cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// List of VPC security groups to associate
   /// with the Cluster
@@ -111,7 +111,7 @@ class ClusterState {
   /// [availabilityZones] A list of EC2 Availability Zones that instances in the DB cluster can be created in.
   /// [backupRetentionPeriod] The days to retain backups for. Default `1`
   /// [clusterIdentifier] The cluster identifier. If omitted, the provider will assign a random, unique identifier.
-  /// [clusterIdentifierPrefix] Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
+  /// [clusterIdentifierPrefix] Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `clusterIdentifier`.
   /// [clusterMembers] List of DocumentDB Instances that are a part of this cluster
   /// [clusterResourceId] The DocumentDB Cluster Resource ID
   /// [dbClusterParameterGroupName] A cluster parameter group to associate with the cluster.
@@ -124,11 +124,11 @@ class ClusterState {
   /// [finalSnapshotIdentifier] The name of your final DB snapshot
   /// [globalClusterIdentifier] The global cluster identifier specified on `aws.docdb.GlobalCluster`.
   /// [hostedZoneId] The Route53 Hosted Zone ID of the endpoint
-  /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
-  /// [manageMasterUserPassword] Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `master_password` or `master_password_wo` is provided.
+  /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.
+  /// [manageMasterUserPassword] Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `masterPassword` or `masterPasswordWo` is provided.
   /// [masterPassword] Password for the master DB user. Note that this may
   /// [masterPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [masterPasswordWoVersion] Used together with `master_password_wo` to trigger an update. Increment this value when an update to the `master_password_wo` is required.
+  /// [masterPasswordWoVersion] Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
   /// [masterUserSecrets] Optional.
   /// [masterUsername] Username for the master DB user.
   /// [networkType] The network type of the DB cluster (`IPV4` or `DUAL`).
@@ -139,12 +139,12 @@ class ClusterState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restoreToPointInTime] A configuration block for restoring a DB instance to an arbitrary point in time. Requires the `identifier` argument to be set with the name of the new DB instance to be created. See Restore To Point In Time below for details.
   /// [serverlessV2ScalingConfiguration] Scaling configuration of an Amazon DocumentDB Serverless cluster. See Serverless V2 Scaling Configuration below for details.
-  /// [skipFinalSnapshot] Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
+  /// [skipFinalSnapshot] Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
   /// [snapshotIdentifier] Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   /// [storageEncrypted] Specifies whether the DB cluster is encrypted. The default is `false`.
   /// [storageType] The storage type to associate with the DB cluster. Valid values: `standard`, `iopt1`.
-  /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate
   const ClusterState({
     this.allowMajorVersionUpgrade,
@@ -282,4 +282,3 @@ class ClusterState {
     );
   }
 }
-

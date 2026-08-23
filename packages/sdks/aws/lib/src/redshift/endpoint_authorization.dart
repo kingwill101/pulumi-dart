@@ -61,6 +61,20 @@ import 'endpoint_authorization_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_endpointauthorization" "example" {
+///   account            = "01234567910"
+///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'endpoint_authorization_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.EndpointAuthorization;
 /// import com.pulumi.aws.redshift.EndpointAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

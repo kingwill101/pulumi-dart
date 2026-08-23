@@ -54,6 +54,19 @@ import 'license_grant_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_licensemanager_licensegrantaccepter" "test" {
+///   grant_arn = "arn:aws:license-manager::123456789012:grant:g-1cf9fba4ba2f42dcab11c686c4b4d329"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'license_grant_accepter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.licensemanager.LicenseGrantAccepter;
 /// import com.pulumi.aws.licensemanager.LicenseGrantAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -60,6 +60,19 @@ import 'get_environment_blueprint_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_datazone_getdomain" "example" {
+///   name = "example_domain"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_environment_blueprint_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datazone.DatazoneFunctions;
 /// import com.pulumi.aws.datazone.inputs.GetDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,12 +197,32 @@ Future<GetDomainResult> getDomain(
 /// 			return err
 /// 		}
 /// 		_ = datazone.GetEnvironmentBlueprintOutput(ctx, datazone.GetEnvironmentBlueprintOutputArgs{
-/// 			DomainId: exampleDomain.ID(),
+/// 			DomainId: exampleDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:     pulumi.String("DefaultDataLake"),
 /// 			Managed:  pulumi.Bool(true),
 /// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_datazone_getenvironmentblueprint" "example" {
+///   domain_id = aws_datazone_domain.example.id
+///   name      = "DefaultDataLake"
+///   managed   = true
+/// }
+///
+/// resource "aws_datazone_domain" "example" {
+///   name                  = "example_domain"
+///   domain_execution_role = domainExecutionRole.arn
 /// }
 /// ```
 /// ```java
@@ -202,8 +235,8 @@ Future<GetDomainResult> getDomain(
 /// import com.pulumi.aws.datazone.DomainArgs;
 /// import com.pulumi.aws.datazone.DatazoneFunctions;
 /// import com.pulumi.aws.datazone.inputs.GetEnvironmentBlueprintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

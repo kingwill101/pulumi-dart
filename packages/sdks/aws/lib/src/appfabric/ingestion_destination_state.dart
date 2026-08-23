@@ -7,33 +7,35 @@ import 'ingestion_destination_timeouts.dart';
 
 /// Input properties used for looking up and filtering IngestionDestination resources.
 class IngestionDestinationState {
-  /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String>? appBundleArn;
   /// ARN of the Ingestion Destination.
   final pulumi.Input<String>? arn;
-  /// Contains information about the destination of ingested data.
+  /// Configuration for the destination of ingested data. See `destinationConfiguration` Block below.
   final pulumi.Input<IngestionDestinationDestinationConfiguration>? destinationConfiguration;
-  /// The Amazon Resource Name (ARN) of the ingestion to use for the request.
+  /// Amazon Resource Name (ARN) of the ingestion to use for the request.
   final pulumi.Input<String>? ingestionArn;
-  /// Contains information about how ingested data is processed.
+  /// Configuration for how ingested data is processed. See `processingConfiguration` Block below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<IngestionDestinationProcessingConfiguration>? processingConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<IngestionDestinationTimeouts>? timeouts;
 
   /// Creates a new [IngestionDestinationState].
-  /// [appBundleArn] The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
   /// [arn] ARN of the Ingestion Destination.
-  /// [destinationConfiguration] Contains information about the destination of ingested data.
-  /// [ingestionArn] The Amazon Resource Name (ARN) of the ingestion to use for the request.
-  /// [processingConfiguration] Contains information about how ingested data is processed.
+  /// [destinationConfiguration] Configuration for the destination of ingested data. See `destinationConfiguration` Block below.
+  /// [ingestionArn] Amazon Resource Name (ARN) of the ingestion to use for the request.
+  /// [processingConfiguration] Configuration for how ingested data is processed. See `processingConfiguration` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const IngestionDestinationState({
     this.appBundleArn,
@@ -75,4 +77,3 @@ class IngestionDestinationState {
     );
   }
 }
-

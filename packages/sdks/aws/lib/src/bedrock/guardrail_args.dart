@@ -35,7 +35,7 @@ class GuardrailArgs {
   final pulumi.Input<String>? region;
   /// Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
   final pulumi.Input<GuardrailSensitiveInformationPolicyConfig>? sensitiveInformationPolicyConfig;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<GuardrailTimeouts>? timeouts;
   /// Topic policy config for a guardrail. See Topic Policy Config for more information.
@@ -54,7 +54,7 @@ class GuardrailArgs {
   /// [name] Name of the guardrail.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sensitiveInformationPolicyConfig] Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [topicPolicyConfig] Topic policy config for a guardrail. See Topic Policy Config for more information.
   /// [wordPolicyConfig] Word policy config for a guardrail. See Word Policy Config for more information.
@@ -113,4 +113,3 @@ class GuardrailArgs {
     );
   }
 }
-

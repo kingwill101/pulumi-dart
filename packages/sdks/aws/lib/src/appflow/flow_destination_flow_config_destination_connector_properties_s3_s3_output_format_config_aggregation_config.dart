@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig {
-  /// Whether Amazon AppFlow aggregates the flow records into a single file, or leave them unaggregated. Valid values are `None` and `SingleFile`.
+  /// Whether Amazon AppFlow aggregates the flow records into a single file, or leaves them unaggregated. Valid values are `None` and `SingleFile`.
   final pulumi.Input<String>? aggregationType;
-  /// The desired file size, in MB, for each output file that Amazon AppFlow writes to the flow destination. Integer value.
+  /// Desired file size, in MB, for each output file that Amazon AppFlow writes to the flow destination.
   final pulumi.Input<int>? targetFileSize;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig].
-  /// [aggregationType] Whether Amazon AppFlow aggregates the flow records into a single file, or leave them unaggregated. Valid values are `None` and `SingleFile`.
-  /// [targetFileSize] The desired file size, in MB, for each output file that Amazon AppFlow writes to the flow destination. Integer value.
+  /// [aggregationType] Whether Amazon AppFlow aggregates the flow records into a single file, or leaves them unaggregated. Valid values are `None` and `SingleFile`.
+  /// [targetFileSize] Desired file size, in MB, for each output file that Amazon AppFlow writes to the flow destination.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig({
     this.aggregationType,
     this.targetFileSize,
@@ -30,4 +30,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatCon
     );
   }
 }
-

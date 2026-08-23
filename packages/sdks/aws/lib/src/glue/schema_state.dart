@@ -24,13 +24,13 @@ class SchemaState {
   final pulumi.Input<String>? registryName;
   /// The version number of the checkpoint (the last time the compatibility mode was changed).
   final pulumi.Input<int>? schemaCheckpoint;
-  /// The schema definition using the `data_format` setting for `schema_name`.
+  /// The schema definition using the `dataFormat` setting for `schemaName`.
   final pulumi.Input<String>? schemaDefinition;
   /// The Name of the schema.
   final pulumi.Input<String>? schemaName;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [SchemaState].
@@ -44,10 +44,10 @@ class SchemaState {
   /// [registryArn] The ARN of the Glue Registry to create the schema in.
   /// [registryName] The name of the Glue Registry.
   /// [schemaCheckpoint] The version number of the checkpoint (the last time the compatibility mode was changed).
-  /// [schemaDefinition] The schema definition using the `data_format` setting for `schema_name`.
+  /// [schemaDefinition] The schema definition using the `dataFormat` setting for `schemaName`.
   /// [schemaName] The Name of the schema.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const SchemaState({
     this.arn,
     this.compatibility,
@@ -103,4 +103,3 @@ class SchemaState {
     );
   }
 }
-

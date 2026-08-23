@@ -4,28 +4,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering SecurityGroupRule resources.
 class SecurityGroupRuleState {
-  /// List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
+  /// List of CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
   final pulumi.Input<List<String>>? cidrBlocks;
   /// Description of the rule.
   final pulumi.Input<String>? description;
   /// Start port (or ICMP type number if protocol is "icmp" or "icmpv6").
   final pulumi.Input<int>? fromPort;
-  /// List of IPv6 CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
+  /// List of IPv6 CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
   final pulumi.Input<List<String>>? ipv6CidrBlocks;
   /// List of Prefix List IDs.
   final pulumi.Input<List<String>>? prefixListIds;
   /// Protocol. If not icmp, icmpv6, tcp, udp, or all use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
   final pulumi.Input<String>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// &gt; **Note** Although `cidr_blocks`, `ipv6_cidr_blocks`, `prefix_list_ids`, and `source_security_group_id` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
+  /// &gt; **Note** Although `cidrBlocks`, `ipv6CidrBlocks`, `prefixListIds`, and `sourceSecurityGroupId` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
   final pulumi.Input<String>? region;
   /// Security group to apply this rule to.
   final pulumi.Input<String>? securityGroupId;
   /// If the `aws.ec2.SecurityGroupRule` resource has a single source or destination then this is the AWS Security Group Rule resource ID. Otherwise it is empty.
   final pulumi.Input<String>? securityGroupRuleId;
-  /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `source_security_group_id`.
+  /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `sourceSecurityGroupId`.
   final pulumi.Input<bool>? self;
-  /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `self`.
+  /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `self`.
   final pulumi.Input<String>? sourceSecurityGroupId;
   /// End port (or ICMP code if protocol is "icmp").
   final pulumi.Input<int>? toPort;
@@ -36,17 +36,17 @@ class SecurityGroupRuleState {
   final pulumi.Input<String>? type;
 
   /// Creates a new [SecurityGroupRuleState].
-  /// [cidrBlocks] List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
+  /// [cidrBlocks] List of CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
   /// [description] Description of the rule.
   /// [fromPort] Start port (or ICMP type number if protocol is "icmp" or "icmpv6").
-  /// [ipv6CidrBlocks] List of IPv6 CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
+  /// [ipv6CidrBlocks] List of IPv6 CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
   /// [prefixListIds] List of Prefix List IDs.
   /// [protocol] Protocol. If not icmp, icmpv6, tcp, udp, or all use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupId] Security group to apply this rule to.
   /// [securityGroupRuleId] If the `aws.ec2.SecurityGroupRule` resource has a single source or destination then this is the AWS Security Group Rule resource ID. Otherwise it is empty.
-  /// [self] Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `source_security_group_id`.
-  /// [sourceSecurityGroupId] Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `self`.
+  /// [self] Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `sourceSecurityGroupId`.
+  /// [sourceSecurityGroupId] Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `self`.
   /// [toPort] End port (or ICMP code if protocol is "icmp").
   /// [type] Type of rule being created. Valid options are `ingress` (inbound)
   const SecurityGroupRuleState({
@@ -101,4 +101,3 @@ class SecurityGroupRuleState {
     );
   }
 }
-

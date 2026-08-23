@@ -13,7 +13,7 @@ class SpaceState {
   final pulumi.Input<String>? domainId;
   /// The ID of the space's profile in the Amazon Elastic File System volume.
   final pulumi.Input<String>? homeEfsFileSystemUid;
-  /// A collection of ownership settings. Required if `space_sharing_settings` is set. See `ownership_settings` Block below.
+  /// A collection of ownership settings. Required if `spaceSharingSettings` is set. See `ownershipSettings` Block below.
   final pulumi.Input<SpaceOwnershipSettings>? ownershipSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -21,13 +21,13 @@ class SpaceState {
   final pulumi.Input<String>? spaceDisplayName;
   /// The name of the space.
   final pulumi.Input<String>? spaceName;
-  /// A collection of space settings. See `space_settings` Block below.
+  /// A collection of space settings. See `spaceSettings` Block below.
   final pulumi.Input<SpaceSpaceSettings>? spaceSettings;
-  /// A collection of space sharing settings. Required if `ownership_settings` is set. See `space_sharing_settings` Block below.
+  /// A collection of space sharing settings. Required if `ownershipSettings` is set. See `spaceSharingSettings` Block below.
   final pulumi.Input<SpaceSpaceSharingSettings>? spaceSharingSettings;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Returns the URL of the space. If the space is created with Amazon Web Services IAM Identity Center (Successor to Amazon Web Services Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through Amazon Web Services IAM Identity Center.
   final pulumi.Input<String>? url;
@@ -36,14 +36,14 @@ class SpaceState {
   /// [arn] The space's Amazon Resource Name (ARN).
   /// [domainId] The ID of the associated Domain.
   /// [homeEfsFileSystemUid] The ID of the space's profile in the Amazon Elastic File System volume.
-  /// [ownershipSettings] A collection of ownership settings. Required if `space_sharing_settings` is set. See `ownership_settings` Block below.
+  /// [ownershipSettings] A collection of ownership settings. Required if `spaceSharingSettings` is set. See `ownershipSettings` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceDisplayName] The name of the space that appears in the SageMaker AI Studio UI.
   /// [spaceName] The name of the space.
-  /// [spaceSettings] A collection of space settings. See `space_settings` Block below.
-  /// [spaceSharingSettings] A collection of space sharing settings. Required if `ownership_settings` is set. See `space_sharing_settings` Block below.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [spaceSettings] A collection of space settings. See `spaceSettings` Block below.
+  /// [spaceSharingSettings] A collection of space sharing settings. Required if `ownershipSettings` is set. See `spaceSharingSettings` Block below.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [url] Returns the URL of the space. If the space is created with Amazon Web Services IAM Identity Center (Successor to Amazon Web Services Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through Amazon Web Services IAM Identity Center.
   const SpaceState({
     this.arn,
@@ -94,4 +94,3 @@ class SpaceState {
     );
   }
 }
-

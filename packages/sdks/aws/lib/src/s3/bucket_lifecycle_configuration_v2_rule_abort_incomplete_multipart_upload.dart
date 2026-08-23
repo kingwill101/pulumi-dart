@@ -24,4 +24,3 @@ class BucketLifecycleConfigurationV2RuleAbortIncompleteMultipartUpload {
     );
   }
 }
-

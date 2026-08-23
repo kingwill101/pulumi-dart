@@ -165,6 +165,38 @@ import 'dev_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["glue.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_devendpoint" "example" {
+///   name     = "foo"
+///   role_arn = aws_iam_role.example.arn
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "AWSGlueServiceRole-foo"
+///   assume_role_policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example-AWSGlueServiceRole" {
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
+///   role       = aws_iam_role.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,14 +205,16 @@ import 'dev_endpoint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.glue.DevEndpoint;
 /// import com.pulumi.aws.glue.DevEndpointArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,7 +312,7 @@ class DevEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> glueVersion;
   /// The name of this endpoint. It must be unique in your account.
   late final pulumi.Output<String> name;
-  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
+  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `workerType`.
   late final pulumi.Output<int?> numberOfNodes;
   /// The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
   late final pulumi.Output<int?> numberOfWorkers;
@@ -302,9 +336,9 @@ class DevEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// The subnet ID for the new endpoint to use.
   late final pulumi.Output<String?> subnetId;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// he ID of the VPC used by this endpoint.
   late final pulumi.Output<String> vpcId;

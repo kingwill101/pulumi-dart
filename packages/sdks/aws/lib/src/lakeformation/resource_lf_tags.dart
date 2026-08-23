@@ -150,6 +150,29 @@ import 'resource_lf_tags_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_lftag" "example" {
+///   key    = "right"
+///   values = ["abbey", "village", "luffield", "woodcote", "copse", "chapel", "stowe", "club"]
+/// }
+/// resource "aws_lakeformation_resourcelftags" "example" {
+///   database = {
+///     name = exampleAwsGlueCatalogDatabase.name
+///   }
+///   lf_tags {
+///     key   = aws_lakeformation_lftag.example.key
+///     value = "stowe"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +185,8 @@ import 'resource_lf_tags_table_with_columns.dart';
 /// import com.pulumi.aws.lakeformation.ResourceLfTagsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.ResourceLfTagsDatabaseArgs;
 /// import com.pulumi.aws.lakeformation.inputs.ResourceLfTagsLfTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,6 +466,37 @@ import 'resource_lf_tags_table_with_columns.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_lftag" "example" {
+///   key    = "right"
+///   values = ["abbey", "village", "luffield", "woodcote", "copse", "chapel", "stowe", "club"]
+/// }
+/// resource "aws_lakeformation_lftag" "example2" {
+///   key    = "left"
+///   values = ["farm", "theloop", "aintree", "brooklands", "maggotts", "becketts", "vale"]
+/// }
+/// resource "aws_lakeformation_resourcelftags" "example" {
+///   database = {
+///     name = exampleAwsGlueCatalogDatabase.name
+///   }
+///   lf_tags {
+///     key   = "right"
+///     value = "luffield"
+///   }
+///   lf_tags {
+///     key   = "left"
+///     value = "aintree"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -455,8 +509,8 @@ import 'resource_lf_tags_table_with_columns.dart';
 /// import com.pulumi.aws.lakeformation.ResourceLfTagsArgs;
 /// import com.pulumi.aws.lakeformation.inputs.ResourceLfTagsDatabaseArgs;
 /// import com.pulumi.aws.lakeformation.inputs.ResourceLfTagsLfTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

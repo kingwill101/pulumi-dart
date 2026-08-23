@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcIngressConnectionIngressVpcConfiguration {
-  /// The ID of the VPC endpoint that your App Runner service connects to.
+  /// ID of the VPC endpoint that your App Runner service connects to.
   final pulumi.Input<String>? vpcEndpointId;
-  /// The ID of the VPC that is used for the VPC endpoint.
+  /// ID of the VPC that is used for the VPC endpoint.
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [VpcIngressConnectionIngressVpcConfiguration].
-  /// [vpcEndpointId] The ID of the VPC endpoint that your App Runner service connects to.
-  /// [vpcId] The ID of the VPC that is used for the VPC endpoint.
+  /// [vpcEndpointId] ID of the VPC endpoint that your App Runner service connects to.
+  /// [vpcId] ID of the VPC that is used for the VPC endpoint.
   const VpcIngressConnectionIngressVpcConfiguration({
     this.vpcEndpointId,
     this.vpcId,
@@ -30,4 +30,3 @@ class VpcIngressConnectionIngressVpcConfiguration {
     );
   }
 }
-

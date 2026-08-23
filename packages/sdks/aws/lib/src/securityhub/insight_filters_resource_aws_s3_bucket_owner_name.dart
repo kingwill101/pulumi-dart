@@ -28,4 +28,3 @@ class InsightFiltersResourceAwsS3BucketOwnerName {
     );
   }
 }
-

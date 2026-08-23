@@ -14,20 +14,26 @@ class AgentcoreOauth2CredentialProviderState {
   final pulumi.Input<String>? credentialProviderVendor;
   /// Name of the OAuth2 credential provider.
   final pulumi.Input<String>? name;
-  /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2_provider_config` below.
+  /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2ProviderConfig` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>? oauth2ProviderConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderState].
   /// [clientSecretArns] ARN of the AWS Secrets Manager secret containing the client secret.
   /// [credentialProviderArn] ARN of the OAuth2 credential provider.
   /// [credentialProviderVendor] Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.
   /// [name] Name of the OAuth2 credential provider.
-  /// [oauth2ProviderConfig] OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2_provider_config` below.
+  /// [oauth2ProviderConfig] OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2ProviderConfig` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const AgentcoreOauth2CredentialProviderState({
     this.clientSecretArns,
     this.credentialProviderArn,
@@ -35,6 +41,8 @@ class AgentcoreOauth2CredentialProviderState {
     this.name,
     this.oauth2ProviderConfig,
     this.region,
+    this.tags,
+    this.tagsAll,
   });
 
   Map<String, dynamic> toMap() {
@@ -45,6 +53,8 @@ class AgentcoreOauth2CredentialProviderState {
       'name': ?name,
       'oauth2ProviderConfig': ?pulumi.Input.mapOptionalInputValue<AgentcoreOauth2CredentialProviderOauth2ProviderConfig, Map<String, dynamic>>(oauth2ProviderConfig, (value) => value.toMap()),
       'region': ?region,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
     };
   }
 
@@ -56,7 +66,8 @@ class AgentcoreOauth2CredentialProviderState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oauth2ProviderConfig: (() { final guardedValue = map['oauth2ProviderConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

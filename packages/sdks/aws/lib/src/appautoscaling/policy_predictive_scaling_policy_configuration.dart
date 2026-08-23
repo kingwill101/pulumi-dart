@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_predictive_scaling_policy_configuration_metric_specification.dart';
 
 class PolicyPredictiveScalingPolicyConfiguration {
-  /// The behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
+  /// Behavior applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
   final pulumi.Input<String>? maxCapacityBreachBehavior;
-  /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the `max_capacity_breach_behavior` argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
+  /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the `maxCapacityBreachBehavior` argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
   final pulumi.Input<int>? maxCapacityBuffer;
-  /// Metrics and target utilization to use for predictive scaling. See supported fields below.
+  /// Metrics and target utilization to use for predictive scaling. See `predictive_scaling_policy_configuration.metric_specification` Block for details.
   final pulumi.Input<List<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>> metricSpecifications;
   /// Predictive scaling mode. Valid values are `ForecastOnly` and `ForecastAndScale`.
   final pulumi.Input<String>? mode;
@@ -16,9 +16,9 @@ class PolicyPredictiveScalingPolicyConfiguration {
   final pulumi.Input<int>? schedulingBufferTime;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfiguration].
-  /// [maxCapacityBreachBehavior] The behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
-  /// [maxCapacityBuffer] Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the `max_capacity_breach_behavior` argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
-  /// [metricSpecifications] Metrics and target utilization to use for predictive scaling. See supported fields below.
+  /// [maxCapacityBreachBehavior] Behavior applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
+  /// [maxCapacityBuffer] Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the `maxCapacityBreachBehavior` argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
+  /// [metricSpecifications] Metrics and target utilization to use for predictive scaling. See `predictive_scaling_policy_configuration.metric_specification` Block for details.
   /// [mode] Predictive scaling mode. Valid values are `ForecastOnly` and `ForecastAndScale`.
   /// [schedulingBufferTime] Amount of time, in seconds, that the start time can be advanced.
   const PolicyPredictiveScalingPolicyConfiguration({
@@ -49,4 +49,3 @@ class PolicyPredictiveScalingPolicyConfiguration {
     );
   }
 }
-

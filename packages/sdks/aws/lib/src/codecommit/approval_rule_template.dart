@@ -123,6 +123,29 @@ import 'approval_rule_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codecommit_approvalruletemplate" "example" {
+///   name        = "MyExampleApprovalRuleTemplate"
+///   description = "This is an example approval rule template"
+///   content = jsonencode({
+///     "Version"               = "2018-11-08"
+///     "DestinationReferences" = ["refs/heads/master"]
+///     "Statements" = [{
+///       "Type"                    = "Approvers"
+///       "NumberOfApprovalsNeeded" = 2
+///       "ApprovalPoolMembers"     = ["arn:aws:sts::123456789012:assumed-role/CodeCommitReview/*"]
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +155,8 @@ import 'approval_rule_template_state.dart';
 /// import com.pulumi.aws.codecommit.ApprovalRuleTemplate;
 /// import com.pulumi.aws.codecommit.ApprovalRuleTemplateArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

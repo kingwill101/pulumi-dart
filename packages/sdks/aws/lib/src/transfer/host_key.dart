@@ -66,6 +66,21 @@ import 'host_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_hostkey" "example" {
+///   server_id        = exampleAwsTransferServer.id
+///   description      = "example additional host key"
+///   host_key_body_wo = "# Private key PEM.\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'host_key_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.transfer.HostKey;
 /// import com.pulumi.aws.transfer.HostKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -112,7 +127,7 @@ import 'host_key_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import host keys using the `server_id` and `host_key_id` separated by `,`. For example:
+/// Using `pulumi import`, import host keys using the `serverId` and `hostKeyId` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/hostKey:HostKey example s-12345678,key-12345
@@ -125,7 +140,7 @@ class HostKey extends pulumi.CustomResource {
   /// Private key portion of an SSH key pair.
   late final pulumi.Output<String?> hostKeyBody;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only private key portion of an SSH key pair, guaranteed not to be written to plan or state artifacts. One of `host_key_body` or `host_key_body_wo` must be configured.
+  /// Write-only private key portion of an SSH key pair, guaranteed not to be written to plan or state artifacts. One of `hostKeyBody` or `hostKeyBodyWo` must be configured.
   late final pulumi.Output<String?> hostKeyBodyWo;
   /// Public key fingerprint.
   late final pulumi.Output<String> hostKeyFingerprint;
@@ -135,9 +150,9 @@ class HostKey extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Server ID.
   late final pulumi.Output<String> serverId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [HostKey].

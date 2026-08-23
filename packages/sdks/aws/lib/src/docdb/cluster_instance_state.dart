@@ -55,9 +55,9 @@ class ClusterInstanceState {
   final pulumi.Input<String>? region;
   /// Whether the DB cluster is encrypted.
   final pulumi.Input<bool>? storageEncrypted;
-  /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Whether this instance is writable. `False` indicates this instance is a read replica.
   final pulumi.Input<bool>? writer;
@@ -89,8 +89,8 @@ class ClusterInstanceState {
   /// [publiclyAccessible] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [storageEncrypted] Whether the DB cluster is encrypted.
-  /// [tags] Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [writer] Whether this instance is writable. `False` indicates this instance is a read replica.
   const ClusterInstanceState({
     this.applyImmediately,
@@ -192,4 +192,3 @@ class ClusterInstanceState {
     );
   }
 }
-

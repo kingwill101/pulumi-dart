@@ -56,6 +56,19 @@ import 'domain_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_domainidentity" "example" {
+///   domain = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'domain_identity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.DomainIdentity;
 /// import com.pulumi.aws.ses.DomainIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,6 +194,26 @@ import 'domain_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_domainidentity" "example" {
+///   domain = "example.com"
+/// }
+/// resource "aws_route53_record" "example_amazonses_verification_record" {
+///   zone_id = "ABCDEFGHIJ123"
+///   name    = "_amazonses.example.com"
+///   type    = "TXT"
+///   ttl     = "600"
+///   records = [aws_ses_domainidentity.example.verification_token]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +224,8 @@ import 'domain_identity_state.dart';
 /// import com.pulumi.aws.ses.DomainIdentityArgs;
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

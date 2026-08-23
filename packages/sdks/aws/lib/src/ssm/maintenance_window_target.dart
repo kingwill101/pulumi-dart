@@ -106,7 +106,7 @@ import 'maintenance_window_target_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewMaintenanceWindowTarget(ctx, "target1", &ssm.MaintenanceWindowTargetArgs{
-/// 			WindowId:     window.ID(),
+/// 			WindowId:     window.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:         pulumi.String("maintenance-window-target"),
 /// 			Description:  pulumi.String("This is a maintenance window target"),
 /// 			ResourceType: pulumi.String("INSTANCE"),
@@ -126,6 +126,32 @@ import 'maintenance_window_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_maintenancewindow" "window" {
+///   name     = "maintenance-window-webapp"
+///   schedule = "cron(0 16 ? * TUE *)"
+///   duration = 3
+///   cutoff   = 1
+/// }
+/// resource "aws_ssm_maintenancewindowtarget" "target1" {
+///   window_id     = aws_ssm_maintenancewindow.window.id
+///   name          = "maintenance-window-target"
+///   description   = "This is a maintenance window target"
+///   resource_type = "INSTANCE"
+///   targets {
+///     key    = "tag:Name"
+///     values = ["acceptance_test"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +163,8 @@ import 'maintenance_window_target_state.dart';
 /// import com.pulumi.aws.ssm.MaintenanceWindowTarget;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTargetTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,7 +320,7 @@ import 'maintenance_window_target_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewMaintenanceWindowTarget(ctx, "target1", &ssm.MaintenanceWindowTargetArgs{
-/// 			WindowId:     window.ID(),
+/// 			WindowId:     window.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:         pulumi.String("maintenance-window-target"),
 /// 			Description:  pulumi.String("This is a maintenance window target"),
 /// 			ResourceType: pulumi.String("RESOURCE_GROUP"),
@@ -314,6 +340,32 @@ import 'maintenance_window_target_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_maintenancewindow" "window" {
+///   name     = "maintenance-window-webapp"
+///   schedule = "cron(0 16 ? * TUE *)"
+///   duration = 3
+///   cutoff   = 1
+/// }
+/// resource "aws_ssm_maintenancewindowtarget" "target1" {
+///   window_id     = aws_ssm_maintenancewindow.window.id
+///   name          = "maintenance-window-target"
+///   description   = "This is a maintenance window target"
+///   resource_type = "RESOURCE_GROUP"
+///   targets {
+///     key    = "resource-groups:ResourceTypeFilters"
+///     values = ["AWS::EC2::Instance"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -325,8 +377,8 @@ import 'maintenance_window_target_state.dart';
 /// import com.pulumi.aws.ssm.MaintenanceWindowTarget;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTargetTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -388,12 +440,12 @@ import 'maintenance_window_target_state.dart';
 ///
 /// #### Required
 ///
-/// * `window_id` - (String) ID of the maintenance window.
+/// * `windowId` - (String) ID of the maintenance window.
 /// * `id` - (String) ID of the maintenance window target.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///

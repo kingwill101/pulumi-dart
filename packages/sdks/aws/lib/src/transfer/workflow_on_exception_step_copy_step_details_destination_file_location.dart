@@ -5,14 +5,14 @@ import 'workflow_on_exception_step_copy_step_details_destination_file_location_e
 import 'workflow_on_exception_step_copy_step_details_destination_file_location_s3_file_location.dart';
 
 class WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocation {
-  /// Specifies the details for the EFS file being copied.
+  /// Details for the EFS file being copied. See `efsFileLocation` Block below.
   final pulumi.Input<WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationEfsFileLocation>? efsFileLocation;
-  /// Specifies the details for the S3 file being copied.
+  /// Details for the S3 file being copied. See `s3FileLocation` Block below.
   final pulumi.Input<WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocation>? s3FileLocation;
 
   /// Creates a new [WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocation].
-  /// [efsFileLocation] Specifies the details for the EFS file being copied.
-  /// [s3FileLocation] Specifies the details for the S3 file being copied.
+  /// [efsFileLocation] Details for the EFS file being copied. See `efsFileLocation` Block below.
+  /// [s3FileLocation] Details for the S3 file being copied. See `s3FileLocation` Block below.
   const WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocation({
     this.efsFileLocation,
     this.s3FileLocation,
@@ -32,4 +32,3 @@ class WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocation {
     );
   }
 }
-

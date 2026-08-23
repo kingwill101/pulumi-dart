@@ -5,7 +5,7 @@ import 'endpoint_configuration_data_capture_config_capture_content_type_header.d
 import 'endpoint_configuration_data_capture_config_capture_option.dart';
 
 class EndpointConfigurationDataCaptureConfig {
-  /// Content type headers to capture. See `capture_content_type_header` below.
+  /// Content type headers to capture. See `captureContentTypeHeader` below.
   final pulumi.Input<EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader>? captureContentTypeHeader;
   /// What data to capture. Fields are documented below.
   final pulumi.Input<List<EndpointConfigurationDataCaptureConfigCaptureOption>> captureOptions;
@@ -19,7 +19,7 @@ class EndpointConfigurationDataCaptureConfig {
   final pulumi.Input<String>? kmsKeyId;
 
   /// Creates a new [EndpointConfigurationDataCaptureConfig].
-  /// [captureContentTypeHeader] Content type headers to capture. See `capture_content_type_header` below.
+  /// [captureContentTypeHeader] Content type headers to capture. See `captureContentTypeHeader` below.
   /// [captureOptions] What data to capture. Fields are documented below.
   /// [destinationS3Uri] URL for S3 location where the captured data is stored.
   /// [enableCapture] Flag to enable data capture. Defaults to `false`.
@@ -56,4 +56,3 @@ class EndpointConfigurationDataCaptureConfig {
     );
   }
 }
-

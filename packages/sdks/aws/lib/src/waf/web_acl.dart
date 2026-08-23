@@ -193,7 +193,7 @@ import 'web_acl_state.dart';
 /// 			MetricName: pulumi.String("tfWAFRule"),
 /// 			Predicates: waf.RulePredicateArray{
 /// 				&waf.RulePredicateArgs{
-/// 					DataId:  ipset.ID(),
+/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -216,7 +216,7 @@ import 'web_acl_state.dart';
 /// 						Type: pulumi.String("BLOCK"),
 /// 					},
 /// 					Priority: pulumi.Int(1),
-/// 					RuleId:   wafrule.ID(),
+/// 					RuleId:   wafrule.ID().ToIDOutput().ToStringOutput(),
 /// 					Type:     pulumi.String("REGULAR"),
 /// 				},
 /// 			},
@@ -229,6 +229,49 @@ import 'web_acl_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_ipset" "ipset" {
+///   name = "tfIPSet"
+///   ip_set_descriptors {
+///     type  = "IPV4"
+///     value = "192.0.7.0/24"
+///   }
+/// }
+/// resource "aws_waf_rule" "wafrule" {
+///   depends_on  = [aws_waf_ipset.ipset]
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
+///   predicates {
+///     data_id = aws_waf_ipset.ipset.id
+///     negated = false
+///     type    = "IPMatch"
+///   }
+/// }
+/// resource "aws_waf_webacl" "waf_acl" {
+///   depends_on  = [aws_waf_ipset.ipset, aws_waf_rule.wafrule]
+///   name        = "tfWebACL"
+///   metric_name = "tfWebACL"
+///   default_action = {
+///     type = "ALLOW"
+///   }
+///   rules {
+///     action = {
+///       type = "BLOCK"
+///     }
+///     priority = 1
+///     rule_id  = aws_waf_rule.wafrule.id
+///     type     = "REGULAR"
+///   }
 /// }
 /// ```
 /// ```java
@@ -249,8 +292,8 @@ import 'web_acl_state.dart';
 /// import com.pulumi.aws.waf.inputs.WebAclRuleArgs;
 /// import com.pulumi.aws.waf.inputs.WebAclRuleActionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -456,6 +499,29 @@ import 'web_acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_webacl" "example" {
+///   logging_configuration = {
+///     log_destination = exampleAwsKinesisFirehoseDeliveryStream.arn
+///     redacted_fields = {
+///       field_to_matches = [{
+///         "type" = "URI"
+///         }, {
+///         "data" = "referer"
+///         "type" = "HEADER"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -466,8 +532,9 @@ import 'web_acl_state.dart';
 /// import com.pulumi.aws.waf.WebAclArgs;
 /// import com.pulumi.aws.waf.inputs.WebAclLoggingConfigurationArgs;
 /// import com.pulumi.aws.waf.inputs.WebAclLoggingConfigurationRedactedFieldsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.waf.inputs.WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -533,9 +600,9 @@ class WebAcl extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [WebAcl].

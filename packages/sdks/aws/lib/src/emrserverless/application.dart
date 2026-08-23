@@ -4,6 +4,7 @@ import 'application_auto_start_configuration.dart';
 import 'application_auto_stop_configuration.dart';
 import 'application_image_configuration.dart';
 import 'application_interactive_configuration.dart';
+import 'application_job_level_cost_allocation_configuration.dart';
 import 'application_maximum_capacity.dart';
 import 'application_monitoring_configuration.dart';
 import 'application_network_configuration.dart';
@@ -75,6 +76,21 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emrserverless_application" "example" {
+///   name          = "example"
+///   release_label = "emr-6.6.0"
+///   type          = "hive"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +99,8 @@ import 'application_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emrserverless.Application;
 /// import com.pulumi.aws.emrserverless.ApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,6 +241,31 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emrserverless_application" "example" {
+///   name          = "example"
+///   release_label = "emr-6.6.0"
+///   type          = "hive"
+///   initial_capacities {
+///     initial_capacity_type = "HiveDriver"
+///     initial_capacity_config = {
+///       worker_count = 1
+///       worker_configuration = {
+///         cpu    = "2 vCPU"
+///         memory = "10 GB"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +277,8 @@ import 'application_state.dart';
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationInitialCapacityArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationInitialCapacityInitialCapacityConfigArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationInitialCapacityInitialCapacityConfigWorkerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,6 +405,25 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emrserverless_application" "example" {
+///   name          = "example"
+///   release_label = "emr-6.6.0"
+///   type          = "hive"
+///   maximum_capacity = {
+///     cpu    = "2 vCPU"
+///     memory = "10 GB"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -373,8 +433,8 @@ import 'application_state.dart';
 /// import com.pulumi.aws.emrserverless.Application;
 /// import com.pulumi.aws.emrserverless.ApplicationArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationMaximumCapacityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -591,6 +651,41 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emrserverless_application" "example" {
+///   name          = "example"
+///   release_label = "emr-7.1.0"
+///   type          = "spark"
+///   monitoring_configuration = {
+///     cloudwatch_logging_configuration = {
+///       enabled                = true
+///       log_group_name         = "/aws/emr-serverless/example"
+///       log_stream_name_prefix = "spark-logs"
+///       log_types = [{
+///         "name"   = "SPARK_DRIVER"
+///         "values" = ["STDOUT", "STDERR"]
+///         }, {
+///         "name"   = "SPARK_EXECUTOR"
+///         "values" = ["STDOUT"]
+///       }]
+///     }
+///     managed_persistence_monitoring_configuration = {
+///       enabled = true
+///     }
+///     prometheus_monitoring_configuration = {
+///       remote_write_url = "https://prometheus-remote-write-endpoint.example.com/api/v1/write"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -601,10 +696,11 @@ import 'application_state.dart';
 /// import com.pulumi.aws.emrserverless.ApplicationArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationMonitoringConfigurationArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationArgs;
+/// import com.pulumi.aws.emrserverless.inputs.ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogTypeArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfigurationArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationMonitoringConfigurationPrometheusMonitoringConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -811,6 +907,36 @@ import 'application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emrserverless_application" "example" {
+///   name          = "example"
+///   release_label = "emr-6.8.0"
+///   type          = "spark"
+///   runtime_configurations {
+///     classification = "spark-executor-log4j2"
+///     properties = {
+///       "rootLogger.level"                = "error"
+///       "logger.IdentifierForClass.name"  = "classpathForSettingLogger"
+///       "logger.IdentifierForClass.level" = "info"
+///     }
+///   }
+///   runtime_configurations {
+///     classification = "spark-defaults"
+///     properties = {
+///       "spark.executor.memory" = "1g"
+///       "spark.executor.cores"  = "1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -820,8 +946,8 @@ import 'application_state.dart';
 /// import com.pulumi.aws.emrserverless.Application;
 /// import com.pulumi.aws.emrserverless.ApplicationArgs;
 /// import com.pulumi.aws.emrserverless.inputs.ApplicationRuntimeConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -901,6 +1027,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> initialCapacities;
   /// Enables the interactive use cases to use when running an application.
   late final pulumi.Output<ApplicationInteractiveConfiguration> interactiveConfiguration;
+  late final pulumi.Output<ApplicationJobLevelCostAllocationConfiguration> jobLevelCostAllocationConfiguration;
   /// The maximum capacity to allocate when the application is created. This is cumulative across all workers at any given point in time, not just when an application is created. No new resources will be created once any one of the defined limits is hit.
   late final pulumi.Output<ApplicationMaximumCapacity> maximumCapacity;
   /// The configuration setting for monitoring.
@@ -915,11 +1042,11 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String> releaseLabel;
   /// A configuration specification to be used when provisioning an application. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file.
   late final pulumi.Output<List<Map<String, dynamic>>?> runtimeConfigurations;
-  /// Scheduler configuration for batch and streaming jobs running on this application. Supported with release labels `emr-7.0.0` and above. See scheduler_configuration Arguments below.
+  /// Scheduler configuration for batch and streaming jobs running on this application. Supported with release labels `emr-7.0.0` and above. See schedulerConfiguration Arguments below.
   late final pulumi.Output<ApplicationSchedulerConfiguration?> schedulerConfiguration;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of application you want to start, such as `spark` or `hive`.
   late final pulumi.Output<String> type;
@@ -945,6 +1072,7 @@ class Application extends pulumi.CustomResource {
     imageConfiguration = registerOutput<ApplicationImageConfiguration>('imageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationImageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialCapacities = registerOutput<List<Map<String, dynamic>>?>('initialCapacities');
     interactiveConfiguration = registerOutput<ApplicationInteractiveConfiguration>('interactiveConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInteractiveConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobLevelCostAllocationConfiguration = registerOutput<ApplicationJobLevelCostAllocationConfiguration>('jobLevelCostAllocationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationJobLevelCostAllocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumCapacity = registerOutput<ApplicationMaximumCapacity>('maximumCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationMaximumCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoringConfiguration = registerOutput<ApplicationMonitoringConfiguration?>('monitoringConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationMonitoringConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -988,6 +1116,7 @@ class Application extends pulumi.CustomResource {
     imageConfiguration = registerOutput<ApplicationImageConfiguration>('imageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationImageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialCapacities = registerOutput<List<Map<String, dynamic>>?>('initialCapacities');
     interactiveConfiguration = registerOutput<ApplicationInteractiveConfiguration>('interactiveConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInteractiveConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobLevelCostAllocationConfiguration = registerOutput<ApplicationJobLevelCostAllocationConfiguration>('jobLevelCostAllocationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationJobLevelCostAllocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumCapacity = registerOutput<ApplicationMaximumCapacity>('maximumCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationMaximumCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoringConfiguration = registerOutput<ApplicationMonitoringConfiguration?>('monitoringConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationMonitoringConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

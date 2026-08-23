@@ -8,30 +8,29 @@ import 'service_network_vpc_association_dns_options.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vpclattice_service_network_vpc_association_service_network_vpc_association_args_doc}
 class ServiceNetworkVpcAssociationArgs {
-  /// Configuration block for DNS option. See `dns_options` block below for details.
+  /// Configuration block for DNS option. See `dnsOptions` block below for details.
   final pulumi.Input<ServiceNetworkVpcAssociationDnsOptions>? dnsOptions;
   /// Boolean to indicate whether to enable private DNS for the VPC association. Defaults to `false`.
   final pulumi.Input<bool>? privateDnsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The IDs of the security groups.
+  /// IDs of the security groups.
   final pulumi.Input<List<String>>? securityGroupIds;
-  /// The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
-  /// The following arguments are optional:
+  /// ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
   final pulumi.Input<String> serviceNetworkIdentifier;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The ID of the VPC.
+  /// ID of the VPC.
   final pulumi.Input<String> vpcIdentifier;
 
   /// Creates a new [ServiceNetworkVpcAssociationArgs].
-  /// [dnsOptions] Configuration block for DNS option. See `dns_options` block below for details.
+  /// [dnsOptions] Configuration block for DNS option. See `dnsOptions` block below for details.
   /// [privateDnsEnabled] Boolean to indicate whether to enable private DNS for the VPC association. Defaults to `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupIds] The IDs of the security groups.
-  /// [serviceNetworkIdentifier] The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [vpcIdentifier] The ID of the VPC.
+  /// [securityGroupIds] IDs of the security groups.
+  /// [serviceNetworkIdentifier] ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [vpcIdentifier] ID of the VPC.
   const ServiceNetworkVpcAssociationArgs({
     this.dnsOptions,
     this.privateDnsEnabled,
@@ -66,4 +65,3 @@ class ServiceNetworkVpcAssociationArgs {
     );
   }
 }
-

@@ -11,16 +11,16 @@ class AggregateAuthorizationArgs {
   final pulumi.Input<String> accountId;
   /// The region authorized to collect aggregated data.
   final pulumi.Input<String>? authorizedAwsRegion;
-  /// The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
+  /// The region authorized to collect aggregated data. Use `authorizedAwsRegion` instead.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AggregateAuthorizationArgs].
   /// [accountId] Account ID.
   /// [authorizedAwsRegion] The region authorized to collect aggregated data.
-  /// [region] The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [region] The region authorized to collect aggregated data. Use `authorizedAwsRegion` instead.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AggregateAuthorizationArgs({
     required this.accountId,
     this.authorizedAwsRegion,
@@ -46,4 +46,3 @@ class AggregateAuthorizationArgs {
     );
   }
 }
-

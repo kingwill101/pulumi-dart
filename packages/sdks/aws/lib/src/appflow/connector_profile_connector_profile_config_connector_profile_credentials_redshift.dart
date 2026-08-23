@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift {
+  /// Password that corresponds to the user name.
   final pulumi.Input<String> password;
+  /// Name of the user.
   final pulumi.Input<String> username;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift].
-  /// [password] Required.
-  /// [username] Required.
+  /// [password] Password that corresponds to the user name.
+  /// [username] Name of the user.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift({
     required this.password,
     required this.username,
@@ -28,4 +30,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift 
     );
   }
 }
-

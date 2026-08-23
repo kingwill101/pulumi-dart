@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkManagedServiceZeroTlAccess {
   final pulumi.Input<String> cidr;
-  /// The status of the network resource.
+  /// Status of the network resource.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetNetworkManagedServiceZeroTlAccess].
   /// [cidr] Required.
-  /// [status] The status of the network resource.
+  /// [status] Status of the network resource.
   const GetNetworkManagedServiceZeroTlAccess({
     required this.cidr,
     required this.status,
@@ -29,4 +29,3 @@ class GetNetworkManagedServiceZeroTlAccess {
     );
   }
 }
-

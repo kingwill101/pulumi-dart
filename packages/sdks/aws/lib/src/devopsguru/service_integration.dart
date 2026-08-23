@@ -103,6 +103,28 @@ import 'service_integration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_serviceintegration" "example" {
+///   kms_server_side_encryption = {
+///     opt_in_status = "ENABLED"
+///     type          = "AWS_OWNED_KMS_KEY"
+///   }
+///   logs_anomaly_detection = {
+///     opt_in_status = "ENABLED"
+///   }
+///   ops_center = {
+///     opt_in_status = "ENABLED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +136,8 @@ import 'service_integration_state.dart';
 /// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationKmsServerSideEncryptionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationLogsAnomalyDetectionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationOpsCenterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,6 +285,31 @@ import 'service_integration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+/// }
+/// resource "aws_devopsguru_serviceintegration" "example" {
+///   kms_server_side_encryption = {
+///     kms_key_id    = test.arn
+///     opt_in_status = "ENABLED"
+///     type          = "CUSTOMER_MANAGED_KEY"
+///   }
+///   logs_anomaly_detection = {
+///     opt_in_status = "DISABLED"
+///   }
+///   ops_center = {
+///     opt_in_status = "DISABLED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +322,8 @@ import 'service_integration_state.dart';
 /// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationKmsServerSideEncryptionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationLogsAnomalyDetectionArgs;
 /// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationOpsCenterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,17 +375,25 @@ import 'service_integration_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import DevOps Guru Service Integration using the region. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:devopsguru/serviceIntegration:ServiceIntegration example us-east-1
 /// ```
 class ServiceIntegration extends pulumi.CustomResource {
-  /// Information about whether DevOps Guru is configured to encrypt server-side data using KMS. See `kms_server_side_encryption` below.
+  /// Information about whether DevOps Guru is configured to encrypt server-side data using KMS. See `kmsServerSideEncryption` below.
   late final pulumi.Output<ServiceIntegrationKmsServerSideEncryption> kmsServerSideEncryption;
-  /// Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See `logs_anomaly_detection` below.
+  /// Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See `logsAnomalyDetection` below.
   late final pulumi.Output<ServiceIntegrationLogsAnomalyDetection> logsAnomalyDetection;
-  /// Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See `ops_center` below.
+  /// Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See `opsCenter` below.
   late final pulumi.Output<ServiceIntegrationOpsCenter> opsCenter;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

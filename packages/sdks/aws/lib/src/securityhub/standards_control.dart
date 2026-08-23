@@ -112,6 +112,28 @@ import 'standards_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// resource "aws_securityhub_standardssubscription" "cis_aws_foundations_benchmark" {
+///   depends_on    = [aws_securityhub_account.example]
+///   standards_arn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+/// }
+/// resource "aws_securityhub_standardscontrol" "ensure_iam_password_policy_prevents_password_reuse" {
+///   depends_on            = [aws_securityhub_standardssubscription.cis_aws_foundations_benchmark]
+///   standards_control_arn = "arn:aws:securityhub:us-east-1:111111111111:control/cis-aws-foundations-benchmark/v/1.2.0/1.10"
+///   control_status        = "DISABLED"
+///   disabled_reason       = "We handle password policies within Okta"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +146,8 @@ import 'standards_control_state.dart';
 /// import com.pulumi.aws.securityhub.StandardsControl;
 /// import com.pulumi.aws.securityhub.StandardsControlArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,16 +201,32 @@ import 'standards_control_state.dart';
 ///       dependsOn:
 ///         - ${cisAwsFoundationsBenchmark}
 /// ```
+///
+///
+/// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `standardsControlArn` (String) Standards control ARN.
+///
+///
+/// Using `pulumi import`, import Security Hub standards controls using `standardsControlArn`. For example:
+///
+/// ```sh
+/// $ pulumi import aws:securityhub/standardsControl:StandardsControl example arn:aws:securityhub:us-east-1:123456789012:control/cis-aws-foundations-benchmark/v/1.2.0/1.10
+/// ```
 class StandardsControl extends pulumi.CustomResource {
   /// The identifier of the security standard control.
   late final pulumi.Output<String> controlId;
-  /// The control status could be `ENABLED` or `DISABLED`. You have to specify `disabled_reason` argument for `DISABLED` control status.
+  /// The control status could be `ENABLED` or `DISABLED`. You have to specify `disabledReason` argument for `DISABLED` control status.
   late final pulumi.Output<String> controlStatus;
   /// The date and time that the status of the security standard control was most recently updated.
   late final pulumi.Output<String> controlStatusUpdatedAt;
   /// The standard control longer description. Provides information about what the control is checking for.
   late final pulumi.Output<String> description;
-  /// A description of the reason why you are disabling a security standard control. If you specify this attribute, `control_status` will be set to `DISABLED` automatically.
+  /// A description of the reason why you are disabling a security standard control. If you specify this attribute, `controlStatus` will be set to `DISABLED` automatically.
   late final pulumi.Output<String> disabledReason;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

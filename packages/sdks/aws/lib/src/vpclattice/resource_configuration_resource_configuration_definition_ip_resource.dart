@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConfigurationResourceConfigurationDefinitionIpResource {
-  /// The IP Address of the Resource for this configuration.
+  /// IP Address of the Resource for this configuration.
   final pulumi.Input<String> ipAddress;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionIpResource].
-  /// [ipAddress] The IP Address of the Resource for this configuration.
+  /// [ipAddress] IP Address of the Resource for this configuration.
   const ResourceConfigurationResourceConfigurationDefinitionIpResource({
     required this.ipAddress,
   });
@@ -24,4 +24,3 @@ class ResourceConfigurationResourceConfigurationDefinitionIpResource {
     );
   }
 }
-

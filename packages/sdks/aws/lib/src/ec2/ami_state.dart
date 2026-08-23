@@ -6,7 +6,7 @@ import 'ami_ephemeral_block_device.dart';
 
 /// Input properties used for looking up and filtering Ami resources.
 class AmiState {
-  /// Machine architecture for created instances. Defaults to `x86_64`.
+  /// Machine architecture for created instances. Defaults to `x8664`.
   final pulumi.Input<String>? architecture;
   /// ARN of the AMI.
   final pulumi.Input<String>? arn;
@@ -55,9 +55,9 @@ class AmiState {
   /// Snapshot ID for the root volume (for EBS-backed AMIs)
   final pulumi.Input<String>? rootSnapshotId;
   final pulumi.Input<String>? sriovNetSupport;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   final pulumi.Input<String>? tpmSupport;
@@ -71,7 +71,7 @@ class AmiState {
   final pulumi.Input<String>? virtualizationType;
 
   /// Creates a new [AmiState].
-  /// [architecture] Machine architecture for created instances. Defaults to `x86_64`.
+  /// [architecture] Machine architecture for created instances. Defaults to `x8664`.
   /// [arn] ARN of the AMI.
   /// [bootMode] Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
   /// [deprecationTime] Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
@@ -97,8 +97,8 @@ class AmiState {
   /// [rootDeviceName] Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   /// [rootSnapshotId] Snapshot ID for the root volume (for EBS-backed AMIs)
   /// [sriovNetSupport] Optional.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [tpmSupport] If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   /// [uefiData] Base64 representation of the non-volatile UEFI variable store.
   /// [usageOperation] Operation of the Amazon EC2 instance and the billing code that is associated with the AMI.
@@ -212,4 +212,3 @@ class AmiState {
     );
   }
 }
-

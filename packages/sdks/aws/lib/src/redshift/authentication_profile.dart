@@ -67,7 +67,7 @@ import 'authentication_profile_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"AllowDBUserOverride": "1",
 /// 			"Client_ID":           "ExampleClientID",
 /// 			"App_ID":              "example",
@@ -87,6 +87,24 @@ import 'authentication_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_authenticationprofile" "example" {
+///   authentication_profile_name = "example"
+///   authentication_profile_content = jsonencode({
+///     "AllowDBUserOverride" = "1"
+///     "Client_ID"           = "ExampleClientID"
+///     "App_ID"              = "example"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'authentication_profile_state.dart';
 /// import com.pulumi.aws.redshift.AuthenticationProfile;
 /// import com.pulumi.aws.redshift.AuthenticationProfileArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +156,7 @@ import 'authentication_profile_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Authentication by `authentication_profile_name`. For example:
+/// Using `pulumi import`, import Redshift Authentication by `authenticationProfileName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/authenticationProfile:AuthenticationProfile test example

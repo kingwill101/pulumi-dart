@@ -68,6 +68,21 @@ import 'route_response_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_routeresponse" "example" {
+///   api_id             = exampleAwsApigatewayv2Api.id
+///   route_id           = exampleAwsApigatewayv2Route.id
+///   route_response_key = "$default"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'route_response_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.RouteResponse;
 /// import com.pulumi.aws.apigatewayv2.RouteResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -109,11 +124,7 @@ import 'route_response_state.dart';
 /// ```
 ///
 ///
-/// ## Enabling Two-Way Communication
-///
-/// For websocket routes that require two-way communication enabled, an `aws.apigatewayv2.RouteResponse` needs to be added to the route with `route_response_key = "$default"`. More information available  is available in [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-///
-/// You can only define the $default route response for WebSocket APIs. You can use an integration response to manipulate the response from a backend service. For more information, see [Overview of integration responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-integration-responses.html#apigateway-websocket-api-integration-response-overview).
+/// &gt; **Note:** For WebSocket routes requiring two-way communication, add an `aws.apigatewayv2.RouteResponse` to the route with `routeResponseKey = "$default"`. Only the `$default` route response is supported. Use an integration response to manipulate backend responses — see [Overview of integration responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-integration-responses.html#apigateway-websocket-api-integration-response-overview).
 ///
 /// ## Import
 ///
@@ -125,7 +136,7 @@ import 'route_response_state.dart';
 class RouteResponse extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
-  /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
+  /// [Model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
   late final pulumi.Output<String?> modelSelectionExpression;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

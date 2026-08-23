@@ -101,6 +101,22 @@ import 'get_vocabulary_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getbotassociation" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   lex_bot = {
+///     name = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +126,8 @@ import 'get_vocabulary_result.dart';
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetBotAssociationArgs;
 /// import com.pulumi.aws.connect.inputs.GetBotAssociationLexBotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,6 +234,20 @@ Future<GetBotAssociationResult> getBotAssociation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getcontactflow" "test" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +256,8 @@ Future<GetBotAssociationResult> getBotAssociation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetContactFlowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,7 +288,7 @@ Future<GetBotAssociationResult> getBotAssociation(
 /// ```
 ///
 ///
-/// By contact_flow_id
+/// By contactFlowId
 ///
 ///
 /// ```typescript
@@ -314,6 +344,20 @@ Future<GetBotAssociationResult> getBotAssociation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getcontactflow" "test" {
+///   instance_id     = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   contact_flow_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +366,8 @@ Future<GetBotAssociationResult> getBotAssociation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetContactFlowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,6 +471,20 @@ Future<GetContactFlowResult> getContactFlow(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getcontactflowmodule" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -435,8 +493,8 @@ Future<GetContactFlowResult> getContactFlow(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetContactFlowModuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,7 +525,7 @@ Future<GetContactFlowResult> getContactFlow(
 /// ```
 ///
 ///
-/// By `contact_flow_module_id`
+/// By `contactFlowModuleId`
 ///
 ///
 /// ```typescript
@@ -523,6 +581,20 @@ Future<GetContactFlowResult> getContactFlow(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getcontactflowmodule" "example" {
+///   instance_id            = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   contact_flow_module_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -531,8 +603,8 @@ Future<GetContactFlowResult> getContactFlow(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetContactFlowModuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -636,6 +708,20 @@ Future<GetContactFlowModuleResult> getContactFlowModule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_gethoursofoperation" "test" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -644,8 +730,8 @@ Future<GetContactFlowModuleResult> getContactFlowModule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetHoursOfOperationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -676,7 +762,7 @@ Future<GetContactFlowModuleResult> getContactFlowModule(
 /// ```
 ///
 ///
-/// By `hours_of_operation_id`
+/// By `hoursOfOperationId`
 ///
 ///
 /// ```typescript
@@ -732,6 +818,20 @@ Future<GetContactFlowModuleResult> getContactFlowModule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_gethoursofoperation" "test" {
+///   instance_id           = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   hours_of_operation_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -740,8 +840,8 @@ Future<GetContactFlowModuleResult> getContactFlowModule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetHoursOfOperationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -789,7 +889,7 @@ Future<GetHoursOfOperationResult> getHoursOfOperation(
 ///
 /// ## Example Usage
 ///
-/// By instance_alias
+/// By instanceAlias
 ///
 ///
 /// ```typescript
@@ -841,6 +941,19 @@ Future<GetHoursOfOperationResult> getHoursOfOperation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getinstance" "foo" {
+///   instance_alias = "foo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -849,8 +962,8 @@ Future<GetHoursOfOperationResult> getHoursOfOperation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -879,7 +992,7 @@ Future<GetHoursOfOperationResult> getHoursOfOperation(
 /// ```
 ///
 ///
-/// By instance_id
+/// By instanceId
 ///
 ///
 /// ```typescript
@@ -931,6 +1044,19 @@ Future<GetHoursOfOperationResult> getHoursOfOperation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getinstance" "foo" {
+///   instance_id = "97afc98d-101a-ba98-ab97-ae114fc115ec"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -939,8 +1065,8 @@ Future<GetHoursOfOperationResult> getHoursOfOperation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1044,6 +1170,21 @@ Future<GetInstanceResult> getInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getinstancestorageconfig" "example" {
+///   association_id = "1234567891234567890122345678912345678901223456789123456789012234"
+///   instance_id    = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   resource_type  = "CONTACT_TRACE_RECORDS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1052,8 +1193,8 @@ Future<GetInstanceResult> getInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetInstanceStorageConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1157,6 +1298,20 @@ Future<GetInstanceStorageConfigResult> getInstanceStorageConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getlambdafunctionassociation" "example" {
+///   function_arn = "arn:aws:lambda:us-west-2:123456789123:function:abcdefg"
+///   instance_id  = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1165,8 +1320,8 @@ Future<GetInstanceStorageConfigResult> getInstanceStorageConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetLambdaFunctionAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1270,6 +1425,20 @@ Future<GetLambdaFunctionAssociationResult> getLambdaFunctionAssociation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getprompt" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Beep.wav"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1278,8 +1447,8 @@ Future<GetLambdaFunctionAssociationResult> getLambdaFunctionAssociation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetPromptArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1383,6 +1552,20 @@ Future<GetPromptResult> getPrompt(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getqueue" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1391,8 +1574,8 @@ Future<GetPromptResult> getPrompt(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1423,7 +1606,7 @@ Future<GetPromptResult> getPrompt(
 /// ```
 ///
 ///
-/// By `queue_id`
+/// By `queueId`
 ///
 ///
 /// ```typescript
@@ -1479,6 +1662,20 @@ Future<GetPromptResult> getPrompt(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getqueue" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   queue_id    = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1487,8 +1684,8 @@ Future<GetPromptResult> getPrompt(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1592,6 +1789,20 @@ Future<GetQueueResult> getQueue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getquickconnect" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1600,8 +1811,8 @@ Future<GetQueueResult> getQueue(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetQuickConnectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1632,7 +1843,7 @@ Future<GetQueueResult> getQueue(
 /// ```
 ///
 ///
-/// By `quick_connect_id`
+/// By `quickConnectId`
 ///
 ///
 /// ```typescript
@@ -1688,6 +1899,20 @@ Future<GetQueueResult> getQueue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getquickconnect" "example" {
+///   instance_id      = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   quick_connect_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1696,8 +1921,8 @@ Future<GetQueueResult> getQueue(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetQuickConnectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1801,6 +2026,20 @@ Future<GetQuickConnectResult> getQuickConnect(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getroutingprofile" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1809,8 +2048,8 @@ Future<GetQuickConnectResult> getQuickConnect(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetRoutingProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1841,7 +2080,7 @@ Future<GetQuickConnectResult> getQuickConnect(
 /// ```
 ///
 ///
-/// By `routing_profile_id`
+/// By `routingProfileId`
 ///
 ///
 /// ```typescript
@@ -1897,6 +2136,20 @@ Future<GetQuickConnectResult> getQuickConnect(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getroutingprofile" "example" {
+///   instance_id        = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   routing_profile_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1905,8 +2158,8 @@ Future<GetQuickConnectResult> getQuickConnect(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetRoutingProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2010,6 +2263,20 @@ Future<GetRoutingProfileResult> getRoutingProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getsecurityprofile" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2018,8 +2285,8 @@ Future<GetRoutingProfileResult> getRoutingProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetSecurityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2050,7 +2317,7 @@ Future<GetRoutingProfileResult> getRoutingProfile(
 /// ```
 ///
 ///
-/// By `security_profile_id`
+/// By `securityProfileId`
 ///
 ///
 /// ```typescript
@@ -2106,6 +2373,20 @@ Future<GetRoutingProfileResult> getRoutingProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getsecurityprofile" "example" {
+///   instance_id         = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   security_profile_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2114,8 +2395,8 @@ Future<GetRoutingProfileResult> getRoutingProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetSecurityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2219,6 +2500,20 @@ Future<GetSecurityProfileResult> getSecurityProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getuser" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2227,8 +2522,8 @@ Future<GetSecurityProfileResult> getSecurityProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2259,7 +2554,7 @@ Future<GetSecurityProfileResult> getSecurityProfile(
 /// ```
 ///
 ///
-/// By `user_id`
+/// By `userId`
 ///
 ///
 /// ```typescript
@@ -2315,6 +2610,20 @@ Future<GetSecurityProfileResult> getSecurityProfile(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getuser" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   user_id     = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2323,8 +2632,8 @@ Future<GetSecurityProfileResult> getSecurityProfile(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2428,6 +2737,20 @@ Future<GetUserResult> getUser(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getuserhierarchygroup" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2436,8 +2759,8 @@ Future<GetUserResult> getUser(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetUserHierarchyGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2468,7 +2791,7 @@ Future<GetUserResult> getUser(
 /// ```
 ///
 ///
-/// By `hierarchy_group_id`
+/// By `hierarchyGroupId`
 ///
 ///
 /// ```typescript
@@ -2524,6 +2847,20 @@ Future<GetUserResult> getUser(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getuserhierarchygroup" "example" {
+///   instance_id        = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   hierarchy_group_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2532,8 +2869,8 @@ Future<GetUserResult> getUser(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetUserHierarchyGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2631,6 +2968,19 @@ Future<GetUserHierarchyGroupResult> getUserHierarchyGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getuserhierarchystructure" "test" {
+///   instance_id = testAwsConnectInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2639,8 +2989,8 @@ Future<GetUserHierarchyGroupResult> getUserHierarchyGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetUserHierarchyStructureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2742,6 +3092,20 @@ Future<GetUserHierarchyStructureResult> getUserHierarchyStructure(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getvocabulary" "example" {
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2750,8 +3114,8 @@ Future<GetUserHierarchyStructureResult> getUserHierarchyStructure(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetVocabularyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2782,7 +3146,7 @@ Future<GetUserHierarchyStructureResult> getUserHierarchyStructure(
 /// ```
 ///
 ///
-/// By `vocabulary_id`
+/// By `vocabularyId`
 ///
 ///
 /// ```typescript
@@ -2838,6 +3202,20 @@ Future<GetUserHierarchyStructureResult> getUserHierarchyStructure(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_connect_getvocabulary" "example" {
+///   instance_id   = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   vocabulary_id = "cccccccc-bbbb-cccc-dddd-111111111111"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2846,8 +3224,8 @@ Future<GetUserHierarchyStructureResult> getUserHierarchyStructure(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.ConnectFunctions;
 /// import com.pulumi.aws.connect.inputs.GetVocabularyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

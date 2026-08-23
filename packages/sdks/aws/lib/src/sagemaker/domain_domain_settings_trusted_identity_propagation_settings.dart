@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDomainSettingsTrustedIdentityPropagationSettings {
-  /// Whether to enable Trusted Identity Propagation (TIP) for the domain. Valid values are `ENABLED` and `DISABLED`. When enabled, user identities from IAM Identity Center are propagated through the domain to TIP enabled AWS services. Can only be `ENABLED` when `auth_mode` is `SSO`.
+  /// Whether to enable Trusted Identity Propagation (TIP) for the domain. Valid values are `ENABLED` and `DISABLED`. When enabled, user identities from IAM Identity Center are propagated through the domain to TIP enabled AWS services. Can only be `ENABLED` when `authMode` is `SSO`.
   final pulumi.Input<String> status;
 
   /// Creates a new [DomainDomainSettingsTrustedIdentityPropagationSettings].
-  /// [status] Whether to enable Trusted Identity Propagation (TIP) for the domain. Valid values are `ENABLED` and `DISABLED`. When enabled, user identities from IAM Identity Center are propagated through the domain to TIP enabled AWS services. Can only be `ENABLED` when `auth_mode` is `SSO`.
+  /// [status] Whether to enable Trusted Identity Propagation (TIP) for the domain. Valid values are `ENABLED` and `DISABLED`. When enabled, user identities from IAM Identity Center are propagated through the domain to TIP enabled AWS services. Can only be `ENABLED` when `authMode` is `SSO`.
   const DomainDomainSettingsTrustedIdentityPropagationSettings({
     required this.status,
   });
@@ -24,4 +24,3 @@ class DomainDomainSettingsTrustedIdentityPropagationSettings {
     );
   }
 }
-

@@ -13,12 +13,12 @@ import 'vault_policy_state.dart';
 ///
 /// const current = aws.getCallerIdentity({});
 /// const exampleVault = new aws.backup.Vault("example", {name: "example"});
-/// const example = pulumi.all([current, exampleVault.arn]).apply(([current, arn]) => aws.iam.getPolicyDocumentOutput({
+/// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
 ///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
-///             identifiers: [current.accountId],
+///             identifiers: [current.then(current => current.accountId)],
 ///         }],
 ///         actions: [
 ///             "backup:DescribeBackupVault",
@@ -30,12 +30,12 @@ import 'vault_policy_state.dart';
 ///             "backup:GetBackupVaultNotifications",
 ///             "backup:PutBackupVaultNotifications",
 ///         ],
-///         resources: [arn],
+///         resources: [exampleVault.arn],
 ///     }],
-/// }));
+/// });
 /// const exampleVaultPolicy = new aws.backup.VaultPolicy("example", {
 ///     backupVaultName: exampleVault.name,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// ```
 /// ```python
@@ -44,7 +44,7 @@ import 'vault_policy_state.dart';
 ///
 /// current = aws.get_caller_identity()
 /// example_vault = aws.backup.Vault("example", name="example")
-/// example = example_vault.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
+/// example = aws.iam.get_policy_document_output(statements=[{
 ///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
@@ -60,8 +60,8 @@ import 'vault_policy_state.dart';
 ///         "backup:GetBackupVaultNotifications",
 ///         "backup:PutBackupVaultNotifications",
 ///     ],
-///     "resources": [arn],
-/// }]))
+///     "resources": [example_vault.arn],
+/// }])
 /// example_vault_policy = aws.backup.VaultPolicy("example",
 ///     backup_vault_name=example_vault.name,
 ///     policy=example.json)
@@ -85,12 +85,12 @@ import 'vault_policy_state.dart';
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -135,60 +135,87 @@ import 'vault_policy_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleVault, err := backup.NewVault(ctx, "example", &backup.VaultArgs{
+/// 			Name: pulumi.String("example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String(current.AccountId),
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("backup:DescribeBackupVault"),
+/// 						pulumi.String("backup:DeleteBackupVault"),
+/// 						pulumi.String("backup:PutBackupVaultAccessPolicy"),
+/// 						pulumi.String("backup:DeleteBackupVaultAccessPolicy"),
+/// 						pulumi.String("backup:GetBackupVaultAccessPolicy"),
+/// 						pulumi.String("backup:StartBackupJob"),
+/// 						pulumi.String("backup:GetBackupVaultNotifications"),
+/// 						pulumi.String("backup:PutBackupVaultNotifications"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleVault.Arn,
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = backup.NewVaultPolicy(ctx, "example", &backup.VaultPolicyArgs{
+/// 			BackupVaultName: exampleVault.Name,
+/// 			Policy:          example.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// exampleVault, err := backup.NewVault(ctx, "example", &backup.VaultArgs{
-/// Name: pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// example := exampleVault.Arn.ApplyT(func(arn string) (iam.GetPolicyDocumentResult, error) {
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// current.AccountId,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "backup:DescribeBackupVault",
-/// "backup:DeleteBackupVault",
-/// "backup:PutBackupVaultAccessPolicy",
-/// "backup:DeleteBackupVaultAccessPolicy",
-/// "backup:GetBackupVaultAccessPolicy",
-/// "backup:StartBackupJob",
-/// "backup:GetBackupVaultNotifications",
-/// "backup:PutBackupVaultNotifications",
-/// },
-/// Resources: []string{
-/// arn,
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = backup.NewVaultPolicy(ctx, "example", &backup.VaultPolicyArgs{
-/// BackupVaultName: exampleVault.Name,
-/// Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// return &example.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_getcalleridentity" "current" {
 /// }
-/// return nil
-/// })
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [data.aws_getcalleridentity.current.account_id]
+///     }
+///     actions   = ["backup:DescribeBackupVault", "backup:DeleteBackupVault", "backup:PutBackupVaultAccessPolicy", "backup:DeleteBackupVaultAccessPolicy", "backup:GetBackupVaultAccessPolicy", "backup:StartBackupJob", "backup:GetBackupVaultNotifications", "backup:PutBackupVaultNotifications"]
+///     resources = [aws_backup_vault.example.arn]
+///   }
+/// }
+///
+/// resource "aws_backup_vault" "example" {
+///   name = "example"
+/// }
+/// resource "aws_backup_vaultpolicy" "example" {
+///   backup_vault_name = aws_backup_vault.example.name
+///   policy            = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -203,10 +230,12 @@ import 'vault_policy_state.dart';
 /// import com.pulumi.aws.backup.VaultArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.backup.VaultPolicy;
 /// import com.pulumi.aws.backup.VaultPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,7 +254,7 @@ import 'vault_policy_state.dart';
 ///             .name("example")
 ///             .build());
 ///
-///         final var example = exampleVault.arn().applyValue(_arn -> IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
@@ -241,13 +270,13 @@ import 'vault_policy_state.dart';
 ///                     "backup:StartBackupJob",
 ///                     "backup:GetBackupVaultNotifications",
 ///                     "backup:PutBackupVaultNotifications")
-///                 .resources(_arn)
+///                 .resources(exampleVault.arn())
 ///                 .build())
-///             .build()));
+///             .build());
 ///
 ///         var exampleVaultPolicy = new VaultPolicy("exampleVaultPolicy", VaultPolicyArgs.builder()
 ///             .backupVaultName(exampleVault.name())
-///             .policy(example.json())
+///             .policy(example.applyValue(_example -> _example.json()))
 ///             .build());
 ///
 ///     }

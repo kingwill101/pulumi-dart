@@ -113,6 +113,28 @@ import 'registered_domain_tech_contact.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53domains_registereddomain" "example" {
+///   domain_name = "example.com"
+///   name_servers {
+///     name = "ns-195.awsdns-24.com"
+///   }
+///   name_servers {
+///     name = "ns-874.awsdns-45.net"
+///   }
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +144,8 @@ import 'registered_domain_tech_contact.dart';
 /// import com.pulumi.aws.route53domains.RegisteredDomain;
 /// import com.pulumi.aws.route53domains.RegisteredDomainArgs;
 /// import com.pulumi.aws.route53domains.inputs.RegisteredDomainNameServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,7 +214,7 @@ class RegisteredDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> domainName;
   /// The date when the registration for the domain is set to expire.
   late final pulumi.Output<String> expirationDate;
-  /// The list of nameservers for the domain. See `name_server` Blocks for more details.
+  /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
   late final pulumi.Output<RegisteredDomainRegistrantContact> registrantContact;
@@ -206,9 +228,9 @@ class RegisteredDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> reseller;
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
   late final pulumi.Output<List<String>> statusLists;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Details about the domain technical contact. See Contact Blocks for more details.
   late final pulumi.Output<RegisteredDomainTechContact> techContact;
@@ -216,7 +238,7 @@ class RegisteredDomain extends pulumi.CustomResource {
   late final pulumi.Output<bool?> techPrivacy;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
-  /// &gt; **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
+  /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
   late final pulumi.Output<bool?> transferLock;
   /// The last updated date of the domain as found in the response to a WHOIS query.
   late final pulumi.Output<String> updatedDate;

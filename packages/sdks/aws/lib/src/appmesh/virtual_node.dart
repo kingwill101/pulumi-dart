@@ -5,16 +5,7 @@ import 'virtual_node_state.dart';
 
 /// Provides an AWS App Mesh virtual node resource.
 ///
-/// ## Breaking Changes
-///
-/// Because of backward incompatible API changes (read [here](https://github.com/awslabs/aws-app-mesh-examples/issues/92)), `aws.appmesh.VirtualNode` resource definitions created with provider versions earlier than v2.3.0 will need to be modified:
-///
-/// * Rename the `service_name` attribute of the `dns` object to `hostname`.
-///
-/// * Replace the `backends` attribute of the `spec` object with one or more `backend` configuration blocks,
-/// setting `virtual_service_name` to the name of the service.
-///
-/// The state associated with existing resources will automatically be migrated.
+/// &gt; **Note:** Because of backward incompatible API changes ([see issue](https://github.com/awslabs/aws-app-mesh-examples/issues/92)), resource definitions created with provider versions earlier than v2.3.0 must be modified: rename the `serviceName` attribute of the `dns` object to `hostname`; replace the `backends` attribute of the `spec` object with one or more `backend` configuration blocks, setting `virtualServiceName` to the name of the service. Existing Pulumi state is automatically migrated.
 ///
 /// ## Example Usage
 ///
@@ -164,6 +155,38 @@ import 'virtual_node_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_virtualnode" "serviceb1" {
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
+///   spec = {
+///     backends = [{
+///       "virtualService" = {
+///         "virtualServiceName" = "servicea.simpleapp.local"
+///       }
+///     }]
+///     listeners = [{
+///       "portMapping" = {
+///         "port"     = 8080
+///         "protocol" = "http"
+///       }
+///     }]
+///     service_discovery = {
+///       dns = {
+///         hostname = "serviceb.simpleapp.local"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,10 +196,14 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -412,6 +439,45 @@ import 'virtual_node_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicediscovery_httpnamespace" "example" {
+///   name = "example-ns"
+/// }
+/// resource "aws_appmesh_virtualnode" "serviceb1" {
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
+///   spec = {
+///     backends = [{
+///       "virtualService" = {
+///         "virtualServiceName" = "servicea.simpleapp.local"
+///       }
+///     }]
+///     listeners = [{
+///       "portMapping" = {
+///         "port"     = 8080
+///         "protocol" = "http"
+///       }
+///     }]
+///     service_discovery = {
+///       aws_cloud_map = {
+///         attributes = {
+///           "stack" = "blue"
+///         }
+///         service_name   = "serviceb1"
+///         namespace_name = aws_servicediscovery_httpnamespace.example.name
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -423,10 +489,14 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -677,6 +747,46 @@ import 'virtual_node_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_virtualnode" "serviceb1" {
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
+///   spec = {
+///     backends = [{
+///       "virtualService" = {
+///         "virtualServiceName" = "servicea.simpleapp.local"
+///       }
+///     }]
+///     listeners = [{
+///       "portMapping" = {
+///         "port"     = 8080
+///         "protocol" = "http"
+///       }
+///       "healthCheck" = {
+///         "protocol"           = "http"
+///         "path"               = "/ping"
+///         "healthyThreshold"   = 2
+///         "unhealthyThreshold" = 2
+///         "timeoutMillis"      = 2000
+///         "intervalMillis"     = 5000
+///       }
+///     }]
+///     service_discovery = {
+///       dns = {
+///         hostname = "serviceb.simpleapp.local"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -686,10 +796,15 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerHealthCheckArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -940,6 +1055,45 @@ import 'virtual_node_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appmesh_virtualnode" "serviceb1" {
+///   name      = "serviceBv1"
+///   mesh_name = simple.id
+///   spec = {
+///     backends = [{
+///       "virtualService" = {
+///         "virtualServiceName" = "servicea.simpleapp.local"
+///       }
+///     }]
+///     listeners = [{
+///       "portMapping" = {
+///         "port"     = 8080
+///         "protocol" = "http"
+///       }
+///     }]
+///     service_discovery = {
+///       dns = {
+///         hostname = "serviceb.simpleapp.local"
+///       }
+///     }
+///     logging = {
+///       access_log = {
+///         file = {
+///           path = "/dev/stdout"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -949,13 +1103,17 @@ import 'virtual_node_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualNode;
 /// import com.pulumi.aws.appmesh.VirtualNodeArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecBackendVirtualServiceArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecListenerPortMappingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecServiceDiscoveryDnsArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecLoggingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecLoggingAccessLogArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualNodeSpecLoggingAccessLogFileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1027,7 +1185,7 @@ import 'virtual_node_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import App Mesh virtual nodes using `mesh_name` together with the virtual node's `name`. For example:
+/// Using `pulumi import`, import App Mesh virtual nodes using `meshName` together with the virtual node's `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appmesh/virtualNode:VirtualNode serviceb1 simpleapp/serviceBv1
@@ -1049,11 +1207,11 @@ class VirtualNode extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Resource owner's AWS account ID.
   late final pulumi.Output<String> resourceOwner;
-  /// Virtual node specification to apply.
+  /// Virtual node specification to apply. See `spec` Block for details.
   late final pulumi.Output<VirtualNodeSpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VirtualNode].

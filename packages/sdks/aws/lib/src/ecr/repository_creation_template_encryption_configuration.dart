@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryCreationTemplateEncryptionConfiguration {
   /// The encryption type to use for any created repositories. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
   final pulumi.Input<String>? encryptionType;
-  /// The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
+  /// The ARN of the KMS key to use when `encryptionType` is `KMS`. If not specified, uses the default AWS managed key for ECR.
   final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [RepositoryCreationTemplateEncryptionConfiguration].
   /// [encryptionType] The encryption type to use for any created repositories. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
-  /// [kmsKey] The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
+  /// [kmsKey] The ARN of the KMS key to use when `encryptionType` is `KMS`. If not specified, uses the default AWS managed key for ECR.
   const RepositoryCreationTemplateEncryptionConfiguration({
     this.encryptionType,
     this.kmsKey,
@@ -30,4 +30,3 @@ class RepositoryCreationTemplateEncryptionConfiguration {
     );
   }
 }
-

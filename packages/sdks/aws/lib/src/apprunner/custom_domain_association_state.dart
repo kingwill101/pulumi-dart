@@ -5,7 +5,7 @@ import 'custom_domain_association_certificate_validation_record.dart';
 
 /// Input properties used for looking up and filtering CustomDomainAssociation resources.
 class CustomDomainAssociationState {
-  /// A set of certificate CNAME records used for this domain name. See Certificate Validation Records below for more details.
+  /// Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.
   final pulumi.Input<List<CustomDomainAssociationCertificateValidationRecord>>? certificateValidationRecords;
   /// App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
   final pulumi.Input<String>? dnsTarget;
@@ -21,7 +21,7 @@ class CustomDomainAssociationState {
   final pulumi.Input<String>? status;
 
   /// Creates a new [CustomDomainAssociationState].
-  /// [certificateValidationRecords] A set of certificate CNAME records used for this domain name. See Certificate Validation Records below for more details.
+  /// [certificateValidationRecords] Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.
   /// [dnsTarget] App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
   /// [domainName] Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
   /// [enableWwwSubdomain] Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
@@ -62,4 +62,3 @@ class CustomDomainAssociationState {
     );
   }
 }
-

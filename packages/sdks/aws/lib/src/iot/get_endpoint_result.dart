@@ -3,8 +3,8 @@
 
 /// Result data returned by getEndpoint.
 class GetEndpointResult {
-  /// Endpoint based on `endpoint_type`:
-  /// * No `endpoint_type`: Either `iot:Data` or `iot:Data-ATS` [depending on region](https://aws.amazon.com/blogs/iot/aws-iot-core-ats-endpoints/)
+  /// Endpoint based on `endpointType`:
+  /// * No `endpointType`: Either `iot:Data` or `iot:Data-ATS` [depending on region](https://aws.amazon.com/blogs/iot/aws-iot-core-ats-endpoints/)
   /// * `iot:CredentialsProvider`: `IDENTIFIER.credentials.iot.REGION.amazonaws.com`
   /// * `iot:Data`: `IDENTIFIER.iot.REGION.amazonaws.com`
   /// * `iot:Data-ATS`: `IDENTIFIER-ats.iot.REGION.amazonaws.com`
@@ -16,7 +16,7 @@ class GetEndpointResult {
   final String region;
 
   /// Creates a new [GetEndpointResult].
-  /// [endpointAddress] Endpoint based on `endpoint_type`:
+  /// [endpointAddress] Endpoint based on `endpointType`:
   /// [endpointType] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
@@ -45,4 +45,3 @@ class GetEndpointResult {
     );
   }
 }
-

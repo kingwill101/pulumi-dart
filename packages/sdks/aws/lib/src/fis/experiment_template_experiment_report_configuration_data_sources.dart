@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'experiment_template_experiment_report_configuration_data_sources_cloudwatch_dashboard.dart';
 
 class ExperimentTemplateExperimentReportConfigurationDataSources {
-  /// The data sources for the experiment report. See below.
+  /// Data sources for the experiment report. See below.
   final pulumi.Input<List<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>>? cloudwatchDashboards;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationDataSources].
-  /// [cloudwatchDashboards] The data sources for the experiment report. See below.
+  /// [cloudwatchDashboards] Data sources for the experiment report. See below.
   const ExperimentTemplateExperimentReportConfigurationDataSources({
     this.cloudwatchDashboards,
   });
@@ -25,4 +25,3 @@ class ExperimentTemplateExperimentReportConfigurationDataSources {
     );
   }
 }
-

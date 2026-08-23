@@ -5,7 +5,7 @@ import 'connection_group_timeouts.dart';
 
 /// Input properties used for looking up and filtering ConnectionGroup resources.
 class ConnectionGroupState {
-  /// ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
+  /// ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument
   final pulumi.Input<String>? anycastIpListId;
   /// ARN of the connection group.
   final pulumi.Input<String>? arn;
@@ -25,15 +25,15 @@ class ConnectionGroupState {
   final pulumi.Input<String>? routingEndpoint;
   /// Current status of the connection group.
   final pulumi.Input<String>? status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ConnectionGroupTimeouts>? timeouts;
   final pulumi.Input<bool>? waitForDeployment;
 
   /// Creates a new [ConnectionGroupState].
-  /// [anycastIpListId] ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
+  /// [anycastIpListId] ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument
   /// [arn] ARN of the connection group.
   /// [enabled] Whether the connection group is enabled. Default is `true`.
   /// [etag] Current version of the connection group.
@@ -43,8 +43,8 @@ class ConnectionGroupState {
   /// [name] Name of the connection group.
   /// [routingEndpoint] The routing endpoint (also known as the DNS name) that is assigned to the connection group, such as d111111abcdef8.cloudfront.net.
   /// [status] Current status of the connection group.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [waitForDeployment] Optional.
   const ConnectionGroupState({
@@ -102,4 +102,3 @@ class ConnectionGroupState {
     );
   }
 }
-

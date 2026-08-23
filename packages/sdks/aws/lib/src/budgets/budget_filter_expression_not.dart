@@ -19,7 +19,7 @@ class BudgetFilterExpressionNot {
   final pulumi.Input<BudgetFilterExpressionNotNot>? not;
   /// (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
   final pulumi.Input<List<BudgetFilterExpressionNotOr>>? ors;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<BudgetFilterExpressionNotTags>? tags;
 
   /// Creates a new [BudgetFilterExpressionNot].
@@ -28,7 +28,7 @@ class BudgetFilterExpressionNot {
   /// [dimensions] (Optional) A Dimension Filter block.
   /// [not] (Optional) A single filter expression to negate. Must contain exactly one root.
   /// [ors] (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const BudgetFilterExpressionNot({
     this.ands,
     this.costCategories,
@@ -60,4 +60,3 @@ class BudgetFilterExpressionNot {
     );
   }
 }
-

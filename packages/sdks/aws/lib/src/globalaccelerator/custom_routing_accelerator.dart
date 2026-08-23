@@ -96,6 +96,27 @@ import 'custom_routing_accelerator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_globalaccelerator_customroutingaccelerator" "example" {
+///   name            = "Example"
+///   ip_address_type = "IPV4"
+///   ip_addresses    = ["1.2.3.4"]
+///   enabled         = true
+///   attributes = {
+///     flow_logs_enabled   = true
+///     flow_logs_s3_bucket = "example-bucket"
+///     flow_logs_s3_prefix = "flow-logs/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'custom_routing_accelerator_state.dart';
 /// import com.pulumi.aws.globalaccelerator.CustomRoutingAccelerator;
 /// import com.pulumi.aws.globalaccelerator.CustomRoutingAcceleratorArgs;
 /// import com.pulumi.aws.globalaccelerator.inputs.CustomRoutingAcceleratorAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,9 +206,9 @@ class CustomRoutingAccelerator extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> ipSets;
   /// The name of a custom routing accelerator.
   late final pulumi.Output<String> name;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CustomRoutingAccelerator].

@@ -67,6 +67,21 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_connection" "example" {
+///   global_network_id   = exampleAwsNetworkmanagerGlobalNetwork.id
+///   device_id           = example1.id
+///   connected_device_id = example2.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.Connection;
 /// import com.pulumi.aws.networkmanager.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,9 +147,9 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> globalNetworkId;
   /// ID of the link for the first device.
   late final pulumi.Output<String?> linkId;
-  /// Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Connection].

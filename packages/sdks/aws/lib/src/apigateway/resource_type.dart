@@ -74,7 +74,7 @@ import 'resource_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID(),
+/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -83,6 +83,25 @@ import 'resource_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_apigateway_resource" "MyDemoResource" {
+///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
+///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   path_part = "mydemoresource"
 /// }
 /// ```
 /// ```java
@@ -95,8 +114,8 @@ import 'resource_state.dart';
 /// import com.pulumi.aws.apigateway.RestApiArgs;
 /// import com.pulumi.aws.apigateway.Resource;
 /// import com.pulumi.aws.apigateway.ResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,6 +160,19 @@ import 'resource_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `restApiId` (String) ID of the associated REST API.
+/// * `id` (String) Resource's identifier.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import `aws.apigateway.Resource` using `REST-API-ID/RESOURCE-ID`. For example:
 ///

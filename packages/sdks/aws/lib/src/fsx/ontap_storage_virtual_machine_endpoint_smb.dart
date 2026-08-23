@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapStorageVirtualMachineEndpointSmb {
-  /// The Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
+  /// Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
   final pulumi.Input<String>? dnsName;
   /// IP addresses of the storage virtual machine endpoint.
   final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [OntapStorageVirtualMachineEndpointSmb].
-  /// [dnsName] The Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
+  /// [dnsName] Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
   /// [ipAddresses] IP addresses of the storage virtual machine endpoint.
   const OntapStorageVirtualMachineEndpointSmb({
     this.dnsName,
@@ -30,4 +30,3 @@ class OntapStorageVirtualMachineEndpointSmb {
     );
   }
 }
-

@@ -8,19 +8,15 @@ class GetDbServersResult {
   final String cloudExadataInfrastructureId;
   /// the list of DB servers along with their properties.
   final List<GetDbServersDbServer> dbServers;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   final String region;
 
   /// Creates a new [GetDbServersResult].
   /// [cloudExadataInfrastructureId] Required.
   /// [dbServers] the list of DB servers along with their properties.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   const GetDbServersResult({
     required this.cloudExadataInfrastructureId,
     required this.dbServers,
-    required this.id,
     required this.region,
   });
 
@@ -28,7 +24,6 @@ class GetDbServersResult {
     return <String, dynamic>{
       'cloudExadataInfrastructureId': cloudExadataInfrastructureId,
       'dbServers': pulumi.Input.encodeList<GetDbServersDbServer, Map<String, dynamic>>(dbServers, (value) => value.toMap()),
-      'id': id,
       'region': region,
     };
   }
@@ -37,9 +32,7 @@ class GetDbServersResult {
     return GetDbServersResult(
       cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
       dbServers: pulumi.Input.decodeList<GetDbServersDbServer>(map['dbServers']!, (value) => GetDbServersDbServer.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
-

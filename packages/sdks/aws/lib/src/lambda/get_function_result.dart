@@ -57,7 +57,7 @@ class GetFunctionResult {
   final int memorySize;
   /// Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN identifying your Lambda Function. See also `arn`.
   final String qualifiedArn;
-  /// Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN to be used for invoking Lambda Function from API Gateway. See also `invoke_arn`.
+  /// Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN to be used for invoking Lambda Function from API Gateway. See also `invokeArn`.
   final String qualifiedInvokeArn;
   final String? qualifier;
   final String region;
@@ -73,7 +73,7 @@ class GetFunctionResult {
   final String signingJobArn;
   /// ARN for a signing profile version.
   final String signingProfileVersionArn;
-  /// (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
+  /// (**Deprecated** use `codeSha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   final String sourceCodeHash;
   /// Size in bytes of the function .zip file.
   final int sourceCodeSize;
@@ -115,7 +115,7 @@ class GetFunctionResult {
   /// [loggingConfigs] Advanced logging settings. See below.
   /// [memorySize] Amount of memory in MB your Lambda Function can use at runtime.
   /// [qualifiedArn] Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN identifying your Lambda Function. See also `arn`.
-  /// [qualifiedInvokeArn] Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN to be used for invoking Lambda Function from API Gateway. See also `invoke_arn`.
+  /// [qualifiedInvokeArn] Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN to be used for invoking Lambda Function from API Gateway. See also `invokeArn`.
   /// [qualifier] Optional.
   /// [region] Required.
   /// [reservedConcurrentExecutions] Amount of reserved concurrent executions for this Lambda function or `-1` if unreserved.
@@ -124,7 +124,7 @@ class GetFunctionResult {
   /// [runtime] Runtime environment for the Lambda function.
   /// [signingJobArn] ARN of a signing job.
   /// [signingProfileVersionArn] ARN for a signing profile version.
-  /// [sourceCodeHash] (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
+  /// [sourceCodeHash] (**Deprecated** use `codeSha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   /// [sourceCodeSize] Size in bytes of the function .zip file.
   /// [sourceKmsKeyArn] ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package.
   /// [tags] Map of tags assigned to the Lambda Function.
@@ -266,4 +266,3 @@ class GetFunctionResult {
     );
   }
 }
-

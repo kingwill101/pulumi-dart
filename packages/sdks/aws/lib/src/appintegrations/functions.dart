@@ -56,6 +56,19 @@ import 'get_event_integration_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appintegrations_geteventintegration" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'get_event_integration_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appintegrations.AppintegrationsFunctions;
 /// import com.pulumi.aws.appintegrations.inputs.GetEventIntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

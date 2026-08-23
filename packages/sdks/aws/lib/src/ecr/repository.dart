@@ -75,6 +75,23 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_repository" "foo" {
+///   name                 = "bar"
+///   image_tag_mutability = "MUTABLE"
+///   image_scanning_configuration = {
+///     scan_on_push = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'repository_state.dart';
 /// import com.pulumi.aws.ecr.Repository;
 /// import com.pulumi.aws.ecr.RepositoryArgs;
 /// import com.pulumi.aws.ecr.inputs.RepositoryImageScanningConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +237,28 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_repository" "example" {
+///   name                 = "example-repo"
+///   image_tag_mutability = "IMMUTABLE_WITH_EXCLUSION"
+///   image_tag_mutability_exclusion_filters {
+///     filter      = "latest*"
+///     filter_type = "WILDCARD"
+///   }
+///   image_tag_mutability_exclusion_filters {
+///     filter      = "dev-*"
+///     filter_type = "WILDCARD"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +268,8 @@ import 'repository_state.dart';
 /// import com.pulumi.aws.ecr.Repository;
 /// import com.pulumi.aws.ecr.RepositoryArgs;
 /// import com.pulumi.aws.ecr.inputs.RepositoryImageTagMutabilityExclusionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,7 +323,7 @@ import 'repository_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -305,7 +344,7 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<RepositoryImageScanningConfiguration?> imageScanningConfiguration;
   /// The tag mutability setting for the repository. Must be one of: `MUTABLE`, `IMMUTABLE`, `IMMUTABLE_WITH_EXCLUSION`, or `MUTABLE_WITH_EXCLUSION`. Defaults to `MUTABLE`.
   late final pulumi.Output<String?> imageTagMutability;
-  /// Configuration block that defines filters to specify which image tags can override the default tag mutability setting. Only applicable when `image_tag_mutability` is set to `IMMUTABLE_WITH_EXCLUSION` or `MUTABLE_WITH_EXCLUSION`. See below for schema.
+  /// Configuration block that defines filters to specify which image tags can override the default tag mutability setting. Only applicable when `imageTagMutability` is set to `IMMUTABLE_WITH_EXCLUSION` or `MUTABLE_WITH_EXCLUSION`. See below for schema.
   late final pulumi.Output<List<Map<String, dynamic>>?> imageTagMutabilityExclusionFilters;
   /// Name of the repository.
   late final pulumi.Output<String> name;
@@ -315,9 +354,9 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<String> registryId;
   /// The URL of the repository (in the form `aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName`).
   late final pulumi.Output<String> repositoryUrl;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Repository].

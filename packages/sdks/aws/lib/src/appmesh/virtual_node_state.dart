@@ -21,11 +21,11 @@ class VirtualNodeState {
   final pulumi.Input<String>? region;
   /// Resource owner's AWS account ID.
   final pulumi.Input<String>? resourceOwner;
-  /// Virtual node specification to apply.
+  /// Virtual node specification to apply. See `spec` Block for details.
   final pulumi.Input<VirtualNodeSpec>? spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [VirtualNodeState].
@@ -37,9 +37,9 @@ class VirtualNodeState {
   /// [name] Name to use for the virtual node. Must be between 1 and 255 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceOwner] Resource owner's AWS account ID.
-  /// [spec] Virtual node specification to apply.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [spec] Virtual node specification to apply. See `spec` Block for details.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const VirtualNodeState({
     this.arn,
     this.createdDate,
@@ -86,4 +86,3 @@ class VirtualNodeState {
     );
   }
 }
-

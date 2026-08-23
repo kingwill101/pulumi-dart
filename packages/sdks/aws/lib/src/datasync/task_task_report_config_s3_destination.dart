@@ -36,4 +36,3 @@ class TaskTaskReportConfigS3Destination {
     );
   }
 }
-

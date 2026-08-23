@@ -11,7 +11,7 @@ class SnapshotClusterConfiguration {
   final pulumi.Input<String>? engineVersion;
   /// The weekly time range during which maintenance on the cluster is performed.
   final pulumi.Input<String>? maintenanceWindow;
-  /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Compute and memory capacity of the nodes in the cluster.
   final pulumi.Input<String>? nodeType;
@@ -37,7 +37,7 @@ class SnapshotClusterConfiguration {
   /// [engine] The engine that will run on cluster nodes.
   /// [engineVersion] Version number of the engine used by the cluster.
   /// [maintenanceWindow] The weekly time range during which maintenance on the cluster is performed.
-  /// [name] Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [nodeType] Compute and memory capacity of the nodes in the cluster.
   /// [numShards] Number of shards in the cluster.
   /// [parameterGroupName] Name of the parameter group associated with the cluster.
@@ -102,4 +102,3 @@ class SnapshotClusterConfiguration {
     );
   }
 }
-

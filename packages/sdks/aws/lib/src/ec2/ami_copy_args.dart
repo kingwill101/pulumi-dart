@@ -31,12 +31,12 @@ class AmiCopyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Id of the AMI to copy. This id must be valid in the region
-  /// given by `source_ami_region`.
+  /// given by `sourceAmiRegion`.
   final pulumi.Input<String> sourceAmiId;
   /// Region from which the AMI will be copied. This may be the
   /// same as the AWS provider region in order to create a copy within the same region.
   final pulumi.Input<String> sourceAmiRegion;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AmiCopyArgs].
@@ -51,7 +51,7 @@ class AmiCopyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceAmiId] Id of the AMI to copy. This id must be valid in the region
   /// [sourceAmiRegion] Region from which the AMI will be copied. This may be the
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AmiCopyArgs({
     this.deprecationTime,
     this.description,
@@ -101,4 +101,3 @@ class AmiCopyArgs {
     );
   }
 }
-

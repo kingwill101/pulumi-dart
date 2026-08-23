@@ -63,6 +63,20 @@ import 'resource_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_resourceassociation" "example" {
+///   resource_arn       = exampleAwsSubnet.arn
+///   resource_share_arn = exampleAwsRamResourceShare.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'resource_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ram.ResourceAssociation;
 /// import com.pulumi.aws.ram.ResourceAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

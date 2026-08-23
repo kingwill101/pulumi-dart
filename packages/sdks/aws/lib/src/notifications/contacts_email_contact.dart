@@ -76,6 +76,23 @@ import 'contacts_email_contact_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_notifications_contactsemailcontact" "example" {
+///   name          = "example-contact"
+///   email_address = "example@example.com"
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'contacts_email_contact_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.notifications.ContactsEmailContact;
 /// import com.pulumi.aws.notifications.ContactsEmailContactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -137,11 +154,11 @@ class ContactsEmailContact extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Map of tags to assign to the resource. If configured with a provider
-  /// `default_tags` configuration block
+  /// `defaultTags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider
-  /// `default_tags` configuration block.
+  /// `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ContactsEmailContact].

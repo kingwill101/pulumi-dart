@@ -6,12 +6,12 @@ import 'data_source_parameters_s3_manifest_file_location.dart';
 class DataSourceParametersS3 {
   /// An object containing the S3 location of the S3 manifest file.
   final pulumi.Input<DataSourceParametersS3ManifestFileLocation> manifestFileLocation;
-  /// Use the `role_arn` to override an account-wide role for a specific S3 data source. For example, say an account administrator has turned off all S3 access with an account-wide role. The administrator can then use `role_arn` to bypass the account-wide role and allow S3 access for the single S3 data source that is specified in the structure, even if the account-wide role forbidding S3 access is still active.
+  /// Use the `roleArn` to override an account-wide role for a specific S3 data source. For example, say an account administrator has turned off all S3 access with an account-wide role. The administrator can then use `roleArn` to bypass the account-wide role and allow S3 access for the single S3 data source that is specified in the structure, even if the account-wide role forbidding S3 access is still active.
   final pulumi.Input<String>? roleArn;
 
   /// Creates a new [DataSourceParametersS3].
   /// [manifestFileLocation] An object containing the S3 location of the S3 manifest file.
-  /// [roleArn] Use the `role_arn` to override an account-wide role for a specific S3 data source. For example, say an account administrator has turned off all S3 access with an account-wide role. The administrator can then use `role_arn` to bypass the account-wide role and allow S3 access for the single S3 data source that is specified in the structure, even if the account-wide role forbidding S3 access is still active.
+  /// [roleArn] Use the `roleArn` to override an account-wide role for a specific S3 data source. For example, say an account administrator has turned off all S3 access with an account-wide role. The administrator can then use `roleArn` to bypass the account-wide role and allow S3 access for the single S3 data source that is specified in the structure, even if the account-wide role forbidding S3 access is still active.
   const DataSourceParametersS3({
     required this.manifestFileLocation,
     this.roleArn,
@@ -31,4 +31,3 @@ class DataSourceParametersS3 {
     );
   }
 }
-

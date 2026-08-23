@@ -1,49 +1,54 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_connection_authentication_configuration.dart';
 import 'get_connection_physical_connection_requirement.dart';
 
 /// Result data returned by getConnection.
 class GetConnectionResult {
   /// ARN of the Glue Connection.
   final String arn;
-  /// A map of connection properties specific to the Athena compute environment.
+  /// Map of connection properties specific to the Athena compute environment.
   final Map<String, String> athenaProperties;
+  /// Configuration block for authentication options. See `authenticationConfiguration` Block for details.
+  final List<GetConnectionAuthenticationConfiguration> authenticationConfigurations;
   /// Catalog ID of the Glue Connection.
   final String catalogId;
-  /// A map of connection properties.
+  /// Map of connection properties.
   final Map<String, String> connectionProperties;
   /// Type of Glue Connection.
   final String connectionType;
   /// Description of the connection.
   final String description;
   final String id;
-  /// A list of criteria that can be used in selecting this connection.
+  /// List of criteria that can be used in selecting this connection.
   final List<String> matchCriterias;
   /// Name of the Glue Connection.
   final String name;
-  /// A map of physical connection requirements, such as VPC and SecurityGroup.
+  /// Map of physical connection requirements, such as VPC and SecurityGroup. See `physicalConnectionRequirements` Block for details.
   final List<GetConnectionPhysicalConnectionRequirement> physicalConnectionRequirements;
   final String region;
-  /// Tags assigned to the resource
+  /// Tags assigned to the resource.
   final Map<String, String> tags;
 
   /// Creates a new [GetConnectionResult].
   /// [arn] ARN of the Glue Connection.
-  /// [athenaProperties] A map of connection properties specific to the Athena compute environment.
+  /// [athenaProperties] Map of connection properties specific to the Athena compute environment.
+  /// [authenticationConfigurations] Configuration block for authentication options. See `authenticationConfiguration` Block for details.
   /// [catalogId] Catalog ID of the Glue Connection.
-  /// [connectionProperties] A map of connection properties.
+  /// [connectionProperties] Map of connection properties.
   /// [connectionType] Type of Glue Connection.
   /// [description] Description of the connection.
   /// [id] Required.
-  /// [matchCriterias] A list of criteria that can be used in selecting this connection.
+  /// [matchCriterias] List of criteria that can be used in selecting this connection.
   /// [name] Name of the Glue Connection.
-  /// [physicalConnectionRequirements] A map of physical connection requirements, such as VPC and SecurityGroup.
+  /// [physicalConnectionRequirements] Map of physical connection requirements, such as VPC and SecurityGroup. See `physicalConnectionRequirements` Block for details.
   /// [region] Required.
-  /// [tags] Tags assigned to the resource
+  /// [tags] Tags assigned to the resource.
   const GetConnectionResult({
     required this.arn,
     required this.athenaProperties,
+    required this.authenticationConfigurations,
     required this.catalogId,
     required this.connectionProperties,
     required this.connectionType,
@@ -60,6 +65,7 @@ class GetConnectionResult {
     return <String, dynamic>{
       'arn': arn,
       'athenaProperties': athenaProperties,
+      'authenticationConfigurations': pulumi.Input.encodeList<GetConnectionAuthenticationConfiguration, Map<String, dynamic>>(authenticationConfigurations, (value) => value.toMap()),
       'catalogId': catalogId,
       'connectionProperties': connectionProperties,
       'connectionType': connectionType,
@@ -77,6 +83,7 @@ class GetConnectionResult {
     return GetConnectionResult(
       arn: map['arn'] as String,
       athenaProperties: (map['athenaProperties'] as Map).cast<String, String>(),
+      authenticationConfigurations: pulumi.Input.decodeList<GetConnectionAuthenticationConfiguration>(map['authenticationConfigurations']!, (value) => GetConnectionAuthenticationConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       catalogId: map['catalogId'] as String,
       connectionProperties: (map['connectionProperties'] as Map).cast<String, String>(),
       connectionType: map['connectionType'] as String,
@@ -90,4 +97,3 @@ class GetConnectionResult {
     );
   }
 }
-

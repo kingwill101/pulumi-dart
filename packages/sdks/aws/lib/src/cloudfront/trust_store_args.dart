@@ -9,20 +9,20 @@ import 'trust_store_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_cloudfront_trust_store_trust_store_args_doc}
 class TrustStoreArgs {
-  /// Configuration block for the CA certificates bundle source. See `ca_certificates_bundle_source` below.
+  /// Configuration block for the CA certificates bundle source. See `caCertificatesBundleSource` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<TrustStoreCaCertificatesBundleSource> caCertificatesBundleSource;
   /// Name of the trust store. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<TrustStoreTimeouts>? timeouts;
 
   /// Creates a new [TrustStoreArgs].
-  /// [caCertificatesBundleSource] Configuration block for the CA certificates bundle source. See `ca_certificates_bundle_source` below.
+  /// [caCertificatesBundleSource] Configuration block for the CA certificates bundle source. See `caCertificatesBundleSource` below.
   /// [name] Name of the trust store. Changing this forces a new resource to be created.
-  /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const TrustStoreArgs({
     required this.caCertificatesBundleSource,
@@ -49,4 +49,3 @@ class TrustStoreArgs {
     );
   }
 }
-

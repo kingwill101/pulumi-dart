@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_table_open_table_format_input_iceberg_input.dart';
 
 class CatalogTableOpenTableFormatInput {
-  /// Configuration block for iceberg table config. See `iceberg_input` below.
+  /// Configuration block for iceberg table config. See `icebergInput` below.
   final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInput> icebergInput;
 
   /// Creates a new [CatalogTableOpenTableFormatInput].
-  /// [icebergInput] Configuration block for iceberg table config. See `iceberg_input` below.
+  /// [icebergInput] Configuration block for iceberg table config. See `icebergInput` below.
   const CatalogTableOpenTableFormatInput({
     required this.icebergInput,
   });
@@ -25,4 +25,3 @@ class CatalogTableOpenTableFormatInput {
     );
   }
 }
-

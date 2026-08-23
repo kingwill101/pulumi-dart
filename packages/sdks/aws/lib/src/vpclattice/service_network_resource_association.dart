@@ -77,6 +77,23 @@ import 'service_network_resource_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_servicenetworkresourceassociation" "example" {
+///   resource_configuration_identifier = exampleAwsVpclatticeResourceConfiguration.id
+///   service_network_identifier        = exampleAwsVpclatticeServiceNetwork.id
+///   tags = {
+///     "Name" = "Example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'service_network_resource_association_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.ServiceNetworkResourceAssociation;
 /// import com.pulumi.aws.vpclattice.ServiceNetworkResourceAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -131,7 +148,7 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// DNS entry of the association in the service network.
   late final pulumi.Output<List<Map<String, dynamic>>> dnsEntries;
-  /// Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resource_configuration_identifier` must have a custom domain name or a group domain for private DNS.
+  /// Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resourceConfigurationIdentifier` must have a custom domain name or a group domain for private DNS.
   late final pulumi.Output<bool> privateDnsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -141,9 +158,9 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceNetworkIdentifier;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ServiceNetworkResourceAssociationTimeouts?> timeouts;
 

@@ -1,9 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_args.dart';
+import 'connection_authentication_configuration.dart';
 import 'connection_physical_connection_requirements.dart';
 import 'connection_state.dart';
 
-/// Provides a Glue Connection resource.
+/// Manages an AWS Glue Connection.
 ///
 /// ## Example Usage
 ///
@@ -81,6 +82,24 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_connection" "example" {
+///   name = "example"
+///   connection_properties = {
+///     "JDBC_CONNECTION_URL" = "jdbc:mysql://example.com/exampledatabase"
+///     "PASSWORD"            = "examplepassword"
+///     "USERNAME"            = "exampleusername"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +108,8 @@ import 'connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,6 +232,27 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecret" "example" {
+///   name = "example-secret"
+/// }
+///
+/// resource "aws_glue_connection" "example" {
+///   name = "example"
+///   connection_properties = {
+///     "JDBC_CONNECTION_URL" = "jdbc:mysql://example.com/exampledatabase"
+///     "SECRET_ID"           = data.aws_secretsmanager_getsecret.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +263,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretArgs;
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,6 +412,29 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_connection" "example" {
+///   name = "example"
+///   connection_properties = {
+///     "JDBC_CONNECTION_URL" ="jdbc:mysql://${exampleAwsRdsCluster.endpoint}/exampledatabase"
+///     "PASSWORD"            = "examplepassword"
+///     "USERNAME"            = "exampleusername"
+///   }
+///   physical_connection_requirements = {
+///     availability_zone       = exampleAwsSubnet.availabilityZone
+///     security_group_id_lists = [exampleAwsSecurityGroup.id]
+///     subnet_id               = exampleAwsSubnet.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +444,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
 /// import com.pulumi.aws.glue.inputs.ConnectionPhysicalConnectionRequirementsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -614,6 +677,46 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecret" "example" {
+///   name = "example-secret"
+/// }
+///
+/// resource "aws_glue_connection" "example1" {
+///   name            = "example1"
+///   connection_type = "CUSTOM"
+///   connection_properties = {
+///     "CONNECTOR_CLASS_NAME" = "net.snowflake.client.jdbc.SnowflakeDriver"
+///     "CONNECTION_TYPE"      = "Jdbc"
+///     "CONNECTOR_URL"        = "s3://example/snowflake-jdbc.jar"
+///     "JDBC_CONNECTION_URL"  = "[[\"default=jdbc:snowflake://example.com/?user=$${user}&password=$${password}\"],\",\"]"
+///   }
+///   match_criterias = ["template-connection"]
+/// }
+/// # Reference the connector using match_criteria with the connector created above.
+/// resource "aws_glue_connection" "example2" {
+///   name            = "example2"
+///   connection_type = "CUSTOM"
+///   connection_properties = {
+///     "CONNECTOR_CLASS_NAME" = "net.snowflake.client.jdbc.SnowflakeDriver"
+///     "CONNECTION_TYPE"      = "Jdbc"
+///     "CONNECTOR_URL"        = "s3://example/snowflake-jdbc.jar"
+///     "JDBC_CONNECTION_URL"  = "jdbc:snowflake://example.com/?user=$${user}&password=$${password}"
+///     "SECRET_ID"            = data.aws_secretsmanager_getsecret.example.name
+///   }
+///   match_criterias = ["Connection", aws_glue_connection.example1.name]
+/// }
+/// # Define the custom connector using the connection_type of `CUSTOM` with the match_criteria of `template_connection`
+/// # Example here being a snowflake jdbc connector with a secret having user and password as keys
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -624,8 +727,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretArgs;
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -823,7 +926,7 @@ import 'connection_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"username": "exampleusername",
 /// 			"password": "examplepassword",
 /// 		})
@@ -832,7 +935,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID(),
+/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -844,7 +947,7 @@ import 'connection_state.dart';
 /// 			ConnectionProperties: pulumi.StringMap{
 /// 				"SparkProperties": example.Name.ApplyT(func(name string) (pulumi.String, error) {
 /// 					var _zero pulumi.String
-/// 					tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 					tmpJSON1, err := json.Marshal(map[string]string{
 /// 						"secretId":                     name,
 /// 						"spark.cosmos.accountEndpoint": "https://exampledbaccount.documents.azure.com:443/",
 /// 					})
@@ -863,6 +966,36 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "example" {
+///   name = "example-secret"
+/// }
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id = aws_secretsmanager_secret.example.id
+///   secret_string = jsonencode({
+///     "username" = "exampleusername"
+///     "password" = "examplepassword"
+///   })
+/// }
+/// resource "aws_glue_connection" "example" {
+///   name            = "example"
+///   connection_type = "AZURECOSMOS"
+///   connection_properties = {
+///     "SparkProperties" = jsonencode({
+///       "secretId"                     = aws_secretsmanager_secret.example.name
+///       "spark.cosmos.accountEndpoint" = "https://exampledbaccount.documents.azure.com:443/"
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -876,8 +1009,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1053,7 +1186,7 @@ import 'connection_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"username": "exampleusername",
 /// 			"password": "examplepassword",
 /// 		})
@@ -1062,7 +1195,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID(),
+/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -1074,7 +1207,7 @@ import 'connection_state.dart';
 /// 			ConnectionProperties: pulumi.StringMap{
 /// 				"SparkProperties": example.Name.ApplyT(func(name string) (pulumi.String, error) {
 /// 					var _zero pulumi.String
-/// 					tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 					tmpJSON1, err := json.Marshal(map[string]string{
 /// 						"secretId": name,
 /// 						"url":      "jdbc:sqlserver:exampledbserver.database.windows.net:1433;database=exampledatabase",
 /// 					})
@@ -1093,6 +1226,36 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "example" {
+///   name = "example-secret"
+/// }
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id = aws_secretsmanager_secret.example.id
+///   secret_string = jsonencode({
+///     "username" = "exampleusername"
+///     "password" = "examplepassword"
+///   })
+/// }
+/// resource "aws_glue_connection" "example" {
+///   name            = "example"
+///   connection_type = "AZURECOSMOS"
+///   connection_properties = {
+///     "SparkProperties" = jsonencode({
+///       "secretId" = aws_secretsmanager_secret.example.name
+///       "url"      = "jdbc:sqlserver:exampledbserver.database.windows.net:1433;database=exampledatabase"
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1106,8 +1269,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1356,8 +1519,8 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID(),
-/// 			SecretString: pulumi.String(json0),
+/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretString: json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1368,7 +1531,7 @@ import 'connection_state.dart';
 /// 			ConnectionProperties: pulumi.StringMap{
 /// 				"SparkProperties": example.Name.ApplyT(func(name string) (pulumi.String, error) {
 /// 					var _zero pulumi.String
-/// 					tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 					tmpJSON1, err := json.Marshal(map[string]string{
 /// 						"secretId": name,
 /// 					})
 /// 					if err != nil {
@@ -1386,6 +1549,37 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "example" {
+///   name = "example-secret"
+/// }
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id = aws_secretsmanager_secret.example.id
+///   secret_string = jsonencode({
+///     "credentials" = base64encode("{\n  \\\"type\\\": \\\"service_account\\\",\n  \\\"project_id\\\": \\\"example-project\\\",\n  \\\"private_key_id\\\": \\\"example-key\\\",\n  \\\"private_key\\\": \\\"-----BEGIN RSA PRIVATE KEY-----\\\nREDACTED\\\n-----END RSA PRIVATE KEY-----\\\",\n  \\\"client_email\\\": \\\"example-project@appspot.gserviceaccount.com\\\",\n  \\\"client_id\\\": example-client\\\",\n  \\\"auth_uri\\\": \\\"https://accounts.google.com/o/oauth2/auth\\\",\n  \\\"token_uri\\\": \\\"https://oauth2.googleapis.com/token\\\",\n  \\\"auth_provider_x509_cert_url\\\": \\\"https://www.googleapis.com/oauth2/v1/certs\\\",\n  \\\"client_x509_cert_url\\\": \\\"https://www.googleapis.com/robot/v1/metadata/x509/example-project%%40appspot.gserviceaccount.com\\\",\n  \\\"universe_domain\\\": \\\"googleapis.com\\\"\n}\n")
+///   })
+/// }
+/// resource "aws_glue_connection" "example" {
+///   name            = "example"
+///   connection_type = "BIGQUERY"
+///   connection_properties = {
+///     "SparkProperties" = jsonencode({
+///       "secretId" = aws_secretsmanager_secret.example.name
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1401,8 +1595,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1624,7 +1818,7 @@ import 'connection_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"opensearch.net.http.auth.user": "exampleusername",
 /// 			"opensearch.net.http.auth.pass": "examplepassword",
 /// 		})
@@ -1633,7 +1827,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID(),
+/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -1645,7 +1839,7 @@ import 'connection_state.dart';
 /// 			ConnectionProperties: pulumi.StringMap{
 /// 				"SparkProperties": example.Name.ApplyT(func(name string) (pulumi.String, error) {
 /// 					var _zero pulumi.String
-/// 					tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 					tmpJSON1, err := json.Marshal(map[string]string{
 /// 						"secretId":                     name,
 /// 						"opensearch.nodes":             "https://search-exampledomain-ixlmh4jieahrau3bfebcgp8cnm.us-east-1.es.amazonaws.com",
 /// 						"opensearch.port":              "443",
@@ -1668,6 +1862,40 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "example" {
+///   name = "example-secret"
+/// }
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id = aws_secretsmanager_secret.example.id
+///   secret_string = jsonencode({
+///     "opensearch.net.http.auth.user" = "exampleusername"
+///     "opensearch.net.http.auth.pass" = "examplepassword"
+///   })
+/// }
+/// resource "aws_glue_connection" "example" {
+///   name            = "example"
+///   connection_type = "OPENSEARCH"
+///   connection_properties = {
+///     "SparkProperties" = jsonencode({
+///       "secretId"                     = aws_secretsmanager_secret.example.name
+///       "opensearch.nodes"             = "https://search-exampledomain-ixlmh4jieahrau3bfebcgp8cnm.us-east-1.es.amazonaws.com"
+///       "opensearch.port"              = "443"
+///       "opensearch.aws.sigv4.region"  = "us-east-1"
+///       "opensearch.nodes.wan.only"    = "true"
+///       "opensearch.aws.sigv4.enabled" = "true"
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1681,8 +1909,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1869,7 +2097,7 @@ import 'connection_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"sfUser":     "exampleusername",
 /// 			"sfPassword": "examplepassword",
 /// 		})
@@ -1878,7 +2106,7 @@ import 'connection_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     example.ID(),
+/// 			SecretId:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -1890,7 +2118,7 @@ import 'connection_state.dart';
 /// 			ConnectionProperties: pulumi.StringMap{
 /// 				"SparkProperties": example.Name.ApplyT(func(name string) (pulumi.String, error) {
 /// 					var _zero pulumi.String
-/// 					tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 					tmpJSON1, err := json.Marshal(map[string]string{
 /// 						"secretId": name,
 /// 						"sfRole":   "EXAMPLEETLROLE",
 /// 						"sfUrl":    "exampleorg-exampleconnection.snowflakecomputing.com",
@@ -1910,6 +2138,37 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secret" "example" {
+///   name = "example-secret"
+/// }
+/// resource "aws_secretsmanager_secretversion" "example" {
+///   secret_id = aws_secretsmanager_secret.example.id
+///   secret_string = jsonencode({
+///     "sfUser"     = "exampleusername"
+///     "sfPassword" = "examplepassword"
+///   })
+/// }
+/// resource "aws_glue_connection" "example" {
+///   name            = "example"
+///   connection_type = "SNOWFLAKE"
+///   connection_properties = {
+///     "SparkProperties" = jsonencode({
+///       "secretId" = aws_secretsmanager_secret.example.name
+///       "sfRole"   = "EXAMPLEETLROLE"
+///       "sfUrl"    = "exampleorg-exampleconnection.snowflakecomputing.com"
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1923,8 +2182,8 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2071,6 +2330,25 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_connection" "test" {
+///   name            = "example"
+///   connection_type = "DYNAMODB"
+///   athena_properties = {
+///     "lambda_function_arn"      = "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_athena_abcdefgh"
+///     "disable_spill_encryption" = "false"
+///     "spill_bucket"             = "example-bucket"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2079,8 +2357,8 @@ import 'connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.Connection;
 /// import com.pulumi.aws.glue.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2119,6 +2397,250 @@ import 'connection_state.dart';
 /// ```
 ///
 ///
+/// ### MySQL Federated Connection
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.glue.Connection("example", {
+///     name: "athenafederatedcatalog_mysql",
+///     connectionType: "MYSQL",
+///     athenaProperties: {
+///         lambda_function_arn: "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql",
+///         spill_bucket: exampleAwsS3Bucket.bucket,
+///     },
+///     connectionProperties: {
+///         HOST: exampleAwsRdsCluster.endpoint,
+///         PORT: exampleAwsRdsCluster.port,
+///         DATABASE: exampleAwsRdsCluster.databaseName,
+///     },
+///     authenticationConfiguration: {
+///         authenticationType: "BASIC",
+///         secretArn: exampleAwsSecretsmanagerSecret.arn,
+///     },
+///     physicalConnectionRequirements: {
+///         availabilityZone: exampleAwsSubnet.availabilityZone,
+///         securityGroupIdLists: [exampleAwsSecurityGroup.id],
+///         subnetId: exampleAwsSubnet.id,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.glue.Connection("example",
+///     name="athenafederatedcatalog_mysql",
+///     connection_type="MYSQL",
+///     athena_properties={
+///         "lambda_function_arn": "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql",
+///         "spill_bucket": example_aws_s3_bucket["bucket"],
+///     },
+///     connection_properties={
+///         "HOST": example_aws_rds_cluster["endpoint"],
+///         "PORT": example_aws_rds_cluster["port"],
+///         "DATABASE": example_aws_rds_cluster["databaseName"],
+///     },
+///     authentication_configuration={
+///         "authentication_type": "BASIC",
+///         "secret_arn": example_aws_secretsmanager_secret["arn"],
+///     },
+///     physical_connection_requirements={
+///         "availability_zone": example_aws_subnet["availabilityZone"],
+///         "security_group_id_lists": [example_aws_security_group["id"]],
+///         "subnet_id": example_aws_subnet["id"],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Glue.Connection("example", new()
+///     {
+///         Name = "athenafederatedcatalog_mysql",
+///         ConnectionType = "MYSQL",
+///         AthenaProperties =
+///         {
+///             { "lambda_function_arn", "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql" },
+///             { "spill_bucket", exampleAwsS3Bucket.Bucket },
+///         },
+///         ConnectionProperties =
+///         {
+///             { "HOST", exampleAwsRdsCluster.Endpoint },
+///             { "PORT", exampleAwsRdsCluster.Port },
+///             { "DATABASE", exampleAwsRdsCluster.DatabaseName },
+///         },
+///         AuthenticationConfiguration = new Aws.Glue.Inputs.ConnectionAuthenticationConfigurationArgs
+///         {
+///             AuthenticationType = "BASIC",
+///             SecretArn = exampleAwsSecretsmanagerSecret.Arn,
+///         },
+///         PhysicalConnectionRequirements = new Aws.Glue.Inputs.ConnectionPhysicalConnectionRequirementsArgs
+///         {
+///             AvailabilityZone = exampleAwsSubnet.AvailabilityZone,
+///             SecurityGroupIdLists = new[]
+///             {
+///                 exampleAwsSecurityGroup.Id,
+///             },
+///             SubnetId = exampleAwsSubnet.Id,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/glue"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := glue.NewConnection(ctx, "example", &glue.ConnectionArgs{
+/// 			Name:           pulumi.String("athenafederatedcatalog_mysql"),
+/// 			ConnectionType: pulumi.String("MYSQL"),
+/// 			AthenaProperties: pulumi.StringMap{
+/// 				"lambda_function_arn": pulumi.String("arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql"),
+/// 				"spill_bucket":        pulumi.Any(exampleAwsS3Bucket.Bucket),
+/// 			},
+/// 			ConnectionProperties: pulumi.StringMap{
+/// 				"HOST":     pulumi.Any(exampleAwsRdsCluster.Endpoint),
+/// 				"PORT":     pulumi.Any(exampleAwsRdsCluster.Port),
+/// 				"DATABASE": pulumi.Any(exampleAwsRdsCluster.DatabaseName),
+/// 			},
+/// 			AuthenticationConfiguration: &glue.ConnectionAuthenticationConfigurationArgs{
+/// 				AuthenticationType: pulumi.String("BASIC"),
+/// 				SecretArn:          pulumi.Any(exampleAwsSecretsmanagerSecret.Arn),
+/// 			},
+/// 			PhysicalConnectionRequirements: &glue.ConnectionPhysicalConnectionRequirementsArgs{
+/// 				AvailabilityZone: pulumi.Any(exampleAwsSubnet.AvailabilityZone),
+/// 				SecurityGroupIdLists: pulumi.StringArray{
+/// 					exampleAwsSecurityGroup.Id,
+/// 				},
+/// 				SubnetId: pulumi.Any(exampleAwsSubnet.Id),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_connection" "example" {
+///   name            = "athenafederatedcatalog_mysql"
+///   connection_type = "MYSQL"
+///   athena_properties = {
+///     "lambda_function_arn" = "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql"
+///     "spill_bucket"        = exampleAwsS3Bucket.bucket
+///   }
+///   connection_properties = {
+///     "HOST"     = exampleAwsRdsCluster.endpoint
+///     "PORT"     = exampleAwsRdsCluster.port
+///     "DATABASE" = exampleAwsRdsCluster.databaseName
+///   }
+///   authentication_configuration = {
+///     authentication_type = "BASIC"
+///     secret_arn          = exampleAwsSecretsmanagerSecret.arn
+///   }
+///   physical_connection_requirements = {
+///     availability_zone       = exampleAwsSubnet.availabilityZone
+///     security_group_id_lists = [exampleAwsSecurityGroup.id]
+///     subnet_id               = exampleAwsSubnet.id
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.glue.Connection;
+/// import com.pulumi.aws.glue.ConnectionArgs;
+/// import com.pulumi.aws.glue.inputs.ConnectionAuthenticationConfigurationArgs;
+/// import com.pulumi.aws.glue.inputs.ConnectionPhysicalConnectionRequirementsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Connection("example", ConnectionArgs.builder()
+///             .name("athenafederatedcatalog_mysql")
+///             .connectionType("MYSQL")
+///             .athenaProperties(Map.ofEntries(
+///                 Map.entry("lambda_function_arn", "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql"),
+///                 Map.entry("spill_bucket", exampleAwsS3Bucket.bucket())
+///             ))
+///             .connectionProperties(Map.ofEntries(
+///                 Map.entry("HOST", exampleAwsRdsCluster.endpoint()),
+///                 Map.entry("PORT", exampleAwsRdsCluster.port()),
+///                 Map.entry("DATABASE", exampleAwsRdsCluster.databaseName())
+///             ))
+///             .authenticationConfiguration(ConnectionAuthenticationConfigurationArgs.builder()
+///                 .authenticationType("BASIC")
+///                 .secretArn(exampleAwsSecretsmanagerSecret.arn())
+///                 .build())
+///             .physicalConnectionRequirements(ConnectionPhysicalConnectionRequirementsArgs.builder()
+///                 .availabilityZone(exampleAwsSubnet.availabilityZone())
+///                 .securityGroupIdLists(exampleAwsSecurityGroup.id())
+///                 .subnetId(exampleAwsSubnet.id())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:glue:Connection
+///     properties:
+///       name: athenafederatedcatalog_mysql
+///       connectionType: MYSQL
+///       athenaProperties:
+///         lambda_function_arn: arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql
+///         spill_bucket: ${exampleAwsS3Bucket.bucket}
+///       connectionProperties:
+///         HOST: ${exampleAwsRdsCluster.endpoint}
+///         PORT: ${exampleAwsRdsCluster.port}
+///         DATABASE: ${exampleAwsRdsCluster.databaseName}
+///       authenticationConfiguration:
+///         authenticationType: BASIC
+///         secretArn: ${exampleAwsSecretsmanagerSecret.arn}
+///       physicalConnectionRequirements:
+///         availabilityZone: ${exampleAwsSubnet.availabilityZone}
+///         securityGroupIdLists:
+///           - ${exampleAwsSecurityGroup.id}
+///         subnetId: ${exampleAwsSubnet.id}
+/// ```
+///
+///
 /// ## Import
 ///
 /// Using `pulumi import`, import Glue Connections using the `CATALOG-ID` (AWS account ID if not custom) and `NAME`. For example:
@@ -2131,13 +2653,13 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Map of key-value pairs used as connection properties specific to the Athena compute environment.
   late final pulumi.Output<Map<String, String>?> athenaProperties;
+  /// Configuration block for authentication options. See `authenticationConfiguration` below.
+  late final pulumi.Output<ConnectionAuthenticationConfiguration?> authenticationConfiguration;
   /// ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
   late final pulumi.Output<String> catalogId;
   /// Map of key-value pairs used as parameters for this connection. For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/connection-properties.html).
-  ///
-  /// **Note:** Some connection types require the `SparkProperties` property with a JSON document that contains the actual connection properties. For specific examples, refer to Example Usage.
   late final pulumi.Output<Map<String, String>?> connectionProperties;
-  /// Type of the connection. Valid values: `AZURECOSMOS`, `AZURESQL`, `BIGQUERY`, `CUSTOM`, `DYNAMODB`, `JDBC`, `KAFKA`, `MARKETPLACE`, `MONGODB`, `NETWORK`, `OPENSEARCH`, `SNOWFLAKE`. Defaults to `JDBC`.
+  /// Type of the connection. Valid values: `AZURECOSMOS`, `AZURESQL`, `BIGQUERY`, `CUSTOM`, `DYNAMODB`, `JDBC`, `KAFKA`, `MARKETPLACE`, `MONGODB`, `NETWORK`, `OPENSEARCH`, `SNOWFLAKE`. Defaults to `JDBC`. Some connection types require the `SparkProperties` property with a JSON document that contains the actual connection properties. For specific examples, refer to Example Usage.
   late final pulumi.Output<String?> connectionType;
   /// Description of the connection.
   late final pulumi.Output<String?> description;
@@ -2147,13 +2669,13 @@ class Connection extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// Map of physical connection requirements, such as VPC and SecurityGroup. See `physical_connection_requirements` Block for details.
+  /// Map of physical connection requirements, such as VPC and SecurityGroup. See `physicalConnectionRequirements` below.
   late final pulumi.Output<ConnectionPhysicalConnectionRequirements?> physicalConnectionRequirements;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Connection].
@@ -2172,6 +2694,7 @@ class Connection extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     athenaProperties = registerOutput<Map<String, String>?>('athenaProperties');
+    authenticationConfiguration = registerOutput<ConnectionAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     catalogId = registerOutput<String>('catalogId');
     connectionProperties = registerOutput<Map<String, String>?>('connectionProperties');
     connectionType = registerOutput<String?>('connectionType');
@@ -2209,6 +2732,7 @@ class Connection extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     athenaProperties = registerOutput<Map<String, String>?>('athenaProperties');
+    authenticationConfiguration = registerOutput<ConnectionAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     catalogId = registerOutput<String>('catalogId');
     connectionProperties = registerOutput<Map<String, String>?>('connectionProperties');
     connectionType = registerOutput<String?>('connectionType');

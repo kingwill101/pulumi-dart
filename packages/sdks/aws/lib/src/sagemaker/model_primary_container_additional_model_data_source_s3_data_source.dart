@@ -6,7 +6,7 @@ import 'model_primary_container_additional_model_data_source_s3_data_source_mode
 class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
   /// How the model data is prepared. Allowed values are: `None` and `Gzip`.
   final pulumi.Input<String> compressionType;
-  /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`model_access_config` configuration block]. See Model Access Config.
+  /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`modelAccessConfig` configuration block]. See Model Access Config.
   final pulumi.Input<ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
   /// Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
   final pulumi.Input<String> s3DataType;
@@ -15,7 +15,7 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
 
   /// Creates a new [ModelPrimaryContainerAdditionalModelDataSourceS3DataSource].
   /// [compressionType] How the model data is prepared. Allowed values are: `None` and `Gzip`.
-  /// [modelAccessConfig] Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`model_access_config` configuration block]. See Model Access Config.
+  /// [modelAccessConfig] Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`modelAccessConfig` configuration block]. See Model Access Config.
   /// [s3DataType] Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
   /// [s3Uri] The S3 path of model data to deploy.
   const ModelPrimaryContainerAdditionalModelDataSourceS3DataSource({
@@ -43,4 +43,3 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
     );
   }
 }
-

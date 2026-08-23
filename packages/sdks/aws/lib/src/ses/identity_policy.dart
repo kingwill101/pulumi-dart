@@ -28,7 +28,7 @@ import 'identity_policy_state.dart';
 /// const exampleIdentityPolicy = new aws.ses.IdentityPolicy("example", {
 ///     identity: exampleDomainIdentity.arn,
 ///     name: "example",
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// ```
 /// ```python
@@ -145,15 +145,42 @@ import 'identity_policy_state.dart';
 /// 		_, err = ses.NewIdentityPolicy(ctx, "example", &ses.IdentityPolicyArgs{
 /// 			Identity: exampleDomainIdentity.Arn,
 /// 			Name:     pulumi.String("example"),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Policy:   example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     actions   = ["SES:SendEmail", "SES:SendRawEmail"]
+///     resources = [aws_ses_domainidentity.example.arn]
+///     principals {
+///       identifiers = ["*"]
+///       type        = "AWS"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_domainidentity" "example" {
+///   domain = "example.com"
+/// }
+/// resource "aws_ses_identitypolicy" "example" {
+///   identity = aws_ses_domainidentity.example.arn
+///   name     = "example"
+///   policy   = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -166,10 +193,12 @@ import 'identity_policy_state.dart';
 /// import com.pulumi.aws.ses.DomainIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.ses.IdentityPolicy;
 /// import com.pulumi.aws.ses.IdentityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

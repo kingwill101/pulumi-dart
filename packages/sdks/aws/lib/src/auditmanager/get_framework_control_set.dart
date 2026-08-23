@@ -5,13 +5,14 @@ import 'get_framework_control_set_control.dart';
 
 class GetFrameworkControlSet {
   final pulumi.Input<List<GetFrameworkControlSetControl>> controls;
+  /// Unique identifier for the framework.
   final pulumi.Input<String> id;
   /// Name of the framework.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetFrameworkControlSet].
   /// [controls] Required.
-  /// [id] Required.
+  /// [id] Unique identifier for the framework.
   /// [name] Name of the framework.
   const GetFrameworkControlSet({
     required this.controls,
@@ -35,4 +36,3 @@ class GetFrameworkControlSet {
     );
   }
 }
-

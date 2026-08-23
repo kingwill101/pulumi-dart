@@ -148,6 +148,40 @@ import 'resiliency_policy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_resiliencehub_resiliencypolicy" "example" {
+///   name                     = "testexample"
+///   description              = "testexample"
+///   tier                     = "NonCritical"
+///   data_location_constraint = "AnyLocation"
+///   policy = {
+///     region = {
+///       rpo = "24h"
+///       rto = "24h"
+///     }
+///     az = {
+///       rpo = "24h"
+///       rto = "24h"
+///     }
+///     hardware = {
+///       rpo = "24h"
+///       rto = "24h"
+///     }
+///     software = {
+///       rpo = "24h"
+///       rto = "24h"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -161,8 +195,8 @@ import 'resiliency_policy_timeouts.dart';
 /// import com.pulumi.aws.resiliencehub.inputs.ResiliencyPolicyPolicyAzArgs;
 /// import com.pulumi.aws.resiliencehub.inputs.ResiliencyPolicyPolicyHardwareArgs;
 /// import com.pulumi.aws.resiliencehub.inputs.ResiliencyPolicyPolicySoftwareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -254,9 +288,9 @@ class ResiliencyPolicy extends pulumi.CustomResource {
   late final pulumi.Output<ResiliencyPolicyPolicy?> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Resiliency Policy Tier.
   /// Valid values are `MissionCritical`, `Critical`, `Important`, `CoreServices`, `NonCritical`, and `NotApplicable`.

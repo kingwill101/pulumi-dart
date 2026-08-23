@@ -61,6 +61,20 @@ import 'image_block_public_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Prevent making AMIs publicly accessible in the region and account for which the provider is configured
+/// resource "aws_ec2_imageblockpublicaccess" "test" {
+///   state = "block-new-sharing"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'image_block_public_access_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.ImageBlockPublicAccess;
 /// import com.pulumi.aws.ec2.ImageBlockPublicAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,12 @@ import 'image_block_public_access_state.dart';
 ///
 /// ## Import
 ///
-/// You cannot import this resource.
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
 class ImageBlockPublicAccess extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

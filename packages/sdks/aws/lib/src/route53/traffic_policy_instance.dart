@@ -73,6 +73,23 @@ import 'traffic_policy_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_trafficpolicyinstance" "test" {
+///   name                   = "test.example.com"
+///   traffic_policy_id      = "b3gb108f-ea6f-45a5-baab-9d112d8b4037"
+///   traffic_policy_version = 1
+///   hosted_zone_id         = "Z033120931TAQO548OGJC"
+///   ttl                    = 360
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +98,8 @@ import 'traffic_policy_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.TrafficPolicyInstance;
 /// import com.pulumi.aws.route53.TrafficPolicyInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

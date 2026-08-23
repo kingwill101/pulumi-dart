@@ -3,18 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentSetting {
-  /// A unique name for this Environment. This name is used
-  /// in the application URL
+  /// Name of the configuration option
   final pulumi.Input<String> name;
+  /// Unique namespace identifying the option's associated AWS resource
   final pulumi.Input<String> namespace;
+  /// resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
   final pulumi.Input<String>? resource;
+  /// Value for the configuration option
   final pulumi.Input<String> value;
 
   /// Creates a new [EnvironmentSetting].
-  /// [name] A unique name for this Environment. This name is used
-  /// [namespace] Required.
-  /// [resource] Optional.
-  /// [value] Required.
+  /// [name] Name of the configuration option
+  /// [namespace] Unique namespace identifying the option's associated AWS resource
+  /// [resource] resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
+  /// [value] Value for the configuration option
   const EnvironmentSetting({
     required this.name,
     required this.namespace,
@@ -40,4 +42,3 @@ class EnvironmentSetting {
     );
   }
 }
-

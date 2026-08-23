@@ -1,6 +1,7 @@
 /// The type of action to take.
 enum LifecyclePolicyActionType {
-  expire("expire");
+  expire("expire"),
+  transition("transition");
 
   const LifecyclePolicyActionType(this.wireValue);
   final String wireValue;
@@ -14,4 +15,3 @@ enum LifecyclePolicyActionType {
     throw ArgumentError('Unknown LifecyclePolicyActionType value: $value');
   }
 }
-

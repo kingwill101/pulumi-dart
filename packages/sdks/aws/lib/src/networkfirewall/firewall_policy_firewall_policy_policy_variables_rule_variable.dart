@@ -6,12 +6,12 @@ import 'firewall_policy_firewall_policy_policy_variables_rule_variable_ip_set.da
 class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable {
   /// A configuration block that defines a set of IP addresses. See IP Set below for details.
   final pulumi.Input<FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet> ipSet;
-  /// An alphanumeric string to identify the `ip_set`. Valid values: `HOME_NET`
+  /// An alphanumeric string to identify the `ipSet`. Valid values: `HOME_NET`
   final pulumi.Input<String> key;
 
   /// Creates a new [FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable].
   /// [ipSet] A configuration block that defines a set of IP addresses. See IP Set below for details.
-  /// [key] An alphanumeric string to identify the `ip_set`. Valid values: `HOME_NET`
+  /// [key] An alphanumeric string to identify the `ipSet`. Valid values: `HOME_NET`
   const FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable({
     required this.ipSet,
     required this.key,
@@ -31,4 +31,3 @@ class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable {
     );
   }
 }
-

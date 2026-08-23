@@ -7,10 +7,11 @@ import 'express_gateway_service_primary_container_repository_credentials.dart';
 import 'express_gateway_service_primary_container_secret.dart';
 
 class ExpressGatewayServicePrimaryContainer {
+  /// CloudWatch Logs configuration for the container. See `awsLogsConfiguration` Block below.
   final pulumi.Input<List<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>>? awsLogsConfigurations;
   /// Command to run in the container. Overrides the default command from the Docker image.
   final pulumi.Input<List<String>>? commands;
-  /// Port on which the container listens for connections.
+  /// Port on which the container listens for connections. Defaults to `80`.
   final pulumi.Input<int>? containerPort;
   final pulumi.Input<List<ExpressGatewayServicePrimaryContainerEnvironment>>? environments;
   /// Docker image to use for the container.
@@ -19,9 +20,9 @@ class ExpressGatewayServicePrimaryContainer {
   final pulumi.Input<List<ExpressGatewayServicePrimaryContainerSecret>>? secrets;
 
   /// Creates a new [ExpressGatewayServicePrimaryContainer].
-  /// [awsLogsConfigurations] Optional.
+  /// [awsLogsConfigurations] CloudWatch Logs configuration for the container. See `awsLogsConfiguration` Block below.
   /// [commands] Command to run in the container. Overrides the default command from the Docker image.
-  /// [containerPort] Port on which the container listens for connections.
+  /// [containerPort] Port on which the container listens for connections. Defaults to `80`.
   /// [environments] Optional.
   /// [image] Docker image to use for the container.
   /// [repositoryCredentials] Optional.
@@ -60,4 +61,3 @@ class ExpressGatewayServicePrimaryContainer {
     );
   }
 }
-

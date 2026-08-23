@@ -100,6 +100,29 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_qldb_stream" "example" {
+///   ledger_name          = "existing-ledger-name"
+///   stream_name          = "sample-ledger-stream"
+///   role_arn             = "sample-role-arn"
+///   inclusive_start_time = "2021-01-01T00:00:00Z"
+///   kinesis_configuration = {
+///     aggregation_enabled = false
+///     stream_arn          = "arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream"
+///   }
+///   tags = {
+///     "example" = "tag"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +132,8 @@ import 'stream_state.dart';
 /// import com.pulumi.aws.qldb.Stream;
 /// import com.pulumi.aws.qldb.StreamArgs;
 /// import com.pulumi.aws.qldb.inputs.StreamKinesisConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,7 +180,7 @@ class Stream extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The exclusive date and time that specifies when the stream ends. If you don't define this parameter, the stream runs indefinitely until you cancel it. It must be in ISO 8601 date and time format and in Universal Coordinated Time (UTC). For example: `"2019-06-13T21:36:34Z"`.
   late final pulumi.Output<String?> exclusiveEndTime;
-  /// The inclusive start date and time from which to start streaming journal data. This parameter must be in ISO 8601 date and time format and in Universal Coordinated Time (UTC). For example: `"2019-06-13T21:36:34Z"`.  This cannot be in the future and must be before `exclusive_end_time`.  If you provide a value that is before the ledger's `CreationDateTime`, QLDB effectively defaults it to the ledger's `CreationDateTime`.
+  /// The inclusive start date and time from which to start streaming journal data. This parameter must be in ISO 8601 date and time format and in Universal Coordinated Time (UTC). For example: `"2019-06-13T21:36:34Z"`.  This cannot be in the future and must be before `exclusiveEndTime`.  If you provide a value that is before the ledger's `CreationDateTime`, QLDB effectively defaults it to the ledger's `CreationDateTime`.
   late final pulumi.Output<String> inclusiveStartTime;
   /// The configuration settings of the Kinesis Data Streams destination for your stream request. Documented below.
   late final pulumi.Output<StreamKinesisConfiguration> kinesisConfiguration;
@@ -169,9 +192,9 @@ class Stream extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// The name that you want to assign to the QLDB journal stream. User-defined names can help identify and indicate the purpose of a stream.  Your stream name must be unique among other active streams for a given ledger. Stream names have the same naming constraints as ledger names, as defined in the [Amazon QLDB Developer Guide](https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming).
   late final pulumi.Output<String> streamName;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Stream].

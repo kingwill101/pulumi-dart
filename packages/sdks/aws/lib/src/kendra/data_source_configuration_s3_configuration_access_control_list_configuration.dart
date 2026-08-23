@@ -24,4 +24,3 @@ class DataSourceConfigurationS3ConfigurationAccessControlListConfiguration {
     );
   }
 }
-

@@ -11,7 +11,7 @@ import 'scope_timeouts.dart';
 class ScopeArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   ///
@@ -21,7 +21,7 @@ class ScopeArgs {
 
   /// Creates a new [ScopeArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   /// [timeouts] Optional.
   const ScopeArgs({
@@ -49,4 +49,3 @@ class ScopeArgs {
     );
   }
 }
-

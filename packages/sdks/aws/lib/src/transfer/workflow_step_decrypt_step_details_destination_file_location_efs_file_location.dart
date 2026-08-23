@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation {
-  /// The ID of the file system, assigned by Amazon EFS.
+  /// ID of the file system, assigned by Amazon EFS.
   final pulumi.Input<String>? fileSystemId;
-  /// The pathname for the folder being used by a workflow.
+  /// Pathname for the folder being used by a workflow.
   final pulumi.Input<String>? path;
 
   /// Creates a new [WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation].
-  /// [fileSystemId] The ID of the file system, assigned by Amazon EFS.
-  /// [path] The pathname for the folder being used by a workflow.
+  /// [fileSystemId] ID of the file system, assigned by Amazon EFS.
+  /// [path] Pathname for the folder being used by a workflow.
   const WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation({
     this.fileSystemId,
     this.path,
@@ -30,4 +30,3 @@ class WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation {
     );
   }
 }
-

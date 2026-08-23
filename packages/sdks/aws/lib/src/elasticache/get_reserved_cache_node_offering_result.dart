@@ -7,8 +7,6 @@ class GetReservedCacheNodeOfferingResult {
   final String duration;
   /// Fixed price charged for this reserved cache node.
   final double fixedPrice;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// Unique identifier for the reservation.
   final String offeringId;
   final String offeringType;
@@ -19,7 +17,6 @@ class GetReservedCacheNodeOfferingResult {
   /// [cacheNodeType] Required.
   /// [duration] Required.
   /// [fixedPrice] Fixed price charged for this reserved cache node.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [offeringId] Unique identifier for the reservation.
   /// [offeringType] Required.
   /// [productDescription] Required.
@@ -28,7 +25,6 @@ class GetReservedCacheNodeOfferingResult {
     required this.cacheNodeType,
     required this.duration,
     required this.fixedPrice,
-    required this.id,
     required this.offeringId,
     required this.offeringType,
     required this.productDescription,
@@ -40,7 +36,6 @@ class GetReservedCacheNodeOfferingResult {
       'cacheNodeType': cacheNodeType,
       'duration': duration,
       'fixedPrice': fixedPrice,
-      'id': id,
       'offeringId': offeringId,
       'offeringType': offeringType,
       'productDescription': productDescription,
@@ -53,7 +48,6 @@ class GetReservedCacheNodeOfferingResult {
       cacheNodeType: map['cacheNodeType'] as String,
       duration: map['duration'] as String,
       fixedPrice: map['fixedPrice'] as double,
-      id: map['id'] as String,
       offeringId: map['offeringId'] as String,
       offeringType: map['offeringType'] as String,
       productDescription: map['productDescription'] as String,
@@ -61,4 +55,3 @@ class GetReservedCacheNodeOfferingResult {
     );
   }
 }
-

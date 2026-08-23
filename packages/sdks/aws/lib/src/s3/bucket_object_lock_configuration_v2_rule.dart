@@ -25,4 +25,3 @@ class BucketObjectLockConfigurationV2Rule {
     );
   }
 }
-

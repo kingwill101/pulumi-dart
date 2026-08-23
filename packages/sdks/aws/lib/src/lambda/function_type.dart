@@ -135,6 +135,29 @@ import 'function_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_function" "example" {
+///   name         = "example_container_function"
+///   role         = exampleAwsIamRole.arn
+///   package_type = "Image"
+///   image_uri    ="${exampleAwsEcrRepository.repositoryUrl}:latest"
+///   image_config = {
+///     entry_points = ["/lambda-entrypoint.sh"]
+///     commands     = ["app.handler"]
+///   }
+///   memory_size   = 512
+///   timeout       = 30
+///   architectures = ["arm64"] # Graviton support for better price/performance
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +167,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.Function;
 /// import com.pulumi.aws.lambda.FunctionArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionImageConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,7 +220,7 @@ import 'function_vpc_config.dart';
 ///
 /// ### Function with Lambda Layers
 ///
-/// &gt; **Note:** The `aws.lambda.LayerVersion` attribute values for `arn` and `layer_arn` were swapped in version 2.0.0 of the Pulumi AWS Provider. For version 2.x, use `arn` references.
+/// &gt; **Note:** The `aws.lambda.LayerVersion` attribute values for `arn` and `layerArn` were swapped in version 2.0.0 of the Pulumi AWS Provider. For version 2.x, use `arn` references.
 ///
 ///
 /// ```typescript
@@ -210,7 +233,7 @@ import 'function_vpc_config.dart';
 ///     layerName: "example_dependencies_layer",
 ///     description: "Common dependencies for Lambda functions",
 ///     compatibleRuntimes: [
-///         "nodejs20.x",
+///         "nodejs24.x",
 ///         "python3.12",
 ///     ],
 ///     compatibleArchitectures: [
@@ -224,7 +247,7 @@ import 'function_vpc_config.dart';
 ///     name: "example_layered_function",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     layers: [example.arn],
 ///     tracingConfig: {
 ///         mode: "Active",
@@ -241,7 +264,7 @@ import 'function_vpc_config.dart';
 ///     layer_name="example_dependencies_layer",
 ///     description="Common dependencies for Lambda functions",
 ///     compatible_runtimes=[
-///         "nodejs20.x",
+///         "nodejs24.x",
 ///         "python3.12",
 ///     ],
 ///     compatible_architectures=[
@@ -254,7 +277,7 @@ import 'function_vpc_config.dart';
 ///     name="example_layered_function",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     layers=[example.arn],
 ///     tracing_config={
 ///         "mode": "Active",
@@ -276,7 +299,7 @@ import 'function_vpc_config.dart';
 ///         Description = "Common dependencies for Lambda functions",
 ///         CompatibleRuntimes = new[]
 ///         {
-///             "nodejs20.x",
+///             "nodejs24.x",
 ///             "python3.12",
 ///         },
 ///         CompatibleArchitectures = new[]
@@ -293,7 +316,7 @@ import 'function_vpc_config.dart';
 ///         Name = "example_layered_function",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         Layers = new[]
 ///         {
 ///             example.Arn,
@@ -322,7 +345,7 @@ import 'function_vpc_config.dart';
 /// 			LayerName:   pulumi.String("example_dependencies_layer"),
 /// 			Description: pulumi.String("Common dependencies for Lambda functions"),
 /// 			CompatibleRuntimes: pulumi.StringArray{
-/// 				pulumi.String("nodejs20.x"),
+/// 				pulumi.String("nodejs24.x"),
 /// 				pulumi.String("python3.12"),
 /// 			},
 /// 			CompatibleArchitectures: pulumi.StringArray{
@@ -339,7 +362,7 @@ import 'function_vpc_config.dart';
 /// 			Name:    pulumi.String("example_layered_function"),
 /// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			Layers: pulumi.StringArray{
 /// 				example.Arn,
 /// 			},
@@ -354,6 +377,36 @@ import 'function_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Common dependencies layer
+/// resource "aws_lambda_layerversion" "example" {
+///   code                     = fileArchive("layer.zip")
+///   layer_name               = "example_dependencies_layer"
+///   description              = "Common dependencies for Lambda functions"
+///   compatible_runtimes      = ["nodejs24.x", "python3.12"]
+///   compatible_architectures = ["x86_64", "arm64"]
+/// }
+/// # Function using the layer
+/// resource "aws_lambda_function" "example" {
+///   code    = fileArchive("function.zip")
+///   name    = "example_layered_function"
+///   role    = exampleAwsIamRole.arn
+///   handler = "index.handler"
+///   runtime = "nodejs24.x"
+///   layers  = [aws_lambda_layerversion.example.arn]
+///   tracing_config = {
+///     mode = "Active"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -366,8 +419,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.FunctionArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionTracingConfigArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,7 +438,7 @@ import 'function_vpc_config.dart';
 ///             .layerName("example_dependencies_layer")
 ///             .description("Common dependencies for Lambda functions")
 ///             .compatibleRuntimes(
-///                 "nodejs20.x",
+///                 "nodejs24.x",
 ///                 "python3.12")
 ///             .compatibleArchitectures(
 ///                 "x86_64",
@@ -398,7 +451,7 @@ import 'function_vpc_config.dart';
 ///             .name("example_layered_function")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .layers(example.arn())
 ///             .tracingConfig(FunctionTracingConfigArgs.builder()
 ///                 .mode("Active")
@@ -415,11 +468,11 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:LayerVersion
 ///     properties:
 ///       code:
-///         fn::FileArchive: layer.zip
+///         fn::fileArchive: layer.zip
 ///       layerName: example_dependencies_layer
 ///       description: Common dependencies for Lambda functions
 ///       compatibleRuntimes:
-///         - nodejs20.x
+///         - nodejs24.x
 ///         - python3.12
 ///       compatibleArchitectures:
 ///         - x86_64
@@ -430,11 +483,11 @@ import 'function_vpc_config.dart';
 ///     name: example
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: example_layered_function
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///       layers:
 ///         - ${example.arn}
 ///       tracingConfig:
@@ -584,6 +637,37 @@ import 'function_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_function" "example" {
+///   code        = fileArchive("function.zip")
+///   name        = "example_vpc_function"
+///   role        = exampleAwsIamRole.arn
+///   handler     = "app.handler"
+///   runtime     = "python3.12"
+///   memory_size = 1024
+///   timeout     = 30
+///   vpc_config = {
+///     subnet_ids                  = [examplePrivate1.id, examplePrivate2.id]
+///     security_group_ids          = [exampleLambda.id]
+///     ipv6_allowed_for_dual_stack = true
+///   }
+///   # Enable IPv6 support
+///   ephemeral_storage = {
+///     size = 5120
+///   }
+///   snap_start = {
+///     apply_on = "PublishedVersions"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -596,8 +680,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionEphemeralStorageArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionSnapStartArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -641,7 +725,7 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: example_vpc_function
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: app.handler
@@ -684,10 +768,10 @@ import 'function_vpc_config.dart';
 /// ];
 /// // Mount target in each subnet
 /// const exampleMountTarget: aws.efs.MountTarget[] = [];
-/// for (const range = {value: 0}; range.value < subnetIds.length; range.value++) {
-///     exampleMountTarget.push(new aws.efs.MountTarget(`example-${range.value}`, {
+/// for (let range = 0; range < subnetIds.length; range++) {
+///     exampleMountTarget.push(new aws.efs.MountTarget(`example-${range}`, {
 ///         fileSystemId: example.id,
-///         subnetId: subnetIds[range.value],
+///         subnetId: subnetIds[range],
 ///         securityGroups: [efs.id],
 ///     }));
 /// }
@@ -713,7 +797,7 @@ import 'function_vpc_config.dart';
 ///     name: "example_efs_function",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     vpcConfig: {
 ///         subnetIds: subnetIds,
 ///         securityGroupIds: [lambda.id],
@@ -728,6 +812,7 @@ import 'function_vpc_config.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// # EFS file system for Lambda
@@ -745,11 +830,11 @@ import 'function_vpc_config.dart';
 ///         "subnet-87654321",
 ///     ]
 /// # Mount target in each subnet
-/// example_mount_target = []
-/// for range in [{"value": i} for i in range(0, len(subnet_ids))]:
-///     example_mount_target.append(aws.efs.MountTarget(f"example-{range['value']}",
+/// example_mount_target: list[aws.efs.MountTarget] = []
+/// for example_mount_target_range in [{"value": i} for i in range(0, len(subnet_ids))]:
+///     example_mount_target.append(aws.efs.MountTarget(f"example-{example_mount_target_range['value']}",
 ///         file_system_id=example.id,
-///         subnet_id=subnet_ids[range["value"]],
+///         subnet_id=subnet_ids[example_mount_target_range["value"]],
 ///         security_groups=[efs["id"]]))
 /// # Access point for Lambda
 /// example_access_point = aws.efs.AccessPoint("example",
@@ -772,7 +857,7 @@ import 'function_vpc_config.dart';
 ///     name="example_efs_function",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     vpc_config={
 ///         "subnet_ids": subnet_ids,
 ///         "security_group_ids": [lambda_["id"]],
@@ -851,7 +936,7 @@ import 'function_vpc_config.dart';
 ///         Name = "example_efs_function",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         VpcConfig = new Aws.Lambda.Inputs.FunctionVpcConfigArgs
 ///         {
 ///             SubnetIds = subnetIds,
@@ -914,7 +999,7 @@ import 'function_vpc_config.dart';
 /// 			key0 := index
 /// 			val0 := index
 /// 			__res, err := efs.NewMountTarget(ctx, fmt.Sprintf("example-%v", key0), &efs.MountTargetArgs{
-/// 				FileSystemId: example.ID(),
+/// 				FileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 				SubnetId:     pulumi.String(subnetIds[val0]),
 /// 				SecurityGroups: pulumi.StringArray{
 /// 					efs.Id,
@@ -927,7 +1012,7 @@ import 'function_vpc_config.dart';
 /// 		}
 /// 		// Access point for Lambda
 /// 		exampleAccessPoint, err := efs.NewAccessPoint(ctx, "example", &efs.AccessPointArgs{
-/// 			FileSystemId: example.ID(),
+/// 			FileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RootDirectory: &efs.AccessPointRootDirectoryArgs{
 /// 				Path: pulumi.String("/lambda"),
 /// 				CreationInfo: &efs.AccessPointRootDirectoryCreationInfoArgs{
@@ -950,7 +1035,7 @@ import 'function_vpc_config.dart';
 /// 			Name:    pulumi.String("example_efs_function"),
 /// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			VpcConfig: &lambda.FunctionVpcConfigArgs{
 /// 				SubnetIds: subnetIds,
 /// 				SecurityGroupIds: pulumi.StringArray{
@@ -969,6 +1054,69 @@ import 'function_vpc_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # EFS file system for Lambda
+/// resource "aws_efs_filesystem" "example" {
+///   encrypted = true
+///   tags = {
+///     "Name" = "lambda-efs"
+///   }
+/// }
+/// # Mount target in each subnet
+/// resource "aws_efs_mounttarget" "example" {
+///   count           = length(var.subnetIds)
+///   file_system_id  = aws_efs_filesystem.example.id
+///   subnet_id       = var.subnetIds[count.index]
+///   security_groups = [efs.id]
+/// }
+/// # Access point for Lambda
+/// resource "aws_efs_accesspoint" "example" {
+///   file_system_id = aws_efs_filesystem.example.id
+///   root_directory = {
+///     path = "/lambda"
+///     creation_info = {
+///       owner_gid   = 1000
+///       owner_uid   = 1000
+///       permissions = "755"
+///     }
+///   }
+///   posix_user = {
+///     gid = 1000
+///     uid = 1000
+///   }
+/// }
+/// # Lambda function with EFS
+/// resource "aws_lambda_function" "example" {
+///   depends_on = [aws_efs_mounttarget.example]
+///   code       = fileArchive("function.zip")
+///   name       = "example_efs_function"
+///   role       = exampleAwsIamRole.arn
+///   handler    = "index.handler"
+///   runtime    = "nodejs24.x"
+///   vpc_config = {
+///     subnet_ids         = var.subnetIds
+///     security_group_ids = [lambda.id]
+///   }
+///   file_system_config = {
+///     arn              = aws_efs_accesspoint.example.arn
+///     local_mount_path = "/mnt/data"
+///   }
+/// }
+/// # Example subnet IDs (replace with your actual subnet IDs)
+/// variable "subnetIds" {
+///   type        = list(string)
+///   default     = ["subnet-12345678", "subnet-87654321"]
+///   description = "List of subnet IDs for EFS mount targets"
 /// }
 /// ```
 /// ```java
@@ -993,8 +1141,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.asset.FileArchive;
 /// import com.pulumi.codegen.internal.KeyedValue;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1017,7 +1165,7 @@ import 'function_vpc_config.dart';
 ///             "subnet-12345678",
 ///             "subnet-87654321");
 ///         // Mount target in each subnet
-///         for (var i = 0; i < subnetIds.length(); i++) {
+///         for (var i = 0; i < subnetIds.size(); i++) {
 ///             new MountTarget("exampleMountTarget-" + i, MountTargetArgs.builder()
 ///                 .fileSystemId(example.id())
 ///                 .subnetId(subnetIds[range.value()])
@@ -1049,7 +1197,7 @@ import 'function_vpc_config.dart';
 ///             .name("example_efs_function")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .vpcConfig(FunctionVpcConfigArgs.builder()
 ///                 .subnetIds(subnetIds)
 ///                 .securityGroupIds(lambda.id())
@@ -1064,6 +1212,738 @@ import 'function_vpc_config.dart';
 ///
 ///     }
 /// }
+/// ```
+///
+///
+/// ### Function with S3 Files File System
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getCallerIdentity({});
+/// const currentGetRegion = aws.getRegion({});
+/// const lambdaFileSystem = new aws.s3.Bucket("lambda_file_system", {
+///     bucket: Promise.all([current, currentGetRegion]).then(([current, currentGetRegion]) => `example-${current.accountId}-${currentGetRegion.name}-an`),
+///     bucketNamespace: "account-regional",
+/// });
+/// const lambdaFileSystemBucketVersioning = new aws.s3.BucketVersioning("lambda_file_system", {
+///     bucket: lambdaFileSystem.bucket,
+///     versioningConfiguration: {
+///         status: "Enabled",
+///     },
+/// });
+/// const forLambda = new aws.s3.FilesFileSystem("for_lambda", {
+///     bucket: lambdaFileSystem.arn,
+///     roleArn: s3files.arn,
+/// }, {
+///     dependsOn: [lambdaFileSystemBucketVersioning],
+/// });
+/// const forLambdaFilesAccessPoint = new aws.s3.FilesAccessPoint("for_lambda", {
+///     fileSystemId: forLambda.id,
+///     rootDirectories: [{
+///         path: "/lambda",
+///         creationPermissions: [{
+///             ownerGid: 1000,
+///             ownerUid: 1000,
+///             permissions: "755",
+///         }],
+///     }],
+///     posixUsers: [{
+///         gid: 1000,
+///         uid: 1000,
+///     }],
+/// });
+/// const s3filesMountTargets = new aws.ec2.SecurityGroup("s3files_mount_targets", {
+///     name: "example-s3files-mount-targets-sg",
+///     vpcId: vpcForLambda.id,
+/// });
+/// const lambdaS3files = new aws.ec2.SecurityGroup("lambda_s3files", {
+///     name: "example-lambda-s3files-sg",
+///     vpcId: vpcForLambda.id,
+/// });
+/// const s3filesMountTargetsNfs = new aws.vpc.SecurityGroupIngressRule("s3files_mount_targets_nfs", {
+///     ipProtocol: "tcp",
+///     fromPort: 2049,
+///     toPort: 2049,
+///     referencedSecurityGroupId: lambdaS3files.id,
+///     securityGroupId: s3filesMountTargets.id,
+/// });
+/// const lambdaS3filesNfs = new aws.vpc.SecurityGroupEgressRule("lambda_s3files_nfs", {
+///     ipProtocol: "tcp",
+///     securityGroupId: lambdaS3files.id,
+///     fromPort: 2049,
+///     toPort: 2049,
+///     referencedSecurityGroupId: s3filesMountTargets.id,
+/// });
+/// const example = new aws.lambda.Function("example", {
+///     code: new pulumi.asset.FileArchive("function.zip"),
+///     name: "example_s3files_function",
+///     role: iamForLambda.arn,
+///     handler: "exports.example",
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
+///     vpcConfig: {
+///         subnetIds: [subnetForLambdaAz1.id],
+///         securityGroupIds: [lambdaS3files.id],
+///     },
+///     fileSystemConfig: {
+///         arn: forLambdaFilesAccessPoint.arn,
+///         localMountPath: "/mnt/s3files",
+///     },
+/// }, {
+///     dependsOn: [forLambdaAwsS3filesMountTarget],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_caller_identity()
+/// current_get_region = aws.get_region()
+/// lambda_file_system = aws.s3.Bucket("lambda_file_system",
+///     bucket=f"example-{current.account_id}-{current_get_region.name}-an",
+///     bucket_namespace="account-regional")
+/// lambda_file_system_bucket_versioning = aws.s3.BucketVersioning("lambda_file_system",
+///     bucket=lambda_file_system.bucket,
+///     versioning_configuration={
+///         "status": "Enabled",
+///     })
+/// for_lambda = aws.s3.FilesFileSystem("for_lambda",
+///     bucket=lambda_file_system.arn,
+///     role_arn=s3files["arn"],
+///     opts = pulumi.ResourceOptions(depends_on=[lambda_file_system_bucket_versioning]))
+/// for_lambda_files_access_point = aws.s3.FilesAccessPoint("for_lambda",
+///     file_system_id=for_lambda.id,
+///     root_directories=[{
+///         "path": "/lambda",
+///         "creation_permissions": [{
+///             "owner_gid": 1000,
+///             "owner_uid": 1000,
+///             "permissions": "755",
+///         }],
+///     }],
+///     posix_users=[{
+///         "gid": 1000,
+///         "uid": 1000,
+///     }])
+/// s3files_mount_targets = aws.ec2.SecurityGroup("s3files_mount_targets",
+///     name="example-s3files-mount-targets-sg",
+///     vpc_id=vpc_for_lambda["id"])
+/// lambda_s3files = aws.ec2.SecurityGroup("lambda_s3files",
+///     name="example-lambda-s3files-sg",
+///     vpc_id=vpc_for_lambda["id"])
+/// s3files_mount_targets_nfs = aws.vpc.SecurityGroupIngressRule("s3files_mount_targets_nfs",
+///     ip_protocol="tcp",
+///     from_port=2049,
+///     to_port=2049,
+///     referenced_security_group_id=lambda_s3files.id,
+///     security_group_id=s3files_mount_targets.id)
+/// lambda_s3files_nfs = aws.vpc.SecurityGroupEgressRule("lambda_s3files_nfs",
+///     ip_protocol="tcp",
+///     security_group_id=lambda_s3files.id,
+///     from_port=2049,
+///     to_port=2049,
+///     referenced_security_group_id=s3files_mount_targets.id)
+/// example = aws.lambda_.Function("example",
+///     code=pulumi.FileArchive("function.zip"),
+///     name="example_s3files_function",
+///     role=iam_for_lambda["arn"],
+///     handler="exports.example",
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
+///     vpc_config={
+///         "subnet_ids": [subnet_for_lambda_az1["id"]],
+///         "security_group_ids": [lambda_s3files.id],
+///     },
+///     file_system_config={
+///         "arn": for_lambda_files_access_point.arn,
+///         "local_mount_path": "/mnt/s3files",
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[for_lambda_aws_s3files_mount_target]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetCallerIdentity.Invoke();
+///
+///     var currentGetRegion = Aws.GetRegion.Invoke();
+///
+///     var lambdaFileSystem = new Aws.S3.Bucket("lambda_file_system", new()
+///     {
+///         BucketName = Output.Tuple(current, currentGetRegion).Apply(values =>
+///         {
+///             var current = values.Item1;
+///             var currentGetRegion = values.Item2;
+///             return $"example-{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}-{currentGetRegion.Apply(getRegionResult => getRegionResult.Name)}-an";
+///         }),
+///         BucketNamespace = "account-regional",
+///     });
+///
+///     var lambdaFileSystemBucketVersioning = new Aws.S3.BucketVersioning("lambda_file_system", new()
+///     {
+///         Bucket = lambdaFileSystem.BucketName,
+///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
+///         {
+///             Status = "Enabled",
+///         },
+///     });
+///
+///     var forLambda = new Aws.S3.FilesFileSystem("for_lambda", new()
+///     {
+///         Bucket = lambdaFileSystem.Arn,
+///         RoleArn = s3files.Arn,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             lambdaFileSystemBucketVersioning,
+///         },
+///     });
+///
+///     var forLambdaFilesAccessPoint = new Aws.S3.FilesAccessPoint("for_lambda", new()
+///     {
+///         FileSystemId = forLambda.Id,
+///         RootDirectories = new[]
+///         {
+///             new Aws.S3.Inputs.FilesAccessPointRootDirectoryArgs
+///             {
+///                 Path = "/lambda",
+///                 CreationPermissions = new[]
+///                 {
+///                     new Aws.S3.Inputs.FilesAccessPointRootDirectoryCreationPermissionArgs
+///                     {
+///                         OwnerGid = 1000,
+///                         OwnerUid = 1000,
+///                         Permissions = "755",
+///                     },
+///                 },
+///             },
+///         },
+///         PosixUsers = new[]
+///         {
+///             new Aws.S3.Inputs.FilesAccessPointPosixUserArgs
+///             {
+///                 Gid = 1000,
+///                 Uid = 1000,
+///             },
+///         },
+///     });
+///
+///     var s3filesMountTargets = new Aws.Ec2.SecurityGroup("s3files_mount_targets", new()
+///     {
+///         Name = "example-s3files-mount-targets-sg",
+///         VpcId = vpcForLambda.Id,
+///     });
+///
+///     var lambdaS3files = new Aws.Ec2.SecurityGroup("lambda_s3files", new()
+///     {
+///         Name = "example-lambda-s3files-sg",
+///         VpcId = vpcForLambda.Id,
+///     });
+///
+///     var s3filesMountTargetsNfs = new Aws.Vpc.SecurityGroupIngressRule("s3files_mount_targets_nfs", new()
+///     {
+///         IpProtocol = "tcp",
+///         FromPort = 2049,
+///         ToPort = 2049,
+///         ReferencedSecurityGroupId = lambdaS3files.Id,
+///         SecurityGroupId = s3filesMountTargets.Id,
+///     });
+///
+///     var lambdaS3filesNfs = new Aws.Vpc.SecurityGroupEgressRule("lambda_s3files_nfs", new()
+///     {
+///         IpProtocol = "tcp",
+///         SecurityGroupId = lambdaS3files.Id,
+///         FromPort = 2049,
+///         ToPort = 2049,
+///         ReferencedSecurityGroupId = s3filesMountTargets.Id,
+///     });
+///
+///     var example = new Aws.Lambda.Function("example", new()
+///     {
+///         Code = new FileArchive("function.zip"),
+///         Name = "example_s3files_function",
+///         Role = iamForLambda.Arn,
+///         Handler = "exports.example",
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
+///         VpcConfig = new Aws.Lambda.Inputs.FunctionVpcConfigArgs
+///         {
+///             SubnetIds = new[]
+///             {
+///                 subnetForLambdaAz1.Id,
+///             },
+///             SecurityGroupIds = new[]
+///             {
+///                 lambdaS3files.Id,
+///             },
+///         },
+///         FileSystemConfig = new Aws.Lambda.Inputs.FunctionFileSystemConfigArgs
+///         {
+///             Arn = forLambdaFilesAccessPoint.Arn,
+///             LocalMountPath = "/mnt/s3files",
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             forLambdaAwsS3filesMountTarget,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lambda"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpc"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetRegion, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		lambdaFileSystem, err := s3.NewBucket(ctx, "lambda_file_system", &s3.BucketArgs{
+/// 			Bucket:          pulumi.Sprintf("example-%v-%v-an", current.AccountId, currentGetRegion.Name),
+/// 			BucketNamespace: pulumi.String("account-regional"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		lambdaFileSystemBucketVersioning, err := s3.NewBucketVersioning(ctx, "lambda_file_system", &s3.BucketVersioningArgs{
+/// 			Bucket: lambdaFileSystem.Bucket,
+/// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
+/// 				Status: pulumi.String("Enabled"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		forLambda, err := s3.NewFilesFileSystem(ctx, "for_lambda", &s3.FilesFileSystemArgs{
+/// 			Bucket:  lambdaFileSystem.Arn,
+/// 			RoleArn: pulumi.Any(s3files.Arn),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			lambdaFileSystemBucketVersioning,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		forLambdaFilesAccessPoint, err := s3.NewFilesAccessPoint(ctx, "for_lambda", &s3.FilesAccessPointArgs{
+/// 			FileSystemId: forLambda.ID().ToIDOutput().ToStringOutput(),
+/// 			RootDirectories: s3.FilesAccessPointRootDirectoryArray{
+/// 				&s3.FilesAccessPointRootDirectoryArgs{
+/// 					Path: pulumi.String("/lambda"),
+/// 					CreationPermissions: s3.FilesAccessPointRootDirectoryCreationPermissionArray{
+/// 						&s3.FilesAccessPointRootDirectoryCreationPermissionArgs{
+/// 							OwnerGid:    pulumi.Int(1000),
+/// 							OwnerUid:    pulumi.Int(1000),
+/// 							Permissions: pulumi.String("755"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			PosixUsers: s3.FilesAccessPointPosixUserArray{
+/// 				&s3.FilesAccessPointPosixUserArgs{
+/// 					Gid: pulumi.Int(1000),
+/// 					Uid: pulumi.Int(1000),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		s3filesMountTargets, err := ec2.NewSecurityGroup(ctx, "s3files_mount_targets", &ec2.SecurityGroupArgs{
+/// 			Name:  pulumi.String("example-s3files-mount-targets-sg"),
+/// 			VpcId: pulumi.Any(vpcForLambda.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		lambdaS3files, err := ec2.NewSecurityGroup(ctx, "lambda_s3files", &ec2.SecurityGroupArgs{
+/// 			Name:  pulumi.String("example-lambda-s3files-sg"),
+/// 			VpcId: pulumi.Any(vpcForLambda.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "s3files_mount_targets_nfs", &vpc.SecurityGroupIngressRuleArgs{
+/// 			IpProtocol:                pulumi.String("tcp"),
+/// 			FromPort:                  pulumi.Int(2049),
+/// 			ToPort:                    pulumi.Int(2049),
+/// 			ReferencedSecurityGroupId: lambdaS3files.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId:           s3filesMountTargets.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vpc.NewSecurityGroupEgressRule(ctx, "lambda_s3files_nfs", &vpc.SecurityGroupEgressRuleArgs{
+/// 			IpProtocol:                pulumi.String("tcp"),
+/// 			SecurityGroupId:           lambdaS3files.ID().ToIDOutput().ToStringOutput(),
+/// 			FromPort:                  pulumi.Int(2049),
+/// 			ToPort:                    pulumi.Int(2049),
+/// 			ReferencedSecurityGroupId: s3filesMountTargets.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = lambda.NewFunction(ctx, "example", &lambda.FunctionArgs{
+/// 			Code:    pulumi.NewFileArchive("function.zip"),
+/// 			Name:    pulumi.String("example_s3files_function"),
+/// 			Role:    pulumi.Any(iamForLambda.Arn),
+/// 			Handler: pulumi.String("exports.example"),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
+/// 			VpcConfig: &lambda.FunctionVpcConfigArgs{
+/// 				SubnetIds: pulumi.StringArray{
+/// 					subnetForLambdaAz1.Id,
+/// 				},
+/// 				SecurityGroupIds: pulumi.StringArray{
+/// 					lambdaS3files.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 			FileSystemConfig: &lambda.FunctionFileSystemConfigArgs{
+/// 				Arn:            forLambdaFilesAccessPoint.Arn,
+/// 				LocalMountPath: pulumi.String("/mnt/s3files"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			forLambdaAwsS3filesMountTarget,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+///
+/// resource "aws_s3_bucket" "lambda_file_system" {
+///   bucket           ="example-${data.aws_getcalleridentity.current.account_id}-${data.aws_getregion.currentGetRegion.name}-an"
+///   bucket_namespace = "account-regional"
+/// }
+/// resource "aws_s3_bucketversioning" "lambda_file_system" {
+///   bucket = aws_s3_bucket.lambda_file_system.bucket
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_filesfilesystem" "for_lambda" {
+///   depends_on = [aws_s3_bucketversioning.lambda_file_system]
+///   bucket     = aws_s3_bucket.lambda_file_system.arn
+///   role_arn   = s3files.arn
+/// }
+/// resource "aws_s3_filesaccesspoint" "for_lambda" {
+///   file_system_id = aws_s3_filesfilesystem.for_lambda.id
+///   root_directories {
+///     path = "/lambda"
+///     creation_permissions {
+///       owner_gid   = 1000
+///       owner_uid   = 1000
+///       permissions = "755"
+///     }
+///   }
+///   posix_users {
+///     gid = 1000
+///     uid = 1000
+///   }
+/// }
+/// resource "aws_ec2_securitygroup" "s3files_mount_targets" {
+///   name   = "example-s3files-mount-targets-sg"
+///   vpc_id = vpcForLambda.id
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "s3files_mount_targets_nfs" {
+///   ip_protocol                  = "tcp"
+///   from_port                    = 2049
+///   to_port                      = 2049
+///   referenced_security_group_id = aws_ec2_securitygroup.lambda_s3files.id
+///   security_group_id            = aws_ec2_securitygroup.s3files_mount_targets.id
+/// }
+/// resource "aws_ec2_securitygroup" "lambda_s3files" {
+///   name   = "example-lambda-s3files-sg"
+///   vpc_id = vpcForLambda.id
+/// }
+/// resource "aws_vpc_securitygroupegressrule" "lambda_s3files_nfs" {
+///   ip_protocol                  = "tcp"
+///   security_group_id            = aws_ec2_securitygroup.lambda_s3files.id
+///   from_port                    = 2049
+///   to_port                      = 2049
+///   referenced_security_group_id = aws_ec2_securitygroup.s3files_mount_targets.id
+/// }
+/// resource "aws_lambda_function" "example" {
+///   depends_on = [forLambdaAwsS3filesMountTarget]
+///   code       = fileArchive("function.zip")
+///   name       = "example_s3files_function"
+///   role       = iamForLambda.arn
+///   handler    = "exports.example"
+///   runtime    = "nodejs24.x"
+///   vpc_config = {
+///     subnet_ids         = [subnetForLambdaAz1.id]
+///     security_group_ids = [aws_ec2_securitygroup.lambda_s3files.id]
+///   }
+///   file_system_config = {
+///     arn              = aws_s3_filesaccesspoint.for_lambda.arn
+///     local_mount_path = "/mnt/s3files"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
+/// import com.pulumi.aws.inputs.GetRegionArgs;
+/// import com.pulumi.aws.s3.Bucket;
+/// import com.pulumi.aws.s3.BucketArgs;
+/// import com.pulumi.aws.s3.BucketVersioning;
+/// import com.pulumi.aws.s3.BucketVersioningArgs;
+/// import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
+/// import com.pulumi.aws.s3.FilesFileSystem;
+/// import com.pulumi.aws.s3.FilesFileSystemArgs;
+/// import com.pulumi.aws.s3.FilesAccessPoint;
+/// import com.pulumi.aws.s3.FilesAccessPointArgs;
+/// import com.pulumi.aws.s3.inputs.FilesAccessPointRootDirectoryArgs;
+/// import com.pulumi.aws.s3.inputs.FilesAccessPointRootDirectoryCreationPermissionArgs;
+/// import com.pulumi.aws.s3.inputs.FilesAccessPointPosixUserArgs;
+/// import com.pulumi.aws.ec2.SecurityGroup;
+/// import com.pulumi.aws.ec2.SecurityGroupArgs;
+/// import com.pulumi.aws.vpc.SecurityGroupIngressRule;
+/// import com.pulumi.aws.vpc.SecurityGroupIngressRuleArgs;
+/// import com.pulumi.aws.vpc.SecurityGroupEgressRule;
+/// import com.pulumi.aws.vpc.SecurityGroupEgressRuleArgs;
+/// import com.pulumi.aws.lambda.Function;
+/// import com.pulumi.aws.lambda.FunctionArgs;
+/// import com.pulumi.aws.lambda.inputs.FunctionVpcConfigArgs;
+/// import com.pulumi.aws.lambda.inputs.FunctionFileSystemConfigArgs;
+/// import com.pulumi.asset.FileArchive;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getCallerIdentity(GetCallerIdentityArgs.builder()
+///             .build());
+///
+///         final var currentGetRegion = AwsFunctions.getRegion(GetRegionArgs.builder()
+///             .build());
+///
+///         var lambdaFileSystem = new Bucket("lambdaFileSystem", BucketArgs.builder()
+///             .bucket(String.format("example-%s-%s-an", current.accountId(),currentGetRegion.name()))
+///             .bucketNamespace("account-regional")
+///             .build());
+///
+///         var lambdaFileSystemBucketVersioning = new BucketVersioning("lambdaFileSystemBucketVersioning", BucketVersioningArgs.builder()
+///             .bucket(lambdaFileSystem.bucket())
+///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
+///                 .status("Enabled")
+///                 .build())
+///             .build());
+///
+///         var forLambda = new FilesFileSystem("forLambda", FilesFileSystemArgs.builder()
+///             .bucket(lambdaFileSystem.arn())
+///             .roleArn(s3files.arn())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(lambdaFileSystemBucketVersioning)
+///                 .build());
+///
+///         var forLambdaFilesAccessPoint = new FilesAccessPoint("forLambdaFilesAccessPoint", FilesAccessPointArgs.builder()
+///             .fileSystemId(forLambda.id())
+///             .rootDirectories(FilesAccessPointRootDirectoryArgs.builder()
+///                 .path("/lambda")
+///                 .creationPermissions(FilesAccessPointRootDirectoryCreationPermissionArgs.builder()
+///                     .ownerGid(1000)
+///                     .ownerUid(1000)
+///                     .permissions("755")
+///                     .build())
+///                 .build())
+///             .posixUsers(FilesAccessPointPosixUserArgs.builder()
+///                 .gid(1000)
+///                 .uid(1000)
+///                 .build())
+///             .build());
+///
+///         var s3filesMountTargets = new SecurityGroup("s3filesMountTargets", SecurityGroupArgs.builder()
+///             .name("example-s3files-mount-targets-sg")
+///             .vpcId(vpcForLambda.id())
+///             .build());
+///
+///         var lambdaS3files = new SecurityGroup("lambdaS3files", SecurityGroupArgs.builder()
+///             .name("example-lambda-s3files-sg")
+///             .vpcId(vpcForLambda.id())
+///             .build());
+///
+///         var s3filesMountTargetsNfs = new SecurityGroupIngressRule("s3filesMountTargetsNfs", SecurityGroupIngressRuleArgs.builder()
+///             .ipProtocol("tcp")
+///             .fromPort(2049)
+///             .toPort(2049)
+///             .referencedSecurityGroupId(lambdaS3files.id())
+///             .securityGroupId(s3filesMountTargets.id())
+///             .build());
+///
+///         var lambdaS3filesNfs = new SecurityGroupEgressRule("lambdaS3filesNfs", SecurityGroupEgressRuleArgs.builder()
+///             .ipProtocol("tcp")
+///             .securityGroupId(lambdaS3files.id())
+///             .fromPort(2049)
+///             .toPort(2049)
+///             .referencedSecurityGroupId(s3filesMountTargets.id())
+///             .build());
+///
+///         var example = new Function("example", FunctionArgs.builder()
+///             .code(new FileArchive("function.zip"))
+///             .name("example_s3files_function")
+///             .role(iamForLambda.arn())
+///             .handler("exports.example")
+///             .runtime("nodejs24.x")
+///             .vpcConfig(FunctionVpcConfigArgs.builder()
+///                 .subnetIds(subnetForLambdaAz1.id())
+///                 .securityGroupIds(lambdaS3files.id())
+///                 .build())
+///             .fileSystemConfig(FunctionFileSystemConfigArgs.builder()
+///                 .arn(forLambdaFilesAccessPoint.arn())
+///                 .localMountPath("/mnt/s3files")
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(forLambdaAwsS3filesMountTarget)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   lambdaFileSystem:
+///     type: aws:s3:Bucket
+///     name: lambda_file_system
+///     properties:
+///       bucket: example-${current.accountId}-${currentGetRegion.name}-an
+///       bucketNamespace: account-regional
+///   lambdaFileSystemBucketVersioning:
+///     type: aws:s3:BucketVersioning
+///     name: lambda_file_system
+///     properties:
+///       bucket: ${lambdaFileSystem.bucket}
+///       versioningConfiguration:
+///         status: Enabled
+///   forLambda:
+///     type: aws:s3:FilesFileSystem
+///     name: for_lambda
+///     properties:
+///       bucket: ${lambdaFileSystem.arn}
+///       roleArn: ${s3files.arn}
+///     options:
+///       dependsOn:
+///         - ${lambdaFileSystemBucketVersioning}
+///   forLambdaFilesAccessPoint:
+///     type: aws:s3:FilesAccessPoint
+///     name: for_lambda
+///     properties:
+///       fileSystemId: ${forLambda.id}
+///       rootDirectories:
+///         - path: /lambda
+///           creationPermissions:
+///             - ownerGid: 1000
+///               ownerUid: 1000
+///               permissions: '755'
+///       posixUsers:
+///         - gid: 1000
+///           uid: 1000
+///   s3filesMountTargets:
+///     type: aws:ec2:SecurityGroup
+///     name: s3files_mount_targets
+///     properties:
+///       name: example-s3files-mount-targets-sg
+///       vpcId: ${vpcForLambda.id}
+///   s3filesMountTargetsNfs:
+///     type: aws:vpc:SecurityGroupIngressRule
+///     name: s3files_mount_targets_nfs
+///     properties:
+///       ipProtocol: tcp
+///       fromPort: 2049
+///       toPort: 2049
+///       referencedSecurityGroupId: ${lambdaS3files.id}
+///       securityGroupId: ${s3filesMountTargets.id}
+///   lambdaS3files:
+///     type: aws:ec2:SecurityGroup
+///     name: lambda_s3files
+///     properties:
+///       name: example-lambda-s3files-sg
+///       vpcId: ${vpcForLambda.id}
+///   lambdaS3filesNfs:
+///     type: aws:vpc:SecurityGroupEgressRule
+///     name: lambda_s3files_nfs
+///     properties:
+///       ipProtocol: tcp
+///       securityGroupId: ${lambdaS3files.id}
+///       fromPort: 2049
+///       toPort: 2049
+///       referencedSecurityGroupId: ${s3filesMountTargets.id}
+///   example:
+///     type: aws:lambda:Function
+///     properties:
+///       code:
+///         fn::fileArchive: function.zip
+///       name: example_s3files_function
+///       role: ${iamForLambda.arn}
+///       handler: exports.example
+///       runtime: nodejs24.x
+///       vpcConfig:
+///         subnetIds:
+///           - ${subnetForLambdaAz1.id}
+///         securityGroupIds:
+///           - ${lambdaS3files.id}
+///       fileSystemConfig:
+///         arn: ${forLambdaFilesAccessPoint.arn}
+///         localMountPath: /mnt/s3files
+///     options:
+///       dependsOn:
+///         - ${forLambdaAwsS3filesMountTarget}
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getCallerIdentity
+///       arguments: {}
+///   currentGetRegion:
+///     fn::invoke:
+///       function: aws:getRegion
+///       arguments: {}
 /// ```
 ///
 ///
@@ -1087,7 +1967,7 @@ import 'function_vpc_config.dart';
 ///     name: "example_function",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     loggingConfig: {
 ///         logFormat: "JSON",
 ///         applicationLogLevel: "INFO",
@@ -1113,7 +1993,7 @@ import 'function_vpc_config.dart';
 ///     name="example_function",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     logging_config={
 ///         "log_format": "JSON",
 ///         "application_log_level": "INFO",
@@ -1146,7 +2026,7 @@ import 'function_vpc_config.dart';
 ///         Name = "example_function",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         LoggingConfig = new Aws.Lambda.Inputs.FunctionLoggingConfigArgs
 ///         {
 ///             LogFormat = "JSON",
@@ -1190,7 +2070,7 @@ import 'function_vpc_config.dart';
 /// 			Name:    pulumi.String("example_function"),
 /// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			LoggingConfig: &lambda.FunctionLoggingConfigArgs{
 /// 				LogFormat:           pulumi.String("JSON"),
 /// 				ApplicationLogLevel: pulumi.String("INFO"),
@@ -1206,6 +2086,37 @@ import 'function_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name              = "/aws/lambda/example_function"
+///   retention_in_days = 14
+///   tags = {
+///     "Environment" = "production"
+///     "Application" = "example"
+///   }
+/// }
+/// resource "aws_lambda_function" "example" {
+///   depends_on = [aws_cloudwatch_loggroup.example]
+///   code       = fileArchive("function.zip")
+///   name       = "example_function"
+///   role       = exampleAwsIamRole.arn
+///   handler    = "index.handler"
+///   runtime    = "nodejs24.x"
+///   logging_config = {
+///     log_format            = "JSON"
+///     application_log_level = "INFO"
+///     system_log_level      = "WARN"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1219,8 +2130,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionLoggingConfigArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1246,7 +2157,7 @@ import 'function_vpc_config.dart';
 ///             .name("example_function")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .loggingConfig(FunctionLoggingConfigArgs.builder()
 ///                 .logFormat("JSON")
 ///                 .applicationLogLevel("INFO")
@@ -1274,11 +2185,11 @@ import 'function_vpc_config.dart';
 ///     name: example
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: example_function
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///       loggingConfig:
 ///         logFormat: JSON
 ///         applicationLogLevel: INFO
@@ -1296,8 +2207,8 @@ import 'function_vpc_config.dart';
 /// * An S3 bucket or Data Firehose delivery stream to store the logs.
 /// * A CloudWatch Log Group with:
 ///
-/// * `log_group_class = "DELIVERY"`
-/// * A subscription filter whose `destination_arn` points to the S3 bucket or the Data Firehose delivery stream.
+/// * `logGroupClass = "DELIVERY"`
+/// * A subscription filter whose `destinationArn` points to the S3 bucket or the Data Firehose delivery stream.
 ///
 /// * IAM roles:
 ///
@@ -1306,7 +2217,7 @@ import 'function_vpc_config.dart';
 ///
 /// * A Lambda function:
 ///
-/// * In the `logging_configuration`, specify the name of the Log Group created above using the `log_group` field
+/// * In the `loggingConfiguration`, specify the name of the Log Group created above using the `logGroup` field
 /// * No special configuration is required to use S3 or Firehose as the log destination
 ///
 /// For more details, see [Sending Lambda function logs to Amazon S3](https://docs.aws.amazon.com/lambda/latest/dg/logging-with-s3.html).
@@ -1346,7 +2257,7 @@ import 'function_vpc_config.dart';
 ///     }],
 /// });
 /// const lambdaLogExportRolePolicy = new aws.iam.RolePolicy("lambda_log_export", {
-///     policy: lambdaLogExport.apply(lambdaLogExport => lambdaLogExport.json),
+///     policy: lambdaLogExport.json,
 ///     role: logsLogExport.name,
 /// });
 /// const lambdaLogExportLogSubscriptionFilter = new aws.cloudwatch.LogSubscriptionFilter("lambda_log_export", {
@@ -1598,10 +2509,8 @@ import 'function_vpc_config.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "lambda_log_export", &iam.RolePolicyArgs{
-/// 			Policy: pulumi.String(lambdaLogExport.ApplyT(func(lambdaLogExport iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &lambdaLogExport.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Role: logsLogExport.Name,
+/// 			Policy: lambdaLogExport.Json(),
+/// 			Role:   logsLogExport.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1636,6 +2545,71 @@ import 'function_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "logsAssumeRole" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     effect  = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["logs.amazonaws.com"]
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "lambdaLogExport" {
+///   statements {
+///     actions   = ["s3:PutObject"]
+///     effect    = "Allow"
+///     resources = ["${aws_s3_bucket.lambda_log_export.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "lambda_log_export" {
+///   bucket ="${local.lambdaFunctionName}-bucket"
+/// }
+/// resource "aws_cloudwatch_loggroup" "export" {
+///   name            ="/aws/lambda/${local.lambdaFunctionName}"
+///   log_group_class = "DELIVERY"
+/// }
+/// resource "aws_iam_role" "logs_log_export" {
+///   name               ="${local.lambdaFunctionName}-lambda-log-export-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.logsAssumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "lambda_log_export" {
+///   policy = data.aws_iam_getpolicydocument.lambdaLogExport.json
+///   role   = aws_iam_role.logs_log_export.name
+/// }
+/// resource "aws_cloudwatch_logsubscriptionfilter" "lambda_log_export" {
+///   name            ="${local.lambdaFunctionName}-filter"
+///   log_group       = aws_cloudwatch_loggroup.export.name
+///   filter_pattern  = ""
+///   destination_arn = aws_s3_bucket.lambda_log_export.arn
+///   role_arn        = aws_iam_role.logs_log_export.arn
+/// }
+/// resource "aws_lambda_function" "log_export" {
+///   depends_on = [aws_cloudwatch_loggroup.export]
+///   name       = local.lambdaFunctionName
+///   handler    = "index.lambda_handler"
+///   runtime    = "python3.13"
+///   role       = example.arn
+///   code       = fileArchive("function.zip")
+///   logging_config = {
+///     log_format = "Text"
+///     log_group  = aws_cloudwatch_loggroup.export.name
+///   }
+/// }
+/// locals {
+///   lambdaFunctionName = "lambda-log-export-example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1648,6 +2622,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -1659,8 +2635,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionLoggingConfigArgs;
 /// import com.pulumi.asset.FileArchive;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1779,7 +2755,7 @@ import 'function_vpc_config.dart';
 ///       runtime: python3.13
 ///       role: ${example.arn}
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       loggingConfig:
 ///         logFormat: Text
 ///         logGroup: ${export.name}
@@ -1826,7 +2802,7 @@ import 'function_vpc_config.dart';
 ///     name: "example_function",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     deadLetterConfig: {
 ///         targetArn: dlq.arn,
 ///     },
@@ -1856,7 +2832,7 @@ import 'function_vpc_config.dart';
 ///     name="example_function",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     dead_letter_config={
 ///         "target_arn": dlq["arn"],
 ///     })
@@ -1889,7 +2865,7 @@ import 'function_vpc_config.dart';
 ///         Name = "example_function",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         DeadLetterConfig = new Aws.Lambda.Inputs.FunctionDeadLetterConfigArgs
 ///         {
 ///             TargetArn = dlq.Arn,
@@ -1933,7 +2909,7 @@ import 'function_vpc_config.dart';
 /// 			Name:    pulumi.String("example_function"),
 /// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			DeadLetterConfig: &lambda.FunctionDeadLetterConfigArgs{
 /// 				TargetArn: pulumi.Any(dlq.Arn),
 /// 			},
@@ -1962,6 +2938,41 @@ import 'function_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Main Lambda function
+/// resource "aws_lambda_function" "example" {
+///   code    = fileArchive("function.zip")
+///   name    = "example_function"
+///   role    = exampleAwsIamRole.arn
+///   handler = "index.handler"
+///   runtime = "nodejs24.x"
+///   dead_letter_config = {
+///     target_arn = dlq.arn
+///   }
+/// }
+/// # Event invoke configuration for retries
+/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+///   function_name                = aws_lambda_function.example.name
+///   maximum_event_age_in_seconds = 60
+///   maximum_retry_attempts       = 2
+///   destination_config = {
+///     on_failure = {
+///       destination = dlq.arn
+///     }
+///     on_success = {
+///       destination = success.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1977,8 +2988,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnSuccessArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1996,7 +3007,7 @@ import 'function_vpc_config.dart';
 ///             .name("example_function")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .deadLetterConfig(FunctionDeadLetterConfigArgs.builder()
 ///                 .targetArn(dlq.arn())
 ///                 .build())
@@ -2027,11 +3038,11 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: example_function
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///       deadLetterConfig:
 ///         targetArn: ${dlq.arn}
 ///   # Event invoke configuration for retries
@@ -2112,7 +3123,7 @@ import 'function_vpc_config.dart';
 ///     name: functionName,
 ///     role: exampleRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     loggingConfig: {
 ///         logFormat: "JSON",
 ///         applicationLogLevel: "INFO",
@@ -2183,7 +3194,7 @@ import 'function_vpc_config.dart';
 ///     name=function_name,
 ///     role=example_role.arn,
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     logging_config={
 ///         "log_format": "JSON",
 ///         "application_log_level": "INFO",
@@ -2283,7 +3294,7 @@ import 'function_vpc_config.dart';
 ///         Name = functionName,
 ///         Role = exampleRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         LoggingConfig = new Aws.Lambda.Inputs.FunctionLoggingConfigArgs
 ///         {
 ///             LogFormat = "JSON",
@@ -2340,7 +3351,7 @@ import 'function_vpc_config.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "lambda.amazonaws.com",
 /// 					},
 /// 				},
@@ -2402,7 +3413,7 @@ import 'function_vpc_config.dart';
 /// 			Name:    pulumi.String(functionName),
 /// 			Role:    exampleRole.Arn,
 /// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			LoggingConfig: &lambda.FunctionLoggingConfigArgs{
 /// 				LogFormat:           pulumi.String("JSON"),
 /// 				ApplicationLogLevel: pulumi.String("INFO"),
@@ -2417,6 +3428,78 @@ import 'function_vpc_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # CloudWatch Log Group with retention
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name              ="/aws/lambda/${var.functionName}"
+///   retention_in_days = 14
+///   tags = {
+///     "Environment" = "production"
+///     "Function"    = var.functionName
+///   }
+/// }
+/// # Lambda execution role
+/// resource "aws_iam_role" "example" {
+///   name = "lambda_execution_role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "lambda.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// # CloudWatch Logs policy
+/// resource "aws_iam_policy" "lambda_logging" {
+///   name        = "lambda_logging"
+///   path        = "/"
+///   description = "IAM policy for logging from Lambda"
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect"   = "Allow"
+///       "Action"   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"]
+///       "Resource" = ["arn:aws:logs:*:*:*"]
+///     }]
+///   })
+/// }
+/// # Attach logging policy to Lambda role
+/// resource "aws_iam_rolepolicyattachment" "lambda_logs" {
+///   role       = aws_iam_role.example.name
+///   policy_arn = aws_iam_policy.lambda_logging.arn
+/// }
+/// # Lambda function with logging
+/// resource "aws_lambda_function" "example" {
+///   depends_on = [aws_iam_rolepolicyattachment.lambda_logs, aws_cloudwatch_loggroup.example]
+///   code       = fileArchive("function.zip")
+///   name       = var.functionName
+///   role       = aws_iam_role.example.arn
+///   handler    = "index.handler"
+///   runtime    = "nodejs24.x"
+///   logging_config = {
+///     log_format            = "JSON"
+///     application_log_level = "INFO"
+///     system_log_level      = "WARN"
+///   }
+/// }
+/// # Function name variable
+/// variable "functionName" {
+///   type        = string
+///   default     = "example_function"
+///   description = "Name of the Lambda function"
 /// }
 /// ```
 /// ```java
@@ -2439,8 +3522,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.asset.FileArchive;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2512,7 +3595,7 @@ import 'function_vpc_config.dart';
 ///             .name(functionName)
 ///             .role(exampleRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .loggingConfig(FunctionLoggingConfigArgs.builder()
 ///                 .logFormat("JSON")
 ///                 .applicationLogLevel("INFO")
@@ -2589,11 +3672,11 @@ import 'function_vpc_config.dart';
 ///     name: example
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: ${functionName}
 ///       role: ${exampleRole.arn}
 ///       handler: index.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///       loggingConfig:
 ///         logFormat: JSON
 ///         applicationLogLevel: INFO
@@ -2619,7 +3702,7 @@ import 'function_vpc_config.dart';
 ///     name: "example_durable_function",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS22dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     memorySize: 512,
 ///     timeout: 30,
 ///     durableConfig: {
@@ -2646,7 +3729,7 @@ import 'function_vpc_config.dart';
 ///     name="example_durable_function",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS22D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     memory_size=512,
 ///     timeout=30,
 ///     durable_config={
@@ -2677,7 +3760,7 @@ import 'function_vpc_config.dart';
 ///         Name = "example_durable_function",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS22dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         MemorySize = 512,
 ///         Timeout = 30,
 ///         DurableConfig = new Aws.Lambda.Inputs.FunctionDurableConfigArgs
@@ -2716,7 +3799,7 @@ import 'function_vpc_config.dart';
 /// 			Name:       pulumi.String("example_durable_function"),
 /// 			Role:       pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler:    pulumi.String("index.handler"),
-/// 			Runtime:    pulumi.String(lambda.RuntimeNodeJS22dX),
+/// 			Runtime:    pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			MemorySize: pulumi.Int(512),
 /// 			Timeout:    pulumi.Int(30),
 /// 			DurableConfig: &lambda.FunctionDurableConfigArgs{
@@ -2740,6 +3823,42 @@ import 'function_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_function" "example" {
+///   code        = fileArchive("function.zip")
+///   name        = "example_durable_function"
+///   role        = exampleAwsIamRole.arn
+///   handler     = "index.handler"
+///   runtime     = "nodejs24.x"
+///   memory_size = 512
+///   timeout     = 30
+///   # Durable function configuration for long-running processes
+///   durable_config = {
+///     execution_timeout = 3600
+///     retention_period  = 7
+///   }
+///   # 1 hour maximum execution time
+///   # 1 hour maximum execution time
+///   # Retain execution state for 7 days
+///   environment = {
+///     variables = {
+///       "DURABLE_MODE" = "enabled"
+///     }
+///   }
+///   tags = {
+///     "Environment" = "production"
+///     "Type"        = "durable"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2751,8 +3870,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionDurableConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEnvironmentArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2769,7 +3888,7 @@ import 'function_vpc_config.dart';
 ///             .name("example_durable_function")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs22.x")
+///             .runtime("nodejs24.x")
 ///             .memorySize(512)
 ///             .timeout(30)
 ///             .durableConfig(FunctionDurableConfigArgs.builder()
@@ -2794,11 +3913,11 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: example_durable_function
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
-///       runtime: nodejs22.x
+///       runtime: nodejs24.x
 ///       memorySize: 512
 ///       timeout: 30 # Durable function configuration for long-running processes
 ///       durableConfig:
@@ -2835,7 +3954,7 @@ import 'function_vpc_config.dart';
 ///     name: "example",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 ///     memorySize: 2048,
 ///     publish: true,
 ///     capacityProviderConfig: {
@@ -2863,7 +3982,7 @@ import 'function_vpc_config.dart';
 ///     name="example",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X,
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X,
 ///     memory_size=2048,
 ///     publish=True,
 ///     capacity_provider_config={
@@ -2906,7 +4025,7 @@ import 'function_vpc_config.dart';
 ///         Name = "example",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///         MemorySize = 2048,
 ///         Publish = true,
 ///         CapacityProviderConfig = new Aws.Lambda.Inputs.FunctionCapacityProviderConfigArgs
@@ -2952,7 +4071,7 @@ import 'function_vpc_config.dart';
 /// 			Name:       pulumi.String("example"),
 /// 			Role:       pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler:    pulumi.String("index.handler"),
-/// 			Runtime:    pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime:    pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 			MemorySize: pulumi.Int(2048),
 /// 			Publish:    pulumi.Bool(true),
 /// 			CapacityProviderConfig: &lambda.FunctionCapacityProviderConfigArgs{
@@ -2966,6 +4085,40 @@ import 'function_vpc_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_function" "example" {
+///   code        = fileArchive("function.zip")
+///   name        = "example"
+///   role        = exampleAwsIamRole.arn
+///   handler     = "index.handler"
+///   runtime     = "nodejs24.x"
+///   memory_size = 2048
+///   publish     = true
+///   capacity_provider_config = {
+///     lambda_managed_instances_capacity_provider_config = {
+///       capacity_provider_arn = aws_lambda_capacityprovider.example.arn
+///     }
+///   }
+/// }
+/// resource "aws_lambda_capacityprovider" "example" {
+///   name = "example"
+///   vpc_config = {
+///     subnet_ids         = [exampleAwsSubnet.id]
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///   }
+///   permissions_config = {
+///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
+///   }
 /// }
 /// ```
 /// ```java
@@ -2983,8 +4136,8 @@ import 'function_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionCapacityProviderConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfigArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3012,7 +4165,7 @@ import 'function_vpc_config.dart';
 ///             .name("example")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .memorySize(2048)
 ///             .publish(true)
 ///             .capacityProviderConfig(FunctionCapacityProviderConfigArgs.builder()
@@ -3031,11 +4184,11 @@ import 'function_vpc_config.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: function.zip
+///         fn::fileArchive: function.zip
 ///       name: example
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///       memorySize: 2048
 ///       publish: true
 ///       capacityProviderConfig:
@@ -3057,12 +4210,9 @@ import 'function_vpc_config.dart';
 ///
 ///
 /// See the `aws.lambda.CapacityProvider` resource for more details, such as configuring instance requirements and the scaling policy.
-///
-/// ## Specifying the Deployment Package
-///
 /// AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for the valid values of `runtime`. The expected structure of the deployment package can be found in [the AWS Lambda documentation for each runtime](https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html).
 ///
-/// Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or indirectly via Amazon S3 (using the `s3_bucket`, `s3_key` and `s3_object_version` arguments). When providing the deployment package via S3 it may be useful to use the `aws.s3.BucketObjectv2` resource to upload it.
+/// Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or indirectly via Amazon S3 (using the `s3Bucket`, `s3Key` and `s3ObjectVersion` arguments). When providing the deployment package via S3 it may be useful to use the `aws.s3.BucketObjectv2` resource to upload it.
 ///
 /// For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading large files efficiently.
 ///
@@ -3072,29 +4222,29 @@ import 'function_vpc_config.dart';
 ///
 /// #### Required
 ///
-/// * `function_name` (String) Name of the Lambda function.
+/// * `functionName` (String) Name of the Lambda function.
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import Lambda Functions using the `function_name`. For example:
+/// Using `pulumi import`, import Lambda Functions using the `functionName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lambda/function:Function example example
 /// ```
 class FunctionType extends pulumi.CustomResource {
-  /// Instruction set architecture for your Lambda function. Valid values are `["x86_64"]` and `["arm64"]`. Default is `["x86_64"]`. Removing this attribute, function's architecture stays the same.
+  /// Instruction set architecture for your Lambda function. Valid values are `["x8664"]` and `["arm64"]`. Default is `["x8664"]`. Removing this attribute, function's architecture stays the same.
   late final pulumi.Output<List<String>> architectures;
   /// ARN identifying your Lambda Function.
   late final pulumi.Output<String> arn;
   /// Configuration block for Lambda Capacity Provider. See below.
   late final pulumi.Output<FunctionCapacityProviderConfig?> capacityProviderConfig;
-  /// Path to the function's deployment package within the local filesystem. Conflicts with `image_uri` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
+  /// Path to the function's deployment package within the local filesystem. Conflicts with `imageUri` and `s3Bucket`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
   late final pulumi.Output<dynamic> code;
-  /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `source_code_hash` argument instead.
+  /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `sourceCodeHash` argument instead.
   late final pulumi.Output<String> codeSha256;
   /// ARN of a code-signing configuration to enable code signing for this function.
   late final pulumi.Output<String?> codeSigningConfigArn;
@@ -3102,19 +4252,19 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<FunctionDeadLetterConfig?> deadLetterConfig;
   /// Description of what your Lambda Function does.
   late final pulumi.Output<String?> description;
-  /// Configuration block for durable function settings. See below. `durable_config` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
+  /// Configuration block for durable function settings. See below. `durableConfig` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
   late final pulumi.Output<FunctionDurableConfig?> durableConfig;
   /// Configuration block for environment variables. See below.
   late final pulumi.Output<FunctionEnvironment?> environment;
   /// Amount of ephemeral storage (`/tmp`) to allocate for the Lambda Function. See below.
   late final pulumi.Output<FunctionEphemeralStorage> ephemeralStorage;
-  /// Configuration block for EFS file system. See below.
+  /// Configuration block for EFS or S3 Files file system. See below.
   late final pulumi.Output<FunctionFileSystemConfig?> fileSystemConfig;
-  /// Function entry point in your code. Required if `package_type` is `Zip`.
+  /// Function entry point in your code. Required if `packageType` is `Zip`.
   late final pulumi.Output<String?> handler;
   /// Container image configuration values. See below.
   late final pulumi.Output<FunctionImageConfig?> imageConfig;
-  /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
+  /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3Bucket`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
   late final pulumi.Output<String?> imageUri;
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String> invokeArn;
@@ -3144,7 +4294,7 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Whether to replace the security groups on the function's VPC configuration prior to destruction. Default is `false`.
   late final pulumi.Output<bool?> replaceSecurityGroupsOnDestroy;
-  /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replace_security_groups_on_destroy` is `true`.
+  /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replaceSecurityGroupsOnDestroy` is `true`.
   late final pulumi.Output<List<String>?> replacementSecurityGroupIds;
   /// Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`.
   late final pulumi.Output<int?> reservedConcurrentExecutions;
@@ -3154,13 +4304,13 @@ class FunctionType extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> role;
-  /// Identifier of the function's runtime. Required if `package_type` is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
+  /// Identifier of the function's runtime. Required if `packageType` is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
   late final pulumi.Output<String?> runtime;
-  /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `image_uri`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
+  /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `imageUri`. One of `filename`, `imageUri`, or `s3Bucket` must be specified.
   late final pulumi.Output<String?> s3Bucket;
-  /// S3 key of an object containing the function's deployment package. Required if `s3_bucket` is set.
+  /// S3 key of an object containing the function's deployment package. Required if `s3Bucket` is set.
   late final pulumi.Output<String?> s3Key;
-  /// Object version containing the function's deployment package. Conflicts with `filename` and `image_uri`.
+  /// Object version containing the function's deployment package. Conflicts with `filename` and `imageUri`.
   late final pulumi.Output<String?> s3ObjectVersion;
   /// ARN of the signing job.
   late final pulumi.Output<String> signingJobArn;
@@ -3170,15 +4320,15 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<bool?> skipDestroy;
   /// Configuration block for snap start settings. See below.
   late final pulumi.Output<FunctionSnapStart?> snapStart;
-  /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `code_sha256` argument instead.
+  /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `codeSha256` argument instead.
   late final pulumi.Output<String> sourceCodeHash;
   /// Size in bytes of the function .zip file.
   late final pulumi.Output<int> sourceCodeSize;
-  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `image_uri`.
+  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
   late final pulumi.Output<String?> sourceKmsKeyArn;
-  /// Key-value map of tags for the Lambda function. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags for the Lambda function. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for Tenancy. See below.
   late final pulumi.Output<FunctionTenancyConfig?> tenancyConfig;
@@ -3186,6 +4336,8 @@ class FunctionType extends pulumi.CustomResource {
   late final pulumi.Output<int?> timeout;
   /// Configuration block for X-Ray tracing. See below.
   late final pulumi.Output<FunctionTracingConfig> tracingConfig;
+  /// Whether to apply resource level timeout values while retrying eventually consistent API operations. By default the provider uses a 5 minute timeout to allow for propagation in the Lambda service. When set to `true`, this default value is replaced with the configurable resource timeouts. Increased timeout values may be useful in highly active accounts, or regions where propagation delays are inconsistent.
+  late final pulumi.Output<bool?> useResourceTimeoutForPropagation;
   /// Latest published version of your Lambda Function.
   late final pulumi.Output<String> version;
   /// Configuration block for VPC. See below.
@@ -3254,6 +4406,7 @@ class FunctionType extends pulumi.CustomResource {
     tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<int?>('timeout');
     tracingConfig = registerOutput<FunctionTracingConfig>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
     version = registerOutput<String>('version');
     vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -3330,6 +4483,7 @@ class FunctionType extends pulumi.CustomResource {
     tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<int?>('timeout');
     tracingConfig = registerOutput<FunctionTracingConfig>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
     version = registerOutput<String>('version');
     vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

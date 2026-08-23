@@ -36,4 +36,3 @@ class FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationCloudwatchLogg
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'user_group_association_state.dart';
 
 /// Associate an existing ElastiCache user and an existing user group.
 ///
-/// &gt; Pulumi will detect changes in the `aws.elasticache.UserGroup` since `aws.elasticache.UserGroupAssociation` changes the user IDs associated with the user group. You can ignore these changes with the `lifecycle` `ignore_changes` meta argument as shown in the example.
+/// &gt; Pulumi will detect changes in the `aws.elasticache.UserGroup` since `aws.elasticache.UserGroupAssociation` changes the user IDs associated with the user group. You can ignore these changes with the `lifecycle` `ignoreChanges` meta argument as shown in the example.
 ///
 /// ## Example Usage
 ///
@@ -166,6 +166,39 @@ import 'user_group_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_user" "default" {
+///   user_id       = "defaultUserID"
+///   user_name     = "default"
+///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
+///   engine        = "REDIS"
+///   passwords     = ["password123456789"]
+/// }
+/// resource "aws_elasticache_usergroup" "example" {
+///   engine        = "REDIS"
+///   user_group_id = "userGroupId"
+///   user_ids      = [aws_elasticache_user.default.user_id]
+/// }
+/// resource "aws_elasticache_user" "example" {
+///   user_id       = "exampleUserID"
+///   user_name     = "exampleuser"
+///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
+///   engine        = "REDIS"
+///   passwords     = ["password123456789"]
+/// }
+/// resource "aws_elasticache_usergroupassociation" "example" {
+///   user_group_id = aws_elasticache_usergroup.example.user_group_id
+///   user_id       = aws_elasticache_user.example.user_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +211,8 @@ import 'user_group_association_state.dart';
 /// import com.pulumi.aws.elasticache.UserGroupArgs;
 /// import com.pulumi.aws.elasticache.UserGroupAssociation;
 /// import com.pulumi.aws.elasticache.UserGroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +293,7 @@ import 'user_group_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ElastiCache user group associations using the `user_group_id` and `user_id`. For example:
+/// Using `pulumi import`, import ElastiCache user group associations using the `userGroupId` and `userId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticache/userGroupAssociation:UserGroupAssociation example userGoupId1,userId

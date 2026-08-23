@@ -16,9 +16,9 @@ class RouteArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Route specification to apply.
+  /// Route specification to apply. See `spec` Block for details.
   final pulumi.Input<RouteSpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> virtualRouterName;
@@ -28,8 +28,8 @@ class RouteArgs {
   /// [meshOwner] AWS account ID of the service mesh's owner. Defaults to the account ID the AWS provider is currently connected to.
   /// [name] Name to use for the route. Must be between 1 and 255 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [spec] Route specification to apply.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [spec] Route specification to apply. See `spec` Block for details.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualRouterName] Name of the virtual router in which to create the route. Must be between 1 and 255 characters in length.
   const RouteArgs({
     required this.meshName,
@@ -65,4 +65,3 @@ class RouteArgs {
     );
   }
 }
-

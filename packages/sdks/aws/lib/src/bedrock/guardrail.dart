@@ -331,6 +331,71 @@ import 'guardrail_word_policy_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_guardrail" "example" {
+///   name                      = "example"
+///   blocked_input_messaging   = "example"
+///   blocked_outputs_messaging = "example"
+///   description               = "example"
+///   content_policy_config = {
+///     filters_configs = [{
+///       "inputStrength"  = "MEDIUM"
+///       "outputStrength" = "MEDIUM"
+///       "type"           = "HATE"
+///     }]
+///     tier_configs = [{
+///       "tierName" = "STANDARD"
+///     }]
+///   }
+///   sensitive_information_policy_config = {
+///     pii_entities_configs = [{
+///       "action"        = "BLOCK"
+///       "inputAction"   = "BLOCK"
+///       "outputAction"  = "ANONYMIZE"
+///       "inputEnabled"  = true
+///       "outputEnabled" = true
+///       "type"          = "NAME"
+///     }]
+///     regexes_configs = [{
+///       "action"        = "BLOCK"
+///       "inputAction"   = "BLOCK"
+///       "outputAction"  = "BLOCK"
+///       "inputEnabled"  = true
+///       "outputEnabled" = false
+///       "description"   = "example regex"
+///       "name"          = "regex_example"
+///       "pattern"       = "^\\d{3}-\\d{2}-\\d{4}$"
+///     }]
+///   }
+///   topic_policy_config = {
+///     topics_configs = [{
+///       "name"       = "investment_topic"
+///       "examples"   = ["Where should I invest my money ?"]
+///       "type"       = "DENY"
+///       "definition" = "Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns ."
+///     }]
+///     tier_configs = [{
+///       "tierName" = "CLASSIC"
+///     }]
+///   }
+///   word_policy_config = {
+///     managed_word_lists_configs = [{
+///       "type" = "PROFANITY"
+///     }]
+///     words_configs = [{
+///       "text" = "HATE"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -340,11 +405,19 @@ import 'guardrail_word_policy_config.dart';
 /// import com.pulumi.aws.bedrock.Guardrail;
 /// import com.pulumi.aws.bedrock.GuardrailArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailContentPolicyConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailContentPolicyConfigFiltersConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailContentPolicyConfigTierConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailSensitiveInformationPolicyConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailSensitiveInformationPolicyConfigRegexesConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailTopicPolicyConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailTopicPolicyConfigTopicsConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailTopicPolicyConfigTierConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailWordPolicyConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailWordPolicyConfigManagedWordListsConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailWordPolicyConfigWordsConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,7 +540,7 @@ import 'guardrail_word_policy_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Bedrock Guardrail using using a comma-delimited string of `guardrail_id` and `version`. For example:
+/// Using `pulumi import`, import Amazon Bedrock Guardrail using using a comma-delimited string of `guardrailId` and `version`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/guardrail:Guardrail example guardrail-id-12345678,DRAFT
@@ -502,12 +575,14 @@ class Guardrail extends pulumi.CustomResource {
   late final pulumi.Output<GuardrailSensitiveInformationPolicyConfig?> sensitiveInformationPolicyConfig;
   /// Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<GuardrailTimeouts?> timeouts;
   /// Topic policy config for a guardrail. See Topic Policy Config for more information.
   late final pulumi.Output<GuardrailTopicPolicyConfig?> topicPolicyConfig;
+  /// Date and time that the Guardrail list was last updated.
+  late final pulumi.Output<String> updatedAt;
   /// Version of the Guardrail.
   late final pulumi.Output<String> version;
   /// Word policy config for a guardrail. See Word Policy Config for more information.
@@ -545,6 +620,7 @@ class Guardrail extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<GuardrailTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');
     wordPolicyConfig = registerOutput<GuardrailWordPolicyConfig?>('wordPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailWordPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -590,6 +666,7 @@ class Guardrail extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<GuardrailTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');
     wordPolicyConfig = registerOutput<GuardrailWordPolicyConfig?>('wordPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailWordPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis {
-  /// Partition key used for partitioning, which can be a default measure_name or a customer defined partition key.
+  /// Partition key used for partitioning, which can be a default measureName or a customer defined partition key.
   final pulumi.Input<List<String>>? partitionKeys;
   /// ARN of the table which is queried with the largest time range.
   final pulumi.Input<String>? tableArn;
@@ -11,7 +11,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis
   final pulumi.Input<double>? value;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis].
-  /// [partitionKeys] Partition key used for partitioning, which can be a default measure_name or a customer defined partition key.
+  /// [partitionKeys] Partition key used for partitioning, which can be a default measureName or a customer defined partition key.
   /// [tableArn] ARN of the table which is queried with the largest time range.
   /// [value] Maximum duration in nanoseconds between the start and end of the query.
   const ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis({
@@ -36,4 +36,3 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis
     );
   }
 }
-

@@ -7,10 +7,10 @@ class LaunchTemplateBlockDeviceMappingEbs {
   /// See [Preserving Amazon EBS Volumes on Instance Termination](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/preserving-volumes-on-termination.html) for more information.
   final pulumi.Input<String>? deleteOnTermination;
   /// Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-  /// Cannot be used with `snapshot_id`.
+  /// Cannot be used with `snapshotId`.
   final pulumi.Input<String>? encrypted;
   /// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
-  /// This must be set with a `volume_type` of `"io1/io2/gp3"`.
+  /// This must be set with a `volumeType` of `"io1/io2/gp3"`.
   final pulumi.Input<int>? iops;
   /// Identifier (key ID, key alias, key ARN, or alias ARN) of the customer managed KMS key to use for EBS encryption.
   /// `encrypted` must be set to `true` when this is set.
@@ -77,4 +77,3 @@ class LaunchTemplateBlockDeviceMappingEbs {
     );
   }
 }
-

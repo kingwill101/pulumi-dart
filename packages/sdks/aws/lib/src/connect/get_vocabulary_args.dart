@@ -17,7 +17,7 @@ class GetVocabularyArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Returns information on a specific Vocabulary by Vocabulary id
   ///
-  /// &gt; **NOTE:** `instance_id` and one of either `name` or `vocabulary_id` is required.
+  /// &gt; **NOTE:** `instanceId` and one of either `name` or `vocabularyId` is required.
   final pulumi.Input<String>? vocabularyId;
 
   /// Creates a new [GetVocabularyArgs].
@@ -54,4 +54,3 @@ class GetVocabularyArgs {
     );
   }
 }
-

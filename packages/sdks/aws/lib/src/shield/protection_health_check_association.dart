@@ -170,7 +170,7 @@ import 'protection_health_check_association_state.dart';
 /// 		}
 /// 		exampleProtection, err := shield.NewProtection(ctx, "example", &shield.ProtectionArgs{
 /// 			Name: pulumi.String("example-protection"),
-/// 			ResourceArn: example.ID().ApplyT(func(id string) (string, error) {
+/// 			ResourceArn: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("arn:%v:ec2:%v:%v:eip-allocation/%v", currentGetPartition.Partition, current.Region, currentGetCallerIdentity.AccountId, id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -193,13 +193,55 @@ import 'protection_health_check_association_state.dart';
 /// 		}
 /// 		_, err = shield.NewProtectionHealthCheckAssociation(ctx, "example", &shield.ProtectionHealthCheckAssociationArgs{
 /// 			HealthCheckArn:     exampleHealthCheck.Arn,
-/// 			ShieldProtectionId: exampleProtection.ID(),
+/// 			ShieldProtectionId: exampleProtection.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_ec2_eip" "example" {
+///   domain = "vpc"
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// resource "aws_shield_protection" "example" {
+///   name         = "example-protection"
+///   resource_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:ec2:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"
+/// }
+/// resource "aws_route53_healthcheck" "example" {
+///   ip_address        = aws_ec2_eip.example.public_ip
+///   port              = 80
+///   type              = "HTTP"
+///   resource_path     = "/ready"
+///   failure_threshold = "3"
+///   request_interval  = "30"
+///   tags = {
+///     "Name" = "tf-example-health-check"
+///   }
+/// }
+/// resource "aws_shield_protectionhealthcheckassociation" "example" {
+///   health_check_arn     = aws_route53_healthcheck.example.arn
+///   shield_protection_id = aws_shield_protection.example.id
 /// }
 /// ```
 /// ```java
@@ -220,8 +262,8 @@ import 'protection_health_check_association_state.dart';
 /// import com.pulumi.aws.route53.HealthCheckArgs;
 /// import com.pulumi.aws.shield.ProtectionHealthCheckAssociation;
 /// import com.pulumi.aws.shield.ProtectionHealthCheckAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -320,7 +362,7 @@ import 'protection_health_check_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Shield protection health check association resources using the `shield_protection_id` and `health_check_arn`. For example:
+/// Using `pulumi import`, import Shield protection health check association resources using the `shieldProtectionId` and `healthCheckArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation example ff9592dc-22f3-4e88-afa1-7b29fde9669a+arn:aws:route53:::healthcheck/3742b175-edb9-46bc-9359-f53e3b794b1b

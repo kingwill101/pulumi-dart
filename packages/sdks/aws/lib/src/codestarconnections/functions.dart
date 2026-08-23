@@ -58,6 +58,19 @@ import 'get_connection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codestarconnections_getconnection" "example" {
+///   arn = exampleAwsCodestarconnectionsConnection.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_connection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codestarconnections.CodestarconnectionsFunctions;
 /// import com.pulumi.aws.codestarconnections.inputs.GetConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,6 +161,19 @@ import 'get_connection_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codestarconnections_getconnection" "example" {
+///   name = exampleAwsCodestarconnectionsConnection.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +182,8 @@ import 'get_connection_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codestarconnections.CodestarconnectionsFunctions;
 /// import com.pulumi.aws.codestarconnections.inputs.GetConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

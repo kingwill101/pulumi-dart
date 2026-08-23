@@ -24,4 +24,3 @@ class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
     );
   }
 }
-

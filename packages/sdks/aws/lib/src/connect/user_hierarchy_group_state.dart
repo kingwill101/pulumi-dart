@@ -9,7 +9,7 @@ class UserHierarchyGroupState {
   final pulumi.Input<String>? arn;
   /// The identifier for the hierarchy group.
   final pulumi.Input<String>? hierarchyGroupId;
-  /// A block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
+  /// A block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
   final pulumi.Input<List<UserHierarchyGroupHierarchyPath>>? hierarchyPaths;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String>? instanceId;
@@ -22,22 +22,22 @@ class UserHierarchyGroupState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Tags to apply to the hierarchy group. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [UserHierarchyGroupState].
   /// [arn] The Amazon Resource Name (ARN) of the hierarchy group.
   /// [hierarchyGroupId] The identifier for the hierarchy group.
-  /// [hierarchyPaths] A block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
+  /// [hierarchyPaths] A block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
   /// [levelId] The identifier of the level in the hierarchy group.
   /// [name] The name of the user hierarchy group. Must not be more than 100 characters.
   /// [parentGroupId] The identifier for the parent hierarchy group. The user hierarchy is created at level one if the parent group ID is null.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the hierarchy group. If configured with a provider
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const UserHierarchyGroupState({
     this.arn,
     this.hierarchyGroupId,
@@ -81,4 +81,3 @@ class UserHierarchyGroupState {
     );
   }
 }
-

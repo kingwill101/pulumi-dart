@@ -8,23 +8,23 @@ import 'web_acl_rule_action_challenge.dart';
 import 'web_acl_rule_action_count.dart';
 
 class WebAclRuleAction {
-  /// Instructs AWS WAF to allow the web request. See `allow` below for details.
+  /// Allow the request. See Allow below.
   final pulumi.Input<WebAclRuleActionAllow>? allow;
-  /// Instructs AWS WAF to block the web request. See `block` below for details.
+  /// Block the request. See Block below.
   final pulumi.Input<WebAclRuleActionBlock>? block;
-  /// Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
+  /// Present a CAPTCHA challenge. See Captcha below.
   final pulumi.Input<WebAclRuleActionCaptcha>? captcha;
-  /// Instructs AWS WAF to run a check against the request to verify that the request is coming from a legitimate client session. See `challenge` below for details.
+  /// Present a silent challenge. See Challenge below.
   final pulumi.Input<WebAclRuleActionChallenge>? challenge;
-  /// Instructs AWS WAF to count the web request and allow it. See `count` below for details.
+  /// Count the request without blocking. See Count below.
   final pulumi.Input<WebAclRuleActionCount>? count;
 
   /// Creates a new [WebAclRuleAction].
-  /// [allow] Instructs AWS WAF to allow the web request. See `allow` below for details.
-  /// [block] Instructs AWS WAF to block the web request. See `block` below for details.
-  /// [captcha] Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
-  /// [challenge] Instructs AWS WAF to run a check against the request to verify that the request is coming from a legitimate client session. See `challenge` below for details.
-  /// [count] Instructs AWS WAF to count the web request and allow it. See `count` below for details.
+  /// [allow] Allow the request. See Allow below.
+  /// [block] Block the request. See Block below.
+  /// [captcha] Present a CAPTCHA challenge. See Captcha below.
+  /// [challenge] Present a silent challenge. See Challenge below.
+  /// [count] Count the request without blocking. See Count below.
   const WebAclRuleAction({
     this.allow,
     this.block,
@@ -53,4 +53,3 @@ class WebAclRuleAction {
     );
   }
 }
-

@@ -9,13 +9,13 @@ class NamespaceState {
   /// ID of the KMS key used to encrypt the namespace's admin credentials secret.
   final pulumi.Input<String>? adminPasswordSecretKmsKeyId;
   /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manage_admin_password` and `admin_user_password_wo`.
+  /// Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
   final pulumi.Input<String>? adminUserPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manage_admin_password` and `admin_user_password`.
+  /// Conflicts with `manageAdminPassword` and `adminUserPassword`.
   final pulumi.Input<String>? adminUserPasswordWo;
-  /// Used together with `admin_user_password_wo` to trigger an update. Increment this value when an update to the `admin_user_password_wo` is required
+  /// Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
   final pulumi.Input<int>? adminUserPasswordWoVersion;
   /// The username of the administrator for the first database created in the namespace.
   final pulumi.Input<String>? adminUsername;
@@ -23,7 +23,7 @@ class NamespaceState {
   final pulumi.Input<String>? arn;
   /// The name of the first database created in the namespace.
   final pulumi.Input<String>? dbName;
-  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `default_iam_role_arn`, it also must be part of `iam_roles`.
+  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
   final pulumi.Input<String>? defaultIamRoleArn;
   /// A list of IAM roles to associate with the namespace.
   final pulumi.Input<List<String>>? iamRoles;
@@ -32,7 +32,7 @@ class NamespaceState {
   /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   final pulumi.Input<List<String>>? logExports;
   /// Whether to use AWS SecretManager to manage namespace's admin credentials.
-  /// Conflicts with `admin_user_password` and `admin_user_password_wo`.
+  /// Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
   final pulumi.Input<bool>? manageAdminPassword;
   /// The Redshift Namespace ID.
   final pulumi.Input<String>? namespaceId;
@@ -40,9 +40,9 @@ class NamespaceState {
   final pulumi.Input<String>? namespaceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [NamespaceState].
@@ -50,11 +50,11 @@ class NamespaceState {
   /// [adminPasswordSecretKmsKeyId] ID of the KMS key used to encrypt the namespace's admin credentials secret.
   /// [adminUserPassword] The password of the administrator for the first database created in the namespace.
   /// [adminUserPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [adminUserPasswordWoVersion] Used together with `admin_user_password_wo` to trigger an update. Increment this value when an update to the `admin_user_password_wo` is required
+  /// [adminUserPasswordWoVersion] Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
   /// [adminUsername] The username of the administrator for the first database created in the namespace.
   /// [arn] Amazon Resource Name (ARN) of the Redshift Serverless Namespace.
   /// [dbName] The name of the first database created in the namespace.
-  /// [defaultIamRoleArn] The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `default_iam_role_arn`, it also must be part of `iam_roles`.
+  /// [defaultIamRoleArn] The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
   /// [iamRoles] A list of IAM roles to associate with the namespace.
   /// [kmsKeyId] The ARN of the Amazon Web Services Key Management Service key used to encrypt your data.
   /// [logExports] The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
@@ -62,8 +62,8 @@ class NamespaceState {
   /// [namespaceId] The Redshift Namespace ID.
   /// [namespaceName] The name of the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const NamespaceState({
     this.adminPasswordSecretArn,
     this.adminPasswordSecretKmsKeyId,
@@ -131,4 +131,3 @@ class NamespaceState {
     );
   }
 }
-

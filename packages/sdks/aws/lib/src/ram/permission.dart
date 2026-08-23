@@ -117,6 +117,24 @@ import 'permission_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_permission" "example" {
+///   name            = "custom-backup"
+///   policy_template = "{\n    \\\"Effect\\\": \\\"Allow\\\",\n    \\\"Action\\\": [\n\\t\\\"backup:ListProtectedResourcesByBackupVault\\\",\n\\t\\\"backup:ListRecoveryPointsByBackupVault\\\",\n\\t\\\"backup:DescribeRecoveryPoint\\\",\n\\t\\\"backup:DescribeBackupVault\\\"\n    ]\n}\n"
+///   resource_type   = "backup:BackupVault"
+///   tags = {
+///     "Name" = "custom-backup"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +143,8 @@ import 'permission_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ram.Permission;
 /// import com.pulumi.aws.ram.PermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,7 +207,7 @@ import 'permission_timeouts.dart';
 /// * `arn` (String) Permission ARN.
 ///
 ///
-/// Using `pulumi import`, import RAM (Resource Access Manager) Permission using the `example_id_arg`. For example:
+/// Using `pulumi import`, import RAM (Resource Access Manager) Permission using the `exampleIdArg`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ram/permission:Permission example arn:aws:ram:us-west-1:123456789012:permission/test-permission
@@ -197,24 +215,24 @@ import 'permission_timeouts.dart';
 class Permission extends pulumi.CustomResource {
   /// ARN of the permission.
   late final pulumi.Output<String> arn;
-  /// Specifies whether the version of the managed permission used by this resource share is the default version for this managed permission.
+  /// Whether this is the default version of the managed permission.
   late final pulumi.Output<bool> defaultVersion;
-  /// Specifies the name of the customer managed permission. The name must be unique within the AWS Region.
+  /// Name of the customer managed permission. The name must be unique within the AWS Region.
   late final pulumi.Output<String> name;
-  /// A string in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
+  /// String in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
   late final pulumi.Output<String> policyTemplate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
+  /// Name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
   late final pulumi.Output<String> resourceType;
-  /// The current status of the permission.
+  /// Current status of the permission.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PermissionTimeouts?> timeouts;
-  /// The version of the permission associated with this resource share.
+  /// Version of the permission associated with this resource share.
   late final pulumi.Output<String> version;
 
   /// Creates a new [Permission].

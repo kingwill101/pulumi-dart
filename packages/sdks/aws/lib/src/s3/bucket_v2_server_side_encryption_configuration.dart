@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_v2_server_side_encryption_configuration_rule.dart';
 
 class BucketV2ServerSideEncryptionConfiguration {
-  /// Single object for server-side encryption by default configuration. (documented below)
+  /// Single object for server-side encryption by default configuration. See `server_side_encryption_configuration.rule` Block below for details.
   final pulumi.Input<List<BucketV2ServerSideEncryptionConfigurationRule>> rules;
 
   /// Creates a new [BucketV2ServerSideEncryptionConfiguration].
-  /// [rules] Single object for server-side encryption by default configuration. (documented below)
+  /// [rules] Single object for server-side encryption by default configuration. See `server_side_encryption_configuration.rule` Block below for details.
   const BucketV2ServerSideEncryptionConfiguration({
     required this.rules,
   });
@@ -25,4 +25,3 @@ class BucketV2ServerSideEncryptionConfiguration {
     );
   }
 }
-

@@ -12,14 +12,14 @@ class BlockPublicAccessConfigurationArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<bool> blockPublicSecurityGroupRules;
-  /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
+  /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `blockPublicSecurityGroupRules` is set to `true`.
   final pulumi.Input<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>? permittedPublicSecurityGroupRuleRanges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [BlockPublicAccessConfigurationArgs].
   /// [blockPublicSecurityGroupRules] Enable or disable EMR Block Public Access.
-  /// [permittedPublicSecurityGroupRuleRanges] Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
+  /// [permittedPublicSecurityGroupRuleRanges] Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `blockPublicSecurityGroupRules` is set to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const BlockPublicAccessConfigurationArgs({
     required this.blockPublicSecurityGroupRules,
@@ -43,4 +43,3 @@ class BlockPublicAccessConfigurationArgs {
     );
   }
 }
-

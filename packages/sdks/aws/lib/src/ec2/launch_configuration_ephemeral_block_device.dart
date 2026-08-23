@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchConfigurationEphemeralBlockDevice {
+  /// The name of the block device to mount on the instance.
   final pulumi.Input<String> deviceName;
+  /// Whether the device in the block device mapping of the AMI is suppressed.
   final pulumi.Input<bool>? noDevice;
+  /// The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames).
   final pulumi.Input<String>? virtualName;
 
   /// Creates a new [LaunchConfigurationEphemeralBlockDevice].
-  /// [deviceName] Required.
-  /// [noDevice] Optional.
-  /// [virtualName] Optional.
+  /// [deviceName] The name of the block device to mount on the instance.
+  /// [noDevice] Whether the device in the block device mapping of the AMI is suppressed.
+  /// [virtualName] The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames).
   const LaunchConfigurationEphemeralBlockDevice({
     required this.deviceName,
     this.noDevice,
@@ -33,4 +36,3 @@ class LaunchConfigurationEphemeralBlockDevice {
     );
   }
 }
-

@@ -20,7 +20,7 @@ class NotificationConfigurationArgs {
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
   /// Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
-  /// configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those
+  /// configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those
   /// defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,4 +54,3 @@ class NotificationConfigurationArgs {
     );
   }
 }
-

@@ -3,32 +3,32 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudVmClustersCloudVmCluster {
-  /// The Amazon Resource Name (ARN) for the cloud vm cluster.
+  /// Amazon Resource Name (ARN) for the cloud vm cluster.
   final pulumi.Input<String> arn;
-  /// The ID of the Cloud Exadata Infrastructure.
+  /// ID of the Cloud Exadata Infrastructure.
   final pulumi.Input<String> cloudExadataInfrastructureId;
-  /// The display name of the VM cluster.
+  /// Display name of the VM cluster.
   final pulumi.Input<String> displayName;
-  /// The unique identifier of the cloud vm cluster.
+  /// Unique identifier of the cloud vm cluster.
   final pulumi.Input<String> id;
-  /// The name of the OCI Resource Anchor.
+  /// Name of the OCI Resource Anchor.
   final pulumi.Input<String> ociResourceAnchorName;
-  /// The HTTPS link to the VM cluster in OCI.
+  /// HTTPS link to the VM cluster in OCI.
   final pulumi.Input<String> ociUrl;
-  /// The OCID of the VM cluster.
+  /// OCID of the VM cluster.
   final pulumi.Input<String> ocid;
-  /// The ID of the ODB network.
+  /// ID of the ODB network.
   final pulumi.Input<String> odbNetworkId;
 
   /// Creates a new [GetCloudVmClustersCloudVmCluster].
-  /// [arn] The Amazon Resource Name (ARN) for the cloud vm cluster.
-  /// [cloudExadataInfrastructureId] The ID of the Cloud Exadata Infrastructure.
-  /// [displayName] The display name of the VM cluster.
-  /// [id] The unique identifier of the cloud vm cluster.
-  /// [ociResourceAnchorName] The name of the OCI Resource Anchor.
-  /// [ociUrl] The HTTPS link to the VM cluster in OCI.
-  /// [ocid] The OCID of the VM cluster.
-  /// [odbNetworkId] The ID of the ODB network.
+  /// [arn] Amazon Resource Name (ARN) for the cloud vm cluster.
+  /// [cloudExadataInfrastructureId] ID of the Cloud Exadata Infrastructure.
+  /// [displayName] Display name of the VM cluster.
+  /// [id] Unique identifier of the cloud vm cluster.
+  /// [ociResourceAnchorName] Name of the OCI Resource Anchor.
+  /// [ociUrl] HTTPS link to the VM cluster in OCI.
+  /// [ocid] OCID of the VM cluster.
+  /// [odbNetworkId] ID of the ODB network.
   const GetCloudVmClustersCloudVmCluster({
     required this.arn,
     required this.cloudExadataInfrastructureId,
@@ -66,4 +66,3 @@ class GetCloudVmClustersCloudVmCluster {
     );
   }
 }
-

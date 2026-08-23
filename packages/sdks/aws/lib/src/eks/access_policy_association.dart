@@ -88,6 +88,25 @@ import 'access_policy_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_accesspolicyassociation" "example" {
+///   cluster_name  = exampleAwsEksCluster.name
+///   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
+///   principal_arn = exampleAwsIamUser.arn
+///   access_scope = {
+///     type       = "namespace"
+///     namespaces = ["example-namespace"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'access_policy_association_state.dart';
 /// import com.pulumi.aws.eks.AccessPolicyAssociation;
 /// import com.pulumi.aws.eks.AccessPolicyAssociationArgs;
 /// import com.pulumi.aws.eks.inputs.AccessPolicyAssociationAccessScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -140,13 +159,27 @@ import 'access_policy_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EKS access entry using the `cluster_name` `principal_arn` and `policy_arn` separated by an octothorp (`#`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `clusterName` (String) Name of the EKS Cluster.
+/// * `principalArn` (String) IAM principal ARN.
+/// * `policyArn` - (String) Access policy ARN.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Access Entry Policy Associations using `clusterName`, `principalArn`, and `policyArn` separated by an octothorp (`#`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/accessPolicyAssociation:AccessPolicyAssociation my_eks_access_entry my_cluster_name#my_principal_arn#my_policy_arn
+/// $ pulumi import aws:eks/accessPolicyAssociation:AccessPolicyAssociation example example-cluster#arn:aws:iam::123456789012:role/example#arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy
 /// ```
 class AccessPolicyAssociation extends pulumi.CustomResource {
-  /// The configuration block to determine the scope of the access. See `access_scope` Block below.
+  /// The configuration block to determine the scope of the access. See `accessScope` Block below.
   late final pulumi.Output<AccessPolicyAssociationAccessScope> accessScope;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was associated.
   late final pulumi.Output<String> associatedAt;

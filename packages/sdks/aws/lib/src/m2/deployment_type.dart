@@ -72,6 +72,22 @@ import 'deployment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_m2_deployment" "test" {
+///   environment_id      = "01234567890abcdef012345678"
+///   application_id      = "34567890abcdef012345678012"
+///   application_version = 1
+///   start               = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +96,8 @@ import 'deployment_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.m2.Deployment;
 /// import com.pulumi.aws.m2.DeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -58,6 +58,19 @@ import 'get_signing_profile_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_signer_getsigningjob" "buildSigningJob" {
+///   job_id = "9ed7e5c3-b8d4-4da0-8459-44e0b068f7ee"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_signing_profile_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.signer.SignerFunctions;
 /// import com.pulumi.aws.signer.inputs.GetSigningJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,6 +176,19 @@ Future<GetSigningJobResult> getSigningJob(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_signer_getsigningprofile" "productionSigningProfile" {
+///   name = "prod_profile_DdW3Mk1foYL88fajut4mTVFGpuwfd4ACO6ANL0D1uIj7lrn8adK"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +197,8 @@ Future<GetSigningJobResult> getSigningJob(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.signer.SignerFunctions;
 /// import com.pulumi.aws.signer.inputs.GetSigningProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

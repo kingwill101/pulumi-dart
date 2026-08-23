@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPosixProfile {
-  /// The POSIX group ID used for all EFS operations by this user.
+  /// POSIX group ID used for all EFS operations by this user.
   final pulumi.Input<int> gid;
-  /// The secondary POSIX group IDs used for all EFS operations by this user.
+  /// Secondary POSIX group IDs used for all EFS operations by this user.
   final pulumi.Input<List<int>>? secondaryGids;
-  /// The POSIX user ID used for all EFS operations by this user.
+  /// POSIX user ID used for all EFS operations by this user.
   final pulumi.Input<int> uid;
 
   /// Creates a new [UserPosixProfile].
-  /// [gid] The POSIX group ID used for all EFS operations by this user.
-  /// [secondaryGids] The secondary POSIX group IDs used for all EFS operations by this user.
-  /// [uid] The POSIX user ID used for all EFS operations by this user.
+  /// [gid] POSIX group ID used for all EFS operations by this user.
+  /// [secondaryGids] Secondary POSIX group IDs used for all EFS operations by this user.
+  /// [uid] POSIX user ID used for all EFS operations by this user.
   const UserPosixProfile({
     required this.gid,
     this.secondaryGids,
@@ -36,4 +36,3 @@ class UserPosixProfile {
     );
   }
 }
-

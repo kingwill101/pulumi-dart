@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_portal_options_sign_in_options.dart';
 
 class ApplicationPortalOptions {
-  /// Sign-in options for the access portal. See `sign_in_options` below.
+  /// Sign-in options for the access portal. See `signInOptions` below.
   final pulumi.Input<ApplicationPortalOptionsSignInOptions>? signInOptions;
   /// Indicates whether this application is visible in the access portal. Valid values are `ENABLED` and `DISABLED`.
   final pulumi.Input<String>? visibility;
 
   /// Creates a new [ApplicationPortalOptions].
-  /// [signInOptions] Sign-in options for the access portal. See `sign_in_options` below.
+  /// [signInOptions] Sign-in options for the access portal. See `signInOptions` below.
   /// [visibility] Indicates whether this application is visible in the access portal. Valid values are `ENABLED` and `DISABLED`.
   const ApplicationPortalOptions({
     this.signInOptions,
@@ -31,4 +31,3 @@ class ApplicationPortalOptions {
     );
   }
 }
-

@@ -119,6 +119,29 @@ import 'table_ttl.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_keyspaces_table" "example" {
+///   keyspace_name = exampleAwsKeyspacesKeyspace.name
+///   table_name    = "my_table"
+///   schema_definition = {
+///     columns = [{
+///       "name" = "Message"
+///       "type" = "ASCII"
+///     }]
+///     partition_keys = [{
+///       "name" = "Message"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +151,10 @@ import 'table_ttl.dart';
 /// import com.pulumi.aws.keyspaces.Table;
 /// import com.pulumi.aws.keyspaces.TableArgs;
 /// import com.pulumi.aws.keyspaces.inputs.TableSchemaDefinitionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.keyspaces.inputs.TableSchemaDefinitionColumnArgs;
+/// import com.pulumi.aws.keyspaces.inputs.TableSchemaDefinitionPartitionKeyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,7 +201,7 @@ import 'table_ttl.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a table using the `keyspace_name` and `table_name` separated by `/`. For example:
+/// Using `pulumi import`, import a table using the `keyspaceName` and `tableName` separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:keyspaces/table:Table example my_keyspace/my_table
@@ -206,9 +231,9 @@ class Table extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> tableName;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html).
   late final pulumi.Output<TableTtl?> ttl;

@@ -9,7 +9,7 @@ class ConfigurationAggregatorAccountAggregationSource {
   final pulumi.Input<bool>? allRegions;
   /// List of source regions being aggregated.
   ///
-  /// Either `regions` or `all_regions` (as true) must be specified.
+  /// Either `regions` or `allRegions` (as true) must be specified.
   final pulumi.Input<List<String>>? regions;
 
   /// Creates a new [ConfigurationAggregatorAccountAggregationSource].
@@ -38,4 +38,3 @@ class ConfigurationAggregatorAccountAggregationSource {
     );
   }
 }
-

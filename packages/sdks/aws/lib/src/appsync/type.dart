@@ -92,7 +92,7 @@ import 'type_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewType(ctx, "example", &appsync.TypeArgs{
-/// 			ApiId:  example.ID(),
+/// 			ApiId:  example.ID().ToIDOutput().ToStringOutput(),
 /// 			Format: pulumi.String("SDL"),
 /// 			Definition: pulumi.String(`type Mutation
 ///
@@ -109,6 +109,25 @@ import 'type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appsync_graphqlapi" "example" {
+///   authentication_type = "API_KEY"
+///   name                = "example"
+/// }
+/// resource "aws_appsync_type" "example" {
+///   api_id     = aws_appsync_graphqlapi.example.id
+///   format     = "SDL"
+///   definition = "type Mutation\n\n{\nputPost(id: ID!,title: String! ): Post\n\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +138,8 @@ import 'type_state.dart';
 /// import com.pulumi.aws.appsync.GraphQLApiArgs;
 /// import com.pulumi.aws.appsync.Type;
 /// import com.pulumi.aws.appsync.TypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,15 +205,15 @@ import 'type_state.dart';
 class Type extends pulumi.CustomResource {
   /// GraphQL API ID.
   late final pulumi.Output<String> apiId;
-  /// The ARN of the type.
+  /// ARN of the type.
   late final pulumi.Output<String> arn;
-  /// The type definition.
+  /// Type definition.
   late final pulumi.Output<String> definition;
-  /// The type description.
+  /// Type description.
   late final pulumi.Output<String> description;
-  /// The type format: `SDL` or `JSON`.
+  /// Type format: `SDL` or `JSON`.
   late final pulumi.Output<String> format;
-  /// The type name.
+  /// Type name.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

@@ -27,7 +27,7 @@ class GetEngineVersionResult {
   final List<String> supportedTimezones;
   /// Whether the engine version supports global databases.
   final bool supportsGlobalDatabases;
-  /// Whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
+  /// Whether the engine version supports exporting the log types specified by `exportableLogTypes` to CloudWatch Logs.
   final bool supportsLogExportsToCloudwatch;
   /// Whether the database engine version supports read replicas.
   final bool supportsReadReplica;
@@ -61,7 +61,7 @@ class GetEngineVersionResult {
   /// [supportedCharacterSets] Set of character sets supported by this engine version.
   /// [supportedTimezones] Set of time zones supported by this engine.
   /// [supportsGlobalDatabases] Whether the engine version supports global databases.
-  /// [supportsLogExportsToCloudwatch] Whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
+  /// [supportsLogExportsToCloudwatch] Whether the engine version supports exporting the log types specified by `exportableLogTypes` to CloudWatch Logs.
   /// [supportsReadReplica] Whether the database engine version supports read replicas.
   /// [validMajorTargets] Set of valid major engine versions that this version can be upgraded to.
   /// [validMinorTargets] Set of valid minor engine versions that this version can be upgraded to.
@@ -157,4 +157,3 @@ class GetEngineVersionResult {
     );
   }
 }
-

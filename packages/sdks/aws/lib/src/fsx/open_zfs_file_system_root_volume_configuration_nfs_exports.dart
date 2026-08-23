@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'open_zfs_file_system_root_volume_configuration_nfs_exports_client_configuration.dart';
 
 class OpenZfsFileSystemRootVolumeConfigurationNfsExports {
-  /// A list of configuration objects that contain the client and options for mounting the OpenZFS file system. Maximum of 25 items. See `client_configurations` Block for details.
+  /// List of configuration objects that contain the client and options for mounting the OpenZFS file system. Maximum of 25 items. See `clientConfigurations` Block for details.
   final pulumi.Input<List<OpenZfsFileSystemRootVolumeConfigurationNfsExportsClientConfiguration>> clientConfigurations;
 
   /// Creates a new [OpenZfsFileSystemRootVolumeConfigurationNfsExports].
-  /// [clientConfigurations] A list of configuration objects that contain the client and options for mounting the OpenZFS file system. Maximum of 25 items. See `client_configurations` Block for details.
+  /// [clientConfigurations] List of configuration objects that contain the client and options for mounting the OpenZFS file system. Maximum of 25 items. See `clientConfigurations` Block for details.
   const OpenZfsFileSystemRootVolumeConfigurationNfsExports({
     required this.clientConfigurations,
   });
@@ -25,4 +25,3 @@ class OpenZfsFileSystemRootVolumeConfigurationNfsExports {
     );
   }
 }
-

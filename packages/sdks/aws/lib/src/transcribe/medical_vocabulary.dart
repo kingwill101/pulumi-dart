@@ -126,7 +126,7 @@ import 'medical_vocabulary_state.dart';
 /// 			return err
 /// 		}
 /// 		object, err := s3.NewBucketObjectv2(ctx, "object", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("transcribe/test1.txt"),
 /// 			Source: pulumi.NewFileAsset("test.txt"),
 /// 		})
@@ -137,7 +137,7 @@ import 'medical_vocabulary_state.dart';
 /// 			VocabularyName: pulumi.String("example"),
 /// 			LanguageCode:   pulumi.String("en-US"),
 /// 			VocabularyFileUri: pulumi.All(example.ID(), object.Key).ApplyT(func(_args []interface{}) (string, error) {
-/// 				id := _args[0].(string)
+/// 				id := _args[0].(pulumi.ID)
 /// 				key := _args[1].(string)
 /// 				return fmt.Sprintf("s3://%v/%v", id, key), nil
 /// 			}).(pulumi.StringOutput),
@@ -155,6 +155,35 @@ import 'medical_vocabulary_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example-medical-vocab-123"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketobjectv2" "object" {
+///   bucket = aws_s3_bucket.example.id
+///   key    = "transcribe/test1.txt"
+///   source = fileAsset("test.txt")
+/// }
+/// resource "aws_transcribe_medicalvocabulary" "example" {
+///   depends_on          = [aws_s3_bucketobjectv2.object]
+///   vocabulary_name     = "example"
+///   language_code       = "en-US"
+///   vocabulary_file_uri ="s3://${aws_s3_bucket.example.id}/${aws_s3_bucketobjectv2.object.key}"
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value3"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +198,8 @@ import 'medical_vocabulary_state.dart';
 /// import com.pulumi.aws.transcribe.MedicalVocabularyArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,7 +254,7 @@ import 'medical_vocabulary_state.dart';
 ///       bucket: ${example.id}
 ///       key: transcribe/test1.txt
 ///       source:
-///         fn::FileAsset: test.txt
+///         fn::fileAsset: test.txt
 ///   exampleMedicalVocabulary:
 ///     type: aws:transcribe:MedicalVocabulary
 ///     name: example
@@ -244,7 +273,7 @@ import 'medical_vocabulary_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transcribe MedicalVocabulary using the `vocabulary_name`. For example:
+/// Using `pulumi import`, import Transcribe MedicalVocabulary using the `vocabularyName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transcribe/medicalVocabulary:MedicalVocabulary example example-name
@@ -254,16 +283,16 @@ class MedicalVocabulary extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Generated download URI.
   late final pulumi.Output<String> downloadUri;
-  /// The language code you selected for your medical vocabulary. US English (en-US) is the only language supported with Amazon Transcribe Medical.
+  /// Language code you selected for your medical vocabulary. US English (en-US) is the only language supported with Amazon Transcribe Medical.
   late final pulumi.Output<String> languageCode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the MedicalVocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the MedicalVocabulary. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon S3 location (URI) of the text file that contains your custom medical vocabulary.
+  /// Amazon S3 location (URI) of the text file that contains your custom medical vocabulary.
   late final pulumi.Output<String> vocabularyFileUri;
-  /// The name of the Medical Vocabulary.
+  /// Name of the Medical Vocabulary.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> vocabularyName;

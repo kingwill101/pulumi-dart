@@ -8,7 +8,7 @@ class GetFirewallPolicyResult {
   final String? arn;
   /// Description of the firewall policy.
   final String description;
-  /// The [policy][2] for the specified firewall policy.
+  /// The policy for the specified firewall policy.
   final List<GetFirewallPolicyFirewallPolicy> firewallPolicies;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -22,7 +22,7 @@ class GetFirewallPolicyResult {
   /// Creates a new [GetFirewallPolicyResult].
   /// [arn] Optional.
   /// [description] Description of the firewall policy.
-  /// [firewallPolicies] The [policy][2] for the specified firewall policy.
+  /// [firewallPolicies] The policy for the specified firewall policy.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Optional.
   /// [region] Required.
@@ -65,4 +65,3 @@ class GetFirewallPolicyResult {
     );
   }
 }
-

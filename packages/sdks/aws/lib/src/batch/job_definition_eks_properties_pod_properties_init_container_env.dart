@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
-  /// Name of the job definition.
+  /// Name of the environment variable.
   final pulumi.Input<String> name;
   /// Value of the environment variable.
   final pulumi.Input<String> value;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesInitContainerEnv].
-  /// [name] Name of the job definition.
+  /// [name] Name of the environment variable.
   /// [value] Value of the environment variable.
   const JobDefinitionEksPropertiesPodPropertiesInitContainerEnv({
     required this.name,
@@ -30,4 +30,3 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
     );
   }
 }
-

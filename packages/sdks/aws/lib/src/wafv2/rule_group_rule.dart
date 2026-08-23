@@ -18,7 +18,7 @@ class RuleGroupRule {
   final pulumi.Input<int> priority;
   /// Labels to apply to web requests that match the rule match statement. See Rule Label below for details.
   final pulumi.Input<List<RuleGroupRuleRuleLabel>>? ruleLabels;
-  /// The AWS WAF processing statement for the rule, for example `byte_match_statement` or `geo_match_statement`. See Statement below for details.
+  /// The AWS WAF processing statement for the rule, for example `byteMatchStatement` or `geoMatchStatement`. See Statement below for details.
   final pulumi.Input<RuleGroupRuleStatement> statement;
   /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
   final pulumi.Input<RuleGroupRuleVisibilityConfig> visibilityConfig;
@@ -29,7 +29,7 @@ class RuleGroupRule {
   /// [name] A friendly name of the rule.
   /// [priority] If you define more than one Rule in a WebACL, AWS WAF evaluates each request against the `rules` in order based on the value of `priority`. AWS WAF processes rules with lower priority first.
   /// [ruleLabels] Labels to apply to web requests that match the rule match statement. See Rule Label below for details.
-  /// [statement] The AWS WAF processing statement for the rule, for example `byte_match_statement` or `geo_match_statement`. See Statement below for details.
+  /// [statement] The AWS WAF processing statement for the rule, for example `byteMatchStatement` or `geoMatchStatement`. See Statement below for details.
   /// [visibilityConfig] Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
   const RuleGroupRule({
     required this.action,
@@ -65,4 +65,3 @@ class RuleGroupRule {
     );
   }
 }
-

@@ -90,6 +90,26 @@ import 'radius_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_radiussettings" "example" {
+///   directory_id            = exampleAwsDirectoryServiceDirectory.id
+///   authentication_protocol = "PAP"
+///   display_label           = "example"
+///   radius_port             = 1812
+///   radius_retries          = 4
+///   radius_servers          = ["10.0.1.5"]
+///   radius_timeout          = 1
+///   shared_secret           = "12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +118,8 @@ import 'radius_settings_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directoryservice.RadiusSettings;
 /// import com.pulumi.aws.directoryservice.RadiusSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

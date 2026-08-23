@@ -195,10 +195,10 @@ import 'log_data_protection_policy_state.dart';
 /// 							"DataIdentifier": []string{
 /// 								"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 /// 							},
-/// 							"Operation": map[string]interface{}{
-/// 								"Audit": map[string]interface{}{
-/// 									"FindingsDestination": map[string]interface{}{
-/// 										"S3": map[string]interface{}{
+/// 							"Operation": map[string]map[string]map[string]map[string]string{
+/// 								"Audit": map[string]map[string]map[string]string{
+/// 									"FindingsDestination": map[string]map[string]string{
+/// 										"S3": map[string]string{
 /// 											"Bucket": bucket,
 /// 										},
 /// 									},
@@ -210,8 +210,8 @@ import 'log_data_protection_policy_state.dart';
 /// 							"DataIdentifier": []string{
 /// 								"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 /// 							},
-/// 							"Operation": map[string]interface{}{
-/// 								"Deidentify": map[string]interface{}{
+/// 							"Operation": map[string]map[string]map[string]interface{}{
+/// 								"Deidentify": map[string]map[string]interface{}{
 /// 									"MaskConfig": map[string]interface{}{},
 /// 								},
 /// 							},
@@ -232,6 +232,50 @@ import 'log_data_protection_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_cloudwatch_logdataprotectionpolicy" "example" {
+///   log_group_name = aws_cloudwatch_loggroup.example.name
+///   policy_document = jsonencode({
+///     "Name"    = "Example"
+///     "Version" = "2021-06-01"
+///     "Statement" = [{
+///       "Sid"            = "Audit"
+///       "DataIdentifier" = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress"]
+///       "Operation" = {
+///         "Audit" = {
+///           "FindingsDestination" = {
+///             "S3" = {
+///               "Bucket" = aws_s3_bucket.example.bucket
+///             }
+///           }
+///         }
+///       }
+///       }, {
+///       "Sid"            = "Redact"
+///       "DataIdentifier" = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress"]
+///       "Operation" = {
+///         "Deidentify" = {
+///           "MaskConfig" = {}
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +289,8 @@ import 'log_data_protection_policy_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogDataProtectionPolicy;
 /// import com.pulumi.aws.cloudwatch.LogDataProtectionPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,7 +388,19 @@ import 'log_data_protection_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import this resource using the `log_group_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `logGroupName` (String) Name of the log group.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Data Protection Policies using `logGroupName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDataProtectionPolicy:LogDataProtectionPolicy example my-log-group

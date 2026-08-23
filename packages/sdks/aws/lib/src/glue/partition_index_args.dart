@@ -12,7 +12,7 @@ class PartitionIndexArgs {
   final pulumi.Input<String>? catalogId;
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   final pulumi.Input<String> databaseName;
-  /// Configuration block for a partition index. See `partition_index` below.
+  /// Configuration block for a partition index. See `partitionIndex` below.
   final pulumi.Input<PartitionIndexPartitionIndex> partitionIndex;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -22,7 +22,7 @@ class PartitionIndexArgs {
   /// Creates a new [PartitionIndexArgs].
   /// [catalogId] The catalog ID where the table resides.
   /// [databaseName] Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
-  /// [partitionIndex] Configuration block for a partition index. See `partition_index` below.
+  /// [partitionIndex] Configuration block for a partition index. See `partitionIndex` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] Name of the table. For Hive compatibility, this must be entirely lowercase.
   const PartitionIndexArgs({
@@ -53,4 +53,3 @@ class PartitionIndexArgs {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'gateway_association_state.dart';
 ///
 /// To create a cross-account association, create an `aws.directconnect.GatewayAssociationProposal` resource
 /// in the AWS account that owns the VGW or transit gateway and then accept the proposal in the AWS account that owns the Direct Connect Gateway
-/// by creating an `aws.directconnect.GatewayAssociation` resource with the `proposal_id` and `associated_gateway_owner_account_id` attributes set.
+/// by creating an `aws.directconnect.GatewayAssociation` resource with the `proposalId` and `associatedGatewayOwnerAccountId` attributes set.
 ///
 /// ## Example Usage
 ///
@@ -98,20 +98,44 @@ import 'gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpnGateway, err := ec2.NewVpnGateway(ctx, "example", &ec2.VpnGatewayArgs{
-/// 			VpcId: exampleVpc.ID(),
+/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID(),
-/// 			AssociatedGatewayId: exampleVpnGateway.ID(),
+/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
+/// 			AssociatedGatewayId: exampleVpnGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_gateway" "example" {
+///   name            = "example"
+///   amazon_side_asn = "64512"
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.255.255.0/28"
+/// }
+/// resource "aws_ec2_vpngateway" "example" {
+///   vpc_id = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_directconnect_gatewayassociation" "example" {
+///   dx_gateway_id         = aws_directconnect_gateway.example.id
+///   associated_gateway_id = aws_ec2_vpngateway.example.id
 /// }
 /// ```
 /// ```java
@@ -128,8 +152,8 @@ import 'gateway_association_state.dart';
 /// import com.pulumi.aws.ec2.VpnGatewayArgs;
 /// import com.pulumi.aws.directconnect.GatewayAssociation;
 /// import com.pulumi.aws.directconnect.GatewayAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,8 +301,8 @@ import 'gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID(),
-/// 			AssociatedGatewayId: exampleTransitGateway.ID(),
+/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
+/// 			AssociatedGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowedPrefixes: pulumi.StringArray{
 /// 				pulumi.String("10.255.255.0/30"),
 /// 				pulumi.String("10.255.255.8/30"),
@@ -289,6 +313,27 @@ import 'gateway_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_gateway" "example" {
+///   name            = "example"
+///   amazon_side_asn = "64512"
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// }
+/// resource "aws_directconnect_gatewayassociation" "example" {
+///   dx_gateway_id         = aws_directconnect_gateway.example.id
+///   associated_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   allowed_prefixes      = ["10.255.255.0/30", "10.255.255.8/30"]
 /// }
 /// ```
 /// ```java
@@ -302,8 +347,8 @@ import 'gateway_association_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.TransitGateway;
 /// import com.pulumi.aws.directconnect.GatewayAssociation;
 /// import com.pulumi.aws.directconnect.GatewayAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -456,14 +501,14 @@ import 'gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpnGateway, err := ec2.NewVpnGateway(ctx, "example", &ec2.VpnGatewayArgs{
-/// 			VpcId: exampleVpc.ID(),
+/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         example.ID(),
-/// 			AssociatedGatewayId: exampleVpnGateway.ID(),
+/// 			DxGatewayId:         example.ID().ToIDOutput().ToStringOutput(),
+/// 			AssociatedGatewayId: exampleVpnGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowedPrefixes: pulumi.StringArray{
 /// 				pulumi.String("210.52.109.0/24"),
 /// 				pulumi.String("175.45.176.0/22"),
@@ -474,6 +519,31 @@ import 'gateway_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_gateway" "example" {
+///   name            = "example"
+///   amazon_side_asn = "64512"
+/// }
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.255.255.0/28"
+/// }
+/// resource "aws_ec2_vpngateway" "example" {
+///   vpc_id = aws_ec2_vpc.example.id
+/// }
+/// resource "aws_directconnect_gatewayassociation" "example" {
+///   dx_gateway_id         = aws_directconnect_gateway.example.id
+///   associated_gateway_id = aws_ec2_vpngateway.example.id
+///   allowed_prefixes      = ["210.52.109.0/24", "175.45.176.0/22"]
 /// }
 /// ```
 /// ```java
@@ -490,8 +560,8 @@ import 'gateway_association_state.dart';
 /// import com.pulumi.aws.ec2.VpnGatewayArgs;
 /// import com.pulumi.aws.directconnect.GatewayAssociation;
 /// import com.pulumi.aws.directconnect.GatewayAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -558,7 +628,7 @@ import 'gateway_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Direct Connect gateway associations using `dx_gateway_id` together with `associated_gateway_id`. For example:
+/// Using `pulumi import`, import Direct Connect gateway associations using `dxGatewayId` together with `associatedGatewayId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:directconnect/gatewayAssociation:GatewayAssociation example 345508c3-7215-4aef-9832-07c125d5bd0f/vgw-98765432
@@ -566,9 +636,9 @@ import 'gateway_association_state.dart';
 class GatewayAssociation extends pulumi.CustomResource {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
   ///
-  /// &gt; **NOTE:** `dx_gateway_id` and `associated_gateway_id` must be specified for single account Direct Connect gateway associations.
+  /// &gt; **NOTE:** `dxGatewayId` and `associatedGatewayId` must be specified for single account Direct Connect gateway associations.
   ///
-  /// &gt; **NOTE:** If the `associated_gateway_id` is in another region, an alias in a new provider block for that region should be specified.
+  /// &gt; **NOTE:** If the `associatedGatewayId` is in another region, an alias in a new provider block for that region should be specified.
   late final pulumi.Output<List<String>> allowedPrefixes;
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for single account Direct Connect gateway associations.

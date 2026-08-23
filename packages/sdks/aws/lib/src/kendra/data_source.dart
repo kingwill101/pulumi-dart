@@ -90,6 +90,26 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id      = exampleAwsKendraIndex.id
+///   name          = "example"
+///   description   = "example"
+///   language_code = "en"
+///   type          = "CUSTOM"
+///   tags = {
+///     "hello" = "world"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +118,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kendra.DataSource;
 /// import com.pulumi.aws.kendra.DataSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,6 +251,28 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "S3"
+///   role_arn = exampleAwsIamRole.arn
+///   schedule = "cron(9 10 1 * ? *)"
+///   configuration = {
+///     s3_configuration = {
+///       bucket_name = exampleAwsS3Bucket.id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -241,8 +283,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.DataSourceArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationS3ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,6 +428,30 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "S3"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     s3_configuration = {
+///       bucket_name = exampleAwsS3Bucket.id
+///       access_control_list_configuration = {
+///         key_path ="s3://${exampleAwsS3Bucket.id}/path-1"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -397,8 +463,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationS3ConfigurationAccessControlListConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -572,6 +638,33 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "S3"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     s3_configuration = {
+///       bucket_name        = exampleAwsS3Bucket.id
+///       exclusion_patterns = ["example"]
+///       inclusion_patterns = ["hello"]
+///       inclusion_prefixes = ["world"]
+///       documents_metadata_configuration = {
+///         s3_prefix = "example"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -583,8 +676,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationS3ConfigurationDocumentsMetadataConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -752,6 +845,31 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "WEBCRAWLER"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       urls = {
+///         seed_url_configuration = {
+///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -764,8 +882,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -924,6 +1042,31 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "WEBCRAWLER"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       urls = {
+///         site_maps_configuration = {
+///           site_maps = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -936,8 +1079,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1100,6 +1243,32 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "WEBCRAWLER"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       urls = {
+///         seed_url_configuration = {
+///           web_crawler_mode = "SUBDOMAINS"
+///           seed_urls        = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1112,8 +1281,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1320,6 +1489,39 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   depends_on = [exampleAwsSecretsmanagerSecretVersion]
+///   index_id   = exampleAwsKendraIndex.id
+///   name       = "example"
+///   type       = "WEBCRAWLER"
+///   role_arn   = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       authentication_configuration = {
+///         basic_authentications = [{
+///           "credentials" = exampleAwsSecretsmanagerSecret.arn
+///           "host"        = "a.example.com"
+///           "port"        = "443"
+///         }]
+///       }
+///       urls = {
+///         seed_url_configuration = {
+///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1331,11 +1533,12 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationArgs;
+/// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthenticationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1515,6 +1718,32 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "WEBCRAWLER"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       crawl_depth = 3
+///       urls = {
+///         seed_url_configuration = {
+///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1527,8 +1756,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1693,6 +1922,32 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "WEBCRAWLER"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       max_links_per_page = 100
+///       urls = {
+///         seed_url_configuration = {
+///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1705,8 +1960,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1871,6 +2126,32 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "WEBCRAWLER"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       max_urls_per_minute_crawl_rate = 300
+///       urls = {
+///         seed_url_configuration = {
+///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1883,8 +2164,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2077,6 +2358,37 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   depends_on = [exampleAwsSecretsmanagerSecretVersion]
+///   index_id   = exampleAwsKendraIndex.id
+///   name       = "example"
+///   type       = "WEBCRAWLER"
+///   role_arn   = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       proxy_configuration = {
+///         credentials = exampleAwsSecretsmanagerSecret.arn
+///         host        = "a.example.com"
+///         port        = "443"
+///       }
+///       urls = {
+///         seed_url_configuration = {
+///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2091,8 +2403,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2283,6 +2595,33 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "WEBCRAWLER"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     web_crawler_configuration = {
+///       url_exclusion_patterns = ["example"]
+///       url_inclusion_patterns = ["hello"]
+///       urls = {
+///         seed_url_configuration = {
+///           seed_urls = ["REPLACE_WITH_YOUR_URL"]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2295,8 +2634,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2478,16 +2817,16 @@ import 'data_source_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"connectionConfiguration": map[string]interface{}{
-/// 				"repositoryEndpointMetadata": map[string]interface{}{
-/// 					"seedUrlConnections": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 			"connectionConfiguration": map[string]map[string][]map[string]string{
+/// 				"repositoryEndpointMetadata": map[string][]map[string]string{
+/// 					"seedUrlConnections": []map[string]string{
+/// 						{
 /// 							"seedUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kendra_index",
 /// 						},
 /// 					},
 /// 				},
 /// 			},
-/// 			"additionalProperties": map[string]interface{}{
+/// 			"additionalProperties": map[string][]string{
 /// 				"inclusionURLIndexPatterns": []string{
 /// 					"https:\\/\\/registry[.]terraform[.]io\\/providers\\/hashicorp\\/aws\\/latest\\/docs\\/resources\\/kendra_index",
 /// 				},
@@ -2518,6 +2857,41 @@ import 'data_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_datasource" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "example"
+///   type     = "TEMPLATE"
+///   role_arn = exampleAwsIamRole.arn
+///   configuration = {
+///     template_configuration = {
+///       template = jsonencode({
+///         "connectionConfiguration" = {
+///           "repositoryEndpointMetadata" = {
+///             "seedUrlConnections" = [{
+///               "seedUrl" = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kendra_index"
+///             }]
+///           }
+///         }
+///         "additionalProperties" = {
+///           "inclusionURLIndexPatterns" = ["https:\\/\\/registry[.]terraform[.]io\\/providers\\/hashicorp\\/aws\\/latest\\/docs\\/resources\\/kendra_index"]
+///         }
+///         "version"  = "1.0.0"
+///         "syncMode" = "FULL_CRAWL"
+///         "type"     = "WEBCRAWLERV2"
+///       })
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2529,8 +2903,8 @@ import 'data_source_state.dart';
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.DataSourceConfigurationTemplateConfigurationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2600,7 +2974,7 @@ import 'data_source_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Kendra Data Source using the unique identifiers of the data_source and index separated by a slash (`/`). For example:
+/// Using `pulumi import`, import Kendra Data Source using the unique identifiers of the dataSource and index separated by a slash (`/`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:kendra/dataSource:DataSource example 1045d08d-66ef-4882-b3ed-dfb7df183e90/b34dfdf7-1f2b-4704-9581-79e00296845f
@@ -2628,15 +3002,15 @@ class DataSource extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of a role with permission to access the data source connector. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html). You can't specify the `role_arn` parameter when the `type` parameter is set to `CUSTOM`. The `role_arn` parameter is required for all other data sources.
+  /// The Amazon Resource Name (ARN) of a role with permission to access the data source connector. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html). You can't specify the `roleArn` parameter when the `type` parameter is set to `CUSTOM`. The `roleArn` parameter is required for all other data sources.
   late final pulumi.Output<String?> roleArn;
   /// Sets the frequency for Amazon Kendra to check the documents in your Data Source repository and update the index. If you don't set a schedule Amazon Kendra will not periodically update the index. You can call the `StartDataSourceSyncJob` API to update the index.
   late final pulumi.Output<String?> schedule;
-  /// The current status of the Data Source. When the status is `ACTIVE` the Data Source is ready to use. When the status is `FAILED`, the `error_message` field contains the reason that the Data Source failed.
+  /// The current status of the Data Source. When the status is `ACTIVE` the Data Source is ready to use. When the status is `FAILED`, the `errorMessage` field contains the reason that the Data Source failed.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of data source repository. For an updated list of values, refer to [Valid Values for Type](https://docs.aws.amazon.com/kendra/latest/dg/API_CreateDataSource.html#Kendra-CreateDataSource-request-Type).
   ///

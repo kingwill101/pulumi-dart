@@ -308,7 +308,7 @@ import 'delegation_signer_record_timeouts.dart';
 /// 						"kms:Sign",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "dnssec-route53.amazonaws.com",
 /// 					},
 /// 					"Sid":      "Allow Route 53 DNSSEC Service",
@@ -317,7 +317,7 @@ import 'delegation_signer_record_timeouts.dart';
 /// 						"StringEquals": map[string]interface{}{
 /// 							"aws:SourceAccount": current.AccountId,
 /// 						},
-/// 						"ArnLike": map[string]interface{}{
+/// 						"ArnLike": map[string]string{
 /// 							"aws:SourceArn": "arn:aws:route53:::hostedzone/*",
 /// 						},
 /// 					},
@@ -325,13 +325,13 @@ import 'delegation_signer_record_timeouts.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "kms:CreateGrant",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "dnssec-route53.amazonaws.com",
 /// 					},
 /// 					"Sid":      "Allow Route 53 DNSSEC Service to CreateGrant",
 /// 					"Resource": "*",
-/// 					"Condition": map[string]interface{}{
-/// 						"Bool": map[string]interface{}{
+/// 					"Condition": map[string]map[string]string{
+/// 						"Bool": map[string]string{
 /// 							"kms:GrantIsForAWSResource": "true",
 /// 						},
 /// 					},
@@ -339,7 +339,7 @@ import 'delegation_signer_record_timeouts.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "kms:*",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 					},
 /// 					"Resource": "*",
@@ -356,7 +356,7 @@ import 'delegation_signer_record_timeouts.dart';
 /// 			CustomerMasterKeySpec: pulumi.String("ECC_NIST_P256"),
 /// 			DeletionWindowInDays:  pulumi.Int(7),
 /// 			KeyUsage:              pulumi.String("SIGN_VERIFY"),
-/// 			Policy:                pulumi.String(json0),
+/// 			Policy:                json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -398,6 +398,85 @@ import 'delegation_signer_record_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   customer_master_key_spec = "ECC_NIST_P256"
+///   deletion_window_in_days  = 7
+///   key_usage                = "SIGN_VERIFY"
+///   policy = jsonencode({
+///     "Statement" = [{
+///       "Action" = ["kms:DescribeKey", "kms:GetPublicKey", "kms:Sign"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "dnssec-route53.amazonaws.com"
+///       }
+///       "Sid"      = "Allow Route 53 DNSSEC Service"
+///       "Resource" = "*"
+///       "Condition" = {
+///         "StringEquals" = {
+///           "aws:SourceAccount" = data.aws_getcalleridentity.current.account_id
+///         }
+///         "ArnLike" = {
+///           "aws:SourceArn" = "arn:aws:route53:::hostedzone/*"
+///         }
+///       }
+///       }, {
+///       "Action" = "kms:CreateGrant"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "dnssec-route53.amazonaws.com"
+///       }
+///       "Sid"      = "Allow Route 53 DNSSEC Service to CreateGrant"
+///       "Resource" = "*"
+///       "Condition" = {
+///         "Bool" = {
+///           "kms:GrantIsForAWSResource" = "true"
+///         }
+///       }
+///       }, {
+///       "Action" = "kms:*"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Resource" = "*"
+///       "Sid"      = "Enable IAM User Permissions"
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// resource "aws_route53_zone" "example" {
+///   name = "example.com"
+/// }
+/// resource "aws_route53_keysigningkey" "example" {
+///   hosted_zone_id             = test.id
+///   key_management_service_arn = testAwsKmsKey.arn
+///   name                       = "example"
+/// }
+/// resource "aws_route53_hostedzonednssec" "example" {
+///   depends_on     = [aws_route53_keysigningkey.example]
+///   hosted_zone_id = aws_route53_keysigningkey.example.hosted_zone_id
+/// }
+/// resource "aws_route53domains_delegationsignerrecord" "example" {
+///   domain_name = "example.com"
+///   signing_attributes = {
+///     algorithm  = aws_route53_keysigningkey.example.signing_algorithm_type
+///     flags      = aws_route53_keysigningkey.example.flag
+///     public_key = aws_route53_keysigningkey.example.public_key
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -419,8 +498,8 @@ import 'delegation_signer_record_timeouts.dart';
 /// import com.pulumi.aws.route53domains.inputs.DelegationSignerRecordSigningAttributesArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

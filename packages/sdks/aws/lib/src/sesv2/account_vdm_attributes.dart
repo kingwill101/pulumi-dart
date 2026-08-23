@@ -87,6 +87,25 @@ import 'account_vdm_attributes_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_accountvdmattributes" "example" {
+///   vdm_enabled = "ENABLED"
+///   dashboard_attributes = {
+///     engagement_metrics = "ENABLED"
+///   }
+///   guardian_attributes = {
+///     optimized_shared_delivery = "ENABLED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'account_vdm_attributes_state.dart';
 /// import com.pulumi.aws.sesv2.AccountVdmAttributesArgs;
 /// import com.pulumi.aws.sesv2.inputs.AccountVdmAttributesDashboardAttributesArgs;
 /// import com.pulumi.aws.sesv2.inputs.AccountVdmAttributesGuardianAttributesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

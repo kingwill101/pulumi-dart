@@ -132,7 +132,7 @@ import 'bucket_cors_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketCorsConfiguration(ctx, "example", &s3.BucketCorsConfigurationArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			CorsRules: s3.BucketCorsConfigurationCorsRuleArray{
 /// 				&s3.BucketCorsConfigurationCorsRuleArgs{
 /// 					AllowedHeaders: pulumi.StringArray{
@@ -167,6 +167,33 @@ import 'bucket_cors_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "mybucket"
+/// }
+/// resource "aws_s3_bucketcorsconfiguration" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   cors_rules {
+///     allowed_headers = ["*"]
+///     allowed_methods = ["PUT", "POST"]
+///     allowed_origins = ["https://s3-website-test.domain.example"]
+///     expose_headers  = ["ETag"]
+///     max_age_seconds = 3000
+///   }
+///   cors_rules {
+///     allowed_methods = ["GET"]
+///     allowed_origins = ["*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +205,8 @@ import 'bucket_cors_configuration_state.dart';
 /// import com.pulumi.aws.s3.BucketCorsConfiguration;
 /// import com.pulumi.aws.s3.BucketCorsConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketCorsConfigurationCorsRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,14 +282,14 @@ import 'bucket_cors_configuration_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
-/// **Using `pulumi import` to import** S3 bucket CORS configuration using the `bucket` or using the `bucket` and `expected_bucket_owner` separated by a comma (`,`). For example:
+/// **Using `pulumi import` to import** S3 bucket CORS configuration using the `bucket` or using the `bucket` and `expectedBucketOwner` separated by a comma (`,`). For example:
 ///
 /// If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`:
 ///
@@ -270,7 +297,7 @@ import 'bucket_cors_configuration_state.dart';
 /// $ pulumi import aws:s3/bucketCorsConfiguration:BucketCorsConfiguration example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketCorsConfiguration:BucketCorsConfiguration example bucket-name,123456789012

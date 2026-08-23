@@ -83,6 +83,24 @@ import 'contact_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmcontacts_contactchannel" "example" {
+///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
+///   delivery_address = {
+///     simple_address = "email@example.com"
+///   }
+///   name = "Example contact channel"
+///   type = "EMAIL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +110,8 @@ import 'contact_channel_state.dart';
 /// import com.pulumi.aws.ssmcontacts.ContactChannel;
 /// import com.pulumi.aws.ssmcontacts.ContactChannelArgs;
 /// import com.pulumi.aws.ssmcontacts.inputs.ContactChannelDeliveryAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +242,28 @@ import 'contact_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmcontacts_contact" "example_contact" {
+///   alias = "example_contact"
+///   type  = "PERSONAL"
+/// }
+/// resource "aws_ssmcontacts_contactchannel" "example" {
+///   contact_id = aws_ssmcontacts_contact.example_contact.arn
+///   delivery_address = {
+///     simple_address = "email@example.com"
+///   }
+///   name = "Example contact channel"
+///   type = "EMAIL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +275,8 @@ import 'contact_channel_state.dart';
 /// import com.pulumi.aws.ssmcontacts.ContactChannel;
 /// import com.pulumi.aws.ssmcontacts.ContactChannelArgs;
 /// import com.pulumi.aws.ssmcontacts.inputs.ContactChannelDeliveryAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

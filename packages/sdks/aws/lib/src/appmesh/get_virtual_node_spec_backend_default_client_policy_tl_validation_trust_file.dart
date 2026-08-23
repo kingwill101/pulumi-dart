@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile {
+  /// Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on.
   final pulumi.Input<String> certificateChain;
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile].
-  /// [certificateChain] Required.
+  /// [certificateChain] Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on.
   const GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile({
     required this.certificateChain,
   });
@@ -23,4 +24,3 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile {
     );
   }
 }
-

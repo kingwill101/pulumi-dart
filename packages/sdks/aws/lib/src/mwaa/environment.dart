@@ -85,7 +85,7 @@ import 'environment_state.dart';
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,24-37)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,24-37)),
 /// },
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// })
@@ -94,6 +94,26 @@ import 'environment_state.dart';
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mwaa_environment" "example" {
+///   dag_s3_path        = "dags/"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = "example"
+///   network_configuration = {
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///     subnet_ids         = private[*].id
+///   }
+///   source_bucket_arn = exampleAwsS3Bucket.arn
 /// }
 /// ```
 /// ```java
@@ -105,8 +125,8 @@ import 'environment_state.dart';
 /// import com.pulumi.aws.mwaa.Environment;
 /// import com.pulumi.aws.mwaa.EnvironmentArgs;
 /// import com.pulumi.aws.mwaa.inputs.EnvironmentNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -226,7 +246,7 @@ import 'environment_state.dart';
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:10,24-37)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:10,24-37)),
 /// },
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// })
@@ -235,6 +255,30 @@ import 'environment_state.dart';
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mwaa_environment" "example" {
+///   airflow_configuration_options = {
+///     "core.default_task_retries" = 16
+///     "core.parallelism"          = 1
+///   }
+///   dag_s3_path        = "dags/"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = "example"
+///   network_configuration = {
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///     subnet_ids         = private[*].id
+///   }
+///   source_bucket_arn = exampleAwsS3Bucket.arn
 /// }
 /// ```
 /// ```java
@@ -246,8 +290,8 @@ import 'environment_state.dart';
 /// import com.pulumi.aws.mwaa.Environment;
 /// import com.pulumi.aws.mwaa.EnvironmentArgs;
 /// import com.pulumi.aws.mwaa.inputs.EnvironmentNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -450,7 +494,7 @@ import 'environment_state.dart';
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:28,24-37)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:28,24-37)),
 /// },
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// })
@@ -459,6 +503,48 @@ import 'environment_state.dart';
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mwaa_environment" "example" {
+///   dag_s3_path        = "dags/"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   logging_configuration = {
+///     dag_processing_logs = {
+///       enabled   = true
+///       log_level = "DEBUG"
+///     }
+///     scheduler_logs = {
+///       enabled   = true
+///       log_level = "INFO"
+///     }
+///     task_logs = {
+///       enabled   = true
+///       log_level = "WARNING"
+///     }
+///     webserver_logs = {
+///       enabled   = true
+///       log_level = "ERROR"
+///     }
+///     worker_logs = {
+///       enabled   = true
+///       log_level = "CRITICAL"
+///     }
+///   }
+///   name = "example"
+///   network_configuration = {
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///     subnet_ids         = private[*].id
+///   }
+///   source_bucket_arn = exampleAwsS3Bucket.arn
 /// }
 /// ```
 /// ```java
@@ -476,8 +562,8 @@ import 'environment_state.dart';
 /// import com.pulumi.aws.mwaa.inputs.EnvironmentLoggingConfigurationWebserverLogsArgs;
 /// import com.pulumi.aws.mwaa.inputs.EnvironmentLoggingConfigurationWorkerLogsArgs;
 /// import com.pulumi.aws.mwaa.inputs.EnvironmentNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -615,7 +701,7 @@ import 'environment_state.dart';
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,24-37)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,24-37)),
 /// },
 /// SourceBucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// Tags: pulumi.StringMap{
@@ -630,6 +716,30 @@ import 'environment_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mwaa_environment" "example" {
+///   dag_s3_path        = "dags/"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = "example"
+///   network_configuration = {
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///     subnet_ids         = private[*].id
+///   }
+///   source_bucket_arn = exampleAwsS3Bucket.arn
+///   tags = {
+///     "Name"        = "example"
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -639,8 +749,8 @@ import 'environment_state.dart';
 /// import com.pulumi.aws.mwaa.Environment;
 /// import com.pulumi.aws.mwaa.EnvironmentArgs;
 /// import com.pulumi.aws.mwaa.inputs.EnvironmentNetworkConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,7 +790,7 @@ import 'environment_state.dart';
 /// $ pulumi import aws:mwaa/environment:Environment example MyAirflowEnvironment
 /// ```
 class Environment extends pulumi.CustomResource {
-  /// The `airflow_configuration_options` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
+  /// The `airflowConfigurationOptions` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
   late final pulumi.Output<Map<String, String>?> airflowConfigurationOptions;
   /// Airflow version of your environment, will be set by default to the latest version that MWAA supports.
   late final pulumi.Output<String> airflowVersion;
@@ -702,29 +812,29 @@ class Environment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key `aws/airflow` by default. Please check the [Official Documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/custom-keys-certs.html) for more information.
   late final pulumi.Output<String?> kmsKey;
   late final pulumi.Output<List<Map<String, dynamic>>> lastUpdateds;
-  /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `logging_configuration` Block for details.
+  /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `loggingConfiguration` Block for details.
   late final pulumi.Output<EnvironmentLoggingConfiguration> loggingConfiguration;
-  /// The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
+  /// The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   late final pulumi.Output<int> maxWebservers;
   /// The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`. Will be `10` by default.
   late final pulumi.Output<int> maxWorkers;
-  /// The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
+  /// The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   late final pulumi.Output<int> minWebservers;
   /// The minimum number of workers that you want to run in your environment. Will be `1` by default.
   late final pulumi.Output<int> minWorkers;
   /// The name of the Apache Airflow Environment
   late final pulumi.Output<String> name;
-  /// Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `network_configuration` Block for details.
+  /// Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `networkConfiguration` Block for details.
   late final pulumi.Output<EnvironmentNetworkConfiguration> networkConfiguration;
   /// The plugins.zip file version you want to use.
   late final pulumi.Output<String> pluginsS3ObjectVersion;
-  /// The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then plugins_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then pluginsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   late final pulumi.Output<String?> pluginsS3Path;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The requirements.txt file version you want to use.
   late final pulumi.Output<String> requirementsS3ObjectVersion;
-  /// The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirements_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirementsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   late final pulumi.Output<String?> requirementsS3Path;
   /// The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.
   late final pulumi.Output<int> schedulers;
@@ -738,11 +848,11 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<String?> startupScriptS3Path;
   /// The status of the Amazon MWAA Environment
   late final pulumi.Output<String> status;
-  /// A map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default) and `PUBLIC_ONLY`.
+  /// Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default), `PUBLIC_ONLY` and `PUBLIC_AND_PRIVATE`.
   late final pulumi.Output<String> webserverAccessMode;
   /// The webserver URL of the MWAA Environment
   late final pulumi.Output<String> webserverUrl;

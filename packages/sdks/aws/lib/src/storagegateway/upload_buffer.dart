@@ -84,6 +84,25 @@ import 'upload_buffer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_storagegateway_getlocaldisk" "test" {
+///   disk_node   = testAwsVolumeAttachment.deviceName
+///   gateway_arn = testAwsStoragegatewayGateway.arn
+/// }
+///
+/// resource "aws_storagegateway_uploadbuffer" "test" {
+///   disk_path   = data.aws_storagegateway_getlocaldisk.test.disk_path
+///   gateway_arn = testAwsStoragegatewayGateway.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +113,8 @@ import 'upload_buffer_state.dart';
 /// import com.pulumi.aws.storagegateway.inputs.GetLocalDiskArgs;
 /// import com.pulumi.aws.storagegateway.UploadBuffer;
 /// import com.pulumi.aws.storagegateway.UploadBufferArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +233,25 @@ import 'upload_buffer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_storagegateway_getlocaldisk" "test" {
+///   disk_node   = testAwsVolumeAttachment.deviceName
+///   gateway_arn = testAwsStoragegatewayGateway.arn
+/// }
+///
+/// resource "aws_storagegateway_uploadbuffer" "example" {
+///   disk_id     = exampleAwsStoragegatewayLocalDisk.id
+///   gateway_arn = exampleAwsStoragegatewayGateway.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +262,8 @@ import 'upload_buffer_state.dart';
 /// import com.pulumi.aws.storagegateway.inputs.GetLocalDiskArgs;
 /// import com.pulumi.aws.storagegateway.UploadBuffer;
 /// import com.pulumi.aws.storagegateway.UploadBufferArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

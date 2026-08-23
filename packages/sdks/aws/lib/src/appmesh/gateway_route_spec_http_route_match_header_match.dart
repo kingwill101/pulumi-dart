@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_route_spec_http_route_match_header_match_range.dart';
 
 class GatewayRouteSpecHttpRouteMatchHeaderMatch {
-  /// Header value sent by the client must match the specified value exactly.
+  /// Exact query parameter to match on.
   final pulumi.Input<String>? exact;
   /// Header value sent by the client must begin with the specified characters.
   final pulumi.Input<String>? prefix;
-  /// Object that specifies the range of numbers that the header value sent by the client must be included in.
+  /// Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http2_route.match.header.match.range` Block for details.
   final pulumi.Input<GatewayRouteSpecHttpRouteMatchHeaderMatchRange>? range;
-  /// Header value sent by the client must include the specified characters.
+  /// Regex used to match the path.
   final pulumi.Input<String>? regex;
-  /// Header value sent by the client must end with the specified characters.
+  /// Specified ending characters of the host name to match on.
   final pulumi.Input<String>? suffix;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHeaderMatch].
-  /// [exact] Header value sent by the client must match the specified value exactly.
+  /// [exact] Exact query parameter to match on.
   /// [prefix] Header value sent by the client must begin with the specified characters.
-  /// [range] Object that specifies the range of numbers that the header value sent by the client must be included in.
-  /// [regex] Header value sent by the client must include the specified characters.
-  /// [suffix] Header value sent by the client must end with the specified characters.
+  /// [range] Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http2_route.match.header.match.range` Block for details.
+  /// [regex] Regex used to match the path.
+  /// [suffix] Specified ending characters of the host name to match on.
   const GatewayRouteSpecHttpRouteMatchHeaderMatch({
     this.exact,
     this.prefix,
@@ -49,4 +49,3 @@ class GatewayRouteSpecHttpRouteMatchHeaderMatch {
     );
   }
 }
-

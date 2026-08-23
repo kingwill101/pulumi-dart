@@ -134,6 +134,34 @@ import 'access_grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// }
+/// resource "aws_s3control_accessgrantslocation" "example" {
+///   depends_on     = [aws_s3control_accessgrantsinstance.example]
+///   iam_role_arn   = exampleAwsIamRole.arn
+///   location_scope ="s3://${exampleAwsS3Bucket.bucket}/prefixA*"
+/// }
+/// resource "aws_s3control_accessgrant" "example" {
+///   access_grants_location_id = aws_s3control_accessgrantslocation.example.access_grants_location_id
+///   permission                = "READ"
+///   access_grants_location_configuration = {
+///     s3_sub_prefix = "prefixB*"
+///   }
+///   grantee = {
+///     grantee_type       = "IAM"
+///     grantee_identifier = exampleAwsIamUser.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +176,8 @@ import 'access_grant_state.dart';
 /// import com.pulumi.aws.s3control.inputs.AccessGrantAccessGrantsLocationConfigurationArgs;
 /// import com.pulumi.aws.s3control.inputs.AccessGrantGranteeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,7 +242,7 @@ import 'access_grant_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Access Grants using the `account_id` and `access_grant_id`, separated by a comma (`,`). For example:
+/// Using `pulumi import`, import S3 Access Grants using the `accountId` and `accessGrantId`, separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrant:AccessGrant example 123456789012,04549c5e-2f3c-4a07-824d-2cafe720aa22
@@ -224,25 +252,25 @@ class AccessGrant extends pulumi.CustomResource {
   late final pulumi.Output<String> accessGrantArn;
   /// Unique ID of the S3 Access Grant.
   late final pulumi.Output<String> accessGrantId;
-  /// See Location Configuration below for more details.
+  /// See `accessGrantsLocationConfiguration` Block below for more details.
   late final pulumi.Output<AccessGrantAccessGrantsLocationConfiguration?> accessGrantsLocationConfiguration;
-  /// The ID of the S3 Access Grants location to with the access grant is giving access.
+  /// ID of the S3 Access Grants location to with the access grant is giving access.
   late final pulumi.Output<String> accessGrantsLocationId;
-  /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> accountId;
-  /// The access grant's scope.
+  /// Access grant's scope.
   late final pulumi.Output<String> grantScope;
-  /// See Grantee below for more details.
+  /// See `grantee` Block below for more details.
   late final pulumi.Output<AccessGrantGrantee> grantee;
-  /// The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
+  /// Access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
   late final pulumi.Output<String> permission;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
   late final pulumi.Output<String?> s3PrefixType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AccessGrant].

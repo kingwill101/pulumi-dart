@@ -5,14 +5,14 @@ import 'virtual_node_spec_backend_virtual_service_client_policy_tls_certificate_
 import 'virtual_node_spec_backend_virtual_service_client_policy_tls_certificate_sds.dart';
 
 class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate {
-  /// Local file certificate.
+  /// File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
   final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile>? file;
-  /// A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
+  /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate. See `spec.listener.tls.validation.trust.sds` Block for details.
   final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds>? sds;
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate].
-  /// [file] Local file certificate.
-  /// [sds] A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
+  /// [file] File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
+  /// [sds] TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate. See `spec.listener.tls.validation.trust.sds` Block for details.
   const VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate({
     this.file,
     this.sds,
@@ -32,4 +32,3 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate {
     );
   }
 }
-

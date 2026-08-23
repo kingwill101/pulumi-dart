@@ -14,7 +14,7 @@ class RoutingRuleState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? domainName;
-  /// The order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
+  /// Order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
   final pulumi.Input<int>? priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -27,7 +27,7 @@ class RoutingRuleState {
   /// [actions] Configuration of resulting action based on matching routing rules condition. See below.
   /// [conditions] Conditions configuration. See below.
   /// [domainName] Domain name. Must be between 1 and 512 characters in length.
-  /// [priority] The order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
+  /// [priority] Order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingRuleArn] ARN of the Routing Rule.
   /// [routingRuleId] ID of the Routing Rule.
@@ -65,4 +65,3 @@ class RoutingRuleState {
     );
   }
 }
-

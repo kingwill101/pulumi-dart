@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_bucket_replication_configuration_rule_filter_and_tag.dart';
 
 class GetBucketReplicationConfigurationRuleFilterAnd {
-  /// The object key name prefix that identifies the subset of objects to which the rule applies.
+  /// Object key name prefix that identifies the subset of objects to which the rule applies.
   final pulumi.Input<String> prefix;
-  /// An unordered list of tags that identify a subset of objects to which the rule applies.
+  /// List of tags that identify a subset of objects to which the rule applies. See `tag` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleFilterAndTag>> tags;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleFilterAnd].
-  /// [prefix] The object key name prefix that identifies the subset of objects to which the rule applies.
-  /// [tags] An unordered list of tags that identify a subset of objects to which the rule applies.
+  /// [prefix] Object key name prefix that identifies the subset of objects to which the rule applies.
+  /// [tags] List of tags that identify a subset of objects to which the rule applies. See `tag` Block below.
   const GetBucketReplicationConfigurationRuleFilterAnd({
     required this.prefix,
     required this.tags,
@@ -31,4 +31,3 @@ class GetBucketReplicationConfigurationRuleFilterAnd {
     );
   }
 }
-

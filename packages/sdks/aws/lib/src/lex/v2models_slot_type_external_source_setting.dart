@@ -5,7 +5,7 @@ import 'v2models_slot_type_external_source_setting_grammar_slot_type_setting.dar
 
 class V2modelsSlotTypeExternalSourceSetting {
   /// Settings required for a slot type based on a grammar that you provide.
-  /// See `grammar_slot_type_setting` argument reference below.
+  /// See `grammarSlotTypeSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting>>? grammarSlotTypeSettings;
 
   /// Creates a new [V2modelsSlotTypeExternalSourceSetting].
@@ -26,4 +26,3 @@ class V2modelsSlotTypeExternalSourceSetting {
     );
   }
 }
-

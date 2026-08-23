@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2LifecycleRuleNoncurrentVersionExpiration {
-  /// Specifies the number of days noncurrent object versions expire.
+  /// Number of days noncurrent object versions expire.
   final pulumi.Input<int>? days;
 
   /// Creates a new [BucketV2LifecycleRuleNoncurrentVersionExpiration].
-  /// [days] Specifies the number of days noncurrent object versions expire.
+  /// [days] Number of days noncurrent object versions expire.
   const BucketV2LifecycleRuleNoncurrentVersionExpiration({
     this.days,
   });
@@ -24,4 +24,3 @@ class BucketV2LifecycleRuleNoncurrentVersionExpiration {
     );
   }
 }
-

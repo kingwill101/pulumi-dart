@@ -11,13 +11,13 @@ class GetQueueArgs {
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetQueueArgs].
   /// [id] Unique identifier of the queue. The same as `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const GetQueueArgs({
     required this.id,
     this.region,
@@ -40,4 +40,3 @@ class GetQueueArgs {
     );
   }
 }
-

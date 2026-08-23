@@ -75,6 +75,23 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_user" "example" {
+///   email         = "author1@example.com"
+///   identity_type = "IAM"
+///   user_role     = "AUTHOR"
+///   iam_arn       = "arn:aws:iam::123456789012:role/AuthorRole"
+///   session_name  = "author1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +100,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.User;
 /// import com.pulumi.aws.quicksight.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,6 +202,22 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_user" "example" {
+///   email         = "authorpro1@example.com"
+///   identity_type = "IAM"
+///   user_role     = "AUTHOR_PRO"
+///   iam_arn       = "arn:aws:iam::123456789012:user/authorpro1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +226,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.User;
 /// import com.pulumi.aws.quicksight.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -297,6 +330,23 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_user" "example" {
+///   email         = "reader1@example.com"
+///   identity_type = "QUICKSIGHT"
+///   user_role     = "READER"
+///   namespace     = "example"
+///   user_name     = "reader1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -305,8 +355,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.User;
 /// import com.pulumi.aws.quicksight.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

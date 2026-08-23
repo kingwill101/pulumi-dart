@@ -133,7 +133,7 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID(),
+/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -141,8 +141,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID(),
-/// 			ResourceId:    myDemoResource.ID(),
+/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -150,8 +150,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 		})
@@ -159,8 +159,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethodResponse(ctx, "response_200", &apigateway.MethodResponseArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: pulumi.String("200"),
 /// 		})
@@ -169,6 +169,43 @@ import 'method_response_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_apigateway_resource" "MyDemoResource" {
+///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
+///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   path_part = "mydemoresource"
+/// }
+/// resource "aws_apigateway_method" "MyDemoMethod" {
+///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id   = aws_apigateway_resource.MyDemoResource.id
+///   http_method   = "GET"
+///   authorization = "NONE"
+/// }
+/// resource "aws_apigateway_integration" "MyDemoIntegration" {
+///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id = aws_apigateway_resource.MyDemoResource.id
+///   http_method = aws_apigateway_method.MyDemoMethod.http_method
+///   type        = "MOCK"
+/// }
+/// resource "aws_apigateway_methodresponse" "response_200" {
+///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id = aws_apigateway_resource.MyDemoResource.id
+///   http_method = aws_apigateway_method.MyDemoMethod.http_method
+///   status_code = "200"
 /// }
 /// ```
 /// ```java
@@ -187,8 +224,8 @@ import 'method_response_state.dart';
 /// import com.pulumi.aws.apigateway.IntegrationArgs;
 /// import com.pulumi.aws.apigateway.MethodResponse;
 /// import com.pulumi.aws.apigateway.MethodResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -483,7 +520,7 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID(),
+/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -491,8 +528,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID(),
-/// 			ResourceId:    myDemoResource.ID(),
+/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -500,8 +537,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 		})
@@ -512,8 +549,8 @@ import 'method_response_state.dart';
 /// 			"$schema": "http://json-schema.org/draft-04/schema#",
 /// 			"title":   "MyDemoResponse",
 /// 			"type":    "object",
-/// 			"properties": map[string]interface{}{
-/// 				"Message": map[string]interface{}{
+/// 			"properties": map[string]map[string]string{
+/// 				"Message": map[string]string{
 /// 					"type": "string",
 /// 				},
 /// 			},
@@ -523,7 +560,7 @@ import 'method_response_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = apigateway.NewModel(ctx, "MyDemoResponseModel", &apigateway.ModelArgs{
-/// 			RestApi:     myDemoAPI.ID(),
+/// 			RestApi:     myDemoAPI.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:        pulumi.String("MyDemoResponseModel"),
 /// 			Description: pulumi.String("API response for MyDemoMethod"),
 /// 			ContentType: pulumi.String("application/json"),
@@ -533,8 +570,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethodResponse(ctx, "response_200", &apigateway.MethodResponseArgs{
-/// 			RestApi:    myDemoAPI.ID(),
-/// 			ResourceId: myDemoResource.ID(),
+/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: pulumi.String("200"),
 /// 			ResponseModels: pulumi.StringMap{
@@ -550,6 +587,66 @@ import 'method_response_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+///   name        = "MyDemoAPI"
+///   description = "This is my API for demonstration purposes"
+/// }
+/// resource "aws_apigateway_resource" "MyDemoResource" {
+///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
+///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   path_part = "mydemoresource"
+/// }
+/// resource "aws_apigateway_method" "MyDemoMethod" {
+///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id   = aws_apigateway_resource.MyDemoResource.id
+///   http_method   = "GET"
+///   authorization = "NONE"
+/// }
+/// resource "aws_apigateway_integration" "MyDemoIntegration" {
+///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id = aws_apigateway_resource.MyDemoResource.id
+///   http_method = aws_apigateway_method.MyDemoMethod.http_method
+///   type        = "MOCK"
+/// }
+/// resource "aws_apigateway_model" "MyDemoResponseModel" {
+///   rest_api     = aws_apigateway_restapi.MyDemoAPI.id
+///   name         = "MyDemoResponseModel"
+///   description  = "API response for MyDemoMethod"
+///   content_type = "application/json"
+///   schema = jsonencode({
+///     "$schema" = "http://json-schema.org/draft-04/schema#"
+///     "title"   = "MyDemoResponse"
+///     "type"    = "object"
+///     "properties" = {
+///       "Message" = {
+///         "type" = "string"
+///       }
+///     }
+///   })
+/// }
+/// resource "aws_apigateway_methodresponse" "response_200" {
+///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   resource_id = aws_apigateway_resource.MyDemoResource.id
+///   http_method = aws_apigateway_method.MyDemoMethod.http_method
+///   status_code = "200"
+///   response_models = {
+///     "application/json" = "MyDemoResponseModel"
+///   }
+///   response_parameters = {
+///     "method.response.header.Content-Type"     = false
+///     "method-response-header.X-My-Demo-Header" = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -571,8 +668,8 @@ import 'method_response_state.dart';
 /// import com.pulumi.aws.apigateway.MethodResponse;
 /// import com.pulumi.aws.apigateway.MethodResponseArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -707,27 +804,40 @@ import 'method_response_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `restApiId` (String) The string identifier of the associated REST API.
+/// * `resourceId` (String) The Resource identifier for the method resource.
+/// * `httpMethod` (String) The HTTP verb of the method resource.
+/// * `statusCode` (String) The method response's status code.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.apigateway.MethodResponse` using `REST-API-ID/RESOURCE-ID/HTTP-METHOD/STATUS-CODE`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/methodResponse:MethodResponse example 12345abcde/67890fghij/GET/200
 /// ```
 class MethodResponse extends pulumi.CustomResource {
-  /// The HTTP verb of the method resource (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`).
+  /// HTTP verb of the method resource (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`).
   late final pulumi.Output<String> httpMethod;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Resource identifier for the method resource.
+  /// Resource identifier for the method resource.
   late final pulumi.Output<String> resourceId;
-  /// A map specifying the model resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a Model name as the value.
+  /// Map specifying the model resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a Model name as the value.
   late final pulumi.Output<Map<String, String>?> responseModels;
-  /// A map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header name and the associated value is a boolean flag indicating whether the method response parameter is required. The method response header names must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name.
-  ///
-  /// The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in `integration.response.header.{name}`, a static value enclosed within a pair of single quotes (e.g., '`application/json'`), or a JSON expression from the back-end response payload in the form of `integration.response.body.{JSON-expression}`, where `JSON-expression` is a valid JSON expression without the `$` prefix.)
+  /// Map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header name and the associated value is a boolean flag indicating whether the method response parameter is required. The method response header names must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in `integration.response.header.{name}`, a static value enclosed within a pair of single quotes (e.g., '`application/json'`), or a JSON expression from the back-end response payload in the form of `integration.response.body.{JSON-expression}`, where `JSON-expression` is a valid JSON expression without the `$` prefix.)
   late final pulumi.Output<Map<String, bool>?> responseParameters;
-  /// The string identifier of the associated REST API.
+  /// String identifier of the associated REST API.
   late final pulumi.Output<String> restApi;
-  /// The method response's status code.
+  /// Method response's status code.
   late final pulumi.Output<String> statusCode;
 
   /// Creates a new [MethodResponse].

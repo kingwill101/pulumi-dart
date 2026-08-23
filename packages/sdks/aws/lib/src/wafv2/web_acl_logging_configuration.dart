@@ -5,7 +5,7 @@ import 'web_acl_logging_configuration_state.dart';
 
 /// This resource creates a WAFv2 Web ACL Logging Configuration.
 ///
-/// !&gt; **WARNING:** When logging from a WAFv2 Web ACL to a CloudWatch Log Group, the WAFv2 service tries to create or update a generic Log Resource Policy named `AWSWAF-LOGS`. However, if there are a large number of Web ACLs or if the account frequently creates and deletes Web ACLs, this policy may exceed the maximum policy size. As a result, this resource type will fail to be created. More details about this issue can be found in this issue. To prevent this issue, you can manage a specific resource policy. Please refer to the example below for managing a CloudWatch Log Group with a managed CloudWatch Log Resource Policy.
+/// &gt; **WARNING:** When logging from a WAFv2 Web ACL to a CloudWatch Log Group, the WAFv2 service tries to create or update a generic Log Resource Policy named `AWSWAF-LOGS`. However, if there are a large number of Web ACLs or if the account frequently creates and deletes Web ACLs, this policy may exceed the maximum policy size. As a result, this resource type will fail to be created. More details about this issue can be found in this issue. To prevent this issue, you can manage a specific resource policy. Please refer to the example below for managing a CloudWatch Log Group with a managed CloudWatch Log Resource Policy.
 ///
 /// ## Example Usage
 ///
@@ -98,6 +98,25 @@ import 'web_acl_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafv2_webaclloggingconfiguration" "example" {
+///   log_destination_configs = [exampleAwsKinesisFirehoseDeliveryStream.arn]
+///   resource_arn            = exampleAwsWafv2WebAcl.arn
+///   redacted_fields {
+///     single_header = {
+///       name = "user-agent"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +127,8 @@ import 'web_acl_logging_configuration_state.dart';
 /// import com.pulumi.aws.wafv2.WebAclLoggingConfigurationArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclLoggingConfigurationRedactedFieldArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclLoggingConfigurationRedactedFieldSingleHeaderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,6 +365,44 @@ import 'web_acl_logging_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafv2_webaclloggingconfiguration" "example" {
+///   log_destination_configs = [exampleAwsKinesisFirehoseDeliveryStream.arn]
+///   resource_arn            = exampleAwsWafv2WebAcl.arn
+///   logging_filter = {
+///     default_behavior = "KEEP"
+///     filters = [{
+///       "behavior" = "DROP"
+///       "conditions" = [{
+///         "actionCondition" = {
+///           "action" = "COUNT"
+///         }
+///         }, {
+///         "labelNameCondition" = {
+///           "labelName" = "awswaf:111122223333:rulegroup:testRules:LabelNameZ"
+///         }
+///       }]
+///       "requirement" = "MEETS_ALL"
+///       }, {
+///       "behavior" = "KEEP"
+///       "conditions" = [{
+///         "actionCondition" = {
+///           "action" = "ALLOW"
+///         }
+///       }]
+///       "requirement" = "MEETS_ANY"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +412,12 @@ import 'web_acl_logging_configuration_state.dart';
 /// import com.pulumi.aws.wafv2.WebAclLoggingConfiguration;
 /// import com.pulumi.aws.wafv2.WebAclLoggingConfigurationArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclLoggingConfigurationLoggingFilterArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.wafv2.inputs.WebAclLoggingConfigurationLoggingFilterFilterArgs;
+/// import com.pulumi.aws.wafv2.inputs.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs;
+/// import com.pulumi.aws.wafv2.inputs.WebAclLoggingConfigurationLoggingFilterFilterConditionActionConditionArgs;
+/// import com.pulumi.aws.wafv2.inputs.WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,11 +503,11 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> logDestinationConfigs;
   /// Configuration block that specifies which web requests are kept in the logs and which are dropped. It allows filtering based on the rule action and the web request labels applied by matching rules during web ACL evaluation. For more details, refer to the Logging Filter section below.
   late final pulumi.Output<WebAclLoggingConfigurationLoggingFilter?> loggingFilter;
-  /// Configuration for parts of the request that you want to keep out of the logs. Up to 100 `redacted_fields` blocks are supported. See Redacted Fields below for more details.
+  /// Configuration for parts of the request that you want to keep out of the logs. Up to 100 `redactedFields` blocks are supported. See Redacted Fields below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> redactedFields;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
+  /// Amazon Resource Name (ARN) of the web ACL that you want to associate with `logDestinationConfigs`.
   late final pulumi.Output<String> resourceArn;
 
   /// Creates a new [WebAclLoggingConfiguration].

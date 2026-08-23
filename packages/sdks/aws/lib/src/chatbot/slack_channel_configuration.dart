@@ -85,6 +85,25 @@ import 'slack_channel_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chatbot_slackchannelconfiguration" "test" {
+///   configuration_name = "min-slaka-kanal"
+///   iam_role_arn       = testAwsIamRole.arn
+///   slack_channel_id   = "C07EZ1ABC23"
+///   slack_team_id      = "T07EA123LEP"
+///   tags = {
+///     "Name" = "min-slaka-kanal"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +112,8 @@ import 'slack_channel_configuration_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.chatbot.SlackChannelConfiguration;
 /// import com.pulumi.aws.chatbot.SlackChannelConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,7 +152,7 @@ import 'slack_channel_configuration_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chatbot Slack Channel Configuration using the `chat_configuration_arn`. For example:
+/// Using `pulumi import`, import Chatbot Slack Channel Configuration using the `chatConfigurationArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chatbot/slackChannelConfiguration:SlackChannelConfiguration example arn:aws:chatbot::123456789012:chat-configuration/slack-channel/min-slaka-kanal
@@ -165,7 +184,7 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> snsTopicArns;
   /// Map of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SlackChannelConfigurationTimeouts?> timeouts;
   /// Enables use of a user role requirement in your chat configuration.

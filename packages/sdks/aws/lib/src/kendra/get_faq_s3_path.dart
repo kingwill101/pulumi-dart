@@ -30,4 +30,3 @@ class GetFaqS3Path {
     );
   }
 }
-

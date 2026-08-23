@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_supplemental_data_storage_configuration_storage_location_s3_location.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation {
-  /// Contains information about the Amazon S3 location for the extracted images.  See `s3_location` block for details.
+  /// Contains information about the Amazon S3 location for the extracted images.  See `s3Location` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location>? s3Location;
   /// Storage service used for this location. `S3` is the only valid value.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation].
-  /// [s3Location] Contains information about the Amazon S3 location for the extracted images.  See `s3_location` block for details.
+  /// [s3Location] Contains information about the Amazon S3 location for the extracted images.  See `s3Location` block for details.
   /// [type] Storage service used for this location. `S3` is the only valid value.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation({
     this.s3Location,
@@ -31,4 +31,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
     );
   }
 }
-

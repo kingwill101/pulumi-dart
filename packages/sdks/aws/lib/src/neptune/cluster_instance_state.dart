@@ -35,7 +35,7 @@ class ClusterInstanceState {
   final pulumi.Input<String>? kmsKeyArn;
   /// The name of the neptune parameter group to associate with this instance.
   final pulumi.Input<String>? neptuneParameterGroupName;
-  /// A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptune_subnet_group_name` of the attached `aws.neptune.Cluster`.
+  /// A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
   final pulumi.Input<String>? neptuneSubnetGroupName;
   /// The port on which the DB accepts connections. Defaults to `8182`.
   final pulumi.Input<int>? port;
@@ -56,9 +56,9 @@ class ClusterInstanceState {
   final pulumi.Input<bool>? storageEncrypted;
   /// Storage type associated with the cluster `standard/iopt1`.
   final pulumi.Input<String>? storageType;
-  /// A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
   final pulumi.Input<bool>? writer;
@@ -79,7 +79,7 @@ class ClusterInstanceState {
   /// [instanceClass] The instance class to use.
   /// [kmsKeyArn] The ARN for the KMS encryption key if one is set to the neptune cluster.
   /// [neptuneParameterGroupName] The name of the neptune parameter group to associate with this instance.
-  /// [neptuneSubnetGroupName] A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptune_subnet_group_name` of the attached `aws.neptune.Cluster`.
+  /// [neptuneSubnetGroupName] A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
   /// [port] The port on which the DB accepts connections. Defaults to `8182`.
   /// [preferredBackupWindow] The daily time range during which automated backups are created if automated backups are enabled. Eg: "04:00-09:00"
   /// [preferredMaintenanceWindow] The window to perform maintenance in.
@@ -89,8 +89,8 @@ class ClusterInstanceState {
   /// [skipFinalSnapshot] Determines whether a final DB snapshot is created before the DB instance is deleted.
   /// [storageEncrypted] Specifies whether the neptune cluster is encrypted.
   /// [storageType] Storage type associated with the cluster `standard/iopt1`.
-  /// [tags] A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [writer] Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
   const ClusterInstanceState({
     this.address,
@@ -189,4 +189,3 @@ class ClusterInstanceState {
     );
   }
 }
-

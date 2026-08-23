@@ -9,13 +9,13 @@ import 'application_timeouts.dart';
 class ApplicationState {
   /// ARN of the Q Business application.
   final pulumi.Input<String>? arn;
-  /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
+  /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.
   final pulumi.Input<ApplicationAttachmentsConfiguration>? attachmentsConfiguration;
   /// Description of the Amazon Q application.
   final pulumi.Input<String>? description;
   /// Name of the Amazon Q application.
   final pulumi.Input<String>? displayName;
-  /// Information about encryption configuration. See `encryption_configuration` below.
+  /// Information about encryption configuration. See `encryptionConfiguration` below.
   final pulumi.Input<ApplicationEncryptionConfiguration>? encryptionConfiguration;
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   final pulumi.Input<String>? iamServiceRoleArn;
@@ -28,22 +28,22 @@ class ApplicationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ApplicationTimeouts>? timeouts;
 
   /// Creates a new [ApplicationState].
   /// [arn] ARN of the Q Business application.
-  /// [attachmentsConfiguration] Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
+  /// [attachmentsConfiguration] Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.
   /// [description] Description of the Amazon Q application.
   /// [displayName] Name of the Amazon Q application.
-  /// [encryptionConfiguration] Information about encryption configuration. See `encryption_configuration` below.
+  /// [encryptionConfiguration] Information about encryption configuration. See `encryptionConfiguration` below.
   /// [iamServiceRoleArn] ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   /// [identityCenterApplicationArn] ARN of the AWS IAM Identity Center application attached to your Amazon Q Business application.
   /// [identityCenterInstanceArn] ARN of the IAM Identity Center instance you are either creating for — or connecting to — your Amazon Q Business application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const ApplicationState({
     this.arn,
@@ -94,4 +94,3 @@ class ApplicationState {
     );
   }
 }
-

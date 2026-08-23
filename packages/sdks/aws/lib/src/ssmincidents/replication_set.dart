@@ -90,6 +90,24 @@ import 'replication_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+///   regions {
+///     name = "us-west-2"
+///   }
+///   tags = {
+///     "exampleTag" = "exampleValue"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +117,8 @@ import 'replication_set_state.dart';
 /// import com.pulumi.aws.ssmincidents.ReplicationSet;
 /// import com.pulumi.aws.ssmincidents.ReplicationSetArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ReplicationSetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,6 +233,24 @@ import 'replication_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+///   regions {
+///     name = "us-west-2"
+///   }
+///   regions {
+///     name = "ap-southeast-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +260,8 @@ import 'replication_set_state.dart';
 /// import com.pulumi.aws.ssmincidents.ReplicationSet;
 /// import com.pulumi.aws.ssmincidents.ReplicationSetArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ReplicationSetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,6 +361,21 @@ import 'replication_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+///   regions {
+///     name = "us-west-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -334,8 +385,8 @@ import 'replication_set_state.dart';
 /// import com.pulumi.aws.ssmincidents.ReplicationSet;
 /// import com.pulumi.aws.ssmincidents.ReplicationSetArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ReplicationSetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -366,7 +417,7 @@ import 'replication_set_state.dart';
 /// ```
 ///
 ///
-/// ## Basic Usage with an AWS Customer Managed Key
+/// ### Basic Usage with an AWS Customer Managed Key
 ///
 /// Create a replication set with an AWS Key Management Service (AWS KMS) customer manager key:
 ///
@@ -461,6 +512,27 @@ import 'replication_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example_key" {
+/// }
+/// resource "aws_ssmincidents_replicationset" "replicationSetName" {
+///   regions {
+///     name        = "us-west-2"
+///     kms_key_arn = aws_kms_key.example_key.arn
+///   }
+///   tags = {
+///     "exampleTag" = "exampleValue"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -471,8 +543,8 @@ import 'replication_set_state.dart';
 /// import com.pulumi.aws.ssmincidents.ReplicationSet;
 /// import com.pulumi.aws.ssmincidents.ReplicationSetArgs;
 /// import com.pulumi.aws.ssmincidents.inputs.ReplicationSetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -536,7 +608,7 @@ class ReplicationSet extends pulumi.CustomResource {
   /// The current status of the Region.
   /// * Valid Values: `ACTIVE` | `CREATING` | `UPDATING` | `DELETING` | `FAILED`
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For information about the maximum allowed number of Regions and tag value constraints, see [CreateReplicationSet in the *AWS Systems Manager Incident Manager API Reference*](https://docs.aws.amazon.com/incident-manager/latest/APIReference/API_CreateReplicationSet.html).
   ///
@@ -550,7 +622,7 @@ class ReplicationSet extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** If possible, create all the customer managed keys you need (using the deploy command) before you create the replication set, or create the keys and replication set in the same deploy command. Otherwise, to delete a replication set, you must run one deploy command to delete the replication set and another to delete the AWS KMS keys used by the replication set. Deleting the AWS KMS keys before deleting the replication set results in an error. In that case, you must manually reenable the deleted key using the AWS Management Console before you can delete the replication set.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ReplicationSet].

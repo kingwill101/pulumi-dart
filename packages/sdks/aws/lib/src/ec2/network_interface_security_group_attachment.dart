@@ -7,8 +7,8 @@ import 'network_interface_security_group_attachment_state.dart';
 /// secondary ENI or one attached as the primary interface on an instance.
 ///
 /// &gt; **NOTE on instances, interfaces, and security groups:** This provider currently
-/// provides the capability to assign security groups via the [`aws.ec2.Instance`][1]
-/// and the [`aws.ec2.NetworkInterface`][2] resources. Using this resource in
+/// provides the capability to assign security groups via the `aws.ec2.Instance`
+/// and the `aws.ec2.NetworkInterface` resources. Using this resource in
 /// conjunction with security groups provided in-line in those resources will cause
 /// conflicts, and will lead to spurious diffs and undefined behavior - please use
 /// one or the other.
@@ -19,7 +19,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// by `instance`) in the default security group, creating a security group
 /// (provided by `sg`) and then attaching the security group to the instance's
 /// primary network interface via the `aws.ec2.NetworkInterfaceSecurityGroupAttachment` resource,
-/// named `sg_attachment`:
+/// named `sgAttachment`:
 ///
 ///
 /// ```typescript
@@ -172,7 +172,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkInterfaceSecurityGroupAttachment(ctx, "sg_attachment", &ec2.NetworkInterfaceSecurityGroupAttachmentArgs{
-/// 			SecurityGroupId:    sg.ID(),
+/// 			SecurityGroupId:    sg.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkInterfaceId: instance.PrimaryNetworkInterfaceId,
 /// 		})
 /// 		if err != nil {
@@ -180,6 +180,41 @@ import 'network_interface_security_group_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "ami" {
+///   most_recent = true
+///   filters {
+///     name   = "name"
+///     values = ["amzn-ami-hvm-*"]
+///   }
+///   owners = ["amazon"]
+/// }
+///
+/// resource "aws_ec2_instance" "instance" {
+///   instance_type = "t2.micro"
+///   ami           = data.aws_ec2_getami.ami.id
+///   tags = {
+///     "type" = "test-instance"
+///   }
+/// }
+/// resource "aws_ec2_securitygroup" "sg" {
+///   tags = {
+///     "type" = "test-security-group"
+///   }
+/// }
+/// resource "aws_ec2_networkinterfacesecuritygroupattachment" "sg_attachment" {
+///   security_group_id    = aws_ec2_securitygroup.sg.id
+///   network_interface_id = aws_ec2_instance.instance.primary_network_interface_id
 /// }
 /// ```
 /// ```java
@@ -190,14 +225,15 @@ import 'network_interface_security_group_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.ec2.NetworkInterfaceSecurityGroupAttachment;
 /// import com.pulumi.aws.ec2.NetworkInterfaceSecurityGroupAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,7 +309,7 @@ import 'network_interface_security_group_attachment_state.dart';
 ///
 /// In this example, `instance` is provided by the `aws.ec2.Instance` data source,
 /// fetching an external instance, possibly not managed by this provider.
-/// `sg_attachment` then attaches to the output instance's `network_interface_id`:
+/// `sgAttachment` then attaches to the output instance's `networkInterfaceId`:
 ///
 ///
 /// ```typescript
@@ -357,7 +393,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkInterfaceSecurityGroupAttachment(ctx, "sg_attachment", &ec2.NetworkInterfaceSecurityGroupAttachmentArgs{
-/// 			SecurityGroupId:    sg.ID(),
+/// 			SecurityGroupId:    sg.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkInterfaceId: pulumi.String(instance.NetworkInterfaceId),
 /// 		})
 /// 		if err != nil {
@@ -365,6 +401,29 @@ import 'network_interface_security_group_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getinstance" "instance" {
+///   instance_id = "i-1234567890abcdef0"
+/// }
+///
+/// resource "aws_ec2_securitygroup" "sg" {
+///   tags = {
+///     "type" = "test-security-group"
+///   }
+/// }
+/// resource "aws_ec2_networkinterfacesecuritygroupattachment" "sg_attachment" {
+///   security_group_id    = aws_ec2_securitygroup.sg.id
+///   network_interface_id = data.aws_ec2_getinstance.instance.network_interface_id
 /// }
 /// ```
 /// ```java
@@ -379,8 +438,8 @@ import 'network_interface_security_group_attachment_state.dart';
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.ec2.NetworkInterfaceSecurityGroupAttachment;
 /// import com.pulumi.aws.ec2.NetworkInterfaceSecurityGroupAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

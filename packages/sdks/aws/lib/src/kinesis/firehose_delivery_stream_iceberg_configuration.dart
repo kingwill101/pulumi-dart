@@ -14,18 +14,18 @@ class FirehoseDeliveryStreamIcebergConfiguration {
   final pulumi.Input<int>? bufferingSize;
   /// Glue catalog ARN identifier of the destination Apache Iceberg Tables. You must specify the ARN in the format `arn:aws:glue:region:account-id:catalog`
   final pulumi.Input<String> catalogArn;
-  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions>? cloudwatchLoggingOptions;
-  /// Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See `destination_table_configuration` block below for details.
+  /// Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See `destinationTableConfiguration` block below for details.
   final pulumi.Input<List<FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration>>? destinationTableConfigurations;
-  /// The data processing configuration.  See `processing_configuration` block below for details.
+  /// The data processing configuration.  See `processingConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration>? processingConfiguration;
   /// The period of time, in seconds between 0 to 7200, during which Firehose retries to deliver data to the specified destination.
   final pulumi.Input<int>? retryDuration;
   /// The ARN of the IAM role to be assumed by Firehose for calling Apache Iceberg Tables.
   final pulumi.Input<String> roleArn;
   final pulumi.Input<String>? s3BackupMode;
-  /// The S3 Configuration. See `s3_configuration` block below for details.
+  /// The S3 Configuration. See `s3Configuration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamIcebergConfigurationS3Configuration> s3Configuration;
 
   /// Creates a new [FirehoseDeliveryStreamIcebergConfiguration].
@@ -33,13 +33,13 @@ class FirehoseDeliveryStreamIcebergConfiguration {
   /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds between 0 and 900, before delivering it to the destination. The default value is 300.
   /// [bufferingSize] Buffer incoming data to the specified size, in MBs between 1 and 128, before delivering it to the destination. The default value is 5.
   /// [catalogArn] Glue catalog ARN identifier of the destination Apache Iceberg Tables. You must specify the ARN in the format `arn:aws:glue:region:account-id:catalog`
-  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
-  /// [destinationTableConfigurations] Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See `destination_table_configuration` block below for details.
-  /// [processingConfiguration] The data processing configuration.  See `processing_configuration` block below for details.
+  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
+  /// [destinationTableConfigurations] Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See `destinationTableConfiguration` block below for details.
+  /// [processingConfiguration] The data processing configuration.  See `processingConfiguration` block below for details.
   /// [retryDuration] The period of time, in seconds between 0 to 7200, during which Firehose retries to deliver data to the specified destination.
   /// [roleArn] The ARN of the IAM role to be assumed by Firehose for calling Apache Iceberg Tables.
   /// [s3BackupMode] Optional.
-  /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
+  /// [s3Configuration] The S3 Configuration. See `s3Configuration` block below for details.
   const FirehoseDeliveryStreamIcebergConfiguration({
     this.appendOnly,
     this.bufferingInterval,
@@ -86,4 +86,3 @@ class FirehoseDeliveryStreamIcebergConfiguration {
     );
   }
 }
-

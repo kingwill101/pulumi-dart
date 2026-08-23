@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScraperDestinationAmp {
-  /// The Amazon Resource Name (ARN) of the prometheus workspace.
+  /// ARN of the prometheus workspace.
   final pulumi.Input<String> workspaceArn;
 
   /// Creates a new [ScraperDestinationAmp].
-  /// [workspaceArn] The Amazon Resource Name (ARN) of the prometheus workspace.
+  /// [workspaceArn] ARN of the prometheus workspace.
   const ScraperDestinationAmp({
     required this.workspaceArn,
   });
@@ -24,4 +24,3 @@ class ScraperDestinationAmp {
     );
   }
 }
-

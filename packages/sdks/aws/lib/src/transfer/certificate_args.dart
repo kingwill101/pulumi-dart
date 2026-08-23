@@ -7,29 +7,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_transfer_certificate_certificate_args_doc}
 class CertificateArgs {
-  /// The valid certificate file required for the transfer.
+  /// Valid certificate file required for the transfer.
   final pulumi.Input<String> certificate;
-  /// The optional list of certificate that make up the chain for the certificate that is being imported.
+  /// Optional list of certificate that make up the chain for the certificate that is being imported.
   final pulumi.Input<String>? certificateChain;
-  /// A short description that helps identify the certificate.
+  /// Short description that helps identify the certificate.
   final pulumi.Input<String>? description;
-  /// The private key associated with the certificate being imported.
+  /// Private key associated with the certificate being imported.
   final pulumi.Input<String>? privateKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Specifies if a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
+  /// Whether a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
   final pulumi.Input<String> usage;
 
   /// Creates a new [CertificateArgs].
-  /// [certificate] The valid certificate file required for the transfer.
-  /// [certificateChain] The optional list of certificate that make up the chain for the certificate that is being imported.
-  /// [description] A short description that helps identify the certificate.
-  /// [privateKey] The private key associated with the certificate being imported.
+  /// [certificate] Valid certificate file required for the transfer.
+  /// [certificateChain] Optional list of certificate that make up the chain for the certificate that is being imported.
+  /// [description] Short description that helps identify the certificate.
+  /// [privateKey] Private key associated with the certificate being imported.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [usage] Specifies if a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [usage] Whether a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
   const CertificateArgs({
     required this.certificate,
     this.certificateChain,
@@ -64,4 +64,3 @@ class CertificateArgs {
     );
   }
 }
-

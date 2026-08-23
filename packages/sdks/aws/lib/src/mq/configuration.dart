@@ -17,7 +17,7 @@ import 'configuration_state.dart';
 ///     description: "Example Configuration",
 ///     name: "example",
 ///     engineType: "ActiveMQ",
-///     engineVersion: "5.17.6",
+///     engineVersion: "5.19",
 ///     data: `<?xml version=\\"1.0\\" encoding=\\"UTF-8\\" standalone=\\"yes\\"?>
 /// <broker xmlns=\\"http://activemq.apache.org/schema/core\\">
 ///   <plugins>
@@ -37,7 +37,7 @@ import 'configuration_state.dart';
 ///     description="Example Configuration",
 ///     name="example",
 ///     engine_type="ActiveMQ",
-///     engine_version="5.17.6",
+///     engine_version="5.19",
 ///     data="""<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>
 /// <broker xmlns=\"http://activemq.apache.org/schema/core\">
 ///   <plugins>
@@ -61,7 +61,7 @@ import 'configuration_state.dart';
 ///         Description = "Example Configuration",
 ///         Name = "example",
 ///         EngineType = "ActiveMQ",
-///         EngineVersion = "5.17.6",
+///         EngineVersion = "5.19",
 ///         Data = @"<?xml version=\""1.0\"" encoding=\""UTF-8\"" standalone=\""yes\""?>
 /// <broker xmlns=\""http://activemq.apache.org/schema/core\"">
 ///   <plugins>
@@ -89,7 +89,7 @@ import 'configuration_state.dart';
 /// 			Description:   pulumi.String("Example Configuration"),
 /// 			Name:          pulumi.String("example"),
 /// 			EngineType:    pulumi.String("ActiveMQ"),
-/// 			EngineVersion: pulumi.String("5.17.6"),
+/// 			EngineVersion: pulumi.String("5.19"),
 /// 			Data: pulumi.String(`<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>
 /// <broker xmlns=\"http://activemq.apache.org/schema/core\">
 ///   <plugins>
@@ -107,6 +107,23 @@ import 'configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mq_configuration" "example" {
+///   description    = "Example Configuration"
+///   name           = "example"
+///   engine_type    = "ActiveMQ"
+///   engine_version = "5.19"
+///   data           = "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" standalone=\\\"yes\\\"?>\n<broker xmlns=\\\"http://activemq.apache.org/schema/core\\\">\n  <plugins>\n    <forcePersistencyModeBrokerPlugin persistenceFlag=\\\"true\\\"/>\n    <statisticsBrokerPlugin/>\n    <timeStampingBrokerPlugin ttlCeiling=\\\"86400000\\\" zeroExpirationOverride=\\\"86400000\\\"/>\n  </plugins>\n</broker>\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +132,8 @@ import 'configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mq.Configuration;
 /// import com.pulumi.aws.mq.ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,7 +149,7 @@ import 'configuration_state.dart';
 ///             .description("Example Configuration")
 ///             .name("example")
 ///             .engineType("ActiveMQ")
-///             .engineVersion("5.17.6")
+///             .engineVersion("5.19")
 ///             .data("""
 /// <?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>
 /// <broker xmlns=\"http://activemq.apache.org/schema/core\">
@@ -156,7 +173,7 @@ import 'configuration_state.dart';
 ///       description: Example Configuration
 ///       name: example
 ///       engineType: ActiveMQ
-///       engineVersion: 5.17.6
+///       engineVersion: '5.19'
 ///       data: |
 ///         <?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>
 ///         <broker xmlns=\"http://activemq.apache.org/schema/core\">
@@ -180,7 +197,7 @@ import 'configuration_state.dart';
 ///     description: "Example Configuration",
 ///     name: "example",
 ///     engineType: "RabbitMQ",
-///     engineVersion: "3.11.20",
+///     engineVersion: "4.2",
 ///     data: `# Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds
 /// consumer_timeout = 1800000
 /// `,
@@ -194,7 +211,7 @@ import 'configuration_state.dart';
 ///     description="Example Configuration",
 ///     name="example",
 ///     engine_type="RabbitMQ",
-///     engine_version="3.11.20",
+///     engine_version="4.2",
 ///     data="""# Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds
 /// consumer_timeout = 1800000
 /// """)
@@ -212,7 +229,7 @@ import 'configuration_state.dart';
 ///         Description = "Example Configuration",
 ///         Name = "example",
 ///         EngineType = "RabbitMQ",
-///         EngineVersion = "3.11.20",
+///         EngineVersion = "4.2",
 ///         Data = @"# Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds
 /// consumer_timeout = 1800000
 /// ",
@@ -234,7 +251,7 @@ import 'configuration_state.dart';
 /// 			Description:   pulumi.String("Example Configuration"),
 /// 			Name:          pulumi.String("example"),
 /// 			EngineType:    pulumi.String("RabbitMQ"),
-/// 			EngineVersion: pulumi.String("3.11.20"),
+/// 			EngineVersion: pulumi.String("4.2"),
 /// 			Data:          pulumi.String("# Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds\nconsumer_timeout = 1800000\n"),
 /// 		})
 /// 		if err != nil {
@@ -242,6 +259,23 @@ import 'configuration_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mq_configuration" "example" {
+///   description    = "Example Configuration"
+///   name           = "example"
+///   engine_type    = "RabbitMQ"
+///   engine_version = "4.2"
+///   data           = "# Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds\nconsumer_timeout = 1800000\n"
 /// }
 /// ```
 /// ```java
@@ -252,8 +286,8 @@ import 'configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.mq.Configuration;
 /// import com.pulumi.aws.mq.ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,7 +303,7 @@ import 'configuration_state.dart';
 ///             .description("Example Configuration")
 ///             .name("example")
 ///             .engineType("RabbitMQ")
-///             .engineVersion("3.11.20")
+///             .engineVersion("4.2")
 ///             .data("""
 /// # Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds
 /// consumer_timeout = 1800000
@@ -287,7 +321,7 @@ import 'configuration_state.dart';
 ///       description: Example Configuration
 ///       name: example
 ///       engineType: RabbitMQ
-///       engineVersion: 3.11.20
+///       engineVersion: '4.2'
 ///       data: |
 ///         # Default RabbitMQ delivery acknowledgement timeout is 30 minutes in milliseconds
 ///         consumer_timeout = 1800000
@@ -322,9 +356,11 @@ class Configuration extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Set to `true` if you do not wish the configuration to be deleted at destroy time, and instead just remove the configuration from the Terraform state. Default is `false`.
+  late final pulumi.Output<bool?> skipDestroy;
+  /// Key-value map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Configuration].
@@ -350,6 +386,7 @@ class Configuration extends pulumi.CustomResource {
     latestRevision = registerOutput<int>('latestRevision');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -386,6 +423,7 @@ class Configuration extends pulumi.CustomResource {
     latestRevision = registerOutput<int>('latestRevision');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

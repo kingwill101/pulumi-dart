@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttp2RouteMatchQueryParameterMatch {
-  /// The exact query parameter to match on.
+  /// Exact query parameter to match on.
   final pulumi.Input<String>? exact;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteMatchQueryParameterMatch].
-  /// [exact] The exact query parameter to match on.
+  /// [exact] Exact query parameter to match on.
   const GatewayRouteSpecHttp2RouteMatchQueryParameterMatch({
     this.exact,
   });
@@ -24,4 +24,3 @@ class GatewayRouteSpecHttp2RouteMatchQueryParameterMatch {
     );
   }
 }
-

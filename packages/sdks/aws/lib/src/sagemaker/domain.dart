@@ -179,6 +179,40 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["sagemaker.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_domain" "example" {
+///   domain_name = "example"
+///   auth_mode   = "IAM"
+///   vpc_id      = exampleAwsVpc.id
+///   subnet_ids  = [exampleAwsSubnet.id]
+///   default_user_settings = {
+///     execution_role = aws_iam_role.example.arn
+///   }
+/// }
+/// resource "aws_iam_role" "example" {
+///   name               = "example"
+///   path               = "/"
+///   assume_role_policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,13 +221,15 @@ import 'domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.sagemaker.Domain;
 /// import com.pulumi.aws.sagemaker.DomainArgs;
 /// import com.pulumi.aws.sagemaker.inputs.DomainDefaultUserSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -434,7 +470,7 @@ import 'domain_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleImageVersion, err := sagemaker.NewImageVersion(ctx, "example", &sagemaker.ImageVersionArgs{
-/// 			ImageName: example.ID(),
+/// 			ImageName: example.ID().ToIDOutput().ToStringOutput(),
 /// 			BaseImage: pulumi.String("base-image"),
 /// 		})
 /// 		if err != nil {
@@ -466,6 +502,47 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_image" "example" {
+///   image_name = "example"
+///   role_arn   = exampleAwsIamRole.arn
+/// }
+/// resource "aws_sagemaker_appimageconfig" "example" {
+///   app_image_config_name = "example"
+///   kernel_gateway_image_config = {
+///     kernel_specs = [{
+///       "name" = "example"
+///     }]
+///   }
+/// }
+/// resource "aws_sagemaker_imageversion" "example" {
+///   image_name = aws_sagemaker_image.example.id
+///   base_image = "base-image"
+/// }
+/// resource "aws_sagemaker_domain" "example" {
+///   domain_name = "example"
+///   auth_mode   = "IAM"
+///   vpc_id      = exampleAwsVpc.id
+///   subnet_ids  = [exampleAwsSubnet.id]
+///   default_user_settings = {
+///     execution_role = exampleAwsIamRole.arn
+///     kernel_gateway_app_settings = {
+///       custom_images = [{
+///         "appImageConfigName" = aws_sagemaker_appimageconfig.example.app_image_config_name
+///         "imageName"          = aws_sagemaker_imageversion.example.image_name
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,14 +554,16 @@ import 'domain_state.dart';
 /// import com.pulumi.aws.sagemaker.AppImageConfig;
 /// import com.pulumi.aws.sagemaker.AppImageConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigKernelSpecArgs;
 /// import com.pulumi.aws.sagemaker.ImageVersion;
 /// import com.pulumi.aws.sagemaker.ImageVersionArgs;
 /// import com.pulumi.aws.sagemaker.Domain;
 /// import com.pulumi.aws.sagemaker.DomainArgs;
 /// import com.pulumi.aws.sagemaker.inputs.DomainDefaultUserSettingsArgs;
 /// import com.pulumi.aws.sagemaker.inputs.DomainDefaultUserSettingsKernelGatewayAppSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.sagemaker.inputs.DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImageArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -589,13 +668,13 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The mode of authentication that members use to access the domain. Valid values are `IAM` and `SSO`.
   late final pulumi.Output<String> authMode;
-  /// The default space settings. See `default_space_settings` Block below.
+  /// The default space settings. See `defaultSpaceSettings` Block below.
   late final pulumi.Output<DomainDefaultSpaceSettings?> defaultSpaceSettings;
-  /// The default user settings. See `default_user_settings` Block below.
+  /// The default user settings. See `defaultUserSettings` Block below.
   late final pulumi.Output<DomainDefaultUserSettings> defaultUserSettings;
   /// The domain name.
   late final pulumi.Output<String> domainName;
-  /// The domain settings. See `domain_settings` Block below.
+  /// The domain settings. See `domainSettings` Block below.
   late final pulumi.Output<DomainDomainSettings?> domainSettings;
   /// The ID of the Amazon Elastic File System (EFS) managed by this Domain.
   late final pulumi.Output<String> homeEfsFileSystemId;
@@ -603,7 +682,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String?> kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retention_policy` Block below.
+  /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retentionPolicy` Block below.
   late final pulumi.Output<DomainRetentionPolicy?> retentionPolicy;
   /// The ID of the security group that authorizes traffic between the RSessionGateway apps and the RStudioServerPro app.
   late final pulumi.Output<String> securityGroupIdForDomainBoundary;
@@ -615,9 +694,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> subnetIds;
   /// Indicates whether custom tag propagation is supported for the domain. Defaults to `DISABLED`. Valid values are: `ENABLED` and `DISABLED`.
   late final pulumi.Output<String?> tagPropagation;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The domain's URL.
   late final pulumi.Output<String> url;

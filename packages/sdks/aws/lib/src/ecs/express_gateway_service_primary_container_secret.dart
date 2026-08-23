@@ -3,12 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServicePrimaryContainerSecret {
+  /// Name of the secret.
   final pulumi.Input<String> name;
   /// ARN of the AWS Secrets Manager secret or AWS Systems Manager parameter containing the secret value.
   final pulumi.Input<String> valueFrom;
 
   /// Creates a new [ExpressGatewayServicePrimaryContainerSecret].
-  /// [name] Required.
+  /// [name] Name of the secret.
   /// [valueFrom] ARN of the AWS Secrets Manager secret or AWS Systems Manager parameter containing the secret value.
   const ExpressGatewayServicePrimaryContainerSecret({
     required this.name,
@@ -29,4 +30,3 @@ class ExpressGatewayServicePrimaryContainerSecret {
     );
   }
 }
-

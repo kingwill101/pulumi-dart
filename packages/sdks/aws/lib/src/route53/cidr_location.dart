@@ -77,7 +77,7 @@ import 'cidr_location_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewCidrLocation(ctx, "example", &route53.CidrLocationArgs{
-/// 			CidrCollectionId: example.ID(),
+/// 			CidrCollectionId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:             pulumi.String("office"),
 /// 			CidrBlocks: pulumi.StringArray{
 /// 				pulumi.String("200.5.3.0/24"),
@@ -91,6 +91,24 @@ import 'cidr_location_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_cidrcollection" "example" {
+///   name = "collection-1"
+/// }
+/// resource "aws_route53_cidrlocation" "example" {
+///   cidr_collection_id = aws_route53_cidrcollection.example.id
+///   name               = "office"
+///   cidr_blocks        = ["200.5.3.0/24", "200.6.3.0/24"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +119,8 @@ import 'cidr_location_state.dart';
 /// import com.pulumi.aws.route53.CidrCollectionArgs;
 /// import com.pulumi.aws.route53.CidrLocation;
 /// import com.pulumi.aws.route53.CidrLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

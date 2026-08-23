@@ -61,6 +61,20 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftserverless_snapshot" "example" {
+///   namespace_name = exampleAwsRedshiftserverlessWorkgroup.namespaceName
+///   snapshot_name  = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftserverless.Snapshot;
 /// import com.pulumi.aws.redshiftserverless.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,7 @@ import 'snapshot_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Serverless Snapshots using the `snapshot_name`. For example:
+/// Using `pulumi import`, import Redshift Serverless Snapshots using the `snapshotName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshiftserverless/snapshot:Snapshot example example

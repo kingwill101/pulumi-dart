@@ -166,6 +166,38 @@ import 'selection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["backup.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_backup_selection" "example" {
+///   iam_role_arn = aws_iam_role.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,14 +206,16 @@ import 'selection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import com.pulumi.aws.backup.Selection;
 /// import com.pulumi.aws.backup.SelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -342,6 +376,26 @@ import 'selection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_selection" "example" {
+///   iam_role_arn = exampleAwsIamRole.arn
+///   name         = "my_example_backup_selection"
+///   plan_id      = exampleAwsBackupPlan.id
+///   selection_tags {
+///     type  = "STRINGEQUALS"
+///     key   = "foo"
+///     value = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -351,8 +405,8 @@ import 'selection_state.dart';
 /// import com.pulumi.aws.backup.Selection;
 /// import com.pulumi.aws.backup.SelectionArgs;
 /// import com.pulumi.aws.backup.inputs.SelectionSelectionTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -565,6 +619,40 @@ import 'selection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_selection" "example" {
+///   iam_role_arn = exampleAwsIamRole.arn
+///   name         = "my_example_backup_selection"
+///   plan_id      = exampleAwsBackupPlan.id
+///   resources    = ["*"]
+///   conditions {
+///     string_equals {
+///       key   = "aws:ResourceTag/Component"
+///       value = "rds"
+///     }
+///     string_likes {
+///       key   = "aws:ResourceTag/Application"
+///       value = "app*"
+///     }
+///     string_not_equals {
+///       key   = "aws:ResourceTag/Backup"
+///       value = "false"
+///     }
+///     string_not_likes {
+///       key   = "aws:ResourceTag/Environment"
+///       value = "test*"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -574,8 +662,12 @@ import 'selection_state.dart';
 /// import com.pulumi.aws.backup.Selection;
 /// import com.pulumi.aws.backup.SelectionArgs;
 /// import com.pulumi.aws.backup.inputs.SelectionConditionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.backup.inputs.SelectionConditionStringEqualArgs;
+/// import com.pulumi.aws.backup.inputs.SelectionConditionStringLikeArgs;
+/// import com.pulumi.aws.backup.inputs.SelectionConditionStringNotEqualArgs;
+/// import com.pulumi.aws.backup.inputs.SelectionConditionStringNotLikeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -723,6 +815,22 @@ import 'selection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_selection" "example" {
+///   iam_role_arn = exampleAwsIamRole.arn
+///   name         = "my_example_backup_selection"
+///   plan_id      = exampleAwsBackupPlan.id
+///   resources    = [exampleAwsDbInstance.arn, exampleAwsEbsVolume.arn, exampleAwsEfsFileSystem.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -731,8 +839,8 @@ import 'selection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.Selection;
 /// import com.pulumi.aws.backup.SelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -854,6 +962,22 @@ import 'selection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_backup_selection" "example" {
+///   iam_role_arn  = exampleAwsIamRole.arn
+///   name          = "my_example_backup_selection"
+///   plan_id       = exampleAwsBackupPlan.id
+///   not_resources = [exampleAwsDbInstance.arn, exampleAwsEbsVolume.arn, exampleAwsEfsFileSystem.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -862,8 +986,8 @@ import 'selection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.Selection;
 /// import com.pulumi.aws.backup.SelectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -905,10 +1029,23 @@ import 'selection_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Backup selection using the role plan_id and id separated by `|`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `planId` (Required) Backup plan ID associated with the selection of resources.
+/// * `id` (String) Backup selection ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Backup selection using the `planId` and `id` separated by `|`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:backup/selection:Selection example plan-id|selection-id
+/// $ pulumi import aws:backup/selection:Selection example abcd1234|efgh5678
 /// ```
 class Selection extends pulumi.CustomResource {
   /// Condition-based filters used to specify sets of resources for a backup plan. See below for details.

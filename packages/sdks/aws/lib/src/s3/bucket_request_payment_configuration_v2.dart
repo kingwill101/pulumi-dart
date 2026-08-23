@@ -65,6 +65,20 @@ import 'bucket_request_payment_configuration_v2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketrequestpaymentconfiguration" "example" {
+///   bucket = exampleAwsS3Bucket.id
+///   payer  = "Requester"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'bucket_request_payment_configuration_v2_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.BucketRequestPaymentConfiguration;
 /// import com.pulumi.aws.s3.BucketRequestPaymentConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,10 +120,10 @@ import 'bucket_request_payment_configuration_v2_state.dart';
 ///
 /// ## Import
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
-/// **Using `pulumi import` to import** S3 bucket request payment configuration using the `bucket` or using the `bucket` and `expected_bucket_owner` separated by a comma (`,`). For example:
+/// **Using `pulumi import` to import** S3 bucket request payment configuration using the `bucket` or using the `bucket` and `expectedBucketOwner` separated by a comma (`,`). For example:
 ///
 /// If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`:
 ///
@@ -117,7 +131,7 @@ import 'bucket_request_payment_configuration_v2_state.dart';
 /// $ pulumi import aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2 example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2 example bucket-name,123456789012
@@ -127,7 +141,7 @@ class BucketRequestPaymentConfigurationV2 extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-  /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
+  /// Who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   late final pulumi.Output<String> payer;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

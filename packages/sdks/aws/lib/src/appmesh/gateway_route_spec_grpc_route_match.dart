@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecGrpcRouteMatch {
-  /// The port number to match from the request.
+  /// Port number to match from the request.
   final pulumi.Input<int>? port;
   /// Fully qualified domain name for the service to match from the request.
   final pulumi.Input<String> serviceName;
 
   /// Creates a new [GatewayRouteSpecGrpcRouteMatch].
-  /// [port] The port number to match from the request.
+  /// [port] Port number to match from the request.
   /// [serviceName] Fully qualified domain name for the service to match from the request.
   const GatewayRouteSpecGrpcRouteMatch({
     this.port,
@@ -30,4 +30,3 @@ class GatewayRouteSpecGrpcRouteMatch {
     );
   }
 }
-

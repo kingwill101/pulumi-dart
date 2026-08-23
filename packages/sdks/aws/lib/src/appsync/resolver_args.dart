@@ -13,9 +13,9 @@ import 'resolver_sync_config.dart';
 class ResolverArgs {
   /// API ID for the GraphQL API.
   final pulumi.Input<String> apiId;
-  /// The Caching Config. See Caching Config.
+  /// Caching Config. See Caching Config.
   final pulumi.Input<ResolverCachingConfig>? cachingConfig;
-  /// The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
+  /// Function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
   final pulumi.Input<String>? code;
   /// Data source name.
   final pulumi.Input<String>? dataSource;
@@ -25,7 +25,7 @@ class ResolverArgs {
   final pulumi.Input<String>? kind;
   /// Maximum batching size for a resolver. Valid values are between `0` and `2000`.
   final pulumi.Input<int>? maxBatchSize;
-  /// The caching configuration for the resolver. See Pipeline Config.
+  /// Caching configuration for the resolver. See Pipeline Config.
   final pulumi.Input<ResolverPipelineConfig>? pipelineConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -33,27 +33,27 @@ class ResolverArgs {
   final pulumi.Input<String>? requestTemplate;
   /// Response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
   final pulumi.Input<String>? responseTemplate;
-  /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
+  /// Runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
   final pulumi.Input<ResolverRuntime>? runtime;
-  /// Describes a Sync configuration for a resolver. See Sync Config.
+  /// Sync configuration for a resolver. See Sync Config.
   final pulumi.Input<ResolverSyncConfig>? syncConfig;
   /// Type name from the schema defined in the GraphQL API.
   final pulumi.Input<String> type;
 
   /// Creates a new [ResolverArgs].
   /// [apiId] API ID for the GraphQL API.
-  /// [cachingConfig] The Caching Config. See Caching Config.
-  /// [code] The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
+  /// [cachingConfig] Caching Config. See Caching Config.
+  /// [code] Function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
   /// [dataSource] Data source name.
   /// [field] Field name from the schema defined in the GraphQL API.
   /// [kind] Resolver type. Valid values are `UNIT` and `PIPELINE`.
   /// [maxBatchSize] Maximum batching size for a resolver. Valid values are between `0` and `2000`.
-  /// [pipelineConfig] The caching configuration for the resolver. See Pipeline Config.
+  /// [pipelineConfig] Caching configuration for the resolver. See Pipeline Config.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requestTemplate] Request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
   /// [responseTemplate] Response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
-  /// [runtime] Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
-  /// [syncConfig] Describes a Sync configuration for a resolver. See Sync Config.
+  /// [runtime] Runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
+  /// [syncConfig] Sync configuration for a resolver. See Sync Config.
   /// [type] Type name from the schema defined in the GraphQL API.
   const ResolverArgs({
     required this.apiId,
@@ -110,4 +110,3 @@ class ResolverArgs {
     );
   }
 }
-

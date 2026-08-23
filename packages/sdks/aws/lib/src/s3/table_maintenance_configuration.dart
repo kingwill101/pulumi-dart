@@ -5,16 +5,14 @@ import 'table_maintenance_configuration_iceberg_compaction.dart';
 import 'table_maintenance_configuration_iceberg_snapshot_management.dart';
 
 class TableMaintenanceConfiguration {
-  /// A single Iceberg compaction settings object.
-  /// See `iceberg_compaction` below.
+  /// Single Iceberg compaction settings object. See `icebergCompaction` below.
   final pulumi.Input<TableMaintenanceConfigurationIcebergCompaction> icebergCompaction;
-  /// A single Iceberg snapshot management settings object.
-  /// See `iceberg_snapshot_management` below.
+  /// Single Iceberg snapshot management settings object. See `icebergSnapshotManagement` below.
   final pulumi.Input<TableMaintenanceConfigurationIcebergSnapshotManagement> icebergSnapshotManagement;
 
   /// Creates a new [TableMaintenanceConfiguration].
-  /// [icebergCompaction] A single Iceberg compaction settings object.
-  /// [icebergSnapshotManagement] A single Iceberg snapshot management settings object.
+  /// [icebergCompaction] Single Iceberg compaction settings object. See `icebergCompaction` below.
+  /// [icebergSnapshotManagement] Single Iceberg snapshot management settings object. See `icebergSnapshotManagement` below.
   const TableMaintenanceConfiguration({
     required this.icebergCompaction,
     required this.icebergSnapshotManagement,
@@ -34,4 +32,3 @@ class TableMaintenanceConfiguration {
     );
   }
 }
-

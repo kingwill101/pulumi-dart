@@ -87,6 +87,25 @@ import 'workflow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_workflow" "example" {
+///   steps {
+///     delete_step_details = {
+///       name                 = "example"
+///       source_file_location = "$${original.file}"
+///     }
+///     type = "DELETE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'workflow_state.dart';
 /// import com.pulumi.aws.transfer.WorkflowArgs;
 /// import com.pulumi.aws.transfer.inputs.WorkflowStepArgs;
 /// import com.pulumi.aws.transfer.inputs.WorkflowStepDeleteStepDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +300,38 @@ import 'workflow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_workflow" "example" {
+///   steps {
+///     custom_step_details = {
+///       name                 = "example"
+///       source_file_location = "$${original.file}"
+///       target               = exampleAwsLambdaFunction.arn
+///       timeout_seconds      = 60
+///     }
+///     type = "CUSTOM"
+///   }
+///   steps {
+///     tag_step_details = {
+///       name                 = "example"
+///       source_file_location = "$${original.file}"
+///       tags = [{
+///         "key"   = "Name"
+///         "value" = "Hello World"
+///       }]
+///     }
+///     type = "TAG"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +343,9 @@ import 'workflow_state.dart';
 /// import com.pulumi.aws.transfer.inputs.WorkflowStepArgs;
 /// import com.pulumi.aws.transfer.inputs.WorkflowStepCustomStepDetailsArgs;
 /// import com.pulumi.aws.transfer.inputs.WorkflowStepTagStepDetailsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.transfer.inputs.WorkflowStepTagStepDetailsTagArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,25 +408,25 @@ import 'workflow_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer Workflows using the `worflow_id`. For example:
+/// Using `pulumi import`, import Transfer Workflows using the `worflowId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/workflow:Workflow example example
 /// ```
 class Workflow extends pulumi.CustomResource {
-  /// The Workflow ARN.
+  /// Workflow ARN.
   late final pulumi.Output<String> arn;
-  /// A textual description for the workflow.
+  /// Textual description for the workflow.
   late final pulumi.Output<String?> description;
-  /// Specifies the steps (actions) to take if errors are encountered during execution of the workflow. See Workflow Steps below.
+  /// Steps (actions) to take if errors are encountered during execution of the workflow. See `onExceptionSteps` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> onExceptionSteps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the details for the steps that are in the specified workflow. See Workflow Steps below.
+  /// Details for the steps that are in the specified workflow. See `steps` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>> steps;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Workflow].

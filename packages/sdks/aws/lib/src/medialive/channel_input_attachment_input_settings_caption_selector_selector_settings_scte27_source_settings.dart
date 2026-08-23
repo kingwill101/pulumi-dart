@@ -28,4 +28,3 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27So
     );
   }
 }
-

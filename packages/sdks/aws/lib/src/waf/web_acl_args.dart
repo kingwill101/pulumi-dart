@@ -20,7 +20,7 @@ class WebAclArgs {
   final pulumi.Input<String>? name;
   /// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
   final pulumi.Input<List<WebAclRule>>? rules;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [WebAclArgs].
@@ -29,7 +29,7 @@ class WebAclArgs {
   /// [metricName] The name or description for the Amazon CloudWatch metric of this web ACL.
   /// [name] The name or description of the web ACL.
   /// [rules] Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const WebAclArgs({
     required this.defaultAction,
     this.loggingConfiguration,
@@ -61,4 +61,3 @@ class WebAclArgs {
     );
   }
 }
-

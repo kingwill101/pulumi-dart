@@ -193,6 +193,39 @@ import 'file_cache_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_filecache" "example" {
+///   data_repository_associations {
+///     data_repository_path           = "nfs://filer.domain.com"
+///     data_repository_subdirectories = ["test", "test2"]
+///     file_cache_path                = "/ns1"
+///     nfs {
+///       dns_ips = ["192.168.0.1", "192.168.0.2"]
+///       version = "NFS3"
+///     }
+///   }
+///   file_cache_type         = "LUSTRE"
+///   file_cache_type_version = "2.12"
+///   lustre_configurations {
+///     deployment_type = "CACHE_1"
+///     metadata_configurations {
+///       storage_capacity = 2400
+///     }
+///     per_unit_storage_throughput   = 1000
+///     weekly_maintenance_start_time = "2:05:00"
+///   }
+///   subnet_ids       = [test1.id]
+///   storage_capacity = 1200
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,9 +235,11 @@ import 'file_cache_state.dart';
 /// import com.pulumi.aws.fsx.FileCache;
 /// import com.pulumi.aws.fsx.FileCacheArgs;
 /// import com.pulumi.aws.fsx.inputs.FileCacheDataRepositoryAssociationArgs;
+/// import com.pulumi.aws.fsx.inputs.FileCacheDataRepositoryAssociationNfArgs;
 /// import com.pulumi.aws.fsx.inputs.FileCacheLustreConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.fsx.inputs.FileCacheLustreConfigurationMetadataConfigurationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,44 +320,42 @@ import 'file_cache_state.dart';
 /// $ pulumi import aws:fsx/fileCache:FileCache example fc-8012925589
 /// ```
 class FileCache extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the resource.
+  /// Amazon Resource Name (ARN) of the cache.
   late final pulumi.Output<String> arn;
-  /// A boolean flag indicating whether tags for the cache should be copied to data repository associations. This value defaults to false.
+  /// Whether to copy tags for the cache to data repository associations. Defaults to `false`.
   late final pulumi.Output<bool?> copyTagsToDataRepositoryAssociations;
-  /// A list of IDs of data repository associations that are associated with this cache.
+  /// IDs of data repository associations that are associated with the cache.
   late final pulumi.Output<List<String>> dataRepositoryAssociationIds;
-  /// See the `data_repository_association` configuration block. Max of 8.
-  /// A list of up to 8 configurations for data repository associations (DRAs) to be created during the cache creation. The DRAs link the cache to either an Amazon S3 data repository or a Network File System (NFS) data repository that supports the NFSv3 protocol. The DRA configurations must meet the following requirements: 1) All configurations on the list must be of the same data repository type, either all S3 or all NFS. A cache can't link to different data repository types at the same time. 2) An NFS DRA must link to an NFS file system that supports the NFSv3 protocol. DRA automatic import and automatic export is not supported.
+  /// Configurations for up to 8 data repository associations (DRAs) to create during cache creation. All configurations must be of the same data repository type, either all S3 or all NFS. Maximum of 8. See `dataRepositoryAssociation` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataRepositoryAssociations;
-  /// The Domain Name System (DNS) name for the cache.
+  /// Domain Name System (DNS) name for the cache.
   late final pulumi.Output<String> dnsName;
-  /// The system-generated, unique ID of the cache.
+  /// System-generated, unique ID of the cache.
   late final pulumi.Output<String> fileCacheId;
-  /// The type of cache that you're creating. The only supported value is `LUSTRE`.
+  /// Type of cache to create. The only supported value is `LUSTRE`.
   late final pulumi.Output<String> fileCacheType;
-  /// The version for the type of cache that you're creating. The only supported value is `2.12`.
+  /// Version for the type of cache to create. The only supported value is `2.12`.
   late final pulumi.Output<String> fileCacheTypeVersion;
-  /// Specifies the ID of the AWS Key Management Service (AWS KMS) key to use for encrypting data on an Amazon File Cache. If a KmsKeyId isn't specified, the Amazon FSx-managed AWS KMS key for your account is used.
+  /// ID of the AWS Key Management Service (KMS) key to use for encrypting data on the cache. Defaults to the Amazon FSx-managed KMS key for your account.
   late final pulumi.Output<String> kmsKeyId;
-  /// See the `lustre_configuration` block. Required when `file_cache_type` is `LUSTRE`.
+  /// Configuration for the Lustre cache. Required when `fileCacheType` is `LUSTRE`. See `lustreConfiguration` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> lustreConfigurations;
-  /// A list of network interface IDs.
+  /// IDs of the network interfaces.
   late final pulumi.Output<List<String>> networkInterfaceIds;
+  /// AWS account that created the cache.
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A list of IDs specifying the security groups to apply to all network interfaces created for Amazon File Cache access.
+  /// IDs of the security groups to apply to all network interfaces created for cache access.
   late final pulumi.Output<List<String>?> securityGroupIds;
-  /// The storage capacity of the cache in gibibytes (GiB). Valid values are `1200` GiB, `2400` GiB, and increments of `2400` GiB.
+  /// Storage capacity of the cache in gibibytes (GiB). Valid values are `1200` GiB, `2400` GiB, and increments of `2400` GiB.
   late final pulumi.Output<int> storageCapacity;
-  /// A list of subnet IDs that the cache will be accessible from. You can specify only one subnet ID.
-  ///
-  /// The following arguments are optional:
+  /// Subnet IDs that the cache is accessible from. You can specify only one subnet ID.
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags to assign to the file cache. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the file cache. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The ID of your virtual private cloud (VPC).
+  /// ID of your virtual private cloud (VPC).
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [FileCache].

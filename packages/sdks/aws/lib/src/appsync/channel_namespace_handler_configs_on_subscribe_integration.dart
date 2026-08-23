@@ -6,12 +6,12 @@ import 'channel_namespace_handler_configs_on_subscribe_integration_lambda_config
 class ChannelNamespaceHandlerConfigsOnSubscribeIntegration {
   /// Unique name of the data source that has been configured on the API.
   final pulumi.Input<String> dataSourceName;
-  /// Configuration for a Lambda data source. See Lambda Config below.
+  /// Configuration for a Lambda data source. See `lambdaConfig` below.
   final pulumi.Input<ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig>? lambdaConfig;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnSubscribeIntegration].
   /// [dataSourceName] Unique name of the data source that has been configured on the API.
-  /// [lambdaConfig] Configuration for a Lambda data source. See Lambda Config below.
+  /// [lambdaConfig] Configuration for a Lambda data source. See `lambdaConfig` below.
   const ChannelNamespaceHandlerConfigsOnSubscribeIntegration({
     required this.dataSourceName,
     this.lambdaConfig,
@@ -31,4 +31,3 @@ class ChannelNamespaceHandlerConfigsOnSubscribeIntegration {
     );
   }
 }
-

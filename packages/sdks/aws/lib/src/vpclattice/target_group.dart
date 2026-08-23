@@ -85,6 +85,25 @@ import 'target_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_targetgroup" "example" {
+///   name = "example"
+///   type = "INSTANCE"
+///   config = {
+///     vpc_identifier = exampleAwsVpc.id
+///     port           = 443
+///     protocol       = "HTTPS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +113,8 @@ import 'target_group_state.dart';
 /// import com.pulumi.aws.vpclattice.TargetGroup;
 /// import com.pulumi.aws.vpclattice.TargetGroupArgs;
 /// import com.pulumi.aws.vpclattice.inputs.TargetGroupConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,6 +297,41 @@ import 'target_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_targetgroup" "example" {
+///   name = "example"
+///   type = "IP"
+///   config = {
+///     vpc_identifier   = exampleAwsVpc.id
+///     ip_address_type  = "IPV4"
+///     port             = 443
+///     protocol         = "HTTPS"
+///     protocol_version = "HTTP1"
+///     health_check = {
+///       enabled                       = true
+///       health_check_interval_seconds = 20
+///       health_check_timeout_seconds  = 10
+///       healthy_threshold_count       = 7
+///       unhealthy_threshold_count     = 3
+///       matcher = {
+///         value = "200-299"
+///       }
+///       path             = "/instance"
+///       port             = 80
+///       protocol         = "HTTP"
+///       protocol_version = "HTTP1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +343,8 @@ import 'target_group_state.dart';
 /// import com.pulumi.aws.vpclattice.inputs.TargetGroupConfigArgs;
 /// import com.pulumi.aws.vpclattice.inputs.TargetGroupConfigHealthCheckArgs;
 /// import com.pulumi.aws.vpclattice.inputs.TargetGroupConfigHealthCheckMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,7 +415,7 @@ import 'target_group_state.dart';
 ///
 /// ### ALB
 ///
-/// If the type is ALB, `health_check` block is not supported.
+/// If the type is ALB, `healthCheck` block is not supported.
 ///
 ///
 /// ```typescript
@@ -443,6 +497,26 @@ import 'target_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_targetgroup" "example" {
+///   name = "example"
+///   type = "ALB"
+///   config = {
+///     vpc_identifier   = exampleAwsVpc.id
+///     port             = 443
+///     protocol         = "HTTPS"
+///     protocol_version = "HTTP1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -452,8 +526,8 @@ import 'target_group_state.dart';
 /// import com.pulumi.aws.vpclattice.TargetGroup;
 /// import com.pulumi.aws.vpclattice.TargetGroupArgs;
 /// import com.pulumi.aws.vpclattice.inputs.TargetGroupConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,6 +627,20 @@ import 'target_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_targetgroup" "example" {
+///   name = "example"
+///   type = "LAMBDA"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -561,8 +649,8 @@ import 'target_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.TargetGroup;
 /// import com.pulumi.aws.vpclattice.TargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -602,19 +690,19 @@ import 'target_group_state.dart';
 class TargetGroup extends pulumi.CustomResource {
   /// ARN of the target group.
   late final pulumi.Output<String> arn;
-  /// The target group configuration.
+  /// Target group configuration. See `config` Block below.
   late final pulumi.Output<TargetGroupConfig?> config;
-  /// The name of the target group. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
+  /// Name of the target group. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Status of the target group.
   late final pulumi.Output<String> status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The type of target group. Valid Values are `IP` | `LAMBDA` | `INSTANCE` | `ALB`
+  /// Type of target group. Valid values are `IP`, `LAMBDA`, `INSTANCE`, or `ALB`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> type;

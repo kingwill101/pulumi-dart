@@ -8,6 +8,7 @@ import 'get_firewall_policy_firewall_policy_stateless_custom_action.dart';
 import 'get_firewall_policy_firewall_policy_stateless_rule_group_reference.dart';
 
 class GetFirewallPolicyFirewallPolicy {
+  final pulumi.Input<bool> enableTlsSessionHolding;
   final pulumi.Input<List<GetFirewallPolicyFirewallPolicyPolicyVariable>> policyVariables;
   final pulumi.Input<List<String>> statefulDefaultActions;
   final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>> statefulEngineOptions;
@@ -19,6 +20,7 @@ class GetFirewallPolicyFirewallPolicy {
   final pulumi.Input<String> tlsInspectionConfigurationArn;
 
   /// Creates a new [GetFirewallPolicyFirewallPolicy].
+  /// [enableTlsSessionHolding] Required.
   /// [policyVariables] Required.
   /// [statefulDefaultActions] Required.
   /// [statefulEngineOptions] Required.
@@ -29,6 +31,7 @@ class GetFirewallPolicyFirewallPolicy {
   /// [statelessRuleGroupReferences] Required.
   /// [tlsInspectionConfigurationArn] Required.
   const GetFirewallPolicyFirewallPolicy({
+    required this.enableTlsSessionHolding,
     required this.policyVariables,
     required this.statefulDefaultActions,
     required this.statefulEngineOptions,
@@ -42,6 +45,7 @@ class GetFirewallPolicyFirewallPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'enableTlsSessionHolding': enableTlsSessionHolding,
       'policyVariables': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyPolicyVariable>, List<Map<String, dynamic>>>(policyVariables, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyPolicyVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulDefaultActions': statefulDefaultActions,
       'statefulEngineOptions': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>, List<Map<String, dynamic>>>(statefulEngineOptions, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOption, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -56,6 +60,7 @@ class GetFirewallPolicyFirewallPolicy {
 
   factory GetFirewallPolicyFirewallPolicy.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicy(
+      enableTlsSessionHolding: pulumi.Input.fromValue(map['enableTlsSessionHolding'] as bool),
       policyVariables: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyPolicyVariable>(map['policyVariables']!, (value) => GetFirewallPolicyFirewallPolicyPolicyVariable.fromMap((value as Map).cast<String, dynamic>()))),
       statefulDefaultActions: pulumi.Input.fromValue((map['statefulDefaultActions'] as List).cast<String>()),
       statefulEngineOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOption>(map['statefulEngineOptions']!, (value) => GetFirewallPolicyFirewallPolicyStatefulEngineOption.fromMap((value as Map).cast<String, dynamic>()))),
@@ -68,4 +73,3 @@ class GetFirewallPolicyFirewallPolicy {
     );
   }
 }
-

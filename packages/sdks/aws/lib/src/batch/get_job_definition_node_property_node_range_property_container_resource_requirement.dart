@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement {
-  /// The type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
+  /// Type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
   final pulumi.Input<String> type;
-  /// The quantity of the specified resource to reserve for the container.
+  /// Quantity of the specified resource to reserve for the container.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement].
-  /// [type] The type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
-  /// [value] The quantity of the specified resource to reserve for the container.
+  /// [type] Type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
+  /// [value] Quantity of the specified resource to reserve for the container.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement({
     required this.type,
     required this.value,
@@ -30,4 +30,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement 
     );
   }
 }
-

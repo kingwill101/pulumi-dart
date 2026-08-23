@@ -56,6 +56,19 @@ import 'vectors_vector_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_vectorsvectorbucket" "example" {
+///   vector_bucket_name = "example-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'vectors_vector_bucket_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.VectorsVectorBucket;
 /// import com.pulumi.aws.s3.VectorsVectorBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,6 +181,23 @@ import 'vectors_vector_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_vectorsvectorbucket" "example" {
+///   vector_bucket_name = "example-bucket"
+///   encryption_configurations {
+///     sse_type    = "aws:kms"
+///     kms_key_arn = exampleAwsKmsKey.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +207,8 @@ import 'vectors_vector_bucket_state.dart';
 /// import com.pulumi.aws.s3.VectorsVectorBucket;
 /// import com.pulumi.aws.s3.VectorsVectorBucketArgs;
 /// import com.pulumi.aws.s3.inputs.VectorsVectorBucketEncryptionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,7 +245,14 @@ import 'vectors_vector_bucket_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Vectors Vector Bucket using the `vector_bucket_arn`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `vectorBucketArn` (String) ARN of the S3 Vectors Vector Bucket.
+///
+///
+/// Using `pulumi import`, import S3 Vectors Vector Bucket using the `vectorBucketArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3/vectorsVectorBucket:VectorsVectorBucket example arn:aws:s3vectors:us-west-2:123456789012:bucket/example-bucket
@@ -223,15 +260,15 @@ import 'vectors_vector_bucket_state.dart';
 class VectorsVectorBucket extends pulumi.CustomResource {
   /// Date and time when the vector bucket was created.
   late final pulumi.Output<String> creationTime;
-  /// Encryption configuration for the vector bucket. See Encryption Configuration below for more details.
+  /// Encryption configuration for the vector bucket. See `encryptionConfiguration` below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> encryptionConfigurations;
   /// Boolean that indicates all indexes and vectors should be deleted from the vector bucket *when the vector bucket is destroyed* so that the vector bucket can be destroyed without error. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the vector bucket or destroying the vector bucket, this flag will not work.
   late final pulumi.Output<bool> forceDestroy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the vector bucket.
   late final pulumi.Output<String> vectorBucketArn;

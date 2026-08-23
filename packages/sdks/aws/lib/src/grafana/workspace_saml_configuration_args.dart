@@ -17,9 +17,9 @@ class WorkspaceSamlConfigurationArgs {
   final pulumi.Input<String>? emailAssertion;
   /// The groups assertion.
   final pulumi.Input<String>? groupsAssertion;
-  /// The IDP Metadata URL. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
+  /// The IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   final pulumi.Input<String>? idpMetadataUrl;
-  /// The IDP Metadata XML. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
+  /// The IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   final pulumi.Input<String>? idpMetadataXml;
   /// The login assertion.
   final pulumi.Input<String>? loginAssertion;
@@ -44,8 +44,8 @@ class WorkspaceSamlConfigurationArgs {
   /// [editorRoleValues] The editor role values.
   /// [emailAssertion] The email assertion.
   /// [groupsAssertion] The groups assertion.
-  /// [idpMetadataUrl] The IDP Metadata URL. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
-  /// [idpMetadataXml] The IDP Metadata XML. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
+  /// [idpMetadataUrl] The IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
+  /// [idpMetadataXml] The IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   /// [loginAssertion] The login assertion.
   /// [loginValidityDuration] The login validity duration.
   /// [nameAssertion] The name assertion.
@@ -108,4 +108,3 @@ class WorkspaceSamlConfigurationArgs {
     );
   }
 }
-

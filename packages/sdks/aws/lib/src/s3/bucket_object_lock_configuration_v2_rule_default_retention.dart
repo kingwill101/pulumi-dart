@@ -36,4 +36,3 @@ class BucketObjectLockConfigurationV2RuleDefaultRetention {
     );
   }
 }
-

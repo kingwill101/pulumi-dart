@@ -54,6 +54,19 @@ import 'transit_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_transitgateway" "example" {
+///   description = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'transit_gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.TransitGateway;
 /// import com.pulumi.aws.ec2transitgateway.TransitGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,7 +114,7 @@ import 'transit_gateway_state.dart';
 class TransitGateway extends pulumi.CustomResource {
   /// Private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is `64512` to `65534` for 16-bit ASNs and `4200000000` to `4294967294` for 32-bit ASNs. Default value: `64512`.
   ///
-  /// &gt; **NOTE:** Modifying `amazon_side_asn` on a Transit Gateway with active BGP sessions is [not allowed](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayOptions.html). You must first delete all Transit Gateway attachments that have BGP configured prior to modifying `amazon_side_asn`.
+  /// &gt; **NOTE:** Modifying `amazonSideAsn` on a Transit Gateway with active BGP sessions is [not allowed](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayOptions.html). You must first delete all Transit Gateway attachments that have BGP configured prior to modifying `amazonSideAsn`.
   late final pulumi.Output<int?> amazonSideAsn;
   /// EC2 Transit Gateway Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
@@ -119,7 +132,7 @@ class TransitGateway extends pulumi.CustomResource {
   late final pulumi.Output<String?> dnsSupport;
   /// Whether encryption support for VPC Encryption Control is enabled. Valid values: `disable`, `enable`. Default value: `disable`. Once set, switching to `disable` requires explicitly specifying `disable` rather than removing the argument.
   late final pulumi.Output<String> encryptionSupport;
-  /// Whether Multicast support is enabled. Required to use `ec2_transit_gateway_multicast_domain`. Valid values: `disable`, `enable`. Default value: `disable`.
+  /// Whether Multicast support is enabled. Required to use `ec2TransitGatewayMulticastDomain`. Valid values: `disable`, `enable`. Default value: `disable`.
   late final pulumi.Output<String?> multicastSupport;
   /// Identifier of the AWS account that owns the EC2 Transit Gateway
   late final pulumi.Output<String> ownerId;
@@ -129,9 +142,9 @@ class TransitGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Whether Security Group Referencing Support is enabled. Valid values: `disable`, `enable`. Default value: `disable`.
   late final pulumi.Output<String?> securityGroupReferencingSupport;
-  /// Key-value tags for the EC2 Transit Gateway. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24 CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.
   late final pulumi.Output<List<String>?> transitGatewayCidrBlocks;

@@ -20,7 +20,7 @@ class PlacementGroupArgs {
   final pulumi.Input<String>? spreadLevel;
   /// The placement strategy. Can be `cluster`, `partition` or `spread`.
   final pulumi.Input<String> strategy;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [PlacementGroupArgs].
@@ -29,7 +29,7 @@ class PlacementGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spreadLevel] Determines how placement groups spread instances. Can only be used
   /// [strategy] The placement strategy. Can be `cluster`, `partition` or `spread`.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const PlacementGroupArgs({
     this.name,
     this.partitionCount,
@@ -61,4 +61,3 @@ class PlacementGroupArgs {
     );
   }
 }
-

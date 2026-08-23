@@ -62,7 +62,7 @@ import 'connector_worker_configuration.dart';
 ///     plugins: [{
 ///         customPlugin: {
 ///             arn: exampleAwsMskconnectCustomPlugin.arn,
-///             revision: exampleAwsMskconnectCustomPlugin.latestRevision,
+///             revision: Number(exampleAwsMskconnectCustomPlugin.latestRevision),
 ///         },
 ///     }],
 ///     serviceExecutionRoleArn: exampleAwsIamRole.arn,
@@ -115,7 +115,7 @@ import 'connector_worker_configuration.dart';
 ///     plugins=[{
 ///         "custom_plugin": {
 ///             "arn": example_aws_mskconnect_custom_plugin["arn"],
-///             "revision": example_aws_mskconnect_custom_plugin["latestRevision"],
+///             "revision": int(example_aws_mskconnect_custom_plugin["latestRevision"]),
 ///         },
 ///     }],
 ///     service_execution_role_arn=example_aws_iam_role["arn"])
@@ -268,6 +268,60 @@ import 'connector_worker_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_mskconnect_connector" "example" {
+///   name                 = "example"
+///   kafkaconnect_version = "2.7.1"
+///   capacity = {
+///     autoscaling = {
+///       mcu_count        = 1
+///       min_worker_count = 1
+///       max_worker_count = 2
+///       scale_in_policy = {
+///         cpu_utilization_percentage = 20
+///       }
+///       scale_out_policy = {
+///         cpu_utilization_percentage = 80
+///       }
+///     }
+///   }
+///   connector_configuration = {
+///     "connector.class" = "com.github.jcustenborder.kafka.connect.simulator.SimulatorSinkConnector"
+///     "tasks.max"       = "1"
+///     "topics"          = "example"
+///   }
+///   kafka_cluster = {
+///     apache_kafka_cluster = {
+///       bootstrap_servers = exampleAwsMskCluster.bootstrapBrokersTls
+///       vpc = {
+///         security_groups = [exampleAwsSecurityGroup.id]
+///         subnets         = [example1.id, example2.id, example3.id]
+///       }
+///     }
+///   }
+///   kafka_cluster_client_authentication = {
+///     authentication_type = "NONE"
+///   }
+///   kafka_cluster_encryption_in_transit = {
+///     encryption_type = "TLS"
+///   }
+///   plugins {
+///     custom_plugin = {
+///       arn      = exampleAwsMskconnectCustomPlugin.arn
+///       revision = exampleAwsMskconnectCustomPlugin.latestRevision
+///     }
+///   }
+///   service_execution_role_arn = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -287,8 +341,8 @@ import 'connector_worker_configuration.dart';
 /// import com.pulumi.aws.mskconnect.inputs.ConnectorKafkaClusterEncryptionInTransitArgs;
 /// import com.pulumi.aws.mskconnect.inputs.ConnectorPluginArgs;
 /// import com.pulumi.aws.mskconnect.inputs.ConnectorPluginCustomPluginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,15 +463,15 @@ class Connector extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> connectorConfiguration;
   /// A summary description of the connector.
   late final pulumi.Output<String?> description;
-  /// Specifies which Apache Kafka cluster to connect to. See `kafka_cluster` Block for details.
+  /// Specifies which Apache Kafka cluster to connect to. See `kafkaCluster` Block for details.
   late final pulumi.Output<ConnectorKafkaCluster> kafkaCluster;
-  /// Details of the client authentication used by the Apache Kafka cluster. See `kafka_cluster_client_authentication` Block for details.
+  /// Details of the client authentication used by the Apache Kafka cluster. See `kafkaClusterClientAuthentication` Block for details.
   late final pulumi.Output<ConnectorKafkaClusterClientAuthentication> kafkaClusterClientAuthentication;
-  /// Details of encryption in transit to the Apache Kafka cluster. See `kafka_cluster_encryption_in_transit` Block for details.
+  /// Details of encryption in transit to the Apache Kafka cluster. See `kafkaClusterEncryptionInTransit` Block for details.
   late final pulumi.Output<ConnectorKafkaClusterEncryptionInTransit> kafkaClusterEncryptionInTransit;
   /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.
   late final pulumi.Output<String> kafkaconnectVersion;
-  /// Details about log delivery. See `log_delivery` Block for details.
+  /// Details about log delivery. See `logDelivery` Block for details.
   late final pulumi.Output<ConnectorLogDelivery?> logDelivery;
   /// The name of the connector.
   late final pulumi.Output<String> name;
@@ -429,13 +483,13 @@ class Connector extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceExecutionRoleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The current version of the connector.
   late final pulumi.Output<String> version;
-  /// Specifies which worker configuration to use with the connector. See `worker_configuration` Block for details.
+  /// Specifies which worker configuration to use with the connector. See `workerConfiguration` Block for details.
   late final pulumi.Output<ConnectorWorkerConfiguration?> workerConfiguration;
 
   /// Creates a new [Connector].

@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_geo_match_statement_forwarded_ip_config.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement {
-  /// Array of two-character country codes, for example, [ "US", "CN" ], from the alpha-2 country ISO codes of the `ISO 3166` international standard. See the [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchStatement.html) for valid values.
+  /// List of two-character country codes (ISO 3166-1 alpha-2).
   final pulumi.Input<List<String>> countryCodes;
-  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `forwarded_ip_config` below for details.
+  /// Configuration for inspecting forwarded IP headers. See Forwarded IP Config below.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig>? forwardedIpConfig;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement].
-  /// [countryCodes] Array of two-character country codes, for example, [ "US", "CN" ], from the alpha-2 country ISO codes of the `ISO 3166` international standard. See the [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchStatement.html) for valid values.
-  /// [forwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `forwarded_ip_config` below for details.
+  /// [countryCodes] List of two-character country codes (ISO 3166-1 alpha-2).
+  /// [forwardedIpConfig] Configuration for inspecting forwarded IP headers. See Forwarded IP Config below.
   const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement({
     required this.countryCodes,
     this.forwardedIpConfig,
@@ -31,4 +31,3 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStat
     );
   }
 }
-

@@ -43,4 +43,3 @@ class BucketAccelerateConfigurationV2State {
     );
   }
 }
-

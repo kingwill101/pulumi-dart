@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessHomeDirectoryMapping {
-  /// Represents an entry and a target.
+  /// Logical directory entry that appears to your user.
   final pulumi.Input<String> entry;
-  /// Represents the map target.
+  /// Map target that maps the entry to an actual S3 path.
   final pulumi.Input<String> target;
 
   /// Creates a new [AccessHomeDirectoryMapping].
-  /// [entry] Represents an entry and a target.
-  /// [target] Represents the map target.
+  /// [entry] Logical directory entry that appears to your user.
+  /// [target] Map target that maps the entry to an actual S3 path.
   const AccessHomeDirectoryMapping({
     required this.entry,
     required this.target,
@@ -30,4 +30,3 @@ class AccessHomeDirectoryMapping {
     );
   }
 }
-

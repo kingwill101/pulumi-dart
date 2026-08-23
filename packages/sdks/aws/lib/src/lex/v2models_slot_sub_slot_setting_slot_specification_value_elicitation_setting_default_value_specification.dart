@@ -6,7 +6,7 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification {
   /// List of default values.
   /// Amazon Lex chooses the default value to use in the order that they are presented in the list.
-  /// See the `default_value_list` argument reference below.
+  /// See the `defaultValueList` argument reference below.
   final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList>> defaultValueLists;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification].
@@ -27,4 +27,3 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultV
     );
   }
 }
-

@@ -17,12 +17,12 @@ class V2modelsSlotTypeArgs {
   /// Version of the bot associated with this slot type.
   final pulumi.Input<String> botVersion;
   /// Specifications for a composite slot type.
-  /// See `composite_slot_type_setting` argument reference below.
+  /// See `compositeSlotTypeSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotTypeCompositeSlotTypeSetting>>? compositeSlotTypeSettings;
   /// Description of the slot type.
   final pulumi.Input<String>? description;
   /// Type of external information used to create the slot type.
-  /// See `external_source_setting` argument reference below.
+  /// See `externalSourceSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotTypeExternalSourceSetting>>? externalSourceSettings;
   /// Identifier of the language and locale where this slot type is used.
   /// All of the bots, slot types, and slots used by the intent must have the same locale.
@@ -39,11 +39,11 @@ class V2modelsSlotTypeArgs {
   final pulumi.Input<String>? region;
   /// List of SlotTypeValue objects that defines the values that the slot type can take.
   /// Each value can have a list of synonyms, additional values that help train the machine learning model about the values that it resolves for a slot.
-  /// See `slot_type_values` argument reference below.
+  /// See `slotTypeValues` argument reference below.
   final pulumi.Input<List<V2modelsSlotTypeSlotTypeValue>>? slotTypeValues;
   final pulumi.Input<V2modelsSlotTypeTimeouts>? timeouts;
   /// Determines the strategy that Amazon Lex uses to select a value from the list of possible values.
-  /// See `value_selection_setting` argument reference below.
+  /// See `valueSelectionSetting` argument reference below.
   final pulumi.Input<V2modelsSlotTypeValueSelectionSetting>? valueSelectionSetting;
 
   /// Creates a new [V2modelsSlotTypeArgs].
@@ -108,4 +108,3 @@ class V2modelsSlotTypeArgs {
     );
   }
 }
-

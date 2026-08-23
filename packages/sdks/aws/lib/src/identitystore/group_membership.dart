@@ -139,6 +139,38 @@ import 'group_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_identitystore_user" "example" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   display_name      = "John Doe"
+///   user_name         = "john.doe@example.com"
+///   name = {
+///     family_name = "Doe"
+///     given_name  = "John"
+///   }
+/// }
+/// resource "aws_identitystore_group" "example" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   display_name      = "MyGroup"
+///   description       = "Some group name"
+/// }
+/// resource "aws_identitystore_groupmembership" "example" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   group_id          = aws_identitystore_group.example.group_id
+///   member_id         = aws_identitystore_user.example.user_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +186,8 @@ import 'group_membership_state.dart';
 /// import com.pulumi.aws.identitystore.GroupArgs;
 /// import com.pulumi.aws.identitystore.GroupMembership;
 /// import com.pulumi.aws.identitystore.GroupMembershipArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,7 +5,7 @@ import 'scaling_plan_scaling_instruction_target_tracking_configuration_customize
 import 'scaling_plan_scaling_instruction_target_tracking_configuration_predefined_scaling_metric_specification.dart';
 
 class ScalingPlanScalingInstructionTargetTrackingConfiguration {
-  /// Customized metric. You can specify either `customized_scaling_metric_specification` or `predefined_scaling_metric_specification`.
+  /// Customized metric. You can specify either `customizedScalingMetricSpecification` or `predefinedScalingMetricSpecification`.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_CustomizedScalingMetricSpecification.html).
   final pulumi.Input<ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification>? customizedScalingMetricSpecification;
   /// Boolean indicating whether scale in by the target tracking scaling policy is disabled. Defaults to `false`.
@@ -13,7 +13,7 @@ class ScalingPlanScalingInstructionTargetTrackingConfiguration {
   /// Estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.
   /// This value is used only if the resource is an Auto Scaling group.
   final pulumi.Input<int>? estimatedInstanceWarmup;
-  /// Predefined metric. You can specify either `predefined_scaling_metric_specification` or `customized_scaling_metric_specification`.
+  /// Predefined metric. You can specify either `predefinedScalingMetricSpecification` or `customizedScalingMetricSpecification`.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_PredefinedScalingMetricSpecification.html).
   final pulumi.Input<ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification>? predefinedScalingMetricSpecification;
   /// Amount of time, in seconds, after a scale in activity completes before another scale in activity can start.
@@ -26,10 +26,10 @@ class ScalingPlanScalingInstructionTargetTrackingConfiguration {
   final pulumi.Input<double> targetValue;
 
   /// Creates a new [ScalingPlanScalingInstructionTargetTrackingConfiguration].
-  /// [customizedScalingMetricSpecification] Customized metric. You can specify either `customized_scaling_metric_specification` or `predefined_scaling_metric_specification`.
+  /// [customizedScalingMetricSpecification] Customized metric. You can specify either `customizedScalingMetricSpecification` or `predefinedScalingMetricSpecification`.
   /// [disableScaleIn] Boolean indicating whether scale in by the target tracking scaling policy is disabled. Defaults to `false`.
   /// [estimatedInstanceWarmup] Estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.
-  /// [predefinedScalingMetricSpecification] Predefined metric. You can specify either `predefined_scaling_metric_specification` or `customized_scaling_metric_specification`.
+  /// [predefinedScalingMetricSpecification] Predefined metric. You can specify either `predefinedScalingMetricSpecification` or `customizedScalingMetricSpecification`.
   /// [scaleInCooldown] Amount of time, in seconds, after a scale in activity completes before another scale in activity can start.
   /// [scaleOutCooldown] Amount of time, in seconds, after a scale-out activity completes before another scale-out activity can start.
   /// [targetValue] Target value for the metric.
@@ -67,4 +67,3 @@ class ScalingPlanScalingInstructionTargetTrackingConfiguration {
     );
   }
 }
-

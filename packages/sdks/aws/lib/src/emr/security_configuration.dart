@@ -121,6 +121,20 @@ import 'security_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_securityconfiguration" "foo" {
+///   name          = "emrsc_other"
+///   configuration = "{\n  \\\"EncryptionConfiguration\\\": {\n    \\\"AtRestEncryptionConfiguration\\\": {\n      \\\"S3EncryptionConfiguration\\\": {\n        \\\"EncryptionMode\\\": \\\"SSE-S3\\\"\n      },\n      \\\"LocalDiskEncryptionConfiguration\\\": {\n        \\\"EncryptionKeyProviderType\\\": \\\"AwsKms\\\",\n        \\\"AwsKmsKey\\\": \\\"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\\\"\n      }\n    },\n    \\\"EnableInTransitEncryption\\\": false,\n    \\\"EnableAtRestEncryption\\\": true\n  }\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +143,8 @@ import 'security_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.SecurityConfiguration;
 /// import com.pulumi.aws.emr.SecurityConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

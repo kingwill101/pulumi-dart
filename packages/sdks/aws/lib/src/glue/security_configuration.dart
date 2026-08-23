@@ -110,6 +110,31 @@ import 'security_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_securityconfiguration" "example" {
+///   name = "example"
+///   encryption_configuration = {
+///     cloudwatch_encryption = {
+///       cloudwatch_encryption_mode = "DISABLED"
+///     }
+///     job_bookmarks_encryption = {
+///       job_bookmarks_encryption_mode = "DISABLED"
+///     }
+///     s3_encryption = {
+///       kms_key_arn        = exampleAwsKmsKey.arn
+///       s3_encryption_mode = "SSE-KMS"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +147,8 @@ import 'security_configuration_state.dart';
 /// import com.pulumi.aws.glue.inputs.SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs;
 /// import com.pulumi.aws.glue.inputs.SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs;
 /// import com.pulumi.aws.glue.inputs.SecurityConfigurationEncryptionConfigurationS3EncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

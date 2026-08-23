@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention {
-  /// The type of time for the retention period of an FSx for ONTAP SnapLock volume. Set it to one of the valid types. If you set it to `INFINITE`, the files are retained forever. If you set it to `UNSPECIFIED`, the files are retained until you set an explicit retention period. Valid values: `SECONDS`, `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `INFINITE`, `UNSPECIFIED`.
+  /// Type of time for the retention period of an FSx for ONTAP SnapLock volume. Set it to one of the valid types. If you set it to `INFINITE`, the files are retained forever. If you set it to `UNSPECIFIED`, the files are retained until you set an explicit retention period. Valid values: `SECONDS`, `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `INFINITE`, `UNSPECIFIED`.
   final pulumi.Input<String>? type;
-  /// The amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
+  /// Amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
   final pulumi.Input<int>? value;
 
   /// Creates a new [OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention].
-  /// [type] The type of time for the retention period of an FSx for ONTAP SnapLock volume. Set it to one of the valid types. If you set it to `INFINITE`, the files are retained forever. If you set it to `UNSPECIFIED`, the files are retained until you set an explicit retention period. Valid values: `SECONDS`, `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `INFINITE`, `UNSPECIFIED`.
-  /// [value] The amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
+  /// [type] Type of time for the retention period of an FSx for ONTAP SnapLock volume. Set it to one of the valid types. If you set it to `INFINITE`, the files are retained forever. If you set it to `UNSPECIFIED`, the files are retained until you set an explicit retention period. Valid values: `SECONDS`, `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `INFINITE`, `UNSPECIFIED`.
+  /// [value] Amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
   const OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention({
     this.type,
     this.value,
@@ -30,4 +30,3 @@ class OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention {
     );
   }
 }
-

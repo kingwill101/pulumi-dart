@@ -25,7 +25,7 @@ import 'notification_rule_state.dart';
 /// });
 /// const _default = new aws.sns.TopicPolicy("default", {
 ///     arn: notif.arn,
-///     policy: notifAccess.apply(notifAccess => notifAccess.json),
+///     policy: notifAccess.json,
 /// });
 /// const commits = new aws.codestarnotifications.NotificationRule("commits", {
 ///     detailType: "BASIC",
@@ -182,10 +182,8 @@ import 'notification_rule_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = sns.NewTopicPolicy(ctx, "default", &sns.TopicPolicyArgs{
-/// 			Arn: notif.Arn,
-/// 			Policy: pulumi.String(notifAccess.ApplyT(func(notifAccess iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &notifAccess.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Arn:    notif.Arn,
+/// 			Policy: notifAccess.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -210,6 +208,46 @@ import 'notification_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "notifAccess" {
+///   statements {
+///     actions = ["sns:Publish"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["codestar-notifications.amazonaws.com"]
+///     }
+///     resources = [aws_sns_topic.notif.arn]
+///   }
+/// }
+///
+/// resource "aws_codecommit_repository" "code" {
+///   repository_name = "example-code-repo"
+/// }
+/// resource "aws_sns_topic" "notif" {
+///   name = "notification"
+/// }
+/// resource "aws_sns_topicpolicy" "default" {
+///   arn    = aws_sns_topic.notif.arn
+///   policy = data.aws_iam_getpolicydocument.notifAccess.json
+/// }
+/// resource "aws_codestarnotifications_notificationrule" "commits" {
+///   detail_type    = "BASIC"
+///   event_type_ids = ["codecommit-repository-comments-on-commits"]
+///   name           = "example-code-repo-commits"
+///   resource       = aws_codecommit_repository.code.arn
+///   targets {
+///     address = aws_sns_topic.notif.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -222,13 +260,15 @@ import 'notification_rule_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sns.TopicPolicy;
 /// import com.pulumi.aws.sns.TopicPolicyArgs;
 /// import com.pulumi.aws.codestarnotifications.NotificationRule;
 /// import com.pulumi.aws.codestarnotifications.NotificationRuleArgs;
 /// import com.pulumi.aws.codestarnotifications.inputs.NotificationRuleTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -349,9 +389,9 @@ class NotificationRule extends pulumi.CustomResource {
   late final pulumi.Output<String> resource;
   /// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
   late final pulumi.Output<String?> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
   late final pulumi.Output<List<Map<String, dynamic>>?> targets;

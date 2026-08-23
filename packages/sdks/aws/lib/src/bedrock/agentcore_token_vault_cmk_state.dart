@@ -5,7 +5,7 @@ import 'agentcore_token_vault_cmk_kms_configuration.dart';
 
 /// Input properties used for looking up and filtering AgentcoreTokenVaultCmk resources.
 class AgentcoreTokenVaultCmkState {
-  /// KMS configuration for the token vault. See `kms_configuration` below.
+  /// KMS configuration for the token vault. See `kmsConfiguration` below.
   final pulumi.Input<AgentcoreTokenVaultCmkKmsConfiguration>? kmsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -13,7 +13,7 @@ class AgentcoreTokenVaultCmkState {
   final pulumi.Input<String>? tokenVaultId;
 
   /// Creates a new [AgentcoreTokenVaultCmkState].
-  /// [kmsConfiguration] KMS configuration for the token vault. See `kms_configuration` below.
+  /// [kmsConfiguration] KMS configuration for the token vault. See `kmsConfiguration` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tokenVaultId] Token vault ID. Defaults to `default`.
   const AgentcoreTokenVaultCmkState({
@@ -38,4 +38,3 @@ class AgentcoreTokenVaultCmkState {
     );
   }
 }
-

@@ -75,6 +75,23 @@ import 'hosted_transit_virtual_interface_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_hostedtransitvirtualinterface" "example" {
+///   connection_id  = exampleAwsDxConnection.id
+///   name           = "tf-transit-vif-example"
+///   vlan           = 4094
+///   address_family = "ipv4"
+///   bgp_asn        = 65352
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +100,8 @@ import 'hosted_transit_virtual_interface_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.HostedTransitVirtualInterface;
 /// import com.pulumi.aws.directconnect.HostedTransitVirtualInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

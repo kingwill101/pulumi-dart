@@ -8,7 +8,7 @@ import 'container_service_state.dart';
 ///
 /// &gt; **Note:** For more information about the AWS Regions in which you can create Amazon Lightsail container services, see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
 ///
-/// &gt; **NOTE:** You must create and validate an SSL/TLS certificate before you can use `public_domain_names` with your container service. For more information, see [Enabling and managing custom domains for your Amazon Lightsail container services](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-services-certificates).
+/// &gt; **NOTE:** You must create and validate an SSL/TLS certificate before you can use `publicDomainNames` with your container service. For more information, see [Enabling and managing custom domains for your Amazon Lightsail container services](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-services-certificates).
 ///
 /// ## Example Usage
 ///
@@ -94,6 +94,26 @@ import 'container_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_containerservice" "example" {
+///   name        = "container-service-1"
+///   power       = "nano"
+///   scale       = 1
+///   is_disabled = false
+///   tags = {
+///     "foo1" = "bar1"
+///     "foo2" = ""
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +122,8 @@ import 'container_service_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.ContainerService;
 /// import com.pulumi.aws.lightsail.ContainerServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -226,6 +246,24 @@ import 'container_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_containerservice" "example" {
+///   public_domain_names = {
+///     certificates = [{
+///       "certificateName" = "example-certificate"
+///       "domainNames"     = ["www.example.com"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +273,9 @@ import 'container_service_state.dart';
 /// import com.pulumi.aws.lightsail.ContainerService;
 /// import com.pulumi.aws.lightsail.ContainerServiceArgs;
 /// import com.pulumi.aws.lightsail.inputs.ContainerServicePublicDomainNamesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lightsail.inputs.ContainerServicePublicDomainNamesCertificateArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,22 +324,22 @@ import 'container_service_state.dart';
 ///         isActive: true,
 ///     },
 /// }});
-/// const example = exampleContainerService.privateRegistryAccess.apply(privateRegistryAccess => aws.iam.getPolicyDocumentOutput({
+/// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
 ///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
-///             identifiers: [privateRegistryAccess.ecrImagePullerRole?.principalArn],
+///             identifiers: [exampleContainerService.privateRegistryAccess.apply(privateRegistryAccess => privateRegistryAccess.ecrImagePullerRole?.principalArn)],
 ///         }],
 ///         actions: [
 ///             "ecr:BatchGetImage",
 ///             "ecr:GetDownloadUrlForLayer",
 ///         ],
 ///     }],
-/// }));
+/// });
 /// const exampleRepositoryPolicy = new aws.ecr.RepositoryPolicy("example", {
 ///     repository: exampleAwsEcrRepository.name,
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// ```
 /// ```python
@@ -312,17 +351,17 @@ import 'container_service_state.dart';
 ///         "is_active": True,
 ///     },
 /// })
-/// example = example_container_service.private_registry_access.apply(lambda private_registry_access: aws.iam.get_policy_document_output(statements=[{
+/// example = aws.iam.get_policy_document_output(statements=[{
 ///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
-///         "identifiers": [private_registry_access.ecr_image_puller_role.principal_arn],
+///         "identifiers": [example_container_service.private_registry_access.ecr_image_puller_role.principal_arn],
 ///     }],
 ///     "actions": [
 ///         "ecr:BatchGetImage",
 ///         "ecr:GetDownloadUrlForLayer",
 ///     ],
-/// }]))
+/// }])
 /// example_repository_policy = aws.ecr.RepositoryPolicy("example",
 ///     repository=example_aws_ecr_repository["name"],
 ///     policy=example.json)
@@ -350,12 +389,12 @@ import 'container_service_state.dart';
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -390,50 +429,81 @@ import 'container_service_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// exampleContainerService, err := lightsail.NewContainerService(ctx, "example", &lightsail.ContainerServiceArgs{
-/// PrivateRegistryAccess: &lightsail.ContainerServicePrivateRegistryAccessArgs{
-/// EcrImagePullerRole: &lightsail.ContainerServicePrivateRegistryAccessEcrImagePullerRoleArgs{
-/// IsActive: pulumi.Bool(true),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		exampleContainerService, err := lightsail.NewContainerService(ctx, "example", &lightsail.ContainerServiceArgs{
+/// 			PrivateRegistryAccess: &lightsail.ContainerServicePrivateRegistryAccessArgs{
+/// 				EcrImagePullerRole: &lightsail.ContainerServicePrivateRegistryAccessEcrImagePullerRoleArgs{
+/// 					IsActive: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								exampleContainerService.PrivateRegistryAccess.ApplyT(func(privateRegistryAccess lightsail.ContainerServicePrivateRegistryAccess) (*string, error) {
+/// 									return privateRegistryAccess.EcrImagePullerRole.PrincipalArn, nil
+/// 								}).(pulumi.StringPtrOutput),
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("ecr:BatchGetImage"),
+/// 						pulumi.String("ecr:GetDownloadUrlForLayer"),
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = ecr.NewRepositoryPolicy(ctx, "example", &ecr.RepositoryPolicyArgs{
+/// 			Repository: pulumi.Any(exampleAwsEcrRepository.Name),
+/// 			Policy:     example.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// example := exampleContainerService.PrivateRegistryAccess.ApplyT(func(privateRegistryAccess lightsail.ContainerServicePrivateRegistryAccess) (iam.GetPolicyDocumentResult, error) {
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// privateRegistryAccess.EcrImagePullerRole.PrincipalArn,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "ecr:BatchGetImage",
-/// "ecr:GetDownloadUrlForLayer",
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = ecr.NewRepositoryPolicy(ctx, "example", &ecr.RepositoryPolicyArgs{
-/// Repository: pulumi.Any(exampleAwsEcrRepository.Name),
-/// Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// return &example.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [aws_lightsail_containerservice.example.private_registry_access.ecr_image_puller_role.principal_arn]
+///     }
+///     actions = ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer"]
+///   }
+/// }
+///
+/// resource "aws_lightsail_containerservice" "example" {
+///   private_registry_access = {
+///     ecr_image_puller_role = {
+///       is_active = true
+///     }
+///   }
+/// }
+/// resource "aws_ecr_repositorypolicy" "example" {
+///   repository = exampleAwsEcrRepository.name
+///   policy     = data.aws_iam_getpolicydocument.example.json
 /// }
 /// ```
 /// ```java
@@ -448,10 +518,12 @@ import 'container_service_state.dart';
 /// import com.pulumi.aws.lightsail.inputs.ContainerServicePrivateRegistryAccessEcrImagePullerRoleArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.ecr.RepositoryPolicy;
 /// import com.pulumi.aws.ecr.RepositoryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -471,18 +543,18 @@ import 'container_service_state.dart';
 ///                 .build())
 ///             .build());
 ///
-///         final var example = exampleContainerService.privateRegistryAccess().applyValue(_privateRegistryAccess -> IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
-///                     .identifiers(_privateRegistryAccess.ecrImagePullerRole().principalArn())
+///                     .identifiers(exampleContainerService.privateRegistryAccess().applyValue(_privateRegistryAccess -> _privateRegistryAccess.ecrImagePullerRole().principalArn()))
 ///                     .build())
 ///                 .actions(
 ///                     "ecr:BatchGetImage",
 ///                     "ecr:GetDownloadUrlForLayer")
 ///                 .build())
-///             .build()));
+///             .build());
 ///
 ///         var exampleRepositoryPolicy = new RepositoryPolicy("exampleRepositoryPolicy", RepositoryPolicyArgs.builder()
 ///             .repository(exampleAwsEcrRepository.name())
@@ -564,9 +636,9 @@ class ContainerService extends pulumi.CustomResource {
   late final pulumi.Output<int> scale;
   /// Current state of the container service.
   late final pulumi.Output<String> state;
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Publicly accessible URL of the container service. If no public endpoint is specified in the currentDeployment, this URL returns a 404 response.
   late final pulumi.Output<String> url;

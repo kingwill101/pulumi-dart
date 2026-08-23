@@ -11,13 +11,13 @@ class GetOntapFileSystemArgs {
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The tags associated with the file system.
+  /// Tags associated with the file system.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetOntapFileSystemArgs].
   /// [id] Identifier of the file system (e.g. `fs-12345678`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] The tags associated with the file system.
+  /// [tags] Tags associated with the file system.
   const GetOntapFileSystemArgs({
     required this.id,
     this.region,
@@ -40,4 +40,3 @@ class GetOntapFileSystemArgs {
     );
   }
 }
-

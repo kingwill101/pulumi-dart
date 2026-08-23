@@ -8,18 +8,18 @@ import 'firehose_delivery_stream_extended_s3_configuration_data_format_conversio
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration {
   /// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
   final pulumi.Input<bool>? enabled;
-  /// Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See `input_format_configuration` block below for details.
+  /// Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See `inputFormatConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration> inputFormatConfiguration;
-  /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See `output_format_configuration` block below for details.
+  /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See `outputFormatConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration> outputFormatConfiguration;
-  /// Specifies the AWS Glue Data Catalog table that contains the column information. See `schema_configuration` block below for details.
+  /// Specifies the AWS Glue Data Catalog table that contains the column information. See `schemaConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration> schemaConfiguration;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration].
   /// [enabled] Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
-  /// [inputFormatConfiguration] Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See `input_format_configuration` block below for details.
-  /// [outputFormatConfiguration] Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See `output_format_configuration` block below for details.
-  /// [schemaConfiguration] Specifies the AWS Glue Data Catalog table that contains the column information. See `schema_configuration` block below for details.
+  /// [inputFormatConfiguration] Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See `inputFormatConfiguration` block below for details.
+  /// [outputFormatConfiguration] Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See `outputFormatConfiguration` block below for details.
+  /// [schemaConfiguration] Specifies the AWS Glue Data Catalog table that contains the column information. See `schemaConfiguration` block below for details.
   const FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration({
     this.enabled,
     required this.inputFormatConfiguration,
@@ -45,4 +45,3 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
     );
   }
 }
-

@@ -11,15 +11,16 @@ import 'resource_set_timeouts.dart';
 class ResourceSetArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
+  /// Details about the resource set to be created or updated. See `resourceSet` Block below.
   final pulumi.Input<List<ResourceSetResourceSet>>? resourceSets;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ResourceSetTimeouts>? timeouts;
 
   /// Creates a new [ResourceSetArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceSets] Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
-  /// [tags] Optional.
+  /// [resourceSets] Details about the resource set to be created or updated. See `resourceSet` Block below.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const ResourceSetArgs({
     this.region,
@@ -46,4 +47,3 @@ class ResourceSetArgs {
     );
   }
 }
-

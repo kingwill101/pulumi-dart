@@ -56,6 +56,19 @@ import 'get_directory_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directoryservice_getdirectory" "example" {
+///   directory_id = main.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'get_directory_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directoryservice.DirectoryserviceFunctions;
 /// import com.pulumi.aws.directoryservice.inputs.GetDirectoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

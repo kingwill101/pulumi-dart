@@ -5,26 +5,26 @@ import 'cloud_autonomous_vm_cluster_maintenance_window_days_of_week.dart';
 import 'cloud_autonomous_vm_cluster_maintenance_window_month.dart';
 
 class CloudAutonomousVmClusterMaintenanceWindow {
-  /// The days of the week when maintenance can be performed. Changing this will force terraform to create new resource.
+  /// Days of the week when maintenance can be performed. Changing this will force terraform to create new resource. See `daysOfWeek` Block below.
   final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>>? daysOfWeeks;
-  /// The hours of the day when maintenance can be performed. Changing this will force terraform to create new resource.
+  /// Hours of the day when maintenance can be performed. Changing this will force terraform to create new resource.
   final pulumi.Input<List<int>>? hoursOfDays;
-  /// The lead time in weeks before the maintenance window. Changing this will force terraform to create new resource.
+  /// Lead time in weeks before the maintenance window. Changing this will force terraform to create new resource.
   final pulumi.Input<int>? leadTimeInWeeks;
-  /// The months when maintenance can be performed. Changing this will force terraform to create new resource.
+  /// Months when maintenance can be performed. Changing this will force terraform to create new resource. See `months` Block below.
   final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowMonth>>? months;
-  /// The preference for the maintenance window scheduling. Changing this will force terraform to create new resource.
+  /// Preference for the maintenance window scheduling. Changing this will force terraform to create new resource.
   final pulumi.Input<String> preference;
-  /// Indicates whether to skip release updates during maintenance. Changing this will force terraform to create new resource.
+  /// Whether to skip release updates during maintenance. Changing this will force terraform to create new resource.
   final pulumi.Input<List<int>>? weeksOfMonths;
 
   /// Creates a new [CloudAutonomousVmClusterMaintenanceWindow].
-  /// [daysOfWeeks] The days of the week when maintenance can be performed. Changing this will force terraform to create new resource.
-  /// [hoursOfDays] The hours of the day when maintenance can be performed. Changing this will force terraform to create new resource.
-  /// [leadTimeInWeeks] The lead time in weeks before the maintenance window. Changing this will force terraform to create new resource.
-  /// [months] The months when maintenance can be performed. Changing this will force terraform to create new resource.
-  /// [preference] The preference for the maintenance window scheduling. Changing this will force terraform to create new resource.
-  /// [weeksOfMonths] Indicates whether to skip release updates during maintenance. Changing this will force terraform to create new resource.
+  /// [daysOfWeeks] Days of the week when maintenance can be performed. Changing this will force terraform to create new resource. See `daysOfWeek` Block below.
+  /// [hoursOfDays] Hours of the day when maintenance can be performed. Changing this will force terraform to create new resource.
+  /// [leadTimeInWeeks] Lead time in weeks before the maintenance window. Changing this will force terraform to create new resource.
+  /// [months] Months when maintenance can be performed. Changing this will force terraform to create new resource. See `months` Block below.
+  /// [preference] Preference for the maintenance window scheduling. Changing this will force terraform to create new resource.
+  /// [weeksOfMonths] Whether to skip release updates during maintenance. Changing this will force terraform to create new resource.
   const CloudAutonomousVmClusterMaintenanceWindow({
     this.daysOfWeeks,
     this.hoursOfDays,
@@ -56,4 +56,3 @@ class CloudAutonomousVmClusterMaintenanceWindow {
     );
   }
 }
-

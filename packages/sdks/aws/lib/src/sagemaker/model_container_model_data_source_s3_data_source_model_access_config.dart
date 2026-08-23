@@ -24,4 +24,3 @@ class ModelContainerModelDataSourceS3DataSourceModelAccessConfig {
     );
   }
 }
-

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionOrderedCacheBehaviorForwardedValuesCookies {
-  /// Whether you want CloudFront to forward cookies to the origin that is associated with this cache behavior. You can specify `all`, `none` or `whitelist`. If `whitelist`, you must include the subsequent `whitelisted_names`.
+  /// Whether you want CloudFront to forward cookies to the origin that is associated with this cache behavior. You can specify `all`, `none` or `whitelist`. If `whitelist`, you must include the subsequent `whitelistedNames`.
   final pulumi.Input<String> forward;
   /// If you have specified `whitelist` to `forward`, the whitelisted cookies that you want CloudFront to forward to your origin.
   final pulumi.Input<List<String>>? whitelistedNames;
 
   /// Creates a new [DistributionOrderedCacheBehaviorForwardedValuesCookies].
-  /// [forward] Whether you want CloudFront to forward cookies to the origin that is associated with this cache behavior. You can specify `all`, `none` or `whitelist`. If `whitelist`, you must include the subsequent `whitelisted_names`.
+  /// [forward] Whether you want CloudFront to forward cookies to the origin that is associated with this cache behavior. You can specify `all`, `none` or `whitelist`. If `whitelist`, you must include the subsequent `whitelistedNames`.
   /// [whitelistedNames] If you have specified `whitelist` to `forward`, the whitelisted cookies that you want CloudFront to forward to your origin.
   const DistributionOrderedCacheBehaviorForwardedValuesCookies({
     required this.forward,
@@ -30,4 +30,3 @@ class DistributionOrderedCacheBehaviorForwardedValuesCookies {
     );
   }
 }
-

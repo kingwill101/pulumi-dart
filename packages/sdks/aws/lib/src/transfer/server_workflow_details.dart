@@ -5,14 +5,14 @@ import 'server_workflow_details_on_partial_upload.dart';
 import 'server_workflow_details_on_upload.dart';
 
 class ServerWorkflowDetails {
-  /// A trigger that starts a workflow if a file is only partially uploaded. See Workflow Detail below. See `on_partial_upload` Block below for details.
+  /// Trigger that starts a workflow if a file is only partially uploaded. See `onPartialUpload` Block below for details.
   final pulumi.Input<ServerWorkflowDetailsOnPartialUpload>? onPartialUpload;
-  /// A trigger that starts a workflow: the workflow begins to execute after a file is uploaded. See `on_upload` Block below for details.
+  /// Trigger that starts a workflow: the workflow begins to execute after a file is uploaded. See `onUpload` Block below for details.
   final pulumi.Input<ServerWorkflowDetailsOnUpload>? onUpload;
 
   /// Creates a new [ServerWorkflowDetails].
-  /// [onPartialUpload] A trigger that starts a workflow if a file is only partially uploaded. See Workflow Detail below. See `on_partial_upload` Block below for details.
-  /// [onUpload] A trigger that starts a workflow: the workflow begins to execute after a file is uploaded. See `on_upload` Block below for details.
+  /// [onPartialUpload] Trigger that starts a workflow if a file is only partially uploaded. See `onPartialUpload` Block below for details.
+  /// [onUpload] Trigger that starts a workflow: the workflow begins to execute after a file is uploaded. See `onUpload` Block below for details.
   const ServerWorkflowDetails({
     this.onPartialUpload,
     this.onUpload,
@@ -32,4 +32,3 @@ class ServerWorkflowDetails {
     );
   }
 }
-

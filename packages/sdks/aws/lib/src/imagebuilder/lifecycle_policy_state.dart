@@ -26,9 +26,9 @@ class LifecyclePolicyState {
   final pulumi.Input<String>? resourceType;
   /// The status of the lifecycle policy.
   final pulumi.Input<String>? status;
-  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [LifecyclePolicyState].
@@ -41,8 +41,8 @@ class LifecyclePolicyState {
   /// [resourceSelection] Selection criteria for the resources that the lifecycle policy applies to. Detailed below.
   /// [resourceType] The type of Image Builder resource that the lifecycle policy applies to. Valid values: `AMI_IMAGE` or `CONTAINER_IMAGE`.
   /// [status] The status of the lifecycle policy.
-  /// [tags] Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const LifecyclePolicyState({
     this.arn,
     this.description,
@@ -89,4 +89,3 @@ class LifecyclePolicyState {
     );
   }
 }
-

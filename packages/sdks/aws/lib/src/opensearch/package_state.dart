@@ -7,7 +7,7 @@ import 'package_package_source.dart';
 class PackageState {
   /// The current version of the package.
   final pulumi.Input<String>? availablePackageVersion;
-  /// Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
+  /// Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   final pulumi.Input<String>? engineVersion;
   /// Description of the package.
   final pulumi.Input<String>? packageDescription;
@@ -23,7 +23,7 @@ class PackageState {
 
   /// Creates a new [PackageState].
   /// [availablePackageVersion] The current version of the package.
-  /// [engineVersion] Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
+  /// [engineVersion] Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   /// [packageDescription] Description of the package.
   /// [packageId] Optional.
   /// [packageName] Unique name for the package.
@@ -67,4 +67,3 @@ class PackageState {
     );
   }
 }
-

@@ -7,6 +7,33 @@ import 'role_alias_state.dart';
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   effect = "Allow"
+///   principals = [{
+///     "type"        = "Service"
+///     "identifiers" = ["credentials.iot.amazonaws.com"]
+///   }]
+///   actions = ["sts:AssumeRole"]
+/// }
+///
+/// resource "aws_iam_role" "role" {
+///   name               = "dynamodb-access-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iot_rolealias" "alias" {
+///   alias    = "Thermostat-dynamodb-access-role-alias"
+///   role_arn = aws_iam_role.role.arn
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   role:
@@ -52,9 +79,9 @@ class RoleAlias extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The identity of the role to which the alias refers.
   late final pulumi.Output<String> roleArn;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [RoleAlias].

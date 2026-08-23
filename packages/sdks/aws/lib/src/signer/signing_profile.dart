@@ -110,6 +110,31 @@ import 'signing_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_signer_signingprofile" "test_sp" {
+///   platform_id = "AWSLambda-SHA384-ECDSA"
+/// }
+/// resource "aws_signer_signingprofile" "prod_sp" {
+///   platform_id = "AWSLambda-SHA384-ECDSA"
+///   name_prefix = "prod_sp_"
+///   signature_validity_period = {
+///     value = 5
+///     type  = "YEARS"
+///   }
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +144,8 @@ import 'signing_profile_state.dart';
 /// import com.pulumi.aws.signer.SigningProfile;
 /// import com.pulumi.aws.signer.SigningProfileArgs;
 /// import com.pulumi.aws.signer.inputs.SigningProfileSignatureValidityPeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,19 +219,19 @@ class SigningProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> platformId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Revocation information for a signing profile. See `revocation_record` Block below for details.
+  /// Revocation information for a signing profile. See `revocationRecord` Block below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> revocationRecords;
-  /// The validity period for a signing job. See `signature_validity_period` Block below for details.
+  /// The validity period for a signing job. See `signatureValidityPeriod` Block below for details.
   late final pulumi.Output<SigningProfileSignatureValidityPeriod> signatureValidityPeriod;
-  /// The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signing_material` Block below for details.
+  /// The AWS Certificate Manager certificate that will be used to sign code with the new signing profile. See `signingMaterial` Block below for details.
   late final pulumi.Output<SigningProfileSigningMaterial> signingMaterial;
   /// Map of key-value pairs for signing. These can include any information that you want to use during signing.
   late final pulumi.Output<Map<String, String>?> signingParameters;
   /// The status of the target signing profile.
   late final pulumi.Output<String> status;
-  /// A list of tags associated with the signing profile. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A list of tags associated with the signing profile. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The current version of the signing profile.
   late final pulumi.Output<String> version;

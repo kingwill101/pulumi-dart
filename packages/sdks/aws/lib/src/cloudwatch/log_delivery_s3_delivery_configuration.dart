@@ -30,4 +30,3 @@ class LogDeliveryS3DeliveryConfiguration {
     );
   }
 }
-

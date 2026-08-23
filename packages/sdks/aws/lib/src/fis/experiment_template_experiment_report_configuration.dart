@@ -5,20 +5,20 @@ import 'experiment_template_experiment_report_configuration_data_sources.dart';
 import 'experiment_template_experiment_report_configuration_outputs.dart';
 
 class ExperimentTemplateExperimentReportConfiguration {
-  /// The data sources for the experiment report. See below.
+  /// Data sources for the experiment report. See below.
   final pulumi.Input<ExperimentTemplateExperimentReportConfigurationDataSources>? dataSources;
-  /// The outputs for the experiment report. See below.
+  /// Outputs for the experiment report. See below.
   final pulumi.Input<ExperimentTemplateExperimentReportConfigurationOutputs>? outputs;
-  /// The duration of the post-experiment period. Defaults to `PT20M`.
+  /// Duration of the post-experiment period. Defaults to `PT20M`.
   final pulumi.Input<String>? postExperimentDuration;
-  /// The duration of the pre-experiment period. Defaults to `PT20M`.
+  /// Duration of the pre-experiment period. Defaults to `PT20M`.
   final pulumi.Input<String>? preExperimentDuration;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfiguration].
-  /// [dataSources] The data sources for the experiment report. See below.
-  /// [outputs] The outputs for the experiment report. See below.
-  /// [postExperimentDuration] The duration of the post-experiment period. Defaults to `PT20M`.
-  /// [preExperimentDuration] The duration of the pre-experiment period. Defaults to `PT20M`.
+  /// [dataSources] Data sources for the experiment report. See below.
+  /// [outputs] Outputs for the experiment report. See below.
+  /// [postExperimentDuration] Duration of the post-experiment period. Defaults to `PT20M`.
+  /// [preExperimentDuration] Duration of the pre-experiment period. Defaults to `PT20M`.
   const ExperimentTemplateExperimentReportConfiguration({
     this.dataSources,
     this.outputs,
@@ -44,4 +44,3 @@ class ExperimentTemplateExperimentReportConfiguration {
     );
   }
 }
-

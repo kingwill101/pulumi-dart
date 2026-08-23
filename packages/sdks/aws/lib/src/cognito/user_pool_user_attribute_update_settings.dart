@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolUserAttributeUpdateSettings {
-  /// A list of attributes requiring verification before update. If set, the provided value(s) must also be set in `auto_verified_attributes`. Valid values: `email`, `phone_number`.
+  /// A list of attributes requiring verification before update. If set, the provided value(s) must also be set in `autoVerifiedAttributes`. Valid values: `email`, `phoneNumber`.
   final pulumi.Input<List<String>> attributesRequireVerificationBeforeUpdates;
 
   /// Creates a new [UserPoolUserAttributeUpdateSettings].
-  /// [attributesRequireVerificationBeforeUpdates] A list of attributes requiring verification before update. If set, the provided value(s) must also be set in `auto_verified_attributes`. Valid values: `email`, `phone_number`.
+  /// [attributesRequireVerificationBeforeUpdates] A list of attributes requiring verification before update. If set, the provided value(s) must also be set in `autoVerifiedAttributes`. Valid values: `email`, `phoneNumber`.
   const UserPoolUserAttributeUpdateSettings({
     required this.attributesRequireVerificationBeforeUpdates,
   });
@@ -24,4 +24,3 @@ class UserPoolUserAttributeUpdateSettings {
     );
   }
 }
-

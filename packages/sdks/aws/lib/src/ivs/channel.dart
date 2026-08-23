@@ -56,6 +56,19 @@ import 'channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ivs_channel" "example" {
+///   name = "channel-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'channel_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ivs.Channel;
 /// import com.pulumi.aws.ivs.ChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,9 +137,9 @@ class Channel extends pulumi.CustomResource {
   late final pulumi.Output<String> recordingConfigurationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`.
   late final pulumi.Output<String> type;

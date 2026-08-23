@@ -11,7 +11,7 @@ class GetQueueResult {
   final String region;
   /// The status of the queue.
   final String status;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final Map<String, String> tags;
 
   /// Creates a new [GetQueueResult].
@@ -20,7 +20,7 @@ class GetQueueResult {
   /// [name] The same as `id`.
   /// [region] Required.
   /// [status] The status of the queue.
-  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const GetQueueResult({
     required this.arn,
     required this.id,
@@ -52,4 +52,3 @@ class GetQueueResult {
     );
   }
 }
-

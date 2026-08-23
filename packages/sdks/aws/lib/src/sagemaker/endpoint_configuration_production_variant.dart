@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'endpoint_configuration_production_variant_capacity_reservation_config.dart';
 import 'endpoint_configuration_production_variant_core_dump_config.dart';
 import 'endpoint_configuration_production_variant_managed_instance_scaling.dart';
 import 'endpoint_configuration_production_variant_routing_config.dart';
@@ -9,17 +10,19 @@ import 'endpoint_configuration_production_variant_serverless_config.dart';
 class EndpointConfigurationProductionVariant {
   /// Size of the Elastic Inference (EI) instance to use for the production variant.
   final pulumi.Input<String>? acceleratorType;
+  /// Settings for the capacity reservation for the compute instances that SageMaker AI reserves for an endpoint. See capacityReservationConfig below.
+  final pulumi.Input<EndpointConfigurationProductionVariantCapacityReservationConfig>? capacityReservationConfig;
   /// Timeout value, in seconds, for your inference container to pass health check by SageMaker AI Hosting. For more information about health check, see [How Your Container Should Respond to Health Check (Ping) Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-algo-ping-requests). Valid values between `60` and `3600`.
   final pulumi.Input<int>? containerStartupHealthCheckTimeoutInSeconds;
   /// Core dump configuration from the model container when the process crashes. Fields are documented below.
   final pulumi.Input<EndpointConfigurationProductionVariantCoreDumpConfig>? coreDumpConfig;
-  /// Whether to turn on native AWS SSM access for a production variant behind an endpoint. By default, SSM access is disabled for all production variants behind endpoints. Ignored if `model_name` is not set (Inference Components endpoint).
+  /// Whether to turn on native AWS SSM access for a production variant behind an endpoint. By default, SSM access is disabled for all production variants behind endpoints. Ignored if `modelName` is not set (Inference Components endpoint).
   final pulumi.Input<bool>? enableSsmAccess;
   /// Option from a collection of preconfigured AMI images. Each image is configured by AWS with a set of software and driver versions. AWS optimizes these configurations for different machine learning workloads.
   final pulumi.Input<String>? inferenceAmiVersion;
   /// Initial number of instances used for auto-scaling.
   final pulumi.Input<int>? initialInstanceCount;
-  /// Initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, defaults to `1.0`. Ignored if `model_name` is not set (Inference Components endpoint).
+  /// Initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, defaults to `1.0`. Ignored if `modelName` is not set (Inference Components endpoint).
   final pulumi.Input<double>? initialVariantWeight;
   /// Type of instance to start.
   final pulumi.Input<String>? instanceType;
@@ -27,9 +30,9 @@ class EndpointConfigurationProductionVariant {
   final pulumi.Input<EndpointConfigurationProductionVariantManagedInstanceScaling>? managedInstanceScaling;
   /// Timeout value, in seconds, to download and extract the model that you want to host from S3 to the individual inference instance associated with this production variant. Valid values between `60` and `3600`.
   final pulumi.Input<int>? modelDataDownloadTimeoutInSeconds;
-  /// Name of the model to use. Required unless using Inference Components (in which case `execution_role_arn` must be specified at the endpoint configuration level).
+  /// Name of the model to use. Required unless using Inference Components (in which case `executionRoleArn` must be specified at the endpoint configuration level).
   final pulumi.Input<String>? modelName;
-  /// How the endpoint routes incoming traffic. See routing_config below.
+  /// How the endpoint routes incoming traffic. See routingConfig below.
   final pulumi.Input<List<EndpointConfigurationProductionVariantRoutingConfig>>? routingConfigs;
   /// How an endpoint performs asynchronous inference.
   final pulumi.Input<EndpointConfigurationProductionVariantServerlessConfig>? serverlessConfig;
@@ -40,22 +43,24 @@ class EndpointConfigurationProductionVariant {
 
   /// Creates a new [EndpointConfigurationProductionVariant].
   /// [acceleratorType] Size of the Elastic Inference (EI) instance to use for the production variant.
+  /// [capacityReservationConfig] Settings for the capacity reservation for the compute instances that SageMaker AI reserves for an endpoint. See capacityReservationConfig below.
   /// [containerStartupHealthCheckTimeoutInSeconds] Timeout value, in seconds, for your inference container to pass health check by SageMaker AI Hosting. For more information about health check, see [How Your Container Should Respond to Health Check (Ping) Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-algo-ping-requests). Valid values between `60` and `3600`.
   /// [coreDumpConfig] Core dump configuration from the model container when the process crashes. Fields are documented below.
-  /// [enableSsmAccess] Whether to turn on native AWS SSM access for a production variant behind an endpoint. By default, SSM access is disabled for all production variants behind endpoints. Ignored if `model_name` is not set (Inference Components endpoint).
+  /// [enableSsmAccess] Whether to turn on native AWS SSM access for a production variant behind an endpoint. By default, SSM access is disabled for all production variants behind endpoints. Ignored if `modelName` is not set (Inference Components endpoint).
   /// [inferenceAmiVersion] Option from a collection of preconfigured AMI images. Each image is configured by AWS with a set of software and driver versions. AWS optimizes these configurations for different machine learning workloads.
   /// [initialInstanceCount] Initial number of instances used for auto-scaling.
-  /// [initialVariantWeight] Initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, defaults to `1.0`. Ignored if `model_name` is not set (Inference Components endpoint).
+  /// [initialVariantWeight] Initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, defaults to `1.0`. Ignored if `modelName` is not set (Inference Components endpoint).
   /// [instanceType] Type of instance to start.
   /// [managedInstanceScaling] Control the range in the number of instances that the endpoint provisions as it scales up or down to accommodate traffic.
   /// [modelDataDownloadTimeoutInSeconds] Timeout value, in seconds, to download and extract the model that you want to host from S3 to the individual inference instance associated with this production variant. Valid values between `60` and `3600`.
-  /// [modelName] Name of the model to use. Required unless using Inference Components (in which case `execution_role_arn` must be specified at the endpoint configuration level).
-  /// [routingConfigs] How the endpoint routes incoming traffic. See routing_config below.
+  /// [modelName] Name of the model to use. Required unless using Inference Components (in which case `executionRoleArn` must be specified at the endpoint configuration level).
+  /// [routingConfigs] How the endpoint routes incoming traffic. See routingConfig below.
   /// [serverlessConfig] How an endpoint performs asynchronous inference.
   /// [variantName] Name of the variant. If omitted, the provider will assign a random, unique name.
   /// [volumeSizeInGb] Size, in GB, of the ML storage volume attached to individual inference instance associated with the production variant. Valid values between `1` and `512`.
   const EndpointConfigurationProductionVariant({
     this.acceleratorType,
+    this.capacityReservationConfig,
     this.containerStartupHealthCheckTimeoutInSeconds,
     this.coreDumpConfig,
     this.enableSsmAccess,
@@ -75,6 +80,7 @@ class EndpointConfigurationProductionVariant {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceleratorType': ?acceleratorType,
+      'capacityReservationConfig': ?pulumi.Input.mapOptionalInputValue<EndpointConfigurationProductionVariantCapacityReservationConfig, Map<String, dynamic>>(capacityReservationConfig, (value) => value.toMap()),
       'containerStartupHealthCheckTimeoutInSeconds': ?containerStartupHealthCheckTimeoutInSeconds,
       'coreDumpConfig': ?pulumi.Input.mapOptionalInputValue<EndpointConfigurationProductionVariantCoreDumpConfig, Map<String, dynamic>>(coreDumpConfig, (value) => value.toMap()),
       'enableSsmAccess': ?enableSsmAccess,
@@ -95,6 +101,7 @@ class EndpointConfigurationProductionVariant {
   factory EndpointConfigurationProductionVariant.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationProductionVariant(
       acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capacityReservationConfig: (() { final guardedValue = map['capacityReservationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointConfigurationProductionVariantCapacityReservationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       containerStartupHealthCheckTimeoutInSeconds: (() { final guardedValue = map['containerStartupHealthCheckTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       coreDumpConfig: (() { final guardedValue = map['coreDumpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointConfigurationProductionVariantCoreDumpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableSsmAccess: (() { final guardedValue = map['enableSsmAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -112,4 +119,3 @@ class EndpointConfigurationProductionVariant {
     );
   }
 }
-

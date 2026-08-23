@@ -81,6 +81,24 @@ import 'application_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_qbusiness_application" "example" {
+///   display_name                 = "example-app"
+///   iam_service_role_arn         = exampleAwsIamRole.arn
+///   identity_center_instance_arn = exampleAwsSsoadminInstances.arns[0]
+///   attachments_configuration = {
+///     attachments_control_mode = "ENABLED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +108,8 @@ import 'application_timeouts.dart';
 /// import com.pulumi.aws.qbusiness.Application;
 /// import com.pulumi.aws.qbusiness.ApplicationArgs;
 /// import com.pulumi.aws.qbusiness.inputs.ApplicationAttachmentsConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,13 +156,13 @@ import 'application_timeouts.dart';
 class Application extends pulumi.CustomResource {
   /// ARN of the Q Business application.
   late final pulumi.Output<String> arn;
-  /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
+  /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.
   late final pulumi.Output<ApplicationAttachmentsConfiguration> attachmentsConfiguration;
   /// Description of the Amazon Q application.
   late final pulumi.Output<String?> description;
   /// Name of the Amazon Q application.
   late final pulumi.Output<String> displayName;
-  /// Information about encryption configuration. See `encryption_configuration` below.
+  /// Information about encryption configuration. See `encryptionConfiguration` below.
   late final pulumi.Output<ApplicationEncryptionConfiguration?> encryptionConfiguration;
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   late final pulumi.Output<String> iamServiceRoleArn;
@@ -157,7 +175,7 @@ class Application extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ApplicationTimeouts?> timeouts;
 

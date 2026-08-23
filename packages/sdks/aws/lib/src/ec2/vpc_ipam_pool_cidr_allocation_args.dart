@@ -19,6 +19,8 @@ class VpcIpamPoolCidrAllocationArgs {
   final pulumi.Input<int>? netmaskLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VpcIpamPoolCidrAllocationArgs].
   /// [cidr] The CIDR you want to assign to the pool.
@@ -27,6 +29,7 @@ class VpcIpamPoolCidrAllocationArgs {
   /// [ipamPoolId] The ID of the pool to which you want to assign a CIDR.
   /// [netmaskLength] The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const VpcIpamPoolCidrAllocationArgs({
     this.cidr,
     this.description,
@@ -34,6 +37,7 @@ class VpcIpamPoolCidrAllocationArgs {
     required this.ipamPoolId,
     this.netmaskLength,
     this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -44,6 +48,7 @@ class VpcIpamPoolCidrAllocationArgs {
       'ipamPoolId': ipamPoolId,
       'netmaskLength': ?netmaskLength,
       'region': ?region,
+      'tags': ?tags,
     };
   }
 
@@ -55,7 +60,7 @@ class VpcIpamPoolCidrAllocationArgs {
       ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
       netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

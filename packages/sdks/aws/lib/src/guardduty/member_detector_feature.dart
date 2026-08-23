@@ -72,7 +72,7 @@ import 'member_detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewMemberDetectorFeature(ctx, "runtime_monitoring", &guardduty.MemberDetectorFeatureArgs{
-/// 			DetectorId: example.ID(),
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			AccountId:  pulumi.String("123456789012"),
 /// 			Name:       pulumi.String("S3_DATA_EVENTS"),
 /// 			Status:     pulumi.String("ENABLED"),
@@ -82,6 +82,25 @@ import 'member_detector_feature_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "example" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_memberdetectorfeature" "runtime_monitoring" {
+///   detector_id = aws_guardduty_detector.example.id
+///   account_id  = "123456789012"
+///   name        = "S3_DATA_EVENTS"
+///   status      = "ENABLED"
 /// }
 /// ```
 /// ```java
@@ -94,8 +113,8 @@ import 'member_detector_feature_state.dart';
 /// import com.pulumi.aws.guardduty.DetectorArgs;
 /// import com.pulumi.aws.guardduty.MemberDetectorFeature;
 /// import com.pulumi.aws.guardduty.MemberDetectorFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +157,7 @@ import 'member_detector_feature_state.dart';
 /// ```
 ///
 ///
-/// ## Extended Threat Detection for EKS
+/// ### Extended Threat Detection for EKS
 ///
 /// To enable GuardDuty [Extended Threat Detection](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-extended-threat-detection.html) for EKS, you need at least one of these features enabled: [EKS Protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html) or [Runtime Monitoring](https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring-configuration.html). For maximum detection coverage, enabling both is recommended to enhance detection capabilities.
 ///
@@ -241,7 +260,7 @@ import 'member_detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "eks_protection", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID(),
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			AccountId:  "123456789012",
 /// 			Name:       pulumi.String("EKS_AUDIT_LOGS"),
 /// 			Status:     pulumi.String("ENABLED"),
@@ -250,7 +269,7 @@ import 'member_detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "eks_runtime_monitoring", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID(),
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			AccountId:  "123456789012",
 /// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
 /// 			Status:     pulumi.String("ENABLED"),
@@ -268,6 +287,35 @@ import 'member_detector_feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "example" {
+///   enable = true
+/// }
+/// resource "aws_guardduty_detectorfeature" "eks_protection" {
+///   detector_id = aws_guardduty_detector.example.id
+///   account_id  = "123456789012"
+///   name        = "EKS_AUDIT_LOGS"
+///   status      = "ENABLED"
+/// }
+/// resource "aws_guardduty_detectorfeature" "eks_runtime_monitoring" {
+///   detector_id = aws_guardduty_detector.example.id
+///   account_id  = "123456789012"
+///   name        = "EKS_RUNTIME_MONITORING"
+///   status      = "ENABLED"
+///   additional_configurations {
+///     name   = "EKS_ADDON_MANAGEMENT"
+///     status = "ENABLED"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +327,8 @@ import 'member_detector_feature_state.dart';
 /// import com.pulumi.aws.guardduty.DetectorFeature;
 /// import com.pulumi.aws.guardduty.DetectorFeatureArgs;
 /// import com.pulumi.aws.guardduty.inputs.DetectorFeatureAdditionalConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

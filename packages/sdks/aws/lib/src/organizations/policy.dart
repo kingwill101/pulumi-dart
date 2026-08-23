@@ -109,6 +109,28 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_organizations_policy" "example" {
+///   name    = "example"
+///   content = data.aws_iam_getpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,10 +139,11 @@ import 'policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.organizations.Policy;
 /// import com.pulumi.aws.organizations.PolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,6 +195,17 @@ import 'policy_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier (ID) of the policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.organizations.Policy` using the policy ID. For example:
 ///
 /// ```sh
@@ -200,9 +234,9 @@ class Policy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// If set to `true`, destroy will **not** delete the policy and instead just remove the resource from state. This can be useful in situations where the policies (and the associated attachment) must be preserved to meet the AWS minimum requirement of 1 attached policy.
   late final pulumi.Output<bool?> skipDestroy;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of policy to create. Valid values are `AISERVICES_OPT_OUT_POLICY`, `BACKUP_POLICY`, `BEDROCK_POLICY`, `CHATBOT_POLICY`, `DECLARATIVE_POLICY_EC2`, `INSPECTOR_POLICY`, `RESOURCE_CONTROL_POLICY` (RCP), `S3_POLICY`, `SECURITYHUB_POLICY`, `SERVICE_CONTROL_POLICY` (SCP), `TAG_POLICY`, and `UPGRADE_ROLLOUT_POLICY`. Defaults to `SERVICE_CONTROL_POLICY`.
   late final pulumi.Output<String?> type;

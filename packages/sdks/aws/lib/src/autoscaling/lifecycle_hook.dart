@@ -5,14 +5,14 @@ import 'lifecycle_hook_state.dart';
 /// Provides an AutoScaling Lifecycle Hook resource.
 ///
 /// &gt; **NOTE:** This provider has two types of ways you can add lifecycle hooks - via
-/// the `initial_lifecycle_hook` attribute from the
+/// the `initialLifecycleHook` attribute from the
 /// `aws.autoscaling.Group`
 /// resource, or via this one. Hooks added via this resource will not be added
 /// until the autoscaling group has been created, and depending on your
 /// capacity
 /// settings, after the initial instances have been launched, creating unintended
 /// behavior. If you need hooks to run on all instances, add them with
-/// `initial_lifecycle_hook` in
+/// `initialLifecycleHook` in
 /// `aws.autoscaling.Group`,
 /// but take care to not duplicate those hooks with this resource.
 ///
@@ -155,7 +155,7 @@ import 'lifecycle_hook_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"foo": "bar",
 /// 		})
 /// 		if err != nil {
@@ -179,6 +179,39 @@ import 'lifecycle_hook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_group" "foobar" {
+///   availability_zones   = ["us-west-2a"]
+///   name                 = "test-foobar5"
+///   health_check_type    = "EC2"
+///   termination_policies = ["OldestInstance"]
+///   tags {
+///     key                 = "Foo"
+///     value               = "foo-bar"
+///     propagate_at_launch = true
+///   }
+/// }
+/// resource "aws_autoscaling_lifecyclehook" "foobar" {
+///   name                   = "foobar"
+///   autoscaling_group_name = aws_autoscaling_group.foobar.name
+///   default_result         = "CONTINUE"
+///   heartbeat_timeout      = 2000
+///   lifecycle_transition   = "autoscaling:EC2_INSTANCE_LAUNCHING"
+///   notification_metadata = jsonencode({
+///     "foo" = "bar"
+///   })
+///   notification_target_arn = "arn:aws:sqs:us-east-1:444455556666:queue1*"
+///   role_arn                = "arn:aws:iam::123456789012:role/S3Access"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +224,8 @@ import 'lifecycle_hook_state.dart';
 /// import com.pulumi.aws.autoscaling.LifecycleHook;
 /// import com.pulumi.aws.autoscaling.LifecycleHookArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,10 +300,23 @@ import 'lifecycle_hook_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AutoScaling Lifecycle Hooks using the role autoscaling_group_name and name separated by `/`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `autoscalingGroupName` (String) Name of the Auto Scaling group.
+/// * `name` (String) Name of the lifecycle hook.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import AutoScaling Lifecycle Hooks using `autoscalingGroupName` and `name` separated by a forward slash (`/`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:autoscaling/lifecycleHook:LifecycleHook test-lifecycle-hook asg-name/lifecycle-hook-name
+/// $ pulumi import aws:autoscaling/lifecycleHook:LifecycleHook example example-asg/example-hook
 /// ```
 class LifecycleHook extends pulumi.CustomResource {
   /// Name of the Auto Scaling group to which you want to assign the lifecycle hook

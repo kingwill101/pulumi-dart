@@ -7,7 +7,7 @@ import 'get_dedicated_ip_pool_dedicated_ip.dart';
 class GetDedicatedIpPoolResult {
   /// ARN of the Dedicated IP Pool.
   final String arn;
-  /// A list of objects describing the pool's dedicated IP's. See `dedicated_ips`.
+  /// A list of objects describing the pool's dedicated IP's. See `dedicatedIps`.
   final List<GetDedicatedIpPoolDedicatedIp> dedicatedIps;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -20,7 +20,7 @@ class GetDedicatedIpPoolResult {
 
   /// Creates a new [GetDedicatedIpPoolResult].
   /// [arn] ARN of the Dedicated IP Pool.
-  /// [dedicatedIps] A list of objects describing the pool's dedicated IP's. See `dedicated_ips`.
+  /// [dedicatedIps] A list of objects describing the pool's dedicated IP's. See `dedicatedIps`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [poolName] Required.
   /// [region] Required.
@@ -60,4 +60,3 @@ class GetDedicatedIpPoolResult {
     );
   }
 }
-

@@ -38,15 +38,15 @@ class AssociationState {
   final pulumi.Input<String>? scheduleExpression;
   /// The mode for generating association compliance. You can specify `AUTO` or `MANUAL`.
   final pulumi.Input<String>? syncCompliance;
-  /// A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
   final pulumi.Input<List<AssociationTarget>>? targets;
   /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
   ///
-  /// Output Location (`output_location`) is an S3 bucket where you want to store the results of this association:
+  /// Output Location (`outputLocation`) is an S3 bucket where you want to store the results of this association:
   final pulumi.Input<int>? waitForSuccessTimeoutSeconds;
 
   /// Creates a new [AssociationState].
@@ -66,8 +66,8 @@ class AssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scheduleExpression] A [cron or rate expression](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html) that specifies when the association runs.
   /// [syncCompliance] The mode for generating association compliance. You can specify `AUTO` or `MANUAL`.
-  /// [tags] A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targets] A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
   /// [waitForSuccessTimeoutSeconds] The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
   const AssociationState({
@@ -143,4 +143,3 @@ class AssociationState {
     );
   }
 }
-

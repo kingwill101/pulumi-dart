@@ -1,3 +1,9 @@
+export 'outposts/capacity_task.dart';
+export 'outposts/capacity_task_args.dart';
+export 'outposts/capacity_task_instance_pool.dart';
+export 'outposts/capacity_task_instances_to_exclude.dart';
+export 'outposts/capacity_task_state.dart';
+export 'outposts/capacity_task_timeouts.dart';
 export 'outposts/functions.dart';
 export 'outposts/get_asset_args.dart';
 export 'outposts/get_asset_result.dart';

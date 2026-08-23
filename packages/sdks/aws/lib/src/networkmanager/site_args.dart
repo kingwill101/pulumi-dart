@@ -16,14 +16,14 @@ class SiteArgs {
   final pulumi.Input<String> globalNetworkId;
   /// Site location. See below.
   final pulumi.Input<SiteLocation>? location;
-  /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Site. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [SiteArgs].
   /// [description] Description of the Site.
   /// [globalNetworkId] ID of the Global Network to create the site in.
   /// [location] Site location. See below.
-  /// [tags] Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the Site. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const SiteArgs({
     this.description,
     required this.globalNetworkId,
@@ -49,4 +49,3 @@ class SiteArgs {
     );
   }
 }
-

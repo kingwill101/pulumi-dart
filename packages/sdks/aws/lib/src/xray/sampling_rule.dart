@@ -110,6 +110,32 @@ import 'sampling_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_xray_samplingrule" "example" {
+///   rule_name      = "example"
+///   priority       = 9999
+///   version        = 1
+///   reservoir_size = 1
+///   fixed_rate     = 0.05
+///   url_path       = "*"
+///   host           = "*"
+///   http_method    = "*"
+///   service_type   = "*"
+///   service_name   = "*"
+///   resource_arn   = "*"
+///   attributes = {
+///     "Hello" = "Tris"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +144,8 @@ import 'sampling_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.xray.SamplingRule;
 /// import com.pulumi.aws.xray.SamplingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,10 +198,22 @@ import 'sampling_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import XRay Sampling Rules using the name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `ruleName` (String) Sampling rule name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import XRay Sampling Rules using `ruleName`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:xray/samplingRule:SamplingRule example example
+/// $ pulumi import aws:xray/samplingRule:SamplingRule example example-rule
 /// ```
 class SamplingRule extends pulumi.CustomResource {
   /// The ARN of the sampling rule.
@@ -202,9 +240,9 @@ class SamplingRule extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceName;
   /// Matches the `origin` that the service uses to identify its type in segments.
   late final pulumi.Output<String> serviceType;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Matches the path from a request URL.
   late final pulumi.Output<String> urlPath;

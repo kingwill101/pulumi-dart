@@ -9,16 +9,16 @@ class V2modelsIntentFulfillmentCodeHook {
   final pulumi.Input<bool>? active;
   /// Whether a Lambda function should be invoked to fulfill a specific intent.
   final pulumi.Input<bool> enabled;
-  /// Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See `fulfillment_updates_specification`.
+  /// Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See `fulfillmentUpdatesSpecification`.
   final pulumi.Input<V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification>? fulfillmentUpdatesSpecification;
-  /// Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See `post_fulfillment_status_specification`.
+  /// Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See `postFulfillmentStatusSpecification`.
   final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification>? postFulfillmentStatusSpecification;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHook].
   /// [active] Whether the fulfillment code hook is used. When active is false, the code hook doesn't run.
   /// [enabled] Whether a Lambda function should be invoked to fulfill a specific intent.
-  /// [fulfillmentUpdatesSpecification] Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See `fulfillment_updates_specification`.
-  /// [postFulfillmentStatusSpecification] Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See `post_fulfillment_status_specification`.
+  /// [fulfillmentUpdatesSpecification] Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See `fulfillmentUpdatesSpecification`.
+  /// [postFulfillmentStatusSpecification] Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See `postFulfillmentStatusSpecification`.
   const V2modelsIntentFulfillmentCodeHook({
     this.active,
     required this.enabled,
@@ -44,4 +44,3 @@ class V2modelsIntentFulfillmentCodeHook {
     );
   }
 }
-

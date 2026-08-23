@@ -10,10 +10,10 @@ import 'cluster_state.dart';
 /// parameter, such as `port`, and are reflected in the next maintenance
 /// window. Because of this, this provider may report a difference in its planning
 /// phase because a modification has not yet taken place. You can use the
-/// `apply_immediately` flag to instruct the service to apply the change immediately
+/// `applyImmediately` flag to instruct the service to apply the change immediately
 /// (see documentation below).
 ///
-/// &gt; **Note:** using `apply_immediately` can result in a brief downtime as the server reboots.
+/// &gt; **Note:** using `applyImmediately` can result in a brief downtime as the server reboots.
 ///
 ///
 /// ## Example Usage
@@ -93,6 +93,25 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_docdb_cluster" "docdb" {
+///   cluster_identifier      = "my-docdb-cluster"
+///   engine                  = "docdb"
+///   master_username         = "foo"
+///   master_password         = "mustbeeightchars"
+///   backup_retention_period = 5
+///   preferred_backup_window = "07:00-09:00"
+///   skip_final_snapshot     = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +120,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.docdb.Cluster;
 /// import com.pulumi.aws.docdb.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -144,7 +163,7 @@ import 'cluster_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DocumentDB Clusters using the `cluster_identifier`. For example:
+/// Using `pulumi import`, import DocumentDB Clusters using the `clusterIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:docdb/cluster:Cluster docdb_cluster docdb-prod-cluster
@@ -160,13 +179,13 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// A list of EC2 Availability Zones that instances in the DB cluster can be created in.
   /// DocumentDB automatically assigns 3 AZs if less than 3 AZs are configured, which will show as a difference requiring resource recreation next pulumi up.
-  /// We recommend specifying 3 AZs or using the `lifecycle` configuration block `ignore_changes` argument if necessary.
+  /// We recommend specifying 3 AZs or using the `lifecycle` configuration block `ignoreChanges` argument if necessary.
   late final pulumi.Output<List<String>> availabilityZones;
   /// The days to retain backups for. Default `1`
   late final pulumi.Output<int?> backupRetentionPeriod;
   /// The cluster identifier. If omitted, the provider will assign a random, unique identifier.
   late final pulumi.Output<String> clusterIdentifier;
-  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
+  /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `clusterIdentifier`.
   late final pulumi.Output<String> clusterIdentifierPrefix;
   /// List of DocumentDB Instances that are a part of this cluster
   late final pulumi.Output<List<String>> clusterMembers;
@@ -195,18 +214,18 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> globalClusterIdentifier;
   /// The Route53 Hosted Zone ID of the endpoint
   late final pulumi.Output<String> hostedZoneId;
-  /// The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
+  /// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.
   late final pulumi.Output<String> kmsKeyId;
-  /// Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `master_password` or `master_password_wo` is provided.
+  /// Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `masterPassword` or `masterPasswordWo` is provided.
   late final pulumi.Output<bool?> manageMasterUserPassword;
   /// Password for the master DB user. Note that this may
-  /// show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `master_password_wo` and `manage_master_user_password`.
+  /// show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
   late final pulumi.Output<String?> masterPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Password for the master DB user. Note that this may
-  /// show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `master_password` and `manage_master_user_password`.
+  /// show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`.
   late final pulumi.Output<String?> masterPasswordWo;
-  /// Used together with `master_password_wo` to trigger an update. Increment this value when an update to the `master_password_wo` is required.
+  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
   late final pulumi.Output<int?> masterPasswordWoVersion;
   late final pulumi.Output<List<Map<String, dynamic>>> masterUserSecrets;
   /// Username for the master DB user.
@@ -228,7 +247,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterRestoreToPointInTime?> restoreToPointInTime;
   /// Scaling configuration of an Amazon DocumentDB Serverless cluster. See Serverless V2 Scaling Configuration below for details.
   late final pulumi.Output<ClusterServerlessV2ScalingConfiguration?> serverlessV2ScalingConfiguration;
-  /// Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
+  /// Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
   late final pulumi.Output<bool?> skipFinalSnapshot;
   /// Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   late final pulumi.Output<String?> snapshotIdentifier;
@@ -236,9 +255,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> storageEncrypted;
   /// The storage type to associate with the DB cluster. Valid values: `standard`, `iopt1`.
   late final pulumi.Output<String?> storageType;
-  /// A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the DB cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// List of VPC security groups to associate
   /// with the Cluster

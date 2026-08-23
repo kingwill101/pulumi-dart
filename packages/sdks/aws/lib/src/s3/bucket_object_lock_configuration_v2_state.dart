@@ -9,23 +9,22 @@ class BucketObjectLockConfigurationV2State {
   final pulumi.Input<String>? bucket;
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-  /// Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
+  /// Whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
   final pulumi.Input<String>? objectLockEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Configuration block for specifying the Object Lock rule for the specified object. See below.
   final pulumi.Input<BucketObjectLockConfigurationV2Rule>? rule;
-  /// This argument is deprecated and no longer needed to enable Object Lock.
-  /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
+  /// Token to allow Object Lock to be enabled for an existing bucket. To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   final pulumi.Input<String>? token;
 
   /// Creates a new [BucketObjectLockConfigurationV2State].
   /// [bucket] Name of the bucket.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
-  /// [objectLockEnabled] Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
+  /// [objectLockEnabled] Whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rule] Configuration block for specifying the Object Lock rule for the specified object. See below.
-  /// [token] This argument is deprecated and no longer needed to enable Object Lock.
+  /// [token] Token to allow Object Lock to be enabled for an existing bucket. To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   const BucketObjectLockConfigurationV2State({
     this.bucket,
     this.expectedBucketOwner,
@@ -57,4 +56,3 @@ class BucketObjectLockConfigurationV2State {
     );
   }
 }
-

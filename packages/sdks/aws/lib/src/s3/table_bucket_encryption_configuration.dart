@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableBucketEncryptionConfiguration {
-  /// The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
+  /// ARN of a KMS Key to be used with `aws:kms` `sseAlgorithm`
   final pulumi.Input<String> kmsKeyArn;
   /// One of `aws:kms` or `AES256`
   final pulumi.Input<String> sseAlgorithm;
 
   /// Creates a new [TableBucketEncryptionConfiguration].
-  /// [kmsKeyArn] The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
+  /// [kmsKeyArn] ARN of a KMS Key to be used with `aws:kms` `sseAlgorithm`
   /// [sseAlgorithm] One of `aws:kms` or `AES256`
   const TableBucketEncryptionConfiguration({
     required this.kmsKeyArn,
@@ -30,4 +30,3 @@ class TableBucketEncryptionConfiguration {
     );
   }
 }
-

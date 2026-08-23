@@ -6,12 +6,12 @@ import 'channel_namespace_handler_configs_on_publish_integration.dart';
 class ChannelNamespaceHandlerConfigsOnPublish {
   /// Behavior for the handler. Valid values: `CODE`, `DIRECT`.
   final pulumi.Input<String> behavior;
-  /// Integration data source configuration for the handler. See Integration below.
+  /// Integration data source configuration for the handler. See `integration` below.
   final pulumi.Input<ChannelNamespaceHandlerConfigsOnPublishIntegration> integration;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnPublish].
   /// [behavior] Behavior for the handler. Valid values: `CODE`, `DIRECT`.
-  /// [integration] Integration data source configuration for the handler. See Integration below.
+  /// [integration] Integration data source configuration for the handler. See `integration` below.
   const ChannelNamespaceHandlerConfigsOnPublish({
     required this.behavior,
     required this.integration,
@@ -31,4 +31,3 @@ class ChannelNamespaceHandlerConfigsOnPublish {
     );
   }
 }
-

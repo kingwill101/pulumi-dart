@@ -9,6 +9,40 @@ import 'table_policy_state.dart';
 /// ### Basic Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///   }
+/// }
+///
+/// resource "aws_s3tables_tablepolicy" "example" {
+///   resource_policy  = data.aws_iam_getpolicydocument.example.json
+///   name             = test.name
+///   namespace        = test.namespace
+///   table_bucket_arn = test.tableBucketArn
+/// }
+/// resource "aws_s3tables_table" "example" {
+///   name             = "example_table"
+///   namespace        = aws_s3tables_namespace.example
+///   table_bucket_arn = aws_s3tables_namespace.example.table_bucket_arn
+///   format           = "ICEBERG"
+/// }
+/// resource "aws_s3tables_namespace" "example" {
+///   namespace        = ["example-namespace"]
+///   table_bucket_arn = aws_s3tables_tablebucket.example.arn
+/// }
+/// resource "aws_s3tables_tablebucket" "example" {
+///   name = "example-bucket"
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   exampleTablePolicy:
@@ -51,19 +85,15 @@ import 'table_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Tables Table Policy using the `table_bucket_arn`, the value of `namespace`, and the value of `name`, separated by a semicolon (`;`). For example:
+/// Using `pulumi import`, import S3 Tables Table Policy using the `tableBucketArn`, the value of `namespace`, and the value of `name`, separated by a semicolon (`;`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3tables/tablePolicy:TablePolicy example 'arn:aws:s3tables:us-west-2:123456789012:bucket/example-bucket;example-namespace;example-table'
 /// ```
 class TablePolicy extends pulumi.CustomResource {
-  /// Name of the table.
-  /// Must be between 1 and 255 characters in length.
-  /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
+  /// Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   late final pulumi.Output<String> name;
-  /// Name of the namespace for this table.
-  /// Must be between 1 and 255 characters in length.
-  /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
+  /// Name of the namespace for this table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   late final pulumi.Output<String> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

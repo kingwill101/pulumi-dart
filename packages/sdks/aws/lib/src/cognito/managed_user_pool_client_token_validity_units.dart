@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedUserPoolClientTokenValidityUnits {
-  /// Time unit for the value in `access_token_validity` and defaults to `hours`.
+  /// Time unit for the value in `accessTokenValidity` and defaults to `hours`.
   final pulumi.Input<String>? accessToken;
-  /// Time unit for the value in `id_token_validity`, and it defaults to `hours`.
+  /// Time unit for the value in `idTokenValidity`, and it defaults to `hours`.
   final pulumi.Input<String>? idToken;
-  /// Time unit for the value in `refresh_token_validity` and defaults to `days`.
+  /// Time unit for the value in `refreshTokenValidity` and defaults to `days`.
   final pulumi.Input<String>? refreshToken;
 
   /// Creates a new [ManagedUserPoolClientTokenValidityUnits].
-  /// [accessToken] Time unit for the value in `access_token_validity` and defaults to `hours`.
-  /// [idToken] Time unit for the value in `id_token_validity`, and it defaults to `hours`.
-  /// [refreshToken] Time unit for the value in `refresh_token_validity` and defaults to `days`.
+  /// [accessToken] Time unit for the value in `accessTokenValidity` and defaults to `hours`.
+  /// [idToken] Time unit for the value in `idTokenValidity`, and it defaults to `hours`.
+  /// [refreshToken] Time unit for the value in `refreshTokenValidity` and defaults to `days`.
   const ManagedUserPoolClientTokenValidityUnits({
     this.accessToken,
     this.idToken,
@@ -36,4 +36,3 @@ class ManagedUserPoolClientTokenValidityUnits {
     );
   }
 }
-

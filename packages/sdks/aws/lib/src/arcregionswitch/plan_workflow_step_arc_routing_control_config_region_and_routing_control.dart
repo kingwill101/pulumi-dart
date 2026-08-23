@@ -6,12 +6,12 @@ import 'plan_workflow_step_arc_routing_control_config_region_and_routing_control
 class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
   /// AWS region.
   final pulumi.Input<String> region;
-  /// List of routing controls. See Routing Control below.
+  /// Routing controls. See `routingControl` Block for details.
   final pulumi.Input<List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>>? routingControls;
 
   /// Creates a new [PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl].
   /// [region] AWS region.
-  /// [routingControls] List of routing controls. See Routing Control below.
+  /// [routingControls] Routing controls. See `routingControl` Block for details.
   const PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl({
     required this.region,
     this.routingControls,
@@ -31,4 +31,3 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
     );
   }
 }
-

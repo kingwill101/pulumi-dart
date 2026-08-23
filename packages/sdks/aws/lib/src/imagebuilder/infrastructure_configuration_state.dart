@@ -39,11 +39,11 @@ class InfrastructureConfigurationState {
   final pulumi.Input<List<String>>? securityGroupIds;
   /// Amazon Resource Name (ARN) of SNS Topic.
   final pulumi.Input<String>? snsTopicArn;
-  /// EC2 Subnet identifier. Also requires `security_group_ids` argument.
+  /// EC2 Subnet identifier. Also requires `securityGroupIds` argument.
   final pulumi.Input<String>? subnetId;
-  /// Key-value map of resource tags to assign to the configuration. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags to assign to the configuration. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
   final pulumi.Input<bool>? terminateInstanceOnFailure;
@@ -64,9 +64,9 @@ class InfrastructureConfigurationState {
   /// [resourceTags] Key-value map of resource tags to assign to infrastructure created by the configuration.
   /// [securityGroupIds] Set of EC2 Security Group identifiers.
   /// [snsTopicArn] Amazon Resource Name (ARN) of SNS Topic.
-  /// [subnetId] EC2 Subnet identifier. Also requires `security_group_ids` argument.
-  /// [tags] Key-value map of resource tags to assign to the configuration. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [subnetId] EC2 Subnet identifier. Also requires `securityGroupIds` argument.
+  /// [tags] Key-value map of resource tags to assign to the configuration. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [terminateInstanceOnFailure] Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
   const InfrastructureConfigurationState({
     this.arn,
@@ -138,4 +138,3 @@ class InfrastructureConfigurationState {
     );
   }
 }
-

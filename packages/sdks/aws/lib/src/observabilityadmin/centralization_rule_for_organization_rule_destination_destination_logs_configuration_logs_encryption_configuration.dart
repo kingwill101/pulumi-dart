@@ -5,17 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration {
   /// Strategy for resolving encryption conflicts. Valid values: `ALLOW`, `SKIP`.
   final pulumi.Input<String>? encryptionConflictResolutionStrategy;
+  /// Determines which newly created destination log groups are encrypted with `kmsKeyArn` when `encryptionStrategy` is `CUSTOMER_MANAGED`. Valid values: `ENCRYPTED_SOURCE_ONLY` (default), `NEW_DESTINATION_LOG_GROUPS`. Not valid when `encryptionStrategy` is `AWS_OWNED`.
+  final pulumi.Input<String>? encryptionScope;
   /// Encryption strategy for logs. Valid values: `AWS_OWNED`, `CUSTOMER_MANAGED`.
   final pulumi.Input<String> encryptionStrategy;
-  /// ARN of the KMS key to use for encryption when `encryption_strategy` is `CUSTOMER_MANAGED`.
+  /// ARN of the KMS key to use for encryption when `encryptionStrategy` is `CUSTOMER_MANAGED`.
   final pulumi.Input<String>? kmsKeyArn;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration].
   /// [encryptionConflictResolutionStrategy] Strategy for resolving encryption conflicts. Valid values: `ALLOW`, `SKIP`.
+  /// [encryptionScope] Determines which newly created destination log groups are encrypted with `kmsKeyArn` when `encryptionStrategy` is `CUSTOMER_MANAGED`. Valid values: `ENCRYPTED_SOURCE_ONLY` (default), `NEW_DESTINATION_LOG_GROUPS`. Not valid when `encryptionStrategy` is `AWS_OWNED`.
   /// [encryptionStrategy] Encryption strategy for logs. Valid values: `AWS_OWNED`, `CUSTOMER_MANAGED`.
-  /// [kmsKeyArn] ARN of the KMS key to use for encryption when `encryption_strategy` is `CUSTOMER_MANAGED`.
+  /// [kmsKeyArn] ARN of the KMS key to use for encryption when `encryptionStrategy` is `CUSTOMER_MANAGED`.
   const CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration({
     this.encryptionConflictResolutionStrategy,
+    this.encryptionScope,
     required this.encryptionStrategy,
     this.kmsKeyArn,
   });
@@ -23,6 +27,7 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'encryptionConflictResolutionStrategy': ?encryptionConflictResolutionStrategy,
+      'encryptionScope': ?encryptionScope,
       'encryptionStrategy': encryptionStrategy,
       'kmsKeyArn': ?kmsKeyArn,
     };
@@ -31,9 +36,9 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
   factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration(
       encryptionConflictResolutionStrategy: (() { final guardedValue = map['encryptionConflictResolutionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionScope: (() { final guardedValue = map['encryptionScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionStrategy: pulumi.Input.fromValue(map['encryptionStrategy'] as String),
       kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

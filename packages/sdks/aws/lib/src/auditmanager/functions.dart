@@ -64,6 +64,20 @@ import 'get_framework_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_auditmanager_getcontrol" "example" {
+///   name = "1. Risk Management"
+///   type = "Standard"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'get_framework_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.auditmanager.AuditmanagerFunctions;
 /// import com.pulumi.aws.auditmanager.inputs.GetControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -266,6 +280,40 @@ import 'get_framework_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_auditmanager_getcontrol" "example" {
+///   name = "1. Risk Management"
+///   type = "Standard"
+/// }
+/// data "aws_auditmanager_getcontrol" "example2" {
+///   name = "2. Personnel"
+///   type = "Standard"
+/// }
+///
+/// resource "aws_auditmanager_framework" "example" {
+///   name = "example"
+///   control_sets {
+///     name = "example"
+///     controls {
+///       id = data.aws_auditmanager_getcontrol.example.id
+///     }
+///   }
+///   control_sets {
+///     name = "example2"
+///     controls {
+///       id = data.aws_auditmanager_getcontrol.example2.id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -277,8 +325,9 @@ import 'get_framework_result.dart';
 /// import com.pulumi.aws.auditmanager.Framework;
 /// import com.pulumi.aws.auditmanager.FrameworkArgs;
 /// import com.pulumi.aws.auditmanager.inputs.FrameworkControlSetArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.auditmanager.inputs.FrameworkControlSetControlArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,6 +472,20 @@ Future<GetControlResult> getControl(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_auditmanager_getframework" "example" {
+///   name           = "Essential Eight"
+///   framework_type = "Standard"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -431,8 +494,8 @@ Future<GetControlResult> getControl(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.auditmanager.AuditmanagerFunctions;
 /// import com.pulumi.aws.auditmanager.inputs.GetFrameworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

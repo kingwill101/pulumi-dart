@@ -7,20 +7,20 @@ import 'route_spec_grpc_route_retry_policy.dart';
 import 'route_spec_grpc_route_timeout.dart';
 
 class RouteSpecGrpcRoute {
-  /// Action to take if a match is determined.
+  /// Action to take if a match is determined. See `spec.tcp_route.action` Block for details.
   final pulumi.Input<RouteSpecGrpcRouteAction> action;
-  /// Criteria for determining an gRPC request match.
+  /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
   final pulumi.Input<RouteSpecGrpcRouteMatch>? match;
-  /// Retry policy.
+  /// Retry policy. See `spec.http_route.retry_policy` Block for details.
   final pulumi.Input<RouteSpecGrpcRouteRetryPolicy>? retryPolicy;
-  /// Types of timeouts.
+  /// Types of timeouts. See `spec.tcp_route.timeout` Block for details.
   final pulumi.Input<RouteSpecGrpcRouteTimeout>? timeout;
 
   /// Creates a new [RouteSpecGrpcRoute].
-  /// [action] Action to take if a match is determined.
-  /// [match] Criteria for determining an gRPC request match.
-  /// [retryPolicy] Retry policy.
-  /// [timeout] Types of timeouts.
+  /// [action] Action to take if a match is determined. See `spec.tcp_route.action` Block for details.
+  /// [match] Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
+  /// [retryPolicy] Retry policy. See `spec.http_route.retry_policy` Block for details.
+  /// [timeout] Types of timeouts. See `spec.tcp_route.timeout` Block for details.
   const RouteSpecGrpcRoute({
     required this.action,
     this.match,
@@ -46,4 +46,3 @@ class RouteSpecGrpcRoute {
     );
   }
 }
-

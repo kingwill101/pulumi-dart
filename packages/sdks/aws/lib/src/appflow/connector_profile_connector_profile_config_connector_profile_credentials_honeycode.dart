@@ -4,14 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_profile_connector_profile_config_connector_profile_credentials_honeycode_oauth_request.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode {
+  /// Credentials used to access protected Zendesk resources.
   final pulumi.Input<String>? accessToken;
+  /// OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycodeOauthRequest>? oauthRequest;
+  /// Refresh token used to refresh an expired access token.
   final pulumi.Input<String>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode].
-  /// [accessToken] Optional.
-  /// [oauthRequest] Optional.
-  /// [refreshToken] Optional.
+  /// [accessToken] Credentials used to access protected Zendesk resources.
+  /// [oauthRequest] OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
+  /// [refreshToken] Refresh token used to refresh an expired access token.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode({
     this.accessToken,
     this.oauthRequest,
@@ -34,4 +37,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode
     );
   }
 }
-

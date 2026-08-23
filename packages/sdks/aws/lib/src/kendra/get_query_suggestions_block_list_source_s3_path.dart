@@ -30,4 +30,3 @@ class GetQuerySuggestionsBlockListSourceS3Path {
     );
   }
 }
-

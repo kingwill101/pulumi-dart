@@ -21,7 +21,7 @@ class ConnectionArgs {
   final pulumi.Input<String> globalNetworkId;
   /// ID of the link for the first device.
   final pulumi.Input<String>? linkId;
-  /// Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ConnectionArgs].
@@ -31,7 +31,7 @@ class ConnectionArgs {
   /// [deviceId] ID of the first device in the connection.
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link for the first device.
-  /// [tags] Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ConnectionArgs({
     required this.connectedDeviceId,
     this.connectedLinkId,
@@ -66,4 +66,3 @@ class ConnectionArgs {
     );
   }
 }
-

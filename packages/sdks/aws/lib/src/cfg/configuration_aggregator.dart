@@ -88,6 +88,23 @@ import 'configuration_aggregator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_configurationaggregator" "account" {
+///   name = "example"
+///   account_aggregation_source = {
+///     account_ids = ["123456789012"]
+///     regions     = ["us-west-2"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +114,8 @@ import 'configuration_aggregator_state.dart';
 /// import com.pulumi.aws.cfg.ConfigurationAggregator;
 /// import com.pulumi.aws.cfg.ConfigurationAggregatorArgs;
 /// import com.pulumi.aws.cfg.inputs.ConfigurationAggregatorAccountAggregationSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -322,6 +339,43 @@ import 'configuration_aggregator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["config.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_cfg_configurationaggregator" "organization" {
+///   depends_on = [aws_iam_rolepolicyattachment.organization]
+///   name       = "example"
+///   organization_aggregation_source = {
+///     all_regions = true
+///     role_arn    = aws_iam_role.organization.arn
+///   }
+/// }
+/// resource "aws_iam_role" "organization" {
+///   name               = "example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "organization" {
+///   role       = aws_iam_role.organization.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -330,6 +384,8 @@ import 'configuration_aggregator_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -338,8 +394,8 @@ import 'configuration_aggregator_state.dart';
 /// import com.pulumi.aws.cfg.ConfigurationAggregatorArgs;
 /// import com.pulumi.aws.cfg.inputs.ConfigurationAggregatorOrganizationAggregationSourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,10 +483,22 @@ import 'configuration_aggregator_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Configuration Aggregators using the name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the configuration aggregator.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Configuration Aggregators using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cfg/configurationAggregator:ConfigurationAggregator example foo
+/// $ pulumi import aws:cfg/configurationAggregator:ConfigurationAggregator example example
 /// ```
 class ConfigurationAggregator extends pulumi.CustomResource {
   /// The account(s) to aggregate config data from as documented below.
@@ -443,11 +511,11 @@ class ConfigurationAggregator extends pulumi.CustomResource {
   late final pulumi.Output<ConfigurationAggregatorOrganizationAggregationSource?> organizationAggregationSource;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Either `account_aggregation_source` or `organization_aggregation_source` must be specified.
+  /// Either `accountAggregationSource` or `organizationAggregationSource` must be specified.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ConfigurationAggregator].

@@ -168,6 +168,45 @@ import 'email_identity_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_emailidentity" "example" {
+///   email_identity = "testing@example.com"
+/// }
+/// resource "aws_sesv2_emailidentitypolicy" "example" {
+///   email_identity = aws_sesv2_emailidentity.example.email_identity
+///   policy_name    = "example"
+///   policy         ="{
+///   \"Id\":\"ExampleAuthorizationPolicy\",
+///   \"Version\":\"2012-10-17\",
+///   \"Statement\":[
+///     {
+///       \"Sid\":\"AuthorizeIAMUser\",
+///       \"Effect\":\"Allow\",
+///       \"Resource\":\"${aws_sesv2_emailidentity.example.arn}\",
+///       \"Principal\":{
+///         \"AWS\":[
+///           \"arn:aws:iam::123456789012:user/John\",
+///           \"arn:aws:iam::123456789012:user/Jane\"
+///         ]
+///       },
+///       \"Action\":[
+///         \"ses:DeleteEmailIdentity\",
+///         \"ses:PutEmailIdentityDkimSigningAttributes\"
+///       ]
+///     }
+///   ]
+/// }
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,8 +217,8 @@ import 'email_identity_policy_state.dart';
 /// import com.pulumi.aws.sesv2.EmailIdentityArgs;
 /// import com.pulumi.aws.sesv2.EmailIdentityPolicy;
 /// import com.pulumi.aws.sesv2.EmailIdentityPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,7 +304,7 @@ import 'email_identity_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity Policy using the `email_identity` and `policy_name` separated by `|`. For example:
+/// Using `pulumi import`, import SESv2 (Simple Email V2) Email Identity Policy using the `emailIdentity` and `policyName` separated by `|`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy example example_email_identity|example_policy_name

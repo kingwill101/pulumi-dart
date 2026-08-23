@@ -108,7 +108,7 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
@@ -117,7 +117,7 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectLockConfiguration(ctx, "example", &s3.BucketObjectLockConfigurationArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketObjectLockConfigurationRuleArgs{
 /// 				DefaultRetention: &s3.BucketObjectLockConfigurationRuleDefaultRetentionArgs{
 /// 					Mode: pulumi.String("COMPLIANCE"),
@@ -130,6 +130,34 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "mybucket"
+/// }
+/// resource "aws_s3_bucketversioning" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   versioning_configuration = {
+///     status = "Enabled"
+///   }
+/// }
+/// resource "aws_s3_bucketobjectlockconfiguration" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   rule = {
+///     default_retention = {
+///       mode = "COMPLIANCE"
+///       days = 5
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -147,8 +175,8 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// import com.pulumi.aws.s3.BucketObjectLockConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketObjectLockConfigurationRuleArgs;
 /// import com.pulumi.aws.s3.inputs.BucketObjectLockConfigurationRuleDefaultRetentionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,7 +239,7 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 ///
 /// ## Import
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner`, separated by a comma (`,`). For example:
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner`, separated by a comma (`,`). For example:
 ///
 ///
 /// **Using `pulumi import`**, import an S3 bucket Object Lock Configuration using one of two forms. If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`. For example:
@@ -220,7 +248,7 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// $ pulumi import aws:s3/bucketObjectLockConfigurationV2:BucketObjectLockConfigurationV2 example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner`, separated by a comma (`,`). For example:
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner`, separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketObjectLockConfigurationV2:BucketObjectLockConfigurationV2 example bucket-name,123456789012
@@ -230,14 +258,13 @@ class BucketObjectLockConfigurationV2 extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-  /// Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
+  /// Whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
   late final pulumi.Output<String?> objectLockEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block for specifying the Object Lock rule for the specified object. See below.
   late final pulumi.Output<BucketObjectLockConfigurationV2Rule?> rule;
-  /// This argument is deprecated and no longer needed to enable Object Lock.
-  /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
+  /// Token to allow Object Lock to be enabled for an existing bucket. To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   late final pulumi.Output<String?> token;
 
   /// Creates a new [BucketObjectLockConfigurationV2].

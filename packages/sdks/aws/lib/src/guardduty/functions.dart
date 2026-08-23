@@ -51,6 +51,18 @@ import 'get_finding_ids_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_guardduty_getdetector" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -59,8 +71,8 @@ import 'get_finding_ids_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.guardduty.GuarddutyFunctions;
 /// import com.pulumi.aws.guardduty.inputs.GetDetectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,6 +168,19 @@ Future<GetDetectorResult> getDetector(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_guardduty_getfindingids" "example" {
+///   detector_id = exampleAwsGuarddutyDetector.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +189,8 @@ Future<GetDetectorResult> getDetector(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.guardduty.GuarddutyFunctions;
 /// import com.pulumi.aws.guardduty.inputs.GetFindingIdsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

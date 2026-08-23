@@ -80,6 +80,19 @@ import 'get_response_headers_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getcachepolicy" "example" {
+///   name = "example-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +101,8 @@ import 'get_response_headers_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetCachePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,6 +200,22 @@ import 'get_response_headers_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getcachepolicy" "example1" {
+///   name = "Managed-CachingOptimized"
+/// }
+/// data "aws_cloudfront_getcachepolicy" "example2" {
+///   name = "UseOriginCacheControlHeaders"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +224,8 @@ import 'get_response_headers_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetCachePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,6 +330,19 @@ Future<GetCachePolicyResult> getCachePolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getconnectiongroup" "test" {
+///   id = "EDFDVBD632BHDS5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +351,8 @@ Future<GetCachePolicyResult> getCachePolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetConnectionGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -406,6 +448,19 @@ Future<GetConnectionGroupResult> getConnectionGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getdistribution" "test" {
+///   id = "EDFDVBD632BHDS5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -414,8 +469,8 @@ Future<GetConnectionGroupResult> getConnectionGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetDistributionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,6 +566,19 @@ Future<GetDistributionResult> getDistribution(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getdistributiontenant" "test" {
+///   id = "EDFDVBD632BHDS5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -519,8 +587,8 @@ Future<GetDistributionResult> getDistribution(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetDistributionTenantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -629,6 +697,24 @@ Future<GetDistributionTenantResult> getDistributionTenant(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getfunction" "existing" {
+///   name  = var.functionName
+///   stage = "LIVE"
+/// }
+///
+/// variable "functionName" {
+///   type = string
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -637,8 +723,8 @@ Future<GetDistributionTenantResult> getDistributionTenant(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetFunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -651,7 +737,7 @@ Future<GetDistributionTenantResult> getDistributionTenant(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var functionName = config.get("functionName");
+///         final var functionName = config.require("functionName");
 ///         final var existing = CloudfrontFunctions.getFunction(GetFunctionArgs.builder()
 ///             .name(functionName)
 ///             .stage("LIVE")
@@ -836,7 +922,7 @@ Future<GetFunctionResult> getFunction(
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: exampleBucket.ID(),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
@@ -845,7 +931,7 @@ Future<GetFunctionResult> getFunction(
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: exampleBucket.ID(),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			AccessControlPolicy: &s3.BucketAclAccessControlPolicyArgs{
 /// 				Grants: s3.BucketAclAccessControlPolicyGrantArray{
 /// 					&s3.BucketAclAccessControlPolicyGrantArgs{
@@ -870,6 +956,46 @@ Future<GetFunctionResult> getFunction(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_s3_getcanonicaluserid" "current" {
+/// }
+/// data "aws_cloudfront_getlogdeliverycanonicaluserid" "example" {
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketownershipcontrols" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   rule = {
+///     object_ownership = "BucketOwnerPreferred"
+///   }
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   depends_on = [aws_s3_bucketownershipcontrols.example]
+///   bucket     = aws_s3_bucket.example.id
+///   access_control_policy = {
+///     grants = [{
+///       "grantee" = {
+///         "id"   = data.aws_cloudfront_getlogdeliverycanonicaluserid.example.id
+///         "type" = "CanonicalUser"
+///       }
+///       "permission" = "FULL_CONTROL"
+///     }]
+///     owner = {
+///       id = data.aws_s3_getcanonicaluserid.current.id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -887,10 +1013,12 @@ Future<GetFunctionResult> getFunction(
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyArgs;
+/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantArgs;
+/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantGranteeArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyOwnerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1050,6 +1178,19 @@ Future<GetLogDeliveryCanonicalUserIdResult> getLogDeliveryCanonicalUserId(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getoriginaccesscontrol" "example" {
+///   id = "E2T5VTFBZJ3BJB"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1058,8 +1199,8 @@ Future<GetLogDeliveryCanonicalUserIdResult> getLogDeliveryCanonicalUserId(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetOriginAccessControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1150,6 +1291,18 @@ Future<GetOriginAccessControlResult> getOriginAccessControl(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getoriginaccessidentities" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1158,8 +1311,8 @@ Future<GetOriginAccessControlResult> getOriginAccessControl(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetOriginAccessIdentitiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1253,6 +1406,19 @@ Future<GetOriginAccessControlResult> getOriginAccessControl(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getoriginaccessidentities" "example" {
+///   comments = ["example-comment1", "example-comment2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1261,8 +1427,8 @@ Future<GetOriginAccessControlResult> getOriginAccessControl(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetOriginAccessIdentitiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1364,6 +1530,19 @@ Future<GetOriginAccessIdentitiesResult> getOriginAccessIdentities(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getoriginaccessidentity" "example" {
+///   id = "E1ZAKK699EOLAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1372,8 +1551,8 @@ Future<GetOriginAccessIdentitiesResult> getOriginAccessIdentities(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetOriginAccessIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1469,6 +1648,19 @@ Future<GetOriginAccessIdentityResult> getOriginAccessIdentity(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getoriginrequestpolicy" "example" {
+///   name = "example-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1477,8 +1669,8 @@ Future<GetOriginAccessIdentityResult> getOriginAccessIdentity(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetOriginRequestPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1561,6 +1753,19 @@ Future<GetOriginAccessIdentityResult> getOriginAccessIdentity(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getoriginrequestpolicy" "uaReferer" {
+///   name = "Managed-UserAgentRefererHeaders"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1569,8 +1774,8 @@ Future<GetOriginAccessIdentityResult> getOriginAccessIdentity(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetOriginRequestPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1666,6 +1871,19 @@ Future<GetOriginRequestPolicyResult> getOriginRequestPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getrealtimelogconfig" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1674,8 +1892,8 @@ Future<GetOriginRequestPolicyResult> getOriginRequestPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetRealtimeLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1773,6 +1991,19 @@ Future<GetRealtimeLogConfigResult> getRealtimeLogConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getresponseheaderspolicy" "example" {
+///   name = "example-policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1781,8 +2012,8 @@ Future<GetRealtimeLogConfigResult> getRealtimeLogConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetResponseHeadersPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1865,6 +2096,19 @@ Future<GetRealtimeLogConfigResult> getRealtimeLogConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudfront_getresponseheaderspolicy" "example" {
+///   name = "Managed-SimpleCORS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1873,8 +2117,8 @@ Future<GetRealtimeLogConfigResult> getRealtimeLogConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.CloudfrontFunctions;
 /// import com.pulumi.aws.cloudfront.inputs.GetResponseHeadersPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

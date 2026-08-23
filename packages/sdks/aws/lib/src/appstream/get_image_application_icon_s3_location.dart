@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageApplicationIconS3Location {
-  /// S3 bucket of the S3 object.
+  /// Name of the S3 bucket containing the icon.
   final pulumi.Input<String> s3Bucket;
-  /// S3 key of the S3 object.
+  /// S3 key of the icon.
   final pulumi.Input<String> s3Key;
 
   /// Creates a new [GetImageApplicationIconS3Location].
-  /// [s3Bucket] S3 bucket of the S3 object.
-  /// [s3Key] S3 key of the S3 object.
+  /// [s3Bucket] Name of the S3 bucket containing the icon.
+  /// [s3Key] S3 key of the icon.
   const GetImageApplicationIconS3Location({
     required this.s3Bucket,
     required this.s3Key,
@@ -30,4 +30,3 @@ class GetImageApplicationIconS3Location {
     );
   }
 }
-

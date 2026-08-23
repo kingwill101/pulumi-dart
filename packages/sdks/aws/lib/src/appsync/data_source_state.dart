@@ -17,23 +17,23 @@ class DataSourceState {
   final pulumi.Input<String>? arn;
   /// Description of the data source.
   final pulumi.Input<String>? description;
-  /// DynamoDB settings. See `dynamodb_config` Block for details.
+  /// DynamoDB settings. See `dynamodbConfig` Block for details.
   final pulumi.Input<DataSourceDynamodbConfig>? dynamodbConfig;
-  /// Amazon Elasticsearch settings. See `elasticsearch_config` Block for details.
+  /// Amazon Elasticsearch settings. See `elasticsearchConfig` Block for details.
   final pulumi.Input<DataSourceElasticsearchConfig>? elasticsearchConfig;
-  /// AWS EventBridge settings. See `event_bridge_config` Block for details.
+  /// AWS EventBridge settings. See `eventBridgeConfig` Block for details.
   final pulumi.Input<DataSourceEventBridgeConfig>? eventBridgeConfig;
-  /// HTTP settings. See `http_config` Block for details.
+  /// HTTP settings. See `httpConfig` Block for details.
   final pulumi.Input<DataSourceHttpConfig>? httpConfig;
-  /// AWS Lambda settings. See `lambda_config` Block for details.
+  /// AWS Lambda settings. See `lambdaConfig` Block for details.
   final pulumi.Input<DataSourceLambdaConfig>? lambdaConfig;
   /// User-supplied name for the data source.
   final pulumi.Input<String>? name;
-  /// Amazon OpenSearch Service settings. See `opensearchservice_config` Block for details.
+  /// Amazon OpenSearch Service settings. See `opensearchserviceConfig` Block for details.
   final pulumi.Input<DataSourceOpensearchserviceConfig>? opensearchserviceConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// AWS RDS settings. See `relational_database_config` Block for details.
+  /// AWS RDS settings. See `relationalDatabaseConfig` Block for details.
   final pulumi.Input<DataSourceRelationalDatabaseConfig>? relationalDatabaseConfig;
   /// IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
   final pulumi.Input<String>? serviceRoleArn;
@@ -44,15 +44,15 @@ class DataSourceState {
   /// [apiId] API ID for the GraphQL API for the data source.
   /// [arn] ARN
   /// [description] Description of the data source.
-  /// [dynamodbConfig] DynamoDB settings. See `dynamodb_config` Block for details.
-  /// [elasticsearchConfig] Amazon Elasticsearch settings. See `elasticsearch_config` Block for details.
-  /// [eventBridgeConfig] AWS EventBridge settings. See `event_bridge_config` Block for details.
-  /// [httpConfig] HTTP settings. See `http_config` Block for details.
-  /// [lambdaConfig] AWS Lambda settings. See `lambda_config` Block for details.
+  /// [dynamodbConfig] DynamoDB settings. See `dynamodbConfig` Block for details.
+  /// [elasticsearchConfig] Amazon Elasticsearch settings. See `elasticsearchConfig` Block for details.
+  /// [eventBridgeConfig] AWS EventBridge settings. See `eventBridgeConfig` Block for details.
+  /// [httpConfig] HTTP settings. See `httpConfig` Block for details.
+  /// [lambdaConfig] AWS Lambda settings. See `lambdaConfig` Block for details.
   /// [name] User-supplied name for the data source.
-  /// [opensearchserviceConfig] Amazon OpenSearch Service settings. See `opensearchservice_config` Block for details.
+  /// [opensearchserviceConfig] Amazon OpenSearch Service settings. See `opensearchserviceConfig` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [relationalDatabaseConfig] AWS RDS settings. See `relational_database_config` Block for details.
+  /// [relationalDatabaseConfig] AWS RDS settings. See `relationalDatabaseConfig` Block for details.
   /// [serviceRoleArn] IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
   /// [type] Type of the Data Source. Valid values: `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `HTTP`, `NONE`, `RELATIONAL_DATABASE`, `AMAZON_EVENTBRIDGE`, `AMAZON_OPENSEARCH_SERVICE`.
   const DataSourceState({
@@ -110,4 +110,3 @@ class DataSourceState {
     );
   }
 }
-

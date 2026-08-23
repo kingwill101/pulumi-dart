@@ -29,7 +29,7 @@ class IndexArgs {
   /// A block that specifies the identifier of the AWS KMS customer managed key (CMK) that's used to encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support asymmetric CMKs. Detailed below.
   final pulumi.Input<IndexServerSideEncryptionConfiguration>? serverSideEncryptionConfiguration;
   /// Tags to apply to the Index. If configured with a provider
-  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The user context policy. Valid values are `ATTRIBUTE_FILTER` or `USER_TOKEN`. For more information, refer to [UserContextPolicy](https://docs.aws.amazon.com/kendra/latest/APIReference/API_CreateIndex.html#kendra-CreateIndex-request-UserContextPolicy). Defaults to `ATTRIBUTE_FILTER`.
   final pulumi.Input<String>? userContextPolicy;
@@ -100,4 +100,3 @@ class IndexArgs {
     );
   }
 }
-

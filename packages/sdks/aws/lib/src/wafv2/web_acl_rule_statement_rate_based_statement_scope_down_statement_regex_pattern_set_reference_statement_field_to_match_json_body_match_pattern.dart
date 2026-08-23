@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern {
-  /// An empty configuration block that is used for inspecting all headers.
   final pulumi.Input<Map<String, dynamic>>? all;
+  /// List of JSON pointer expressions to inspect (e.g., `/foo/bar`).
   final pulumi.Input<List<String>>? includedPaths;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern].
-  /// [all] An empty configuration block that is used for inspecting all headers.
-  /// [includedPaths] Optional.
+  /// [all] Optional.
+  /// [includedPaths] List of JSON pointer expressions to inspect (e.g., `/foo/bar`).
   const WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
@@ -29,4 +29,3 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetRefe
     );
   }
 }
-

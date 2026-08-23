@@ -90,6 +90,26 @@ import 'refresh_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_refreshschedule" "example" {
+///   data_set_id = "dataset-id"
+///   schedule_id = "schedule-id"
+///   schedule = {
+///     refresh_type = "FULL_REFRESH"
+///     schedule_frequency = {
+///       interval = "HOURLY"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +120,8 @@ import 'refresh_schedule_state.dart';
 /// import com.pulumi.aws.quicksight.RefreshScheduleArgs;
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleArgs;
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleScheduleFrequencyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,6 +265,31 @@ import 'refresh_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_refreshschedule" "example" {
+///   data_set_id = "dataset-id"
+///   schedule_id = "schedule-id"
+///   schedule = {
+///     refresh_type = "INCREMENTAL_REFRESH"
+///     schedule_frequency = {
+///       interval        = "WEEKLY"
+///       time_of_the_day = "01:00"
+///       timezone        = "Europe/London"
+///       refresh_on_day = {
+///         day_of_week = "MONDAY"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -256,8 +301,8 @@ import 'refresh_schedule_state.dart';
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleArgs;
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleScheduleFrequencyArgs;
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -410,6 +455,31 @@ import 'refresh_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_refreshschedule" "example" {
+///   data_set_id = "dataset-id"
+///   schedule_id = "schedule-id"
+///   schedule = {
+///     refresh_type = "INCREMENTAL_REFRESH"
+///     schedule_frequency = {
+///       interval        = "MONTHLY"
+///       time_of_the_day = "01:00"
+///       timezone        = "Europe/London"
+///       refresh_on_day = {
+///         day_of_month = "1"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -421,8 +491,8 @@ import 'refresh_schedule_state.dart';
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleArgs;
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleScheduleFrequencyArgs;
 /// import com.pulumi.aws.quicksight.inputs.RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

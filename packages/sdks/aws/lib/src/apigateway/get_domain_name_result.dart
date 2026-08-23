@@ -19,13 +19,13 @@ class GetDomainNameResult {
   final String cloudfrontZoneId;
   final String domainName;
   final String domainNameId;
-  /// (Optional) Endpoint access mode of the DomainName. Only available for domain names that use security policies that start with `SecurityPolicy_`.
+  /// Endpoint access mode of the DomainName. Only available for domain names that use security policies that start with `SecurityPolicy_`.
   final String endpointAccessMode;
-  /// List of objects with the endpoint configuration of this domain name.
+  /// List of objects with the endpoint configuration of this domain name. See below.
   final List<GetDomainNameEndpointConfiguration> endpointConfigurations;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.
+  /// Stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.
   final String policy;
   final String region;
   /// ARN for an AWS-managed certificate that is used for validating the regional domain name.
@@ -50,10 +50,10 @@ class GetDomainNameResult {
   /// [cloudfrontZoneId] For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
   /// [domainName] Required.
   /// [domainNameId] Required.
-  /// [endpointAccessMode] (Optional) Endpoint access mode of the DomainName. Only available for domain names that use security policies that start with `SecurityPolicy_`.
-  /// [endpointConfigurations] List of objects with the endpoint configuration of this domain name.
+  /// [endpointAccessMode] Endpoint access mode of the DomainName. Only available for domain names that use security policies that start with `SecurityPolicy_`.
+  /// [endpointConfigurations] List of objects with the endpoint configuration of this domain name. See below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [policy] A stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.
+  /// [policy] Stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.
   /// [region] Required.
   /// [regionalCertificateArn] ARN for an AWS-managed certificate that is used for validating the regional domain name.
   /// [regionalCertificateName] User-friendly name of the certificate that is used by regional endpoint for this domain name.
@@ -131,4 +131,3 @@ class GetDomainNameResult {
     );
   }
 }
-

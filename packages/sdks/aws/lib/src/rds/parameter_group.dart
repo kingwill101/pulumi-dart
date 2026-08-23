@@ -116,6 +116,28 @@ import 'parameter_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_parametergroup" "default" {
+///   name   = "rds-pg"
+///   family = "mysql5.6"
+///   parameters {
+///     name  = "character_set_server"
+///     value = "utf8"
+///   }
+///   parameters {
+///     name  = "character_set_client"
+///     value = "utf8"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +147,8 @@ import 'parameter_group_state.dart';
 /// import com.pulumi.aws.rds.ParameterGroup;
 /// import com.pulumi.aws.rds.ParameterGroupArgs;
 /// import com.pulumi.aws.rds.inputs.ParameterGroupParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,12 +194,12 @@ import 'parameter_group_state.dart';
 ///
 /// ### Example of Problematic Configuration
 ///
-/// The following Terraform configuration includes a parameter that overlaps with an AWS default parameter, using the same `name` (`default_password_lifetime`) and `value` (`0`). However:
+/// The following Terraform configuration includes a parameter that overlaps with an AWS default parameter, using the same `name` (`defaultPasswordLifetime`) and `value` (`0`). However:
 ///
-/// - AWS sets the default `apply_method` for this parameter to `pending-reboot`.
-/// - The AWS Provider defaults all parameters' `apply_method` to `immediate`.
+/// - AWS sets the default `applyMethod` for this parameter to `pending-reboot`.
+/// - The AWS Provider defaults all parameters' `applyMethod` to `immediate`.
 ///
-/// This configuration attempts to change _only_ the `apply_method` from `pending-reboot` to `immediate`, which is not allowed by AWS.
+/// This configuration attempts to change _only_ the `applyMethod` from `pending-reboot` to `immediate`, which is not allowed by AWS.
 ///
 ///
 /// ```typescript
@@ -256,6 +278,24 @@ import 'parameter_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_parametergroup" "test" {
+///   name   = "random-test-parameter"
+///   family = "mysql5.7"
+///   parameters {
+///     name  = "default_password_lifetime"
+///     value = "0"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +305,8 @@ import 'parameter_group_state.dart';
 /// import com.pulumi.aws.rds.ParameterGroup;
 /// import com.pulumi.aws.rds.ParameterGroupArgs;
 /// import com.pulumi.aws.rds.inputs.ParameterGroupParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,7 +345,7 @@ import 'parameter_group_state.dart';
 ///
 /// ### Solution 1: Remove the Default Parameter
 ///
-/// Exclude the default parameter, such as `default_password_lifetime` in this example, from your configuration entirely. This ensures Terraform does not attempt to modify the parameter, leaving it with AWS's default settings.
+/// Exclude the default parameter, such as `defaultPasswordLifetime` in this example, from your configuration entirely. This ensures Terraform does not attempt to modify the parameter, leaving it with AWS's default settings.
 ///
 ///
 /// ```typescript
@@ -362,6 +402,20 @@ import 'parameter_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_parametergroup" "test" {
+///   name   = "random-test-parameter"
+///   family = "mysql5.7"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -370,8 +424,8 @@ import 'parameter_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.ParameterGroup;
 /// import com.pulumi.aws.rds.ParameterGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -403,7 +457,7 @@ import 'parameter_group_state.dart';
 ///
 /// ### Solution 2: Modify the Parameter's Value Also
 ///
-/// Change the `value` of the parameter along with its `apply_method`. Since the AWS default `value` is `0`, selecting any other valid value (_e.g._, `1`) will resolve the issue.
+/// Change the `value` of the parameter along with its `applyMethod`. Since the AWS default `value` is `0`, selecting any other valid value (_e.g._, `1`) will resolve the issue.
 ///
 ///
 /// ```typescript
@@ -482,6 +536,24 @@ import 'parameter_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_parametergroup" "test" {
+///   name   = "random-test-parameter"
+///   family = "mysql5.7"
+///   parameters {
+///     name  = "default_password_lifetime"
+///     value = "1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -491,8 +563,8 @@ import 'parameter_group_state.dart';
 /// import com.pulumi.aws.rds.ParameterGroup;
 /// import com.pulumi.aws.rds.ParameterGroupArgs;
 /// import com.pulumi.aws.rds.inputs.ParameterGroupParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -529,9 +601,9 @@ import 'parameter_group_state.dart';
 /// ```
 ///
 ///
-/// ### Solution 3: Align `apply_method` with AWS Defaults
+/// ### Solution 3: Align `applyMethod` with AWS Defaults
 ///
-/// Explicitly set the `apply_method` to match AWS's default value for this parameter (`pending-reboot`). This prevents conflicts between Terraform's default (`immediate`) and AWS's default where the `value` is not changing.
+/// Explicitly set the `applyMethod` to match AWS's default value for this parameter (`pending-reboot`). This prevents conflicts between Terraform's default (`immediate`) and AWS's default where the `value` is not changing.
 ///
 ///
 /// ```typescript
@@ -614,6 +686,25 @@ import 'parameter_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_parametergroup" "test" {
+///   name   = "random-test-parameter"
+///   family = "mysql5.7"
+///   parameters {
+///     apply_method = "pending-reboot"
+///     name         = "default_password_lifetime"
+///     value        = "0"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -623,8 +714,8 @@ import 'parameter_group_state.dart';
 /// import com.pulumi.aws.rds.ParameterGroup;
 /// import com.pulumi.aws.rds.ParameterGroupArgs;
 /// import com.pulumi.aws.rds.inputs.ParameterGroupParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -665,10 +756,22 @@ import 'parameter_group_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `name` (String) Name of the DB parameter group.
+///
+/// #### Optional
+///
+/// - `accountId` (String) AWS Account where this resource is managed.
+/// - `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import DB Parameter groups using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:rds/parameterGroup:ParameterGroup rds_pg rds-pg
+/// $ pulumi import aws:rds/parameterGroup:ParameterGroup example rds-pg
 /// ```
 class ParameterGroup extends pulumi.CustomResource {
   /// The ARN of the db parameter group.
@@ -687,9 +790,9 @@ class ParameterGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Set to true if you do not wish the parameter group to be deleted at destroy time, and instead just remove the parameter group from the Terraform state.
   late final pulumi.Output<bool?> skipDestroy;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ParameterGroup].

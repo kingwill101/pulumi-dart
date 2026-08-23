@@ -80,6 +80,24 @@ import 'monitoring_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_monitoringsubscription" "example" {
+///   distribution_id = exampleAwsCloudfrontDistribution.id
+///   monitoring_subscription = {
+///     realtime_metrics_subscription_config = {
+///       realtime_metrics_subscription_status = "Enabled"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +108,8 @@ import 'monitoring_subscription_state.dart';
 /// import com.pulumi.aws.cloudfront.MonitoringSubscriptionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MonitoringSubscriptionMonitoringSubscriptionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

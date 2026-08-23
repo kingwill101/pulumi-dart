@@ -106,6 +106,27 @@ import 'custom_routing_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_globalaccelerator_customroutingendpointgroup" "example" {
+///   listener_arn = exampleAwsGlobalacceleratorCustomRoutingListener.arn
+///   destination_configurations {
+///     from_port = 80
+///     to_port   = 8080
+///     protocols = ["TCP"]
+///   }
+///   endpoint_configurations {
+///     endpoint_id = exampleAwsSubnet.id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +137,8 @@ import 'custom_routing_endpoint_group_state.dart';
 /// import com.pulumi.aws.globalaccelerator.CustomRoutingEndpointGroupArgs;
 /// import com.pulumi.aws.globalaccelerator.inputs.CustomRoutingEndpointGroupDestinationConfigurationArgs;
 /// import com.pulumi.aws.globalaccelerator.inputs.CustomRoutingEndpointGroupEndpointConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

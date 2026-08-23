@@ -124,7 +124,7 @@ import 'workspace_vpc_configuration.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "grafana.amazonaws.com",
 /// 					},
 /// 				},
@@ -156,6 +156,36 @@ import 'workspace_vpc_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_grafana_workspace" "example" {
+///   account_access_type      = "CURRENT_ACCOUNT"
+///   authentication_providers = ["SAML"]
+///   permission_type          = "SERVICE_MANAGED"
+///   role_arn                 = aws_iam_role.assume.arn
+/// }
+/// resource "aws_iam_role" "assume" {
+///   name = "grafana-assume"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "grafana.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +197,8 @@ import 'workspace_vpc_configuration.dart';
 /// import com.pulumi.aws.grafana.Workspace;
 /// import com.pulumi.aws.grafana.WorkspaceArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,11 +348,11 @@ import 'workspace_vpc_configuration.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"plugins": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]bool{
+/// 			"plugins": map[string]bool{
 /// 				"pluginAdminEnabled": true,
 /// 			},
-/// 			"unifiedAlerting": map[string]interface{}{
+/// 			"unifiedAlerting": map[string]bool{
 /// 				"enabled": false,
 /// 			},
 /// 		})
@@ -346,6 +376,30 @@ import 'workspace_vpc_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_grafana_workspace" "example" {
+///   account_access_type      = "CURRENT_ACCOUNT"
+///   authentication_providers = ["SAML"]
+///   permission_type          = "SERVICE_MANAGED"
+///   role_arn                 = assume.arn
+///   configuration = jsonencode({
+///     "plugins" = {
+///       "pluginAdminEnabled" = true
+///     }
+///     "unifiedAlerting" = {
+///       "enabled" = false
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +409,8 @@ import 'workspace_vpc_configuration.dart';
 /// import com.pulumi.aws.grafana.Workspace;
 /// import com.pulumi.aws.grafana.WorkspaceArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -418,7 +472,7 @@ import 'workspace_vpc_configuration.dart';
 /// $ pulumi import aws:grafana/workspace:Workspace example g-2054c75a02
 /// ```
 class Workspace extends pulumi.CustomResource {
-  /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
+  /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
   late final pulumi.Output<String> accountAccessType;
   /// The Amazon Resource Name (ARN) of the Grafana workspace.
   late final pulumi.Output<String> arn;
@@ -426,14 +480,16 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> authenticationProviders;
   /// The configuration string for the workspace that you create. For more information about the format and configuration options available, see [Working in your Grafana workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
   late final pulumi.Output<String> configuration;
-  /// The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, XRAY`
+  /// The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, `XRAY`
   late final pulumi.Output<List<String>?> dataSources;
   /// The workspace description.
   late final pulumi.Output<String?> description;
   /// The endpoint of the Grafana workspace.
   late final pulumi.Output<String> endpoint;
-  /// Specifies the version of Grafana to support in the new workspace. Supported values are `8.4`, `9.4` and `10.4`. If not specified, defaults to the latest version.
+  /// Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4` and `12.4`. If not specified, defaults to the latest version.
   late final pulumi.Output<String> grafanaVersion;
+  /// The ARN of the AWS KMS key for encrypting workspace data.
+  late final pulumi.Output<String> kmsKeyId;
   /// The Grafana workspace name.
   late final pulumi.Output<String> name;
   /// Configuration for network access to your workspace.See Network Access Control below.
@@ -455,9 +511,9 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> samlConfigurationStatus;
   /// The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
   late final pulumi.Output<String?> stackSetName;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to. See VPC Configuration below.
   late final pulumi.Output<WorkspaceVpcConfiguration?> vpcConfiguration;
@@ -484,6 +540,7 @@ class Workspace extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     endpoint = registerOutput<String>('endpoint');
     grafanaVersion = registerOutput<String>('grafanaVersion');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
     this.name = registerOutput<String>('name');
     networkAccessControl = registerOutput<WorkspaceNetworkAccessControl?>('networkAccessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNetworkAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     notificationDestinations = registerOutput<List<String>?>('notificationDestinations');
@@ -530,6 +587,7 @@ class Workspace extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     endpoint = registerOutput<String>('endpoint');
     grafanaVersion = registerOutput<String>('grafanaVersion');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
     this.name = registerOutput<String>('name');
     networkAccessControl = registerOutput<WorkspaceNetworkAccessControl?>('networkAccessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNetworkAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     notificationDestinations = registerOutput<List<String>?>('notificationDestinations');

@@ -18,11 +18,11 @@ class AppArgs {
   final pulumi.Input<String>? region;
   /// The instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.See Resource Spec below.
   final pulumi.Input<AppResourceSpec>? resourceSpec;
-  /// The name of the space. At least one of `user_profile_name` or `space_name` required.
+  /// The name of the space. At least one of `userProfileName` or `spaceName` required.
   final pulumi.Input<String>? spaceName;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// The user profile name. At least one of `user_profile_name` or `space_name` required.
+  /// The user profile name. At least one of `userProfileName` or `spaceName` required.
   final pulumi.Input<String>? userProfileName;
 
   /// Creates a new [AppArgs].
@@ -31,9 +31,9 @@ class AppArgs {
   /// [domainId] The domain ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceSpec] The instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.See Resource Spec below.
-  /// [spaceName] The name of the space. At least one of `user_profile_name` or `space_name` required.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [userProfileName] The user profile name. At least one of `user_profile_name` or `space_name` required.
+  /// [spaceName] The name of the space. At least one of `userProfileName` or `spaceName` required.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [userProfileName] The user profile name. At least one of `userProfileName` or `spaceName` required.
   const AppArgs({
     required this.appName,
     required this.appType,
@@ -71,4 +71,3 @@ class AppArgs {
     );
   }
 }
-

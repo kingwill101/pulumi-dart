@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainNameEndpointConfiguration {
-  /// The IP address types that can invoke an API (RestApi).
+  /// IP address types that can invoke a DomainName.
   final pulumi.Input<String> ipAddressType;
   /// List of endpoint types.
   final pulumi.Input<List<String>> types;
 
   /// Creates a new [GetDomainNameEndpointConfiguration].
-  /// [ipAddressType] The IP address types that can invoke an API (RestApi).
+  /// [ipAddressType] IP address types that can invoke a DomainName.
   /// [types] List of endpoint types.
   const GetDomainNameEndpointConfiguration({
     required this.ipAddressType,
@@ -30,4 +30,3 @@ class GetDomainNameEndpointConfiguration {
     );
   }
 }
-

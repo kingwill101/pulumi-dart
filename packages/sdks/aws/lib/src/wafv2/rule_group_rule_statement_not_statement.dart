@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement.dart';
 
 class RuleGroupRuleStatementNotStatement {
-  /// The statements to combine.
+  /// The statement to negate. You can use any statement that can be nested. See Statement above for details.
   final pulumi.Input<List<RuleGroupRuleStatement>> statements;
 
   /// Creates a new [RuleGroupRuleStatementNotStatement].
-  /// [statements] The statements to combine.
+  /// [statements] The statement to negate. You can use any statement that can be nested. See Statement above for details.
   const RuleGroupRuleStatementNotStatement({
     required this.statements,
   });
@@ -25,4 +25,3 @@ class RuleGroupRuleStatementNotStatement {
     );
   }
 }
-

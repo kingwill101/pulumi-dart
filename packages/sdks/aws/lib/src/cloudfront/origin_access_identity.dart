@@ -7,7 +7,7 @@ import 'origin_access_identity_state.dart';
 /// For information about CloudFront distributions, see the
 /// [Amazon CloudFront Developer Guide](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html). For more information on generating
 /// origin access identities, see
-/// [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
+/// [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html).
 ///
 /// ## Example Usage
 ///
@@ -61,6 +61,19 @@ import 'origin_access_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_originaccessidentity" "example" {
+///   comment = "Some comment"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +82,8 @@ import 'origin_access_identity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.OriginAccessIdentity;
 /// import com.pulumi.aws.cloudfront.OriginAccessIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -98,12 +111,12 @@ import 'origin_access_identity_state.dart';
 /// ```
 ///
 ///
-/// ## Using With CloudFront
+/// ### Using With CloudFront
 ///
 /// Normally, when referencing an origin access identity in CloudFront, you need to
 /// prefix the ID with the `origin-access-identity/cloudfront/` special path.
-/// The `cloudfront_access_identity_path` allows this to be circumvented.
-/// The below snippet demonstrates use with the `s3_origin_config` structure for the
+/// The `cloudfrontAccessIdentityPath` allows this to be circumvented.
+/// The below snippet demonstrates use with the `s3OriginConfig` structure for the
 /// `aws.cloudfront.Distribution` resource:
 ///
 ///
@@ -177,6 +190,23 @@ import 'origin_access_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_distribution" "example" {
+///   origins {
+///     s3_origin_config = {
+///       origin_access_identity = exampleAwsCloudfrontOriginAccessIdentity.cloudfrontAccessIdentityPath
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +217,8 @@ import 'origin_access_identity_state.dart';
 /// import com.pulumi.aws.cloudfront.DistributionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionOriginArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionOriginS3OriginConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,10 +254,10 @@ import 'origin_access_identity_state.dart';
 ///
 /// ### Updating your bucket policy
 ///
-/// Note that the AWS API may translate the `s3_canonical_user_id` `CanonicalUser`
+/// Note that the AWS API may translate the `s3CanonicalUserId` `CanonicalUser`
 /// principal into an `AWS` IAM ARN principal when supplied in an
-/// `aws.s3.Bucket` bucket policy, causing spurious diffs. If
-/// you see this behavior, use the `iam_arn` instead:
+/// `aws.s3.Bucket` bucket policy, causing spurious diffs in Pulumi. If
+/// you see this behavior, use the `iamArn` instead:
 ///
 ///
 /// ```typescript
@@ -320,40 +350,66 @@ import 'origin_access_identity_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// s3Policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "s3:GetObject",
-/// },
-/// Resources: []string{
-/// fmt.Sprintf("%v/*", exampleAwsS3Bucket.Arn),
-/// },
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// exampleAwsCloudfrontOriginAccessIdentity.IamArn,
-/// },
-/// },
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		s3Policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Actions: []string{
+/// 						"s3:GetObject",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("%v/*", exampleAwsS3Bucket.Arn),
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: pulumi.StringArray{
+/// 								exampleAwsCloudfrontOriginAccessIdentity.IamArn,
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
+/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
+/// 			Policy: pulumi.String(s3Policy.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// _, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
-/// Policy: pulumi.String(s3Policy.Json),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "s3Policy" {
+///   statements {
+///     actions   = ["s3:GetObject"]
+///     resources = ["${exampleAwsS3Bucket.arn}/*"]
+///     principals {
+///       type        = "AWS"
+///       identifiers = [exampleAwsCloudfrontOriginAccessIdentity.iamArn]
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = exampleAwsS3Bucket.id
+///   policy = data.aws_iam_getpolicydocument.s3Policy.json
 /// }
 /// ```
 /// ```java
@@ -364,10 +420,12 @@ import 'origin_access_identity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -421,9 +479,6 @@ import 'origin_access_identity_state.dart';
 ///                   - ${exampleAwsCloudfrontOriginAccessIdentity.iamArn}
 /// ```
 ///
-///
-/// [1]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
-/// [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
 ///
 /// ## Import
 ///

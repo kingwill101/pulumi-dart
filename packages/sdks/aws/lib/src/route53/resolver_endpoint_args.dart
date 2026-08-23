@@ -28,7 +28,7 @@ class ResolverEndpointArgs {
   final pulumi.Input<bool>? rniEnhancedMetricsEnabled;
   /// ID of one or more security groups that you want to use to control access to this VPC.
   final pulumi.Input<List<String>> securityGroupIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
   final pulumi.Input<bool>? targetNameServerMetricsEnabled;
@@ -42,7 +42,7 @@ class ResolverEndpointArgs {
   /// [resolverEndpointType] Endpoint IP type. This endpoint type is applied to all IP addresses.
   /// [rniEnhancedMetricsEnabled] Boolean indicating whether RNI enhanced metrics are enabled for the Resolver endpoint. Defaults to `false`. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
   /// [securityGroupIds] ID of one or more security groups that you want to use to control access to this VPC.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetNameServerMetricsEnabled] Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
   const ResolverEndpointArgs({
     required this.direction,
@@ -87,4 +87,3 @@ class ResolverEndpointArgs {
     );
   }
 }
-

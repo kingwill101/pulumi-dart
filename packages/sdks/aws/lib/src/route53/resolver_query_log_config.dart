@@ -74,6 +74,23 @@ import 'resolver_query_log_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverquerylogconfig" "example" {
+///   name            = "example"
+///   destination_arn = exampleAwsS3Bucket.arn
+///   tags = {
+///     "Environment" = "Prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +99,8 @@ import 'resolver_query_log_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.ResolverQueryLogConfig;
 /// import com.pulumi.aws.route53.ResolverQueryLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,9 +156,9 @@ class ResolverQueryLogConfig extends pulumi.CustomResource {
   /// Sharing is configured through AWS Resource Access Manager (AWS RAM).
   /// Values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
   late final pulumi.Output<String> shareStatus;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ResolverQueryLogConfig].

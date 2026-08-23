@@ -6,11 +6,11 @@ import 'bucket_lifecycle_configuration_rule_expiration_s3_control.dart';
 import 'bucket_lifecycle_configuration_rule_filter_s3_control.dart';
 
 class BucketLifecycleConfigurationRuleS3Control {
-  /// Configuration block containing settings for abort incomplete multipart upload.
+  /// Configuration block containing settings for abort incomplete multipart upload. See `abortIncompleteMultipartUpload` below.
   final pulumi.Input<BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control>? abortIncompleteMultipartUpload;
-  /// Configuration block containing settings for expiration of objects.
+  /// Configuration block containing settings for expiration of objects. See `expiration` below.
   final pulumi.Input<BucketLifecycleConfigurationRuleExpirationS3Control>? expiration;
-  /// Configuration block containing settings for filtering.
+  /// Configuration block containing settings for filtering. See `filter` below.
   final pulumi.Input<BucketLifecycleConfigurationRuleFilterS3Control>? filter;
   /// Unique identifier for the rule.
   final pulumi.Input<String> id;
@@ -18,9 +18,9 @@ class BucketLifecycleConfigurationRuleS3Control {
   final pulumi.Input<String>? status;
 
   /// Creates a new [BucketLifecycleConfigurationRuleS3Control].
-  /// [abortIncompleteMultipartUpload] Configuration block containing settings for abort incomplete multipart upload.
-  /// [expiration] Configuration block containing settings for expiration of objects.
-  /// [filter] Configuration block containing settings for filtering.
+  /// [abortIncompleteMultipartUpload] Configuration block containing settings for abort incomplete multipart upload. See `abortIncompleteMultipartUpload` below.
+  /// [expiration] Configuration block containing settings for expiration of objects. See `expiration` below.
+  /// [filter] Configuration block containing settings for filtering. See `filter` below.
   /// [id] Unique identifier for the rule.
   /// [status] Status of the rule. Valid values: `Enabled` and `Disabled`. Defaults to `Enabled`.
   const BucketLifecycleConfigurationRuleS3Control({
@@ -51,4 +51,3 @@ class BucketLifecycleConfigurationRuleS3Control {
     );
   }
 }
-

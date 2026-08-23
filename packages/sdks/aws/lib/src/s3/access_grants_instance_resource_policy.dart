@@ -135,6 +135,38 @@ import 'access_grants_instance_resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// }
+/// resource "aws_s3control_accessgrantsinstanceresourcepolicy" "example" {
+///   policy ="{
+///   \"Version\": \"2012-10-17\",
+///   \"Id\": \"S3AccessGrantsPolicy\",
+///   \"Statement\": [{
+///     \"Sid\": \"AllowAccessToS3AccessGrants\",
+///     \"Effect\": \"Allow\",
+///     \"Principal\": {
+///       \"AWS\": \"123456789456\"
+///     },
+///     \"Action\": [
+///       \"s3:ListAccessGrants\",
+///       \"s3:ListAccessGrantsLocations\",
+///       \"s3:GetDataAccess\"
+///     ],
+///     \"Resource\": \"${aws_s3control_accessgrantsinstance.example.access_grants_instance_arn}\"
+///   }]
+/// }
+/// "
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +176,8 @@ import 'access_grants_instance_resource_policy_state.dart';
 /// import com.pulumi.aws.s3control.AccessGrantsInstance;
 /// import com.pulumi.aws.s3control.AccessGrantsInstanceResourcePolicy;
 /// import com.pulumi.aws.s3control.AccessGrantsInstanceResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,15 +247,15 @@ import 'access_grants_instance_resource_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Access Grants instance resource policies using the `account_id`. For example:
+/// Using `pulumi import`, import S3 Access Grants instance resource policies using the `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrantsInstanceResourcePolicy:AccessGrantsInstanceResourcePolicy example 123456789012
 /// ```
 class AccessGrantsInstanceResourcePolicy extends pulumi.CustomResource {
-  /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> accountId;
-  /// The policy document.
+  /// Policy document.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

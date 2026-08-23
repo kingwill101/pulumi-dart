@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketNotificationQueue {
-  /// Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
+  /// [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
   final pulumi.Input<List<String>> events;
   /// Object key name prefix.
   final pulumi.Input<String>? filterPrefix;
@@ -15,7 +15,7 @@ class BucketNotificationQueue {
   final pulumi.Input<String> queueArn;
 
   /// Creates a new [BucketNotificationQueue].
-  /// [events] Specifies [event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
+  /// [events] [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
   /// [filterPrefix] Object key name prefix.
   /// [filterSuffix] Object key name suffix.
   /// [id] Unique identifier for each of the notification configurations.
@@ -48,4 +48,3 @@ class BucketNotificationQueue {
     );
   }
 }
-

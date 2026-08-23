@@ -77,6 +77,23 @@ import 's3_location_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_s3location" "example" {
+///   s3_bucket_arn = exampleAwsS3Bucket.arn
+///   subdirectory  = "/example/prefix"
+///   s3_config = {
+///     bucket_access_role_arn = exampleAwsIamRole.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 's3_location_state.dart';
 /// import com.pulumi.aws.datasync.S3Location;
 /// import com.pulumi.aws.datasync.S3LocationArgs;
 /// import com.pulumi.aws.datasync.inputs.S3LocationS3ConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,6 +222,25 @@ import 's3_location_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_s3location" "destination" {
+///   agent_arns       = [exampleAwsDatasyncAgent.arn]
+///   s3_bucket_arn    = exampleAwsS3AccessPoint.arn
+///   s3_storage_class = "OUTPOSTS"
+///   subdirectory     = "/example/prefix"
+///   s3_config = {
+///     bucket_access_role_arn = example.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +250,8 @@ import 's3_location_state.dart';
 /// import com.pulumi.aws.datasync.S3Location;
 /// import com.pulumi.aws.datasync.S3LocationArgs;
 /// import com.pulumi.aws.datasync.inputs.S3LocationS3ConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,9 +320,9 @@ class S3Location extends pulumi.CustomResource {
   late final pulumi.Output<String> s3StorageClass;
   /// Prefix to perform actions as source or destination.
   late final pulumi.Output<String> subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> uri;
 

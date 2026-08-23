@@ -54,6 +54,19 @@ import 'active_receipt_rule_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_activereceiptruleset" "main" {
+///   rule_set_name = "primary-rules"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'active_receipt_rule_set_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ses.ActiveReceiptRuleSet;
 /// import com.pulumi.aws.ses.ActiveReceiptRuleSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

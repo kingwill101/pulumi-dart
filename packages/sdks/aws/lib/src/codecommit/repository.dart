@@ -61,6 +61,20 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codecommit_repository" "test" {
+///   repository_name = "MyTestRepository"
+///   description     = "This is the Sample App Repository"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'repository_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codecommit.Repository;
 /// import com.pulumi.aws.codecommit.RepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,6 +196,25 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codecommit_repository" "test" {
+///   repository_name = "MyTestRepository"
+///   description     = "This is the Sample App Repository"
+///   kms_key_id      = aws_kms_key.test.arn
+/// }
+/// resource "aws_kms_key" "test" {
+///   description             = "test"
+///   deletion_window_in_days = 7
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +225,8 @@ import 'repository_state.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.codecommit.Repository;
 /// import com.pulumi.aws.codecommit.RepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,9 +295,9 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<String> repositoryId;
   /// The name for the repository. This needs to be less than 100 characters.
   late final pulumi.Output<String> repositoryName;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Repository].

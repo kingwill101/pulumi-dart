@@ -4,13 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ontap_storage_virtual_machine_active_directory_configuration_self_managed_active_directory_configuration.dart';
 
 class OntapStorageVirtualMachineActiveDirectoryConfiguration {
-  /// The NetBIOS name of the Active Directory computer object that will be created for your SVM. This is often the same as the SVM name but can be different. AWS limits to 15 characters because of standard NetBIOS naming limits.
+  /// NetBIOS name of the Active Directory computer object that will be created for your SVM. This is often the same as the SVM name but can be different. AWS limits to 15 characters because of standard NetBIOS naming limits.
   final pulumi.Input<String>? netbiosName;
+  /// Configuration block that Amazon FSx uses to join the SVM to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Detailed below.
   final pulumi.Input<OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration>? selfManagedActiveDirectoryConfiguration;
 
   /// Creates a new [OntapStorageVirtualMachineActiveDirectoryConfiguration].
-  /// [netbiosName] The NetBIOS name of the Active Directory computer object that will be created for your SVM. This is often the same as the SVM name but can be different. AWS limits to 15 characters because of standard NetBIOS naming limits.
-  /// [selfManagedActiveDirectoryConfiguration] Optional.
+  /// [netbiosName] NetBIOS name of the Active Directory computer object that will be created for your SVM. This is often the same as the SVM name but can be different. AWS limits to 15 characters because of standard NetBIOS naming limits.
+  /// [selfManagedActiveDirectoryConfiguration] Configuration block that Amazon FSx uses to join the SVM to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Detailed below.
   const OntapStorageVirtualMachineActiveDirectoryConfiguration({
     this.netbiosName,
     this.selfManagedActiveDirectoryConfiguration,
@@ -30,4 +31,3 @@ class OntapStorageVirtualMachineActiveDirectoryConfiguration {
     );
   }
 }
-

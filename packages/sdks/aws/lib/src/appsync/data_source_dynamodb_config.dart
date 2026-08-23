@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_dynamodb_config_delta_sync_config.dart';
 
 class DataSourceDynamodbConfig {
-  /// The DeltaSyncConfig for a versioned data source. See `delta_sync_config` Block for details.
+  /// DeltaSyncConfig for a versioned data source. See `deltaSyncConfig` Block for details.
   final pulumi.Input<DataSourceDynamodbConfigDeltaSyncConfig>? deltaSyncConfig;
   /// AWS region of the DynamoDB table. Defaults to current region.
   final pulumi.Input<String>? region;
@@ -16,7 +16,7 @@ class DataSourceDynamodbConfig {
   final pulumi.Input<bool>? versioned;
 
   /// Creates a new [DataSourceDynamodbConfig].
-  /// [deltaSyncConfig] The DeltaSyncConfig for a versioned data source. See `delta_sync_config` Block for details.
+  /// [deltaSyncConfig] DeltaSyncConfig for a versioned data source. See `deltaSyncConfig` Block for details.
   /// [region] AWS region of the DynamoDB table. Defaults to current region.
   /// [tableName] Name of the DynamoDB table.
   /// [useCallerCredentials] Set to `true` to use Amazon Cognito credentials with this data source.
@@ -49,4 +49,3 @@ class DataSourceDynamodbConfig {
     );
   }
 }
-

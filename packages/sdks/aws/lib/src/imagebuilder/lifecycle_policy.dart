@@ -213,7 +213,7 @@ import 'lifecycle_policy_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": fmt.Sprintf("imagebuilder.%v", currentGetPartition.DnsSuffix),
 /// 					},
 /// 				},
@@ -224,7 +224,7 @@ import 'lifecycle_policy_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// 			AssumeRolePolicy: pulumi.String(json0),
+/// 			AssumeRolePolicy: json0,
 /// 			Name:             pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -271,6 +271,62 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" ="imagebuilder.${data.aws_getpartition.currentGetPartition.dns_suffix}"
+///       }
+///     }]
+///   })
+///   name = "example"
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   policy_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::aws:policy/service-role/EC2ImageBuilderLifecycleExecutionPolicy"
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_imagebuilder_lifecyclepolicy" "example" {
+///   depends_on     = [aws_iam_rolepolicyattachment.example]
+///   name           = "name"
+///   description    = "Example description"
+///   execution_role = aws_iam_role.example.arn
+///   resource_type  = "AMI_IMAGE"
+///   policy_details {
+///     action = {
+///       type = "DELETE"
+///     }
+///     filter = {
+///       type            = "AGE"
+///       value           = 6
+///       retain_at_least = 10
+///       unit            = "YEARS"
+///     }
+///   }
+///   resource_selection = {
+///     tag_map = {
+///       "key1" = "value1"
+///       "key2" = "value2"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +348,8 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.imagebuilder.inputs.LifecyclePolicyResourceSelectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -450,9 +506,9 @@ class LifecyclePolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceType;
   /// The status of the lifecycle policy.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [LifecyclePolicy].

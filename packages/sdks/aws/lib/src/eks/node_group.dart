@@ -6,6 +6,7 @@ import 'node_group_remote_access.dart';
 import 'node_group_scaling_config.dart';
 import 'node_group_state.dart';
 import 'node_group_update_config.dart';
+import 'node_group_warm_pool_config.dart';
 
 /// Manages an EKS Node Group, which can provision and optionally update an Auto Scaling Group of Kubernetes worker nodes compatible with EKS. Additional documentation about this functionality can be found in the [EKS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html).
 ///
@@ -107,7 +108,7 @@ import 'node_group_update_config.dart';
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// var splat0 []interface{}
 /// for _, val0 := range exampleAwsSubnet {
-/// splat0 = append(splat0, val0.Id)
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := eks.NewNodeGroup(ctx, "example", &eks.NodeGroupArgs{
 /// ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
@@ -141,6 +142,31 @@ import 'node_group_update_config.dart';
 /// return pulumiArr
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_nodegroup" "example" {
+///   depends_on      = [example-AmazonEKSWorkerNodePolicy, example-AmazonEKSCNIPolicy, example-AmazonEC2ContainerRegistryReadOnly]
+///   cluster_name    = exampleAwsEksCluster.name
+///   node_group_name = "example"
+///   node_role_arn   = exampleAwsIamRole.arn
+///   subnet_ids      = exampleAwsSubnet[*].id
+///   scaling_config = {
+///     desired_size = 1
+///     max_size     = 2
+///     min_size     = 1
+///   }
+///   update_config = {
+///     max_unavailable = 1
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +178,8 @@ import 'node_group_update_config.dart';
 /// import com.pulumi.aws.eks.inputs.NodeGroupScalingConfigArgs;
 /// import com.pulumi.aws.eks.inputs.NodeGroupUpdateConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,6 +277,21 @@ import 'node_group_update_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_nodegroup" "example" {
+///   scaling_config = {
+///     desired_size = 2
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -260,8 +301,8 @@ import 'node_group_update_config.dart';
 /// import com.pulumi.aws.eks.NodeGroup;
 /// import com.pulumi.aws.eks.NodeGroupArgs;
 /// import com.pulumi.aws.eks.inputs.NodeGroupScalingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -419,7 +460,7 @@ import 'node_group_update_config.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "ec2.amazonaws.com",
 /// 					},
 /// 				},
@@ -462,6 +503,41 @@ import 'node_group_update_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name = "eks-node-group-example"
+///   assume_role_policy = jsonencode({
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "ec2.amazonaws.com"
+///       }
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example-AmazonEKSWorkerNodePolicy" {
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example-AmazonEKS_CNI_Policy" {
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example-AmazonEC2ContainerRegistryReadOnly" {
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+///   role       = aws_iam_role.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -473,8 +549,8 @@ import 'node_group_update_config.dart';
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -564,13 +640,13 @@ import 'node_group_update_config.dart';
 ///     state: "available",
 /// });
 /// const example: aws.ec2.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     example.push(new aws.ec2.Subnet(`example-${range.value}`, {
-///         availabilityZone: available.then(available => available.names[range.value]),
+/// for (let range = 0; range < 2; range++) {
+///     example.push(new aws.ec2.Subnet(`example-${range}`, {
+///         availabilityZone: available.then(available => available.names[range]),
 ///         cidrBlock: std.cidrsubnet({
 ///             input: exampleAwsVpc.cidrBlock,
 ///             newbits: 8,
-///             netnum: range.value,
+///             netnum: range,
 ///         }).then(invoke => invoke.result),
 ///         vpcId: exampleAwsVpc.id,
 ///     }));
@@ -578,17 +654,18 @@ import 'node_group_update_config.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
 /// available = aws.get_availability_zones(state="available")
-/// example = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     example.append(aws.ec2.Subnet(f"example-{range['value']}",
-///         availability_zone=available.names[range["value"]],
+/// example: list[aws.ec2.Subnet] = []
+/// for example_range in [{"value": i} for i in range(0, 2)]:
+///     example.append(aws.ec2.Subnet(f"example-{example_range['value']}",
+///         availability_zone=available.names[example_range["value"]],
 ///         cidr_block=std.cidrsubnet(input=example_aws_vpc["cidrBlock"],
 ///             newbits=8,
-///             netnum=range["value"]).result,
+///             netnum=example_range["value"]).result,
 ///         vpc_id=example_aws_vpc["id"]))
 /// ```
 /// ```csharp
@@ -669,6 +746,29 @@ import 'node_group_update_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+/// }
+///
+/// resource "aws_ec2_subnet" "example" {
+///   count             = 2
+///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   cidr_block        = cidrsubnet(exampleAwsVpc.cidrBlock, 8, count.index)
+///   vpc_id            = exampleAwsVpc.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -682,8 +782,8 @@ import 'node_group_update_config.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.CidrsubnetArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -719,10 +819,23 @@ import 'node_group_update_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EKS Node Groups using the `cluster_name` and `node_group_name` separated by a colon (`:`). For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `clusterName` (String) Name of the EKS Cluster.
+/// * `nodeGroupName` (String) Name of the node group.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Node Groups using the `clusterName` and `nodeGroupName` separated by a colon (`:`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:eks/nodeGroup:NodeGroup my_node_group my_cluster:my_node_group
+/// $ pulumi import aws:eks/nodeGroup:NodeGroup example example-cluster:example-group
 /// ```
 class NodeGroup extends pulumi.CustomResource {
   /// Type of Amazon Machine Image (AMI) associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. This provider will only perform drift detection if a configuration value is provided.
@@ -741,13 +854,13 @@ class NodeGroup extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> instanceTypes;
   /// Key-value map of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed.
   late final pulumi.Output<Map<String, String>?> labels;
-  /// Configuration block with Launch Template settings. See `launch_template` below for details. Conflicts with `remote_access`.
+  /// Configuration block with Launch Template settings. See `launchTemplate` below for details. Conflicts with `remoteAccess`.
   late final pulumi.Output<NodeGroupLaunchTemplate?> launchTemplate;
-  /// Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with `node_group_name_prefix`. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
+  /// Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with `nodeGroupNamePrefix`. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
   late final pulumi.Output<String> nodeGroupName;
-  /// Creates a unique name beginning with the specified prefix. Conflicts with `node_group_name`.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `nodeGroupName`.
   late final pulumi.Output<String> nodeGroupNamePrefix;
-  /// The node auto repair configuration for the node group. See `node_repair_config` below for details.
+  /// The node auto repair configuration for the node group. See `nodeRepairConfig` below for details.
   late final pulumi.Output<NodeGroupNodeRepairConfig> nodeRepairConfig;
   /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
   late final pulumi.Output<String> nodeRoleArn;
@@ -755,11 +868,11 @@ class NodeGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
   late final pulumi.Output<String> releaseVersion;
-  /// Configuration block with remote access settings. See `remote_access` below for details. Conflicts with `launch_template`.
+  /// Configuration block with remote access settings. See `remoteAccess` below for details. Conflicts with `launchTemplate`.
   late final pulumi.Output<NodeGroupRemoteAccess?> remoteAccess;
   /// List of objects containing information about underlying resources.
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-  /// Configuration block with scaling settings. See `scaling_config` below for details.
+  /// Configuration block with scaling settings. See `scalingConfig` below for details.
   late final pulumi.Output<NodeGroupScalingConfig> scalingConfig;
   /// Status of the EKS Node Group.
   late final pulumi.Output<String> status;
@@ -767,16 +880,18 @@ class NodeGroup extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>> subnetIds;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group. See taint below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> taints;
-  /// Configuration block with update settings. See `update_config` below for details.
+  /// Configuration block with update settings. See `updateConfig` below for details.
   late final pulumi.Output<NodeGroupUpdateConfig> updateConfig;
   /// Kubernetes version. Defaults to EKS Cluster Kubernetes version. The provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> version;
+  /// Configuration block with EC2 Auto Scaling warm pool settings. Including this block enables the warm pool; removing it disables and removes the warm pool. See `warmPoolConfig` below for details.
+  late final pulumi.Output<NodeGroupWarmPoolConfig?> warmPoolConfig;
 
   /// Creates a new [NodeGroup].
   /// [name] The Pulumi resource name.
@@ -817,6 +932,7 @@ class NodeGroup extends pulumi.CustomResource {
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
     updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupUpdateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
+    warmPoolConfig = registerOutput<NodeGroupWarmPoolConfig?>('warmPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupWarmPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [NodeGroup] resource's state with the given [name] and [id].
@@ -867,5 +983,6 @@ class NodeGroup extends pulumi.CustomResource {
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
     updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupUpdateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
+    warmPoolConfig = registerOutput<NodeGroupWarmPoolConfig?>('warmPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupWarmPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

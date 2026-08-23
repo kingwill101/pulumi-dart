@@ -30,4 +30,3 @@ class RepositoryAssociationS3RepositoryDetail {
     );
   }
 }
-

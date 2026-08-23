@@ -8,18 +8,23 @@ import 'get_managed_rule_group_rule_action_challenge.dart';
 import 'get_managed_rule_group_rule_action_count.dart';
 
 class GetManagedRuleGroupRuleAction {
+  /// Rule action that allows the request. See `allow` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionAllow>> allows;
+  /// Rule action that blocks the request. See `block` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionBlock>> blocks;
+  /// Rule action that requires CAPTCHA verification. See `captcha` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionCaptcha>> captchas;
+  /// Rule action that requires challenge verification. See `challenge` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionChallenge>> challenges;
+  /// Rule action that counts the request without taking other action. See `count` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionCount>> counts;
 
   /// Creates a new [GetManagedRuleGroupRuleAction].
-  /// [allows] Required.
-  /// [blocks] Required.
-  /// [captchas] Required.
-  /// [challenges] Required.
-  /// [counts] Required.
+  /// [allows] Rule action that allows the request. See `allow` Block for details.
+  /// [blocks] Rule action that blocks the request. See `block` Block for details.
+  /// [captchas] Rule action that requires CAPTCHA verification. See `captcha` Block for details.
+  /// [challenges] Rule action that requires challenge verification. See `challenge` Block for details.
+  /// [counts] Rule action that counts the request without taking other action. See `count` Block for details.
   const GetManagedRuleGroupRuleAction({
     required this.allows,
     required this.blocks,
@@ -48,4 +53,3 @@ class GetManagedRuleGroupRuleAction {
     );
   }
 }
-

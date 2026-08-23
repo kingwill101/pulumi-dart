@@ -29,15 +29,15 @@ import 'service_region_vpc_settings.dart';
 ///     },
 /// });
 /// const exampleSubnet: aws.ec2.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range.value}`, {
+/// for (let range = 0; range < 2; range++) {
+///     exampleSubnet.push(new aws.ec2.Subnet(`example-${range}`, {
 ///         vpcId: exampleVpc.id,
-///         availabilityZone: available.then(available => available.names[range.value]),
-///         cidrBlock: exampleVpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
-///             input: cidrBlock,
+///         availabilityZone: available.then(available => available.names[range]),
+///         cidrBlock: std.cidrsubnetOutput({
+///             input: exampleVpc.cidrBlock,
 ///             newbits: 8,
-///             netnum: range.value,
-///         })).apply(invoke => invoke.result),
+///             netnum: range,
+///         }).result,
 ///         tags: {
 ///             Name: "Primary",
 ///         },
@@ -66,15 +66,15 @@ import 'service_region_vpc_settings.dart';
 ///     },
 /// });
 /// const example_secondarySubnet: aws.ec2.Subnet[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     example_secondarySubnet.push(new aws.ec2.Subnet(`example-secondary-${range.value}`, {
+/// for (let range = 0; range < 2; range++) {
+///     example_secondarySubnet.push(new aws.ec2.Subnet(`example-secondary-${range}`, {
 ///         vpcId: example_secondary.id,
-///         availabilityZone: available_secondary.then(available_secondary => available_secondary.names[range.value]),
-///         cidrBlock: example_secondary.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
-///             input: cidrBlock,
+///         availabilityZone: available_secondary.then(available_secondary => available_secondary.names[range]),
+///         cidrBlock: std.cidrsubnetOutput({
+///             input: example_secondary.cidrBlock,
 ///             newbits: 8,
-///             netnum: range.value,
-///         })).apply(invoke => invoke.result),
+///             netnum: range,
+///         }).result,
 ///         tags: {
 ///             Name: "Secondary",
 ///         },
@@ -82,7 +82,7 @@ import 'service_region_vpc_settings.dart';
 /// }
 /// const exampleServiceRegion = new aws.directoryservice.ServiceRegion("example", {
 ///     directoryId: exampleDirectory.id,
-///     regionName: example.then(example => example.name),
+///     regionName: example.then(example => example.region),
 ///     vpcSettings: {
 ///         vpcId: example_secondary.id,
 ///         subnetIds: example_secondarySubnet.map(__item => __item.id),
@@ -94,6 +94,7 @@ import 'service_region_vpc_settings.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
@@ -108,14 +109,14 @@ import 'service_region_vpc_settings.dart';
 ///     tags={
 ///         "Name": "Primary",
 ///     })
-/// example_subnet = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     example_subnet.append(aws.ec2.Subnet(f"example-{range['value']}",
+/// example_subnet: list[aws.ec2.Subnet] = []
+/// for example_subnet_range in [{"value": i} for i in range(0, 2)]:
+///     example_subnet.append(aws.ec2.Subnet(f"example-{example_subnet_range['value']}",
 ///         vpc_id=example_vpc.id,
-///         availability_zone=available.names[range["value"]],
-///         cidr_block=example_vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+///         availability_zone=available.names[example_subnet_range["value"]],
+///         cidr_block=std.cidrsubnet_output(input=example_vpc.cidr_block,
 ///             newbits=8,
-///             netnum=range["value"])).apply(lambda invoke: invoke.result),
+///             netnum=example_subnet_range["value"]).result,
 ///         tags={
 ///             "Name": "Primary",
 ///         }))
@@ -137,20 +138,20 @@ import 'service_region_vpc_settings.dart';
 ///     tags={
 ///         "Name": "Secondary",
 ///     })
-/// example_secondary_subnet = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     example_secondary_subnet.append(aws.ec2.Subnet(f"example-secondary-{range['value']}",
+/// example_secondary_subnet: list[aws.ec2.Subnet] = []
+/// for example_secondary_subnet_range in [{"value": i} for i in range(0, 2)]:
+///     example_secondary_subnet.append(aws.ec2.Subnet(f"example-secondary-{example_secondary_subnet_range['value']}",
 ///         vpc_id=example_secondary.id,
-///         availability_zone=available_secondary.names[range["value"]],
-///         cidr_block=example_secondary.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+///         availability_zone=available_secondary.names[example_secondary_subnet_range["value"]],
+///         cidr_block=std.cidrsubnet_output(input=example_secondary.cidr_block,
 ///             newbits=8,
-///             netnum=range["value"])).apply(lambda invoke: invoke.result),
+///             netnum=example_secondary_subnet_range["value"]).result,
 ///         tags={
 ///             "Name": "Secondary",
 ///         }))
 /// example_service_region = aws.directoryservice.ServiceRegion("example",
 ///     directory_id=example_directory.id,
-///     region_name=example.name,
+///     region_name=example.region,
 ///     vpc_settings={
 ///         "vpc_id": example_secondary.id,
 ///         "subnet_ids": [__item.id for __item in example_secondary_subnet],
@@ -203,12 +204,12 @@ import 'service_region_vpc_settings.dart';
 ///         {
 ///             VpcId = exampleVpc.Id,
 ///             AvailabilityZone = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names)[range.Value],
-///             CidrBlock = exampleVpc.CidrBlock.Apply(cidrBlock => Std.Cidrsubnet.Invoke(new()
+///             CidrBlock = Std.Cidrsubnet.Invoke(new()
 ///             {
-///                 Input = cidrBlock,
+///                 Input = exampleVpc.CidrBlock,
 ///                 Newbits = 8,
 ///                 Netnum = range.Value,
-///             })).Apply(invoke => invoke.Result),
+///             }).Apply(invoke => invoke.Result),
 ///             Tags =
 ///             {
 ///                 { "Name", "Primary" },
@@ -260,12 +261,12 @@ import 'service_region_vpc_settings.dart';
 ///         {
 ///             VpcId = example_secondary.Id,
 ///             AvailabilityZone = available_secondary.Apply(available_secondary => available_secondary.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names)[range.Value]),
-///             CidrBlock = example_secondary.CidrBlock.Apply(cidrBlock => Std.Cidrsubnet.Invoke(new()
+///             CidrBlock = Std.Cidrsubnet.Invoke(new()
 ///             {
-///                 Input = cidrBlock,
+///                 Input = example_secondary.CidrBlock,
 ///                 Newbits = 8,
 ///                 Netnum = range.Value,
-///             })).Apply(invoke => invoke.Result),
+///             }).Apply(invoke => invoke.Result),
 ///             Tags =
 ///             {
 ///                 { "Name", "Secondary" },
@@ -275,7 +276,7 @@ import 'service_region_vpc_settings.dart';
 ///     var exampleServiceRegion = new Aws.DirectoryService.ServiceRegion("example", new()
 ///     {
 ///         DirectoryId = exampleDirectory.Id,
-///         RegionName = example.Apply(getRegionResult => getRegionResult.Name),
+///         RegionName = example.Apply(getRegionResult => getRegionResult.Region),
 ///         VpcSettings = new Aws.DirectoryService.Inputs.ServiceRegionVpcSettingsArgs
 ///         {
 ///             VpcId = example_secondary.Id,
@@ -331,25 +332,18 @@ import 'service_region_vpc_settings.dart';
 /// if err != nil {
 /// return err
 /// }
-/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: cidrBlock,
-/// Newbits: 8,
-/// Netnum: val0,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
 /// var exampleSubnet []*ec2.Subnet
 /// for index := 0; index < 2; index++ {
 ///     key0 := index
 ///     val0 := index
 /// __res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// VpcId: exampleVpc.ID(),
+/// VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// AvailabilityZone: pulumi.String(available.Names[val0]),
-/// CidrBlock: pulumi.String(exampleVpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
+/// CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// Input: exampleVpc.CidrBlock,
+/// Newbits: pulumi.Int(8),
+/// Netnum: pulumi.Int(val0),
+/// }, nil).Result(),
 /// Tags: pulumi.StringMap{
 /// "Name": pulumi.String("Primary"),
 /// },
@@ -364,8 +358,8 @@ import 'service_region_vpc_settings.dart';
 /// Password: pulumi.String("SuperSecretPassw0rd"),
 /// Type: pulumi.String("MicrosoftAD"),
 /// VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// VpcId: exampleVpc.ID(),
-/// SubnetIds: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:44,17-36),
+/// VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:44,17-36)),
 /// },
 /// })
 /// if err != nil {
@@ -394,25 +388,18 @@ import 'service_region_vpc_settings.dart';
 /// if err != nil {
 /// return err
 /// }
-/// invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: cidrBlock,
-/// Newbits: 8,
-/// Netnum: val0,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
 /// var example_secondarySubnet []*ec2.Subnet
 /// for index := 0; index < 2; index++ {
 ///     key0 := index
 ///     val0 := index
 /// __res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-secondary-%v", key0), &ec2.SubnetArgs{
-/// VpcId: example_secondary.ID(),
+/// VpcId: example_secondary.ID().ToIDOutput().ToStringOutput(),
 /// AvailabilityZone: pulumi.String(available_secondary.Names[val0]),
-/// CidrBlock: pulumi.String(example_secondary.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
+/// CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// Input: example_secondary.CidrBlock,
+/// Newbits: pulumi.Int(8),
+/// Netnum: pulumi.Int(val0),
+/// }, nil).Result(),
 /// Tags: pulumi.StringMap{
 /// "Name": pulumi.String("Secondary"),
 /// },
@@ -423,11 +410,11 @@ import 'service_region_vpc_settings.dart';
 /// example_secondarySubnet = append(example_secondarySubnet, __res)
 /// }
 /// _, err = directoryservice.NewServiceRegion(ctx, "example", &directoryservice.ServiceRegionArgs{
-/// DirectoryId: exampleDirectory.ID(),
-/// RegionName: pulumi.String(example.Name),
+/// DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
+/// RegionName: pulumi.String(example.Region),
 /// VpcSettings: &directoryservice.ServiceRegionVpcSettingsArgs{
-/// VpcId: example_secondary.ID(),
-/// SubnetIds: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:87,17-46),
+/// VpcId: example_secondary.ID().ToIDOutput().ToStringOutput(),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:87,17-46)),
 /// },
 /// Tags: pulumi.StringMap{
 /// "Name": pulumi.String("Secondary"),
@@ -440,6 +427,86 @@ import 'service_region_vpc_settings.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "example" {
+/// }
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+/// data "aws_getavailabilityzones" "available-secondary" {
+///   state = "available"
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+///   tags = {
+///     "Name" = "Primary"
+///   }
+/// }
+/// resource "aws_ec2_subnet" "example" {
+///   count             = 2
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   cidr_block        = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
+///   tags = {
+///     "Name" = "Primary"
+///   }
+/// }
+/// resource "aws_directoryservice_directory" "example" {
+///   name     = "example.com"
+///   password = "SuperSecretPassw0rd"
+///   type     = "MicrosoftAD"
+///   vpc_settings = {
+///     vpc_id     = aws_ec2_vpc.example.id
+///     subnet_ids = aws_ec2_subnet.example[*].id
+///   }
+/// }
+/// resource "aws_ec2_vpc" "example-secondary" {
+///   cidr_block = "10.1.0.0/16"
+///   tags = {
+///     "Name" = "Secondary"
+///   }
+/// }
+/// resource "aws_ec2_subnet" "example-secondary" {
+///   count             = 2
+///   vpc_id            = aws_ec2_vpc.example-secondary.id
+///   availability_zone = data.aws_getavailabilityzones.available-secondary.names[count.index]
+///   cidr_block        = cidrsubnet(aws_ec2_vpc.example-secondary.cidr_block, 8, count.index)
+///   tags = {
+///     "Name" = "Secondary"
+///   }
+/// }
+/// resource "aws_directoryservice_serviceregion" "example" {
+///   directory_id = aws_directoryservice_directory.example.id
+///   region_name  = data.aws_getregion.example.region
+///   vpc_settings = {
+///     vpc_id     = aws_ec2_vpc.example-secondary.id
+///     subnet_ids = aws_ec2_subnet.example-secondary[*].id
+///   }
+///   tags = {
+///     "Name" = "Secondary"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -449,6 +516,7 @@ import 'service_region_vpc_settings.dart';
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import com.pulumi.aws.ec2.Vpc;
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.Subnet;
@@ -462,8 +530,8 @@ import 'service_region_vpc_settings.dart';
 /// import com.pulumi.aws.directoryservice.ServiceRegionArgs;
 /// import com.pulumi.aws.directoryservice.inputs.ServiceRegionVpcSettingsArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -495,11 +563,11 @@ import 'service_region_vpc_settings.dart';
 ///             new Subnet("exampleSubnet-" + i, SubnetArgs.builder()
 ///                 .vpcId(exampleVpc.id())
 ///                 .availabilityZone(available.names()[range.value()])
-///                 .cidrBlock(exampleVpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                     .input(_cidrBlock)
+///                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                     .input(exampleVpc.cidrBlock())
 ///                     .newbits(8)
 ///                     .netnum(range.value())
-///                     .build())).applyValue(_invoke -> _invoke.result()))
+///                     .build()).applyValue(_invoke -> _invoke.result()))
 ///                 .tags(Map.of("Name", "Primary"))
 ///                 .build());
 ///
@@ -532,11 +600,11 @@ import 'service_region_vpc_settings.dart';
 ///             new Subnet("example-secondarySubnet-" + i, SubnetArgs.builder()
 ///                 .vpcId(example_secondary.id())
 ///                 .availabilityZone(available_secondary.names()[range.value()])
-///                 .cidrBlock(example_secondary.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                     .input(_cidrBlock)
+///                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                     .input(example_secondary.cidrBlock())
 ///                     .newbits(8)
 ///                     .netnum(range.value())
-///                     .build())).applyValue(_invoke -> _invoke.result()))
+///                     .build()).applyValue(_invoke -> _invoke.result()))
 ///                 .tags(Map.of("Name", "Secondary"))
 ///                 .build());
 ///
@@ -544,7 +612,7 @@ import 'service_region_vpc_settings.dart';
 /// }
 ///         var exampleServiceRegion = new ServiceRegion("exampleServiceRegion", ServiceRegionArgs.builder()
 ///             .directoryId(exampleDirectory.id())
-///             .regionName(example.name())
+///             .regionName(example.region())
 ///             .vpcSettings(ServiceRegionVpcSettingsArgs.builder()
 ///                 .vpcId(example_secondary.id())
 ///                 .subnetIds(example_secondarySubnet.stream().map(element -> element.id()).collect(toList()))
@@ -573,9 +641,9 @@ class ServiceRegion extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The name of the Region where you want to add domain controllers for replication.
   late final pulumi.Output<String> regionName;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// VPC information in the replicated Region. Detailed below.
   late final pulumi.Output<ServiceRegionVpcSettings> vpcSettings;

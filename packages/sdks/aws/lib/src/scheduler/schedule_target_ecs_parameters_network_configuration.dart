@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleTargetEcsParametersNetworkConfiguration {
-  /// Specifies whether the task's elastic network interface receives a public IP address. This attribute is a boolean type, where `true` maps to `ENABLED` and `false` to `DISABLED`. You can specify `true` only when the `launch_type` is set to `FARGATE`.
+  /// Specifies whether the task's elastic network interface receives a public IP address. This attribute is a boolean type, where `true` maps to `ENABLED` and `false` to `DISABLED`. You can specify `true` only when the `launchType` is set to `FARGATE`.
   final pulumi.Input<bool>? assignPublicIp;
   /// Set of 1 to 5 Security Group ID-s to be associated with the task. These security groups must all be in the same VPC.
   final pulumi.Input<List<String>>? securityGroups;
@@ -11,7 +11,7 @@ class ScheduleTargetEcsParametersNetworkConfiguration {
   final pulumi.Input<List<String>> subnets;
 
   /// Creates a new [ScheduleTargetEcsParametersNetworkConfiguration].
-  /// [assignPublicIp] Specifies whether the task's elastic network interface receives a public IP address. This attribute is a boolean type, where `true` maps to `ENABLED` and `false` to `DISABLED`. You can specify `true` only when the `launch_type` is set to `FARGATE`.
+  /// [assignPublicIp] Specifies whether the task's elastic network interface receives a public IP address. This attribute is a boolean type, where `true` maps to `ENABLED` and `false` to `DISABLED`. You can specify `true` only when the `launchType` is set to `FARGATE`.
   /// [securityGroups] Set of 1 to 5 Security Group ID-s to be associated with the task. These security groups must all be in the same VPC.
   /// [subnets] Set of 1 to 16 subnets to be associated with the task. These subnets must all be in the same VPC.
   const ScheduleTargetEcsParametersNetworkConfiguration({
@@ -36,4 +36,3 @@ class ScheduleTargetEcsParametersNetworkConfiguration {
     );
   }
 }
-

@@ -112,6 +112,28 @@ import 'framework_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_auditmanager_framework" "test" {
+///   name = "example"
+///   control_sets {
+///     name = "example"
+///     controls {
+///       id = test1.id
+///     }
+///     controls {
+///       id = test2.id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +143,9 @@ import 'framework_state.dart';
 /// import com.pulumi.aws.auditmanager.Framework;
 /// import com.pulumi.aws.auditmanager.FrameworkArgs;
 /// import com.pulumi.aws.auditmanager.inputs.FrameworkControlSetArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.auditmanager.inputs.FrameworkControlSetControlArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +190,18 @@ import 'framework_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier for the framework.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Audit Manager Framework using the framework `id`. For example:
 ///
 /// ```sh
@@ -178,7 +213,7 @@ class Framework extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
   late final pulumi.Output<String?> complianceType;
-  /// Configuration block(s) for the control sets that are associated with the framework. See `control_sets` Block below for details.
+  /// Configuration block(s) for the control sets that are associated with the framework. See `controlSets` Block below for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>?> controlSets;
@@ -190,7 +225,7 @@ class Framework extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the framework. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the framework. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

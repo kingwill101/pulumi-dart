@@ -4,22 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_profile_connector_profile_config_connector_profile_credentials_salesforce_oauth_request.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce {
+  /// Credentials used to access protected Zendesk resources.
   final pulumi.Input<String>? accessToken;
-  /// The secret manager ARN, which contains the client ID and client secret of the connected app.
+  /// Secret manager ARN, which contains the client ID and client secret of the connected app.
   final pulumi.Input<String>? clientCredentialsArn;
-  /// A JSON web token (JWT) that authorizes access to Salesforce records.
+  /// JSON web token (JWT) that authorizes access to Salesforce records.
   final pulumi.Input<String>? jwtToken;
+  /// OAuth 2.0 grant type used by the connector for OAuth 2.0 authentication. One of: `AUTHORIZATION_CODE`, `CLIENT_CREDENTIALS`.
   final pulumi.Input<String>? oauth2GrantType;
+  /// OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest>? oauthRequest;
+  /// Refresh token used to refresh an expired access token.
   final pulumi.Input<String>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce].
-  /// [accessToken] Optional.
-  /// [clientCredentialsArn] The secret manager ARN, which contains the client ID and client secret of the connected app.
-  /// [jwtToken] A JSON web token (JWT) that authorizes access to Salesforce records.
-  /// [oauth2GrantType] Optional.
-  /// [oauthRequest] Optional.
-  /// [refreshToken] Optional.
+  /// [accessToken] Credentials used to access protected Zendesk resources.
+  /// [clientCredentialsArn] Secret manager ARN, which contains the client ID and client secret of the connected app.
+  /// [jwtToken] JSON web token (JWT) that authorizes access to Salesforce records.
+  /// [oauth2GrantType] OAuth 2.0 grant type used by the connector for OAuth 2.0 authentication. One of: `AUTHORIZATION_CODE`, `CLIENT_CREDENTIALS`.
+  /// [oauthRequest] OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
+  /// [refreshToken] Refresh token used to refresh an expired access token.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce({
     this.accessToken,
     this.clientCredentialsArn,
@@ -51,4 +55,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforc
     );
   }
 }
-

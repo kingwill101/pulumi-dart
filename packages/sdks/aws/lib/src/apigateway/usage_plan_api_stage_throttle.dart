@@ -3,17 +3,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UsagePlanApiStageThrottle {
-  /// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+  /// API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
   final pulumi.Input<int>? burstLimit;
-  /// Method to apply the throttle settings for. Specfiy the path and method, for example `/test/GET`.
+  /// Method to apply the throttle settings for. Specify the path and method, for example `/test/GET`.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> path;
-  /// The API request steady-state rate limit.
+  /// API request steady-state rate limit.
   final pulumi.Input<double>? rateLimit;
 
   /// Creates a new [UsagePlanApiStageThrottle].
-  /// [burstLimit] The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
-  /// [path] Method to apply the throttle settings for. Specfiy the path and method, for example `/test/GET`.
-  /// [rateLimit] The API request steady-state rate limit.
+  /// [burstLimit] API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+  /// [path] Method to apply the throttle settings for. Specify the path and method, for example `/test/GET`.
+  /// [rateLimit] API request steady-state rate limit.
   const UsagePlanApiStageThrottle({
     this.burstLimit,
     required this.path,
@@ -36,4 +38,3 @@ class UsagePlanApiStageThrottle {
     );
   }
 }
-

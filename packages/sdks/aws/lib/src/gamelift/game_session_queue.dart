@@ -121,6 +121,29 @@ import 'game_session_queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_gamelift_gamesessionqueue" "test" {
+///   name                = "example-session-queue"
+///   destinations        = [usWest2Fleet.arn, euCentral1Fleet.arn]
+///   notification_target = gameSessionQueueNotifications.arn
+///   player_latency_policies {
+///     maximum_individual_player_latency_milliseconds = 100
+///     policy_duration_seconds                        = 5
+///   }
+///   player_latency_policies {
+///     maximum_individual_player_latency_milliseconds = 200
+///   }
+///   timeout_in_seconds = 60
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +153,8 @@ import 'game_session_queue_state.dart';
 /// import com.pulumi.aws.gamelift.GameSessionQueue;
 /// import com.pulumi.aws.gamelift.GameSessionQueueArgs;
 /// import com.pulumi.aws.gamelift.inputs.GameSessionQueuePlayerLatencyPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,9 +226,9 @@ class GameSessionQueue extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> playerLatencyPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Maximum time a game session request can remain in the queue.
   late final pulumi.Output<int?> timeoutInSeconds;

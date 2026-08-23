@@ -64,6 +64,20 @@ import 'fast_snapshot_restore_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ebs_fastsnapshotrestore" "example" {
+///   availability_zone = "us-west-2a"
+///   snapshot_id       = exampleAwsEbsSnapshot.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'fast_snapshot_restore_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ebs.FastSnapshotRestore;
 /// import com.pulumi.aws.ebs.FastSnapshotRestoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -105,7 +119,7 @@ import 'fast_snapshot_restore_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EC2 (Elastic Compute Cloud) EBS Fast Snapshot Restore using the `availability_zone` and `snapshot_id` separated by `,`. For example:
+/// Using `pulumi import`, import EC2 (Elastic Compute Cloud) EBS Fast Snapshot Restore using the `availabilityZone` and `snapshotId` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ebs/fastSnapshotRestore:FastSnapshotRestore example us-west-2a,snap-abcdef123456

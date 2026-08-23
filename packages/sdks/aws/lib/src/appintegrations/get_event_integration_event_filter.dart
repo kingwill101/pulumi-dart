@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEventIntegrationEventFilter {
-  /// The source of the events.
+  /// Source of the events.
   final pulumi.Input<String> source;
 
   /// Creates a new [GetEventIntegrationEventFilter].
-  /// [source] The source of the events.
+  /// [source] Source of the events.
   const GetEventIntegrationEventFilter({
     required this.source,
   });
@@ -24,4 +24,3 @@ class GetEventIntegrationEventFilter {
     );
   }
 }
-

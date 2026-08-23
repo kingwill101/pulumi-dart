@@ -88,6 +88,25 @@ import 'sql_injection_match_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_sqlinjectionmatchset" "sql_injection_match_set" {
+///   name = "tf-sql_injection_match_set"
+///   sql_injection_match_tuples {
+///     text_transformation = "URL_DECODE"
+///     field_to_match = {
+///       type = "QUERY_STRING"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +117,8 @@ import 'sql_injection_match_set_state.dart';
 /// import com.pulumi.aws.waf.SqlInjectionMatchSetArgs;
 /// import com.pulumi.aws.waf.inputs.SqlInjectionMatchSetSqlInjectionMatchTupleArgs;
 /// import com.pulumi.aws.waf.inputs.SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

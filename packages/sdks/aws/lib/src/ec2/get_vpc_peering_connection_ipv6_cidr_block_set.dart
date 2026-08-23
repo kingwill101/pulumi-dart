@@ -23,4 +23,3 @@ class GetVpcPeeringConnectionIpv6CidrBlockSet {
     );
   }
 }
-

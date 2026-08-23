@@ -22,7 +22,7 @@ class QuerySuggestionsBlockListState {
   final pulumi.Input<QuerySuggestionsBlockListSourceS3Path>? sourceS3Path;
   final pulumi.Input<String>? status;
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider's default_tags configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider's defaultTags configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [QuerySuggestionsBlockListState].
@@ -36,7 +36,7 @@ class QuerySuggestionsBlockListState {
   /// [sourceS3Path] S3 path where your block list text file is located. See details below.
   /// [status] Optional.
   /// [tags] Optional.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider's default_tags configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider's defaultTags configuration block.
   const QuerySuggestionsBlockListState({
     this.arn,
     this.description,
@@ -83,4 +83,3 @@ class QuerySuggestionsBlockListState {
     );
   }
 }
-

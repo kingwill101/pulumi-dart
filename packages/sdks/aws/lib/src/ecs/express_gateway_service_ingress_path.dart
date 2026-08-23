@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServiceIngressPath {
+  /// Access type for the ingress path.
   final pulumi.Input<String> accessType;
+  /// Endpoint for the ingress path.
   final pulumi.Input<String> endpoint;
 
   /// Creates a new [ExpressGatewayServiceIngressPath].
-  /// [accessType] Required.
-  /// [endpoint] Required.
+  /// [accessType] Access type for the ingress path.
+  /// [endpoint] Endpoint for the ingress path.
   const ExpressGatewayServiceIngressPath({
     required this.accessType,
     required this.endpoint,
@@ -28,4 +30,3 @@ class ExpressGatewayServiceIngressPath {
     );
   }
 }
-

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_grpc_route_match_metadata_match.dart';
 
 class RouteSpecGrpcRouteMatchMetadata {
-  /// If `true`, the match is on the opposite of the `match` criteria. Default is `false`.
+  /// Whether to match on the opposite of the `match` method and value. Default is `false`.
   final pulumi.Input<bool>? invert;
-  /// Data to match from the request.
+  /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
   final pulumi.Input<RouteSpecGrpcRouteMatchMetadataMatch>? match;
-  /// Name of the route. Must be between 1 and 50 characters in length.
+  /// Name to use for the route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> name;
 
   /// Creates a new [RouteSpecGrpcRouteMatchMetadata].
-  /// [invert] If `true`, the match is on the opposite of the `match` criteria. Default is `false`.
-  /// [match] Data to match from the request.
-  /// [name] Name of the route. Must be between 1 and 50 characters in length.
+  /// [invert] Whether to match on the opposite of the `match` method and value. Default is `false`.
+  /// [match] Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
+  /// [name] Name to use for the route. Must be between 1 and 255 characters in length.
   const RouteSpecGrpcRouteMatchMetadata({
     this.invert,
     this.match,
@@ -37,4 +37,3 @@ class RouteSpecGrpcRouteMatchMetadata {
     );
   }
 }
-

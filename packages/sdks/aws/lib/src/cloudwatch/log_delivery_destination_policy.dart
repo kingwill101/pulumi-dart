@@ -63,6 +63,20 @@ import 'log_delivery_destination_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logdeliverydestinationpolicy" "example" {
+///   delivery_destination_name   = exampleAwsCloudwatchLogDeliveryDestination.name
+///   delivery_destination_policy = exampleAwsIamPolicyDocument.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'log_delivery_destination_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.LogDeliveryDestinationPolicy;
 /// import com.pulumi.aws.cloudwatch.LogDeliveryDestinationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -104,7 +118,19 @@ import 'log_delivery_destination_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Logs Delivery Destination Policy using the `delivery_destination_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `deliveryDestinationName` (String) Name of the delivery destination
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Delivery Destination Policies using `deliveryDestinationName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy example example

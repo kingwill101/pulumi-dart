@@ -61,6 +61,20 @@ import 'resolver_rule_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverruleassociation" "example" {
+///   resolver_rule_id = sys.id
+///   vpc_id           = foo.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'resolver_rule_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.ResolverRuleAssociation;
 /// import com.pulumi.aws.route53.ResolverRuleAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,7 +124,7 @@ import 'resolver_rule_association_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///

@@ -7,35 +7,35 @@ import 'get_job_definition_eks_property_pod_property_init_container_security_con
 import 'get_job_definition_eks_property_pod_property_init_container_volume_mount.dart';
 
 class GetJobDefinitionEksPropertyPodPropertyInitContainer {
-  /// An array of arguments to the entrypoint
+  /// Array of arguments to the entrypoint.
   final pulumi.Input<List<String>> args;
-  /// The command that's passed to the container.
+  /// Command that's passed to the container.
   final pulumi.Input<List<String>> commands;
-  /// The environment variables to pass to a container.  Array of EksContainerEnvironmentVariable objects.
+  /// Environment variables to pass to a container. See `env` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyInitContainerEnv>> envs;
-  /// The image used to start a container.
+  /// Image used to start a container.
   final pulumi.Input<String> image;
-  /// The image pull policy for the container.
+  /// Image pull policy for the container.
   final pulumi.Input<String> imagePullPolicy;
-  /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   final pulumi.Input<String> name;
-  /// The type and amount of resources to assign to a container.
+  /// Type and amount of resources to assign to a container. See `resources` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyInitContainerResource>> resources;
-  /// The security context for a job.
+  /// Security context for a job. See `securityContext` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyInitContainerSecurityContext>> securityContexts;
-  /// The volume mounts for the container.
+  /// Volume mounts for the container. See `volumeMounts` below.
   final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount>> volumeMounts;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyInitContainer].
-  /// [args] An array of arguments to the entrypoint
-  /// [commands] The command that's passed to the container.
-  /// [envs] The environment variables to pass to a container.  Array of EksContainerEnvironmentVariable objects.
-  /// [image] The image used to start a container.
-  /// [imagePullPolicy] The image pull policy for the container.
-  /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
-  /// [resources] The type and amount of resources to assign to a container.
-  /// [securityContexts] The security context for a job.
-  /// [volumeMounts] The volume mounts for the container.
+  /// [args] Array of arguments to the entrypoint.
+  /// [commands] Command that's passed to the container.
+  /// [envs] Environment variables to pass to a container. See `env` below.
+  /// [image] Image used to start a container.
+  /// [imagePullPolicy] Image pull policy for the container.
+  /// [name] Name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+  /// [resources] Type and amount of resources to assign to a container. See `resources` below.
+  /// [securityContexts] Security context for a job. See `securityContext` below.
+  /// [volumeMounts] Volume mounts for the container. See `volumeMounts` below.
   const GetJobDefinitionEksPropertyPodPropertyInitContainer({
     required this.args,
     required this.commands,
@@ -76,4 +76,3 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainer {
     );
   }
 }
-

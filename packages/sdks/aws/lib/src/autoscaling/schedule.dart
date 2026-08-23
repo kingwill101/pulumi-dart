@@ -135,6 +135,35 @@ import 'schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_group" "foobar" {
+///   availability_zones        = ["us-west-2a"]
+///   name                      = "test-foobar5"
+///   max_size                  = 1
+///   min_size                  = 1
+///   health_check_grace_period = 300
+///   health_check_type         = "ELB"
+///   force_delete              = true
+///   termination_policies      = ["OldestInstance"]
+/// }
+/// resource "aws_autoscaling_schedule" "foobar" {
+///   scheduled_action_name  = "foobar"
+///   min_size               = 0
+///   max_size               = 1
+///   desired_capacity       = 0
+///   start_time             = "2016-12-11T18:00:00Z"
+///   end_time               = "2016-12-12T06:00:00Z"
+///   autoscaling_group_name = aws_autoscaling_group.foobar.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +174,8 @@ import 'schedule_state.dart';
 /// import com.pulumi.aws.autoscaling.GroupArgs;
 /// import com.pulumi.aws.autoscaling.Schedule;
 /// import com.pulumi.aws.autoscaling.ScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,10 +242,23 @@ import 'schedule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AutoScaling ScheduledAction using the `auto-scaling-group-name` and `scheduled-action-name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `autoscalingGroupName` (String) Name of the Auto Scaling group.
+/// * `scheduledActionName` (String) Name of the scaling action.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import AutoScaling Schedules using `autoscalingGroupName` and `scheduledActionName` separated by a forward slash (`/`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:autoscaling/schedule:Schedule resource-name auto-scaling-group-name/scheduled-action-name
+/// $ pulumi import aws:autoscaling/schedule:Schedule example example-asg/example-action
 /// ```
 class Schedule extends pulumi.CustomResource {
   /// ARN assigned by AWS to the autoscaling schedule.
@@ -243,7 +285,7 @@ class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<String> startTime;
   /// Specifies the time zone for a cron expression. Valid values are the canonical names of the IANA time zones (such as `Etc/GMT+9` or `Pacific/Tahiti`).
   ///
-  /// &gt; **NOTE:** When `start_time` and `end_time` are specified with `recurrence` , they form the boundaries of when the recurring action will start and stop.
+  /// &gt; **NOTE:** When `startTime` and `endTime` are specified with `recurrence` , they form the boundaries of when the recurring action will start and stop.
   late final pulumi.Output<String> timeZone;
 
   /// Creates a new [Schedule].

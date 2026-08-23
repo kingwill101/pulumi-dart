@@ -10,14 +10,14 @@ class ObjectLambdaAccessPointConfiguration {
   final pulumi.Input<bool>? cloudWatchMetricsEnabled;
   /// Standard access point associated with the Object Lambda Access Point.
   final pulumi.Input<String> supportingAccessPoint;
-  /// List of transformation configurations for the Object Lambda Access Point. See Transformation Configuration below for more details.
+  /// List of transformation configurations for the Object Lambda Access Point. See `transformationConfiguration` Block below for more details.
   final pulumi.Input<List<ObjectLambdaAccessPointConfigurationTransformationConfiguration>> transformationConfigurations;
 
   /// Creates a new [ObjectLambdaAccessPointConfiguration].
   /// [allowedFeatures] Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`.
   /// [cloudWatchMetricsEnabled] Whether or not the CloudWatch metrics configuration is enabled.
   /// [supportingAccessPoint] Standard access point associated with the Object Lambda Access Point.
-  /// [transformationConfigurations] List of transformation configurations for the Object Lambda Access Point. See Transformation Configuration below for more details.
+  /// [transformationConfigurations] List of transformation configurations for the Object Lambda Access Point. See `transformationConfiguration` Block below for more details.
   const ObjectLambdaAccessPointConfiguration({
     this.allowedFeatures,
     this.cloudWatchMetricsEnabled,
@@ -43,4 +43,3 @@ class ObjectLambdaAccessPointConfiguration {
     );
   }
 }
-

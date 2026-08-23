@@ -15,15 +15,15 @@ class VectorsIndexArgs {
   final pulumi.Input<int> dimension;
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
   final pulumi.Input<String> distanceMetric;
-  /// Block for encryption configuration for the vector index. See `encyption_configuration` block below.
+  /// Block for encryption configuration for the vector index. See `encryptionConfiguration` Block below.
   final pulumi.Input<List<VectorsIndexEncryptionConfiguration>>? encryptionConfigurations;
   /// Name of the vector index.
   final pulumi.Input<String> indexName;
-  /// Block for metadata configuration for the vector index. See `metadata_configuration` block below.
+  /// Block for metadata configuration for the vector index. See `metadataConfiguration` Block below.
   final pulumi.Input<VectorsIndexMetadataConfiguration>? metadataConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Name of the vector bucket for the vector index.
   ///
@@ -34,11 +34,11 @@ class VectorsIndexArgs {
   /// [dataType] Data type of the vectors to be inserted into the vector index. Valid values: `float32`.
   /// [dimension] Dimensions of the vectors to be inserted into the vector index.
   /// [distanceMetric] Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
-  /// [encryptionConfigurations] Block for encryption configuration for the vector index. See `encyption_configuration` block below.
+  /// [encryptionConfigurations] Block for encryption configuration for the vector index. See `encryptionConfiguration` Block below.
   /// [indexName] Name of the vector index.
-  /// [metadataConfiguration] Block for metadata configuration for the vector index. See `metadata_configuration` block below.
+  /// [metadataConfiguration] Block for metadata configuration for the vector index. See `metadataConfiguration` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vectorBucketName] Name of the vector bucket for the vector index.
   const VectorsIndexArgs({
     required this.dataType,
@@ -80,4 +80,3 @@ class VectorsIndexArgs {
     );
   }
 }
-

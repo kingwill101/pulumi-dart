@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime {
+  /// Time in minutes.
   final pulumi.Input<int> minutes;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime].
-  /// [minutes] Required.
+  /// [minutes] Time in minutes.
   const GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime({
     required this.minutes,
   });
@@ -23,4 +24,3 @@ class GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime {
     );
   }
 }
-

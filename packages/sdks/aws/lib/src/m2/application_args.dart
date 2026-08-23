@@ -25,7 +25,7 @@ class ApplicationArgs {
   final pulumi.Input<String>? region;
   /// ARN of role for application to use to access AWS resources.
   final pulumi.Input<String>? roleArn;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ApplicationTimeouts>? timeouts;
 
@@ -37,7 +37,7 @@ class ApplicationArgs {
   /// [name] Unique identifier of the application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of role for application to use to access AWS resources.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const ApplicationArgs({
     required this.definition,
@@ -79,4 +79,3 @@ class ApplicationArgs {
     );
   }
 }
-

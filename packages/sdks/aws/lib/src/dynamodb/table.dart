@@ -11,22 +11,13 @@ import 'table_warm_throughput.dart';
 
 /// Provides a DynamoDB table resource.
 ///
-/// &gt; **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `read_capacity` and/or `write_capacity` if there's `autoscaling policy` attached to the table.
+/// &gt; **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `readCapacity` and/or `writeCapacity` if there's `autoscaling policy` attached to the table.
 ///
-/// &gt; **Note:** When using aws.dynamodb.TableReplica with this resource, use `lifecycle` `ignore_changes` for `replica`, _e.g._, `lifecycle { ignore_changes = [replica] }`.
+/// &gt; **Note:** When using aws.dynamodb.TableReplica with this resource, use `lifecycle` `ignoreChanges` for `replica`, _e.g._, `lifecycle { ignoreChanges = [replica] }`.
 ///
-/// &gt; **Note:** If autoscaling creates drift for your `global_secondary_index` blocks and/or more granular `lifecycle` management for GSIs, we recommend using the new **experimental** resource `aws.dynamodb.GlobalSecondaryIndex`.
+/// &gt; **Note:** If autoscaling creates drift for your `globalSecondaryIndex` blocks and/or more granular `lifecycle` management for GSIs, we recommend using the new **experimental** resource `aws.dynamodb.GlobalSecondaryIndex`.
 ///
-/// ## DynamoDB Table attributes
-///
-/// Only define attributes on the table object that are going to be used as:
-///
-/// * Table hash key or range key
-/// * LSI or GSI hash key or range key
-///
-/// The DynamoDB API expects attribute structure (name and type) to be passed along when creating or updating GSI/LSIs or creating the initial table. In these cases it expects the Hash / Range keys to be provided. Because these get re-used in numerous places (i.e the table's range key could be a part of one or more GSIs), they are stored on the table object to prevent duplication and increase consistency. If you add attributes here that are not used in these scenarios it can cause an infinite loop in planning.
-///
-/// &gt; **Note:** When using the `aws.dynamodb.GlobalSecondaryIndex` resource, you do not need to define the attributes for externally managed GSIs in the `aws.dynamodb.Table` resource.
+/// &gt; **Note:** Only define attributes on the table object that are going to be used as a hash key or range key for the table itself, or for LSI/GSI keys. Adding attributes not used in these scenarios causes an infinite plan loop. When using `aws.dynamodb.GlobalSecondaryIndex`, you do not need to define attributes for externally managed GSIs in the `aws.dynamodb.Table` resource.
 ///
 /// ## Example Usage
 ///
@@ -246,6 +237,53 @@ import 'table_warm_throughput.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "basic-dynamodb-table" {
+///   name           = "GameScores"
+///   billing_mode   = "PROVISIONED"
+///   read_capacity  = 20
+///   write_capacity = 20
+///   hash_key       = "UserId"
+///   range_key      = "GameTitle"
+///   attributes {
+///     name = "UserId"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "GameTitle"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "TopScore"
+///     type = "N"
+///   }
+///   ttl = {
+///     attribute_name = "TimeToExist"
+///     enabled        = true
+///   }
+///   global_secondary_indexes {
+///     name               = "GameTitleIndex"
+///     hash_key           = "GameTitle"
+///     range_key          = "TopScore"
+///     write_capacity     = 10
+///     read_capacity      = 10
+///     projection_type    = "INCLUDE"
+///     non_key_attributes = ["UserId"]
+///   }
+///   tags = {
+///     "Name"        = "dynamodb-table-1"
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -257,8 +295,8 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableTtlArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,7 +390,7 @@ import 'table_warm_throughput.dart';
 ///
 /// The following dynamodb table description models the table and GSIs shown in the [AWS SDK example documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.DesignPattern.MultiAttributeKeys.html)
 ///
-/// &gt; **Note:** Multi-attribute keys for GSIs use the `key_schema` block instead of `hash_key`/`range_key`. The `hash_key` and `range_key` arguments are deprecated in favor of `key_schema`.
+/// &gt; **Note:** Multi-attribute keys for GSIs use the `keySchema` block instead of `hashKey`/`rangeKey`. The `hashKey` and `rangeKey` arguments are deprecated in favor of `keySchema`.
 ///
 ///
 /// ```typescript
@@ -796,6 +834,103 @@ import 'table_warm_throughput.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "basic-dynamodb-table" {
+///   name           = "TournamentMatches"
+///   billing_mode   = "PROVISIONED"
+///   read_capacity  = 20
+///   write_capacity = 20
+///   hash_key       = "matchId"
+///   attributes {
+///     name = "matchId"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "tournamentId"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "region"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "round"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "bracket"
+///     type = "S"
+///   }
+///   attributes {
+///     name = "playerId"
+///     type = "N"
+///   }
+///   attributes {
+///     name = "matchDate"
+///     type = "S"
+///   }
+///   ttl = {
+///     attribute_name = "TimeToExist"
+///     enabled        = true
+///   }
+///   global_secondary_indexes {
+///     name = "TournamentRegionIndex"
+///     key_schemas {
+///       attribute_name = "tournamentId"
+///       key_type       = "HASH"
+///     }
+///     key_schemas {
+///       attribute_name = "region"
+///       key_type       = "HASH"
+///     }
+///     key_schemas {
+///       attribute_name = "round"
+///       key_type       = "RANGE"
+///     }
+///     key_schemas {
+///       attribute_name = "bracket"
+///       key_type       = "RANGE"
+///     }
+///     key_schemas {
+///       attribute_name = "matchId"
+///       key_type       = "RANGE"
+///     }
+///     write_capacity  = 10
+///     read_capacity   = 10
+///     projection_type = "ALL"
+///   }
+///   global_secondary_indexes {
+///     name = "PlayerMatchHistoryIndex"
+///     key_schemas {
+///       attribute_name = "playerId"
+///       key_type       = "HASH"
+///     }
+///     key_schemas {
+///       attribute_name = "matchDate"
+///       key_type       = "RANGE"
+///     }
+///     key_schemas {
+///       attribute_name = "round"
+///       key_type       = "RANGE"
+///     }
+///     write_capacity  = 10
+///     read_capacity   = 10
+///     projection_type = "ALL"
+///   }
+///   tags = {
+///     "Name"        = "dynamodb-table-1"
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -807,8 +942,9 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableTtlArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexKeySchemaArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1106,6 +1242,33 @@ import 'table_warm_throughput.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "example" {
+///   name             = "example"
+///   hash_key         = "TestTableHashKey"
+///   billing_mode     = "PAY_PER_REQUEST"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   attributes {
+///     name = "TestTableHashKey"
+///     type = "S"
+///   }
+///   replicas {
+///     region_name = "us-east-2"
+///   }
+///   replicas {
+///     region_name = "us-west-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1116,8 +1279,8 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.aws.dynamodb.TableArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableReplicaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1178,7 +1341,7 @@ import 'table_warm_throughput.dart';
 ///
 /// **Note** Please see detailed information, restrictions, caveats etc on the [AWS Support Page](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/multi-region-strong-consistency-gt.html).
 ///
-/// Consistency Mode (`consistency_mode`) on the embedded `replica` allows you to configure consistency mode for Global Tables.
+/// Consistency Mode (`consistencyMode`) on the embedded `replica` allows you to configure consistency mode for Global Tables.
 ///
 /// ##### Consistency mode with 3 Replicas
 ///
@@ -1314,6 +1477,35 @@ import 'table_warm_throughput.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "example" {
+///   name             = "example"
+///   hash_key         = "TestTableHashKey"
+///   billing_mode     = "PAY_PER_REQUEST"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   attributes {
+///     name = "TestTableHashKey"
+///     type = "S"
+///   }
+///   replicas {
+///     region_name      = "us-east-2"
+///     consistency_mode = "STRONG"
+///   }
+///   replicas {
+///     region_name      = "us-west-2"
+///     consistency_mode = "STRONG"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1324,8 +1516,8 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.aws.dynamodb.TableArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableReplicaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1508,6 +1700,34 @@ import 'table_warm_throughput.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "example" {
+///   name             = "example"
+///   hash_key         = "TestTableHashKey"
+///   billing_mode     = "PAY_PER_REQUEST"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   attributes {
+///     name = "TestTableHashKey"
+///     type = "S"
+///   }
+///   replicas {
+///     region_name      = "us-east-2"
+///     consistency_mode = "STRONG"
+///   }
+///   global_table_witness = {
+///     region_name = "us-west-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1519,8 +1739,8 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableReplicaArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableGlobalTableWitnessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1600,10 +1820,10 @@ import 'table_warm_throughput.dart';
 ///     }],
 ///     replicas: [
 ///         {
-///             regionName: alternate.then(alternate => alternate.name),
+///             regionName: alternate.then(alternate => alternate.region),
 ///         },
 ///         {
-///             regionName: third.then(third => third.name),
+///             regionName: third.then(third => third.region),
 ///             propagateTags: true,
 ///         },
 ///     ],
@@ -1613,11 +1833,11 @@ import 'table_warm_throughput.dart';
 ///     },
 /// });
 /// const exampleTag = new aws.dynamodb.Tag("example", {
-///     resourceArn: pulumi.all([example.arn, current, alternate]).apply(([arn, current, alternate]) => std.replaceOutput({
-///         text: arn,
-///         search: current.region,
-///         replace: alternate.name,
-///     })).apply(invoke => invoke.result),
+///     resourceArn: std.replaceOutput({
+///         text: example.arn,
+///         search: current.then(current => current.region),
+///         replace: alternate.then(alternate => alternate.region),
+///     }).result,
 ///     key: "Architect",
 ///     value: "Gigi",
 /// });
@@ -1642,10 +1862,10 @@ import 'table_warm_throughput.dart';
 ///     }],
 ///     replicas=[
 ///         {
-///             "region_name": alternate.name,
+///             "region_name": alternate.region,
 ///         },
 ///         {
-///             "region_name": third.name,
+///             "region_name": third.region,
 ///             "propagate_tags": True,
 ///         },
 ///     ],
@@ -1654,9 +1874,9 @@ import 'table_warm_throughput.dart';
 ///         "Zone": "SW",
 ///     })
 /// example_tag = aws.dynamodb.Tag("example",
-///     resource_arn=example.arn.apply(lambda arn: std.replace(text=arn,
+///     resource_arn=std.replace_output(text=example.arn,
 ///         search=current.region,
-///         replace=alternate.name)).apply(lambda invoke: invoke.result),
+///         replace=alternate.region).result,
 ///     key="Architect",
 ///     value="Gigi")
 /// ```
@@ -1694,11 +1914,11 @@ import 'table_warm_throughput.dart';
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableReplicaArgs
 ///             {
-///                 RegionName = alternate.Apply(getRegionResult => getRegionResult.Name),
+///                 RegionName = alternate.Apply(getRegionResult => getRegionResult.Region),
 ///             },
 ///             new Aws.DynamoDB.Inputs.TableReplicaArgs
 ///             {
-///                 RegionName = third.Apply(getRegionResult => getRegionResult.Name),
+///                 RegionName = third.Apply(getRegionResult => getRegionResult.Region),
 ///                 PropagateTags = true,
 ///             },
 ///         },
@@ -1711,17 +1931,11 @@ import 'table_warm_throughput.dart';
 ///
 ///     var exampleTag = new Aws.DynamoDB.Tag("example", new()
 ///     {
-///         ResourceArn = Output.Tuple(example.Arn, current, alternate).Apply(values =>
+///         ResourceArn = Std.Replace.Invoke(new()
 ///         {
-///             var arn = values.Item1;
-///             var current = values.Item2;
-///             var alternate = values.Item3;
-///             return Std.Replace.Invoke(new()
-///             {
-///                 Text = arn,
-///                 Search = current.Apply(getRegionResult => getRegionResult.Region),
-///                 Replace = alternate.Apply(getRegionResult => getRegionResult.Name),
-///             });
+///             Text = example.Arn,
+///             Search = current.Apply(getRegionResult => getRegionResult.Region),
+///             Replace = alternate.Apply(getRegionResult => getRegionResult.Region),
 ///         }).Apply(invoke => invoke.Result),
 ///         Key = "Architect",
 ///         Value = "Gigi",
@@ -1738,73 +1952,111 @@ import 'table_warm_throughput.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		alternate, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		third, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
+/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
+/// 			HashKey:        pulumi.String("TestTableHashKey"),
+/// 			Name:           pulumi.String("example-13281"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
+/// 			Attributes: dynamodb.TableAttributeArray{
+/// 				&dynamodb.TableAttributeArgs{
+/// 					Name: pulumi.String("TestTableHashKey"),
+/// 					Type: pulumi.String("S"),
+/// 				},
+/// 			},
+/// 			Replicas: dynamodb.TableReplicaTypeArray{
+/// 				&dynamodb.TableReplicaTypeArgs{
+/// 					RegionName: pulumi.String(alternate.Region),
+/// 				},
+/// 				&dynamodb.TableReplicaTypeArgs{
+/// 					RegionName:    pulumi.String(third.Region),
+/// 					PropagateTags: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"Architect": pulumi.String("Eleanor"),
+/// 				"Zone":      pulumi.String("SW"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = dynamodb.NewTag(ctx, "example", &dynamodb.TagArgs{
+/// 			ResourceArn: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+/// 				Text:    example.Arn,
+/// 				Search:  pulumi.String(current.Region),
+/// 				Replace: pulumi.String(alternate.Region),
+/// 			}, nil).Result(),
+/// 			Key:   pulumi.String("Architect"),
+/// 			Value: pulumi.String("Gigi"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// alternate, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// third, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_getregion" "current" {
 /// }
-/// example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// BillingMode: pulumi.String("PAY_PER_REQUEST"),
-/// HashKey: pulumi.String("TestTableHashKey"),
-/// Name: pulumi.String("example-13281"),
-/// StreamEnabled: pulumi.Bool(true),
-/// StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
-/// Attributes: dynamodb.TableAttributeArray{
-/// &dynamodb.TableAttributeArgs{
-/// Name: pulumi.String("TestTableHashKey"),
-/// Type: pulumi.String("S"),
-/// },
-/// },
-/// Replicas: dynamodb.TableReplicaTypeArray{
-/// &dynamodb.TableReplicaTypeArgs{
-/// RegionName: pulumi.String(alternate.Name),
-/// },
-/// &dynamodb.TableReplicaTypeArgs{
-/// RegionName: pulumi.String(third.Name),
-/// PropagateTags: pulumi.Bool(true),
-/// },
-/// },
-/// Tags: pulumi.StringMap{
-/// "Architect": pulumi.String("Eleanor"),
-/// "Zone": pulumi.String("SW"),
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_getregion" "alternate" {
 /// }
-/// invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
-/// Text: arn,
-/// Search: current.Region,
-/// Replace: alternate.Name,
-/// }, nil)
-/// if err != nil {
-/// return err
+/// data "aws_getregion" "third" {
 /// }
-/// _, err = dynamodb.NewTag(ctx, "example", &dynamodb.TagArgs{
-/// ResourceArn: pulumi.String(example.Arn.ApplyT(func(arn string) (std.ReplaceResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// Key: pulumi.String("Architect"),
-/// Value: pulumi.String("Gigi"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_dynamodb_table" "example" {
+///   billing_mode     = "PAY_PER_REQUEST"
+///   hash_key         = "TestTableHashKey"
+///   name             = "example-13281"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   attributes {
+///     name = "TestTableHashKey"
+///     type = "S"
+///   }
+///   replicas {
+///     region_name = data.aws_getregion.alternate.region
+///   }
+///   replicas {
+///     region_name    = data.aws_getregion.third.region
+///     propagate_tags = true
+///   }
+///   tags = {
+///     "Architect" = "Eleanor"
+///     "Zone"      = "SW"
+///   }
 /// }
-/// return nil
-/// })
+/// resource "aws_dynamodb_tag" "example" {
+///   resource_arn = replace(aws_dynamodb_table.example.arn, data.aws_getregion.current.region, data.aws_getregion.alternate.region)
+///   key          = "Architect"
+///   value        = "Gigi"
 /// }
 /// ```
 /// ```java
@@ -1823,8 +2075,8 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.aws.dynamodb.TagArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.ReplaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1857,10 +2109,10 @@ import 'table_warm_throughput.dart';
 ///                 .build())
 ///             .replicas(
 ///                 TableReplicaArgs.builder()
-///                     .regionName(alternate.name())
+///                     .regionName(alternate.region())
 ///                     .build(),
 ///                 TableReplicaArgs.builder()
-///                     .regionName(third.name())
+///                     .regionName(third.region())
 ///                     .propagateTags(true)
 ///                     .build())
 ///             .tags(Map.ofEntries(
@@ -1870,11 +2122,11 @@ import 'table_warm_throughput.dart';
 ///             .build());
 ///
 ///         var exampleTag = new Tag("exampleTag", TagArgs.builder()
-///             .resourceArn(example.arn().applyValue(_arn -> StdFunctions.replace(ReplaceArgs.builder()
-///                 .text(_arn)
+///             .resourceArn(StdFunctions.replace(ReplaceArgs.builder()
+///                 .text(example.arn())
 ///                 .search(current.region())
-///                 .replace(alternate.name())
-///                 .build())).applyValue(_invoke -> _invoke.result()))
+///                 .replace(alternate.region())
+///                 .build()).applyValue(_invoke -> _invoke.result()))
 ///             .key("Architect")
 ///             .value("Gigi")
 ///             .build());
@@ -1896,8 +2148,8 @@ import 'table_warm_throughput.dart';
 ///         - name: TestTableHashKey
 ///           type: S
 ///       replicas:
-///         - regionName: ${alternate.name}
-///         - regionName: ${third.name}
+///         - regionName: ${alternate.region}
+///         - regionName: ${third.region}
 ///           propagateTags: true
 ///       tags:
 ///         Architect: Eleanor
@@ -1912,7 +2164,7 @@ import 'table_warm_throughput.dart';
 ///           arguments:
 ///             text: ${example.arn}
 ///             search: ${current.region}
-///             replace: ${alternate.name}
+///             replace: ${alternate.region}
 ///           return: result
 ///       key: Architect
 ///       value: Gigi
@@ -1934,6 +2186,18 @@ import 'table_warm_throughput.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the DynamoDB Table.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import DynamoDB tables using the `name`. For example:
 ///
 /// ```sh
@@ -1941,8 +2205,11 @@ import 'table_warm_throughput.dart';
 /// ```
 class Table extends pulumi.CustomResource {
   /// ARN of the table
+  /// * `replica.*.arn` - ARN of the replica
+  /// * `replica.*.stream_arn` - ARN of the replica Table Stream. Only available when `streamEnabled = true`.
+  /// * `replica.*.stream_label` - Timestamp, in ISO 8601 format, for the replica stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
   late final pulumi.Output<String> arn;
-  /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
+  /// Set of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> attributes;
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   late final pulumi.Output<String?> billingMode;
@@ -1950,7 +2217,7 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<bool?> deletionProtectionEnabled;
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> globalSecondaryIndexes;
-  /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
+  /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistencyMode` set to `STRONG`. Other combinations will fail to provision. See below.
   late final pulumi.Output<TableGlobalTableWitness> globalTableWitness;
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
   late final pulumi.Output<String> hashKey;
@@ -1968,12 +2235,14 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<TablePointInTimeRecovery> pointInTimeRecovery;
   /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
   late final pulumi.Output<String?> rangeKey;
-  /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
+  /// Number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> readCapacity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> replicas;
+  /// ARN of backup to restore.
+  late final pulumi.Output<String?> restoreBackupArn;
   /// Time of the point-in-time recovery point to restore.
   late final pulumi.Output<String?> restoreDateTime;
   /// Name of the table to restore. Must match the name of an existing table.
@@ -1984,29 +2253,29 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<bool?> restoreToLatestTime;
   /// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS-owned Customer Master Key if this argument isn't specified. Must be supplied for cross-region restores. See below.
   late final pulumi.Output<TableServerSideEncryption> serverSideEncryption;
-  /// ARN of the Table Stream. Only available when `stream_enabled = true`
+  /// ARN of the Table Stream. Only available when `streamEnabled = true`
   late final pulumi.Output<String> streamArn;
   /// Whether Streams are enabled.
   late final pulumi.Output<bool?> streamEnabled;
-  /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
+  /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
   late final pulumi.Output<String> streamLabel;
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-  /// Only valid when `stream_enabled` is true.
+  /// Only valid when `streamEnabled` is true.
   late final pulumi.Output<String> streamViewType;
   /// Storage class of the table.
   /// Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`.
   /// Default value is `STANDARD`.
   late final pulumi.Output<String?> tableClass;
-  /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to populate on the created table. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for TTL. See below.
   late final pulumi.Output<TableTtl> ttl;
   /// Sets the number of warm read and write units for the specified table. See below.
   late final pulumi.Output<TableWarmThroughput> warmThroughput;
-  /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
+  /// Number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> writeCapacity;
 
   /// Creates a new [Table].
@@ -2039,6 +2308,7 @@ class Table extends pulumi.CustomResource {
     readCapacity = registerOutput<int>('readCapacity');
     region = registerOutput<String>('region');
     replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    restoreBackupArn = registerOutput<String?>('restoreBackupArn');
     restoreDateTime = registerOutput<String?>('restoreDateTime');
     restoreSourceName = registerOutput<String?>('restoreSourceName');
     restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
@@ -2095,6 +2365,7 @@ class Table extends pulumi.CustomResource {
     readCapacity = registerOutput<int>('readCapacity');
     region = registerOutput<String>('region');
     replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    restoreBackupArn = registerOutput<String?>('restoreBackupArn');
     restoreDateTime = registerOutput<String?>('restoreDateTime');
     restoreSourceName = registerOutput<String?>('restoreSourceName');
     restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');

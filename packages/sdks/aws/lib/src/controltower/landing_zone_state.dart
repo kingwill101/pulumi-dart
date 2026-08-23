@@ -15,9 +15,11 @@ class LandingZoneState {
   final pulumi.Input<String>? manifestJson;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Specifies list of remediation actions to apply. Currently only supports the `INHERITANCE_DRIFT` value.
+  final pulumi.Input<List<String>>? remediationTypes;
+  /// Tags to apply to the landing zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the landing zone, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the landing zone, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The landing zone version.
   final pulumi.Input<String>? version;
@@ -28,8 +30,9 @@ class LandingZoneState {
   /// [latestAvailableVersion] The latest available version of the landing zone.
   /// [manifestJson] The manifest JSON file is a text file that describes your AWS resources. For examples, review [Launch your landing zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the landing zone, including those inherited from the provider `default_tags` configuration block.
+  /// [remediationTypes] Specifies list of remediation actions to apply. Currently only supports the `INHERITANCE_DRIFT` value.
+  /// [tags] Tags to apply to the landing zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the landing zone, including those inherited from the provider `defaultTags` configuration block.
   /// [version] The landing zone version.
   const LandingZoneState({
     this.arn,
@@ -37,6 +40,7 @@ class LandingZoneState {
     this.latestAvailableVersion,
     this.manifestJson,
     this.region,
+    this.remediationTypes,
     this.tags,
     this.tagsAll,
     this.version,
@@ -49,6 +53,7 @@ class LandingZoneState {
       'latestAvailableVersion': ?latestAvailableVersion,
       'manifestJson': ?manifestJson,
       'region': ?region,
+      'remediationTypes': ?remediationTypes,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'version': ?version,
@@ -62,10 +67,10 @@ class LandingZoneState {
       latestAvailableVersion: (() { final guardedValue = map['latestAvailableVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       manifestJson: (() { final guardedValue = map['manifestJson']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remediationTypes: (() { final guardedValue = map['remediationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

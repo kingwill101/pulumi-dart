@@ -135,6 +135,34 @@ import 'multiplex_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+/// }
+///
+/// resource "aws_medialive_multiplex" "example" {
+///   name               = "example-multiplex-changed"
+///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
+///   multiplex_settings = {
+///     transport_stream_bitrate                = 1000000
+///     transport_stream_id                     = 1
+///     transport_stream_reserved_bitrate       = 1
+///     maximum_video_buffer_delay_milliseconds = 1000
+///   }
+///   start_multiplex = true
+///   tags = {
+///     "tag1" = "value1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +174,8 @@ import 'multiplex_state.dart';
 /// import com.pulumi.aws.medialive.Multiplex;
 /// import com.pulumi.aws.medialive.MultiplexArgs;
 /// import com.pulumi.aws.medialive.inputs.MultiplexMultiplexSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,6 +237,18 @@ import 'multiplex_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the MediaLive Multiplex.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import MediaLive Multiplex using the `id`. For example:
 ///
 /// ```sh
@@ -229,7 +269,7 @@ class Multiplex extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Whether to start the Multiplex. Defaults to `false`.
   late final pulumi.Output<bool?> startMultiplex;
-  /// A map of tags to assign to the Multiplex. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the Multiplex. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

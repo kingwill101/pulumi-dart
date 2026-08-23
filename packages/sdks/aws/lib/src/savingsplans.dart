@@ -1,4 +1,9 @@
 export 'savingsplans/functions.dart';
+export 'savingsplans/get_offerings_args.dart';
+export 'savingsplans/get_offerings_filter.dart';
+export 'savingsplans/get_offerings_offering.dart';
+export 'savingsplans/get_offerings_offering_property.dart';
+export 'savingsplans/get_offerings_result.dart';
 export 'savingsplans/get_savings_plan_args.dart';
 export 'savingsplans/get_savings_plan_result.dart';
 export 'savingsplans/savings_plan.dart';

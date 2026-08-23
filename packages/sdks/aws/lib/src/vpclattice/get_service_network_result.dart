@@ -21,6 +21,7 @@ class GetServiceNetworkResult {
   final int numberOfAssociatedVpcs;
   final String region;
   final String serviceNetworkIdentifier;
+  /// Map of tags assigned to the resource.
   final Map<String, String> tags;
 
   /// Creates a new [GetServiceNetworkResult].
@@ -34,7 +35,7 @@ class GetServiceNetworkResult {
   /// [numberOfAssociatedVpcs] Number of VPCs associated with this service network.
   /// [region] Required.
   /// [serviceNetworkIdentifier] Required.
-  /// [tags] Required.
+  /// [tags] Map of tags assigned to the resource.
   const GetServiceNetworkResult({
     required this.arn,
     required this.authType,
@@ -81,4 +82,3 @@ class GetServiceNetworkResult {
     );
   }
 }
-

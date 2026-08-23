@@ -17,7 +17,7 @@ class GeofenceCollectionArgs {
   final pulumi.Input<String>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value tags for the geofence collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the geofence collection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GeofenceCollectionArgs].
@@ -25,7 +25,7 @@ class GeofenceCollectionArgs {
   /// [description] The optional description for the geofence collection.
   /// [kmsKeyId] A key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value tags for the geofence collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the geofence collection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const GeofenceCollectionArgs({
     required this.collectionName,
     this.description,
@@ -54,4 +54,3 @@ class GeofenceCollectionArgs {
     );
   }
 }
-

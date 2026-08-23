@@ -43,4 +43,3 @@ class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchRespon
     );
   }
 }
-

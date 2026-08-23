@@ -6,7 +6,7 @@ import 'tag_state.dart';
 ///
 /// &gt; **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.transfer.Server` and `aws.transfer.Tag` to manage tags of the same server will cause a perpetual difference where the `aws.transfer.Server` resource will try to remove the tag being added by the `aws.transfer.Tag` resource.
 ///
-/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignoreTags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -106,6 +106,29 @@ import 'tag_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "example" {
+///   identity_provider_type = "SERVICE_MANAGED"
+/// }
+/// resource "aws_transfer_tag" "zone_id" {
+///   resource_arn = aws_transfer_server.example.arn
+///   key          = "transfer:route53HostedZoneId"
+///   value        = "/hostedzone/MyHostedZoneId"
+/// }
+/// resource "aws_transfer_tag" "hostname" {
+///   resource_arn = aws_transfer_server.example.arn
+///   key          = "transfer:customHostname"
+///   value        = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +139,8 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.transfer.ServerArgs;
 /// import com.pulumi.aws.transfer.Tag;
 /// import com.pulumi.aws.transfer.TagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

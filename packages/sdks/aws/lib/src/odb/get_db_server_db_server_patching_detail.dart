@@ -3,16 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbServerDbServerPatchingDetail {
+  /// Estimated time, in minutes, that it takes to patch the database server.
   final pulumi.Input<int> estimatedPatchDuration;
+  /// Status of the patching operation.
   final pulumi.Input<String> patchingStatus;
+  /// Date and time when the patching operation ended.
   final pulumi.Input<String> timePatchingEnded;
+  /// Date and time when the patching operation started.
   final pulumi.Input<String> timePatchingStarted;
 
   /// Creates a new [GetDbServerDbServerPatchingDetail].
-  /// [estimatedPatchDuration] Required.
-  /// [patchingStatus] Required.
-  /// [timePatchingEnded] Required.
-  /// [timePatchingStarted] Required.
+  /// [estimatedPatchDuration] Estimated time, in minutes, that it takes to patch the database server.
+  /// [patchingStatus] Status of the patching operation.
+  /// [timePatchingEnded] Date and time when the patching operation ended.
+  /// [timePatchingStarted] Date and time when the patching operation started.
   const GetDbServerDbServerPatchingDetail({
     required this.estimatedPatchDuration,
     required this.patchingStatus,
@@ -38,4 +42,3 @@ class GetDbServerDbServerPatchingDetail {
     );
   }
 }
-

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleFilterAndTag {
-  /// The key of the tag.
+  /// Name of the object key.
   final pulumi.Input<String> key;
-  /// The value of the tag.
+  /// Value of the tag.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleFilterAndTag].
-  /// [key] The key of the tag.
-  /// [value] The value of the tag.
+  /// [key] Name of the object key.
+  /// [value] Value of the tag.
   const GetBucketReplicationConfigurationRuleFilterAndTag({
     required this.key,
     required this.value,
@@ -30,4 +30,3 @@ class GetBucketReplicationConfigurationRuleFilterAndTag {
     );
   }
 }
-

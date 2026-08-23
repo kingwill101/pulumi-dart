@@ -8,7 +8,7 @@ class GetUserHierarchyGroupResult {
   /// ARN of the hierarchy group.
   final String arn;
   final String hierarchyGroupId;
-  /// Block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
+  /// Block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
   final List<GetUserHierarchyGroupHierarchyPath> hierarchyPaths;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -24,7 +24,7 @@ class GetUserHierarchyGroupResult {
   /// Creates a new [GetUserHierarchyGroupResult].
   /// [arn] ARN of the hierarchy group.
   /// [hierarchyGroupId] Required.
-  /// [hierarchyPaths] Block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
+  /// [hierarchyPaths] Block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Required.
   /// [levelId] Identifier of the level in the hierarchy group.
@@ -71,4 +71,3 @@ class GetUserHierarchyGroupResult {
     );
   }
 }
-

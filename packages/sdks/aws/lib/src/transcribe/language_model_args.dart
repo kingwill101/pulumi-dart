@@ -10,23 +10,26 @@ import 'language_model_input_data_config.dart';
 class LanguageModelArgs {
   /// Name of reference base model.
   final pulumi.Input<String> baseModelName;
-  /// The input data config for the LanguageModel. See Input Data Config for more details.
+  /// Input data configuration for the LanguageModel. See `inputDataConfig` Block for details.
   final pulumi.Input<LanguageModelInputDataConfig> inputDataConfig;
-  /// The language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
+  /// Language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
   final pulumi.Input<String> languageCode;
-  /// The model name.
+  /// Model name.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> modelName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+  /// Map of tags to assign to the LanguageModel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LanguageModelArgs].
   /// [baseModelName] Name of reference base model.
-  /// [inputDataConfig] The input data config for the LanguageModel. See Input Data Config for more details.
-  /// [languageCode] The language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
-  /// [modelName] The model name.
+  /// [inputDataConfig] Input data configuration for the LanguageModel. See `inputDataConfig` Block for details.
+  /// [languageCode] Language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
+  /// [modelName] Model name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Optional.
+  /// [tags] Map of tags to assign to the LanguageModel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LanguageModelArgs({
     required this.baseModelName,
     required this.inputDataConfig,
@@ -58,4 +61,3 @@ class LanguageModelArgs {
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'policy_target_tracking_configuration.dart';
 
 /// Provides an AutoScaling Scaling Policy resource.
 ///
-/// &gt; **NOTE:** You may want to omit `desired_capacity` attribute from attached `aws.autoscaling.Group`
+/// &gt; **NOTE:** You may want to omit `desiredCapacity` attribute from attached `aws.autoscaling.Group`
 /// when using autoscaling policies. It's good practice to pick either
 /// [manual](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-manual-scaling.html)
 /// or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
@@ -133,6 +133,33 @@ import 'policy_target_tracking_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_policy" "bat" {
+///   name                   = "foobar3-test"
+///   scaling_adjustment     = 4
+///   adjustment_type        = "ChangeInCapacity"
+///   cooldown               = 300
+///   autoscaling_group_name = aws_autoscaling_group.bar.name
+/// }
+/// resource "aws_autoscaling_group" "bar" {
+///   availability_zones        = ["us-east-1a"]
+///   name                      = "foobar3-test"
+///   max_size                  = 5
+///   min_size                  = 2
+///   health_check_grace_period = 300
+///   health_check_type         = "ELB"
+///   force_delete              = true
+///   launch_configuration      = foo.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +170,8 @@ import 'policy_target_tracking_configuration.dart';
 /// import com.pulumi.aws.autoscaling.GroupArgs;
 /// import com.pulumi.aws.autoscaling.Policy;
 /// import com.pulumi.aws.autoscaling.PolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,7 +299,7 @@ import 'policy_target_tracking_configuration.dart';
 ///     name="foo",
 ///     policy_type="TargetTrackingScaling",
 ///     target_tracking_configuration={
-///         "target_value": 100,
+///         "target_value": float(100),
 ///         "customized_metric_specification": {
 ///             "metrics": [
 ///                 {
@@ -474,6 +501,64 @@ import 'policy_target_tracking_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_policy" "example" {
+///   autoscaling_group_name = "my-test-asg"
+///   name                   = "foo"
+///   policy_type            = "TargetTrackingScaling"
+///   target_tracking_configuration = {
+///     target_value = 100
+///     customized_metric_specification = {
+///       metrics = [{
+///         "label" = "Get the queue size (the number of messages waiting to be processed)"
+///         "id"    = "m1"
+///         "metricStat" = {
+///           "metric" = {
+///             "namespace"  = "AWS/SQS"
+///             "metricName" = "ApproximateNumberOfMessagesVisible"
+///             "dimensions" = [{
+///               "name"  = "QueueName"
+///               "value" = "my-queue"
+///             }]
+///           }
+///           "stat"   = "Sum"
+///           "period" = 10
+///         }
+///         "returnData" = false
+///         }, {
+///         "label" = "Get the group size (the number of InService instances)"
+///         "id"    = "m2"
+///         "metricStat" = {
+///           "metric" = {
+///             "namespace"  = "AWS/AutoScaling"
+///             "metricName" = "GroupInServiceInstances"
+///             "dimensions" = [{
+///               "name"  = "AutoScalingGroupName"
+///               "value" = "my-asg"
+///             }]
+///           }
+///           "stat"   = "Average"
+///           "period" = 10
+///         }
+///         "returnData" = false
+///         }, {
+///         "label"      = "Calculate the backlog per instance"
+///         "id"         = "e1"
+///         "expression" = "m1 / m2"
+///         "returnData" = true
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -484,8 +569,12 @@ import 'policy_target_tracking_configuration.dart';
 /// import com.pulumi.aws.autoscaling.PolicyArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -653,7 +742,7 @@ import 'policy_target_tracking_configuration.dart';
 ///     policy_type="PredictiveScaling",
 ///     predictive_scaling_configuration={
 ///         "metric_specification": {
-///             "target_value": 10,
+///             "target_value": float(10),
 ///             "customized_load_metric_specification": {
 ///                 "metric_data_queries": [{
 ///                     "id": "load_sum",
@@ -817,6 +906,52 @@ import 'policy_target_tracking_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_policy" "example" {
+///   autoscaling_group_name = "my-test-asg"
+///   name                   = "foo"
+///   policy_type            = "PredictiveScaling"
+///   predictive_scaling_configuration = {
+///     metric_specification = {
+///       target_value = 10
+///       customized_load_metric_specification = {
+///         metric_data_queries = [{
+///           "id"         = "load_sum"
+///           "expression" = "SUM(SEARCH('{AWS/EC2,AutoScalingGroupName} MetricName=\"CPUUtilization\" my-test-asg', 'Sum', 3600))"
+///         }]
+///       }
+///       customized_capacity_metric_specification = {
+///         metric_data_queries = [{
+///           "id"         = "capacity_sum"
+///           "expression" = "SUM(SEARCH('{AWS/AutoScaling,AutoScalingGroupName} MetricName=\"GroupInServiceIntances\" my-test-asg', 'Average', 300))"
+///         }]
+///       }
+///       customized_scaling_metric_specification = {
+///         metric_data_queries = [{
+///           "id"         = "capacity_sum"
+///           "expression" = "SUM(SEARCH('{AWS/AutoScaling,AutoScalingGroupName} MetricName=\"GroupInServiceIntances\" my-test-asg', 'Average', 300))"
+///           "returnData" = false
+///           }, {
+///           "id"         = "load_sum"
+///           "expression" = "SUM(SEARCH('{AWS/EC2,AutoScalingGroupName} MetricName=\"CPUUtilization\" my-test-asg', 'Sum', 300))"
+///           "returnData" = false
+///           }, {
+///           "id"         = "weighted_average"
+///           "expression" = "load_sum / (capacity_sum * PERIOD(capacity_sum) / 60)"
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -828,10 +963,13 @@ import 'policy_target_tracking_configuration.dart';
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -966,7 +1104,7 @@ import 'policy_target_tracking_configuration.dart';
 ///     policy_type="PredictiveScaling",
 ///     predictive_scaling_configuration={
 ///         "metric_specification": {
-///             "target_value": 10,
+///             "target_value": float(10),
 ///             "predefined_load_metric_specification": {
 ///                 "predefined_metric_type": "ASGTotalCPUUtilization",
 ///                 "resource_label": "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff",
@@ -1097,6 +1235,46 @@ import 'policy_target_tracking_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_autoscaling_policy" "example" {
+///   autoscaling_group_name = "my-test-asg"
+///   name                   = "foo"
+///   policy_type            = "PredictiveScaling"
+///   predictive_scaling_configuration = {
+///     metric_specification = {
+///       target_value = 10
+///       predefined_load_metric_specification = {
+///         predefined_metric_type = "ASGTotalCPUUtilization"
+///         resource_label         = "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff"
+///       }
+///       customized_scaling_metric_specification = {
+///         metric_data_queries = [{
+///           "id" = "scaling"
+///           "metricStat" = {
+///             "metric" = {
+///               "metricName" = "CPUUtilization"
+///               "namespace"  = "AWS/EC2"
+///               "dimensions" = [{
+///                 "name"  = "AutoScalingGroupName"
+///                 "value" = "my-test-asg"
+///               }]
+///             }
+///             "stat" = "Average"
+///           }
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1109,8 +1287,12 @@ import 'policy_target_tracking_configuration.dart';
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationArgs;
 /// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricArgs;
+/// import com.pulumi.aws.autoscaling.inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimensionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1186,10 +1368,23 @@ import 'policy_target_tracking_configuration.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import AutoScaling scaling policy using the role autoscaling_group_name and name separated by `/`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `autoscalingGroupName` (String) Name of the Auto Scaling group.
+/// * `name` (String) Name of the policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import AutoScaling Scaling Policies using `autoscalingGroupName` and `name` separated by a forward slash (`/`). For example:
 ///
 /// ```sh
-/// $ pulumi import aws:autoscaling/policy:Policy test-policy asg-name/policy-name
+/// $ pulumi import aws:autoscaling/policy:Policy example example-asg/example-policy
 /// ```
 class Policy extends pulumi.CustomResource {
   /// Whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
@@ -1208,7 +1403,7 @@ class Policy extends pulumi.CustomResource {
   late final pulumi.Output<int?> estimatedInstanceWarmup;
   /// Aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
   late final pulumi.Output<String> metricAggregationType;
-  /// Minimum value to scale by when `adjustment_type` is set to `PercentChangeInCapacity`.
+  /// Minimum value to scale by when `adjustmentType` is set to `PercentChangeInCapacity`.
   ///
   /// The following arguments are only available to "SimpleScaling" type policies:
   late final pulumi.Output<int?> minAdjustmentMagnitude;
@@ -1322,6 +1517,28 @@ class Policy extends pulumi.CustomResource {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_autoscaling_policy" "example" {
+  ///   step_adjustments {
+  ///     scaling_adjustment          = -1
+  ///     metric_interval_lower_bound = 1
+  ///     metric_interval_upper_bound = 2
+  ///   }
+  ///   step_adjustments {
+  ///     scaling_adjustment          = 1
+  ///     metric_interval_lower_bound = 2
+  ///     metric_interval_upper_bound = 3
+  ///   }
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -1331,8 +1548,8 @@ class Policy extends pulumi.CustomResource {
   /// import com.pulumi.aws.autoscaling.Policy;
   /// import com.pulumi.aws.autoscaling.PolicyArgs;
   /// import com.pulumi.aws.autoscaling.inputs.PolicyStepAdjustmentArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -1400,7 +1617,7 @@ class Policy extends pulumi.CustomResource {
   ///     "predefined_metric_specification": {
   ///         "predefined_metric_type": "ASGAverageCPUUtilization",
   ///     },
-  ///     "target_value": 40,
+  ///     "target_value": float(40),
   /// })
   /// ```
   /// ```csharp
@@ -1450,6 +1667,24 @@ class Policy extends pulumi.CustomResource {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_autoscaling_policy" "example" {
+  ///   target_tracking_configuration = {
+  ///     predefined_metric_specification = {
+  ///       predefined_metric_type = "ASGAverageCPUUtilization"
+  ///     }
+  ///     target_value = 40
+  ///   }
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -1460,8 +1695,8 @@ class Policy extends pulumi.CustomResource {
   /// import com.pulumi.aws.autoscaling.PolicyArgs;
   /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationArgs;
   /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;

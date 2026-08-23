@@ -110,6 +110,29 @@ import 'kx_dataview_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_finspace_kxdataview" "example" {
+///   name                 = "my-tf-kx-dataview"
+///   environment_id       = exampleAwsFinspaceKxEnvironment.id
+///   database_name        = exampleAwsFinspaceKxDatabase.name
+///   availability_zone_id = "use1-az2"
+///   description          = "Terraform managed Kx Dataview"
+///   az_mode              = "SINGLE"
+///   auto_update          = true
+///   segment_configurations {
+///     volume_name = exampleAwsFinspaceKxVolume.name
+///     db_paths    = ["/*"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +142,8 @@ import 'kx_dataview_state.dart';
 /// import com.pulumi.aws.finspace.KxDataview;
 /// import com.pulumi.aws.finspace.KxDataviewArgs;
 /// import com.pulumi.aws.finspace.inputs.KxDataviewSegmentConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -178,43 +201,39 @@ import 'kx_dataview_state.dart';
 class KxDataview extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifier of the KX dataview.
   late final pulumi.Output<String> arn;
-  /// The option to specify whether you want to apply all the future additions and corrections automatically to the dataview, when you ingest new changesets. The default value is false.
+  /// Whether to apply all the future additions and corrections automatically to the dataview when you ingest new changesets. Defaults to `false`.
   late final pulumi.Output<bool> autoUpdate;
-  /// The identifier of the availability zones. If attaching a volume, the volume must be in the same availability zone as the dataview that you are attaching to.
+  /// Identifier of the availability zones. If attaching a volume, the volume must be in the same availability zone as the dataview that you are attaching to.
   late final pulumi.Output<String?> availabilityZoneId;
-  /// The number of availability zones you want to assign per cluster. This can be one of the following:
-  /// * `SINGLE` - Assigns one availability zone per cluster.
-  /// * `MULTI` - Assigns all the availability zones per cluster.
+  /// Number of availability zones you want to assign per cluster. Valid values are `SINGLE` (assigns one availability zone per cluster) and `MULTI` (assigns all the availability zones per cluster).
   late final pulumi.Output<String> azMode;
-  /// A unique identifier of the changeset of the database that you want to use to ingest data.
+  /// Unique identifier of the changeset of the database that you want to use to ingest data.
   late final pulumi.Output<String?> changesetId;
   /// Timestamp at which the dataview was created in FinSpace. Value determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
   late final pulumi.Output<String> createdTimestamp;
-  /// The name of the database where you want to create a dataview.
+  /// Name of the database where you want to create a dataview.
   late final pulumi.Output<String> databaseName;
-  /// A description for the dataview.
+  /// Description for the dataview.
   late final pulumi.Output<String?> description;
   /// Unique identifier for the KX environment.
   late final pulumi.Output<String> environmentId;
-  /// The last time that the dataview was updated in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
+  /// Last time that the dataview was updated in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
   late final pulumi.Output<String> lastModifiedTimestamp;
-  /// A unique identifier for the dataview.
+  /// Unique identifier for the dataview.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-  /// The option to specify whether you want to make the dataview writable to perform database maintenance. The following are some considerations related to writable dataviews.
-  /// * You cannot create partial writable dataviews. When you create writeable dataviews you must provide the entire database path. You cannot perform updates on a writeable dataview. Hence, `auto_update` must be set as `false` if `read_write` is `true` for a dataview.
-  /// * You must also use a unique volume for creating a writeable dataview. So, if you choose a volume that is already in use by another dataview, the dataview creation fails.
-  /// * Once you create a dataview as writeable, you cannot change it to read-only. So, you cannot update the `read_write` parameter later.
+  /// Whether to make the dataview writable to perform database maintenance. You cannot create partial writable dataviews; you must provide the entire database path and cannot perform updates, so `autoUpdate` must be `false` when `readWrite` is `true`. You must also use a unique volume, and once a dataview is writable you cannot change it to read-only.
   late final pulumi.Output<bool?> readWrite;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment. See segment_configurations below.
+  /// Configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment. See `segmentConfigurations` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> segmentConfigurations;
+  /// Status of the dataview.
   late final pulumi.Output<String> status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [KxDataview].

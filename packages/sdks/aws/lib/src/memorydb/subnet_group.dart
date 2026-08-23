@@ -86,7 +86,7 @@ import 'subnet_group_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:            example.ID(),
+/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock:        pulumi.String("10.0.0.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 		})
@@ -96,7 +96,7 @@ import 'subnet_group_state.dart';
 /// 		_, err = memorydb.NewSubnetGroup(ctx, "example", &memorydb.SubnetGroupArgs{
 /// 			Name: pulumi.String("my-subnet-group"),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID(),
+/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -104,6 +104,28 @@ import 'subnet_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id            = aws_ec2_vpc.example.id
+///   cidr_block        = "10.0.0.0/24"
+///   availability_zone = "us-west-2a"
+/// }
+/// resource "aws_memorydb_subnetgroup" "example" {
+///   name       = "my-subnet-group"
+///   subnet_ids = [aws_ec2_subnet.example.id]
 /// }
 /// ```
 /// ```java
@@ -118,8 +140,8 @@ import 'subnet_group_state.dart';
 /// import com.pulumi.aws.ec2.SubnetArgs;
 /// import com.pulumi.aws.memorydb.SubnetGroup;
 /// import com.pulumi.aws.memorydb.SubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,7 +206,7 @@ class SubnetGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Description for the subnet group. Defaults to `"Managed by Pulumi"`.
   late final pulumi.Output<String?> description;
-  /// Name of the subnet group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the subnet group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -194,9 +216,9 @@ class SubnetGroup extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VPC in which the subnet group exists.
   late final pulumi.Output<String> vpcId;

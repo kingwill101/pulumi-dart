@@ -3,22 +3,22 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskSetLoadBalancer {
-  /// The name of the container to associate with the load balancer (as it appears in a container definition).
+  /// Name of the container to associate with the load balancer (as it appears in a container definition).
   final pulumi.Input<String> containerName;
-  /// The port on the container to associate with the load balancer. Defaults to `0` if not specified.
-  ///
-  /// &gt; **Note:** Specifying multiple `load_balancer` configurations is still not supported by AWS for ECS task set.
+  /// Port on the container to associate with the load balancer. Defaults to `0` if not specified.
   final pulumi.Input<int>? containerPort;
-  /// The name of the ELB (Classic) to associate with the service.
+  /// Name of the ELB (Classic) to associate with the service.
   final pulumi.Input<String>? loadBalancerName;
-  /// The ARN of the Load Balancer target group to associate with the service.
+  /// ARN of the Load Balancer target group to associate with the service.
+  ///
+  /// &gt; **Note:** Specifying multiple `loadBalancer` configurations is still not supported by AWS for ECS task set.
   final pulumi.Input<String>? targetGroupArn;
 
   /// Creates a new [TaskSetLoadBalancer].
-  /// [containerName] The name of the container to associate with the load balancer (as it appears in a container definition).
-  /// [containerPort] The port on the container to associate with the load balancer. Defaults to `0` if not specified.
-  /// [loadBalancerName] The name of the ELB (Classic) to associate with the service.
-  /// [targetGroupArn] The ARN of the Load Balancer target group to associate with the service.
+  /// [containerName] Name of the container to associate with the load balancer (as it appears in a container definition).
+  /// [containerPort] Port on the container to associate with the load balancer. Defaults to `0` if not specified.
+  /// [loadBalancerName] Name of the ELB (Classic) to associate with the service.
+  /// [targetGroupArn] ARN of the Load Balancer target group to associate with the service.
   const TaskSetLoadBalancer({
     required this.containerName,
     this.containerPort,
@@ -44,4 +44,3 @@ class TaskSetLoadBalancer {
     );
   }
 }
-

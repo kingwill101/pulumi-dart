@@ -54,6 +54,19 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codeartifact_domain" "example" {
+///   domain = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codeartifact.Domain;
 /// import com.pulumi.aws.codeartifact.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,9 +137,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<int> repositoryCount;
   /// The ARN of the Amazon S3 bucket that is used to store package assets in the domain.
   late final pulumi.Output<String> s3BucketArn;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Domain].

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InternetGatewayArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// &gt; **Note:** It's recommended to denote that the AWS Instance or Elastic IP depends on the Internet Gateway. For example:
   ///
@@ -81,6 +81,22 @@ class InternetGatewayArgs {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_ec2_internetgateway" "gw" {
+  ///   vpc_id = main.id
+  /// }
+  /// resource "aws_ec2_instance" "foo" {
+  ///   depends_on = [aws_ec2_internetgateway.gw]
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -92,8 +108,8 @@ class InternetGatewayArgs {
   /// import com.pulumi.aws.ec2.Instance;
   /// import com.pulumi.aws.ec2.InstanceArgs;
   /// import com.pulumi.resources.CustomResourceOptions;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -134,7 +150,7 @@ class InternetGatewayArgs {
 
   /// Creates a new [InternetGatewayArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The VPC ID to create in.  See the aws.ec2.InternetGatewayAttachment resource for an alternate way to attach an Internet Gateway to a VPC.
   const InternetGatewayArgs({
     this.region,
@@ -158,4 +174,3 @@ class InternetGatewayArgs {
     );
   }
 }
-

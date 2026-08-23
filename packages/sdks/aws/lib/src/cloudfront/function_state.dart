@@ -26,6 +26,10 @@ class FunctionState {
   final pulumi.Input<String>? runtime;
   /// Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
   final pulumi.Input<String>? status;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [FunctionState].
   /// [arn] Amazon Resource Name (ARN) identifying your CloudFront Function.
@@ -38,6 +42,8 @@ class FunctionState {
   /// [publish] Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   /// [runtime] Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   /// [status] Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const FunctionState({
     this.arn,
     this.code,
@@ -49,6 +55,8 @@ class FunctionState {
     this.publish,
     this.runtime,
     this.status,
+    this.tags,
+    this.tagsAll,
   });
 
   Map<String, dynamic> toMap() {
@@ -63,6 +71,8 @@ class FunctionState {
       'publish': ?publish,
       'runtime': ?runtime,
       'status': ?status,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
     };
   }
 
@@ -78,7 +88,8 @@ class FunctionState {
       publish: (() { final guardedValue = map['publish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       runtime: (() { final guardedValue = map['runtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

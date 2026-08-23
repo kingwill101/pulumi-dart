@@ -112,6 +112,29 @@ import 'get_trust_store_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_gethostedzoneid" "main" {
+/// }
+///
+/// resource "aws_route53_record" "www" {
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
+///   aliases {
+///     name                   = mainAwsLb.dnsName
+///     zone_id                = data.aws_lb_gethostedzoneid.main.id
+///     evaluate_target_health = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +146,8 @@ import 'get_trust_store_result.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -241,7 +264,7 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lb.GetLbs(ctx, &lb.GetLbsArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"elbv2.k8s.aws/cluster": "my-cluster",
 /// 			},
 /// 		}, nil)
@@ -252,6 +275,21 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_getlbs" "example" {
+///   tags = {
+///     "elbv2.k8s.aws/cluster" = "my-cluster"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -260,8 +298,8 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetLbsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,6 +447,32 @@ Future<GetLbsResult> getLbs(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_getlistener" "listener" {
+///   arn = var.listenerArn
+/// }
+/// data "aws_lb_getloadbalancer" "selected" {
+///   name = "default-public"
+/// }
+/// data "aws_lb_getlistener" "selected443" {
+///   load_balancer_arn = data.aws_lb_getloadbalancer.selected.arn
+///   port              = 443
+/// }
+///
+/// # get listener from listener arn
+/// variable "listenerArn" {
+///   type = string
+/// }
+/// # get listener from load_balancer_arn and port
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -418,8 +482,8 @@ Future<GetLbsResult> getLbs(
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetListenerArgs;
 /// import com.pulumi.aws.lb.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -432,7 +496,7 @@ Future<GetLbsResult> getLbs(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var listenerArn = config.get("listenerArn");
+///         final var listenerArn = config.require("listenerArn");
 ///         final var listener = LbFunctions.getListener(GetListenerArgs.builder()
 ///             .arn(listenerArn)
 ///             .build());
@@ -554,6 +618,23 @@ Future<GetListenerResult> getListener(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_getlistenerrule" "example" {
+///   arn = var.lbRuleArn
+/// }
+///
+/// variable "lbRuleArn" {
+///   type = string
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -562,8 +643,8 @@ Future<GetListenerResult> getListener(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetListenerRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,7 +657,7 @@ Future<GetListenerResult> getListener(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var lbRuleArn = config.get("lbRuleArn");
+///         final var lbRuleArn = config.require("lbRuleArn");
 ///         final var example = LbFunctions.getListenerRule(GetListenerRuleArgs.builder()
 ///             .arn(lbRuleArn)
 ///             .build());
@@ -620,7 +701,7 @@ Future<GetListenerResult> getListener(
 /// lb_listener_arn = config.require("lbListenerArn")
 /// lb_rule_priority = config.require_float("lbRulePriority")
 /// example = aws.lb.get_listener_rule(listener_arn=lb_listener_arn,
-///     priority=lb_rule_priority)
+///     priority=int(lb_rule_priority))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -666,6 +747,27 @@ Future<GetListenerResult> getListener(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_getlistenerrule" "example" {
+///   listener_arn = var.lbListenerArn
+///   priority     = var.lbRulePriority
+/// }
+///
+/// variable "lbListenerArn" {
+///   type = string
+/// }
+/// variable "lbRulePriority" {
+///   type = number
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -674,8 +776,8 @@ Future<GetListenerResult> getListener(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetListenerRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -688,8 +790,8 @@ Future<GetListenerResult> getListener(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var lbListenerArn = config.get("lbListenerArn");
-///         final var lbRulePriority = config.get("lbRulePriority");
+///         final var lbListenerArn = config.require("lbListenerArn");
+///         final var lbRulePriority = config.requireDouble("lbRulePriority");
 ///         final var example = LbFunctions.getListenerRule(GetListenerRuleArgs.builder()
 ///             .listenerArn(lbListenerArn)
 ///             .priority(lbRulePriority)
@@ -814,6 +916,29 @@ Future<GetListenerRuleResult> getListenerRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_getloadbalancer" "test" {
+///   arn  = var.lbArn
+///   name = var.lbName
+/// }
+///
+/// variable "lbArn" {
+///   type    = string
+///   default = ""
+/// }
+/// variable "lbName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -822,8 +947,8 @@ Future<GetListenerRuleResult> getListenerRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -964,6 +1089,29 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_gettargetgroup" "test" {
+///   arn  = var.lbTgArn
+///   name = var.lbTgName
+/// }
+///
+/// variable "lbTgArn" {
+///   type    = string
+///   default = ""
+/// }
+/// variable "lbTgName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -972,8 +1120,8 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetTargetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1027,8 +1175,6 @@ Future<GetTargetGroupResult> getTargetGroup(
   return GetTargetGroupResult.fromMap(result);
 }
 
-/// &gt; **Note:** `aws_alb_trust_store` is known as `aws.lb.TrustStore`. The functionality is identical.
-///
 /// Provides information about a Load Balancer Trust Store.
 ///
 /// This data source can prove useful when a module accepts an LB Trust Store as an
@@ -1114,6 +1260,29 @@ Future<GetTargetGroupResult> getTargetGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lb_gettruststore" "test" {
+///   arn  = var.lbTsArn
+///   name = var.lbTsName
+/// }
+///
+/// variable "lbTsArn" {
+///   type    = string
+///   default = ""
+/// }
+/// variable "lbTsName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1122,8 +1291,8 @@ Future<GetTargetGroupResult> getTargetGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lb.LbFunctions;
 /// import com.pulumi.aws.lb.inputs.GetTrustStoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

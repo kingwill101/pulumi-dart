@@ -30,4 +30,3 @@ class AgentAgentActionGroupApiSchemaS3 {
     );
   }
 }
-

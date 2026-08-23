@@ -30,7 +30,7 @@ class GetVpcPeeringConnectionResult {
   /// Region of the accepter VPC.
   final String peerRegion;
   final String peerVpcId;
-  /// (**Deprecated**) Region of the requester VPC. Use `requester_region` instead.
+  /// (**Deprecated**) Region of the requester VPC. Use `requesterRegion` instead.
   final String region;
   /// Configuration block that describes [VPC Peering Connection]
   /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
@@ -55,7 +55,7 @@ class GetVpcPeeringConnectionResult {
   /// [peerOwnerId] Required.
   /// [peerRegion] Region of the accepter VPC.
   /// [peerVpcId] Required.
-  /// [region] (**Deprecated**) Region of the requester VPC. Use `requester_region` instead.
+  /// [region] (**Deprecated**) Region of the requester VPC. Use `requesterRegion` instead.
   /// [requester] Configuration block that describes [VPC Peering Connection]
   /// [requesterRegion] Region of the requester VPC.
   /// [status] Required.
@@ -131,4 +131,3 @@ class GetVpcPeeringConnectionResult {
     );
   }
 }
-

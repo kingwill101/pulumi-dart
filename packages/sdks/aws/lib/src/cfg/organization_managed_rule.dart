@@ -4,9 +4,9 @@ import 'organization_managed_rule_state.dart';
 
 /// Manages a Config Organization Managed Rule. More information about these rules can be found in the [Enabling AWS Config Rules Across all Accounts in Your Organization](https://docs.aws.amazon.com/config/latest/developerguide/config-rule-multi-account-deployment.html) and [AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html) documentation. For working with Organization Custom Rules (those invoking a custom Lambda Function), see the `aws.cfg.OrganizationCustomRule` resource.
 ///
-/// &gt; **NOTE:** This resource must be created in the Organization master account and rules will include the master account unless its ID is added to the `excluded_accounts` argument.
+/// &gt; **NOTE:** This resource must be created in the Organization master account and rules will include the master account unless its ID is added to the `excludedAccounts` argument.
 ///
-/// &gt; **NOTE:** Every Organization account except those configured in the `excluded_accounts` argument must have a Configuration Recorder with proper IAM permissions before the rule will successfully create or update. See also the `aws.cfg.Recorder` resource.
+/// &gt; **NOTE:** Every Organization account except those configured in the `excludedAccounts` argument must have a Configuration Recorder with proper IAM permissions before the rule will successfully create or update. See also the `aws.cfg.Recorder` resource.
 ///
 /// ## Example Usage
 ///
@@ -102,6 +102,25 @@ import 'organization_managed_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["config-multiaccountsetup.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_cfg_organizationmanagedrule" "example" {
+///   depends_on      = [aws_organizations_organization.example]
+///   name            = "example"
+///   rule_identifier = "IAM_PASSWORD_POLICY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +132,8 @@ import 'organization_managed_rule_state.dart';
 /// import com.pulumi.aws.cfg.OrganizationManagedRule;
 /// import com.pulumi.aws.cfg.OrganizationManagedRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,7 +182,19 @@ import 'organization_managed_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Config Organization Managed Rules using the name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the rule.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Config Organization Managed Rules using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cfg/organizationManagedRule:OrganizationManagedRule example example

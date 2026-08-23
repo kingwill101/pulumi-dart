@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_default_user_settings_space_storage_settings_default_ebs_storage_settings.dart';
 
 class DomainDefaultUserSettingsSpaceStorageSettings {
-  /// The default EBS storage settings for a private space. See `default_ebs_storage_settings` Block below.
+  /// The default EBS storage settings for a private space. See `defaultEbsStorageSettings` Block below.
   final pulumi.Input<DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings>? defaultEbsStorageSettings;
 
   /// Creates a new [DomainDefaultUserSettingsSpaceStorageSettings].
-  /// [defaultEbsStorageSettings] The default EBS storage settings for a private space. See `default_ebs_storage_settings` Block below.
+  /// [defaultEbsStorageSettings] The default EBS storage settings for a private space. See `defaultEbsStorageSettings` Block below.
   const DomainDefaultUserSettingsSpaceStorageSettings({
     this.defaultEbsStorageSettings,
   });
@@ -25,4 +25,3 @@ class DomainDefaultUserSettingsSpaceStorageSettings {
     );
   }
 }
-

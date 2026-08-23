@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainNameArgs {
   /// Fully-qualified domain name to look up. If no domain name is found, an error will be returned.
   final pulumi.Input<String> domainName;
-  /// The identifier for the domain name resource. Supported only for private custom domain names.
+  /// Identifier for the domain name resource. Supported only for private custom domain names.
   final pulumi.Input<String>? domainNameId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -18,7 +18,7 @@ class GetDomainNameArgs {
 
   /// Creates a new [GetDomainNameArgs].
   /// [domainName] Fully-qualified domain name to look up. If no domain name is found, an error will be returned.
-  /// [domainNameId] The identifier for the domain name resource. Supported only for private custom domain names.
+  /// [domainNameId] Identifier for the domain name resource. Supported only for private custom domain names.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags for the resource.
   const GetDomainNameArgs({
@@ -46,4 +46,3 @@ class GetDomainNameArgs {
     );
   }
 }
-

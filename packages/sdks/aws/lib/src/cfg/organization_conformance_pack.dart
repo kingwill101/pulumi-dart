@@ -4,7 +4,7 @@ import 'organization_conformance_pack_state.dart';
 
 /// Manages a Config Organization Conformance Pack. More information can be found in the [Managing Conformance Packs Across all Accounts in Your Organization](https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html) and [AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html) documentation. Example conformance pack templates may be found in the [AWS Config Rules Repository](https://github.com/awslabs/aws-config-rules/tree/master/aws-config-conformance-packs).
 ///
-/// &gt; **NOTE:** This resource must be created in the Organization master account or a delegated administrator account, and the Organization must have all features enabled. Every Organization account except those configured in the `excluded_accounts` argument must have a Configuration Recorder with proper IAM permissions before the Organization Conformance Pack will successfully create or update. See also the `aws.cfg.Recorder` resource.
+/// &gt; **NOTE:** This resource must be created in the Organization master account or a delegated administrator account, and the Organization must have all features enabled. Every Organization account except those configured in the `excludedAccounts` argument must have a Configuration Recorder with proper IAM permissions before the Organization Conformance Pack will successfully create or update. See also the `aws.cfg.Recorder` resource.
 ///
 /// ## Example Usage
 ///
@@ -176,6 +176,29 @@ import 'organization_conformance_pack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_organizationconformancepack" "example" {
+///   depends_on = [exampleAwsConfigConfigurationRecorder, aws_organizations_organization.example]
+///   name       = "example"
+///   input_parameters {
+///     parameter_name  = "AccessKeysRotatedParameterMaxAccessKeyAge"
+///     parameter_value = "90"
+///   }
+///   template_body = "Parameters:\n  AccessKeysRotatedParameterMaxAccessKeyAge:\n    Type: String\nResources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
+/// }
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["config-multiaccountsetup.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -188,8 +211,8 @@ import 'organization_conformance_pack_state.dart';
 /// import com.pulumi.aws.cfg.OrganizationConformancePackArgs;
 /// import com.pulumi.aws.cfg.inputs.OrganizationConformancePackInputParameterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,7 +446,7 @@ import 'organization_conformance_pack_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleBucket.ID(),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("example-key"),
 /// 			Content: pulumi.String(`Resources:
 ///   IAMPasswordPolicy:
@@ -456,6 +479,33 @@ import 'organization_conformance_pack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_organizationconformancepack" "example" {
+///   depends_on      = [exampleAwsConfigConfigurationRecorder, aws_organizations_organization.example]
+///   name            = "example"
+///   template_s3_uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucketobjectv2.example.key}"
+/// }
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["config-multiaccountsetup.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket  = aws_s3_bucket.example.id
+///   key     = "example-key"
+///   content = "Resources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -471,8 +521,8 @@ import 'organization_conformance_pack_state.dart';
 /// import com.pulumi.aws.cfg.OrganizationConformancePack;
 /// import com.pulumi.aws.cfg.OrganizationConformancePackArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -567,6 +617,18 @@ import 'organization_conformance_pack_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the configuration recorder.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Config Organization Conformance Packs using the `name`. For example:
 ///
 /// ```sh
@@ -581,7 +643,7 @@ class OrganizationConformancePack extends pulumi.CustomResource {
   late final pulumi.Output<String?> deliveryS3KeyPrefix;
   /// Set of AWS accounts to be excluded from an organization conformance pack while deploying a conformance pack. Maximum of 1000 accounts.
   late final pulumi.Output<List<String>?> excludedAccounts;
-  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `template_body` or in the template stored in Amazon S3 if using `template_s3_uri`.
+  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `templateBody` or in the template stored in Amazon S3 if using `templateS3Uri`.
   late final pulumi.Output<List<Map<String, dynamic>>?> inputParameters;
   /// The name of the organization conformance pack. Must begin with a letter and contain from 1 to 128 alphanumeric characters and hyphens.
   late final pulumi.Output<String> name;

@@ -67,6 +67,21 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_connection" "hoge" {
+///   name      = "tf-dx-connection"
+///   bandwidth = "1Gbps"
+///   location  = "EqDC2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.Connection;
 /// import com.pulumi.aws.directconnect.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -173,6 +188,22 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_connection" "example" {
+///   name           = "tf-dx-connection"
+///   bandwidth      = "10Gbps"
+///   location       = "EqDA2"
+///   request_macsec = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +212,8 @@ import 'connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.Connection;
 /// import com.pulumi.aws.directconnect.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,7 +249,7 @@ import 'connection_state.dart';
 ///
 /// ### Configure encryption mode for MACsec-capable connections
 ///
-/// &gt; **NOTE:** You can only specify the `encryption_mode` argument once the connection is in an `Available` state.
+/// &gt; **NOTE:** You can only specify the `encryptionMode` argument once the connection is in an `Available` state.
 ///
 ///
 /// ```typescript
@@ -287,6 +318,23 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_connection" "example" {
+///   name            = "tf-dx-connection"
+///   bandwidth       = "10Gbps"
+///   location        = "EqDC2"
+///   request_macsec  = true
+///   encryption_mode = "must_encrypt"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +343,8 @@ import 'connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.Connection;
 /// import com.pulumi.aws.directconnect.ConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,7 +394,7 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> awsDevice;
   /// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps, 100Gbps, and 400Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps, and 25Gbps. Case sensitive. Refer to the AWS Direct Connection supported bandwidths for [Dedicated Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/dedicated_connection.html) and [Hosted Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/hosted_connection.html).
   late final pulumi.Output<String> bandwidth;
-  /// The connection MAC Security (MACsec) encryption mode. MAC Security (MACsec) is only available on dedicated connections. Valid values are `no_encrypt`, `should_encrypt`, and `must_encrypt`.
+  /// The connection MAC Security (MACsec) encryption mode. MAC Security (MACsec) is only available on dedicated connections. Valid values are `noEncrypt`, `shouldEncrypt`, and `mustEncrypt`.
   late final pulumi.Output<String> encryptionMode;
   /// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
   late final pulumi.Output<String> hasLogicalRedundancy;
@@ -370,13 +418,15 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Boolean value indicating whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is only available on dedicated connections. See [MACsec prerequisites](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites) for more information about MAC Security (MACsec) prerequisites. Default value: `false`.
   ///
-  /// &gt; **NOTE:** Changing the value of `request_macsec` will cause the resource to be destroyed and re-created.
+  /// &gt; **NOTE:** Changing the value of `requestMacsec` will cause the resource to be destroyed and re-created.
   late final pulumi.Output<bool?> requestMacsec;
   /// Set to true if you do not wish the connection to be deleted at destroy time, and instead just removed from the state.
   late final pulumi.Output<bool?> skipDestroy;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// State of the connection. See [CreateConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_CreateConnection.html#API_CreateConnection_ResponseSyntax) for list of possible state values.
+  late final pulumi.Output<String> state;
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The VLAN ID.
   late final pulumi.Output<int> vlanId;
@@ -411,6 +461,7 @@ class Connection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requestMacsec = registerOutput<bool?>('requestMacsec');
     skipDestroy = registerOutput<bool?>('skipDestroy');
+    state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vlanId = registerOutput<int>('vlanId');
@@ -455,6 +506,7 @@ class Connection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requestMacsec = registerOutput<bool?>('requestMacsec');
     skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vlanId = registerOutput<int>('vlanId');

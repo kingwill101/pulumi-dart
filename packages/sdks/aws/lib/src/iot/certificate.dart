@@ -78,6 +78,23 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_certificate" "cert" {
+///   csr    = file("/my/csr.pem")
+///   active = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +105,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.aws.iot.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,6 +193,19 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_certificate" "cert" {
+///   active = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +214,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iot.Certificate;
 /// import com.pulumi.aws.iot.CertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,6 +315,23 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_certificate" "cert" {
+///   certificate_pem = file("/my/cert.pem")
+///   active          = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +342,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.aws.iot.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -340,9 +387,9 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String> caCertificateId;
   /// The CA certificate for the certificate to be registered. If this is set, the CA needs to be registered with AWS IoT beforehand.
   late final pulumi.Output<String?> caPem;
-  /// The certificate to be registered. If `ca_pem` is unspecified, review
+  /// The certificate to be registered. If `caPem` is unspecified, review
   /// [RegisterCertificateWithoutCA](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificateWithoutCA.html).
-  /// If `ca_pem` is specified, review
+  /// If `caPem` is specified, review
   /// [RegisterCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificate.html)
   /// for more information on registering a certificate.
   late final pulumi.Output<String> certificatePem;

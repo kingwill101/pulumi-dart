@@ -6,7 +6,7 @@ import 'tag_state.dart';
 ///
 /// &gt; **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.ecs.Cluster` and `aws.ecs.Tag` to manage tags of the same ECS Cluster will cause a perpetual difference where the `aws.ecs.Cluster` resource will try to remove the tag being added by the `aws.ecs.Tag` resource.
 ///
-/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignoreTags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -94,6 +94,26 @@ import 'tag_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_batch_computeenvironment" "example" {
+///   name         = "example"
+///   service_role = exampleAwsIamRole.arn
+///   type         = "UNMANAGED"
+/// }
+/// resource "aws_ecs_tag" "example" {
+///   resource_arn = aws_batch_computeenvironment.example.ecs_cluster_arn
+///   key          = "Name"
+///   value        = "Hello World"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +124,8 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.batch.ComputeEnvironmentArgs;
 /// import com.pulumi.aws.ecs.Tag;
 /// import com.pulumi.aws.ecs.TagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

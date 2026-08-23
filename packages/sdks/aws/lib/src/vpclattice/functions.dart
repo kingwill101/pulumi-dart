@@ -8,6 +8,8 @@ import 'get_resource_policy_result.dart';
 import 'get_service_args.dart';
 import 'get_service_network_args.dart';
 import 'get_service_network_result.dart';
+import 'get_service_network_service_associations_args.dart';
+import 'get_service_network_service_associations_result.dart';
 import 'get_service_result.dart';
 
 /// Data source for managing an AWS VPC Lattice Auth Policy.
@@ -66,6 +68,19 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpclattice_getauthpolicy" "test" {
+///   resource_identifier = testAwsVpclatticeAuthPolicy.resourceIdentifier
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.VpclatticeFunctions;
 /// import com.pulumi.aws.vpclattice.inputs.GetAuthPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,6 +181,18 @@ Future<GetAuthPolicyResult> getAuthPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpclattice_getlistener" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +201,8 @@ Future<GetAuthPolicyResult> getAuthPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.VpclatticeFunctions;
 /// import com.pulumi.aws.vpclattice.inputs.GetListenerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,6 +298,19 @@ Future<GetListenerResult> getListener(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpclattice_getresourcepolicy" "example" {
+///   resource_arn = exampleAwsVpclatticeServiceNetwork.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +319,8 @@ Future<GetListenerResult> getListener(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.VpclatticeFunctions;
 /// import com.pulumi.aws.vpclattice.inputs.GetResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,6 +418,19 @@ Future<GetResourcePolicyResult> getResourcePolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpclattice_getservice" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -386,8 +439,8 @@ Future<GetResourcePolicyResult> getResourcePolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.VpclatticeFunctions;
 /// import com.pulumi.aws.vpclattice.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -485,6 +538,19 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpclattice_getservicenetwork" "example" {
+///   service_network_identifier = "snsa-01112223334445556"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -493,8 +559,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.VpclatticeFunctions;
 /// import com.pulumi.aws.vpclattice.inputs.GetServiceNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -534,4 +600,227 @@ Future<GetServiceNetworkResult> getServiceNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceNetworkResult.fromMap(result);
+}
+
+/// Data source for listing AWS VPC Lattice Service Network Service Associations.
+///
+/// ## Example Usage
+///
+/// ### By Service Network Identifier
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const testSn = aws.vpclattice.getServiceNetworkServiceAssociations({
+///     serviceNetworkIdentifier: testSnAwsVpclatticeServiceNetwork.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test_sn = aws.vpclattice.get_service_network_service_associations(service_network_identifier=test_sn_aws_vpclattice_service_network["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var testSn = Aws.VpcLattice.GetServiceNetworkServiceAssociations.Invoke(new()
+///     {
+///         ServiceNetworkIdentifier = testSnAwsVpclatticeServiceNetwork.Id,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := vpclattice.GetServiceNetworkServiceAssociations(ctx, &vpclattice.GetServiceNetworkServiceAssociationsArgs{
+/// 			ServiceNetworkIdentifier: pulumi.StringRef(testSnAwsVpclatticeServiceNetwork.Id),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpclattice_getservicenetworkserviceassociations" "testSn" {
+///   service_network_identifier = testSnAwsVpclatticeServiceNetwork.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.vpclattice.VpclatticeFunctions;
+/// import com.pulumi.aws.vpclattice.inputs.GetServiceNetworkServiceAssociationsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var testSn = VpclatticeFunctions.getServiceNetworkServiceAssociations(GetServiceNetworkServiceAssociationsArgs.builder()
+///             .serviceNetworkIdentifier(testSnAwsVpclatticeServiceNetwork.id())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   testSn:
+///     fn::invoke:
+///       function: aws:vpclattice:getServiceNetworkServiceAssociations
+///       arguments:
+///         serviceNetworkIdentifier: ${testSnAwsVpclatticeServiceNetwork.id}
+/// ```
+///
+///
+/// ### By Service Identifier
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const testSvc = aws.vpclattice.getServiceNetworkServiceAssociations({
+///     serviceIdentifier: testSvcAwsVpclatticeService.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test_svc = aws.vpclattice.get_service_network_service_associations(service_identifier=test_svc_aws_vpclattice_service["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var testSvc = Aws.VpcLattice.GetServiceNetworkServiceAssociations.Invoke(new()
+///     {
+///         ServiceIdentifier = testSvcAwsVpclatticeService.Id,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := vpclattice.GetServiceNetworkServiceAssociations(ctx, &vpclattice.GetServiceNetworkServiceAssociationsArgs{
+/// 			ServiceIdentifier: pulumi.StringRef(testSvcAwsVpclatticeService.Id),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_vpclattice_getservicenetworkserviceassociations" "testSvc" {
+///   service_identifier = testSvcAwsVpclatticeService.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.vpclattice.VpclatticeFunctions;
+/// import com.pulumi.aws.vpclattice.inputs.GetServiceNetworkServiceAssociationsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var testSvc = VpclatticeFunctions.getServiceNetworkServiceAssociations(GetServiceNetworkServiceAssociationsArgs.builder()
+///             .serviceIdentifier(testSvcAwsVpclatticeService.id())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   testSvc:
+///     fn::invoke:
+///       function: aws:vpclattice:getServiceNetworkServiceAssociations
+///       arguments:
+///         serviceIdentifier: ${testSvcAwsVpclatticeService.id}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_vpclattice_get_service_network_service_associations_get_service_network_service_associations_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceNetworkServiceAssociationsResult> getServiceNetworkServiceAssociations(
+  GetServiceNetworkServiceAssociationsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:vpclattice/getServiceNetworkServiceAssociations:getServiceNetworkServiceAssociations',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceNetworkServiceAssociationsResult.fromMap(result);
 }

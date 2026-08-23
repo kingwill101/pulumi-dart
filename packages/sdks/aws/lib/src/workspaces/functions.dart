@@ -64,6 +64,19 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_workspaces_getbundle" "example" {
+///   bundle_id = "wsb-b0s22j3d7"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspaces.WorkspacesFunctions;
 /// import com.pulumi.aws.workspaces.inputs.GetBundleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,6 +171,20 @@ import 'get_workspace_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_workspaces_getbundle" "example" {
+///   owner = "AMAZON"
+///   name  = "Value with Windows 10 and Office 2016"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +193,8 @@ import 'get_workspace_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspaces.WorkspacesFunctions;
 /// import com.pulumi.aws.workspaces.inputs.GetBundleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,6 +292,19 @@ Future<GetBundleResult> getBundle(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_workspaces_getdirectory" "example" {
+///   directory_id = "d-9067783251"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -273,8 +313,8 @@ Future<GetBundleResult> getBundle(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspaces.WorkspacesFunctions;
 /// import com.pulumi.aws.workspaces.inputs.GetDirectoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +410,19 @@ Future<GetDirectoryResult> getDirectory(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_workspaces_getimage" "example" {
+///   image_id = "wsi-ten5h0y19"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -378,8 +431,8 @@ Future<GetDirectoryResult> getDirectory(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspaces.WorkspacesFunctions;
 /// import com.pulumi.aws.workspaces.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -477,6 +530,19 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_workspaces_getworkspace" "example" {
+///   workspace_id = "ws-cj5xcxsz5"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -485,8 +551,8 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspaces.WorkspacesFunctions;
 /// import com.pulumi.aws.workspaces.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -571,6 +637,20 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_workspaces_getworkspace" "example" {
+///   directory_id = "d-9967252f57"
+///   user_name    = "Example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -579,8 +659,8 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.workspaces.WorkspacesFunctions;
 /// import com.pulumi.aws.workspaces.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

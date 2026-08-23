@@ -22,9 +22,9 @@ class TargetArgs {
   final pulumi.Input<String> scalableDimension;
   /// AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   final pulumi.Input<String> serviceNamespace;
-  /// Specifies whether the scaling activities for a scalable target are in a suspended state.
+  /// Whether the scaling activities for a scalable target are in a suspended state.
   final pulumi.Input<TargetSuspendedState>? suspendedState;
-  /// Map of tags to assign to the scalable target. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the scalable target. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [TargetArgs].
@@ -35,8 +35,8 @@ class TargetArgs {
   /// [roleArn] ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
   /// [scalableDimension] Scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   /// [serviceNamespace] AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
-  /// [suspendedState] Specifies whether the scaling activities for a scalable target are in a suspended state.
-  /// [tags] Map of tags to assign to the scalable target. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [suspendedState] Whether the scaling activities for a scalable target are in a suspended state.
+  /// [tags] Map of tags to assign to the scalable target. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const TargetArgs({
     required this.maxCapacity,
     required this.minCapacity,
@@ -77,4 +77,3 @@ class TargetArgs {
     );
   }
 }
-

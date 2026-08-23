@@ -74,6 +74,22 @@ import 'instance_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_instancegroup" "task" {
+///   cluster_id     = tf-test-cluster.id
+///   instance_count = 1
+///   instance_type  = "m5.xlarge"
+///   name           = "my little instance group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'instance_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.InstanceGroup;
 /// import com.pulumi.aws.emr.InstanceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,6 +253,19 @@ class InstanceGroup extends pulumi.CustomResource {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_emr_instancegroup" "task" {
+  ///   configurations_json = "[\n{\n\\\"Classification\\\": \\\"hadoop-env\\\",\n\\\"Configurations\\\": [\n{\n\\\"Classification\\\": \\\"export\\\",\n\\\"Properties\\\": {\n\\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n}\n}\n],\n\\\"Properties\\\": {}\n}\n]\n"
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -245,8 +274,8 @@ class InstanceGroup extends pulumi.CustomResource {
   /// import com.pulumi.core.Output;
   /// import com.pulumi.aws.emr.InstanceGroup;
   /// import com.pulumi.aws.emr.InstanceGroupArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -302,7 +331,7 @@ class InstanceGroup extends pulumi.CustomResource {
   ///         ]
   /// ```
   late final pulumi.Output<String?> configurationsJson;
-  /// One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `ebsConfig` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> ebsConfigs;
   /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> ebsOptimized;

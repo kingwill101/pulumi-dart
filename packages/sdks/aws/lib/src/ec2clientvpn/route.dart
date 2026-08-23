@@ -127,14 +127,14 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleNetworkAssociation, err := ec2clientvpn.NewNetworkAssociation(ctx, "example", &ec2clientvpn.NetworkAssociationArgs{
-/// 			ClientVpnEndpointId: exampleEndpoint.ID(),
+/// 			ClientVpnEndpointId: exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			SubnetId:            pulumi.Any(exampleAwsSubnet.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2clientvpn.NewRoute(ctx, "example", &ec2clientvpn.RouteArgs{
-/// 			ClientVpnEndpointId:  exampleEndpoint.ID(),
+/// 			ClientVpnEndpointId:  exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			DestinationCidrBlock: pulumi.String("0.0.0.0/0"),
 /// 			TargetVpcSubnetId:    exampleNetworkAssociation.SubnetId,
 /// 		})
@@ -143,6 +143,37 @@ import 'route_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2clientvpn_route" "example" {
+///   client_vpn_endpoint_id = aws_ec2clientvpn_endpoint.example.id
+///   destination_cidr_block = "0.0.0.0/0"
+///   target_vpc_subnet_id   = aws_ec2clientvpn_networkassociation.example.subnet_id
+/// }
+/// resource "aws_ec2clientvpn_networkassociation" "example" {
+///   client_vpn_endpoint_id = aws_ec2clientvpn_endpoint.example.id
+///   subnet_id              = exampleAwsSubnet.id
+/// }
+/// resource "aws_ec2clientvpn_endpoint" "example" {
+///   description            = "Example Client VPN endpoint"
+///   server_certificate_arn = exampleAwsAcmCertificate.arn
+///   client_cidr_block      = "10.0.0.0/16"
+///   authentication_options {
+///     type                       = "certificate-authentication"
+///     root_certificate_chain_arn = exampleAwsAcmCertificate.arn
+///   }
+///   connection_log_options = {
+///     enabled = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -159,8 +190,8 @@ import 'route_state.dart';
 /// import com.pulumi.aws.ec2clientvpn.NetworkAssociationArgs;
 /// import com.pulumi.aws.ec2clientvpn.Route;
 /// import com.pulumi.aws.ec2clientvpn.RouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -246,8 +277,10 @@ class Route extends pulumi.CustomResource {
   late final pulumi.Output<String> origin;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
-  late final pulumi.Output<String> targetVpcSubnetId;
+  /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN. Required for VPC-based Client VPN endpoints. Not applicable for Transit Gateway-based Client VPN endpoints.
+  late final pulumi.Output<String?> targetVpcSubnetId;
+  /// The ID of the Transit Gateway attachment, if the route targets a Transit Gateway-based Client VPN endpoint.
+  late final pulumi.Output<String> transitGatewayAttachmentId;
   /// The type of the route.
   late final pulumi.Output<String> type;
 
@@ -270,7 +303,8 @@ class Route extends pulumi.CustomResource {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     origin = registerOutput<String>('origin');
     region = registerOutput<String>('region');
-    targetVpcSubnetId = registerOutput<String>('targetVpcSubnetId');
+    targetVpcSubnetId = registerOutput<String?>('targetVpcSubnetId');
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     type = registerOutput<String>('type');
   }
 
@@ -302,7 +336,8 @@ class Route extends pulumi.CustomResource {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     origin = registerOutput<String>('origin');
     region = registerOutput<String>('region');
-    targetVpcSubnetId = registerOutput<String>('targetVpcSubnetId');
+    targetVpcSubnetId = registerOutput<String?>('targetVpcSubnetId');
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     type = registerOutput<String>('type');
   }
 }

@@ -391,6 +391,89 @@ import 'webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     github = {
+///       source = "pulumi/github"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codepipeline_pipeline" "bar" {
+///   name     = "tf-test-pipeline"
+///   role_arn = barAwsIamRole.arn
+///   artifact_stores {
+///     location = barAwsS3Bucket.bucket
+///     type     = "S3"
+///     encryption_key = {
+///       id   = s3kmskey.arn
+///       type = "KMS"
+///     }
+///   }
+///   stages {
+///     name = "Source"
+///     actions {
+///       name             = "Source"
+///       category         = "Source"
+///       owner            = "ThirdParty"
+///       provider         = "GitHub"
+///       version          = "1"
+///       output_artifacts = ["test"]
+///       configuration = {
+///         "Owner"  = "my-organization"
+///         "Repo"   = "test"
+///         "Branch" = "master"
+///       }
+///     }
+///   }
+///   stages {
+///     name = "Build"
+///     actions {
+///       name            = "Build"
+///       category        = "Build"
+///       owner           = "AWS"
+///       provider        = "CodeBuild"
+///       input_artifacts = ["test"]
+///       version         = "1"
+///       configuration = {
+///         "ProjectName" = "test"
+///       }
+///     }
+///   }
+/// }
+/// resource "aws_codepipeline_webhook" "bar" {
+///   name            = "test-webhook-github-bar"
+///   authentication  = "GITHUB_HMAC"
+///   target_action   = "Source"
+///   target_pipeline = aws_codepipeline_pipeline.bar.name
+///   authentication_configuration = {
+///     secret_token = local.webhookSecret
+///   }
+///   filters {
+///     json_path    = "$.ref"
+///     match_equals = "refs/heads/{Branch}"
+///   }
+/// }
+/// # Wire the CodePipeline webhook into a GitHub repository.
+/// resource "github_repositorywebhook" "bar" {
+///   repository = repo.name
+///   name       = "web"
+///   configuration = [{
+///     "url"         = aws_codepipeline_webhook.bar.url
+///     "contentType" = "json"
+///     "insecureSsl" = true
+///     "secret"      = local.webhookSecret
+///   }]
+///   events = ["push"]
+/// }
+/// locals {
+///   webhookSecret = "super-secret"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -402,14 +485,15 @@ import 'webhook_state.dart';
 /// import com.pulumi.aws.codepipeline.inputs.PipelineArtifactStoreArgs;
 /// import com.pulumi.aws.codepipeline.inputs.PipelineArtifactStoreEncryptionKeyArgs;
 /// import com.pulumi.aws.codepipeline.inputs.PipelineStageArgs;
+/// import com.pulumi.aws.codepipeline.inputs.PipelineStageActionArgs;
 /// import com.pulumi.aws.codepipeline.Webhook;
 /// import com.pulumi.aws.codepipeline.WebhookArgs;
 /// import com.pulumi.aws.codepipeline.inputs.WebhookAuthenticationConfigurationArgs;
 /// import com.pulumi.aws.codepipeline.inputs.WebhookFilterArgs;
 /// import com.pulumi.github.RepositoryWebhook;
 /// import com.pulumi.github.RepositoryWebhookArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -483,7 +567,7 @@ import 'webhook_state.dart';
 ///         var barRepositoryWebhook = new RepositoryWebhook("barRepositoryWebhook", RepositoryWebhookArgs.builder()
 ///             .repository(repo.name())
 ///             .name("web")
-///             .configuration(RepositoryWebhookConfigurationArgs.builder()
+///             .configuration(com.pulumi.github.inputs.RepositoryWebhookConfigurationArgs.builder()
 ///                 .url(barWebhook.url())
 ///                 .contentType("json")
 ///                 .insecureSsl(true)
@@ -592,9 +676,9 @@ class Webhook extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
   late final pulumi.Output<String> targetAction;

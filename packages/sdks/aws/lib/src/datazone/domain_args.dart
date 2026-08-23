@@ -23,7 +23,7 @@ class DomainArgs {
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// ARN of the service role used by DataZone. Required when `domain_version` is set to `V2`.
+  /// ARN of the service role used by DataZone. Required when `domainVersion` is set to `V2`.
   final pulumi.Input<String>? serviceRole;
   /// Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.
   final pulumi.Input<DomainSingleSignOn>? singleSignOn;
@@ -39,7 +39,7 @@ class DomainArgs {
   /// [kmsKeyIdentifier] ARN of the KMS key used to encrypt the Amazon DataZone domain, metadata and reporting data.
   /// [name] Name of the Domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceRole] ARN of the service role used by DataZone. Required when `domain_version` is set to `V2`.
+  /// [serviceRole] ARN of the service role used by DataZone. Required when `domainVersion` is set to `V2`.
   /// [singleSignOn] Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.
   /// [skipDeletionCheck] Whether to skip the deletion check for the Domain.
   /// [tags] Optional.
@@ -90,4 +90,3 @@ class DomainArgs {
     );
   }
 }
-

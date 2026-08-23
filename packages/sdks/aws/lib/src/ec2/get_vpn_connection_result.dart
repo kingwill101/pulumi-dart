@@ -20,8 +20,6 @@ class GetVpnConnectionResult {
   final List<GetVpnConnectionFilter>? filters;
   /// Current state of the gateway association.
   final String gatewayAssociationState;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// (ARN) of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection.
   final String preSharedKeyArn;
   final String region;
@@ -51,7 +49,6 @@ class GetVpnConnectionResult {
   /// [customerGatewayId] ID of the customer gateway at your end of the VPN connection.
   /// [filters] Optional.
   /// [gatewayAssociationState] Current state of the gateway association.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [preSharedKeyArn] (ARN) of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection.
   /// [region] Required.
   /// [routes] List of static routes associated with the VPN connection.
@@ -71,7 +68,6 @@ class GetVpnConnectionResult {
     required this.customerGatewayId,
     this.filters,
     required this.gatewayAssociationState,
-    required this.id,
     required this.preSharedKeyArn,
     required this.region,
     required this.routes,
@@ -94,7 +90,6 @@ class GetVpnConnectionResult {
       'customerGatewayId': customerGatewayId,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnConnectionFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'gatewayAssociationState': gatewayAssociationState,
-      'id': id,
       'preSharedKeyArn': preSharedKeyArn,
       'region': region,
       'routes': pulumi.Input.encodeList<GetVpnConnectionRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
@@ -118,7 +113,6 @@ class GetVpnConnectionResult {
       customerGatewayId: map['customerGatewayId'] as String,
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnConnectionFilter>(guardedValue, (value) => GetVpnConnectionFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       gatewayAssociationState: map['gatewayAssociationState'] as String,
-      id: map['id'] as String,
       preSharedKeyArn: map['preSharedKeyArn'] as String,
       region: map['region'] as String,
       routes: pulumi.Input.decodeList<GetVpnConnectionRoute>(map['routes']!, (value) => GetVpnConnectionRoute.fromMap((value as Map).cast<String, dynamic>())),
@@ -133,4 +127,3 @@ class GetVpnConnectionResult {
     );
   }
 }
-

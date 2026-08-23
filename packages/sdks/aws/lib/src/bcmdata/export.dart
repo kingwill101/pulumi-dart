@@ -111,7 +111,7 @@ import 'export_timeouts.dart';
 ///                     QueryStatement = "SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT",
 ///                     TableConfigurations =
 ///                     {
-///                         { "COST_AND_USAGE_REPORT",
+///                         { "COST_AND_USAGE_REPORT", new InputMap<string>
 ///                         {
 ///                             { "BILLING_VIEW_ARN", Output.Tuple(currentGetPartition, current).Apply(values =>
 ///                             {
@@ -233,6 +233,54 @@ import 'export_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_bcmdata_export" "test" {
+///   export = {
+///     name = "testexample"
+///     data_queries = [{
+///       "queryStatement" = "SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT"
+///       "tableConfigurations" = {
+///         "COST_AND_USAGE_REPORT" = {
+///           "BILLING_VIEW_ARN"                      ="arn:${data.aws_getpartition.currentGetPartition.partition}:billing::${data.aws_getcalleridentity.current.account_id}:billingview/primary"
+///           "TIME_GRANULARITY"                      = "HOURLY"
+///           "INCLUDE_RESOURCES"                     = "FALSE"
+///           "INCLUDE_MANUAL_DISCOUNT_COMPATIBILITY" = "FALSE"
+///           "INCLUDE_SPLIT_COST_ALLOCATION_DATA"    = "FALSE"
+///         }
+///       }
+///     }]
+///     destination_configurations = [{
+///       "s3Destinations" = [{
+///         "s3Bucket" = testAwsS3Bucket.bucket
+///         "s3Prefix" = testAwsS3Bucket.bucketPrefix
+///         "s3Region" = testAwsS3Bucket.region
+///         "s3OutputConfigurations" = [{
+///           "overwrite"   = "OVERWRITE_REPORT"
+///           "format"      = "TEXT_OR_CSV"
+///           "compression" = "GZIP"
+///           "outputType"  = "CUSTOM"
+///         }]
+///       }]
+///     }]
+///     refresh_cadences = [{
+///       "frequency" = "SYNCHRONOUS"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +293,13 @@ import 'export_timeouts.dart';
 /// import com.pulumi.aws.bcmdata.Export;
 /// import com.pulumi.aws.bcmdata.ExportArgs;
 /// import com.pulumi.aws.bcmdata.inputs.ExportExportArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.bcmdata.inputs.ExportExportDataQueryArgs;
+/// import com.pulumi.aws.bcmdata.inputs.ExportExportDestinationConfigurationArgs;
+/// import com.pulumi.aws.bcmdata.inputs.ExportExportDestinationConfigurationS3DestinationArgs;
+/// import com.pulumi.aws.bcmdata.inputs.ExportExportDestinationConfigurationS3DestinationS3OutputConfigurationArgs;
+/// import com.pulumi.aws.bcmdata.inputs.ExportExportRefreshCadenceArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,7 +412,7 @@ class Export extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   late final pulumi.Output<ExportExport?> export;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ExportTimeouts?> timeouts;

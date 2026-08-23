@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointArgs {
   /// Type of access for the network connectivity. Valid values are `Private` or `CustomerOwnedIp`.
   final pulumi.Input<String>? accessType;
-  /// The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
+  /// ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   final pulumi.Input<String>? customerOwnedIpv4Pool;
   /// Identifier of the Outpost to contain this endpoint.
   final pulumi.Input<String> outpostId;
@@ -22,7 +22,7 @@ class EndpointArgs {
 
   /// Creates a new [EndpointArgs].
   /// [accessType] Type of access for the network connectivity. Valid values are `Private` or `CustomerOwnedIp`.
-  /// [customerOwnedIpv4Pool] The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
+  /// [customerOwnedIpv4Pool] ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   /// [outpostId] Identifier of the Outpost to contain this endpoint.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupId] Identifier of the EC2 Security Group.
@@ -58,4 +58,3 @@ class EndpointArgs {
     );
   }
 }
-

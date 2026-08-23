@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering PrincipalAssociation resources.
 class PrincipalAssociationState {
-  /// The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
+  /// Principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
   final pulumi.Input<String>? principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the resource share.
+  /// Amazon Resource Name (ARN) of the resource share.
   final pulumi.Input<String>? resourceShareArn;
 
   /// Creates a new [PrincipalAssociationState].
-  /// [principal] The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
+  /// [principal] Principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceShareArn] The Amazon Resource Name (ARN) of the resource share.
+  /// [resourceShareArn] Amazon Resource Name (ARN) of the resource share.
   const PrincipalAssociationState({
     this.principal,
     this.region,
@@ -37,4 +37,3 @@ class PrincipalAssociationState {
     );
   }
 }
-

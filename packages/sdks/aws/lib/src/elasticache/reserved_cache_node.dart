@@ -5,7 +5,7 @@ import 'reserved_cache_node_timeouts.dart';
 
 /// Manages an ElastiCache Reserved Cache Node.
 ///
-/// &gt; **NOTE:** Once created, a reservation is valid for the `duration` of the provided `offering_id` and cannot be deleted. Performing a `destroy` will only remove the resource from state. For more information see [ElastiCache Reserved Nodes Documentation](https://aws.amazon.com/elasticache/reserved-cache-nodes/) and [PurchaseReservedCacheNodesOffering](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_PurchaseReservedCacheNodesOffering.html).
+/// &gt; **NOTE:** Once created, a reservation is valid for the `duration` of the provided `offeringId` and cannot be deleted. Performing a `destroy` will only remove the resource from state. For more information see [ElastiCache Reserved Nodes Documentation](https://aws.amazon.com/elasticache/reserved-cache-nodes/) and [PurchaseReservedCacheNodesOffering](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_PurchaseReservedCacheNodesOffering.html).
 ///
 /// &gt; **NOTE:** Due to the expense of testing this resource, we provide it as best effort. If you find it useful, and have the ability to help test or notice issues, consider reaching out to us on GitHub.
 ///
@@ -24,7 +24,7 @@ import 'reserved_cache_node_timeouts.dart';
 /// });
 /// const exampleReservedCacheNode = new aws.elasticache.ReservedCacheNode("example", {
 ///     reservedCacheNodesOfferingId: example.then(example => example.offeringId),
-///     id: "optionalCustomReservationID",
+///     elasticacheReservedCacheNodeId: "optionalCustomReservationID",
 ///     cacheNodeCount: 3,
 /// });
 /// ```
@@ -38,7 +38,7 @@ import 'reserved_cache_node_timeouts.dart';
 ///     product_description="redis")
 /// example_reserved_cache_node = aws.elasticache.ReservedCacheNode("example",
 ///     reserved_cache_nodes_offering_id=example.offering_id,
-///     id="optionalCustomReservationID",
+///     elasticache_reserved_cache_node_id="optionalCustomReservationID",
 ///     cache_node_count=3)
 /// ```
 /// ```csharp
@@ -60,7 +60,7 @@ import 'reserved_cache_node_timeouts.dart';
 ///     var exampleReservedCacheNode = new Aws.ElastiCache.ReservedCacheNode("example", new()
 ///     {
 ///         ReservedCacheNodesOfferingId = example.Apply(getReservedCacheNodeOfferingResult => getReservedCacheNodeOfferingResult.OfferingId),
-///         Id = "optionalCustomReservationID",
+///         ElasticacheReservedCacheNodeId = "optionalCustomReservationID",
 ///         CacheNodeCount = 3,
 ///     });
 ///
@@ -86,15 +86,37 @@ import 'reserved_cache_node_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = elasticache.NewReservedCacheNode(ctx, "example", &elasticache.ReservedCacheNodeArgs{
-/// 			ReservedCacheNodesOfferingId: pulumi.String(example.OfferingId),
-/// 			Id:                           "optionalCustomReservationID",
-/// 			CacheNodeCount:               pulumi.Int(3),
+/// 			ReservedCacheNodesOfferingId:   pulumi.String(example.OfferingId),
+/// 			ElasticacheReservedCacheNodeId: pulumi.String("optionalCustomReservationID"),
+/// 			CacheNodeCount:                 pulumi.Int(3),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticache_getreservedcachenodeoffering" "example" {
+///   cache_node_type     = "cache.t4g.small"
+///   duration            = "P1Y"
+///   offering_type       = "No Upfront"
+///   product_description = "redis"
+/// }
+///
+/// resource "aws_elasticache_reservedcachenode" "example" {
+///   reserved_cache_nodes_offering_id   = data.aws_elasticache_getreservedcachenodeoffering.example.offering_id
+///   elasticache_reserved_cache_node_id = "optionalCustomReservationID"
+///   cache_node_count                   = 3
 /// }
 /// ```
 /// ```java
@@ -107,8 +129,8 @@ import 'reserved_cache_node_timeouts.dart';
 /// import com.pulumi.aws.elasticache.inputs.GetReservedCacheNodeOfferingArgs;
 /// import com.pulumi.aws.elasticache.ReservedCacheNode;
 /// import com.pulumi.aws.elasticache.ReservedCacheNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,7 +151,7 @@ import 'reserved_cache_node_timeouts.dart';
 ///
 ///         var exampleReservedCacheNode = new ReservedCacheNode("exampleReservedCacheNode", ReservedCacheNodeArgs.builder()
 ///             .reservedCacheNodesOfferingId(example.offeringId())
-///             .id("optionalCustomReservationID")
+///             .elasticacheReservedCacheNodeId("optionalCustomReservationID")
 ///             .cacheNodeCount(3)
 ///             .build());
 ///
@@ -143,7 +165,7 @@ import 'reserved_cache_node_timeouts.dart';
 ///     name: example
 ///     properties:
 ///       reservedCacheNodesOfferingId: ${example.offeringId}
-///       id: optionalCustomReservationID
+///       elasticacheReservedCacheNodeId: optionalCustomReservationID
 ///       cacheNodeCount: 3
 /// variables:
 ///   example:
@@ -174,6 +196,9 @@ class ReservedCacheNode extends pulumi.CustomResource {
   late final pulumi.Output<String> cacheNodeType;
   /// Duration of the reservation as an RFC3339 duration.
   late final pulumi.Output<String> duration;
+  /// Customer-specified identifier to track this reservation.
+  /// If not specified, AWS will assign a random ID.
+  late final pulumi.Output<String> elasticacheReservedCacheNodeId;
   /// Fixed price charged for this reserved cache node.
   late final pulumi.Output<double> fixedPrice;
   /// Offering type of this reserved cache node.
@@ -185,7 +210,7 @@ class ReservedCacheNode extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// ID of the reserved cache node offering to purchase.
-  /// To determine an `reserved_cache_nodes_offering_id`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
+  /// To determine an `reservedCacheNodesOfferingId`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> reservedCacheNodesOfferingId;
@@ -193,9 +218,9 @@ class ReservedCacheNode extends pulumi.CustomResource {
   late final pulumi.Output<String> startTime;
   /// State of the reserved cache node.
   late final pulumi.Output<String> state;
-  /// Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ReservedCacheNodeTimeouts?> timeouts;
   /// Hourly price charged for this reserved cache node.
@@ -219,6 +244,7 @@ class ReservedCacheNode extends pulumi.CustomResource {
     cacheNodeCount = registerOutput<int>('cacheNodeCount');
     cacheNodeType = registerOutput<String>('cacheNodeType');
     duration = registerOutput<String>('duration');
+    elasticacheReservedCacheNodeId = registerOutput<String>('elasticacheReservedCacheNodeId');
     fixedPrice = registerOutput<double>('fixedPrice');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
@@ -260,6 +286,7 @@ class ReservedCacheNode extends pulumi.CustomResource {
     cacheNodeCount = registerOutput<int>('cacheNodeCount');
     cacheNodeType = registerOutput<String>('cacheNodeType');
     duration = registerOutput<String>('duration');
+    elasticacheReservedCacheNodeId = registerOutput<String>('elasticacheReservedCacheNodeId');
     fixedPrice = registerOutput<double>('fixedPrice');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');

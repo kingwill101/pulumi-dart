@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceManagedS3BackupAccess {
+  /// List of IPv4 addresses for the Amazon STS access.
   final pulumi.Input<List<String>> ipv4Addresses;
-  /// The status of the network resource.
+  /// Status of the Zero-ETL access.
   final pulumi.Input<String> status;
 
   /// Creates a new [NetworkManagedServiceManagedS3BackupAccess].
-  /// [ipv4Addresses] Required.
-  /// [status] The status of the network resource.
+  /// [ipv4Addresses] List of IPv4 addresses for the Amazon STS access.
+  /// [status] Status of the Zero-ETL access.
   const NetworkManagedServiceManagedS3BackupAccess({
     required this.ipv4Addresses,
     required this.status,
@@ -29,4 +30,3 @@ class NetworkManagedServiceManagedS3BackupAccess {
     );
   }
 }
-

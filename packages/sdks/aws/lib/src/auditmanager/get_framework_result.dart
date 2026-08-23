@@ -5,26 +5,32 @@ import 'get_framework_control_set.dart';
 
 /// Result data returned by getFramework.
 class GetFrameworkResult {
+  /// ARN of the framework.
   final String arn;
+  /// Compliance type that the framework supports.
   final String complianceType;
+  /// Control sets associated with the framework.
   final List<GetFrameworkControlSet> controlSets;
+  /// Description of the framework.
   final String description;
   final String frameworkType;
+  /// Unique identifier for the framework.
   final String id;
   final String name;
   final String region;
+  /// Map of tags assigned to the framework.
   final Map<String, String> tags;
 
   /// Creates a new [GetFrameworkResult].
-  /// [arn] Required.
-  /// [complianceType] Required.
-  /// [controlSets] Required.
-  /// [description] Required.
+  /// [arn] ARN of the framework.
+  /// [complianceType] Compliance type that the framework supports.
+  /// [controlSets] Control sets associated with the framework.
+  /// [description] Description of the framework.
   /// [frameworkType] Required.
-  /// [id] Required.
+  /// [id] Unique identifier for the framework.
   /// [name] Required.
   /// [region] Required.
-  /// [tags] Required.
+  /// [tags] Map of tags assigned to the framework.
   const GetFrameworkResult({
     required this.arn,
     required this.complianceType,
@@ -65,4 +71,3 @@ class GetFrameworkResult {
     );
   }
 }
-

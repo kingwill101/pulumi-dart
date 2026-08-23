@@ -22,7 +22,7 @@ class LocationFsxOntapFileSystemArgs {
   final pulumi.Input<String> storageVirtualMachineArn;
   /// Path to the file share in the SVM where you'll copy your data. You can specify a junction path (also known as a mount point), qtree path (for NFS file shares), or share name (for SMB file shares) (e.g. `/vol1`, `/vol1/tree1`, `share1`).
   final pulumi.Input<String>? subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LocationFsxOntapFileSystemArgs].
@@ -31,7 +31,7 @@ class LocationFsxOntapFileSystemArgs {
   /// [securityGroupArns] The security groups that provide access to your file system's preferred subnet. The security groups must allow outbbound traffic on the following ports (depending on the protocol you use):
   /// [storageVirtualMachineArn] The ARN of the SVM in your file system where you want to copy data to of from.
   /// [subdirectory] Path to the file share in the SVM where you'll copy your data. You can specify a junction path (also known as a mount point), qtree path (for NFS file shares), or share name (for SMB file shares) (e.g. `/vol1`, `/vol1/tree1`, `share1`).
-  /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LocationFsxOntapFileSystemArgs({
     required this.protocol,
     this.region,
@@ -63,4 +63,3 @@ class LocationFsxOntapFileSystemArgs {
     );
   }
 }
-

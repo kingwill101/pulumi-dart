@@ -13,9 +13,9 @@ class NotebookInstanceArgs {
   final pulumi.Input<List<String>>? additionalCodeRepositories;
   /// The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository.
   final pulumi.Input<String>? defaultCodeRepository;
-  /// Set to `Disabled` to disable internet access to notebook. Requires `security_groups` and `subnet_id` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
+  /// Set to `Disabled` to disable internet access to notebook. Requires `securityGroups` and `subnetId` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
   final pulumi.Input<String>? directInternetAccess;
-  /// Information on the IMDS configuration of the notebook instance. Conflicts with `instance_metadata_service_configuration`. see details below.
+  /// Information on the IMDS configuration of the notebook instance. Conflicts with `instanceMetadataServiceConfiguration`. see details below.
   final pulumi.Input<NotebookInstanceInstanceMetadataServiceConfiguration>? instanceMetadataServiceConfiguration;
   /// The name of ML compute instance type.
   final pulumi.Input<String> instanceType;
@@ -37,7 +37,7 @@ class NotebookInstanceArgs {
   final pulumi.Input<List<String>>? securityGroups;
   /// The VPC subnet ID.
   final pulumi.Input<String>? subnetId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.
   final pulumi.Input<int>? volumeSize;
@@ -45,8 +45,8 @@ class NotebookInstanceArgs {
   /// Creates a new [NotebookInstanceArgs].
   /// [additionalCodeRepositories] An array of up to three Git repositories to associate with the notebook instance.
   /// [defaultCodeRepository] The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository.
-  /// [directInternetAccess] Set to `Disabled` to disable internet access to notebook. Requires `security_groups` and `subnet_id` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
-  /// [instanceMetadataServiceConfiguration] Information on the IMDS configuration of the notebook instance. Conflicts with `instance_metadata_service_configuration`. see details below.
+  /// [directInternetAccess] Set to `Disabled` to disable internet access to notebook. Requires `securityGroups` and `subnetId` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
+  /// [instanceMetadataServiceConfiguration] Information on the IMDS configuration of the notebook instance. Conflicts with `instanceMetadataServiceConfiguration`. see details below.
   /// [instanceType] The name of ML compute instance type.
   /// [kmsKeyId] The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
   /// [lifecycleConfigName] The name of a lifecycle configuration to associate with the notebook instance.
@@ -57,7 +57,7 @@ class NotebookInstanceArgs {
   /// [rootAccess] Whether root access is `Enabled` or `Disabled` for users of the notebook instance. The default value is `Enabled`.
   /// [securityGroups] The associated security groups.
   /// [subnetId] The VPC subnet ID.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [volumeSize] The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.
   const NotebookInstanceArgs({
     this.additionalCodeRepositories,
@@ -120,4 +120,3 @@ class NotebookInstanceArgs {
     );
   }
 }
-

@@ -9,32 +9,32 @@ import 'domain_default_space_settings_kernel_gateway_app_settings.dart';
 import 'domain_default_space_settings_space_storage_settings.dart';
 
 class DomainDefaultSpaceSettings {
-  /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `custom_file_system_config` Block below.
+  /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `customFileSystemConfig` Block below.
   final pulumi.Input<List<DomainDefaultSpaceSettingsCustomFileSystemConfig>>? customFileSystemConfigs;
-  /// Details about the POSIX identity that is used for file system operations. See `custom_posix_user_config` Block below.
+  /// Details about the POSIX identity that is used for file system operations. See `customPosixUserConfig` Block below.
   final pulumi.Input<DomainDefaultSpaceSettingsCustomPosixUserConfig>? customPosixUserConfig;
   /// The execution role for the space.
   final pulumi.Input<String> executionRole;
-  /// The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
+  /// The settings for the JupyterLab application. See `jupyterLabAppSettings` Block below.
   final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettings>? jupyterLabAppSettings;
-  /// The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
+  /// The Jupyter server's app settings. See `jupyterServerAppSettings` Block below.
   final pulumi.Input<DomainDefaultSpaceSettingsJupyterServerAppSettings>? jupyterServerAppSettings;
-  /// The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
+  /// The kernel gateway app settings. See `kernelGatewayAppSettings` Block below.
   final pulumi.Input<DomainDefaultSpaceSettingsKernelGatewayAppSettings>? kernelGatewayAppSettings;
   /// The security groups for the Amazon Virtual Private Cloud that the space uses for communication.
   final pulumi.Input<List<String>>? securityGroups;
-  /// The storage settings for a private space. See `space_storage_settings` Block below.
+  /// The storage settings for a private space. See `spaceStorageSettings` Block below.
   final pulumi.Input<DomainDefaultSpaceSettingsSpaceStorageSettings>? spaceStorageSettings;
 
   /// Creates a new [DomainDefaultSpaceSettings].
-  /// [customFileSystemConfigs] The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `custom_file_system_config` Block below.
-  /// [customPosixUserConfig] Details about the POSIX identity that is used for file system operations. See `custom_posix_user_config` Block below.
+  /// [customFileSystemConfigs] The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `customFileSystemConfig` Block below.
+  /// [customPosixUserConfig] Details about the POSIX identity that is used for file system operations. See `customPosixUserConfig` Block below.
   /// [executionRole] The execution role for the space.
-  /// [jupyterLabAppSettings] The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
-  /// [jupyterServerAppSettings] The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
-  /// [kernelGatewayAppSettings] The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
+  /// [jupyterLabAppSettings] The settings for the JupyterLab application. See `jupyterLabAppSettings` Block below.
+  /// [jupyterServerAppSettings] The Jupyter server's app settings. See `jupyterServerAppSettings` Block below.
+  /// [kernelGatewayAppSettings] The kernel gateway app settings. See `kernelGatewayAppSettings` Block below.
   /// [securityGroups] The security groups for the Amazon Virtual Private Cloud that the space uses for communication.
-  /// [spaceStorageSettings] The storage settings for a private space. See `space_storage_settings` Block below.
+  /// [spaceStorageSettings] The storage settings for a private space. See `spaceStorageSettings` Block below.
   const DomainDefaultSpaceSettings({
     this.customFileSystemConfigs,
     this.customPosixUserConfig,
@@ -72,4 +72,3 @@ class DomainDefaultSpaceSettings {
     );
   }
 }
-

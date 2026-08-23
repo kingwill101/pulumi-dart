@@ -10,7 +10,7 @@ import 'caches_iscsi_volume_state.dart';
 ///
 /// ## Example Usage
 ///
-/// &gt; **NOTE:** These examples are referencing the `aws.storagegateway.Cache` resource `gateway_arn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `depends_on = [aws_storagegateway_cache.example]`) to ensure proper ordering.
+/// &gt; **NOTE:** These examples are referencing the `aws.storagegateway.Cache` resource `gatewayArn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `dependsOn = [aws_storagegateway_cache.example]`) to ensure proper ordering.
 ///
 /// ### Create Empty Cached iSCSI Volume
 ///
@@ -34,7 +34,7 @@ import 'caches_iscsi_volume_state.dart';
 ///     gateway_arn=example_aws_storagegateway_cache["gatewayArn"],
 ///     network_interface_id=example_aws_instance["privateIp"],
 ///     target_name="example",
-///     volume_size_in_bytes=5368709120)
+///     volume_size_in_bytes=int(5368709120))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -77,6 +77,22 @@ import 'caches_iscsi_volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_cachesiscsivolume" "example" {
+///   gateway_arn          = exampleAwsStoragegatewayCache.gatewayArn
+///   network_interface_id = exampleAwsInstance.privateIp
+///   target_name          = "example"
+///   volume_size_in_bytes = 5368709120 # 5 GB
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +101,8 @@ import 'caches_iscsi_volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.CachesIscsiVolume;
 /// import com.pulumi.aws.storagegateway.CachesIscsiVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,7 +148,7 @@ import 'caches_iscsi_volume_state.dart';
 ///     networkInterfaceId: exampleAwsInstance.privateIp,
 ///     snapshotId: exampleAwsEbsSnapshot.id,
 ///     targetName: "example",
-///     volumeSizeInBytes: exampleAwsEbsSnapshot.volumeSize * 1024 * 1024 * 1024,
+///     volumeSizeInBytes: Number(exampleAwsEbsSnapshot.volumeSize) * 1024 * 1024 * 1024,
 /// });
 /// ```
 /// ```python
@@ -144,7 +160,7 @@ import 'caches_iscsi_volume_state.dart';
 ///     network_interface_id=example_aws_instance["privateIp"],
 ///     snapshot_id=example_aws_ebs_snapshot["id"],
 ///     target_name="example",
-///     volume_size_in_bytes=example_aws_ebs_snapshot["volumeSize"] * 1024 * 1024 * 1024)
+///     volume_size_in_bytes=int(float(example_aws_ebs_snapshot["volumeSize"]) * float(1024) * float(1024) * float(1024)))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -189,6 +205,23 @@ import 'caches_iscsi_volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_cachesiscsivolume" "example" {
+///   gateway_arn          = exampleAwsStoragegatewayCache.gatewayArn
+///   network_interface_id = exampleAwsInstance.privateIp
+///   snapshot_id          = exampleAwsEbsSnapshot.id
+///   target_name          = "example"
+///   volume_size_in_bytes = exampleAwsEbsSnapshot.volumeSize * 1024 * 1024 * 1024
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +230,8 @@ import 'caches_iscsi_volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.CachesIscsiVolume;
 /// import com.pulumi.aws.storagegateway.CachesIscsiVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,7 +268,7 @@ import 'caches_iscsi_volume_state.dart';
 ///     networkInterfaceId: exampleAwsInstance.privateIp,
 ///     sourceVolumeArn: existing.arn,
 ///     targetName: "example",
-///     volumeSizeInBytes: existing.volumeSizeInBytes,
+///     volumeSizeInBytes: Number(existing.volumeSizeInBytes),
 /// });
 /// ```
 /// ```python
@@ -247,7 +280,7 @@ import 'caches_iscsi_volume_state.dart';
 ///     network_interface_id=example_aws_instance["privateIp"],
 ///     source_volume_arn=existing["arn"],
 ///     target_name="example",
-///     volume_size_in_bytes=existing["volumeSizeInBytes"])
+///     volume_size_in_bytes=int(existing["volumeSizeInBytes"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -292,6 +325,23 @@ import 'caches_iscsi_volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_cachesiscsivolume" "example" {
+///   gateway_arn          = exampleAwsStoragegatewayCache.gatewayArn
+///   network_interface_id = exampleAwsInstance.privateIp
+///   source_volume_arn    = existing.arn
+///   target_name          = "example"
+///   volume_size_in_bytes = existing.volumeSizeInBytes
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -300,8 +350,8 @@ import 'caches_iscsi_volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.CachesIscsiVolume;
 /// import com.pulumi.aws.storagegateway.CachesIscsiVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -353,7 +403,7 @@ class CachesIscsiVolume extends pulumi.CustomResource {
   late final pulumi.Output<String> gatewayArn;
   /// Set to `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3.
   late final pulumi.Output<bool?> kmsEncrypted;
-  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. Is required when `kms_encrypted` is set.
+  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. Is required when `kmsEncrypted` is set.
   late final pulumi.Output<String?> kmsKey;
   /// Logical disk number.
   late final pulumi.Output<int> lunNumber;
@@ -365,11 +415,11 @@ class CachesIscsiVolume extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The snapshot ID of the snapshot to restore as the new cached volumeE.g., `snap-1122aabb`.
   late final pulumi.Output<String?> snapshotId;
-  /// The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The `volume_size_in_bytes` value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
+  /// The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The `volumeSizeInBytes` value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
   late final pulumi.Output<String?> sourceVolumeArn;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Target Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.
   late final pulumi.Output<String> targetArn;

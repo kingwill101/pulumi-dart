@@ -83,6 +83,26 @@ import 'permission_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_permissionset" "example" {
+///   name             = "Example"
+///   description      = "An example"
+///   instance_arn     = data.aws_ssoadmin_getinstances.example.arns[0]
+///   relay_state      = "https://s3.console.aws.amazon.com/s3/home?region=us-east-1#"
+///   session_duration = "PT2H"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +113,8 @@ import 'permission_set_state.dart';
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
 /// import com.pulumi.aws.ssoadmin.PermissionSet;
 /// import com.pulumi.aws.ssoadmin.PermissionSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,7 +161,7 @@ import 'permission_set_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SSO Permission Sets using the `arn` and `instance_arn` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import SSO Permission Sets using the `arn` and `instanceArn` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssoadmin/permissionSet:PermissionSet example arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72
@@ -163,9 +183,9 @@ class PermissionSet extends pulumi.CustomResource {
   late final pulumi.Output<String?> relayState;
   /// The length of time that the application user sessions are valid in the ISO-8601 standard. Default: `PT1H`.
   late final pulumi.Output<String?> sessionDuration;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [PermissionSet].

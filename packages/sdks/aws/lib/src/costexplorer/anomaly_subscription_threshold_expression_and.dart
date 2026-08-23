@@ -10,13 +10,13 @@ class AnomalySubscriptionThresholdExpressionAnd {
   final pulumi.Input<AnomalySubscriptionThresholdExpressionAndCostCategory>? costCategory;
   /// Configuration block for the specific Dimension to use for.
   final pulumi.Input<AnomalySubscriptionThresholdExpressionAndDimension>? dimension;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<AnomalySubscriptionThresholdExpressionAndTags>? tags;
 
   /// Creates a new [AnomalySubscriptionThresholdExpressionAnd].
   /// [costCategory] Configuration block for the filter that's based on  values. See Cost Category below.
   /// [dimension] Configuration block for the specific Dimension to use for.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AnomalySubscriptionThresholdExpressionAnd({
     this.costCategory,
     this.dimension,
@@ -39,4 +39,3 @@ class AnomalySubscriptionThresholdExpressionAnd {
     );
   }
 }
-

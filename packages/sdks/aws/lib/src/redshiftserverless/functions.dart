@@ -60,6 +60,19 @@ import 'get_workgroup_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshiftserverless_getcredentials" "example" {
+///   workgroup_name = exampleAwsRedshiftserverlessWorkgroup.workgroupName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_workgroup_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftserverless.RedshiftserverlessFunctions;
 /// import com.pulumi.aws.redshiftserverless.inputs.GetCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,6 +178,19 @@ Future<GetCredentialsResult> getCredentials(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshiftserverless_getnamespace" "example" {
+///   namespace_name = "example-namespace"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +199,8 @@ Future<GetCredentialsResult> getCredentials(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftserverless.RedshiftserverlessFunctions;
 /// import com.pulumi.aws.redshiftserverless.inputs.GetNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,6 +298,19 @@ Future<GetNamespaceResult> getNamespace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshiftserverless_getworkgroup" "example" {
+///   workgroup_name = exampleAwsRedshiftserverlessWorkgroup.workgroupName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -280,8 +319,8 @@ Future<GetNamespaceResult> getNamespace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftserverless.RedshiftserverlessFunctions;
 /// import com.pulumi.aws.redshiftserverless.inputs.GetWorkgroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

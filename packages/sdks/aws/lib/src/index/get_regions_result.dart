@@ -7,7 +7,7 @@ import 'get_regions_filter.dart';
 class GetRegionsResult {
   final bool? allRegions;
   final List<GetRegionsFilter>? filters;
-  /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
+  /// (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String id;
   /// Names of regions that meets the criteria.
   final List<String> names;
@@ -15,7 +15,7 @@ class GetRegionsResult {
   /// Creates a new [GetRegionsResult].
   /// [allRegions] Optional.
   /// [filters] Optional.
-  /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
+  /// [id] (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   /// [names] Names of regions that meets the criteria.
   const GetRegionsResult({
     this.allRegions,
@@ -42,4 +42,3 @@ class GetRegionsResult {
     );
   }
 }
-

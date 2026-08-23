@@ -14,7 +14,7 @@ import 'response_headers_policy_server_timing_headers_config.dart';
 class ResponseHeadersPolicyArgs {
   /// A comment to describe the response headers policy. The comment cannot be longer than 128 characters.
   final pulumi.Input<String>? comment;
-  /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
+  /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See CORS Config for more information.
   final pulumi.Input<ResponseHeadersPolicyCorsConfig>? corsConfig;
   /// Object that contains an attribute `items` that contains a list of custom headers. See Custom Header for more information.
   final pulumi.Input<ResponseHeadersPolicyCustomHeadersConfig>? customHeadersConfig;
@@ -29,7 +29,7 @@ class ResponseHeadersPolicyArgs {
 
   /// Creates a new [ResponseHeadersPolicyArgs].
   /// [comment] A comment to describe the response headers policy. The comment cannot be longer than 128 characters.
-  /// [corsConfig] A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
+  /// [corsConfig] A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See CORS Config for more information.
   /// [customHeadersConfig] Object that contains an attribute `items` that contains a list of custom headers. See Custom Header for more information.
   /// [name] A unique name to identify the response headers policy.
   /// [removeHeadersConfig] A configuration for a set of HTTP headers to remove from the HTTP response. Object that contains an attribute `items` that contains a list of headers. See Remove Header for more information.
@@ -69,4 +69,3 @@ class ResponseHeadersPolicyArgs {
     );
   }
 }
-

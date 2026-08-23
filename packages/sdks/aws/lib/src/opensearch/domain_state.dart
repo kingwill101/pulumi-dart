@@ -6,6 +6,7 @@ import 'domain_aiml_options.dart';
 import 'domain_auto_tune_options.dart';
 import 'domain_cluster_config.dart';
 import 'domain_cognito_options.dart';
+import 'domain_deployment_strategy_options.dart';
 import 'domain_domain_endpoint_options.dart';
 import 'domain_ebs_options.dart';
 import 'domain_encrypt_at_rest.dart';
@@ -39,6 +40,8 @@ class DomainState {
   final pulumi.Input<String>? dashboardEndpoint;
   /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
   final pulumi.Input<String>? dashboardEndpointV2;
+  /// Configuration block for the deployment strategy options of the domain. Detailed below.
+  final pulumi.Input<DomainDeploymentStrategyOptions>? deploymentStrategyOptions;
   /// Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   final pulumi.Input<DomainDomainEndpointOptions>? domainEndpointOptions;
   /// Dual stack hosted zone ID for the domain.
@@ -77,9 +80,9 @@ class DomainState {
   final pulumi.Input<DomainSnapshotOptions>? snapshotOptions;
   /// Software update options for the domain. Detailed below.
   final pulumi.Input<DomainSoftwareUpdateOptions>? softwareUpdateOptions;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
   final pulumi.Input<DomainVpcOptions>? vpcOptions;
@@ -95,6 +98,7 @@ class DomainState {
   /// [cognitoOptions] Configuration block for authenticating dashboard with Cognito. Detailed below.
   /// [dashboardEndpoint] Domain-specific endpoint for Dashboard without https scheme.
   /// [dashboardEndpointV2] V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
+  /// [deploymentStrategyOptions] Configuration block for the deployment strategy options of the domain. Detailed below.
   /// [domainEndpointOptions] Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   /// [domainEndpointV2HostedZoneId] Dual stack hosted zone ID for the domain.
   /// [domainId] Unique identifier for the domain.
@@ -112,8 +116,8 @@ class DomainState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotOptions] Configuration block for snapshot related options. Detailed below. DEPRECATED. For domains running OpenSearch 5.3 and later, Amazon OpenSearch takes hourly automated snapshots, making this setting irrelevant. For domains running earlier versions, OpenSearch takes daily automated snapshots.
   /// [softwareUpdateOptions] Software update options for the domain. Detailed below.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcOptions] Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
   const DomainState({
     this.accessPolicies,
@@ -126,6 +130,7 @@ class DomainState {
     this.cognitoOptions,
     this.dashboardEndpoint,
     this.dashboardEndpointV2,
+    this.deploymentStrategyOptions,
     this.domainEndpointOptions,
     this.domainEndpointV2HostedZoneId,
     this.domainId,
@@ -160,6 +165,7 @@ class DomainState {
       'cognitoOptions': ?pulumi.Input.mapOptionalInputValue<DomainCognitoOptions, Map<String, dynamic>>(cognitoOptions, (value) => value.toMap()),
       'dashboardEndpoint': ?dashboardEndpoint,
       'dashboardEndpointV2': ?dashboardEndpointV2,
+      'deploymentStrategyOptions': ?pulumi.Input.mapOptionalInputValue<DomainDeploymentStrategyOptions, Map<String, dynamic>>(deploymentStrategyOptions, (value) => value.toMap()),
       'domainEndpointOptions': ?pulumi.Input.mapOptionalInputValue<DomainDomainEndpointOptions, Map<String, dynamic>>(domainEndpointOptions, (value) => value.toMap()),
       'domainEndpointV2HostedZoneId': ?domainEndpointV2HostedZoneId,
       'domainId': ?domainId,
@@ -195,6 +201,7 @@ class DomainState {
       cognitoOptions: (() { final guardedValue = map['cognitoOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainCognitoOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dashboardEndpoint: (() { final guardedValue = map['dashboardEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dashboardEndpointV2: (() { final guardedValue = map['dashboardEndpointV2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deploymentStrategyOptions: (() { final guardedValue = map['deploymentStrategyOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDeploymentStrategyOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domainEndpointOptions: (() { final guardedValue = map['domainEndpointOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domainEndpointV2HostedZoneId: (() { final guardedValue = map['domainEndpointV2HostedZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainId: (() { final guardedValue = map['domainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -218,4 +225,3 @@ class DomainState {
     );
   }
 }
-

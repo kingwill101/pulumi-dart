@@ -17,9 +17,9 @@ class TrafficMirrorTargetArgs {
   final pulumi.Input<String>? networkLoadBalancerArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// **NOTE:** Either `network_interface_id` or `network_load_balancer_arn` should be specified and both should not be specified together
+  /// **NOTE:** Either `networkInterfaceId` or `networkLoadBalancerArn` should be specified and both should not be specified together
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [TrafficMirrorTargetArgs].
@@ -28,7 +28,7 @@ class TrafficMirrorTargetArgs {
   /// [networkInterfaceId] The network interface ID that is associated with the target.
   /// [networkLoadBalancerArn] The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const TrafficMirrorTargetArgs({
     this.description,
     this.gatewayLoadBalancerEndpointId,
@@ -60,4 +60,3 @@ class TrafficMirrorTargetArgs {
     );
   }
 }
-

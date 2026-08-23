@@ -62,6 +62,19 @@ import 'get_plan_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssmcontacts_getcontact" "example" {
+///   arn = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_plan_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssmcontacts.SsmcontactsFunctions;
 /// import com.pulumi.aws.ssmcontacts.inputs.GetContactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +182,19 @@ Future<GetContactResult> getContact(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssmcontacts_getcontactchannel" "example" {
+///   arn = "arn:aws:ssm-contacts:us-west-2:123456789012:contact-channel/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +203,8 @@ Future<GetContactResult> getContact(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssmcontacts.SsmcontactsFunctions;
 /// import com.pulumi.aws.ssmcontacts.inputs.GetContactChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,6 +302,19 @@ Future<GetContactChannelResult> getContactChannel(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssmcontacts_getplan" "test" {
+///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +323,8 @@ Future<GetContactChannelResult> getContactChannel(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssmcontacts.SsmcontactsFunctions;
 /// import com.pulumi.aws.ssmcontacts.inputs.GetPlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

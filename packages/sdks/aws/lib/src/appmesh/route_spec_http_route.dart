@@ -7,20 +7,20 @@ import 'route_spec_http_route_retry_policy.dart';
 import 'route_spec_http_route_timeout.dart';
 
 class RouteSpecHttpRoute {
-  /// Action to take if a match is determined.
+  /// Action to take if a match is determined. See `spec.tcp_route.action` Block for details.
   final pulumi.Input<RouteSpecHttpRouteAction> action;
-  /// Criteria for determining an HTTP request match.
+  /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
   final pulumi.Input<RouteSpecHttpRouteMatch> match;
-  /// Retry policy.
+  /// Retry policy. See `spec.http_route.retry_policy` Block for details.
   final pulumi.Input<RouteSpecHttpRouteRetryPolicy>? retryPolicy;
-  /// Types of timeouts.
+  /// Types of timeouts. See `spec.tcp_route.timeout` Block for details.
   final pulumi.Input<RouteSpecHttpRouteTimeout>? timeout;
 
   /// Creates a new [RouteSpecHttpRoute].
-  /// [action] Action to take if a match is determined.
-  /// [match] Criteria for determining an HTTP request match.
-  /// [retryPolicy] Retry policy.
-  /// [timeout] Types of timeouts.
+  /// [action] Action to take if a match is determined. See `spec.tcp_route.action` Block for details.
+  /// [match] Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
+  /// [retryPolicy] Retry policy. See `spec.http_route.retry_policy` Block for details.
+  /// [timeout] Types of timeouts. See `spec.tcp_route.timeout` Block for details.
   const RouteSpecHttpRoute({
     required this.action,
     required this.match,
@@ -46,4 +46,3 @@ class RouteSpecHttpRoute {
     );
   }
 }
-

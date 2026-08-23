@@ -95,6 +95,27 @@ import 'data_catalog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_athena_datacatalog" "example" {
+///   name        = "athena-data-catalog"
+///   description = "Example Athena data catalog"
+///   type        = "LAMBDA"
+///   parameters = {
+///     "function" = "arn:aws:lambda:eu-central-1:123456789012:function:not-important-lambda-function"
+///   }
+///   tags = {
+///     "Name" = "example-athena-data-catalog"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +124,8 @@ import 'data_catalog_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.athena.DataCatalog;
 /// import com.pulumi.aws.athena.DataCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,6 +237,24 @@ import 'data_catalog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_athena_datacatalog" "example" {
+///   name        = "hive-data-catalog"
+///   description = "Hive based Data Catalog"
+///   type        = "HIVE"
+///   parameters = {
+///     "metadata-function" = "arn:aws:lambda:eu-central-1:123456789012:function:not-important-lambda-function"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +263,8 @@ import 'data_catalog_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.athena.DataCatalog;
 /// import com.pulumi.aws.athena.DataCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -334,6 +373,24 @@ import 'data_catalog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_athena_datacatalog" "example" {
+///   name        = "glue-data-catalog"
+///   description = "Glue based Data Catalog"
+///   type        = "GLUE"
+///   parameters = {
+///     "catalog-id" = "123456789012"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -342,8 +399,8 @@ import 'data_catalog_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.athena.DataCatalog;
 /// import com.pulumi.aws.athena.DataCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -456,6 +513,25 @@ import 'data_catalog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_athena_datacatalog" "example" {
+///   name        = "lambda-data-catalog"
+///   description = "Lambda based Data Catalog"
+///   type        = "LAMBDA"
+///   parameters = {
+///     "metadata-function" = "arn:aws:lambda:eu-central-1:123456789012:function:not-important-lambda-function-1"
+///     "record-function"   = "arn:aws:lambda:eu-central-1:123456789012:function:not-important-lambda-function-2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -464,8 +540,8 @@ import 'data_catalog_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.athena.DataCatalog;
 /// import com.pulumi.aws.athena.DataCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,9 +598,9 @@ class DataCatalog extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of data catalog: `LAMBDA` for a federated catalog, `GLUE` for AWS Glue Catalog, or `HIVE` for an external hive metastore.
   late final pulumi.Output<String> type;

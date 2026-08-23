@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudAutonomousVmClusterMaintenanceWindowMonth {
+  /// Name of the month. Valid values are `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, and `DECEMBER`.
   final pulumi.Input<String> name;
 
   /// Creates a new [CloudAutonomousVmClusterMaintenanceWindowMonth].
-  /// [name] Required.
+  /// [name] Name of the month. Valid values are `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, and `DECEMBER`.
   const CloudAutonomousVmClusterMaintenanceWindowMonth({
     required this.name,
   });
@@ -23,4 +24,3 @@ class CloudAutonomousVmClusterMaintenanceWindowMonth {
     );
   }
 }
-

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingestion_destination_processing_configuration_audit_log.dart';
 
 class IngestionDestinationProcessingConfiguration {
-  /// Contains information about an audit log processing configuration.
+  /// Audit log processing configuration. See `processing_configuration.audit_log` Block below.
   final pulumi.Input<IngestionDestinationProcessingConfigurationAuditLog> auditLog;
 
   /// Creates a new [IngestionDestinationProcessingConfiguration].
-  /// [auditLog] Contains information about an audit log processing configuration.
+  /// [auditLog] Audit log processing configuration. See `processing_configuration.audit_log` Block below.
   const IngestionDestinationProcessingConfiguration({
     required this.auditLog,
   });
@@ -25,4 +25,3 @@ class IngestionDestinationProcessingConfiguration {
     );
   }
 }
-

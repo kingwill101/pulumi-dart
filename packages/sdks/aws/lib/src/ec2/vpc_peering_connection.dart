@@ -7,7 +7,7 @@ import 'vpc_peering_connection_state.dart';
 /// Provides a resource to manage a VPC peering connection.
 ///
 /// &gt; **Note:** Modifying the VPC Peering Connection options requires peering to be active. An automatic activation
-/// can be done using the `auto_accept` attribute. Alternatively, the VPC Peering
+/// can be done using the `autoAccept` attribute. Alternatively, the VPC Peering
 /// Connection has to be made active manually using other means. See notes below for
 /// more information.
 ///
@@ -23,7 +23,7 @@ import 'vpc_peering_connection_state.dart';
 /// VPC Peering Connections use the `aws.ec2.VpcPeeringConnection` resource to manage the requester's side of the
 /// connection and use the `aws.ec2.VpcPeeringConnectionAccepter` resource to manage the accepter's side of the connection.
 ///
-/// &gt; **Note:** Creating multiple `aws.ec2.VpcPeeringConnection` resources with the same `peer_vpc_id` and `vpc_id` will not produce an error. Instead, AWS will return the connection `id` that already exists, resulting in multiple `aws.ec2.VpcPeeringConnection` resources with the same `id`.
+/// &gt; **Note:** Creating multiple `aws.ec2.VpcPeeringConnection` resources with the same `peerVpcId` and `vpcId` will not produce an error. Instead, AWS will return the connection `id` that already exists, resulting in multiple `aws.ec2.VpcPeeringConnection` resources with the same `id`.
 ///
 /// ## Example Usage
 ///
@@ -86,6 +86,21 @@ import 'vpc_peering_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+///   peer_owner_id = peerOwnerId
+///   peer_vpc_id   = bar.id
+///   vpc_id        = fooAwsVpc.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +109,8 @@ import 'vpc_peering_connection_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcPeeringConnection;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +229,27 @@ import 'vpc_peering_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+///   peer_owner_id = peerOwnerId
+///   peer_vpc_id   = bar.id
+///   vpc_id        = fooAwsVpc.id
+///   accepter = {
+///     allow_remote_vpc_dns_resolution = true
+///   }
+///   requester = {
+///     allow_remote_vpc_dns_resolution = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +260,8 @@ import 'vpc_peering_connection_state.dart';
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionArgs;
 /// import com.pulumi.aws.ec2.inputs.VpcPeeringConnectionAccepterArgs;
 /// import com.pulumi.aws.ec2.inputs.VpcPeeringConnectionRequesterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -357,8 +393,8 @@ import 'vpc_peering_connection_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpcPeeringConnection(ctx, "foo", &ec2.VpcPeeringConnectionArgs{
 /// 			PeerOwnerId: pulumi.Any(peerOwnerId),
-/// 			PeerVpcId:   bar.ID(),
-/// 			VpcId:       fooVpc.ID(),
+/// 			PeerVpcId:   bar.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:       fooVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoAccept:  pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("VPC Peering between foo and bar"),
@@ -371,6 +407,31 @@ import 'vpc_peering_connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+///   peer_owner_id = peerOwnerId
+///   peer_vpc_id   = aws_ec2_vpc.bar.id
+///   vpc_id        = aws_ec2_vpc.foo.id
+///   auto_accept   = true
+///   tags = {
+///     "Name" = "VPC Peering between foo and bar"
+///   }
+/// }
+/// resource "aws_ec2_vpc" "foo" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_vpc" "bar" {
+///   cidr_block = "10.2.0.0/16"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +442,8 @@ import 'vpc_peering_connection_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.VpcPeeringConnection;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -516,8 +577,8 @@ import 'vpc_peering_connection_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVpcPeeringConnection(ctx, "foo", &ec2.VpcPeeringConnectionArgs{
 /// 			PeerOwnerId: pulumi.Any(peerOwnerId),
-/// 			PeerVpcId:   bar.ID(),
-/// 			VpcId:       fooVpc.ID(),
+/// 			PeerVpcId:   bar.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:       fooVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerRegion:  pulumi.String("us-east-1"),
 /// 		})
 /// 		if err != nil {
@@ -525,6 +586,28 @@ import 'vpc_peering_connection_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcpeeringconnection" "foo" {
+///   peer_owner_id = peerOwnerId
+///   peer_vpc_id   = aws_ec2_vpc.bar.id
+///   vpc_id        = aws_ec2_vpc.foo.id
+///   peer_region   = "us-east-1"
+/// }
+/// resource "aws_ec2_vpc" "foo" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_vpc" "bar" {
+///   cidr_block = "10.2.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -537,8 +620,8 @@ import 'vpc_peering_connection_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.VpcPeeringConnection;
 /// import com.pulumi.aws.ec2.VpcPeeringConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -589,12 +672,6 @@ import 'vpc_peering_connection_state.dart';
 /// ```
 ///
 ///
-/// ## Notes
-///
-/// If both VPCs are not in the same AWS account and region do not enable the `auto_accept` attribute.
-/// The accepter can manage its side of the connection using the `aws.ec2.VpcPeeringConnectionAccepter` resource
-/// or accept the connection manually using the AWS Management Console, AWS CLI, through SDKs, etc.
-///
 /// ## Import
 ///
 /// Using `pulumi import`, import VPC Peering resources using the VPC peering `id`. For example:
@@ -611,9 +688,9 @@ class VpcPeeringConnection extends pulumi.CustomResource {
   /// Accept the peering (both VPCs need to be in the same AWS account and region).
   late final pulumi.Output<bool?> autoAccept;
   /// The AWS account ID of the target peer VPC.
-  /// Defaults to the account ID the [AWS provider][1] is currently connected to, so must be managed if connecting cross-account.
+  /// Defaults to the account ID the AWS provider is currently connected to, so must be managed if connecting cross-account.
   late final pulumi.Output<String> peerOwnerId;
-  /// The region of the accepter VPC of the VPC Peering Connection. `auto_accept` must be `false`,
+  /// The region of the accepter VPC of the VPC Peering Connection. `autoAccept` must be `false`,
   /// and use the `aws.ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
   late final pulumi.Output<String> peerRegion;
   /// The ID of the target VPC with which you are creating the VPC Peering Connection.
@@ -623,9 +700,9 @@ class VpcPeeringConnection extends pulumi.CustomResource {
   /// A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests
   /// the peering connection (a maximum of one).
   late final pulumi.Output<VpcPeeringConnectionRequester> requester;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the requester VPC.
   late final pulumi.Output<String> vpcId;

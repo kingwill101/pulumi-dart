@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch {
+  /// Values sent must match the specified values exactly.
   final pulumi.Input<List<String>> exacts;
 
   /// Creates a new [GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch].
-  /// [exacts] Required.
+  /// [exacts] Values sent must match the specified values exactly.
   const GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch({
     required this.exacts,
   });
@@ -23,4 +24,3 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlte
     );
   }
 }
-

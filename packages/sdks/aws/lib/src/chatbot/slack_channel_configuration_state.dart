@@ -31,7 +31,7 @@ class SlackChannelConfigurationState {
   final pulumi.Input<List<String>>? snsTopicArns;
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<SlackChannelConfigurationTimeouts>? timeouts;
   /// Enables use of a user role requirement in your chat configuration.
@@ -50,7 +50,7 @@ class SlackChannelConfigurationState {
   /// [slackTeamName] Name of the Slack team.
   /// [snsTopicArns] ARNs of the SNS topics that deliver notifications to AWS Chatbot.
   /// [tags] Map of tags assigned to the resource.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [userAuthorizationRequired] Enables use of a user role requirement in your chat configuration.
   const SlackChannelConfigurationState({
@@ -111,4 +111,3 @@ class SlackChannelConfigurationState {
     );
   }
 }
-

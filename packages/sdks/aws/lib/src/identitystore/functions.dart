@@ -106,6 +106,31 @@ import 'get_users_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_identitystore_getgroup" "exampleGetGroup" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   alternate_identifier = {
+///     unique_attribute = {
+///       attribute_path  = "DisplayName"
+///       attribute_value = "ExampleGroup"
+///     }
+///   }
+/// }
+///
+/// output "groupId" {
+///   value = data.aws_identitystore_getgroup.exampleGetGroup.group_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +143,8 @@ import 'get_users_result.dart';
 /// import com.pulumi.aws.identitystore.inputs.GetGroupArgs;
 /// import com.pulumi.aws.identitystore.inputs.GetGroupAlternateIdentifierArgs;
 /// import com.pulumi.aws.identitystore.inputs.GetGroupAlternateIdentifierUniqueAttributeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,6 +316,31 @@ Future<GetGroupResult> getGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_identitystore_getgroup" "exampleGetGroup" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   alternate_identifier = {
+///     unique_attribute = {
+///       attribute_path  = "DisplayName"
+///       attribute_value = "ExampleGroup"
+///     }
+///   }
+/// }
+/// data "aws_identitystore_getgroupmemberships" "exampleGetGroupMemberships" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   group_id          = data.aws_identitystore_getgroup.exampleGetGroup.group_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +354,8 @@ Future<GetGroupResult> getGroup(
 /// import com.pulumi.aws.identitystore.inputs.GetGroupAlternateIdentifierArgs;
 /// import com.pulumi.aws.identitystore.inputs.GetGroupAlternateIdentifierUniqueAttributeArgs;
 /// import com.pulumi.aws.identitystore.inputs.GetGroupMembershipsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -440,6 +490,21 @@ Future<GetGroupMembershipsResult> getGroupMemberships(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_identitystore_getgroups" "exampleGetGroups" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -450,8 +515,8 @@ Future<GetGroupMembershipsResult> getGroupMemberships(
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
 /// import com.pulumi.aws.identitystore.IdentitystoreFunctions;
 /// import com.pulumi.aws.identitystore.inputs.GetGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -596,6 +661,31 @@ Future<GetGroupsResult> getGroups(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_identitystore_getuser" "exampleGetUser" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   alternate_identifier = {
+///     unique_attribute = {
+///       attribute_path  = "UserName"
+///       attribute_value = "ExampleUser"
+///     }
+///   }
+/// }
+///
+/// output "userId" {
+///   value = data.aws_identitystore_getuser.exampleGetUser.user_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -608,8 +698,8 @@ Future<GetGroupsResult> getGroups(
 /// import com.pulumi.aws.identitystore.inputs.GetUserArgs;
 /// import com.pulumi.aws.identitystore.inputs.GetUserAlternateIdentifierArgs;
 /// import com.pulumi.aws.identitystore.inputs.GetUserAlternateIdentifierUniqueAttributeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -736,6 +826,21 @@ Future<GetUserResult> getUser(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+/// data "aws_identitystore_getusers" "exampleGetUsers" {
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -746,8 +851,8 @@ Future<GetUserResult> getUser(
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
 /// import com.pulumi.aws.identitystore.IdentitystoreFunctions;
 /// import com.pulumi.aws.identitystore.inputs.GetUsersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

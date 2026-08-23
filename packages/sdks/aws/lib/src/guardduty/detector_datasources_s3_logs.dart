@@ -25,4 +25,3 @@ class DetectorDatasourcesS3Logs {
     );
   }
 }
-

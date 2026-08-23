@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecServiceDiscoveryDn {
+  /// DNS host name for your virtual node.
   final pulumi.Input<String> hostname;
+  /// Preferred IP version that this virtual node uses.
   final pulumi.Input<String> ipPreference;
+  /// DNS response type for the virtual node.
   final pulumi.Input<String> responseType;
 
   /// Creates a new [GetVirtualNodeSpecServiceDiscoveryDn].
-  /// [hostname] Required.
-  /// [ipPreference] Required.
-  /// [responseType] Required.
+  /// [hostname] DNS host name for your virtual node.
+  /// [ipPreference] Preferred IP version that this virtual node uses.
+  /// [responseType] DNS response type for the virtual node.
   const GetVirtualNodeSpecServiceDiscoveryDn({
     required this.hostname,
     required this.ipPreference,
@@ -33,4 +36,3 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
     );
   }
 }
-

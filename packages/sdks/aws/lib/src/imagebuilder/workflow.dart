@@ -177,6 +177,22 @@ import 'workflow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_imagebuilder_workflow" "example" {
+///   name    = "example"
+///   version = "1.0.0"
+///   type    = "TEST"
+///   data    = "name: example\ndescription: Workflow to test an image\nschemaVersion: 1.0\n\nparameters:\n  - name: waitForActionAtEnd\n    type: boolean\n\nsteps:\n  - name: LaunchTestInstance\n    action: LaunchInstance\n    onFailure: Abort\n    inputs:\n      waitFor: \\\"ssmAgent\\\"\n\n  - name: TerminateTestInstance\n    action: TerminateInstance\n    onFailure: Continue\n    inputs:\n      instanceId.$: \\\"$.stepOutputs.LaunchTestInstance.instanceId\\\"\n\n  - name: WaitForActionAtEnd\n    action: WaitForAction\n    if:\n      booleanEquals: true\n      value: \\\"$.parameters.waitForActionAtEnd\\\"\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +201,8 @@ import 'workflow_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.Workflow;
 /// import com.pulumi.aws.imagebuilder.WorkflowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -308,7 +324,7 @@ class Workflow extends pulumi.CustomResource {
   late final pulumi.Output<String> owner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags for the workflow. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the workflow. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of the workflow. Valid values: `BUILD`, `TEST`.

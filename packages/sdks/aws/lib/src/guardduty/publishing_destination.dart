@@ -39,7 +39,7 @@ import 'publishing_destination_state.dart';
 ///         },
 ///     ],
 /// });
-/// const kmsPol = Promise.all([currentGetRegion, current, currentGetRegion, current, current]).then(([currentGetRegion, current, currentGetRegion1, current1, current2]) => aws.iam.getPolicyDocument({
+/// const kmsPol = Promise.all([currentGetRegion, current]).then(([currentGetRegion, current]) => aws.iam.getPolicyDocument({
 ///     statements: [
 ///         {
 ///             sid: "Allow GuardDuty to encrypt findings",
@@ -53,10 +53,10 @@ import 'publishing_destination_state.dart';
 ///         {
 ///             sid: "Allow all users to modify/delete key (test only)",
 ///             actions: ["kms:*"],
-///             resources: [`arn:aws:kms:${currentGetRegion1.region}:${current1.accountId}:key/*`],
+///             resources: [`arn:aws:kms:${currentGetRegion.region}:${current.accountId}:key/*`],
 ///             principals: [{
 ///                 type: "AWS",
-///                 identifiers: [`arn:aws:iam::${current2.accountId}:root`],
+///                 identifiers: [`arn:aws:iam::${current.accountId}:root`],
 ///             }],
 ///         },
 ///     ],
@@ -68,7 +68,7 @@ import 'publishing_destination_state.dart';
 /// });
 /// const gdBucketPolicy = new aws.s3.BucketPolicy("gd_bucket_policy", {
 ///     bucket: gdBucket.id,
-///     policy: bucketPol.apply(bucketPol => bucketPol.json),
+///     policy: bucketPol.json,
 /// });
 /// const gdKey = new aws.kms.Key("gd_key", {
 ///     description: "Temporary key for AccTest of TF",
@@ -431,17 +431,15 @@ import 'publishing_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "gd_bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: gdBucket.ID(),
+/// 			Bucket: gdBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		gdBucketPolicy, err := s3.NewBucketPolicy(ctx, "gd_bucket_policy", &s3.BucketPolicyArgs{
-/// 			Bucket: gdBucket.ID(),
-/// 			Policy: pulumi.String(bucketPol.ApplyT(func(bucketPol iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &bucketPol.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Bucket: gdBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: bucketPol.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -455,7 +453,7 @@ import 'publishing_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewPublishingDestination(ctx, "test", &guardduty.PublishingDestinationArgs{
-/// 			DetectorId:     testGd.ID(),
+/// 			DetectorId:     testGd.ID().ToIDOutput().ToStringOutput(),
 /// 			DestinationArn: gdBucket.Arn,
 /// 			KmsKeyArn:      gdKey.Arn,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -466,6 +464,87 @@ import 'publishing_destination_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+/// data "aws_iam_getpolicydocument" "bucketPol" {
+///   statements {
+///     sid       = "Allow PutObject"
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.gd_bucket.arn}/*"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["guardduty.amazonaws.com"]
+///     }
+///   }
+///   statements {
+///     sid       = "Allow GetBucketLocation"
+///     actions   = ["s3:GetBucketLocation"]
+///     resources = [aws_s3_bucket.gd_bucket.arn]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["guardduty.amazonaws.com"]
+///     }
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "kmsPol" {
+///   statements {
+///     sid       = "Allow GuardDuty to encrypt findings"
+///     actions   = ["kms:GenerateDataKey"]
+///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["guardduty.amazonaws.com"]
+///     }
+///   }
+///   statements {
+///     sid       = "Allow all users to modify/delete key (test only)"
+///     actions   = ["kms:*"]
+///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_detector" "test_gd" {
+///   enable = true
+/// }
+/// resource "aws_s3_bucket" "gd_bucket" {
+///   bucket        = "example"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketacl" "gd_bucket_acl" {
+///   bucket = aws_s3_bucket.gd_bucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketpolicy" "gd_bucket_policy" {
+///   bucket = aws_s3_bucket.gd_bucket.id
+///   policy = data.aws_iam_getpolicydocument.bucketPol.json
+/// }
+/// resource "aws_kms_key" "gd_key" {
+///   description             = "Temporary key for AccTest of TF"
+///   deletion_window_in_days = 7
+///   policy                  = data.aws_iam_getpolicydocument.kmsPol.json
+/// }
+/// resource "aws_guardduty_publishingdestination" "test" {
+///   depends_on      = [aws_s3_bucketpolicy.gd_bucket_policy]
+///   detector_id     = aws_guardduty_detector.test_gd.id
+///   destination_arn = aws_s3_bucket.gd_bucket.arn
+///   kms_key_arn     = aws_kms_key.gd_key.arn
 /// }
 /// ```
 /// ```java
@@ -481,6 +560,8 @@ import 'publishing_destination_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.guardduty.Detector;
 /// import com.pulumi.aws.guardduty.DetectorArgs;
 /// import com.pulumi.aws.s3.BucketAcl;
@@ -492,8 +573,8 @@ import 'publishing_destination_state.dart';
 /// import com.pulumi.aws.guardduty.PublishingDestination;
 /// import com.pulumi.aws.guardduty.PublishingDestinationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -700,11 +781,13 @@ import 'publishing_destination_state.dart';
 /// $ pulumi import aws:guardduty/publishingDestination:PublishingDestination test a4b86f26fa42e7e7cf0d1c333ea77777:a4b86f27a0e464e4a7e0516d242f1234
 /// ```
 class PublishingDestination extends pulumi.CustomResource {
+  /// Resource ARN.
+  late final pulumi.Output<String> arn;
   /// The bucket arn and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
   late final pulumi.Output<String> destinationArn;
+  /// Destination ID.
+  late final pulumi.Output<String> destinationId;
   /// Currently there is only "S3" available as destination type which is also the default value
-  ///
-  /// &gt; **Note:** In case of missing permissions (S3 Bucket Policy _or_ KMS Key permissions) the resource will fail to create. If the permissions are changed after resource creation, this can be asked from the AWS API via the "DescribePublishingDestination" call (https://docs.aws.amazon.com/cli/latest/reference/guardduty/describe-publishing-destination.html).
   late final pulumi.Output<String?> destinationType;
   /// The detector ID of the GuardDuty.
   late final pulumi.Output<String> detectorId;
@@ -712,6 +795,12 @@ class PublishingDestination extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  ///
+  /// &gt; **Note:** In case of missing permissions (S3 Bucket Policy _or_ KMS Key permissions) the resource will fail to create. If the permissions are changed after resource creation, this can be asked from the AWS API via the "DescribePublishingDestination" call (https://docs.aws.amazon.com/cli/latest/reference/guardduty/describe-publishing-destination.html).
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [PublishingDestination].
   /// [name] The Pulumi resource name.
@@ -727,11 +816,15 @@ class PublishingDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');
+    destinationId = registerOutput<String>('destinationId');
     destinationType = registerOutput<String?>('destinationType');
     detectorId = registerOutput<String>('detectorId');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [PublishingDestination] resource's state with the given [name] and [id].
@@ -757,10 +850,14 @@ class PublishingDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');
+    destinationId = registerOutput<String>('destinationId');
     destinationType = registerOutput<String?>('destinationType');
     detectorId = registerOutput<String>('detectorId');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

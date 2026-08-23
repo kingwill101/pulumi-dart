@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceServiceNetworkEndpoint {
+  /// Unique identifier of the VPC endpoint.
   final pulumi.Input<String> vpcEndpointId;
+  /// Type of the VPC endpoint.
   final pulumi.Input<String> vpcEndpointType;
 
   /// Creates a new [NetworkManagedServiceServiceNetworkEndpoint].
-  /// [vpcEndpointId] Required.
-  /// [vpcEndpointType] Required.
+  /// [vpcEndpointId] Unique identifier of the VPC endpoint.
+  /// [vpcEndpointType] Type of the VPC endpoint.
   const NetworkManagedServiceServiceNetworkEndpoint({
     required this.vpcEndpointId,
     required this.vpcEndpointType,
@@ -28,4 +30,3 @@ class NetworkManagedServiceServiceNetworkEndpoint {
     );
   }
 }
-

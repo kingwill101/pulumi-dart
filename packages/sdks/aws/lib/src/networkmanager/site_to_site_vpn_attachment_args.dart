@@ -11,7 +11,7 @@ class SiteToSiteVpnAttachmentArgs {
   final pulumi.Input<String> coreNetworkId;
   /// The routing policy label to apply to the Site-to-Site VPN attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   final pulumi.Input<String>? routingPolicyLabel;
-  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// ARN of the site-to-site VPN connection.
   ///
@@ -21,7 +21,7 @@ class SiteToSiteVpnAttachmentArgs {
   /// Creates a new [SiteToSiteVpnAttachmentArgs].
   /// [coreNetworkId] ID of a core network for the VPN attachment.
   /// [routingPolicyLabel] The routing policy label to apply to the Site-to-Site VPN attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpnConnectionArn] ARN of the site-to-site VPN connection.
   const SiteToSiteVpnAttachmentArgs({
     required this.coreNetworkId,
@@ -48,4 +48,3 @@ class SiteToSiteVpnAttachmentArgs {
     );
   }
 }
-

@@ -11,17 +11,17 @@ class ConnectorCapacityAutoscaling {
   final pulumi.Input<int>? mcuCount;
   /// The minimum number of workers allocated to the connector.
   final pulumi.Input<int> minWorkerCount;
-  /// The scale-in policy for the connector. See `scale_in_policy` Block for details.
+  /// The scale-in policy for the connector. See `scaleInPolicy` Block for details.
   final pulumi.Input<ConnectorCapacityAutoscalingScaleInPolicy>? scaleInPolicy;
-  /// The scale-out policy for the connector. See `scale_out_policy` Block for details.
+  /// The scale-out policy for the connector. See `scaleOutPolicy` Block for details.
   final pulumi.Input<ConnectorCapacityAutoscalingScaleOutPolicy>? scaleOutPolicy;
 
   /// Creates a new [ConnectorCapacityAutoscaling].
   /// [maxWorkerCount] The maximum number of workers allocated to the connector.
   /// [mcuCount] The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
   /// [minWorkerCount] The minimum number of workers allocated to the connector.
-  /// [scaleInPolicy] The scale-in policy for the connector. See `scale_in_policy` Block for details.
-  /// [scaleOutPolicy] The scale-out policy for the connector. See `scale_out_policy` Block for details.
+  /// [scaleInPolicy] The scale-in policy for the connector. See `scaleInPolicy` Block for details.
+  /// [scaleOutPolicy] The scale-out policy for the connector. See `scaleOutPolicy` Block for details.
   const ConnectorCapacityAutoscaling({
     required this.maxWorkerCount,
     this.mcuCount,
@@ -50,4 +50,3 @@ class ConnectorCapacityAutoscaling {
     );
   }
 }
-

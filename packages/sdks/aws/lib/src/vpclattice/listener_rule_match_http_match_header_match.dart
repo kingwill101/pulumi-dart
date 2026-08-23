@@ -4,19 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_rule_match_http_match_header_match_match.dart';
 
 class ListenerRuleMatchHttpMatchHeaderMatch {
-  /// Indicates whether the match is case sensitive.
-  /// Default is `false`.
+  /// Whether the match is case sensitive. Default is `false`.
   final pulumi.Input<bool>? caseSensitive;
-  /// The header match type.
-  /// See Header Match `match` Block for details.
+  /// Header match type. See `match.http_match.header_matches.match` Block for details.
   final pulumi.Input<ListenerRuleMatchHttpMatchHeaderMatchMatch> match;
-  /// The name of the header.
+  /// Name of the header.
   final pulumi.Input<String> name;
 
   /// Creates a new [ListenerRuleMatchHttpMatchHeaderMatch].
-  /// [caseSensitive] Indicates whether the match is case sensitive.
-  /// [match] The header match type.
-  /// [name] The name of the header.
+  /// [caseSensitive] Whether the match is case sensitive. Default is `false`.
+  /// [match] Header match type. See `match.http_match.header_matches.match` Block for details.
+  /// [name] Name of the header.
   const ListenerRuleMatchHttpMatchHeaderMatch({
     this.caseSensitive,
     required this.match,
@@ -39,4 +37,3 @@ class ListenerRuleMatchHttpMatchHeaderMatch {
     );
   }
 }
-

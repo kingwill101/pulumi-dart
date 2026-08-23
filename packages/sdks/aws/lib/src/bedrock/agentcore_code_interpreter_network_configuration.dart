@@ -6,12 +6,12 @@ import 'agentcore_code_interpreter_network_configuration_vpc_config.dart';
 class AgentcoreCodeInterpreterNetworkConfiguration {
   /// Network mode for the code interpreter. Valid values: `PUBLIC`, `SANDBOX`, `VPC`.
   final pulumi.Input<String> networkMode;
-  /// VPC configuration. See `vpc_config` below.
+  /// VPC configuration. See `vpcConfig` below.
   final pulumi.Input<AgentcoreCodeInterpreterNetworkConfigurationVpcConfig>? vpcConfig;
 
   /// Creates a new [AgentcoreCodeInterpreterNetworkConfiguration].
   /// [networkMode] Network mode for the code interpreter. Valid values: `PUBLIC`, `SANDBOX`, `VPC`.
-  /// [vpcConfig] VPC configuration. See `vpc_config` below.
+  /// [vpcConfig] VPC configuration. See `vpcConfig` below.
   const AgentcoreCodeInterpreterNetworkConfiguration({
     required this.networkMode,
     this.vpcConfig,
@@ -31,4 +31,3 @@ class AgentcoreCodeInterpreterNetworkConfiguration {
     );
   }
 }
-

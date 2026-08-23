@@ -21,6 +21,13 @@ import 'catalog_table_optimizer_state.dart';
 ///     configuration: {
 ///         roleArn: "arn:aws:iam::123456789012:role/example-role",
 ///         enabled: true,
+///         compactionConfiguration: {
+///             icebergConfiguration: {
+///                 strategy: "binpack",
+///                 minInputFiles: 5,
+///                 deleteFileThreshold: 1,
+///             },
+///         },
 ///     },
 ///     type: "compaction",
 /// });
@@ -36,6 +43,13 @@ import 'catalog_table_optimizer_state.dart';
 ///     configuration={
 ///         "role_arn": "arn:aws:iam::123456789012:role/example-role",
 ///         "enabled": True,
+///         "compaction_configuration": {
+///             "iceberg_configuration": {
+///                 "strategy": "binpack",
+///                 "min_input_files": 5,
+///                 "delete_file_threshold": 1,
+///             },
+///         },
 ///     },
 ///     type="compaction")
 /// ```
@@ -56,6 +70,15 @@ import 'catalog_table_optimizer_state.dart';
 ///         {
 ///             RoleArn = "arn:aws:iam::123456789012:role/example-role",
 ///             Enabled = true,
+///             CompactionConfiguration = new Aws.Glue.Inputs.CatalogTableOptimizerConfigurationCompactionConfigurationArgs
+///             {
+///                 IcebergConfiguration = new Aws.Glue.Inputs.CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfigurationArgs
+///                 {
+///                     Strategy = "binpack",
+///                     MinInputFiles = 5,
+///                     DeleteFileThreshold = 1,
+///                 },
+///             },
 ///         },
 ///         Type = "compaction",
 ///     });
@@ -79,6 +102,13 @@ import 'catalog_table_optimizer_state.dart';
 /// 			Configuration: &glue.CatalogTableOptimizerConfigurationArgs{
 /// 				RoleArn: pulumi.String("arn:aws:iam::123456789012:role/example-role"),
 /// 				Enabled: pulumi.Bool(true),
+/// 				CompactionConfiguration: &glue.CatalogTableOptimizerConfigurationCompactionConfigurationArgs{
+/// 					IcebergConfiguration: &glue.CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfigurationArgs{
+/// 						Strategy:            pulumi.String("binpack"),
+/// 						MinInputFiles:       pulumi.Int(5),
+/// 						DeleteFileThreshold: pulumi.Int(1),
+/// 					},
+/// 				},
 /// 			},
 /// 			Type: pulumi.String("compaction"),
 /// 		})
@@ -87,6 +117,33 @@ import 'catalog_table_optimizer_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_catalogtableoptimizer" "example" {
+///   catalog_id    = "123456789012"
+///   database_name = "example_database"
+///   table_name    = "example_table"
+///   configuration = {
+///     role_arn = "arn:aws:iam::123456789012:role/example-role"
+///     enabled  = true
+///     compaction_configuration = {
+///       iceberg_configuration = {
+///         strategy              = "binpack"
+///         min_input_files       = 5
+///         delete_file_threshold = 1
+///       }
+///     }
+///   }
+///   type = "compaction"
 /// }
 /// ```
 /// ```java
@@ -98,8 +155,10 @@ import 'catalog_table_optimizer_state.dart';
 /// import com.pulumi.aws.glue.CatalogTableOptimizer;
 /// import com.pulumi.aws.glue.CatalogTableOptimizerArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationCompactionConfigurationArgs;
+/// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfigurationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,6 +177,13 @@ import 'catalog_table_optimizer_state.dart';
 ///             .configuration(CatalogTableOptimizerConfigurationArgs.builder()
 ///                 .roleArn("arn:aws:iam::123456789012:role/example-role")
 ///                 .enabled(true)
+///                 .compactionConfiguration(CatalogTableOptimizerConfigurationCompactionConfigurationArgs.builder()
+///                     .icebergConfiguration(CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfigurationArgs.builder()
+///                         .strategy("binpack")
+///                         .minInputFiles(5)
+///                         .deleteFileThreshold(1)
+///                         .build())
+///                     .build())
 ///                 .build())
 ///             .type("compaction")
 ///             .build());
@@ -136,6 +202,11 @@ import 'catalog_table_optimizer_state.dart';
 ///       configuration:
 ///         roleArn: arn:aws:iam::123456789012:role/example-role
 ///         enabled: true
+///         compactionConfiguration:
+///           icebergConfiguration:
+///             strategy: binpack
+///             minInputFiles: 5
+///             deleteFileThreshold: 1
 ///       type: compaction
 /// ```
 ///
@@ -252,6 +323,33 @@ import 'catalog_table_optimizer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_catalogtableoptimizer" "example" {
+///   catalog_id    = "123456789012"
+///   database_name = "example_database"
+///   table_name    = "example_table"
+///   configuration = {
+///     role_arn = "arn:aws:iam::123456789012:role/example-role"
+///     enabled  = true
+///     retention_configuration = {
+///       iceberg_configuration = {
+///         snapshot_retention_period_in_days = 7
+///         number_of_snapshots_to_retain     = 3
+///         clean_expired_files               = true
+///       }
+///     }
+///   }
+///   type = "retention"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -263,8 +361,8 @@ import 'catalog_table_optimizer_state.dart';
 /// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationRetentionConfigurationArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,6 +523,32 @@ import 'catalog_table_optimizer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_catalogtableoptimizer" "example" {
+///   catalog_id    = "123456789012"
+///   database_name = "example_database"
+///   table_name    = "example_table"
+///   configuration = {
+///     role_arn = "arn:aws:iam::123456789012:role/example-role"
+///     enabled  = true
+///     orphan_file_deletion_configuration = {
+///       iceberg_configuration = {
+///         orphan_file_retention_period_in_days = 7
+///         location                             = "s3://example-bucket/example_table/"
+///       }
+///     }
+///   }
+///   type = "orphan_file_deletion"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -436,8 +560,8 @@ import 'catalog_table_optimizer_state.dart';
 /// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -506,7 +630,7 @@ class CatalogTableOptimizer extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The name of the table.
   late final pulumi.Output<String> tableName;
-  /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
+  /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
   late final pulumi.Output<String> type;
 
   /// Creates a new [CatalogTableOptimizer].

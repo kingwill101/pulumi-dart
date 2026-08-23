@@ -14,7 +14,7 @@ class GetResourceShareResult {
   /// ID of the AWS account that owns the resource share.
   final String owningAccountId;
   final String region;
-  /// A list of resource ARNs associated with the resource share.
+  /// List of resource ARNs associated with the resource share.
   final List<String> resourceArns;
   final String resourceOwner;
   final String? resourceShareStatus;
@@ -30,7 +30,7 @@ class GetResourceShareResult {
   /// [name] Required.
   /// [owningAccountId] ID of the AWS account that owns the resource share.
   /// [region] Required.
-  /// [resourceArns] A list of resource ARNs associated with the resource share.
+  /// [resourceArns] List of resource ARNs associated with the resource share.
   /// [resourceOwner] Required.
   /// [resourceShareStatus] Optional.
   /// [status] Status of the resource share.
@@ -81,4 +81,3 @@ class GetResourceShareResult {
     );
   }
 }
-

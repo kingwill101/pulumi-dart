@@ -4,12 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_metadata_iceberg.dart';
 
 class TableMetadata {
-  /// Contains details about the metadata for an Iceberg table. This block defines the schema structure for the Apache Iceberg table format.
-  /// See `iceberg` below.
+  /// Details about the metadata for an Iceberg table. This block defines the schema structure for the Apache Iceberg table format. See `iceberg` below.
   final pulumi.Input<TableMetadataIceberg> iceberg;
 
   /// Creates a new [TableMetadata].
-  /// [iceberg] Contains details about the metadata for an Iceberg table. This block defines the schema structure for the Apache Iceberg table format.
+  /// [iceberg] Details about the metadata for an Iceberg table. This block defines the schema structure for the Apache Iceberg table format. See `iceberg` below.
   const TableMetadata({
     required this.iceberg,
   });
@@ -26,4 +25,3 @@ class TableMetadata {
     );
   }
 }
-

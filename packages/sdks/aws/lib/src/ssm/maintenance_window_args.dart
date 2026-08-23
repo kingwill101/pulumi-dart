@@ -31,7 +31,7 @@ class MaintenanceWindowArgs {
   final pulumi.Input<String>? scheduleTimezone;
   /// Timestamp in [ISO-8601 extended format](https://www.iso.org/iso-8601-date-and-time-format.html) when to begin the maintenance window.
   final pulumi.Input<String>? startDate;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [MaintenanceWindowArgs].
@@ -47,7 +47,7 @@ class MaintenanceWindowArgs {
   /// [scheduleOffset] The number of days to wait after the date and time specified by a CRON expression before running the maintenance window. Valid range is `1` to `6`.
   /// [scheduleTimezone] Timezone for schedule in [Internet Assigned Numbers Authority (IANA) Time Zone Database format](https://www.iana.org/time-zones). For example: `America/Los_Angeles`, `etc/UTC`, or `Asia/Seoul`.
   /// [startDate] Timestamp in [ISO-8601 extended format](https://www.iso.org/iso-8601-date-and-time-format.html) when to begin the maintenance window.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const MaintenanceWindowArgs({
     this.allowUnassociatedTargets,
     required this.cutoff,
@@ -100,4 +100,3 @@ class MaintenanceWindowArgs {
     );
   }
 }
-

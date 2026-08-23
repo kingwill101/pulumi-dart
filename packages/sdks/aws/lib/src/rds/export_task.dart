@@ -76,6 +76,23 @@ import 'export_task_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_exporttask" "example" {
+///   export_task_identifier = "example"
+///   source_arn             = exampleAwsDbSnapshot.dbSnapshotArn
+///   s3_bucket_name         = exampleAwsS3Bucket.id
+///   iam_role_arn           = exampleAwsIamRole.arn
+///   kms_key_id             = exampleAwsKmsKey.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'export_task_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.ExportTask;
 /// import com.pulumi.aws.rds.ExportTaskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,7 +192,7 @@ import 'export_task_timeouts.dart';
 /// });
 /// const examplePolicy = new aws.iam.Policy("example", {
 ///     name: "example",
-///     policy: example.apply(example => example.json),
+///     policy: example.json,
 /// });
 /// const exampleRolePolicyAttachment = new aws.iam.RolePolicyAttachment("example", {
 ///     role: exampleRole.name,
@@ -446,7 +463,7 @@ import 'export_task_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: exampleBucket.ID(),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -459,7 +476,7 @@ import 'export_task_timeouts.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "export.rds.amazonaws.com",
 /// 					},
 /// 				},
@@ -510,10 +527,8 @@ import 'export_task_timeouts.dart';
 /// 			},
 /// 		}, nil)
 /// 		examplePolicy, err := iam.NewPolicy(ctx, "example", &iam.PolicyArgs{
-/// 			Name: pulumi.String("example"),
-/// 			Policy: pulumi.String(example.ApplyT(func(example iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &example.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("example"),
+/// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -556,7 +571,7 @@ import 'export_task_timeouts.dart';
 /// 		_, err = rds.NewExportTask(ctx, "example", &rds.ExportTaskArgs{
 /// 			ExportTaskIdentifier: pulumi.String("example"),
 /// 			SourceArn:            exampleSnapshot.DbSnapshotArn,
-/// 			S3BucketName:         exampleBucket.ID(),
+/// 			S3BucketName:         exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			IamRoleArn:           exampleRole.Arn,
 /// 			KmsKeyId:             exampleKey.Arn,
 /// 			ExportOnlies: pulumi.StringArray{
@@ -569,6 +584,89 @@ import 'export_task_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     actions   = ["s3:ListAllMyBuckets"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     actions   = ["s3:GetBucketLocation", "s3:ListBucket"]
+///     resources = [aws_s3_bucket.example.arn]
+///   }
+///   statements {
+///     actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
+///     resources = ["${aws_s3_bucket.example.arn}/*"]
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "export.rds.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_iam_policy" "example" {
+///   name   = "example"
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   role       = aws_iam_role.example.name
+///   policy_arn = aws_iam_policy.example.arn
+/// }
+/// resource "aws_kms_key" "example" {
+///   deletion_window_in_days = 10
+/// }
+/// resource "aws_rds_instance" "example" {
+///   identifier           = "example"
+///   allocated_storage    = 10
+///   db_name              = "test"
+///   engine               = "mysql"
+///   engine_version       = "5.7"
+///   instance_class       = "db.t3.micro"
+///   username             = "foo"
+///   password             = "foobarbaz"
+///   parameter_group_name = "default.mysql5.7"
+///   skip_final_snapshot  = true
+/// }
+/// resource "aws_rds_snapshot" "example" {
+///   db_instance_identifier = aws_rds_instance.example.identifier
+///   db_snapshot_identifier = "example"
+/// }
+/// resource "aws_rds_exporttask" "example" {
+///   export_task_identifier = "example"
+///   source_arn             = aws_rds_snapshot.example.db_snapshot_arn
+///   s3_bucket_name         = aws_s3_bucket.example.id
+///   iam_role_arn           = aws_iam_role.example.arn
+///   kms_key_id             = aws_kms_key.example.arn
+///   export_onlies          = ["database"]
+///   s3_prefix              = "my_prefix/example"
 /// }
 /// ```
 /// ```java
@@ -585,6 +683,7 @@ import 'export_task_timeouts.dart';
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.iam.Policy;
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -598,8 +697,8 @@ import 'export_task_timeouts.dart';
 /// import com.pulumi.aws.rds.ExportTask;
 /// import com.pulumi.aws.rds.ExportTaskArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -806,7 +905,7 @@ import 'export_task_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a RDS (Relational Database) Export Task using the `export_task_identifier`. For example:
+/// Using `pulumi import`, import a RDS (Relational Database) Export Task using the `exportTaskIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/exportTask:ExportTask example example

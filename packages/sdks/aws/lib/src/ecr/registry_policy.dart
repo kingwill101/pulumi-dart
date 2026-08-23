@@ -138,7 +138,7 @@ import 'registry_policy_state.dart';
 /// 				map[string]interface{}{
 /// 					"Sid":    "testpolicy",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": fmt.Sprintf("arn:%v:iam::%v:root", currentGetPartition.Partition, current.AccountId),
 /// 					},
 /// 					"Action": []string{
@@ -155,13 +155,44 @@ import 'registry_policy_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = ecr.NewRegistryPolicy(ctx, "example", &ecr.RegistryPolicyArgs{
-/// 			Policy: pulumi.String(json0),
+/// 			Policy: json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+///
+/// resource "aws_ecr_registrypolicy" "example" {
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"    = "testpolicy"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///       }
+///       "Action"   = ["ecr:ReplicateImage"]
+///       "Resource" = ["arn:${data.aws_getpartition.currentGetPartition.partition}:ecr:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:repository/*"]
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -177,8 +208,8 @@ import 'registry_policy_state.dart';
 /// import com.pulumi.aws.ecr.RegistryPolicy;
 /// import com.pulumi.aws.ecr.RegistryPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

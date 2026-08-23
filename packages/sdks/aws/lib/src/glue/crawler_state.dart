@@ -62,11 +62,11 @@ class CrawlerState {
   final pulumi.Input<String>? securityConfiguration;
   /// The table prefix used for catalog tables that are created.
   final pulumi.Input<String>? tablePrefix;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// &gt; **NOTE:** Must specify at least one of `dynamodb_target`, `jdbc_target`, `s3_target`, `mongodb_target` or `catalog_target`.
+  /// &gt; **NOTE:** Must specify at least one of `dynamodbTarget`, `jdbcTarget`, `s3Target`, `mongodbTarget` or `catalogTarget`.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [CrawlerState].
@@ -93,8 +93,8 @@ class CrawlerState {
   /// [schemaChangePolicy] Policy for the crawler's update and deletion behavior. See Schema Change Policy below.
   /// [securityConfiguration] The name of Security Configuration to be used by the crawler
   /// [tablePrefix] The table prefix used for catalog tables that are created.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const CrawlerState({
     this.arn,
     this.catalogTargets,
@@ -183,4 +183,3 @@ class CrawlerState {
     );
   }
 }
-

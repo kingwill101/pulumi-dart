@@ -1,4 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'arn_build_args.dart';
+import 'arn_parse_args.dart';
+import 'arn_parse_result.dart';
 import 'get_arn_args.dart';
 import 'get_arn_result.dart';
 import 'get_availability_zone_args.dart';
@@ -23,6 +26,55 @@ import 'get_service_args.dart';
 import 'get_service_principal_args.dart';
 import 'get_service_principal_result.dart';
 import 'get_service_result.dart';
+import 'trim_iam_role_path_args.dart';
+import 'user_agent_args.dart';
+
+/// Builds an ARN from its constituent parts.
+///
+/// See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for additional information on Amazon Resource Names.
+///
+/// ## Signature
+///
+/// ```text
+/// arn_build(partition string, service string, region string, account_id string, resource string) string
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_arn_build_arn_build_args_doc}
+/// [options] Invoke options controlling this call.
+Future<Map<String, dynamic>> arnBuild(
+  ArnBuildArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  return await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/arnBuild:arnBuild',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+}
+
+/// Parses an ARN into its constituent parts.
+///
+/// See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for additional information on Amazon Resource Names.
+///
+/// ## Signature
+///
+/// ```text
+/// arn_parse(arn string) object
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_arn_parse_arn_parse_args_doc}
+/// [options] Invoke options controlling this call.
+Future<ArnParseResult> arnParse(
+  ArnParseArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/arnParse:arnParse',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return ArnParseResult.fromMap(result);
+}
 
 /// Parses an ARN into its constituent parts.
 ///
@@ -78,6 +130,19 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getarn" "dbInstance" {
+///   arn = "arn:aws:rds:eu-west-1:123456789012:db:mysql-db"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +151,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetArnArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,16 +242,16 @@ Future<GetArnResult> getArn(
 /// const exampleVpc = new aws.ec2.Vpc("example", {cidrBlock: example.then(example => std.cidrsubnet({
 ///     input: "10.0.0.0/8",
 ///     newbits: 4,
-///     netnum: regionNumber[example.region],
+///     netnum: Number(regionNumber[example.region]),
 /// })).then(invoke => invoke.result)});
 /// // Create a subnet for the AZ within the regional VPC
 /// const exampleSubnet = new aws.ec2.Subnet("example", {
 ///     vpcId: exampleVpc.id,
-///     cidrBlock: pulumi.all([exampleVpc.cidrBlock, example]).apply(([cidrBlock, example]) => std.cidrsubnetOutput({
-///         input: cidrBlock,
+///     cidrBlock: std.cidrsubnetOutput({
+///         input: exampleVpc.cidrBlock,
 ///         newbits: 4,
-///         netnum: azNumber[example.nameSuffix],
-///     })).apply(invoke => invoke.result),
+///         netnum: output(example.then(example => azNumber[example.nameSuffix])).apply(x =>Number(x)),
+///     }).result,
 /// });
 /// ```
 /// ```python
@@ -224,9 +289,9 @@ Future<GetArnResult> getArn(
 /// # Create a subnet for the AZ within the regional VPC
 /// example_subnet = aws.ec2.Subnet("example",
 ///     vpc_id=example_vpc.id,
-///     cidr_block=example_vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet(input=cidr_block,
+///     cidr_block=std.cidrsubnet_output(input=example_vpc.cidr_block,
 ///         newbits=4,
-///         netnum=az_number[example.name_suffix])).apply(lambda invoke: invoke.result))
+///         netnum=az_number[example.name_suffix]).result)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -277,16 +342,11 @@ Future<GetArnResult> getArn(
 ///     var exampleSubnet = new Aws.Ec2.Subnet("example", new()
 ///     {
 ///         VpcId = exampleVpc.Id,
-///         CidrBlock = Output.Tuple(exampleVpc.CidrBlock, example).Apply(values =>
+///         CidrBlock = Std.Cidrsubnet.Invoke(new()
 ///         {
-///             var cidrBlock = values.Item1;
-///             var example = values.Item2;
-///             return Std.Cidrsubnet.Invoke(new()
-///             {
-///                 Input = cidrBlock,
-///                 Newbits = 4,
-///                 Netnum = azNumber[example.Apply(getAvailabilityZoneResult => getAvailabilityZoneResult.NameSuffix)],
-///             });
+///             Input = exampleVpc.CidrBlock,
+///             Newbits = 4,
+///             Netnum = azNumber[example.Apply(getAvailabilityZoneResult => getAvailabilityZoneResult.NameSuffix)],
 ///         }).Apply(invoke => invoke.Result),
 ///     });
 ///
@@ -302,75 +362,116 @@ Future<GetArnResult> getArn(
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// cfg := config.New(ctx, "")
-/// regionNumber := map[string]interface{}{
-/// "ap-northeast-1": 5,
-/// "eu-central-1": 4,
-/// "us-east-1": 1,
-/// "us-west-1": 2,
-/// "us-west-2": 3,
-/// };
-/// if param := cfg.GetObject("regionNumber"); param != nil {
-/// regionNumber = param
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cfg := config.New(ctx, "")
+/// 		regionNumber := map[string]int{
+/// 			"ap-northeast-1": 5,
+/// 			"eu-central-1":   4,
+/// 			"us-east-1":      1,
+/// 			"us-west-1":      2,
+/// 			"us-west-2":      3,
+/// 		}
+/// 		if param := cfg.GetObject("regionNumber"); param != nil {
+/// 			regionNumber = param
+/// 		}
+/// 		azNumber := map[string]int{
+/// 			"a": 1,
+/// 			"b": 2,
+/// 			"c": 3,
+/// 			"d": 4,
+/// 			"e": 5,
+/// 			"f": 6,
+/// 		}
+/// 		if param := cfg.GetObject("azNumber"); param != nil {
+/// 			azNumber = param
+/// 		}
+/// 		// Retrieve the AZ where we want to create network resources
+/// 		// This must be in the region selected on the AWS provider.
+/// 		example, err := aws.GetAvailabilityZone(ctx, &aws.GetAvailabilityZoneArgs{
+/// 			Name: pulumi.StringRef("eu-central-1a"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+/// 			Input:   "10.0.0.0/8",
+/// 			Newbits: 4,
+/// 			Netnum:  regionNumber[example.Region],
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// Create a VPC for the region associated with the AZ
+/// 		exampleVpc, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
+/// 			CidrBlock: pulumi.String(invokeCidrsubnet.Result),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// Create a subnet for the AZ within the regional VPC
+/// 		_, err = ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
+/// 			VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// 				Input:   exampleVpc.CidrBlock,
+/// 				Newbits: pulumi.Int(4),
+/// 				Netnum:  pulumi.Int(azNumber[example.NameSuffix]),
+/// 			}, nil).Result(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// azNumber := map[string]interface{}{
-/// "a": 1,
-/// "b": 2,
-/// "c": 3,
-/// "d": 4,
-/// "e": 5,
-/// "f": 6,
-/// };
-/// if param := cfg.GetObject("azNumber"); param != nil {
-/// azNumber = param
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// // Retrieve the AZ where we want to create network resources
-/// // This must be in the region selected on the AWS provider.
-/// example, err := aws.GetAvailabilityZone(ctx, &aws.GetAvailabilityZoneArgs{
-/// Name: pulumi.StringRef("eu-central-1a"),
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_getavailabilityzone" "example" {
+///   name = "eu-central-1a"
 /// }
-/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: "10.0.0.0/8",
-/// Newbits: 4,
-/// Netnum: regionNumber[example.Region],
-/// }, nil)
-/// if err != nil {
-/// return err
+///
+/// # Create a VPC for the region associated with the AZ
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = cidrsubnet("10.0.0.0/8", 4, var.regionNumber[data.aws_getavailabilityzone.example.region])
 /// }
-/// // Create a VPC for the region associated with the AZ
-/// exampleVpc, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
-/// CidrBlock: pulumi.String(invokeCidrsubnet.Result),
-/// })
-/// if err != nil {
-/// return err
+/// # Create a subnet for the AZ within the regional VPC
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id     = aws_ec2_vpc.example.id
+///   cidr_block = cidrsubnet(aws_ec2_vpc.example.cidr_block, 4, var.azNumber[data.aws_getavailabilityzone.example.name_suffix])
 /// }
-/// invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-/// Input: cidrBlock,
-/// Newbits: 4,
-/// Netnum: pulumi.Int(azNumber[example.NameSuffix]),
-/// }, nil)
-/// if err != nil {
-/// return err
+/// variable "regionNumber" {
+///   default = {
+///     "ap-northeast-1" = 5
+///     "eu-central-1"   = 4
+///     "us-east-1"      = 1
+///     "us-west-1"      = 2
+///     "us-west-2"      = 3
+///   }
 /// }
-/// // Create a subnet for the AZ within the regional VPC
-/// _, err = ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// VpcId: exampleVpc.ID(),
-/// CidrBlock: pulumi.String(exampleVpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+/// variable "azNumber" {
+///   default = {
+///     "a" = 1
+///     "b" = 2
+///     "c" = 3
+///     "d" = 4
+///     "e" = 5
+///     "f" = 6
+///   }
 /// }
-/// return nil
-/// })
-/// }
+/// # Retrieve the AZ where we want to create network resources
+/// # This must be in the region selected on the AWS provider.
 /// ```
 /// ```java
 /// package generated_program;
@@ -386,8 +487,8 @@ Future<GetArnResult> getArn(
 /// import com.pulumi.std.inputs.CidrsubnetArgs;
 /// import com.pulumi.aws.ec2.Subnet;
 /// import com.pulumi.aws.ec2.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -433,11 +534,11 @@ Future<GetArnResult> getArn(
 ///         // Create a subnet for the AZ within the regional VPC
 ///         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()
 ///             .vpcId(exampleVpc.id())
-///             .cidrBlock(exampleVpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                 .input(_cidrBlock)
+///             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                 .input(exampleVpc.cidrBlock())
 ///                 .newbits(4)
 ///                 .netnum(azNumber[example.nameSuffix()])
-///                 .build())).applyValue(_invoke -> _invoke.result()))
+///                 .build()).applyValue(_invoke -> _invoke.result()))
 ///             .build());
 ///
 ///     }
@@ -556,6 +657,28 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+/// }
+///
+/// # e.g., Create subnets in the first two available availability zones
+/// resource "aws_ec2_subnet" "primary" {
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+/// }
+/// resource "aws_ec2_subnet" "secondary" {
+///   availability_zone = data.aws_getavailabilityzones.available.names[1]
+/// }
+/// # Declare the data source
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -566,8 +689,8 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
 /// import com.pulumi.aws.ec2.Subnet;
 /// import com.pulumi.aws.ec2.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -706,6 +829,23 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "example" {
+///   all_availability_zones = true
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["not-opted-in", "opted-in"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -714,8 +854,9 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -830,6 +971,22 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "example" {
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["opt-in-not-required"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -838,8 +995,9 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -902,34 +1060,34 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///     bucket: billingLogs.id,
 ///     acl: "private",
 /// });
-/// const allowBillingLogging = pulumi.all([main, billingLogs.arn, main, billingLogs.arn]).apply(([main, billingLogsArn, main1, billingLogsArn1]) => aws.iam.getPolicyDocumentOutput({
+/// const allowBillingLogging = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
 ///         {
 ///             effect: "Allow",
 ///             principals: [{
 ///                 type: "AWS",
-///                 identifiers: [main.arn],
+///                 identifiers: [main.then(main => main.arn)],
 ///             }],
 ///             actions: [
 ///                 "s3:GetBucketAcl",
 ///                 "s3:GetBucketPolicy",
 ///             ],
-///             resources: [billingLogsArn],
+///             resources: [billingLogs.arn],
 ///         },
 ///         {
 ///             effect: "Allow",
 ///             principals: [{
 ///                 type: "AWS",
-///                 identifiers: [main1.arn],
+///                 identifiers: [main.then(main => main.arn)],
 ///             }],
 ///             actions: ["s3:PutObject"],
-///             resources: [`${billingLogsArn1}/*`],
+///             resources: [pulumi.interpolate`${billingLogs.arn}/*`],
 ///         },
 ///     ],
-/// }));
+/// });
 /// const allowBillingLoggingBucketPolicy = new aws.s3.BucketPolicy("allow_billing_logging", {
 ///     bucket: billingLogs.id,
-///     policy: allowBillingLogging.apply(allowBillingLogging => allowBillingLogging.json),
+///     policy: allowBillingLogging.json,
 /// });
 /// ```
 /// ```python
@@ -941,10 +1099,7 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// billing_logs_acl = aws.s3.BucketAcl("billing_logs_acl",
 ///     bucket=billing_logs.id,
 ///     acl="private")
-/// allow_billing_logging = pulumi.Output.all(
-///     billingLogsArn=billing_logs.arn,
-///     billingLogsArn1=billing_logs.arn
-/// ).apply(lambda resolved_outputs: aws.iam.get_policy_document(statements=[
+/// allow_billing_logging = aws.iam.get_policy_document_output(statements=[
 ///     {
 ///         "effect": "Allow",
 ///         "principals": [{
@@ -955,7 +1110,7 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///             "s3:GetBucketAcl",
 ///             "s3:GetBucketPolicy",
 ///         ],
-///         "resources": [resolved_outputs['billingLogsArn']],
+///         "resources": [billing_logs.arn],
 ///     },
 ///     {
 ///         "effect": "Allow",
@@ -964,10 +1119,9 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///             "identifiers": [main.arn],
 ///         }],
 ///         "actions": ["s3:PutObject"],
-///         "resources": [f"{resolved_outputs['billingLogsArn1']}/*"],
+///         "resources": [billing_logs.arn.apply(lambda arn: f"{arn}/*")],
 ///     },
-/// ]))
-///
+/// ])
 /// allow_billing_logging_bucket_policy = aws.s3.BucketPolicy("allow_billing_logging",
 ///     bucket=billing_logs.id,
 ///     policy=allow_billing_logging.json)
@@ -997,12 +1151,12 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -1021,12 +1175,12 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///                     billingLogs.Arn,
 ///                 },
 ///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -1066,80 +1220,120 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// main, err := aws.GetBillingServiceAccount(ctx, &aws.GetBillingServiceAccountArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		main, err := aws.GetBillingServiceAccount(ctx, &aws.GetBillingServiceAccountArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		billingLogs, err := s3.NewBucket(ctx, "billing_logs", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("my-billing-tf-test-bucket"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = s3.NewBucketAcl(ctx, "billing_logs_acl", &s3.BucketAclArgs{
+/// 			Bucket: billingLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Acl:    pulumi.String("private"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		allowBillingLogging := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String(main.Arn),
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:GetBucketAcl"),
+/// 						pulumi.String("s3:GetBucketPolicy"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						billingLogs.Arn,
+/// 					},
+/// 				},
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String(main.Arn),
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						billingLogs.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/*", arn), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = s3.NewBucketPolicy(ctx, "allow_billing_logging", &s3.BucketPolicyArgs{
+/// 			Bucket: billingLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: allowBillingLogging.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// billingLogs, err := s3.NewBucket(ctx, "billing_logs", &s3.BucketArgs{
-/// Bucket: pulumi.String("my-billing-tf-test-bucket"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// _, err = s3.NewBucketAcl(ctx, "billing_logs_acl", &s3.BucketAclArgs{
-/// Bucket: billingLogs.ID(),
-/// Acl: pulumi.String("private"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_getbillingserviceaccount" "main" {
 /// }
-/// allowBillingLogging := pulumi.All(billingLogs.Arn,billingLogs.Arn).ApplyT(func(_args []interface{}) (iam.GetPolicyDocumentResult, error) {
-/// billingLogsArn := _args[0].(string)
-/// billingLogsArn1 := _args[1].(string)
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement(pulumi.Array{
-/// iam.GetPolicyDocumentStatement{
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// main.Arn,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "s3:GetBucketAcl",
-/// "s3:GetBucketPolicy",
-/// },
-/// Resources: []string{
-/// billingLogsArn,
-/// },
-/// },
-/// iam.GetPolicyDocumentStatement{
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// main.Arn,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "s3:PutObject",
-/// },
-/// Resources: []string{
-/// fmt.Sprintf("%v/*", billingLogsArn1),
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = s3.NewBucketPolicy(ctx, "allow_billing_logging", &s3.BucketPolicyArgs{
-/// Bucket: billingLogs.ID(),
-/// Policy: pulumi.String(allowBillingLogging.ApplyT(func(allowBillingLogging iam.GetPolicyDocumentResult) (*string, error) {
-/// return &allowBillingLogging.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "allowBillingLogging" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [data.aws_getbillingserviceaccount.main.arn]
+///     }
+///     actions   = ["s3:GetBucketAcl", "s3:GetBucketPolicy"]
+///     resources = [aws_s3_bucket.billing_logs.arn]
+///   }
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [data.aws_getbillingserviceaccount.main.arn]
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.billing_logs.arn}/*"]
+///   }
 /// }
-/// return nil
-/// })
+///
+/// resource "aws_s3_bucket" "billing_logs" {
+///   bucket = "my-billing-tf-test-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "billing_logs_acl" {
+///   bucket = aws_s3_bucket.billing_logs.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketpolicy" "allow_billing_logging" {
+///   bucket = aws_s3_bucket.billing_logs.id
+///   policy = data.aws_iam_getpolicydocument.allowBillingLogging.json
 /// }
 /// ```
 /// ```java
@@ -1156,10 +1350,12 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1183,37 +1379,33 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///             .acl("private")
 ///             .build());
 ///
-///         final var allowBillingLogging = Output.tuple(billingLogs.arn(), billingLogs.arn()).applyValue(values -> {
-///             var billingLogsArn = values.t1;
-///             var billingLogsArn1 = values.t2;
-///             return IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///                 .statements(
-///                     GetPolicyDocumentStatementArgs.builder()
-///                         .effect("Allow")
-///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                             .type("AWS")
-///                             .identifiers(main.arn())
-///                             .build())
-///                         .actions(
-///                             "s3:GetBucketAcl",
-///                             "s3:GetBucketPolicy")
-///                         .resources(billingLogsArn)
-///                         .build(),
-///                     GetPolicyDocumentStatementArgs.builder()
-///                         .effect("Allow")
-///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                             .type("AWS")
-///                             .identifiers(main.arn())
-///                             .build())
-///                         .actions("s3:PutObject")
-///                         .resources(String.format("%s/*", billingLogsArn1))
+///         final var allowBillingLogging = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///             .statements(
+///                 GetPolicyDocumentStatementArgs.builder()
+///                     .effect("Allow")
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers(main.arn())
 ///                         .build())
-///                 .build());
-///         });
+///                     .actions(
+///                         "s3:GetBucketAcl",
+///                         "s3:GetBucketPolicy")
+///                     .resources(billingLogs.arn())
+///                     .build(),
+///                 GetPolicyDocumentStatementArgs.builder()
+///                     .effect("Allow")
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers(main.arn())
+///                         .build())
+///                     .actions("s3:PutObject")
+///                     .resources(billingLogs.arn().applyValue(_arn -> String.format("%s/*", _arn)))
+///                     .build())
+///             .build());
 ///
 ///         var allowBillingLoggingBucketPolicy = new BucketPolicy("allowBillingLoggingBucketPolicy", BucketPolicyArgs.builder()
 ///             .bucket(billingLogs.id())
-///             .policy(allowBillingLogging.json())
+///             .policy(allowBillingLogging.applyValue(_allowBillingLogging -> _allowBillingLogging.json()))
 ///             .build());
 ///
 ///     }
@@ -1346,6 +1538,28 @@ Future<GetBillingServiceAccountResult> getBillingServiceAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// output "accountId" {
+///   value = data.aws_getcalleridentity.current.account_id
+/// }
+/// output "callerArn" {
+///   value = data.aws_getcalleridentity.current.arn
+/// }
+/// output "callerUser" {
+///   value = data.aws_getcalleridentity.current.user_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1354,8 +1568,8 @@ Future<GetBillingServiceAccountResult> getBillingServiceAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1453,6 +1667,18 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getdefaulttags" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1461,8 +1687,8 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetDefaultTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1508,11 +1734,11 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 /// import pulumi_aws as aws
 ///
 /// example = aws.get_default_tags()
-/// example_group = aws.autoscaling.Group("example", tags=[{"key": k, "value": v} for k, v in example.tags].apply(lambda entries: [{
-///     "key": entry["key"],
-///     "value": entry["value"],
-///     "propagateAtLaunch": True,
-/// } for entry in entries]))
+/// example_group = aws.autoscaling.Group("example", tags=[{"key": k, "value": v} for k, v in sorted(example.tags.items())].apply(lambda entries: [aws.autoscaling.GroupTagArgs(
+///     key=entry["key"],
+///     value=entry["value"],
+///     propagate_at_launch=True,
+/// ) for entry in entries]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1530,6 +1756,29 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getdefaulttags" "example" {
+/// }
+///
+/// resource "aws_autoscaling_group" "example" {
+///   dynamic "tags" {
+///     for_each = entries(data.aws_getdefaulttags.example.tags)
+///     content {
+///       key                 = tags.value.key
+///       value               = tags.value.value
+///       propagate_at_launch = true
+///     }
+///   }
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_default_tags_get_default_tags_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1573,7 +1822,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///     }],
 ///     tags: {
 ///         CreateDate: europeanEc2.then(europeanEc2 => europeanEc2.createDate),
-///         SyncToken: europeanEc2.then(europeanEc2 => europeanEc2.syncToken),
+///         SyncToken: output(europeanEc2.then(europeanEc2 => europeanEc2.syncToken)).apply(x =>String(x)),
 ///     },
 /// });
 /// ```
@@ -1597,7 +1846,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///     }],
 ///     tags={
 ///         "CreateDate": european_ec2.create_date,
-///         "SyncToken": european_ec2.sync_token,
+///         "SyncToken": output(european_ec2.sync_token).apply(lambda x: str(x)),
 ///     })
 /// ```
 /// ```csharp
@@ -1674,8 +1923,8 @@ Future<GetDefaultTagsResult> getDefaultTags(
 /// 					FromPort:       pulumi.Int(443),
 /// 					ToPort:         pulumi.Int(443),
 /// 					Protocol:       pulumi.String("tcp"),
-/// 					CidrBlocks:     interface{}(europeanEc2.CidrBlocks),
-/// 					Ipv6CidrBlocks: interface{}(europeanEc2.Ipv6CidrBlocks),
+/// 					CidrBlocks:     toPulumiStringArray(europeanEc2.CidrBlocks),
+/// 					Ipv6CidrBlocks: toPulumiStringArray(europeanEc2.Ipv6CidrBlocks),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -1689,6 +1938,42 @@ Future<GetDefaultTagsResult> getDefaultTags(
 /// 		return nil
 /// 	})
 /// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getipranges" "europeanEc2" {
+///   regions  = ["eu-west-1", "eu-central-1"]
+///   services = ["ec2"]
+/// }
+///
+/// resource "aws_ec2_securitygroup" "from_europe" {
+///   name = "from_europe"
+///   ingress {
+///     from_port        = "443"
+///     to_port          = "443"
+///     protocol         = "tcp"
+///     cidr_blocks      = data.aws_getipranges.europeanEc2.cidr_blocks
+///     ipv6_cidr_blocks = data.aws_getipranges.europeanEc2.ipv6_cidr_blocks
+///   }
+///   tags = {
+///     "CreateDate" = data.aws_getipranges.europeanEc2.create_date
+///     "SyncToken"  = data.aws_getipranges.europeanEc2.sync_token
+///   }
+/// }
 /// ```
 /// ```java
 /// package generated_program;
@@ -1701,8 +1986,8 @@ Future<GetDefaultTagsResult> getDefaultTags(
 /// import com.pulumi.aws.ec2.SecurityGroup;
 /// import com.pulumi.aws.ec2.SecurityGroupArgs;
 /// import com.pulumi.aws.ec2.inputs.SecurityGroupIngressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1879,6 +2164,25 @@ Future<GetIpRangesResult> getIpRanges(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "s3Policy" {
+///   statements {
+///     sid       = "1"
+///     actions   = ["s3:ListBucket"]
+///     resources = ["arn:${data.aws_getpartition.current.partition}:s3:::my-bucket"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1889,8 +2193,9 @@ Future<GetIpRangesResult> getIpRanges(
 /// import com.pulumi.aws.inputs.GetPartitionArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2003,6 +2308,18 @@ Future<GetPartitionResult> getPartition(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2011,8 +2328,8 @@ Future<GetPartitionResult> getPartition(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2101,6 +2418,18 @@ Future<GetRegionResult> getRegion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregions" "current" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2109,8 +2438,8 @@ Future<GetRegionResult> getRegion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2189,6 +2518,19 @@ Future<GetRegionResult> getRegion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregions" "current" {
+///   all_regions = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2197,8 +2539,8 @@ Future<GetRegionResult> getRegion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2227,7 +2569,7 @@ Future<GetRegionResult> getRegion(
 /// ```
 ///
 ///
-/// To see regions that are filtered by `"not-opted-in"`, the `all_regions` argument needs to be set to `true` or no results will be returned.
+/// To see regions that are filtered by `"not-opted-in"`, the `allRegions` argument needs to be set to `true` or no results will be returned.
 ///
 ///
 /// ```typescript
@@ -2306,6 +2648,23 @@ Future<GetRegionResult> getRegion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregions" "current" {
+///   all_regions = true
+///   filters {
+///     name   = "opt-in-status"
+///     values = ["not-opted-in"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2314,8 +2673,9 @@ Future<GetRegionResult> getRegion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.inputs.GetRegionsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2433,6 +2793,22 @@ Future<GetRegionsResult> getRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getservice" "test" {
+///   region     = data.aws_getregion.current.region
+///   service_id = "ec2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2442,8 +2818,8 @@ Future<GetRegionsResult> getRegions(
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2533,6 +2909,19 @@ Future<GetRegionsResult> getRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getservice" "s3" {
+///   reverse_dns_name = "cn.com.amazonaws.cn-north-1.s3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2541,8 +2930,8 @@ Future<GetRegionsResult> getRegions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2623,6 +3012,19 @@ Future<GetRegionsResult> getRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getservice" "s3" {
+///   reverse_dns_name = "com.amazonaws.us-gov-west-1.waf"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2631,8 +3033,8 @@ Future<GetRegionsResult> getRegions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2747,6 +3149,23 @@ Future<GetServiceResult> getService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getserviceprincipal" "current" {
+///   service_name = "s3"
+/// }
+/// data "aws_getserviceprincipal" "test" {
+///   service_name = "s3"
+///   region       = "us-iso-east-1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2755,8 +3174,8 @@ Future<GetServiceResult> getService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetServicePrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2807,4 +3226,51 @@ Future<GetServicePrincipalResult> getServicePrincipal(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServicePrincipalResult.fromMap(result);
+}
+
+/// Trims the path prefix from an IAM role Amazon Resource Name (ARN).
+/// This function can be used when services require role ARNs to be passed without a path.
+///
+/// See the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awsidentityandaccessmanagementiam.html#awsidentityandaccessmanagementiam-resources-for-iam-policies) for additional information on IAM role ARNs.
+///
+/// ## Signature
+///
+/// ```text
+/// trim_iam_role_path(arn string) string
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_trim_iam_role_path_trim_iam_role_path_args_doc}
+/// [options] Invoke options controlling this call.
+Future<Map<String, dynamic>> trimIamRolePath(
+  TrimIamRolePathArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  return await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/trimIamRolePath:trimIamRolePath',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+}
+
+/// Formats a User-Agent product for use with the `userAgent` argument in the `provider` block.
+///
+/// &gt; Functions cannot be used in the `terraform` block, meaning this utility cannot be used with the `providerMeta` `userAgent` argument.
+///
+/// ## Signature
+///
+/// ```text
+/// user_agent(product_name string, product_version string, comment string) string
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_user_agent_user_agent_args_doc}
+/// [options] Invoke options controlling this call.
+Future<Map<String, dynamic>> userAgent(
+  UserAgentArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  return await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/userAgent:userAgent',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
 }

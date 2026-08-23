@@ -22,6 +22,7 @@ class GetLayerVersionResult {
   /// ARN of the Lambda Layer without version.
   final String layerArn;
   final String layerName;
+  final String layerVersionArn;
   /// License info associated with the specific Lambda Layer version.
   final String licenseInfo;
   final String region;
@@ -29,11 +30,10 @@ class GetLayerVersionResult {
   final String signingJobArn;
   /// ARN for a signing profile version.
   final String signingProfileVersionArn;
-  /// (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
+  /// (**Deprecated** use `codeSha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   final String sourceCodeHash;
   /// Size in bytes of the function .zip file.
   final int sourceCodeSize;
-  /// Lambda Layer version.
   final int version;
 
   /// Creates a new [GetLayerVersionResult].
@@ -48,13 +48,14 @@ class GetLayerVersionResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [layerArn] ARN of the Lambda Layer without version.
   /// [layerName] Required.
+  /// [layerVersionArn] Required.
   /// [licenseInfo] License info associated with the specific Lambda Layer version.
   /// [region] Required.
   /// [signingJobArn] ARN of a signing job.
   /// [signingProfileVersionArn] ARN for a signing profile version.
-  /// [sourceCodeHash] (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
+  /// [sourceCodeHash] (**Deprecated** use `codeSha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   /// [sourceCodeSize] Size in bytes of the function .zip file.
-  /// [version] Lambda Layer version.
+  /// [version] Required.
   const GetLayerVersionResult({
     required this.arn,
     required this.codeSha256,
@@ -67,6 +68,7 @@ class GetLayerVersionResult {
     required this.id,
     required this.layerArn,
     required this.layerName,
+    required this.layerVersionArn,
     required this.licenseInfo,
     required this.region,
     required this.signingJobArn,
@@ -89,6 +91,7 @@ class GetLayerVersionResult {
       'id': id,
       'layerArn': layerArn,
       'layerName': layerName,
+      'layerVersionArn': layerVersionArn,
       'licenseInfo': licenseInfo,
       'region': region,
       'signingJobArn': signingJobArn,
@@ -112,6 +115,7 @@ class GetLayerVersionResult {
       id: map['id'] as String,
       layerArn: map['layerArn'] as String,
       layerName: map['layerName'] as String,
+      layerVersionArn: map['layerVersionArn'] as String,
       licenseInfo: map['licenseInfo'] as String,
       region: map['region'] as String,
       signingJobArn: map['signingJobArn'] as String,
@@ -122,4 +126,3 @@ class GetLayerVersionResult {
     );
   }
 }
-

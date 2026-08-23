@@ -5,14 +5,14 @@
 class GetResourcePolicyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// The [policy][1] for the resource.
+  /// The policy for the resource.
   final String policy;
   final String region;
   final String resourceArn;
 
   /// Creates a new [GetResourcePolicyResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [policy] The [policy][1] for the resource.
+  /// [policy] The policy for the resource.
   /// [region] Required.
   /// [resourceArn] Required.
   const GetResourcePolicyResult({
@@ -40,4 +40,3 @@ class GetResourcePolicyResult {
     );
   }
 }
-

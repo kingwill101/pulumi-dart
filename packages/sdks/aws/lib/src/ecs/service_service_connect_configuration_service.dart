@@ -6,7 +6,7 @@ import 'service_service_connect_configuration_service_timeout.dart';
 import 'service_service_connect_configuration_service_tls.dart';
 
 class ServiceServiceConnectConfigurationService {
-  /// List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one `client_alias` with one `port` should be specified. See below.
+  /// List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one `clientAlias` with one `port` should be specified. See below.
   final pulumi.Input<List<ServiceServiceConnectConfigurationServiceClientAlias>>? clientAlias;
   /// Name of the new AWS Cloud Map service that Amazon ECS creates for this Amazon ECS service.
   final pulumi.Input<String>? discoveryName;
@@ -20,7 +20,7 @@ class ServiceServiceConnectConfigurationService {
   final pulumi.Input<ServiceServiceConnectConfigurationServiceTls>? tls;
 
   /// Creates a new [ServiceServiceConnectConfigurationService].
-  /// [clientAlias] List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one `client_alias` with one `port` should be specified. See below.
+  /// [clientAlias] List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one `clientAlias` with one `port` should be specified. See below.
   /// [discoveryName] Name of the new AWS Cloud Map service that Amazon ECS creates for this Amazon ECS service.
   /// [ingressPortOverride] Port number for the Service Connect proxy to listen on.
   /// [portName] Name of one of the `portMappings` from all the containers in the task definition of this Amazon ECS service.
@@ -57,4 +57,3 @@ class ServiceServiceConnectConfigurationService {
     );
   }
 }
-

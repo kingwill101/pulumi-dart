@@ -9,7 +9,7 @@ import 'default_subnet_state.dart';
 /// The `aws.ec2.DefaultSubnet` resource behaves differently from normal resources in that if a default subnet exists in the specified Availability Zone, this provider does not _create_ this resource, but instead "adopts" it into management.
 /// If no default subnet exists, this provider creates a new default subnet.
 /// By default, `pulumi destroy` does not delete the default subnet but does remove the resource from the state.
-/// Set the `force_destroy` argument to `true` to delete the default subnet.
+/// Set the `forceDestroy` argument to `true` to delete the default subnet.
 ///
 /// ## Example Usage
 ///
@@ -77,6 +77,22 @@ import 'default_subnet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_defaultsubnet" "default_az1" {
+///   availability_zone = "us-west-2a"
+///   tags = {
+///     "Name" = "Default subnet for us-west-2a"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +101,8 @@ import 'default_subnet_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.DefaultSubnet;
 /// import com.pulumi.aws.ec2.DefaultSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,8 +145,8 @@ class DefaultSubnet extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   late final pulumi.Output<bool?> assignIpv6AddressOnCreation;
   /// is required
-  /// * The `availability_zone_id`, `cidr_block` and `vpc_id` arguments become computed attributes
-  /// * The default value for `map_public_ip_on_launch` is `true`
+  /// * The `availabilityZoneId`, `cidrBlock` and `vpcId` arguments become computed attributes
+  /// * The default value for `mapPublicIpOnLaunch` is `true`
   ///
   /// This resource supports the following additional arguments:
   late final pulumi.Output<String> availabilityZone;

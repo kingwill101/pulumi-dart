@@ -273,6 +273,56 @@ import 'scheduled_action_target_action.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["scheduler.redshift.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["redshift:PauseCluster", "redshift:ResumeCluster", "redshift:ResizeCluster"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "redshift_scheduled_action"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_policy" "example" {
+///   name   = "redshift_scheduled_action"
+///   policy = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   policy_arn = aws_iam_policy.example.arn
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_redshift_scheduledaction" "example" {
+///   name     = "tf-redshift-scheduled-action"
+///   schedule = "cron(00 23 * * ? *)"
+///   iam_role = aws_iam_role.example.arn
+///   target_action = {
+///     pause_cluster = {
+///       cluster_identifier = "tf-redshift001"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -281,6 +331,8 @@ import 'scheduled_action_target_action.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.Policy;
@@ -291,8 +343,8 @@ import 'scheduled_action_target_action.dart';
 /// import com.pulumi.aws.redshift.ScheduledActionArgs;
 /// import com.pulumi.aws.redshift.inputs.ScheduledActionTargetActionArgs;
 /// import com.pulumi.aws.redshift.inputs.ScheduledActionTargetActionPauseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,6 +560,29 @@ import 'scheduled_action_target_action.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_scheduledaction" "example" {
+///   name     = "tf-redshift-scheduled-action"
+///   schedule = "cron(00 23 * * ? *)"
+///   iam_role = exampleAwsIamRole.arn
+///   target_action = {
+///     resize_cluster = {
+///       cluster_identifier = "tf-redshift001"
+///       cluster_type       = "multi-node"
+///       node_type          = "dc1.large"
+///       number_of_nodes    = 2
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -518,8 +593,8 @@ import 'scheduled_action_target_action.dart';
 /// import com.pulumi.aws.redshift.ScheduledActionArgs;
 /// import com.pulumi.aws.redshift.inputs.ScheduledActionTargetActionArgs;
 /// import com.pulumi.aws.redshift.inputs.ScheduledActionTargetActionResizeClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

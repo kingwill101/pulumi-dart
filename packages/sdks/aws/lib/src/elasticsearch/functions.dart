@@ -56,6 +56,19 @@ import 'get_domain_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elasticsearch_getdomain" "myDomain" {
+///   domain_name = "my-domain-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'get_domain_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticsearch.ElasticsearchFunctions;
 /// import com.pulumi.aws.elasticsearch.inputs.GetDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

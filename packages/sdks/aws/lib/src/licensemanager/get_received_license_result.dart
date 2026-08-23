@@ -31,7 +31,7 @@ class GetReceivedLicenseResult {
   /// License name.
   final String licenseName;
   /// Product name.
-  /// * `product_sku ` - Product SKU.
+  /// * `productSku ` - Product SKU.
   final String productName;
   final String productSku;
   /// Granted license received metadata. Detailed below
@@ -126,4 +126,3 @@ class GetReceivedLicenseResult {
     );
   }
 }
-

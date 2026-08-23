@@ -5,7 +5,7 @@ import 'document_state.dart';
 /// Provides an SSM Document resource
 ///
 /// &gt; **NOTE on updating SSM documents:** Only documents with a schema version of 2.0
-/// or greater can update their content once created, see [SSM Schema Features](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#document-schemas-features). To update a document with an older schema version you must recreate the resource. Not all document types support a schema version of 2.0 or greater. Refer to [SSM document schema features and examples](https://docs.aws.amazon.com/systems-manager/latest/userguide/document-schemas-features.html) for information about which schema versions are supported for the respective `document_type`.
+/// or greater can update their content once created, see [SSM Schema Features](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#document-schemas-features). To update a document with an older schema version you must recreate the resource. Not all document types support a schema version of 2.0 or greater. Refer to [SSM document schema features and examples](https://docs.aws.amazon.com/systems-manager/latest/userguide/document-schemas-features.html) for information about which schema versions are supported for the respective `documentType`.
 ///
 /// ## Example Usage
 ///
@@ -138,6 +138,21 @@ import 'document_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_document" "foo" {
+///   name          = "test_document"
+///   document_type = "Command"
+///   content       = "  {\n    \\\"schemaVersion\\\": \\\"1.2\\\",\n    \\\"description\\\": \\\"Check ip configuration of a Linux instance.\\\",\n    \\\"parameters\\\": {\n\n    },\n    \\\"runtimeConfig\\\": {\n      \\\"aws:runShellScript\\\": {\n        \\\"properties\\\": [\n          {\n            \\\"id\\\": \\\"0.aws:runShellScript\\\",\n            \\\"runCommand\\\": [\\\"ifconfig\\\"]\n          }\n        ]\n      }\n    }\n  }\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +161,8 @@ import 'document_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.Document;
 /// import com.pulumi.aws.ssm.DocumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,6 +330,22 @@ import 'document_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_document" "foo" {
+///   name            = "test_document"
+///   document_format = "YAML"
+///   document_type   = "Command"
+///   content         = "schemaVersion: '1.2'\ndescription: Check ip configuration of a Linux instance.\nparameters: {}\nruntimeConfig:\n  'aws:runShellScript':\n    properties:\n      - id: '0.aws:runShellScript'\n        runCommand:\n          - ifconfig\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -323,8 +354,8 @@ import 'document_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.Document;
 /// import com.pulumi.aws.ssm.DocumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,7 +418,7 @@ import 'document_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -397,7 +428,7 @@ import 'document_state.dart';
 /// $ pulumi import aws:ssm/document:Document example example
 /// ```
 ///
-/// The `attachments_source` argument does not have an SSM API method for reading the attachment information detail after creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
+/// The `attachmentsSource` argument does not have an SSM API method for reading the attachment information detail after creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
 ///
 ///
 /// ```typescript
@@ -481,6 +512,24 @@ import 'document_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_document" "test" {
+///   name          = "test_document"
+///   document_type = "Package"
+///   attachments_sources {
+///     key    = "SourceUrl"
+///     values = ["s3://${objectBucket.bucket}/test.zip"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -490,8 +539,8 @@ import 'document_state.dart';
 /// import com.pulumi.aws.ssm.Document;
 /// import com.pulumi.aws.ssm.DocumentArgs;
 /// import com.pulumi.aws.ssm.inputs.DocumentAttachmentsSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,7 +579,7 @@ import 'document_state.dart';
 class Document extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the document.
   late final pulumi.Output<String> arn;
-  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
+  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachmentsSource` block below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> attachmentsSources;
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
   late final pulumi.Output<String> content;
@@ -568,9 +617,9 @@ class Document extends pulumi.CustomResource {
   late final pulumi.Output<String> schemaVersion;
   /// The status of the SSM document. Valid values: `Creating`, `Active`, `Updating`, `Deleting`, `Failed`.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   late final pulumi.Output<String?> targetType;

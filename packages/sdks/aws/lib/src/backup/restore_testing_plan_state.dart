@@ -20,7 +20,7 @@ class RestoreTestingPlanState {
   /// The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
   final pulumi.Input<int>? startWindowHours;
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [RestoreTestingPlanState].
@@ -32,7 +32,7 @@ class RestoreTestingPlanState {
   /// [scheduleExpressionTimezone] The timezone for the schedule expression. If not provided, the state value will be used.
   /// [startWindowHours] The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
   /// [tags] Optional.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const RestoreTestingPlanState({
     this.arn,
     this.name,
@@ -73,4 +73,3 @@ class RestoreTestingPlanState {
     );
   }
 }
-

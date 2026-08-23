@@ -130,6 +130,33 @@ import 'receipt_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Add a header to the email and store it in S3
+/// resource "aws_ses_receiptrule" "store" {
+///   name          = "store"
+///   rule_set_name = "default-rule-set"
+///   recipients    = ["karen@example.com"]
+///   enabled       = true
+///   scan_enabled  = true
+///   add_header_actions {
+///     header_name  = "Custom-Header"
+///     header_value = "Added by SES"
+///     position     = 1
+///   }
+///   s3_actions {
+///     bucket_name = "emails"
+///     position    = 2
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +167,8 @@ import 'receipt_rule_state.dart';
 /// import com.pulumi.aws.ses.ReceiptRuleArgs;
 /// import com.pulumi.aws.ses.inputs.ReceiptRuleAddHeaderActionArgs;
 /// import com.pulumi.aws.ses.inputs.ReceiptRuleS3ActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

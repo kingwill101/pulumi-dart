@@ -5,13 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketReplicationConfigurationRuleFilter {
   /// Object keyname prefix that identifies subset of objects to which the rule applies. Must be less than or equal to 1024 characters in length.
   final pulumi.Input<String>? prefix;
-  /// A map of tags that identifies subset of objects to which the rule applies.
-  /// The rule applies only to objects having all the tags in its tagset.
+  /// Map of tags that identifies subset of objects to which the rule applies. The rule applies only to objects having all the tags in its tagset.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [BucketReplicationConfigurationRuleFilter].
   /// [prefix] Object keyname prefix that identifies subset of objects to which the rule applies. Must be less than or equal to 1024 characters in length.
-  /// [tags] A map of tags that identifies subset of objects to which the rule applies.
+  /// [tags] Map of tags that identifies subset of objects to which the rule applies. The rule applies only to objects having all the tags in its tagset.
   const BucketReplicationConfigurationRuleFilter({
     this.prefix,
     this.tags,
@@ -31,4 +30,3 @@ class BucketReplicationConfigurationRuleFilter {
     );
   }
 }
-

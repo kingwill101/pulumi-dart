@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerPortMapping {
+  /// Port used for the port mapping.
   final pulumi.Input<int> port;
+  /// Protocol used for the port mapping.
   final pulumi.Input<String> protocol;
 
   /// Creates a new [GetVirtualNodeSpecListenerPortMapping].
-  /// [port] Required.
-  /// [protocol] Required.
+  /// [port] Port used for the port mapping.
+  /// [protocol] Protocol used for the port mapping.
   const GetVirtualNodeSpecListenerPortMapping({
     required this.port,
     required this.protocol,
@@ -28,4 +30,3 @@ class GetVirtualNodeSpecListenerPortMapping {
     );
   }
 }
-

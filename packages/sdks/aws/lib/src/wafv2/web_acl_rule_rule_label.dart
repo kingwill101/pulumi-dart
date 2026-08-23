@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleRuleLabel {
-  /// Label string.
+  /// Label string (1-1024 characters, alphanumeric, underscore, hyphen, and colon characters only).
   final pulumi.Input<String> name;
 
   /// Creates a new [WebAclRuleRuleLabel].
-  /// [name] Label string.
+  /// [name] Label string (1-1024 characters, alphanumeric, underscore, hyphen, and colon characters only).
   const WebAclRuleRuleLabel({
     required this.name,
   });
@@ -24,4 +24,3 @@ class WebAclRuleRuleLabel {
     );
   }
 }
-

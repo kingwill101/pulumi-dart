@@ -13,7 +13,7 @@ class GetContactFlowArgs {
   final pulumi.Input<String> instanceId;
   /// Returns information on a specific Contact Flow by name
   ///
-  /// &gt; **NOTE:** `instance_id` and one of either `name` or `contact_flow_id` is required.
+  /// &gt; **NOTE:** `instanceId` and one of either `name` or `contactFlowId` is required.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -60,4 +60,3 @@ class GetContactFlowArgs {
     );
   }
 }
-

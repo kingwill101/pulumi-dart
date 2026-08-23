@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'distribution_cache_tag_config.dart';
 import 'distribution_connection_function_association.dart';
 import 'distribution_custom_error_response.dart';
 import 'distribution_default_cache_behavior.dart';
@@ -22,6 +23,8 @@ class DistributionState {
   final pulumi.Input<String>? anycastIpListId;
   /// ARN for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
   final pulumi.Input<String>? arn;
+  /// Cache tag configuration block for cache tag extraction from origin responses (maximum one). See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-by-tags.html) for more information about cache tags.
+  final pulumi.Input<DistributionCacheTagConfig>? cacheTagConfig;
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
   final pulumi.Input<String>? callerReference;
   /// Any comments you want to include about the distribution.
@@ -32,7 +35,7 @@ class DistributionState {
   final pulumi.Input<String>? continuousDeploymentPolicyId;
   /// One or more custom error response elements (multiples allowed).
   final pulumi.Input<List<DistributionCustomErrorResponse>>? customErrorResponses;
-  /// Default cache behavior for this distribution (maximum one). Requires either `cache_policy_id` (preferred) or `forwarded_values` (deprecated) be set.
+  /// Default cache behavior for this distribution (maximum one). Requires either `cachePolicyId` (preferred) or `forwardedValues` (deprecated) be set.
   final pulumi.Input<DistributionDefaultCacheBehavior>? defaultCacheBehavior;
   /// Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
   final pulumi.Input<String>? defaultRootObject;
@@ -58,7 +61,7 @@ class DistributionState {
   final pulumi.Input<bool>? loggingV1Enabled;
   /// Ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0.
   final pulumi.Input<List<DistributionOrderedCacheBehavior>>? orderedCacheBehaviors;
-  /// One or more origin_group for this distribution (multiples allowed).
+  /// One or more originGroup for this distribution (multiples allowed).
   final pulumi.Input<List<DistributionOriginGroup>>? originGroups;
   /// One or more origins for this distribution (multiples allowed).
   final pulumi.Input<List<DistributionOrigin>>? origins;
@@ -72,9 +75,9 @@ class DistributionState {
   final pulumi.Input<bool>? staging;
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
   final pulumi.Input<String>? status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// List of nested attributes for active trusted key groups, if the distribution is set up to serve private content with signed URLs.
   final pulumi.Input<List<DistributionTrustedKeyGroup>>? trustedKeyGroups;
@@ -93,12 +96,13 @@ class DistributionState {
   /// [aliases] Extra CNAMEs (alternate domain names), if any, for this distribution.
   /// [anycastIpListId] ID of the Anycast static IP list that is associated with the distribution.
   /// [arn] ARN for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
+  /// [cacheTagConfig] Cache tag configuration block for cache tag extraction from origin responses (maximum one). See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-by-tags.html) for more information about cache tags.
   /// [callerReference] Internal value used by CloudFront to allow future updates to the distribution configuration.
   /// [comment] Any comments you want to include about the distribution.
   /// [connectionFunctionAssociation] A connection function association configuration block (maximum one).
   /// [continuousDeploymentPolicyId] Identifier of a continuous deployment policy. This argument should only be set on a production distribution. See the `aws.cloudfront.ContinuousDeploymentPolicy` resource for additional details.
   /// [customErrorResponses] One or more custom error response elements (multiples allowed).
-  /// [defaultCacheBehavior] Default cache behavior for this distribution (maximum one). Requires either `cache_policy_id` (preferred) or `forwarded_values` (deprecated) be set.
+  /// [defaultCacheBehavior] Default cache behavior for this distribution (maximum one). Requires either `cachePolicyId` (preferred) or `forwardedValues` (deprecated) be set.
   /// [defaultRootObject] Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
   /// [domainName] Domain name corresponding to the distribution. For example: `d604721fxaaqy9.cloudfront.net`.
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
@@ -111,15 +115,15 @@ class DistributionState {
   /// [loggingConfig] The logging configuration that controls how logs are written to your distribution (maximum one). AWS provides two versions of access logs for CloudFront: Legacy and v2. This argument configures legacy version standard logs.
   /// [loggingV1Enabled] Whether V1 logging is enabled for the distribution.
   /// [orderedCacheBehaviors] Ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0.
-  /// [originGroups] One or more origin_group for this distribution (multiples allowed).
+  /// [originGroups] One or more originGroup for this distribution (multiples allowed).
   /// [origins] One or more origins for this distribution (multiples allowed).
   /// [priceClass] Price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100`.
   /// [restrictions] The restriction configuration for this distribution (maximum one).
   /// [retainOnDelete] Disables the distribution instead of deleting it when destroying the resource through the provider. If this is set, the distribution needs to be deleted manually afterwards. Default: `false`.
   /// [staging] A Boolean that indicates whether this is a staging distribution. Defaults to `false`.
   /// [status] Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [trustedKeyGroups] List of nested attributes for active trusted key groups, if the distribution is set up to serve private content with signed URLs.
   /// [trustedSigners] List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs.
   /// [viewerCertificate] The SSL configuration for this distribution (maximum one).
@@ -130,6 +134,7 @@ class DistributionState {
     this.aliases,
     this.anycastIpListId,
     this.arn,
+    this.cacheTagConfig,
     this.callerReference,
     this.comment,
     this.connectionFunctionAssociation,
@@ -170,6 +175,7 @@ class DistributionState {
       'aliases': ?aliases,
       'anycastIpListId': ?anycastIpListId,
       'arn': ?arn,
+      'cacheTagConfig': ?pulumi.Input.mapOptionalInputValue<DistributionCacheTagConfig, Map<String, dynamic>>(cacheTagConfig, (value) => value.toMap()),
       'callerReference': ?callerReference,
       'comment': ?comment,
       'connectionFunctionAssociation': ?pulumi.Input.mapOptionalInputValue<DistributionConnectionFunctionAssociation, Map<String, dynamic>>(connectionFunctionAssociation, (value) => value.toMap()),
@@ -211,6 +217,7 @@ class DistributionState {
       aliases: (() { final guardedValue = map['aliases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       anycastIpListId: (() { final guardedValue = map['anycastIpListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cacheTagConfig: (() { final guardedValue = map['cacheTagConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionCacheTagConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       callerReference: (() { final guardedValue = map['callerReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectionFunctionAssociation: (() { final guardedValue = map['connectionFunctionAssociation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionConnectionFunctionAssociation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -247,4 +254,3 @@ class DistributionState {
     );
   }
 }
-

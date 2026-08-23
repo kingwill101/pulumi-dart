@@ -7,8 +7,6 @@ import 'provisioned_product_state.dart';
 ///
 /// A provisioned product is a resourced instance of a product. For example, provisioning a product based on a CloudFormation template launches a CloudFormation stack and its underlying resources.
 ///
-/// Like this resource, the `aws_servicecatalog_record` data source also provides information about a provisioned product. Although a Service Catalog record provides some overlapping information with this resource, a record is tied to a provisioned product event, such as provisioning, termination, and updating.
-///
 /// &gt; **Tip:** If you include conflicted keys as tags, AWS will report an error, "Parameter validation failed: Missing required parameter in Tags[N]:Value".
 ///
 /// &gt; **Tip:** A "provisioning artifact" is also referred to as a "version." A "distributor" is also referred to as a "vendor."
@@ -111,6 +109,28 @@ import 'provisioned_product_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_provisionedproduct" "example" {
+///   name                       = "example"
+///   product_name               = "Example product"
+///   provisioning_artifact_name = "Example version"
+///   provisioning_parameters {
+///     key   = "foo"
+///     value = "bar"
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +140,8 @@ import 'provisioned_product_state.dart';
 /// import com.pulumi.aws.servicecatalog.ProvisionedProduct;
 /// import com.pulumi.aws.servicecatalog.ProvisionedProductArgs;
 /// import com.pulumi.aws.servicecatalog.inputs.ProvisionedProductProvisioningParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,33 +217,33 @@ class ProvisionedProduct extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> notificationArns;
   /// The set of outputs for the product created.
   late final pulumi.Output<List<Map<String, dynamic>>> outputs;
-  /// Path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use `aws.servicecatalog.getLaunchPaths`. When required, you must provide `path_id` or `path_name`, but not both.
+  /// Path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use `aws.servicecatalog.getLaunchPaths`. When required, you must provide `pathId` or `pathName`, but not both.
   late final pulumi.Output<String> pathId;
-  /// Name of the path. You must provide `path_id` or `path_name`, but not both.
+  /// Name of the path. You must provide `pathId` or `pathName`, but not both.
   late final pulumi.Output<String?> pathName;
-  /// Product identifier. For example, `prod-abcdzk7xy33qa`. You must provide `product_id` or `product_name`, but not both.
+  /// Product identifier. For example, `prod-abcdzk7xy33qa`. You must provide `productId` or `productName`, but not both.
   late final pulumi.Output<String> productId;
-  /// Name of the product. You must provide `product_id` or `product_name`, but not both.
+  /// Name of the product. You must provide `productId` or `productName`, but not both.
   late final pulumi.Output<String?> productName;
-  /// Identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`. You must provide the `provisioning_artifact_id` or `provisioning_artifact_name`, but not both.
+  /// Identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`. You must provide the `provisioningArtifactId` or `provisioningArtifactName`, but not both.
   late final pulumi.Output<String> provisioningArtifactId;
-  /// Name of the provisioning artifact. You must provide the `provisioning_artifact_id` or `provisioning_artifact_name`, but not both.
+  /// Name of the provisioning artifact. You must provide the `provisioningArtifactId` or `provisioningArtifactName`, but not both.
   late final pulumi.Output<String?> provisioningArtifactName;
-  /// Configuration block with parameters specified by the administrator that are required for provisioning the product. See `provisioning_parameters` Block for details.
+  /// Configuration block with parameters specified by the administrator that are required for provisioning the product. See `provisioningParameters` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> provisioningParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// _Only applies to deleting._ Whether to delete the Service Catalog provisioned product but leave the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is `false`.
   late final pulumi.Output<bool?> retainPhysicalResources;
-  /// Configuration block with information about the provisioning preferences for a stack set. See `stack_set_provisioning_preferences` Block for details.
+  /// Configuration block with information about the provisioning preferences for a stack set. See `stackSetProvisioningPreferences` Block for details.
   late final pulumi.Output<ProvisionedProductStackSetProvisioningPreferences?> stackSetProvisioningPreferences;
   /// Current status of the provisioned product. See meanings below.
   late final pulumi.Output<String> status;
   /// Current status message of the provisioned product.
   late final pulumi.Output<String> statusMessage;
-  /// Tags to apply to the provisioned product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the provisioned product. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of provisioned product. Valid values are `CFN_STACK` and `CFN_STACKSET`.
   late final pulumi.Output<String> type;

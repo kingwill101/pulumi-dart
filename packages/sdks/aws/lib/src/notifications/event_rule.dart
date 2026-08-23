@@ -119,9 +119,9 @@ import 'event_rule_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"detail": map[string]interface{}{
-/// 				"state": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]map[string][]string{
+/// 			"detail": map[string]map[string][]string{
+/// 				"state": map[string][]string{
 /// 					"value": []string{
 /// 						"ALARM",
 /// 					},
@@ -149,6 +149,33 @@ import 'event_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_notifications_notificationconfiguration" "example" {
+///   name        = "example"
+///   description = "example configuration"
+/// }
+/// resource "aws_notifications_eventrule" "example" {
+///   event_pattern = jsonencode({
+///     "detail" = {
+///       "state" = {
+///         "value" = ["ALARM"]
+///       }
+///     }
+///   })
+///   event_type                     = "CloudWatch Alarm State Change"
+///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
+///   regions                        = ["us-east-1", "us-west-2"]
+///   source                         = "aws.cloudwatch"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +187,8 @@ import 'event_rule_state.dart';
 /// import com.pulumi.aws.notifications.EventRule;
 /// import com.pulumi.aws.notifications.EventRuleArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

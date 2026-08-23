@@ -117,6 +117,32 @@ import 'graph_vector_search_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create Neptune Graph
+/// resource "aws_neptunegraph_graph" "example" {
+///   graph_name          = "example-graph-test-20250203"
+///   provisioned_memory  = 16
+///   deletion_protection = false
+///   public_connectivity = false
+///   replica_count       = 1
+///   kms_key_identifier  = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
+///   vector_search_configuration = {
+///     vector_search_dimension = 128
+///   }
+///   tags = {
+///     "Environment" = "Development"
+///     "ModifiedBy"  = "AWS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +152,8 @@ import 'graph_vector_search_configuration.dart';
 /// import com.pulumi.aws.neptunegraph.Graph;
 /// import com.pulumi.aws.neptunegraph.GraphArgs;
 /// import com.pulumi.aws.neptunegraph.inputs.GraphVectorSearchConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,9 +235,9 @@ class Graph extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Specifies the number of replicas you want when finished. All replicas will be provisioned in different availability zones.  Replica Count should always be less than or equal to 2.
   late final pulumi.Output<int> replicaCount;
-  /// Key-value tags for the graph. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the graph. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<GraphTimeouts?> timeouts;
   /// Vector Search Configuration (see below for nested schema of vector_search_configuration)

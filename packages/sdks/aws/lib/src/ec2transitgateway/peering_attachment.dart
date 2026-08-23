@@ -22,7 +22,7 @@ import 'peering_attachment_state.dart';
 /// }});
 /// const example = new aws.ec2transitgateway.PeeringAttachment("example", {
 ///     peerAccountId: peerTransitGateway.ownerId,
-///     peerRegion: peer.then(peer => peer.name),
+///     peerRegion: peer.then(peer => peer.region),
 ///     peerTransitGatewayId: peerTransitGateway.id,
 ///     transitGatewayId: local.id,
 ///     tags: {
@@ -43,7 +43,7 @@ import 'peering_attachment_state.dart';
 /// })
 /// example = aws.ec2transitgateway.PeeringAttachment("example",
 ///     peer_account_id=peer_transit_gateway.owner_id,
-///     peer_region=peer.name,
+///     peer_region=peer.region,
 ///     peer_transit_gateway_id=peer_transit_gateway.id,
 ///     transit_gateway_id=local.id,
 ///     tags={
@@ -79,7 +79,7 @@ import 'peering_attachment_state.dart';
 ///     var example = new Aws.Ec2TransitGateway.PeeringAttachment("example", new()
 ///     {
 ///         PeerAccountId = peerTransitGateway.OwnerId,
-///         PeerRegion = peer.Apply(getRegionResult => getRegionResult.Name),
+///         PeerRegion = peer.Apply(getRegionResult => getRegionResult.Region),
 ///         PeerTransitGatewayId = peerTransitGateway.Id,
 ///         TransitGatewayId = local.Id,
 ///         Tags =
@@ -123,9 +123,9 @@ import 'peering_attachment_state.dart';
 /// 		}
 /// 		_, err = ec2transitgateway.NewPeeringAttachment(ctx, "example", &ec2transitgateway.PeeringAttachmentArgs{
 /// 			PeerAccountId:        peerTransitGateway.OwnerId,
-/// 			PeerRegion:           pulumi.String(peer.Name),
-/// 			PeerTransitGatewayId: peerTransitGateway.ID(),
-/// 			TransitGatewayId:     local.ID(),
+/// 			PeerRegion:           pulumi.String(peer.Region),
+/// 			PeerTransitGatewayId: peerTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId:     local.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("TGW Peering Requestor"),
 /// 			},
@@ -135,6 +135,38 @@ import 'peering_attachment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "peer" {
+/// }
+///
+/// resource "aws_ec2transitgateway_transitgateway" "local" {
+///   tags = {
+///     "Name" = "Local TGW"
+///   }
+/// }
+/// resource "aws_ec2transitgateway_transitgateway" "peer" {
+///   tags = {
+///     "Name" = "Peer TGW"
+///   }
+/// }
+/// resource "aws_ec2transitgateway_peeringattachment" "example" {
+///   peer_account_id         = aws_ec2transitgateway_transitgateway.peer.owner_id
+///   peer_region             = data.aws_getregion.peer.region
+///   peer_transit_gateway_id = aws_ec2transitgateway_transitgateway.peer.id
+///   transit_gateway_id      = aws_ec2transitgateway_transitgateway.local.id
+///   tags = {
+///     "Name" = "TGW Peering Requestor"
+///   }
 /// }
 /// ```
 /// ```java
@@ -149,8 +181,8 @@ import 'peering_attachment_state.dart';
 /// import com.pulumi.aws.ec2transitgateway.TransitGatewayArgs;
 /// import com.pulumi.aws.ec2transitgateway.PeeringAttachment;
 /// import com.pulumi.aws.ec2transitgateway.PeeringAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,7 +207,7 @@ import 'peering_attachment_state.dart';
 ///
 ///         var example = new PeeringAttachment("example", PeeringAttachmentArgs.builder()
 ///             .peerAccountId(peerTransitGateway.ownerId())
-///             .peerRegion(peer.name())
+///             .peerRegion(peer.region())
 ///             .peerTransitGatewayId(peerTransitGateway.id())
 ///             .transitGatewayId(local.id())
 ///             .tags(Map.of("Name", "TGW Peering Requestor"))
@@ -201,7 +233,7 @@ import 'peering_attachment_state.dart';
 ///     type: aws:ec2transitgateway:PeeringAttachment
 ///     properties:
 ///       peerAccountId: ${peerTransitGateway.ownerId}
-///       peerRegion: ${peer.name}
+///       peerRegion: ${peer.region}
 ///       peerTransitGatewayId: ${peerTransitGateway.id}
 ///       transitGatewayId: ${local.id}
 ///       tags:
@@ -235,9 +267,9 @@ class PeeringAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> state;
-  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Identifier of EC2 Transit Gateway.
   late final pulumi.Output<String> transitGatewayId;

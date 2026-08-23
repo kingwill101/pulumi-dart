@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_task_definition_volume_fsx_windows_file_server_volume_configuration_authorization_config.dart';
 
 class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
-  /// Configuration block for authorization for the Amazon FSx for Windows File Server file system detailed below.
+  /// Configuration block for authorization for the Amazon FSx for Windows File Server file system. See `fsx_windows_file_server_volume_configuration.authorization_config` Block for details.
   final pulumi.Input<List<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig>> authorizationConfigs;
-  /// The Amazon FSx for Windows File Server file system ID to use.
+  /// Amazon FSx for Windows File Server file system ID used.
   final pulumi.Input<String> fileSystemId;
-  /// The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
+  /// Directory within the Amazon S3 Files file system to mount as the root directory.
   final pulumi.Input<String> rootDirectory;
 
   /// Creates a new [GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration].
-  /// [authorizationConfigs] Configuration block for authorization for the Amazon FSx for Windows File Server file system detailed below.
-  /// [fileSystemId] The Amazon FSx for Windows File Server file system ID to use.
-  /// [rootDirectory] The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
+  /// [authorizationConfigs] Configuration block for authorization for the Amazon FSx for Windows File Server file system. See `fsx_windows_file_server_volume_configuration.authorization_config` Block for details.
+  /// [fileSystemId] Amazon FSx for Windows File Server file system ID used.
+  /// [rootDirectory] Directory within the Amazon S3 Files file system to mount as the root directory.
   const GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration({
     required this.authorizationConfigs,
     required this.fileSystemId,
@@ -37,4 +37,3 @@ class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
     );
   }
 }
-

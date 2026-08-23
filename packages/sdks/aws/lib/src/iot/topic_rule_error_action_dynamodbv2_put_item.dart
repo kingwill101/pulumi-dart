@@ -24,4 +24,3 @@ class TopicRuleErrorActionDynamodbv2PutItem {
     );
   }
 }
-

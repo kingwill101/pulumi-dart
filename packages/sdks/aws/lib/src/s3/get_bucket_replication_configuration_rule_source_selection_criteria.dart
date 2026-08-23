@@ -5,12 +5,14 @@ import 'get_bucket_replication_configuration_rule_source_selection_criteria_repl
 import 'get_bucket_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_object.dart';
 
 class GetBucketReplicationConfigurationRuleSourceSelectionCriteria {
+  /// Configuration block for selections for modifications on replicas. See `replicaModifications` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification>> replicaModifications;
+  /// Configuration block for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. See `sseKmsEncryptedObjects` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>> sseKmsEncryptedObjects;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleSourceSelectionCriteria].
-  /// [replicaModifications] Required.
-  /// [sseKmsEncryptedObjects] Required.
+  /// [replicaModifications] Configuration block for selections for modifications on replicas. See `replicaModifications` Block below.
+  /// [sseKmsEncryptedObjects] Configuration block for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. See `sseKmsEncryptedObjects` Block below.
   const GetBucketReplicationConfigurationRuleSourceSelectionCriteria({
     required this.replicaModifications,
     required this.sseKmsEncryptedObjects,
@@ -30,4 +32,3 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteria {
     );
   }
 }
-

@@ -78,15 +78,15 @@ import 'environment_profile_state.dart';
 /// });
 /// const testEnvironmentBlueprintConfiguration = new aws.datazone.EnvironmentBlueprintConfiguration("test", {
 ///     domainId: testDomain.id,
-///     environmentBlueprintId: testGetEnvironmentBlueprint.apply(testGetEnvironmentBlueprint => testGetEnvironmentBlueprint.id),
+///     environmentBlueprintId: testGetEnvironmentBlueprint.id,
 ///     provisioningRoleArn: domainExecutionRole.arn,
-///     enabledRegions: [testGetRegion.then(testGetRegion => testGetRegion.name)],
+///     enabledRegions: [testGetRegion.then(testGetRegion => testGetRegion.region)],
 /// });
 /// const testEnvironmentProfile = new aws.datazone.EnvironmentProfile("test", {
 ///     awsAccountId: test.then(test => test.accountId),
-///     awsAccountRegion: testGetRegion.then(testGetRegion => testGetRegion.name),
+///     awsAccountRegion: testGetRegion.then(testGetRegion => testGetRegion.region),
 ///     description: "description",
-///     environmentBlueprintIdentifier: testGetEnvironmentBlueprint.apply(testGetEnvironmentBlueprint => testGetEnvironmentBlueprint.id),
+///     environmentBlueprintIdentifier: testGetEnvironmentBlueprint.id,
 ///     name: "example-name",
 ///     projectIdentifier: testProject.id,
 ///     domainIdentifier: testDomain.id,
@@ -163,10 +163,10 @@ import 'environment_profile_state.dart';
 ///     domain_id=test_domain.id,
 ///     environment_blueprint_id=test_get_environment_blueprint.id,
 ///     provisioning_role_arn=domain_execution_role.arn,
-///     enabled_regions=[test_get_region.name])
+///     enabled_regions=[test_get_region.region])
 /// test_environment_profile = aws.datazone.EnvironmentProfile("test",
 ///     aws_account_id=test.account_id,
-///     aws_account_region=test_get_region.name,
+///     aws_account_region=test_get_region.region,
 ///     description="description",
 ///     environment_blueprint_identifier=test_get_environment_blueprint.id,
 ///     name="example-name",
@@ -291,14 +291,14 @@ import 'environment_profile_state.dart';
 ///         ProvisioningRoleArn = domainExecutionRole.Arn,
 ///         EnabledRegions = new[]
 ///         {
-///             testGetRegion.Apply(getRegionResult => getRegionResult.Name),
+///             testGetRegion.Apply(getRegionResult => getRegionResult.Region),
 ///         },
 ///     });
 ///
 ///     var testEnvironmentProfile = new Aws.DataZone.EnvironmentProfile("test", new()
 ///     {
 ///         AwsAccountId = test.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
-///         AwsAccountRegion = testGetRegion.Apply(getRegionResult => getRegionResult.Name),
+///         AwsAccountRegion = testGetRegion.Apply(getRegionResult => getRegionResult.Region),
 ///         Description = "description",
 ///         EnvironmentBlueprintIdentifier = testGetEnvironmentBlueprint.Apply(getEnvironmentBlueprintResult => getEnvironmentBlueprintResult.Id),
 ///         Name = "example-name",
@@ -340,7 +340,7 @@ import 'environment_profile_state.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "datazone.amazonaws.com",
 /// 					},
 /// 				},
@@ -350,7 +350,7 @@ import 'environment_profile_state.dart';
 /// 						"sts:TagSession",
 /// 					},
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "cloudformation.amazonaws.com",
 /// 					},
 /// 				},
@@ -406,7 +406,7 @@ import 'environment_profile_state.dart';
 /// 			return err
 /// 		}
 /// 		testProject, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
-/// 			DomainIdentifier: testDomain.ID(),
+/// 			DomainIdentifier: testDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			GlossaryTerms: pulumi.StringArray{
 /// 				pulumi.String("2N8w6XJCwZf"),
 /// 			},
@@ -426,33 +426,29 @@ import 'environment_profile_state.dart';
 /// 			return err
 /// 		}
 /// 		testGetEnvironmentBlueprint := datazone.GetEnvironmentBlueprintOutput(ctx, datazone.GetEnvironmentBlueprintOutputArgs{
-/// 			DomainId: testDomain.ID(),
+/// 			DomainId: testDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:     pulumi.String("DefaultDataLake"),
 /// 			Managed:  pulumi.Bool(true),
 /// 		}, nil)
 /// 		_, err = datazone.NewEnvironmentBlueprintConfiguration(ctx, "test", &datazone.EnvironmentBlueprintConfigurationArgs{
-/// 			DomainId: testDomain.ID(),
-/// 			EnvironmentBlueprintId: pulumi.String(testGetEnvironmentBlueprint.ApplyT(func(testGetEnvironmentBlueprint datazone.GetEnvironmentBlueprintResult) (*string, error) {
-/// 				return &testGetEnvironmentBlueprint.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ProvisioningRoleArn: domainExecutionRole.Arn,
+/// 			DomainId:               testDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			EnvironmentBlueprintId: testGetEnvironmentBlueprint.Id(),
+/// 			ProvisioningRoleArn:    domainExecutionRole.Arn,
 /// 			EnabledRegions: pulumi.StringArray{
-/// 				pulumi.String(testGetRegion.Name),
+/// 				pulumi.String(testGetRegion.Region),
 /// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = datazone.NewEnvironmentProfile(ctx, "test", &datazone.EnvironmentProfileArgs{
-/// 			AwsAccountId:     pulumi.String(test.AccountId),
-/// 			AwsAccountRegion: pulumi.String(testGetRegion.Name),
-/// 			Description:      pulumi.String("description"),
-/// 			EnvironmentBlueprintIdentifier: pulumi.String(testGetEnvironmentBlueprint.ApplyT(func(testGetEnvironmentBlueprint datazone.GetEnvironmentBlueprintResult) (*string, error) {
-/// 				return &testGetEnvironmentBlueprint.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Name:              pulumi.String("example-name"),
-/// 			ProjectIdentifier: testProject.ID(),
-/// 			DomainIdentifier:  testDomain.ID(),
+/// 			AwsAccountId:                   pulumi.String(test.AccountId),
+/// 			AwsAccountRegion:               pulumi.String(testGetRegion.Region),
+/// 			Description:                    pulumi.String("description"),
+/// 			EnvironmentBlueprintIdentifier: testGetEnvironmentBlueprint.Id(),
+/// 			Name:                           pulumi.String("example-name"),
+/// 			ProjectIdentifier:              testProject.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainIdentifier:               testDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			UserParameters: datazone.EnvironmentProfileUserParameterArray{
 /// 				&datazone.EnvironmentProfileUserParameterArgs{
 /// 					Name:  pulumi.String("consumerGlueDbName"),
@@ -465,6 +461,89 @@ import 'environment_profile_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "test" {
+/// }
+/// data "aws_getregion" "testGetRegion" {
+/// }
+/// data "aws_datazone_getenvironmentblueprint" "testGetEnvironmentBlueprint" {
+///   domain_id = aws_datazone_domain.test.id
+///   name      = "DefaultDataLake"
+///   managed   = true
+/// }
+///
+/// resource "aws_iam_role" "domain_execution_role" {
+///   name = "example-name"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "datazone.amazonaws.com"
+///       }
+///       }, {
+///       "Action" = ["sts:AssumeRole", "sts:TagSession"]
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "cloudformation.amazonaws.com"
+///       }
+///     }]
+///   })
+///   inline_policies {
+///     name = "example-name"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Action"   = ["datazone:*", "ram:*", "sso:*", "kms:*"]
+///         "Effect"   = "Allow"
+///         "Resource" = "*"
+///       }]
+///     })
+///   }
+/// }
+/// resource "aws_datazone_domain" "test" {
+///   name                  = "example-name"
+///   domain_execution_role = aws_iam_role.domain_execution_role.arn
+/// }
+/// resource "aws_ec2_securitygroup" "test" {
+///   name = "example-name"
+/// }
+/// resource "aws_datazone_project" "test" {
+///   domain_identifier   = aws_datazone_domain.test.id
+///   glossary_terms      = ["2N8w6XJCwZf"]
+///   name                = "example-name"
+///   description         = "desc"
+///   skip_deletion_check = true
+/// }
+/// resource "aws_datazone_environmentblueprintconfiguration" "test" {
+///   domain_id                = aws_datazone_domain.test.id
+///   environment_blueprint_id = data.aws_datazone_getenvironmentblueprint.testGetEnvironmentBlueprint.id
+///   provisioning_role_arn    = aws_iam_role.domain_execution_role.arn
+///   enabled_regions          = [data.aws_getregion.testGetRegion.region]
+/// }
+/// resource "aws_datazone_environmentprofile" "test" {
+///   aws_account_id                   = data.aws_getcalleridentity.test.account_id
+///   aws_account_region               = data.aws_getregion.testGetRegion.region
+///   description                      = "description"
+///   environment_blueprint_identifier = data.aws_datazone_getenvironmentblueprint.testGetEnvironmentBlueprint.id
+///   name                             = "example-name"
+///   project_identifier               = aws_datazone_project.test.id
+///   domain_identifier                = aws_datazone_domain.test.id
+///   user_parameters {
+///     name  = "consumerGlueDbName"
+///     value = "value"
+///   }
 /// }
 /// ```
 /// ```java
@@ -493,8 +572,8 @@ import 'environment_profile_state.dart';
 /// import com.pulumi.aws.datazone.EnvironmentProfileArgs;
 /// import com.pulumi.aws.datazone.inputs.EnvironmentProfileUserParameterArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -586,12 +665,12 @@ import 'environment_profile_state.dart';
 ///             .domainId(testDomain.id())
 ///             .environmentBlueprintId(testGetEnvironmentBlueprint.applyValue(_testGetEnvironmentBlueprint -> _testGetEnvironmentBlueprint.id()))
 ///             .provisioningRoleArn(domainExecutionRole.arn())
-///             .enabledRegions(testGetRegion.name())
+///             .enabledRegions(testGetRegion.region())
 ///             .build());
 ///
 ///         var testEnvironmentProfile = new EnvironmentProfile("testEnvironmentProfile", EnvironmentProfileArgs.builder()
 ///             .awsAccountId(test.accountId())
-///             .awsAccountRegion(testGetRegion.name())
+///             .awsAccountRegion(testGetRegion.region())
 ///             .description("description")
 ///             .environmentBlueprintIdentifier(testGetEnvironmentBlueprint.applyValue(_testGetEnvironmentBlueprint -> _testGetEnvironmentBlueprint.id()))
 ///             .name("example-name")
@@ -671,13 +750,13 @@ import 'environment_profile_state.dart';
 ///       environmentBlueprintId: ${testGetEnvironmentBlueprint.id}
 ///       provisioningRoleArn: ${domainExecutionRole.arn}
 ///       enabledRegions:
-///         - ${testGetRegion.name}
+///         - ${testGetRegion.region}
 ///   testEnvironmentProfile:
 ///     type: aws:datazone:EnvironmentProfile
 ///     name: test
 ///     properties:
 ///       awsAccountId: ${test.accountId}
-///       awsAccountRegion: ${testGetRegion.name}
+///       awsAccountRegion: ${testGetRegion.region}
 ///       description: description
 ///       environmentBlueprintIdentifier: ${testGetEnvironmentBlueprint.id}
 ///       name: example-name
@@ -707,7 +786,20 @@ import 'environment_profile_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DataZone Environment Profile using a comma-delimited string combining `id` and `domain_identifier`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainIdentifier` - (String) Identifier of the DataZone domain.
+/// * `id` - (String) ID of the environment profile.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import DataZone Environment Profile using a comma-delimited string combining `id` and `domainIdentifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datazone/environmentProfile:EnvironmentProfile example environment_profile-id-12345678,domain-id-12345678

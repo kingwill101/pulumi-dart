@@ -36,4 +36,3 @@ class FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationCloudwatchL
     );
   }
 }
-

@@ -4,12 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_bucket_maintenance_configuration_iceberg_unreferenced_file_removal.dart';
 
 class TableBucketMaintenanceConfiguration {
-  /// A single Iceberg unreferenced file removal settings object.
-  /// See `iceberg_unreferenced_file_removal` below.
+  /// Iceberg unreferenced file removal settings for the table bucket. See `icebergUnreferencedFileRemoval` below.
   final pulumi.Input<TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval> icebergUnreferencedFileRemoval;
 
   /// Creates a new [TableBucketMaintenanceConfiguration].
-  /// [icebergUnreferencedFileRemoval] A single Iceberg unreferenced file removal settings object.
+  /// [icebergUnreferencedFileRemoval] Iceberg unreferenced file removal settings for the table bucket. See `icebergUnreferencedFileRemoval` below.
   const TableBucketMaintenanceConfiguration({
     required this.icebergUnreferencedFileRemoval,
   });
@@ -26,4 +25,3 @@ class TableBucketMaintenanceConfiguration {
     );
   }
 }
-

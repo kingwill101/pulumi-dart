@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_object_lock_configuration_rule.dart';
 
 class BucketObjectLockConfiguration {
-  /// Indicates whether this bucket has an Object Lock configuration enabled. Valid values are `true` or `false`. This argument is not supported in all regions or partitions.
+  /// Whether this bucket has an Object Lock configuration enabled. Valid value is `Enabled`. Use the top-level argument `objectLockEnabled` instead.
   final pulumi.Input<String>? objectLockEnabled;
-  /// Object Lock rule in place for this bucket (documented below).
+  /// Object Lock rule in place for this bucket. See `object_lock_configuration.rule` Block below for details.
   final pulumi.Input<BucketObjectLockConfigurationRule>? rule;
 
   /// Creates a new [BucketObjectLockConfiguration].
-  /// [objectLockEnabled] Indicates whether this bucket has an Object Lock configuration enabled. Valid values are `true` or `false`. This argument is not supported in all regions or partitions.
-  /// [rule] Object Lock rule in place for this bucket (documented below).
+  /// [objectLockEnabled] Whether this bucket has an Object Lock configuration enabled. Valid value is `Enabled`. Use the top-level argument `objectLockEnabled` instead.
+  /// [rule] Object Lock rule in place for this bucket. See `object_lock_configuration.rule` Block below for details.
   const BucketObjectLockConfiguration({
     this.objectLockEnabled,
     this.rule,
@@ -31,4 +31,3 @@ class BucketObjectLockConfiguration {
     );
   }
 }
-

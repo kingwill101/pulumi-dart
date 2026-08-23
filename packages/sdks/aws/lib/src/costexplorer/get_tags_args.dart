@@ -14,19 +14,19 @@ class GetTagsArgs {
   final pulumi.Input<GetTagsFilter>? filter;
   /// Value that you want to search for.
   final pulumi.Input<String>? searchString;
-  /// Configuration block for the value by which you want to sort the data. `sort_by` block below for details.
+  /// Configuration block for the value by which you want to sort the data. `sortBy` block below for details.
   final pulumi.Input<List<GetTagsSortBy>>? sortBies;
   /// Key of the tag that you want to return values for.
   final pulumi.Input<String>? tagKey;
-  /// Configuration block for the start and end dates for retrieving the dimension values. See `time_period` block below for details.
+  /// Configuration block for the start and end dates for retrieving the dimension values. See `timePeriod` block below for details.
   final pulumi.Input<GetTagsTimePeriod> timePeriod;
 
   /// Creates a new [GetTagsArgs].
   /// [filter] Configuration block for the `Expression` object used to categorize costs. See `filter` block below for details.
   /// [searchString] Value that you want to search for.
-  /// [sortBies] Configuration block for the value by which you want to sort the data. `sort_by` block below for details.
+  /// [sortBies] Configuration block for the value by which you want to sort the data. `sortBy` block below for details.
   /// [tagKey] Key of the tag that you want to return values for.
-  /// [timePeriod] Configuration block for the start and end dates for retrieving the dimension values. See `time_period` block below for details.
+  /// [timePeriod] Configuration block for the start and end dates for retrieving the dimension values. See `timePeriod` block below for details.
   const GetTagsArgs({
     this.filter,
     this.searchString,
@@ -55,4 +55,3 @@ class GetTagsArgs {
     );
   }
 }
-

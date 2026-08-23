@@ -114,7 +114,7 @@ import 'snapshot_copy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSnapshot, err := ebs.NewSnapshot(ctx, "example_snapshot", &ebs.SnapshotArgs{
-/// 			VolumeId: example.ID(),
+/// 			VolumeId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("HelloWorld_snap"),
 /// 			},
@@ -123,7 +123,7 @@ import 'snapshot_copy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ebs.NewSnapshotCopy(ctx, "example_copy", &ebs.SnapshotCopyArgs{
-/// 			SourceSnapshotId: exampleSnapshot.ID(),
+/// 			SourceSnapshotId: exampleSnapshot.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRegion:     pulumi.String("us-west-2"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("HelloWorld_copy_snap"),
@@ -134,6 +134,36 @@ import 'snapshot_copy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ebs_volume" "example" {
+///   availability_zone = "us-west-2a"
+///   size              = 40
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// resource "aws_ebs_snapshot" "example_snapshot" {
+///   volume_id = aws_ebs_volume.example.id
+///   tags = {
+///     "Name" = "HelloWorld_snap"
+///   }
+/// }
+/// resource "aws_ebs_snapshotcopy" "example_copy" {
+///   source_snapshot_id = aws_ebs_snapshot.example_snapshot.id
+///   source_region      = "us-west-2"
+///   tags = {
+///     "Name" = "HelloWorld_copy_snap"
+///   }
 /// }
 /// ```
 /// ```java
@@ -148,8 +178,8 @@ import 'snapshot_copy_state.dart';
 /// import com.pulumi.aws.ebs.SnapshotArgs;
 /// import com.pulumi.aws.ebs.SnapshotCopy;
 /// import com.pulumi.aws.ebs.SnapshotCopyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -236,7 +266,7 @@ class SnapshotCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> storageTier;
   /// A map of tags for the snapshot.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   late final pulumi.Output<int?> temporaryRestoreDays;

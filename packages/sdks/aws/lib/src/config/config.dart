@@ -52,7 +52,7 @@ class AwsConfig {
 
   bool get assumeRolesIsSecret => _isSecret('assumeRoles');
 
-  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `ca_bundle` in the shared config file is not supported.)
+  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `caBundle` in the shared config file is not supported.)
   String? get customCaBundle {
     final raw = _raw('customCaBundle');
     return raw;
@@ -98,7 +98,7 @@ class AwsConfig {
 
   bool get forbiddenAccountIdsIsSecret => _isSecret('forbiddenAccountIds');
 
-  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `http_proxy` environment variables.
+  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `httpProxy` environment variables.
   String? get httpProxy {
     final raw = _raw('httpProxy');
     return raw;
@@ -106,7 +106,7 @@ class AwsConfig {
 
   bool get httpProxyIsSecret => _isSecret('httpProxy');
 
-  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `https_proxy` environment variables.
+  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `httpsProxy` environment variables.
   String? get httpsProxy {
     final raw = _raw('httpsProxy');
     return raw;
@@ -140,7 +140,7 @@ class AwsConfig {
 
   bool get maxRetriesIsSecret => _isSecret('maxRetries');
 
-  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `no_proxy` environment variables.
+  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `noProxy` environment variables.
   String? get noProxy {
     final raw = _raw('noProxy');
     return raw;
@@ -174,7 +174,7 @@ class AwsConfig {
 
   bool get retryModeIsSecret => _isSecret('retryMode');
 
-  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3_us_east_1_regional_endpoint` shared config file parameter
+  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3UsEast1RegionalEndpoint` shared config file parameter
   String? get s3UsEast1RegionalEndpoint {
     final raw = _raw('s3UsEast1RegionalEndpoint');
     return raw;
@@ -311,4 +311,3 @@ class AwsConfig {
 }
 
 const config = AwsConfig();
-

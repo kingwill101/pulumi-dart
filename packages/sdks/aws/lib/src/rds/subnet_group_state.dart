@@ -18,9 +18,9 @@ class SubnetGroupState {
   final pulumi.Input<List<String>>? subnetIds;
   /// The network type of the db subnet group.
   final pulumi.Input<List<String>>? supportedNetworkTypes;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Provides the VPC ID of the DB subnet group.
   final pulumi.Input<String>? vpcId;
@@ -33,8 +33,8 @@ class SubnetGroupState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetIds] A list of VPC subnet IDs.
   /// [supportedNetworkTypes] The network type of the db subnet group.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcId] Provides the VPC ID of the DB subnet group.
   const SubnetGroupState({
     this.arn,
@@ -79,4 +79,3 @@ class SubnetGroupState {
     );
   }
 }
-

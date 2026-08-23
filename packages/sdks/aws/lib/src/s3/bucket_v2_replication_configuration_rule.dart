@@ -8,9 +8,9 @@ import 'bucket_v2_replication_configuration_rule_source_selection_criteria.dart'
 class BucketV2ReplicationConfigurationRule {
   /// Whether delete markers are replicated. The only valid value is `Enabled`. To disable, omit this argument. This argument is only valid with V2 replication configurations (i.e., when `filter` is used).
   final pulumi.Input<String>? deleteMarkerReplicationStatus;
-  /// Specifies the destination for the rule (documented below).
+  /// Destination for the rule. See `destination` Block below for details.
   final pulumi.Input<List<BucketV2ReplicationConfigurationRuleDestination>> destinations;
-  /// Filter that identifies subset of objects to which the replication rule applies (documented below).
+  /// Filter that identifies subset of objects to which the replication rule applies. See `filter` Block below for details.
   final pulumi.Input<List<BucketV2ReplicationConfigurationRuleFilter>>? filters;
   /// Unique identifier for the rule. Must be less than or equal to 255 characters in length.
   final pulumi.Input<String>? id;
@@ -18,19 +18,19 @@ class BucketV2ReplicationConfigurationRule {
   final pulumi.Input<String>? prefix;
   /// Priority associated with the rule. Priority should only be set if `filter` is configured. If not provided, defaults to `0`. Priority must be unique between multiple rules.
   final pulumi.Input<int>? priority;
-  /// Specifies special object selection criteria (documented below).
+  /// Special object selection criteria. See `sourceSelectionCriteria` Block below for details.
   final pulumi.Input<List<BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>>? sourceSelectionCriterias;
   /// Status of the rule. Either `Enabled` or `Disabled`. The rule is ignored if status is not Enabled.
   final pulumi.Input<String> status;
 
   /// Creates a new [BucketV2ReplicationConfigurationRule].
   /// [deleteMarkerReplicationStatus] Whether delete markers are replicated. The only valid value is `Enabled`. To disable, omit this argument. This argument is only valid with V2 replication configurations (i.e., when `filter` is used).
-  /// [destinations] Specifies the destination for the rule (documented below).
-  /// [filters] Filter that identifies subset of objects to which the replication rule applies (documented below).
+  /// [destinations] Destination for the rule. See `destination` Block below for details.
+  /// [filters] Filter that identifies subset of objects to which the replication rule applies. See `filter` Block below for details.
   /// [id] Unique identifier for the rule. Must be less than or equal to 255 characters in length.
   /// [prefix] Object keyname prefix identifying one or more objects to which the rule applies. Must be less than or equal to 1024 characters in length.
   /// [priority] Priority associated with the rule. Priority should only be set if `filter` is configured. If not provided, defaults to `0`. Priority must be unique between multiple rules.
-  /// [sourceSelectionCriterias] Specifies special object selection criteria (documented below).
+  /// [sourceSelectionCriterias] Special object selection criteria. See `sourceSelectionCriteria` Block below for details.
   /// [status] Status of the rule. Either `Enabled` or `Disabled`. The rule is ignored if status is not Enabled.
   const BucketV2ReplicationConfigurationRule({
     this.deleteMarkerReplicationStatus,
@@ -69,4 +69,3 @@ class BucketV2ReplicationConfigurationRule {
     );
   }
 }
-

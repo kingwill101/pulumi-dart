@@ -99,14 +99,14 @@ import 'shared_directory_target.dart';
 /// Edition: pulumi.String("Standard"),
 /// VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
 /// VpcId: pulumi.Any(exampleAwsVpc.Id),
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,17-39)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,17-39)),
 /// },
 /// })
 /// if err != nil {
 /// return err
 /// }
 /// _, err = directoryservice.NewSharedDirectory(ctx, "example", &directoryservice.SharedDirectoryArgs{
-/// DirectoryId: example.ID(),
+/// DirectoryId: example.ID().ToIDOutput().ToStringOutput(),
 /// Notes: pulumi.String("You wanna have a catch?"),
 /// Target: &directoryservice.SharedDirectoryTargetArgs{
 /// Id: pulumi.Any(receiver.AccountId),
@@ -117,6 +117,33 @@ import 'shared_directory_target.dart';
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directoryservice_directory" "example" {
+///   name     = "tf-example"
+///   password = "SuperSecretPassw0rd"
+///   type     = "MicrosoftAD"
+///   edition  = "Standard"
+///   vpc_settings = {
+///     vpc_id     = exampleAwsVpc.id
+///     subnet_ids = exampleAwsSubnet[*].id
+///   }
+/// }
+/// resource "aws_directoryservice_shareddirectory" "example" {
+///   directory_id = aws_directoryservice_directory.example.id
+///   notes        = "You wanna have a catch?"
+///   target = {
+///     id = receiver.accountId
+///   }
 /// }
 /// ```
 /// ```java
@@ -131,8 +158,8 @@ import 'shared_directory_target.dart';
 /// import com.pulumi.aws.directoryservice.SharedDirectory;
 /// import com.pulumi.aws.directoryservice.SharedDirectoryArgs;
 /// import com.pulumi.aws.directoryservice.inputs.SharedDirectoryTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

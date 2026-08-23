@@ -147,6 +147,37 @@ import 'field_level_encryption_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_fieldlevelencryptionconfig" "test" {
+///   comment = "test comment"
+///   content_type_profile_config = {
+///     forward_when_content_type_is_unknown = true
+///     content_type_profiles = {
+///       items = [{
+///         "contentType" = "application/x-www-form-urlencoded"
+///         "format"      = "URLEncoded"
+///       }]
+///     }
+///   }
+///   query_arg_profile_config = {
+///     forward_when_query_arg_profile_is_unknown = true
+///     query_arg_profiles = {
+///       items = [{
+///         "profileId" = testAwsCloudfrontFieldLevelEncryptionProfile.id
+///         "queryArg"  = "Arg1"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,10 +188,12 @@ import 'field_level_encryption_config_state.dart';
 /// import com.pulumi.aws.cloudfront.FieldLevelEncryptionConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionConfigContentTypeProfileConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesArgs;
+/// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemArgs;
 /// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionConfigQueryArgProfileConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudfront.inputs.FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -63,6 +63,19 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpc_endpointserviceprivatednsverification" "example" {
+///   service_id = exampleAwsVpcEndpointService.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +84,8 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.EndpointServicePrivateDnsVerification;
 /// import com.pulumi.aws.vpc.EndpointServicePrivateDnsVerificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

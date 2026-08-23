@@ -65,6 +65,21 @@ import 'log_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_logdestination" "test_destination" {
+///   name       = "test_destination"
+///   role_arn   = iamForCloudwatch.arn
+///   target_arn = kinesisForCloudwatch.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'log_destination_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.LogDestination;
 /// import com.pulumi.aws.cloudwatch.LogDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -109,7 +124,19 @@ import 'log_destination_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch Logs destinations using the `name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the destination.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Destinations using `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDestination:LogDestination test_destination test_destination
@@ -123,9 +150,9 @@ class LogDestination extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target.
   late final pulumi.Output<String> roleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ARN of the target Amazon Kinesis stream resource for the destination.
   late final pulumi.Output<String> targetArn;

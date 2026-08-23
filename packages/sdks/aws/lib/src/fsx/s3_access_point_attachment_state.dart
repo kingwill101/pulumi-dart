@@ -9,11 +9,11 @@ import 's3_access_point_attachment_timeouts.dart';
 class S3AccessPointAttachmentState {
   /// Name of the S3 access point.
   final pulumi.Input<String>? name;
-  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
+  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfsConfiguration` Block for details.
   final pulumi.Input<S3AccessPointAttachmentOpenzfsConfiguration>? openzfsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// S3 access point configuration. See `s3_access_point` Block for details.
+  /// S3 access point configuration. See `s3AccessPoint` Block for details.
   final pulumi.Input<S3AccessPointAttachmentS3AccessPoint>? s3AccessPoint;
   /// S3 access point's alias.
   final pulumi.Input<String>? s3AccessPointAlias;
@@ -27,9 +27,9 @@ class S3AccessPointAttachmentState {
 
   /// Creates a new [S3AccessPointAttachmentState].
   /// [name] Name of the S3 access point.
-  /// [openzfsConfiguration] Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
+  /// [openzfsConfiguration] Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfsConfiguration` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [s3AccessPoint] S3 access point configuration. See `s3_access_point` Block for details.
+  /// [s3AccessPoint] S3 access point configuration. See `s3AccessPoint` Block for details.
   /// [s3AccessPointAlias] S3 access point's alias.
   /// [s3AccessPointArn] S3 access point's ARN.
   /// [timeouts] Optional.
@@ -71,4 +71,3 @@ class S3AccessPointAttachmentState {
     );
   }
 }
-

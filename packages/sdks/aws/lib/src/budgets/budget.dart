@@ -57,7 +57,7 @@ import 'budget_state.dart';
 ///     }],
 ///     notifications=[{
 ///         "comparison_operator": "GREATER_THAN",
-///         "threshold": 100,
+///         "threshold": float(100),
 ///         "threshold_type": "PERCENTAGE",
 ///         "notification_type": "FORECASTED",
 ///         "subscriber_email_addresses": ["test@example.com"],
@@ -167,6 +167,40 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "ec2" {
+///   name              = "budget-ec2-monthly"
+///   budget_type       = "COST"
+///   limit_amount      = "1200"
+///   limit_unit        = "USD"
+///   time_period_end   = "2087-06-15_00:00"
+///   time_period_start = "2017-07-01_00:00"
+///   time_unit         = "MONTHLY"
+///   cost_filters {
+///     name   = "Service"
+///     values = ["Amazon Elastic Compute Cloud - Compute"]
+///   }
+///   notifications {
+///     comparison_operator        = "GREATER_THAN"
+///     threshold                  = 100
+///     threshold_type             = "PERCENTAGE"
+///     notification_type          = "FORECASTED"
+///     subscriber_email_addresses = ["test@example.com"]
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +211,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetCostFilterArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetNotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -308,6 +342,21 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "cost" {
+///   budget_type  = "COST"
+///   limit_amount = "100"
+///   limit_unit   = "USD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -316,8 +365,8 @@ import 'budget_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,6 +495,28 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "cost" {
+///   planned_limits {
+///     start_time = "2017-07-01_00:00"
+///     amount     = "100"
+///     unit       = "USD"
+///   }
+///   planned_limits {
+///     start_time = "2017-08-01_00:00"
+///     amount     = "200"
+///     unit       = "USD"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -455,8 +526,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetPlannedLimitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -561,6 +632,21 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "s3" {
+///   budget_type  = "USAGE"
+///   limit_amount = "3"
+///   limit_unit   = "GB"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -569,8 +655,8 @@ import 'budget_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -712,6 +798,33 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "savings_plan_utilization" {
+///   budget_type  = "SAVINGS_PLANS_UTILIZATION"
+///   limit_amount = "100.0"
+///   limit_unit   = "PERCENTAGE"
+///   cost_types = {
+///     include_credit             = false
+///     include_discount           = false
+///     include_other_subscription = false
+///     include_recurring          = false
+///     include_refund             = false
+///     include_subscription       = true
+///     include_support            = false
+///     include_tax                = false
+///     include_upfront            = false
+///     use_blended                = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -721,8 +834,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetCostTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -915,6 +1028,37 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "ri_utilization" {
+///   budget_type  = "RI_UTILIZATION"
+///   limit_amount = "100.0"
+///   limit_unit   = "PERCENTAGE"
+///   cost_types = {
+///     include_credit             = false
+///     include_discount           = false
+///     include_other_subscription = false
+///     include_recurring          = false
+///     include_refund             = false
+///     include_subscription       = true
+///     include_support            = false
+///     include_tax                = false
+///     include_upfront            = false
+///     use_blended                = false
+///   }
+///   cost_filters {
+///     name   = "Service"
+///     values = ["Amazon Relational Database Service"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -925,8 +1069,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetCostTypesArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetCostFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1071,6 +1215,22 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "cost" {
+///   cost_filters {
+///     name   = "TagKeyValue"
+///     values = ["aws:createdBy$Pulumi", "user:business-unit$human_resources"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1080,8 +1240,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetCostFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1191,6 +1351,22 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "cost" {
+///   cost_filters {
+///     name   = "TagKeyValue"
+///     values = ["TagKey${"$"}${tagValue}"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1200,8 +1376,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetCostFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1235,7 +1411,7 @@ import 'budget_state.dart';
 /// ```
 ///
 ///
-/// Create a budget with a simple dimension filter
+/// Create a budget with a simple dimension filter for unblended costs
 ///
 ///
 /// ```typescript
@@ -1248,6 +1424,7 @@ import 'budget_state.dart';
 ///     limitAmount: "500",
 ///     limitUnit: "USD",
 ///     timeUnit: "MONTHLY",
+///     metrics: "UnblendedCost",
 ///     filterExpression: {
 ///         dimensions: {
 ///             key: "SERVICE",
@@ -1266,6 +1443,7 @@ import 'budget_state.dart';
 ///     limit_amount="500",
 ///     limit_unit="USD",
 ///     time_unit="MONTHLY",
+///     metrics="UnblendedCost",
 ///     filter_expression={
 ///         "dimensions": {
 ///             "key": "SERVICE",
@@ -1288,6 +1466,7 @@ import 'budget_state.dart';
 ///         LimitAmount = "500",
 ///         LimitUnit = "USD",
 ///         TimeUnit = "MONTHLY",
+///         Metrics = "UnblendedCost",
 ///         FilterExpression = new Aws.Budgets.Inputs.BudgetFilterExpressionArgs
 ///         {
 ///             Dimensions = new Aws.Budgets.Inputs.BudgetFilterExpressionDimensionsArgs
@@ -1319,6 +1498,7 @@ import 'budget_state.dart';
 /// 			LimitAmount: pulumi.String("500"),
 /// 			LimitUnit:   pulumi.String("USD"),
 /// 			TimeUnit:    pulumi.String("MONTHLY"),
+/// 			Metrics:     pulumi.String("UnblendedCost"),
 /// 			FilterExpression: &budgets.BudgetFilterExpressionArgs{
 /// 				Dimensions: &budgets.BudgetFilterExpressionDimensionsArgs{
 /// 					Key: pulumi.String("SERVICE"),
@@ -1335,6 +1515,30 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "simple" {
+///   name         = "budget-ec2-filter"
+///   budget_type  = "COST"
+///   limit_amount = "500"
+///   limit_unit   = "USD"
+///   time_unit    = "MONTHLY"
+///   metrics      = "UnblendedCost"
+///   filter_expression = {
+///     dimensions = {
+///       key    = "SERVICE"
+///       values = ["Amazon Elastic Compute Cloud - Compute"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1345,8 +1549,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionDimensionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1364,6 +1568,7 @@ import 'budget_state.dart';
 ///             .limitAmount("500")
 ///             .limitUnit("USD")
 ///             .timeUnit("MONTHLY")
+///             .metrics("UnblendedCost")
 ///             .filterExpression(BudgetFilterExpressionArgs.builder()
 ///                 .dimensions(BudgetFilterExpressionDimensionsArgs.builder()
 ///                     .key("SERVICE")
@@ -1385,6 +1590,7 @@ import 'budget_state.dart';
 ///       limitAmount: '500'
 ///       limitUnit: USD
 ///       timeUnit: MONTHLY
+///       metrics: UnblendedCost
 ///       filterExpression:
 ///         dimensions:
 ///           key: SERVICE
@@ -1393,7 +1599,7 @@ import 'budget_state.dart';
 /// ```
 ///
 ///
-/// Create a budget with AND filter
+/// Create a budget with AND filter for blended costs
 ///
 ///
 /// ```typescript
@@ -1406,6 +1612,7 @@ import 'budget_state.dart';
 ///     limitAmount: "1200",
 ///     limitUnit: "USD",
 ///     timeUnit: "MONTHLY",
+///     metrics: "BlendedCost",
 ///     filterExpression: {
 ///         ands: [
 ///             {
@@ -1434,6 +1641,7 @@ import 'budget_state.dart';
 ///     limit_amount="1200",
 ///     limit_unit="USD",
 ///     time_unit="MONTHLY",
+///     metrics="BlendedCost",
 ///     filter_expression={
 ///         "ands": [
 ///             {
@@ -1466,6 +1674,7 @@ import 'budget_state.dart';
 ///         LimitAmount = "1200",
 ///         LimitUnit = "USD",
 ///         TimeUnit = "MONTHLY",
+///         Metrics = "BlendedCost",
 ///         FilterExpression = new Aws.Budgets.Inputs.BudgetFilterExpressionArgs
 ///         {
 ///             Ands = new[]
@@ -1514,6 +1723,7 @@ import 'budget_state.dart';
 /// 			LimitAmount: pulumi.String("1200"),
 /// 			LimitUnit:   pulumi.String("USD"),
 /// 			TimeUnit:    pulumi.String("MONTHLY"),
+/// 			Metrics:     pulumi.String("BlendedCost"),
 /// 			FilterExpression: &budgets.BudgetFilterExpressionArgs{
 /// 				Ands: budgets.BudgetFilterExpressionAndArray{
 /// 					&budgets.BudgetFilterExpressionAndArgs{
@@ -1542,6 +1752,37 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "and_example" {
+///   name         = "budget-and-filter"
+///   budget_type  = "COST"
+///   limit_amount = "1200"
+///   limit_unit   = "USD"
+///   time_unit    = "MONTHLY"
+///   metrics      = "BlendedCost"
+///   filter_expression = {
+///     ands = [{
+///       "dimensions" = {
+///         "key"    = "SERVICE"
+///         "values" = ["Amazon Elastic Compute Cloud - Compute"]
+///       }
+///       }, {
+///       "tags" = {
+///         "key"    = "Environment"
+///         "values" = ["Production"]
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1551,8 +1792,11 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionAndArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionAndDimensionsArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionAndTagsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1570,6 +1814,7 @@ import 'budget_state.dart';
 ///             .limitAmount("1200")
 ///             .limitUnit("USD")
 ///             .timeUnit("MONTHLY")
+///             .metrics("BlendedCost")
 ///             .filterExpression(BudgetFilterExpressionArgs.builder()
 ///                 .ands(
 ///                     BudgetFilterExpressionAndArgs.builder()
@@ -1601,6 +1846,7 @@ import 'budget_state.dart';
 ///       limitAmount: '1200'
 ///       limitUnit: USD
 ///       timeUnit: MONTHLY
+///       metrics: BlendedCost
 ///       filterExpression:
 ///         ands:
 ///           - dimensions:
@@ -1614,7 +1860,7 @@ import 'budget_state.dart';
 /// ```
 ///
 ///
-/// Create a budget with OR filter
+/// Create a budget with OR filter for amortized costs
 ///
 ///
 /// ```typescript
@@ -1627,6 +1873,7 @@ import 'budget_state.dart';
 ///     limitAmount: "2000",
 ///     limitUnit: "USD",
 ///     timeUnit: "MONTHLY",
+///     metrics: "AmortizedCost",
 ///     filterExpression: {
 ///         ors: [
 ///             {
@@ -1655,6 +1902,7 @@ import 'budget_state.dart';
 ///     limit_amount="2000",
 ///     limit_unit="USD",
 ///     time_unit="MONTHLY",
+///     metrics="AmortizedCost",
 ///     filter_expression={
 ///         "ors": [
 ///             {
@@ -1687,6 +1935,7 @@ import 'budget_state.dart';
 ///         LimitAmount = "2000",
 ///         LimitUnit = "USD",
 ///         TimeUnit = "MONTHLY",
+///         Metrics = "AmortizedCost",
 ///         FilterExpression = new Aws.Budgets.Inputs.BudgetFilterExpressionArgs
 ///         {
 ///             Ors = new[]
@@ -1735,6 +1984,7 @@ import 'budget_state.dart';
 /// 			LimitAmount: pulumi.String("2000"),
 /// 			LimitUnit:   pulumi.String("USD"),
 /// 			TimeUnit:    pulumi.String("MONTHLY"),
+/// 			Metrics:     pulumi.String("AmortizedCost"),
 /// 			FilterExpression: &budgets.BudgetFilterExpressionArgs{
 /// 				Ors: budgets.BudgetFilterExpressionOrArray{
 /// 					&budgets.BudgetFilterExpressionOrArgs{
@@ -1763,6 +2013,37 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "or_example" {
+///   name         = "budget-or-filter"
+///   budget_type  = "COST"
+///   limit_amount = "2000"
+///   limit_unit   = "USD"
+///   time_unit    = "MONTHLY"
+///   metrics      = "AmortizedCost"
+///   filter_expression = {
+///     ors = [{
+///       "dimensions" = {
+///         "key"    = "SERVICE"
+///         "values" = ["Amazon Elastic Compute Cloud - Compute"]
+///       }
+///       }, {
+///       "dimensions" = {
+///         "key"    = "SERVICE"
+///         "values" = ["Amazon Relational Database Service"]
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1772,8 +2053,10 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrDimensionsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1791,6 +2074,7 @@ import 'budget_state.dart';
 ///             .limitAmount("2000")
 ///             .limitUnit("USD")
 ///             .timeUnit("MONTHLY")
+///             .metrics("AmortizedCost")
 ///             .filterExpression(BudgetFilterExpressionArgs.builder()
 ///                 .ors(
 ///                     BudgetFilterExpressionOrArgs.builder()
@@ -1822,6 +2106,7 @@ import 'budget_state.dart';
 ///       limitAmount: '2000'
 ///       limitUnit: USD
 ///       timeUnit: MONTHLY
+///       metrics: AmortizedCost
 ///       filterExpression:
 ///         ors:
 ///           - dimensions:
@@ -1835,7 +2120,7 @@ import 'budget_state.dart';
 /// ```
 ///
 ///
-/// Create a budget with NOT filter
+/// Create a budget with NOT filter for net unblended costs
 ///
 ///
 /// ```typescript
@@ -1848,6 +2133,7 @@ import 'budget_state.dart';
 ///     limitAmount: "1000",
 ///     limitUnit: "USD",
 ///     timeUnit: "MONTHLY",
+///     metrics: "NetUnblendedCost",
 ///     filterExpression: {
 ///         not: {
 ///             dimensions: {
@@ -1868,6 +2154,7 @@ import 'budget_state.dart';
 ///     limit_amount="1000",
 ///     limit_unit="USD",
 ///     time_unit="MONTHLY",
+///     metrics="NetUnblendedCost",
 ///     filter_expression={
 ///         "not_": {
 ///             "dimensions": {
@@ -1892,6 +2179,7 @@ import 'budget_state.dart';
 ///         LimitAmount = "1000",
 ///         LimitUnit = "USD",
 ///         TimeUnit = "MONTHLY",
+///         Metrics = "NetUnblendedCost",
 ///         FilterExpression = new Aws.Budgets.Inputs.BudgetFilterExpressionArgs
 ///         {
 ///             Not = new Aws.Budgets.Inputs.BudgetFilterExpressionNotArgs
@@ -1926,6 +2214,7 @@ import 'budget_state.dart';
 /// 			LimitAmount: pulumi.String("1000"),
 /// 			LimitUnit:   pulumi.String("USD"),
 /// 			TimeUnit:    pulumi.String("MONTHLY"),
+/// 			Metrics:     pulumi.String("NetUnblendedCost"),
 /// 			FilterExpression: &budgets.BudgetFilterExpressionArgs{
 /// 				Not: &budgets.BudgetFilterExpressionNotArgs{
 /// 					Dimensions: &budgets.BudgetFilterExpressionNotDimensionsArgs{
@@ -1944,6 +2233,32 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "not_example" {
+///   name         = "budget-not-filter"
+///   budget_type  = "COST"
+///   limit_amount = "1000"
+///   limit_unit   = "USD"
+///   time_unit    = "MONTHLY"
+///   metrics      = "NetUnblendedCost"
+///   filter_expression = {
+///     not = {
+///       dimensions = {
+///         key    = "REGION"
+///         values = ["us-west-2"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1955,8 +2270,8 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionNotArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionNotDimensionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1974,6 +2289,7 @@ import 'budget_state.dart';
 ///             .limitAmount("1000")
 ///             .limitUnit("USD")
 ///             .timeUnit("MONTHLY")
+///             .metrics("NetUnblendedCost")
 ///             .filterExpression(BudgetFilterExpressionArgs.builder()
 ///                 .not(BudgetFilterExpressionNotArgs.builder()
 ///                     .dimensions(BudgetFilterExpressionNotDimensionsArgs.builder()
@@ -1998,6 +2314,7 @@ import 'budget_state.dart';
 ///       limitAmount: '1000'
 ///       limitUnit: USD
 ///       timeUnit: MONTHLY
+///       metrics: NetUnblendedCost
 ///       filterExpression:
 ///         not:
 ///           dimensions:
@@ -2007,7 +2324,7 @@ import 'budget_state.dart';
 /// ```
 ///
 ///
-/// Create a budget with a compound filter
+/// Create a budget with a compound filter for net amortized costs
 ///
 ///
 /// ```typescript
@@ -2020,6 +2337,7 @@ import 'budget_state.dart';
 ///     limitAmount: "1500",
 ///     limitUnit: "USD",
 ///     timeUnit: "MONTHLY",
+///     metrics: "NetAmortizedCost",
 ///     filterExpression: {
 ///         ors: [
 ///             {
@@ -2073,6 +2391,7 @@ import 'budget_state.dart';
 ///     limit_amount="1500",
 ///     limit_unit="USD",
 ///     time_unit="MONTHLY",
+///     metrics="NetAmortizedCost",
 ///     filter_expression={
 ///         "ors": [
 ///             {
@@ -2109,7 +2428,7 @@ import 'budget_state.dart';
 ///     },
 ///     notifications=[{
 ///         "comparison_operator": "GREATER_THAN",
-///         "threshold": 100,
+///         "threshold": float(100),
 ///         "threshold_type": "PERCENTAGE",
 ///         "notification_type": "FORECASTED",
 ///         "subscriber_email_addresses": ["test@example.com"],
@@ -2130,6 +2449,7 @@ import 'budget_state.dart';
 ///         LimitAmount = "1500",
 ///         LimitUnit = "USD",
 ///         TimeUnit = "MONTHLY",
+///         Metrics = "NetAmortizedCost",
 ///         FilterExpression = new Aws.Budgets.Inputs.BudgetFilterExpressionArgs
 ///         {
 ///             Ors = new[]
@@ -2223,6 +2543,7 @@ import 'budget_state.dart';
 /// 			LimitAmount: pulumi.String("1500"),
 /// 			LimitUnit:   pulumi.String("USD"),
 /// 			TimeUnit:    pulumi.String("MONTHLY"),
+/// 			Metrics:     pulumi.String("NetAmortizedCost"),
 /// 			FilterExpression: &budgets.BudgetFilterExpressionArgs{
 /// 				Ors: budgets.BudgetFilterExpressionOrArray{
 /// 					&budgets.BudgetFilterExpressionOrArgs{
@@ -2284,6 +2605,58 @@ import 'budget_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_budgets_budget" "compound_example" {
+///   name         = "budget-compound-filter"
+///   budget_type  = "COST"
+///   limit_amount = "1500"
+///   limit_unit   = "USD"
+///   time_unit    = "MONTHLY"
+///   metrics      = "NetAmortizedCost"
+///   filter_expression = {
+///     ors = [{
+///       "ands" = [{
+///         "dimensions" = {
+///           "key"    = "SERVICE"
+///           "values" = ["Amazon Elastic Compute Cloud - Compute"]
+///         }
+///         }, {
+///         "tags" = {
+///           "key"    = "Environment"
+///           "values" = ["production"]
+///         }
+///         }, {
+///         "costCategories" = {
+///           "key"    = "Environment"
+///           "values" = ["production"]
+///         }
+///       }]
+///       }, {
+///       "not" = {
+///         "dimensions" = {
+///           "key"    = "REGION"
+///           "values" = ["us-west-2"]
+///         }
+///       }
+///     }]
+///   }
+///   notifications {
+///     comparison_operator        = "GREATER_THAN"
+///     threshold                  = 100
+///     threshold_type             = "PERCENTAGE"
+///     notification_type          = "FORECASTED"
+///     subscriber_email_addresses = ["test@example.com"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2293,9 +2666,16 @@ import 'budget_state.dart';
 /// import com.pulumi.aws.budgets.Budget;
 /// import com.pulumi.aws.budgets.BudgetArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrAndArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrAndDimensionsArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrAndTagsArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrAndCostCategoriesArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrNotArgs;
+/// import com.pulumi.aws.budgets.inputs.BudgetFilterExpressionOrNotDimensionsArgs;
 /// import com.pulumi.aws.budgets.inputs.BudgetNotificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2313,6 +2693,7 @@ import 'budget_state.dart';
 ///             .limitAmount("1500")
 ///             .limitUnit("USD")
 ///             .timeUnit("MONTHLY")
+///             .metrics("NetAmortizedCost")
 ///             .filterExpression(BudgetFilterExpressionArgs.builder()
 ///                 .ors(
 ///                     BudgetFilterExpressionOrArgs.builder()
@@ -2368,6 +2749,7 @@ import 'budget_state.dart';
 ///       limitAmount: '1500'
 ///       limitUnit: USD
 ///       timeUnit: MONTHLY
+///       metrics: NetAmortizedCost
 ///       filterExpression:
 ///         ors:
 ///           - ands:
@@ -2406,7 +2788,7 @@ import 'budget_state.dart';
 /// $ pulumi import aws:budgets/budget:Budget myBudget 123456789012:myBudget
 /// ```
 class Budget extends pulumi.CustomResource {
-  /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
+  /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
   late final pulumi.Output<String> accountId;
   /// The ARN of the budget.
   late final pulumi.Output<String> arn;
@@ -2416,16 +2798,18 @@ class Budget extends pulumi.CustomResource {
   late final pulumi.Output<String?> billingViewArn;
   /// Whether this budget tracks monetary cost or usage.
   late final pulumi.Output<String> budgetType;
-  /// A list of CostFilter name/values pair to apply to budget. Conflicts with `filter_expression`.
+  /// A list of CostFilter name/values pair to apply to budget. Conflicts with `filterExpression`.
   late final pulumi.Output<List<Map<String, dynamic>>> costFilters;
   /// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions.
   late final pulumi.Output<BudgetCostTypes> costTypes;
-  /// Object containing Filter Expression to apply to budget. Conflicts with `cost_filter`.
+  /// Object containing Filter Expression to apply to budget. Conflicts with `costFilter` and requires `metrics`.
   late final pulumi.Output<BudgetFilterExpression?> filterExpression;
   /// The amount of cost or usage being measured for a budget.
   late final pulumi.Output<String> limitAmount;
   /// The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
   late final pulumi.Output<String> limitUnit;
+  /// List containing definition for how the budget data is aggregated. Conflicts with `costTypes` and requires `filterExpression`.
+  late final pulumi.Output<String?> metrics;
   /// The name of a budget. Unique within accounts.
   late final pulumi.Output<String> name;
   /// The prefix of the name of a budget. Unique within accounts.
@@ -2434,9 +2818,9 @@ class Budget extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> notifications;
   /// Object containing Planned Budget Limits. Can be used multiple times to plan more than one budget limit. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
   late final pulumi.Output<List<Map<String, dynamic>>?> plannedLimits;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
   late final pulumi.Output<String?> timePeriodEnd;
@@ -2474,6 +2858,7 @@ class Budget extends pulumi.CustomResource {
     filterExpression = registerOutput<BudgetFilterExpression?>('filterExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetFilterExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     limitAmount = registerOutput<String>('limitAmount');
     limitUnit = registerOutput<String>('limitUnit');
+    metrics = registerOutput<String?>('metrics');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     notifications = registerOutput<List<Map<String, dynamic>>?>('notifications');
@@ -2518,6 +2903,7 @@ class Budget extends pulumi.CustomResource {
     filterExpression = registerOutput<BudgetFilterExpression?>('filterExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetFilterExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     limitAmount = registerOutput<String>('limitAmount');
     limitUnit = registerOutput<String>('limitUnit');
+    metrics = registerOutput<String?>('metrics');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     notifications = registerOutput<List<Map<String, dynamic>>?>('notifications');

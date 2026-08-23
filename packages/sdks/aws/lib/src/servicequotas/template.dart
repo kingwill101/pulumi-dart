@@ -30,7 +30,7 @@ import 'template_state.dart';
 ///     aws_region="us-east-1",
 ///     quota_code="L-2ACBD22F",
 ///     service_code="lambda",
-///     value=80)
+///     value=float(80))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -73,6 +73,22 @@ import 'template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicequotas_template" "example" {
+///   aws_region   = "us-east-1"
+///   quota_code   = "L-2ACBD22F"
+///   service_code = "lambda"
+///   value        = "80"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +97,8 @@ import 'template_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicequotas.Template;
 /// import com.pulumi.aws.servicequotas.TemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

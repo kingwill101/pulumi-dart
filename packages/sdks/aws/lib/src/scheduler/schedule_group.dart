@@ -58,6 +58,19 @@ import 'schedule_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_scheduler_schedulegroup" "example" {
+///   name = "my-schedule-group"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'schedule_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.scheduler.ScheduleGroup;
 /// import com.pulumi.aws.scheduler.ScheduleGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -109,7 +122,7 @@ class ScheduleGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> creationDate;
   /// Time at which the schedule group was last modified.
   late final pulumi.Output<String> lastModificationDate;
-  /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -117,9 +130,9 @@ class ScheduleGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// State of the schedule group. Can be `ACTIVE` or `DELETING`.
   late final pulumi.Output<String> state;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ScheduleGroup].

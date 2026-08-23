@@ -63,6 +63,20 @@ import 'data_share_consumer_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_datashareconsumerassociation" "example" {
+///   data_share_arn           = "arn:aws:redshift:us-west-2:123456789012:datashare:b3bfde75-73fd-408b-9086-d6fccfd6d588/example"
+///   associate_entire_account = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'data_share_consumer_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.DataShareConsumerAssociation;
 /// import com.pulumi.aws.redshift.DataShareConsumerAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,6 +173,20 @@ import 'data_share_consumer_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_datashareconsumerassociation" "example" {
+///   data_share_arn  = "arn:aws:redshift:us-west-2:123456789012:datashare:b3bfde75-73fd-408b-9086-d6fccfd6d588/example"
+///   consumer_region = "us-west-2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +195,8 @@ import 'data_share_consumer_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.DataShareConsumerAssociation;
 /// import com.pulumi.aws.redshift.DataShareConsumerAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,11 +236,11 @@ import 'data_share_consumer_association_state.dart';
 class DataShareConsumerAssociation extends pulumi.CustomResource {
   /// Whether to allow write operations for a datashare.
   late final pulumi.Output<bool?> allowWrites;
-  /// Whether the datashare is associated with the entire account. Conflicts with `consumer_arn` and `consumer_region`.
+  /// Whether the datashare is associated with the entire account. Conflicts with `consumerArn` and `consumerRegion`.
   late final pulumi.Output<bool?> associateEntireAccount;
-  /// Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associate_entire_account` and `consumer_region`.
+  /// Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associateEntireAccount` and `consumerRegion`.
   late final pulumi.Output<String?> consumerArn;
-  /// From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associate_entire_account` and `consumer_arn`.
+  /// From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associateEntireAccount` and `consumerArn`.
   late final pulumi.Output<String?> consumerRegion;
   /// Amazon Resource Name (ARN) of the datashare that the consumer is to use with the account or the namespace.
   ///

@@ -2,7 +2,12 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'insight_filters_aws_account_id.dart';
+import 'insight_filters_aws_account_name.dart';
 import 'insight_filters_company_name.dart';
+import 'insight_filters_compliance_associated_standards_id.dart';
+import 'insight_filters_compliance_security_control_id.dart';
+import 'insight_filters_compliance_security_control_parameters_name.dart';
+import 'insight_filters_compliance_security_control_parameters_value.dart';
 import 'insight_filters_compliance_status.dart';
 import 'insight_filters_confidence.dart';
 import 'insight_filters_created_at.dart';
@@ -93,8 +98,18 @@ import 'insight_filters_workflow_status.dart';
 class InsightFilters {
   /// AWS account ID that a finding is generated in. See String_Filter below for more details.
   final pulumi.Input<List<InsightFiltersAwsAccountId>>? awsAccountIds;
+  /// The name of the AWS account in which a finding is generated. See String_Filter below for more details.
+  final pulumi.Input<List<InsightFiltersAwsAccountName>>? awsAccountNames;
   /// The name of the findings provider (company) that owns the solution (product) that generates findings. See String_Filter below for more details.
   final pulumi.Input<List<InsightFiltersCompanyName>>? companyNames;
+  /// The unique identifier of a standard in which a control is enabled. See String_Filter below for more details.
+  final pulumi.Input<List<InsightFiltersComplianceAssociatedStandardsId>>? complianceAssociatedStandardsIds;
+  /// The unique identifier of a control across standards. See String_Filter below for more details.
+  final pulumi.Input<List<InsightFiltersComplianceSecurityControlId>>? complianceSecurityControlIds;
+  /// The unique identifier of a control across standards. See String_Filter below for more details.
+  final pulumi.Input<List<InsightFiltersComplianceSecurityControlParametersName>>? complianceSecurityControlParametersNames;
+  /// The current value of a security control parameter. See String_Filter below for more details.
+  final pulumi.Input<List<InsightFiltersComplianceSecurityControlParametersValue>>? complianceSecurityControlParametersValues;
   /// Exclusive to findings that are generated as the result of a check run against a specific rule in a supported standard, such as CIS AWS Foundations. Contains security standard-related finding details. See String Filter below for more details.
   final pulumi.Input<List<InsightFiltersComplianceStatus>>? complianceStatuses;
   /// A finding's confidence. Confidence is defined as the likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. Confidence is scored on a 0-100 basis using a ratio scale, where 0 means zero percent confidence and 100 means 100 percent confidence. See Number Filter below for more details.
@@ -270,7 +285,12 @@ class InsightFilters {
 
   /// Creates a new [InsightFilters].
   /// [awsAccountIds] AWS account ID that a finding is generated in. See String_Filter below for more details.
+  /// [awsAccountNames] The name of the AWS account in which a finding is generated. See String_Filter below for more details.
   /// [companyNames] The name of the findings provider (company) that owns the solution (product) that generates findings. See String_Filter below for more details.
+  /// [complianceAssociatedStandardsIds] The unique identifier of a standard in which a control is enabled. See String_Filter below for more details.
+  /// [complianceSecurityControlIds] The unique identifier of a control across standards. See String_Filter below for more details.
+  /// [complianceSecurityControlParametersNames] The unique identifier of a control across standards. See String_Filter below for more details.
+  /// [complianceSecurityControlParametersValues] The current value of a security control parameter. See String_Filter below for more details.
   /// [complianceStatuses] Exclusive to findings that are generated as the result of a check run against a specific rule in a supported standard, such as CIS AWS Foundations. Contains security standard-related finding details. See String Filter below for more details.
   /// [confidences] A finding's confidence. Confidence is defined as the likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. Confidence is scored on a 0-100 basis using a ratio scale, where 0 means zero percent confidence and 100 means 100 percent confidence. See Number Filter below for more details.
   /// [createdAts] An ISO8601-formatted timestamp that indicates when the security-findings provider captured the potential security issue that a finding captured. See Date Filter below for more details.
@@ -359,7 +379,12 @@ class InsightFilters {
   /// [workflowStatuses] The status of the investigation into a finding. See Workflow Status Filter below for more details.
   const InsightFilters({
     this.awsAccountIds,
+    this.awsAccountNames,
     this.companyNames,
+    this.complianceAssociatedStandardsIds,
+    this.complianceSecurityControlIds,
+    this.complianceSecurityControlParametersNames,
+    this.complianceSecurityControlParametersValues,
     this.complianceStatuses,
     this.confidences,
     this.createdAts,
@@ -451,7 +476,12 @@ class InsightFilters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'awsAccountIds': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersAwsAccountId>, List<Map<String, dynamic>>>(awsAccountIds, (value) => pulumi.Input.encodeList<InsightFiltersAwsAccountId, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'awsAccountNames': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersAwsAccountName>, List<Map<String, dynamic>>>(awsAccountNames, (value) => pulumi.Input.encodeList<InsightFiltersAwsAccountName, Map<String, dynamic>>(value, (value) => value.toMap())),
       'companyNames': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersCompanyName>, List<Map<String, dynamic>>>(companyNames, (value) => pulumi.Input.encodeList<InsightFiltersCompanyName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'complianceAssociatedStandardsIds': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersComplianceAssociatedStandardsId>, List<Map<String, dynamic>>>(complianceAssociatedStandardsIds, (value) => pulumi.Input.encodeList<InsightFiltersComplianceAssociatedStandardsId, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'complianceSecurityControlIds': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersComplianceSecurityControlId>, List<Map<String, dynamic>>>(complianceSecurityControlIds, (value) => pulumi.Input.encodeList<InsightFiltersComplianceSecurityControlId, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'complianceSecurityControlParametersNames': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersComplianceSecurityControlParametersName>, List<Map<String, dynamic>>>(complianceSecurityControlParametersNames, (value) => pulumi.Input.encodeList<InsightFiltersComplianceSecurityControlParametersName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'complianceSecurityControlParametersValues': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersComplianceSecurityControlParametersValue>, List<Map<String, dynamic>>>(complianceSecurityControlParametersValues, (value) => pulumi.Input.encodeList<InsightFiltersComplianceSecurityControlParametersValue, Map<String, dynamic>>(value, (value) => value.toMap())),
       'complianceStatuses': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersComplianceStatus>, List<Map<String, dynamic>>>(complianceStatuses, (value) => pulumi.Input.encodeList<InsightFiltersComplianceStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'confidences': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersConfidence>, List<Map<String, dynamic>>>(confidences, (value) => pulumi.Input.encodeList<InsightFiltersConfidence, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createdAts': ?pulumi.Input.mapOptionalInputValue<List<InsightFiltersCreatedAt>, List<Map<String, dynamic>>>(createdAts, (value) => pulumi.Input.encodeList<InsightFiltersCreatedAt, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -544,7 +574,12 @@ class InsightFilters {
   factory InsightFilters.fromMap(Map<String, dynamic> map) {
     return InsightFilters(
       awsAccountIds: (() { final guardedValue = map['awsAccountIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersAwsAccountId>(guardedValue, (value) => InsightFiltersAwsAccountId.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      awsAccountNames: (() { final guardedValue = map['awsAccountNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersAwsAccountName>(guardedValue, (value) => InsightFiltersAwsAccountName.fromMap((value as Map).cast<String, dynamic>()))); })(),
       companyNames: (() { final guardedValue = map['companyNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersCompanyName>(guardedValue, (value) => InsightFiltersCompanyName.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      complianceAssociatedStandardsIds: (() { final guardedValue = map['complianceAssociatedStandardsIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersComplianceAssociatedStandardsId>(guardedValue, (value) => InsightFiltersComplianceAssociatedStandardsId.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      complianceSecurityControlIds: (() { final guardedValue = map['complianceSecurityControlIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersComplianceSecurityControlId>(guardedValue, (value) => InsightFiltersComplianceSecurityControlId.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      complianceSecurityControlParametersNames: (() { final guardedValue = map['complianceSecurityControlParametersNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersComplianceSecurityControlParametersName>(guardedValue, (value) => InsightFiltersComplianceSecurityControlParametersName.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      complianceSecurityControlParametersValues: (() { final guardedValue = map['complianceSecurityControlParametersValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersComplianceSecurityControlParametersValue>(guardedValue, (value) => InsightFiltersComplianceSecurityControlParametersValue.fromMap((value as Map).cast<String, dynamic>()))); })(),
       complianceStatuses: (() { final guardedValue = map['complianceStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersComplianceStatus>(guardedValue, (value) => InsightFiltersComplianceStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       confidences: (() { final guardedValue = map['confidences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersConfidence>(guardedValue, (value) => InsightFiltersConfidence.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createdAts: (() { final guardedValue = map['createdAts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InsightFiltersCreatedAt>(guardedValue, (value) => InsightFiltersCreatedAt.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -634,4 +669,3 @@ class InsightFilters {
     );
   }
 }
-

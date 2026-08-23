@@ -100,6 +100,27 @@ import 'domain_verification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_domainverification" "example" {
+///   domain_name = "example.com"
+/// }
+/// # Create DNS TXT record for domain verification
+/// resource "aws_route53_record" "example" {
+///   zone_id = exampleAwsRoute53Zone.zoneId
+///   name    = aws_vpclattice_domainverification.example.txt_record_name
+///   type    = "TXT"
+///   ttl     = 300
+///   records = [aws_vpclattice_domainverification.example.txt_record_value]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +131,8 @@ import 'domain_verification_state.dart';
 /// import com.pulumi.aws.vpclattice.DomainVerificationArgs;
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +250,23 @@ import 'domain_verification_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_domainverification" "example" {
+///   domain_name = "example.com"
+///   tags = {
+///     "Environment" = "production"
+///     "Purpose"     = "domain-verification"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +275,8 @@ import 'domain_verification_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.DomainVerification;
 /// import com.pulumi.aws.vpclattice.DomainVerificationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,27 +319,27 @@ import 'domain_verification_state.dart';
 /// $ pulumi import aws:vpclattice/domainVerification:DomainVerification example dv-0a1b2c3d4e5f
 /// ```
 class DomainVerification extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the domain verification.
+  /// Amazon Resource Name (ARN) of the domain verification.
   late final pulumi.Output<String> arn;
-  /// The date and time that the domain verification was created, in ISO-8601 format.
+  /// Date and time that the domain verification was created, in ISO-8601 format.
   late final pulumi.Output<String> createdAt;
-  /// The domain name to verify ownership for.
+  /// Domain name to verify ownership for.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
-  /// The date and time that the domain was last successfully verified, in ISO-8601 format.
+  /// Date and time that the domain was last successfully verified, in ISO-8601 format.
   late final pulumi.Output<String> lastVerifiedTime;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The current status of the domain verification process. Valid values: `VERIFIED`, `PENDING`, `VERIFICATION_TIMED_OUT`.
+  /// Current status of the domain verification process. Valid values: `VERIFIED`, `PENDING`, `VERIFICATION_TIMED_OUT`.
   late final pulumi.Output<String> status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The name of the TXT record that must be created for domain verification.
+  /// Name of the TXT record that must be created for domain verification.
   late final pulumi.Output<String> txtRecordName;
-  /// The value that must be added to the TXT record for domain verification.
+  /// Value that must be added to the TXT record for domain verification.
   late final pulumi.Output<String> txtRecordValue;
 
   /// Creates a new [DomainVerification].

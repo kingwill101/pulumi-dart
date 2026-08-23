@@ -91,6 +91,26 @@ import 'trust_store_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_truststore" "example" {
+///   name = "example-trust-store"
+///   ca_certificates_bundle_source = {
+///     ca_certificates_bundle_s3_location = {
+///       bucket = "example-bucket"
+///       key    = "ca-certificates.pem"
+///       region = "us-east-1"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +121,8 @@ import 'trust_store_timeouts.dart';
 /// import com.pulumi.aws.cloudfront.TrustStoreArgs;
 /// import com.pulumi.aws.cloudfront.inputs.TrustStoreCaCertificatesBundleSourceArgs;
 /// import com.pulumi.aws.cloudfront.inputs.TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +249,27 @@ import 'trust_store_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_truststore" "example" {
+///   name = "example-trust-store"
+///   ca_certificates_bundle_source = {
+///     ca_certificates_bundle_s3_location = {
+///       bucket  = "example-bucket"
+///       key     = "ca-certificates.pem"
+///       region  = "us-east-1"
+///       version = "abc123"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +280,8 @@ import 'trust_store_timeouts.dart';
 /// import com.pulumi.aws.cloudfront.TrustStoreArgs;
 /// import com.pulumi.aws.cloudfront.inputs.TrustStoreCaCertificatesBundleSourceArgs;
 /// import com.pulumi.aws.cloudfront.inputs.TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3LocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,7 +333,7 @@ import 'trust_store_timeouts.dart';
 class TrustStore extends pulumi.CustomResource {
   /// ARN of the trust store.
   late final pulumi.Output<String> arn;
-  /// Configuration block for the CA certificates bundle source. See `ca_certificates_bundle_source` below.
+  /// Configuration block for the CA certificates bundle source. See `caCertificatesBundleSource` below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<TrustStoreCaCertificatesBundleSource> caCertificatesBundleSource;
@@ -302,9 +343,9 @@ class TrustStore extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Number of CA certificates in the trust store.
   late final pulumi.Output<int> numberOfCaCertificates;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<TrustStoreTimeouts?> timeouts;
 

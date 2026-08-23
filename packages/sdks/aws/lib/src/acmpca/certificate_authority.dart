@@ -6,7 +6,7 @@ import 'certificate_authority_state.dart';
 
 /// Provides a resource to manage AWS Certificate Manager Private Certificate Authorities (ACM PCA Certificate Authorities).
 ///
-/// &gt; **NOTE:** Creating this resource will leave the certificate authority in a `PENDING_CERTIFICATE` status, which means it cannot yet issue certificates. To complete this setup, you must fully sign the certificate authority CSR available in the `certificate_signing_request` attribute. The `aws.acmpca.CertificateAuthorityCertificate` resource can be used for this purpose.
+/// &gt; **NOTE:** Creating this resource will leave the certificate authority in a `PENDING_CERTIFICATE` status, which means it cannot yet issue certificates. To complete this setup, you must fully sign the certificate authority CSR available in the `certificateSigningRequest` attribute. The `aws.acmpca.CertificateAuthorityCertificate` resource can be used for this purpose.
 ///
 /// ## Example Usage
 ///
@@ -93,6 +93,26 @@ import 'certificate_authority_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+///   permanent_deletion_time_in_days = 7
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +123,8 @@ import 'certificate_authority_state.dart';
 /// import com.pulumi.aws.acmpca.CertificateAuthorityArgs;
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs;
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -227,6 +247,26 @@ import 'certificate_authority_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   usage_mode = "SHORT_LIVED_CERTIFICATE"
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +277,8 @@ import 'certificate_authority_state.dart';
 /// import com.pulumi.aws.acmpca.CertificateAuthorityArgs;
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs;
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,7 +349,7 @@ import 'certificate_authority_state.dart';
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
 ///     bucket: example.id,
-///     policy: acmpcaBucketAccess.apply(acmpcaBucketAccess => acmpcaBucketAccess.json),
+///     policy: acmpcaBucketAccess.json,
 /// });
 /// const exampleCertificateAuthority = new aws.acmpca.CertificateAuthority("example", {
 ///     certificateAuthorityConfiguration: {
@@ -510,10 +550,8 @@ import 'certificate_authority_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: example.ID(),
-/// 			Policy: pulumi.String(acmpcaBucketAccess.ApplyT(func(acmpcaBucketAccess iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &acmpcaBucketAccess.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: acmpcaBucketAccess.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -531,7 +569,7 @@ import 'certificate_authority_state.dart';
 /// 					CustomCname:      pulumi.String("crl.example.com"),
 /// 					Enabled:          pulumi.Bool(true),
 /// 					ExpirationInDays: pulumi.Int(7),
-/// 					S3BucketName:     example.ID(),
+/// 					S3BucketName:     example.ID().ToIDOutput().ToStringOutput(),
 /// 					S3ObjectAcl:      pulumi.String("BUCKET_OWNER_FULL_CONTROL"),
 /// 				},
 /// 			},
@@ -545,6 +583,54 @@ import 'certificate_authority_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "acmpcaBucketAccess" {
+///   statements {
+///     actions   = ["s3:GetBucketAcl", "s3:GetBucketLocation", "s3:PutObject", "s3:PutObjectAcl"]
+///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
+///     principals {
+///       identifiers = ["acm-pca.amazonaws.com"]
+///       type        = "Service"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket        = "example"
+///   force_destroy = true
+/// }
+/// resource "aws_s3_bucketpolicy" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   policy = data.aws_iam_getpolicydocument.acmpcaBucketAccess.json
+/// }
+/// resource "aws_acmpca_certificateauthority" "example" {
+///   depends_on = [aws_s3_bucketpolicy.example]
+///   certificate_authority_configuration = {
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
+///     subject = {
+///       common_name = "example.com"
+///     }
+///   }
+///   revocation_configuration = {
+///     crl_configuration = {
+///       custom_cname       = "crl.example.com"
+///       enabled            = true
+///       expiration_in_days = 7
+///       s3_bucket_name     = aws_s3_bucket.example.id
+///       s3_object_acl      = "BUCKET_OWNER_FULL_CONTROL"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -555,6 +641,8 @@ import 'certificate_authority_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.acmpca.CertificateAuthority;
@@ -564,8 +652,8 @@ import 'certificate_authority_state.dart';
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityRevocationConfigurationArgs;
 /// import com.pulumi.aws.acmpca.inputs.CertificateAuthorityRevocationConfigurationCrlConfigurationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -722,9 +810,9 @@ class CertificateAuthority extends pulumi.CustomResource {
   late final pulumi.Output<CertificateAuthorityRevocationConfiguration?> revocationConfiguration;
   /// Serial number of the certificate authority. Only available after the certificate authority certificate has been imported.
   late final pulumi.Output<String> serial;
-  /// Key-value map of user-defined tags that are attached to the certificate authority. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of user-defined tags that are attached to the certificate authority. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
   late final pulumi.Output<String?> type;

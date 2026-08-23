@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleActionFixedResponse {
-  /// The HTTP response code.
+  /// HTTP response code.
   final pulumi.Input<int> statusCode;
 
   /// Creates a new [ListenerRuleActionFixedResponse].
-  /// [statusCode] The HTTP response code.
+  /// [statusCode] HTTP response code.
   const ListenerRuleActionFixedResponse({
     required this.statusCode,
   });
@@ -24,4 +24,3 @@ class ListenerRuleActionFixedResponse {
     );
   }
 }
-

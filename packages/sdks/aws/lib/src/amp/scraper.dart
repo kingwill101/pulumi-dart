@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scraper_args.dart';
 import 'scraper_destination.dart';
+import 'scraper_exporter.dart';
 import 'scraper_role_configuration.dart';
 import 'scraper_source.dart';
 import 'scraper_state.dart';
 import 'scraper_timeouts.dart';
 
-/// &gt; **Note:** If you change a Scraper's source (EKS cluster), Terraform
+/// &gt; **Note:** If you change a Scraper's source (EKS cluster or VPC configuration), Terraform
 /// will delete the current Scraper and create a new one.
 ///
 /// Provides an Amazon Managed Service for Prometheus fully managed collector
@@ -333,6 +334,30 @@ import 'scraper_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_scraper" "example" {
+///   source = {
+///     eks = {
+///       cluster_arn = exampleAwsEksCluster.arn
+///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
+///     }
+///   }
+///   destination = {
+///     amp = {
+///       workspace_arn = exampleAwsPrometheusWorkspace.arn
+///     }
+///   }
+///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  # pod metrics\n  - job_name: pod_exporter\n    kubernetes_sd_configs:\n      - role: pod\n  # container metrics\n  - job_name: cadvisor\n    scheme: https\n    authorization:\n      credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n    kubernetes_sd_configs:\n      - role: node\n    relabel_configs:\n      - action: labelmap\n        regex: __meta_kubernetes_node_label_(.+)\n      - replacement: kubernetes.default.svc:443\n        target_label: __address__\n      - source_labels: [__meta_kubernetes_node_name]\n        regex: (.+)\n        target_label: __metrics_path__\n        replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor\n  # apiserver metrics\n  - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n    job_name: kubernetes-apiservers\n    kubernetes_sd_configs:\n    - role: endpoints\n    relabel_configs:\n    - action: keep\n      regex: default;kubernetes;https\n      source_labels:\n      - __meta_kubernetes_namespace\n      - __meta_kubernetes_service_name\n      - __meta_kubernetes_endpoint_port_name\n    scheme: https\n  # kube proxy metrics\n  - job_name: kube-proxy\n    honor_labels: true\n    kubernetes_sd_configs:\n    - role: pod\n    relabel_configs:\n    - action: keep\n      source_labels:\n      - __meta_kubernetes_namespace\n      - __meta_kubernetes_pod_name\n      separator: '/'\n      regex: 'kube-system/kube-proxy.+'\n    - source_labels:\n      - __address__\n      action: replace\n      target_label: __address__\n      regex: (.+?)(\\\\\\\\:\\\\\\\\d+)?\n      replacement: $1:10249\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +370,8 @@ import 'scraper_timeouts.dart';
 /// import com.pulumi.aws.amp.inputs.ScraperSourceEksArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperDestinationArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperDestinationAmpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -501,9 +526,821 @@ import 'scraper_timeouts.dart';
 /// ```
 ///
 ///
+/// ### CloudWatch Destination
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.amp.Scraper("example", {
+///     source: {
+///         eks: {
+///             clusterArn: exampleAwsEksCluster.arn,
+///             subnetIds: exampleAwsEksCluster.vpcConfig[0].subnetIds,
+///         },
+///     },
+///     destination: {
+///         cloudwatch: {
+///             datasetArn: "arn:aws:cloudwatch:us-west-2:123456789012:dataset/default",
+///         },
+///     },
+///     scrapeConfiguration: `global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: pod_exporter
+///     kubernetes_sd_configs:
+///       - role: pod
+/// `,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.amp.Scraper("example",
+///     source={
+///         "eks": {
+///             "cluster_arn": example_aws_eks_cluster["arn"],
+///             "subnet_ids": example_aws_eks_cluster["vpcConfig"][0]["subnetIds"],
+///         },
+///     },
+///     destination={
+///         "cloudwatch": {
+///             "dataset_arn": "arn:aws:cloudwatch:us-west-2:123456789012:dataset/default",
+///         },
+///     },
+///     scrape_configuration="""global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: pod_exporter
+///     kubernetes_sd_configs:
+///       - role: pod
+/// """)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Amp.Scraper("example", new()
+///     {
+///         Source = new Aws.Amp.Inputs.ScraperSourceArgs
+///         {
+///             Eks = new Aws.Amp.Inputs.ScraperSourceEksArgs
+///             {
+///                 ClusterArn = exampleAwsEksCluster.Arn,
+///                 SubnetIds = exampleAwsEksCluster.VpcConfig[0].SubnetIds,
+///             },
+///         },
+///         Destination = new Aws.Amp.Inputs.ScraperDestinationArgs
+///         {
+///             Cloudwatch = new Aws.Amp.Inputs.ScraperDestinationCloudwatchArgs
+///             {
+///                 DatasetArn = "arn:aws:cloudwatch:us-west-2:123456789012:dataset/default",
+///             },
+///         },
+///         ScrapeConfiguration = @"global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: pod_exporter
+///     kubernetes_sd_configs:
+///       - role: pod
+/// ",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/amp"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := amp.NewScraper(ctx, "example", &amp.ScraperArgs{
+/// 			Source: &amp.ScraperSourceArgs{
+/// 				Eks: &amp.ScraperSourceEksArgs{
+/// 					ClusterArn: pulumi.Any(exampleAwsEksCluster.Arn),
+/// 					SubnetIds:  pulumi.Any(exampleAwsEksCluster.VpcConfig[0].SubnetIds),
+/// 				},
+/// 			},
+/// 			Destination: &amp.ScraperDestinationArgs{
+/// 				Cloudwatch: &amp.ScraperDestinationCloudwatchArgs{
+/// 					DatasetArn: pulumi.String("arn:aws:cloudwatch:us-west-2:123456789012:dataset/default"),
+/// 				},
+/// 			},
+/// 			ScrapeConfiguration: pulumi.String(`global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: pod_exporter
+///     kubernetes_sd_configs:
+///       - role: pod
+/// `),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_scraper" "example" {
+///   source = {
+///     eks = {
+///       cluster_arn = exampleAwsEksCluster.arn
+///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
+///     }
+///   }
+///   destination = {
+///     cloudwatch = {
+///       dataset_arn = "arn:aws:cloudwatch:us-west-2:123456789012:dataset/default"
+///     }
+///   }
+///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  - job_name: pod_exporter\n    kubernetes_sd_configs:\n      - role: pod\n"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.amp.Scraper;
+/// import com.pulumi.aws.amp.ScraperArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperSourceArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperSourceEksArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperDestinationArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperDestinationCloudwatchArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Scraper("example", ScraperArgs.builder()
+///             .source(ScraperSourceArgs.builder()
+///                 .eks(ScraperSourceEksArgs.builder()
+///                     .clusterArn(exampleAwsEksCluster.arn())
+///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
+///                     .build())
+///                 .build())
+///             .destination(ScraperDestinationArgs.builder()
+///                 .cloudwatch(ScraperDestinationCloudwatchArgs.builder()
+///                     .datasetArn("arn:aws:cloudwatch:us-west-2:123456789012:dataset/default")
+///                     .build())
+///                 .build())
+///             .scrapeConfiguration("""
+/// global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: pod_exporter
+///     kubernetes_sd_configs:
+///       - role: pod
+///             """)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:amp:Scraper
+///     properties:
+///       source:
+///         eks:
+///           clusterArn: ${exampleAwsEksCluster.arn}
+///           subnetIds: ${exampleAwsEksCluster.vpcConfig[0].subnetIds}
+///       destination:
+///         cloudwatch:
+///           datasetArn: arn:aws:cloudwatch:us-west-2:123456789012:dataset/default
+///       scrapeConfiguration: |
+///         global:
+///           scrape_interval: 30s
+///         scrape_configs:
+///           - job_name: pod_exporter
+///             kubernetes_sd_configs:
+///               - role: pod
+/// ```
+///
+///
+/// ### VPC Configuration
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.amp.Scraper("example", {
+///     source: {
+///         vpc: {
+///             securityGroupIds: [exampleAwsSecurityGroup.id],
+///             subnetIds: [
+///                 example1.id,
+///                 example2.id,
+///             ],
+///         },
+///     },
+///     destination: {
+///         amp: {
+///             workspaceArn: exampleAwsPrometheusWorkspace.arn,
+///         },
+///     },
+///     scrapeConfiguration: `global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+///     relabel_configs:
+///       - target_label: service_name
+///         replacement: 'my-service'
+///       - target_label: discovery_method
+///         replacement: 'cloudmap-dns'
+/// `,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.amp.Scraper("example",
+///     source={
+///         "vpc": {
+///             "security_group_ids": [example_aws_security_group["id"]],
+///             "subnet_ids": [
+///                 example1["id"],
+///                 example2["id"],
+///             ],
+///         },
+///     },
+///     destination={
+///         "amp": {
+///             "workspace_arn": example_aws_prometheus_workspace["arn"],
+///         },
+///     },
+///     scrape_configuration="""global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+///     relabel_configs:
+///       - target_label: service_name
+///         replacement: 'my-service'
+///       - target_label: discovery_method
+///         replacement: 'cloudmap-dns'
+/// """)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Amp.Scraper("example", new()
+///     {
+///         Source = new Aws.Amp.Inputs.ScraperSourceArgs
+///         {
+///             Vpc = new Aws.Amp.Inputs.ScraperSourceVpcArgs
+///             {
+///                 SecurityGroupIds = new[]
+///                 {
+///                     exampleAwsSecurityGroup.Id,
+///                 },
+///                 SubnetIds = new[]
+///                 {
+///                     example1.Id,
+///                     example2.Id,
+///                 },
+///             },
+///         },
+///         Destination = new Aws.Amp.Inputs.ScraperDestinationArgs
+///         {
+///             Amp = new Aws.Amp.Inputs.ScraperDestinationAmpArgs
+///             {
+///                 WorkspaceArn = exampleAwsPrometheusWorkspace.Arn,
+///             },
+///         },
+///         ScrapeConfiguration = @"global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+///     relabel_configs:
+///       - target_label: service_name
+///         replacement: 'my-service'
+///       - target_label: discovery_method
+///         replacement: 'cloudmap-dns'
+/// ",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/amp"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := amp.NewScraper(ctx, "example", &amp.ScraperArgs{
+/// 			Source: &amp.ScraperSourceArgs{
+/// 				Vpc: &amp.ScraperSourceVpcArgs{
+/// 					SecurityGroupIds: pulumi.StringArray{
+/// 						exampleAwsSecurityGroup.Id,
+/// 					},
+/// 					SubnetIds: pulumi.StringArray{
+/// 						example1.Id,
+/// 						example2.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 			Destination: &amp.ScraperDestinationArgs{
+/// 				Amp: &amp.ScraperDestinationAmpArgs{
+/// 					WorkspaceArn: pulumi.Any(exampleAwsPrometheusWorkspace.Arn),
+/// 				},
+/// 			},
+/// 			ScrapeConfiguration: pulumi.String(`global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+///     relabel_configs:
+///       - target_label: service_name
+///         replacement: 'my-service'
+///       - target_label: discovery_method
+///         replacement: 'cloudmap-dns'
+/// `),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_scraper" "example" {
+///   source = {
+///     vpc = {
+///       security_group_ids = [exampleAwsSecurityGroup.id]
+///       subnet_ids         = [example1.id, example2.id]
+///     }
+///   }
+///   destination = {
+///     amp = {
+///       workspace_arn = exampleAwsPrometheusWorkspace.arn
+///     }
+///   }
+///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  - job_name: 'my-service'\n    dns_sd_configs:\n      - names: ['my-service.my-namespace']\n        type: A\n        port: 8080\n    metrics_path: '/metrics'\n    relabel_configs:\n      - target_label: service_name\n        replacement: 'my-service'\n      - target_label: discovery_method\n        replacement: 'cloudmap-dns'\n"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.amp.Scraper;
+/// import com.pulumi.aws.amp.ScraperArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperSourceArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperSourceVpcArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperDestinationArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperDestinationAmpArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Scraper("example", ScraperArgs.builder()
+///             .source(ScraperSourceArgs.builder()
+///                 .vpc(ScraperSourceVpcArgs.builder()
+///                     .securityGroupIds(exampleAwsSecurityGroup.id())
+///                     .subnetIds(
+///                         example1.id(),
+///                         example2.id())
+///                     .build())
+///                 .build())
+///             .destination(ScraperDestinationArgs.builder()
+///                 .amp(ScraperDestinationAmpArgs.builder()
+///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
+///                     .build())
+///                 .build())
+///             .scrapeConfiguration("""
+/// global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+///     relabel_configs:
+///       - target_label: service_name
+///         replacement: 'my-service'
+///       - target_label: discovery_method
+///         replacement: 'cloudmap-dns'
+///             """)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:amp:Scraper
+///     properties:
+///       source:
+///         vpc:
+///           securityGroupIds:
+///             - ${exampleAwsSecurityGroup.id}
+///           subnetIds:
+///             - ${example1.id}
+///             - ${example2.id}
+///       destination:
+///         amp:
+///           workspaceArn: ${exampleAwsPrometheusWorkspace.arn}
+///       scrapeConfiguration: |
+///         global:
+///           scrape_interval: 30s
+///         scrape_configs:
+///           - job_name: 'my-service'
+///             dns_sd_configs:
+///               - names: ['my-service.my-namespace']
+///                 type: A
+///                 port: 8080
+///             metrics_path: '/metrics'
+///             relabel_configs:
+///               - target_label: service_name
+///                 replacement: 'my-service'
+///               - target_label: discovery_method
+///                 replacement: 'cloudmap-dns'
+/// ```
+///
+///
+/// ### OpenSearch Exporter
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.amp.Scraper("example", {
+///     source: {
+///         vpc: {
+///             securityGroupIds: [exampleAwsSecurityGroup.id],
+///             subnetIds: [
+///                 example1.id,
+///                 example2.id,
+///             ],
+///         },
+///     },
+///     destination: {
+///         amp: {
+///             workspaceArn: exampleAwsPrometheusWorkspace.arn,
+///         },
+///     },
+///     exporter: {
+///         opensearch: {
+///             domainArn: exampleAwsOpensearchDomain.arn,
+///         },
+///     },
+///     scrapeConfiguration: `global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+/// `,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.amp.Scraper("example",
+///     source={
+///         "vpc": {
+///             "security_group_ids": [example_aws_security_group["id"]],
+///             "subnet_ids": [
+///                 example1["id"],
+///                 example2["id"],
+///             ],
+///         },
+///     },
+///     destination={
+///         "amp": {
+///             "workspace_arn": example_aws_prometheus_workspace["arn"],
+///         },
+///     },
+///     exporter={
+///         "opensearch": {
+///             "domain_arn": example_aws_opensearch_domain["arn"],
+///         },
+///     },
+///     scrape_configuration="""global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+/// """)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Amp.Scraper("example", new()
+///     {
+///         Source = new Aws.Amp.Inputs.ScraperSourceArgs
+///         {
+///             Vpc = new Aws.Amp.Inputs.ScraperSourceVpcArgs
+///             {
+///                 SecurityGroupIds = new[]
+///                 {
+///                     exampleAwsSecurityGroup.Id,
+///                 },
+///                 SubnetIds = new[]
+///                 {
+///                     example1.Id,
+///                     example2.Id,
+///                 },
+///             },
+///         },
+///         Destination = new Aws.Amp.Inputs.ScraperDestinationArgs
+///         {
+///             Amp = new Aws.Amp.Inputs.ScraperDestinationAmpArgs
+///             {
+///                 WorkspaceArn = exampleAwsPrometheusWorkspace.Arn,
+///             },
+///         },
+///         Exporter = new Aws.Amp.Inputs.ScraperExporterArgs
+///         {
+///             Opensearch = new Aws.Amp.Inputs.ScraperExporterOpensearchArgs
+///             {
+///                 DomainArn = exampleAwsOpensearchDomain.Arn,
+///             },
+///         },
+///         ScrapeConfiguration = @"global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+/// ",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/amp"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := amp.NewScraper(ctx, "example", &amp.ScraperArgs{
+/// 			Source: &amp.ScraperSourceArgs{
+/// 				Vpc: &amp.ScraperSourceVpcArgs{
+/// 					SecurityGroupIds: pulumi.StringArray{
+/// 						exampleAwsSecurityGroup.Id,
+/// 					},
+/// 					SubnetIds: pulumi.StringArray{
+/// 						example1.Id,
+/// 						example2.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 			Destination: &amp.ScraperDestinationArgs{
+/// 				Amp: &amp.ScraperDestinationAmpArgs{
+/// 					WorkspaceArn: pulumi.Any(exampleAwsPrometheusWorkspace.Arn),
+/// 				},
+/// 			},
+/// 			Exporter: &amp.ScraperExporterArgs{
+/// 				Opensearch: &amp.ScraperExporterOpensearchArgs{
+/// 					DomainArn: pulumi.Any(exampleAwsOpensearchDomain.Arn),
+/// 				},
+/// 			},
+/// 			ScrapeConfiguration: pulumi.String(`global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+/// `),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_scraper" "example" {
+///   source = {
+///     vpc = {
+///       security_group_ids = [exampleAwsSecurityGroup.id]
+///       subnet_ids         = [example1.id, example2.id]
+///     }
+///   }
+///   destination = {
+///     amp = {
+///       workspace_arn = exampleAwsPrometheusWorkspace.arn
+///     }
+///   }
+///   exporter = {
+///     opensearch = {
+///       domain_arn = exampleAwsOpensearchDomain.arn
+///     }
+///   }
+///   scrape_configuration = "global:\n  scrape_interval: 30s\nscrape_configs:\n  - job_name: 'my-service'\n    dns_sd_configs:\n      - names: ['my-service.my-namespace']\n        type: A\n        port: 8080\n    metrics_path: '/metrics'\n"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.amp.Scraper;
+/// import com.pulumi.aws.amp.ScraperArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperSourceArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperSourceVpcArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperDestinationArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperDestinationAmpArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperExporterArgs;
+/// import com.pulumi.aws.amp.inputs.ScraperExporterOpensearchArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Scraper("example", ScraperArgs.builder()
+///             .source(ScraperSourceArgs.builder()
+///                 .vpc(ScraperSourceVpcArgs.builder()
+///                     .securityGroupIds(exampleAwsSecurityGroup.id())
+///                     .subnetIds(
+///                         example1.id(),
+///                         example2.id())
+///                     .build())
+///                 .build())
+///             .destination(ScraperDestinationArgs.builder()
+///                 .amp(ScraperDestinationAmpArgs.builder()
+///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
+///                     .build())
+///                 .build())
+///             .exporter(ScraperExporterArgs.builder()
+///                 .opensearch(ScraperExporterOpensearchArgs.builder()
+///                     .domainArn(exampleAwsOpensearchDomain.arn())
+///                     .build())
+///                 .build())
+///             .scrapeConfiguration("""
+/// global:
+///   scrape_interval: 30s
+/// scrape_configs:
+///   - job_name: 'my-service'
+///     dns_sd_configs:
+///       - names: ['my-service.my-namespace']
+///         type: A
+///         port: 8080
+///     metrics_path: '/metrics'
+///             """)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:amp:Scraper
+///     properties:
+///       source:
+///         vpc:
+///           securityGroupIds:
+///             - ${exampleAwsSecurityGroup.id}
+///           subnetIds:
+///             - ${example1.id}
+///             - ${example2.id}
+///       destination:
+///         amp:
+///           workspaceArn: ${exampleAwsPrometheusWorkspace.arn}
+///       exporter:
+///         opensearch:
+///           domainArn: ${exampleAwsOpensearchDomain.arn}
+///       scrapeConfiguration: |
+///         global:
+///           scrape_interval: 30s
+///         scrape_configs:
+///           - job_name: 'my-service'
+///             dns_sd_configs:
+///               - names: ['my-service.my-namespace']
+///                 type: A
+///                 port: 8080
+///             metrics_path: '/metrics'
+/// ```
+///
+///
 /// ### Use default EKS scraper configuration
 ///
-/// You can use the data source `aws_prometheus_scraper_configuration` to use a
+/// You can use the data source `aws.amp.getDefaultScraperConfiguration` to use a
 /// service managed scrape configuration.
 ///
 ///
@@ -518,7 +1355,7 @@ import 'scraper_timeouts.dart';
 ///             workspaceArn: exampleAwsPrometheusWorkspace.arn,
 ///         },
 ///     },
-///     scrapeConfiguration: exampleAwsPrometheusScraperConfiguration.configuration,
+///     scrapeConfiguration: example.then(example => example.configuration),
 ///     source: {
 ///         eks: {
 ///             clusterArn: exampleAwsEksCluster.arn,
@@ -538,7 +1375,7 @@ import 'scraper_timeouts.dart';
 ///             "workspace_arn": example_aws_prometheus_workspace["arn"],
 ///         },
 ///     },
-///     scrape_configuration=example_aws_prometheus_scraper_configuration["configuration"],
+///     scrape_configuration=example.configuration,
 ///     source={
 ///         "eks": {
 ///             "cluster_arn": example_aws_eks_cluster["arn"],
@@ -565,7 +1402,7 @@ import 'scraper_timeouts.dart';
 ///                 WorkspaceArn = exampleAwsPrometheusWorkspace.Arn,
 ///             },
 ///         },
-///         ScrapeConfiguration = exampleAwsPrometheusScraperConfiguration.Configuration,
+///         ScrapeConfiguration = example.Apply(getDefaultScraperConfigurationResult => getDefaultScraperConfigurationResult.Configuration),
 ///         Source = new Aws.Amp.Inputs.ScraperSourceArgs
 ///         {
 ///             Eks = new Aws.Amp.Inputs.ScraperSourceEksArgs
@@ -588,7 +1425,7 @@ import 'scraper_timeouts.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := amp.GetDefaultScraperConfiguration(ctx, &amp.GetDefaultScraperConfigurationArgs{}, nil)
+/// 		example, err := amp.GetDefaultScraperConfiguration(ctx, &amp.GetDefaultScraperConfigurationArgs{}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -598,7 +1435,7 @@ import 'scraper_timeouts.dart';
 /// 					WorkspaceArn: pulumi.Any(exampleAwsPrometheusWorkspace.Arn),
 /// 				},
 /// 			},
-/// 			ScrapeConfiguration: pulumi.Any(exampleAwsPrometheusScraperConfiguration.Configuration),
+/// 			ScrapeConfiguration: pulumi.String(example.Configuration),
 /// 			Source: &amp.ScraperSourceArgs{
 /// 				Eks: &amp.ScraperSourceEksArgs{
 /// 					ClusterArn: pulumi.Any(exampleAwsEksCluster.Arn),
@@ -611,6 +1448,33 @@ import 'scraper_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_amp_getdefaultscraperconfiguration" "example" {
+/// }
+///
+/// resource "aws_amp_scraper" "example" {
+///   destination = {
+///     amp = {
+///       workspace_arn = exampleAwsPrometheusWorkspace.arn
+///     }
+///   }
+///   scrape_configuration = data.aws_amp_getdefaultscraperconfiguration.example.configuration
+///   source = {
+///     eks = {
+///       cluster_arn = exampleAwsEksCluster.arn
+///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -627,8 +1491,8 @@ import 'scraper_timeouts.dart';
 /// import com.pulumi.aws.amp.inputs.ScraperDestinationAmpArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperSourceArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperSourceEksArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -649,7 +1513,7 @@ import 'scraper_timeouts.dart';
 ///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
 ///                     .build())
 ///                 .build())
-///             .scrapeConfiguration(exampleAwsPrometheusScraperConfiguration.configuration())
+///             .scrapeConfiguration(example.configuration())
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
 ///                     .clusterArn(exampleAwsEksCluster.arn())
@@ -670,7 +1534,7 @@ import 'scraper_timeouts.dart';
 ///       destination:
 ///         amp:
 ///           workspaceArn: ${exampleAwsPrometheusWorkspace.arn}
-///       scrapeConfiguration: ${exampleAwsPrometheusScraperConfiguration.configuration}
+///       scrapeConfiguration: ${example.configuration}
 ///       source:
 ///         eks:
 ///           clusterArn: ${exampleAwsEksCluster.arn}
@@ -827,6 +1691,39 @@ import 'scraper_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_eks_getcluster" "this" {
+///   name = "example"
+/// }
+///
+/// resource "aws_amp_workspace" "example" {
+///   tags = {
+///     "AMPAgentlessScraper" = ""
+///   }
+/// }
+/// resource "aws_amp_scraper" "example" {
+///   source = {
+///     eks = {
+///       cluster_arn = exampleAwsEksCluster.arn
+///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
+///     }
+///   }
+///   scrape_configuration = "..."
+///   destination = {
+///     amp = {
+///       workspace_arn = aws_amp_workspace.example.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -843,8 +1740,8 @@ import 'scraper_timeouts.dart';
 /// import com.pulumi.aws.amp.inputs.ScraperSourceEksArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperDestinationArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperDestinationAmpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1041,6 +1938,34 @@ import 'scraper_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_scraper" "example" {
+///   source = {
+///     eks = {
+///       cluster_arn = exampleAwsEksCluster.arn
+///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
+///     }
+///   }
+///   destination = {
+///     amp = {
+///       workspace_arn = "<target_account_workspace_arn>"
+///     }
+///   }
+///   role_configuration = {
+///     source_role_arn = source.arn
+///     target_role_arn = "arn:aws:iam::ACCOUNT-ID:role/target-role-name"
+///   }
+///   scrape_configuration = "..."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1054,8 +1979,8 @@ import 'scraper_timeouts.dart';
 /// import com.pulumi.aws.amp.inputs.ScraperDestinationArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperDestinationAmpArgs;
 /// import com.pulumi.aws.amp.inputs.ScraperRoleConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1110,32 +2035,48 @@ import 'scraper_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import the Managed Scraper using its identifier.
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the scraper.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import scrapers using `id`.
 /// For example:
 ///
 /// ```sh
-/// $ pulumi import aws:amp/scraper:Scraper example s-0123abc-0000-0123-a000-000000000000
+/// $ pulumi import aws:amp/scraper:Scraper example s-b6f487db-4761-4930-9215-e9d588a7efe2
 /// ```
 class Scraper extends pulumi.CustomResource {
-  /// a name to associate with the managed scraper. This is for your use, and does not need to be unique.
+  /// Name to associate with the managed scraper. This is for your use, and does not need to be unique.
   late final pulumi.Output<String?> alias;
-  /// The Amazon Resource Name (ARN) of the new scraper.
+  /// ARN of the scraper.
   late final pulumi.Output<String> arn;
-  /// Configuration block for the managed scraper to send metrics to. See `destination`.
+  /// Configuration block for the managed scraper to send metrics to. See `destination` Block for details.
   late final pulumi.Output<ScraperDestination> destination;
+  /// Configuration block for additional exporters. See `exporter` Block for details.
+  late final pulumi.Output<ScraperExporter?> exporter;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the scraper to discover, collect, and produce metrics
+  /// ARN of the IAM role that provides permissions for the scraper to discover, collect, and produce metrics
   late final pulumi.Output<String> roleArn;
-  /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `role_configuration` below.
+  /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `roleConfiguration` Block for details.
   late final pulumi.Output<ScraperRoleConfiguration?> roleConfiguration;
-  /// The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
+  /// Configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
   late final pulumi.Output<String> scrapeConfiguration;
-  /// Configuration block to specify where the managed scraper will collect metrics from. See `source`.
+  /// Configuration block to specify where the managed scraper will collect metrics from. See `source` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<ScraperSource?> source;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ScraperTimeouts?> timeouts;
 
@@ -1156,6 +2097,7 @@ class Scraper extends pulumi.CustomResource {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');
     destination = registerOutput<ScraperDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exporter = registerOutput<ScraperExporter?>('exporter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperExporter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     roleConfiguration = registerOutput<ScraperRoleConfiguration?>('roleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperRoleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1192,6 +2134,7 @@ class Scraper extends pulumi.CustomResource {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');
     destination = registerOutput<ScraperDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exporter = registerOutput<ScraperExporter?>('exporter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperExporter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     roleConfiguration = registerOutput<ScraperRoleConfiguration?>('roleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperRoleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

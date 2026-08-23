@@ -75,6 +75,22 @@ import 'smsvoicev2_phone_number_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+///   iso_country_code    = "US"
+///   message_type        = "TRANSACTIONAL"
+///   number_type         = "TOLL_FREE"
+///   number_capabilities = ["SMS"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +99,8 @@ import 'smsvoicev2_phone_number_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.pinpoint.Smsvoicev2PhoneNumber;
 /// import com.pulumi.aws.pinpoint.Smsvoicev2PhoneNumberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,21 +145,25 @@ import 'smsvoicev2_phone_number_timeouts.dart';
 class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
   /// ARN of the phone number.
   late final pulumi.Output<String> arn;
-  /// By default this is set to `false`. When set to true the phone number can’t be deleted.
+  /// Whether deletion protection is enabled. When `true`, the phone number cannot be deleted.
   late final pulumi.Output<bool> deletionProtectionEnabled;
-  /// The two-character code, in ISO 3166-1 alpha-2 format, for the country or region.
+  /// Whether to disassociate the phone number from any pool it is associated with before destroying it.
+  late final pulumi.Output<bool?> forceDisassociate;
+  /// Two-character code, in ISO 3166-1 alpha-2 format, for the country or region.
   late final pulumi.Output<String> isoCountryCode;
-  /// The type of message. Valid values are `TRANSACTIONAL` for messages that are critical or time-sensitive and `PROMOTIONAL` for messages that aren’t critical or time-sensitive.
+  /// Type of message. Valid values are `TRANSACTIONAL` for messages that are critical or time-sensitive and `PROMOTIONAL` for messages that aren’t critical or time-sensitive.
   late final pulumi.Output<String> messageType;
-  /// The monthly price, in US dollars, to lease the phone number.
+  /// Monthly price, in US dollars, to lease the phone number.
   late final pulumi.Output<String> monthlyLeasingPrice;
-  /// Describes if the origination identity can be used for text messages, voice calls or both. valid values are `SMS` and `VOICE`.
+  /// Whether the origination identity can be used for text messages, voice calls or both. Valid values are `SMS` and `VOICE`.
   late final pulumi.Output<List<String>> numberCapabilities;
-  /// The type of phone number to request. Possible values are `LONG_CODE`, `TOLL_FREE`, `TEN_DLC`, or `SIMULATOR`.
+  /// Type of phone number to request. Possible values are `LONG_CODE`, `TOLL_FREE`, `TEN_DLC`, or `SIMULATOR`.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> numberType;
-  /// The name of the opt-out list to associate with the phone number.
+  /// Name of the opt-out list to associate with the phone number. If omitted, AWS assigns the `Default` opt-out list.
   late final pulumi.Output<String> optOutListName;
-  /// The new phone number that was requested.
+  /// New phone number that was requested.
   late final pulumi.Output<String> phoneNumber;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -151,16 +171,21 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
   late final pulumi.Output<String?> registrationId;
   /// When set to `false` an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, AWS End User Messaging SMS and Voice automatically replies with a customizable message and adds the end recipient to the opt-out list. When set to true you’re responsible for responding to HELP and STOP requests. You’re also responsible for tracking and honoring opt-out request.
   late final pulumi.Output<bool> selfManagedOptOutsEnabled;
+  /// Status of the phone number. Possible values are `PENDING`, `ACTIVE`, `ASSOCIATING`, `DISASSOCIATING`, and `DELETED`.
+  late final pulumi.Output<String> status;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<Smsvoicev2PhoneNumberTimeouts?> timeouts;
   /// Configuration for two-way SMS. Specify an ARN to receive incoming SMS messages, or `connect.[region].amazonaws.com` (with `[region]` replaced by the AWS Region of the Amazon Connect instance) to set Amazon Connect as the inbound destination.
-  late final pulumi.Output<String?> twoWayChannelArn;
-  /// By default this is set to `false`. When set to `true` you can receive incoming text messages from your end recipients.
+  late final pulumi.Output<String> twoWayChannelArn;
+  /// Whether two-way messaging is enabled. When `true`, you can receive incoming text messages from your end recipients. If omitted, AWS sets this to `false`.
   late final pulumi.Output<bool> twoWayChannelEnabled;
   /// IAM Role ARN for a service to assume, to be able to post inbound SMS messages.
-  late final pulumi.Output<String?> twoWayChannelRole;
+  late final pulumi.Output<String> twoWayChannelRole;
+  /// Whether to wait for the phone number to reach `ACTIVE` status before considering the resource created or updated. Defaults to `true`. Set to `false` for number types gated on carrier or registration approval (for example, `TEN_DLC`, `TOLL_FREE`, or any number submitted with `registrationId`), which can remain `PENDING` for days or weeks. When `false`, `pulumi up` returns once AWS accepts the phone number request; track activation with the `status` attribute.
+  late final pulumi.Output<bool> waitForActive;
 
   /// Creates a new [Smsvoicev2PhoneNumber].
   /// [name] The Pulumi resource name.
@@ -178,6 +203,7 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    forceDisassociate = registerOutput<bool?>('forceDisassociate');
     isoCountryCode = registerOutput<String>('isoCountryCode');
     messageType = registerOutput<String>('messageType');
     monthlyLeasingPrice = registerOutput<String>('monthlyLeasingPrice');
@@ -188,12 +214,14 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     registrationId = registerOutput<String?>('registrationId');
     selfManagedOptOutsEnabled = registerOutput<bool>('selfManagedOptOutsEnabled');
+    status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<Smsvoicev2PhoneNumberTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2PhoneNumberTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    twoWayChannelArn = registerOutput<String?>('twoWayChannelArn');
+    twoWayChannelArn = registerOutput<String>('twoWayChannelArn');
     twoWayChannelEnabled = registerOutput<bool>('twoWayChannelEnabled');
-    twoWayChannelRole = registerOutput<String?>('twoWayChannelRole');
+    twoWayChannelRole = registerOutput<String>('twoWayChannelRole');
+    waitForActive = registerOutput<bool>('waitForActive');
   }
 
   /// Gets an existing [Smsvoicev2PhoneNumber] resource's state with the given [name] and [id].
@@ -221,6 +249,7 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    forceDisassociate = registerOutput<bool?>('forceDisassociate');
     isoCountryCode = registerOutput<String>('isoCountryCode');
     messageType = registerOutput<String>('messageType');
     monthlyLeasingPrice = registerOutput<String>('monthlyLeasingPrice');
@@ -231,11 +260,13 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     registrationId = registerOutput<String?>('registrationId');
     selfManagedOptOutsEnabled = registerOutput<bool>('selfManagedOptOutsEnabled');
+    status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<Smsvoicev2PhoneNumberTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2PhoneNumberTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    twoWayChannelArn = registerOutput<String?>('twoWayChannelArn');
+    twoWayChannelArn = registerOutput<String>('twoWayChannelArn');
     twoWayChannelEnabled = registerOutput<bool>('twoWayChannelEnabled');
-    twoWayChannelRole = registerOutput<String?>('twoWayChannelRole');
+    twoWayChannelRole = registerOutput<String>('twoWayChannelRole');
+    waitForActive = registerOutput<bool>('waitForActive');
   }
 }

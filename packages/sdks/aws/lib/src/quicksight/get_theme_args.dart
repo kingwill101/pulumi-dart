@@ -11,7 +11,7 @@ class GetThemeArgs {
   final pulumi.Input<String>? awsAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tags;
   /// Identifier of the theme.
   ///
@@ -21,7 +21,7 @@ class GetThemeArgs {
   /// Creates a new [GetThemeArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [themeId] Identifier of the theme.
   const GetThemeArgs({
     this.awsAccountId,
@@ -48,4 +48,3 @@ class GetThemeArgs {
     );
   }
 }
-

@@ -63,6 +63,20 @@ import 'group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_group" "developers" {
+///   name = "developers"
+///   path = "/users/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.Group;
 /// import com.pulumi.aws.iam.GroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -110,13 +124,13 @@ import 'group_state.dart';
 /// $ pulumi import aws:iam/group:Group developers developers
 /// ```
 class Group extends pulumi.CustomResource {
-  /// The ARN assigned by AWS for this group.
+  /// ARN assigned by AWS for this group.
   late final pulumi.Output<String> arn;
-  /// The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
+  /// Group's name. Must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
   late final pulumi.Output<String> name;
   /// Path in which to create the group.
   late final pulumi.Output<String?> path;
-  /// The [unique ID][1] assigned by AWS.
+  /// [Unique ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html#GUIDs) assigned by AWS.
   late final pulumi.Output<String> uniqueId;
 
   /// Creates a new [Group].

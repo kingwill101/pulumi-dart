@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TypeArgs {
   /// GraphQL API ID.
   final pulumi.Input<String> apiId;
-  /// The type definition.
+  /// Type definition.
   final pulumi.Input<String> definition;
-  /// The type format: `SDL` or `JSON`.
+  /// Type format: `SDL` or `JSON`.
   final pulumi.Input<String> format;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [TypeArgs].
   /// [apiId] GraphQL API ID.
-  /// [definition] The type definition.
-  /// [format] The type format: `SDL` or `JSON`.
+  /// [definition] Type definition.
+  /// [format] Type format: `SDL` or `JSON`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const TypeArgs({
     required this.apiId,
@@ -46,4 +46,3 @@ class TypeArgs {
     );
   }
 }
-

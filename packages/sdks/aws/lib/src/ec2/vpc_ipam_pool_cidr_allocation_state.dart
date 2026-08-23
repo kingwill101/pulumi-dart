@@ -23,6 +23,10 @@ class VpcIpamPoolCidrAllocationState {
   final pulumi.Input<String>? resourceOwner;
   /// The type of the resource.
   final pulumi.Input<String>? resourceType;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [VpcIpamPoolCidrAllocationState].
   /// [cidr] The CIDR you want to assign to the pool.
@@ -35,6 +39,8 @@ class VpcIpamPoolCidrAllocationState {
   /// [resourceId] The ID of the resource.
   /// [resourceOwner] The owner of the resource.
   /// [resourceType] The type of the resource.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const VpcIpamPoolCidrAllocationState({
     this.cidr,
     this.description,
@@ -46,6 +52,8 @@ class VpcIpamPoolCidrAllocationState {
     this.resourceId,
     this.resourceOwner,
     this.resourceType,
+    this.tags,
+    this.tagsAll,
   });
 
   Map<String, dynamic> toMap() {
@@ -60,6 +68,8 @@ class VpcIpamPoolCidrAllocationState {
       'resourceId': ?resourceId,
       'resourceOwner': ?resourceOwner,
       'resourceType': ?resourceType,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
     };
   }
 
@@ -75,7 +85,8 @@ class VpcIpamPoolCidrAllocationState {
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceOwner: (() { final guardedValue = map['resourceOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

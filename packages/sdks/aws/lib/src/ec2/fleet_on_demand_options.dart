@@ -11,7 +11,7 @@ class FleetOnDemandOptions {
   /// The maximum amount per hour for On-Demand Instances that you're willing to pay.
   final pulumi.Input<String>? maxTotalPrice;
   /// The minimum target capacity for On-Demand Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type `instant`.
-  /// If you specify `min_target_capacity`, at least one of the following must be specified: `single_availability_zone` or `single_instance_type`.
+  /// If you specify `minTargetCapacity`, at least one of the following must be specified: `singleAvailabilityZone` or `singleInstanceType`.
   final pulumi.Input<int>? minTargetCapacity;
   /// Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for fleets of type `instant`.
   final pulumi.Input<bool>? singleAvailabilityZone;
@@ -56,4 +56,3 @@ class FleetOnDemandOptions {
     );
   }
 }
-

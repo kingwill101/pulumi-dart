@@ -54,6 +54,19 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53recoverycontrol_cluster" "example" {
+///   name = "georgefitzgerald"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +75,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53recoverycontrol.Cluster;
 /// import com.pulumi.aws.route53recoverycontrol.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -111,9 +124,9 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> networkType;
   /// Status of cluster. `PENDING` when it is being created, `PENDING_DELETION` when it is being deleted and `DEPLOYED` otherwise.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Cluster].

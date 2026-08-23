@@ -101,6 +101,28 @@ import 'data_cells_filter_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datacellsfilter" "example" {
+///   table_data = {
+///     database_name    = exampleAwsGlueCatalogDatabase.name
+///     name             = "example"
+///     table_catalog_id = current.accountId
+///     table_name       = exampleAwsGlueCatalogTable.name
+///     column_names     = ["my_column"]
+///     row_filter = {
+///       filter_expression = "my_column='example'"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +133,8 @@ import 'data_cells_filter_timeouts.dart';
 /// import com.pulumi.aws.lakeformation.DataCellsFilterArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataRowFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,7 +181,7 @@ import 'data_cells_filter_timeouts.dart';
 ///
 /// ### Filter with Excluded Columns Only (No Row Filter)
 ///
-/// When excluding columns without a row filter, you must include `all_rows_wildcard {}`:
+/// When excluding columns without a row filter, you must include `allRowsWildcard {}`:
 ///
 ///
 /// ```typescript
@@ -269,6 +291,30 @@ import 'data_cells_filter_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datacellsfilter" "excluded_columns" {
+///   table_data = {
+///     database_name    = example.name
+///     name             = "exclude-pii"
+///     table_catalog_id = current.accountId
+///     table_name       = exampleAwsGlueCatalogTable.name
+///     column_wildcard = {
+///       excluded_column_names = ["ssn", "credit_card"]
+///     }
+///     row_filter = {
+///       all_rows_wildcard = {}
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -281,8 +327,8 @@ import 'data_cells_filter_timeouts.dart';
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataColumnWildcardArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataRowFilterArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataRowFilterAllRowsWildcardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -445,6 +491,30 @@ import 'data_cells_filter_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datacellsfilter" "row_and_column" {
+///   table_data = {
+///     database_name    = example.name
+///     name             = "marketing-filtered"
+///     table_catalog_id = current.accountId
+///     table_name       = exampleAwsGlueCatalogTable.name
+///     column_wildcard = {
+///       excluded_column_names = ["salary", "bonus"]
+///     }
+///     row_filter = {
+///       filter_expression = "department = 'Marketing'"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -456,8 +526,8 @@ import 'data_cells_filter_timeouts.dart';
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataColumnWildcardArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataRowFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -511,7 +581,7 @@ import 'data_cells_filter_timeouts.dart';
 ///
 /// ### Filter with Row Filter Only (All Columns Included)
 ///
-/// To include all columns with a row filter, set `excluded_column_names` to an empty list:
+/// To include all columns with a row filter, set `excludedColumnNames` to an empty list:
 ///
 ///
 /// ```typescript
@@ -608,6 +678,30 @@ import 'data_cells_filter_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lakeformation_datacellsfilter" "row_only" {
+///   table_data = {
+///     database_name    = example.name
+///     name             = "regional-filter"
+///     table_catalog_id = current.accountId
+///     table_name       = exampleAwsGlueCatalogTable.name
+///     column_wildcard = {
+///       excluded_column_names = []
+///     }
+///     row_filter = {
+///       filter_expression = "region = 'US-WEST'"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -619,8 +713,8 @@ import 'data_cells_filter_timeouts.dart';
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataColumnWildcardArgs;
 /// import com.pulumi.aws.lakeformation.inputs.DataCellsFilterTableDataRowFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -670,7 +764,7 @@ import 'data_cells_filter_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Lake Formation Data Cells Filter using the `database_name`, `name`, `table_catalog_id`, and `table_name` separated by `,`. For example:
+/// Using `pulumi import`, import Lake Formation Data Cells Filter using the `databaseName`, `name`, `tableCatalogId`, and `tableName` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lakeformation/dataCellsFilter:DataCellsFilter example database_name,name,table_catalog_id,table_name

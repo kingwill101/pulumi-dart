@@ -20,12 +20,12 @@ class V2modelsSlotState {
   /// Identifier of the language and locale that the slot will be used in.
   final pulumi.Input<String>? localeId;
   /// Whether the slot returns multiple values in one response.
-  /// See the `multiple_values_setting` argument reference below.
+  /// See the `multipleValuesSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotMultipleValuesSetting>>? multipleValuesSettings;
   /// Name of the slot.
   final pulumi.Input<String>? name;
   /// Determines how slot values are used in Amazon CloudWatch logs.
-  /// See the `obfuscation_setting` argument reference below.
+  /// See the `obfuscationSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotObfuscationSetting>>? obfuscationSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -34,14 +34,14 @@ class V2modelsSlotState {
   /// Unique identifier for the slot type associated with this slot.
   final pulumi.Input<String>? slotTypeId;
   /// Specifications for the constituent sub slots and the expression for the composite slot.
-  /// See the `sub_slot_setting` argument reference below.
+  /// See the `subSlotSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotSubSlotSetting>>? subSlotSettings;
   final pulumi.Input<V2modelsSlotTimeouts>? timeouts;
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
-  /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `prompt_attempts_specification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
+  /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `promptAttemptsSpecification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
   /// This will cause Terraform to report differences.
-  /// Use the `value_elicitation_setting` configuration above in the `value_elicitation_setting` example to avoid differences resulting from AWS default configurations.
-  /// See the `value_elicitation_setting` argument reference below.
+  /// Use the `valueElicitationSetting` configuration above in the `valueElicitationSetting` example to avoid differences resulting from AWS default configurations.
+  /// See the `valueElicitationSetting` argument reference below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<V2modelsSlotValueElicitationSetting>? valueElicitationSetting;
@@ -116,4 +116,3 @@ class V2modelsSlotState {
     );
   }
 }
-

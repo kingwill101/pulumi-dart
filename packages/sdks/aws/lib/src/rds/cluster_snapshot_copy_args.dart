@@ -22,7 +22,7 @@ class ClusterSnapshotCopyArgs {
   final pulumi.Input<List<String>>? sharedAccounts;
   /// Identifier of the source snapshot.
   final pulumi.Input<String> sourceDbClusterSnapshotIdentifier;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Identifier for the snapshot.
   ///
@@ -38,7 +38,7 @@ class ClusterSnapshotCopyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedAccounts] List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   /// [sourceDbClusterSnapshotIdentifier] Identifier of the source snapshot.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetDbClusterSnapshotIdentifier] Identifier for the snapshot.
   /// [timeouts] Optional.
   const ClusterSnapshotCopyArgs({
@@ -84,4 +84,3 @@ class ClusterSnapshotCopyArgs {
     );
   }
 }
-

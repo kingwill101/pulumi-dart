@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppLimits {
-  /// The maximum number of messages that the campaign can send daily.
+  /// Maximum number of messages that the campaign can send daily.
   final pulumi.Input<int>? daily;
-  /// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+  /// Length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. Minimum value is 60.
   final pulumi.Input<int>? maximumDuration;
-  /// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+  /// Number of messages that the campaign can send per second. Minimum value is 50, and the maximum is 20000.
   final pulumi.Input<int>? messagesPerSecond;
-  /// The maximum total number of messages that the campaign can send.
+  /// Maximum total number of messages that the campaign can send.
   final pulumi.Input<int>? total;
 
   /// Creates a new [AppLimits].
-  /// [daily] The maximum number of messages that the campaign can send daily.
-  /// [maximumDuration] The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
-  /// [messagesPerSecond] The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
-  /// [total] The maximum total number of messages that the campaign can send.
+  /// [daily] Maximum number of messages that the campaign can send daily.
+  /// [maximumDuration] Length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. Minimum value is 60.
+  /// [messagesPerSecond] Number of messages that the campaign can send per second. Minimum value is 50, and the maximum is 20000.
+  /// [total] Maximum total number of messages that the campaign can send.
   const AppLimits({
     this.daily,
     this.maximumDuration,
@@ -42,4 +42,3 @@ class AppLimits {
     );
   }
 }
-

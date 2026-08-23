@@ -9,18 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretVersionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
+  /// Secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
   final pulumi.Input<String> secretId;
-  /// Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `version_stage`.
+  /// Unique identifier of the version of the secret that you want to retrieve. Overrides `versionStage`.
   final pulumi.Input<String>? versionId;
-  /// Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
+  /// Secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
   final pulumi.Input<String>? versionStage;
 
   /// Creates a new [GetSecretVersionArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [secretId] Specifies the secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
-  /// [versionId] Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `version_stage`.
-  /// [versionStage] Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
+  /// [secretId] Secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
+  /// [versionId] Unique identifier of the version of the secret that you want to retrieve. Overrides `versionStage`.
+  /// [versionStage] Secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
   const GetSecretVersionArgs({
     this.region,
     required this.secretId,
@@ -46,4 +46,3 @@ class GetSecretVersionArgs {
     );
   }
 }
-

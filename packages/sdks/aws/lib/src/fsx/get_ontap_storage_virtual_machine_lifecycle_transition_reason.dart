@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOntapStorageVirtualMachineLifecycleTransitionReason {
-  /// A detailed message.
+  /// Detailed message.
   final pulumi.Input<String> message;
 
   /// Creates a new [GetOntapStorageVirtualMachineLifecycleTransitionReason].
-  /// [message] A detailed message.
+  /// [message] Detailed message.
   const GetOntapStorageVirtualMachineLifecycleTransitionReason({
     required this.message,
   });
@@ -24,4 +24,3 @@ class GetOntapStorageVirtualMachineLifecycleTransitionReason {
     );
   }
 }
-

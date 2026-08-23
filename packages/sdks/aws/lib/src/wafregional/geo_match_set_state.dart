@@ -5,16 +5,16 @@ import 'geo_match_set_geo_match_constraint.dart';
 
 /// Input properties used for looking up and filtering GeoMatchSet resources.
 class GeoMatchSetState {
-  /// The Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
+  /// Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
   final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>>? geoMatchConstraints;
-  /// The name or description of the Geo Match Set.
+  /// Name or description of the Geo Match Set.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GeoMatchSetState].
-  /// [geoMatchConstraints] The Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
-  /// [name] The name or description of the Geo Match Set.
+  /// [geoMatchConstraints] Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
+  /// [name] Name or description of the Geo Match Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GeoMatchSetState({
     this.geoMatchConstraints,
@@ -38,4 +38,3 @@ class GeoMatchSetState {
     );
   }
 }
-

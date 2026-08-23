@@ -61,6 +61,20 @@ import 'aggregate_authorization_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_aggregateauthorization" "example" {
+///   account_id            = "123456789012"
+///   authorized_aws_region = "eu-west-2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'aggregate_authorization_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cfg.AggregateAuthorization;
 /// import com.pulumi.aws.cfg.AggregateAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,11 +128,11 @@ class AggregateAuthorization extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The region authorized to collect aggregated data.
   late final pulumi.Output<String?> authorizedAwsRegion;
-  /// The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
+  /// The region authorized to collect aggregated data. Use `authorizedAwsRegion` instead.
   late final pulumi.Output<String?> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AggregateAuthorization].

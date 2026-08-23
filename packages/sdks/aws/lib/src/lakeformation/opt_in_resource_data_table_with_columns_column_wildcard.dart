@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataTableWithColumnsColumnWildcard {
+  /// Excludes column names. Any column with this name will be excluded.
   final pulumi.Input<List<String>>? excludedColumnNames;
 
   /// Creates a new [OptInResourceDataTableWithColumnsColumnWildcard].
-  /// [excludedColumnNames] Optional.
+  /// [excludedColumnNames] Excludes column names. Any column with this name will be excluded.
   const OptInResourceDataTableWithColumnsColumnWildcard({
     this.excludedColumnNames,
   });
@@ -23,4 +24,3 @@ class OptInResourceDataTableWithColumnsColumnWildcard {
     );
   }
 }
-

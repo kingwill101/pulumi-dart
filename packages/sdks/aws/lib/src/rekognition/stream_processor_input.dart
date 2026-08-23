@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stream_processor_input_kinesis_video_stream.dart';
 
 class StreamProcessorInput {
-  /// Kinesis input stream. See `kinesis_video_stream`.
+  /// Kinesis input stream. See `kinesisVideoStream`.
   final pulumi.Input<StreamProcessorInputKinesisVideoStream> kinesisVideoStream;
 
   /// Creates a new [StreamProcessorInput].
-  /// [kinesisVideoStream] Kinesis input stream. See `kinesis_video_stream`.
+  /// [kinesisVideoStream] Kinesis input stream. See `kinesisVideoStream`.
   const StreamProcessorInput({
     required this.kinesisVideoStream,
   });
@@ -25,4 +25,3 @@ class StreamProcessorInput {
     );
   }
 }
-

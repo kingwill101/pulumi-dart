@@ -132,6 +132,35 @@ import 'listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_globalaccelerator_accelerator" "example" {
+///   name            = "Example"
+///   ip_address_type = "IPV4"
+///   enabled         = true
+///   attributes = {
+///     flow_logs_enabled   = true
+///     flow_logs_s3_bucket = "example-bucket"
+///     flow_logs_s3_prefix = "flow-logs/"
+///   }
+/// }
+/// resource "aws_globalaccelerator_listener" "example" {
+///   accelerator_arn = aws_globalaccelerator_accelerator.example.arn
+///   client_affinity = "SOURCE_IP"
+///   protocol        = "TCP"
+///   port_ranges {
+///     from_port = 80
+///     to_port   = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +173,8 @@ import 'listener_state.dart';
 /// import com.pulumi.aws.globalaccelerator.Listener;
 /// import com.pulumi.aws.globalaccelerator.ListenerArgs;
 /// import com.pulumi.aws.globalaccelerator.inputs.ListenerPortRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

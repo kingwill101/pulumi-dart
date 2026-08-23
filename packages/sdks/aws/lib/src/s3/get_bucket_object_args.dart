@@ -7,10 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_s3_get_bucket_object_get_bucket_object_args_doc}
 class GetBucketObjectArgs {
-  /// Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+  /// Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified. Use the `aws.s3.BucketObjectv2` data source instead.
   final pulumi.Input<String> bucket;
   /// Full path to the object inside the bucket
   final pulumi.Input<String> key;
+  /// Range of bytes to read from the object, formatted as an [HTTP `Range` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Range).
   final pulumi.Input<String>? range;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -20,9 +21,9 @@ class GetBucketObjectArgs {
   final pulumi.Input<String>? versionId;
 
   /// Creates a new [GetBucketObjectArgs].
-  /// [bucket] Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+  /// [bucket] Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified. Use the `aws.s3.BucketObjectv2` data source instead.
   /// [key] Full path to the object inside the bucket
-  /// [range] Optional.
+  /// [range] Range of bytes to read from the object, formatted as an [HTTP `Range` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Range).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the object.
   /// [versionId] Specific version ID of the object returned (defaults to latest version)
@@ -57,4 +58,3 @@ class GetBucketObjectArgs {
     );
   }
 }
-

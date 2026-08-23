@@ -146,17 +146,17 @@ import 'schema_state.dart';
 /// 		}
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 			"openapi": "3.0.0",
-/// 			"info": map[string]interface{}{
+/// 			"info": map[string]string{
 /// 				"version": "1.0.0",
 /// 				"title":   "Event",
 /// 			},
 /// 			"paths": map[string]interface{}{},
-/// 			"components": map[string]interface{}{
-/// 				"schemas": map[string]interface{}{
+/// 			"components": map[string]map[string]map[string]interface{}{
+/// 				"schemas": map[string]map[string]interface{}{
 /// 					"Event": map[string]interface{}{
 /// 						"type": "object",
-/// 						"properties": map[string]interface{}{
-/// 							"name": map[string]interface{}{
+/// 						"properties": map[string]map[string]string{
+/// 							"name": map[string]string{
 /// 								"type": "string",
 /// 							},
 /// 						},
@@ -182,6 +182,45 @@ import 'schema_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_schemas_registry" "test" {
+///   name = "my_own_registry"
+/// }
+/// resource "aws_schemas_schema" "test" {
+///   name          = "my_schema"
+///   registry_name = aws_schemas_registry.test.name
+///   type          = "OpenApi3"
+///   description   = "The schema definition for my event"
+///   content = jsonencode({
+///     "openapi" = "3.0.0"
+///     "info" = {
+///       "version" = "1.0.0"
+///       "title"   = "Event"
+///     }
+///     "paths" = {}
+///     "components" = {
+///       "schemas" = {
+///         "Event" = {
+///           "type" = "object"
+///           "properties" = {
+///             "name" = {
+///               "type" = "string"
+///             }
+///           }
+///         }
+///       }
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +232,8 @@ import 'schema_state.dart';
 /// import com.pulumi.aws.schemas.Schema;
 /// import com.pulumi.aws.schemas.SchemaArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,7 +315,7 @@ import 'schema_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EventBridge schema using the `name` and `registry_name`. For example:
+/// Using `pulumi import`, import EventBridge schema using the `name` and `registryName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:schemas/schema:Schema test name/registry
@@ -296,9 +335,9 @@ class Schema extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The name of the registry in which this schema belongs.
   late final pulumi.Output<String> registryName;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of the schema. Valid values: `OpenApi3` or `JSONSchemaDraft4`.
   late final pulumi.Output<String> type;

@@ -185,6 +185,37 @@ import 'event_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage    = 10
+///   engine               = "mysql"
+///   engine_version       = "5.6.17"
+///   instance_class       = "db.t2.micro"
+///   db_name              = "mydb"
+///   username             = "foo"
+///   password             = "bar"
+///   db_subnet_group_name = "my_database_subnet_group"
+///   parameter_group_name = "default.mysql5.6"
+/// }
+/// resource "aws_sns_topic" "default" {
+///   name = "rds-events"
+/// }
+/// resource "aws_rds_eventsubscription" "default" {
+///   name             = "rds-event-sub"
+///   sns_topic        = aws_sns_topic.default.arn
+///   source_type      = "db-instance"
+///   source_ids       = [aws_rds_instance.default.identifier]
+///   event_categories = ["availability", "deletion", "failover", "failure", "low storage", "maintenance", "notification", "read replica", "recovery", "restoration"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +228,8 @@ import 'event_subscription_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.rds.EventSubscription;
 /// import com.pulumi.aws.rds.EventSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,13 +344,13 @@ class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The SNS topic to send events to.
   late final pulumi.Output<String> snsTopic;
-  /// A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a source_type must also be specified.
+  /// A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a sourceType must also be specified.
   late final pulumi.Output<List<String>?> sourceIds;
   /// The type of source that will be generating the events. Valid options are `db-instance`, `db-parameter-group`, `db-security-group`, `db-snapshot`, `db-cluster`, `db-cluster-snapshot`, `custom-engine-version`, `db-proxy`, `blue-green-deployment`, `db-shard-group`, and `zero-etl`. If not set, all sources will be subscribed to.
   late final pulumi.Output<String?> sourceType;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [EventSubscription].

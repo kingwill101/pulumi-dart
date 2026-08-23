@@ -14,7 +14,7 @@ import 'topic_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.sns.Topic("test", {name: "my-topic-with-policy"});
-/// const snsTopicPolicy = test.arn.apply(arn => aws.iam.getPolicyDocumentOutput({
+/// const snsTopicPolicy = aws.iam.getPolicyDocumentOutput({
 ///     policyId: "__default_policy_ID",
 ///     statements: [{
 ///         actions: [
@@ -38,13 +38,13 @@ import 'topic_policy_state.dart';
 ///             type: "AWS",
 ///             identifiers: ["*"],
 ///         }],
-///         resources: [arn],
+///         resources: [test.arn],
 ///         sid: "__default_statement_ID",
 ///     }],
-/// }));
+/// });
 /// const _default = new aws.sns.TopicPolicy("default", {
 ///     arn: test.arn,
-///     policy: snsTopicPolicy.apply(snsTopicPolicy => snsTopicPolicy.json),
+///     policy: snsTopicPolicy.json,
 /// });
 /// ```
 /// ```python
@@ -52,7 +52,7 @@ import 'topic_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.sns.Topic("test", name="my-topic-with-policy")
-/// sns_topic_policy = test.arn.apply(lambda arn: aws.iam.get_policy_document_output(policy_id="__default_policy_ID",
+/// sns_topic_policy = aws.iam.get_policy_document_output(policy_id="__default_policy_ID",
 ///     statements=[{
 ///         "actions": [
 ///             "SNS:Subscribe",
@@ -75,9 +75,9 @@ import 'topic_policy_state.dart';
 ///             "type": "AWS",
 ///             "identifiers": ["*"],
 ///         }],
-///         "resources": [arn],
+///         "resources": [test.arn],
 ///         "sid": "__default_statement_ID",
-///     }]))
+///     }])
 /// default = aws.sns.TopicPolicy("default",
 ///     arn=test.arn,
 ///     policy=sns_topic_policy.json)
@@ -100,7 +100,7 @@ import 'topic_policy_state.dart';
 ///         PolicyId = "__default_policy_ID",
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Actions = new[]
 ///                 {
@@ -116,7 +116,7 @@ import 'topic_policy_state.dart';
 ///                 },
 ///                 Conditions = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
 ///                     {
 ///                         Test = "StringEquals",
 ///                         Variable = "AWS:SourceOwner",
@@ -129,7 +129,7 @@ import 'topic_policy_state.dart';
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -163,67 +163,100 @@ import 'topic_policy_state.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// test, err := sns.NewTopic(ctx, "test", &sns.TopicArgs{
-/// Name: pulumi.String("my-topic-with-policy"),
-/// })
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		test, err := sns.NewTopic(ctx, "test", &sns.TopicArgs{
+/// 			Name: pulumi.String("my-topic-with-policy"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		snsTopicPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			PolicyId: pulumi.String("__default_policy_ID"),
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Subscribe"),
+/// 						pulumi.String("SNS:SetTopicAttributes"),
+/// 						pulumi.String("SNS:RemovePermission"),
+/// 						pulumi.String("SNS:Receive"),
+/// 						pulumi.String("SNS:Publish"),
+/// 						pulumi.String("SNS:ListSubscriptionsByTopic"),
+/// 						pulumi.String("SNS:GetTopicAttributes"),
+/// 						pulumi.String("SNS:DeleteTopic"),
+/// 						pulumi.String("SNS:AddPermission"),
+/// 					},
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("AWS:SourceOwner"),
+/// 							Values: pulumi.StringArray{
+/// 								account_id,
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						test.Arn,
+/// 					},
+/// 					Sid: pulumi.String("__default_statement_ID"),
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = sns.NewTopicPolicy(ctx, "default", &sns.TopicPolicyArgs{
+/// 			Arn:    test.Arn,
+/// 			Policy: snsTopicPolicy.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// snsTopicPolicy := test.Arn.ApplyT(func(arn string) (iam.GetPolicyDocumentResult, error) {
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// PolicyId: pulumi.StringRef(pulumi.StringRef("__default_policy_ID")),
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Actions: []string{
-/// "SNS:Subscribe",
-/// "SNS:SetTopicAttributes",
-/// "SNS:RemovePermission",
-/// "SNS:Receive",
-/// "SNS:Publish",
-/// "SNS:ListSubscriptionsByTopic",
-/// "SNS:GetTopicAttributes",
-/// "SNS:DeleteTopic",
-/// "SNS:AddPermission",
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Variable: "AWS:SourceOwner",
-/// Values: interface{}{
-/// account_id,
-/// },
-/// },
-/// },
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// Resources: []string{
-/// arn,
-/// },
-/// Sid: pulumi.StringRef(pulumi.String(pulumi.StringRef("__default_statement_ID"))),
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = sns.NewTopicPolicy(ctx, "default", &sns.TopicPolicyArgs{
-/// Arn: test.Arn,
-/// Policy: pulumi.String(snsTopicPolicy.ApplyT(func(snsTopicPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// return &snsTopicPolicy.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// return nil
-/// })
+///
+/// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
+///   policy_id = "__default_policy_ID"
+///   statements {
+///     actions = ["SNS:Subscribe", "SNS:SetTopicAttributes", "SNS:RemovePermission", "SNS:Receive", "SNS:Publish", "SNS:ListSubscriptionsByTopic", "SNS:GetTopicAttributes", "SNS:DeleteTopic", "SNS:AddPermission"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "AWS:SourceOwner"
+///       values   = [account-id]
+///     }
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     resources = [aws_sns_topic.test.arn]
+///     sid       = "__default_statement_ID"
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "test" {
+///   name = "my-topic-with-policy"
+/// }
+/// resource "aws_sns_topicpolicy" "default" {
+///   arn    = aws_sns_topic.test.arn
+///   policy = data.aws_iam_getpolicydocument.snsTopicPolicy.json
 /// }
 /// ```
 /// ```java
@@ -236,10 +269,13 @@ import 'topic_policy_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sns.TopicPolicy;
 /// import com.pulumi.aws.sns.TopicPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,7 +291,7 @@ import 'topic_policy_state.dart';
 ///             .name("my-topic-with-policy")
 ///             .build());
 ///
-///         final var snsTopicPolicy = test.arn().applyValue(_arn -> IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         final var snsTopicPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .policyId("__default_policy_ID")
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .actions(
@@ -278,10 +314,10 @@ import 'topic_policy_state.dart';
 ///                     .type("AWS")
 ///                     .identifiers("*")
 ///                     .build())
-///                 .resources(_arn)
+///                 .resources(test.arn())
 ///                 .sid("__default_statement_ID")
 ///                 .build())
-///             .build()));
+///             .build());
 ///
 ///         var default_ = new TopicPolicy("default", TopicPolicyArgs.builder()
 ///             .arn(test.arn())

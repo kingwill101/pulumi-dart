@@ -3,18 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceStsAccess {
+  /// Domain name for which the DNS queries are forwarded.
   final pulumi.Input<String> domainName;
+  /// List of IPv4 addresses for the Amazon STS access.
   final pulumi.Input<List<String>> ipv4Addresses;
-  /// The status of the network resource.
+  /// Status of the Zero-ETL access.
   final pulumi.Input<String> status;
-  /// Specifies the endpoint policy for STS access from the ODB network.
+  /// Endpoint policy for STS access from the ODB network.
   final pulumi.Input<String> stsPolicyDocument;
 
   /// Creates a new [NetworkManagedServiceStsAccess].
-  /// [domainName] Required.
-  /// [ipv4Addresses] Required.
-  /// [status] The status of the network resource.
-  /// [stsPolicyDocument] Specifies the endpoint policy for STS access from the ODB network.
+  /// [domainName] Domain name for which the DNS queries are forwarded.
+  /// [ipv4Addresses] List of IPv4 addresses for the Amazon STS access.
+  /// [status] Status of the Zero-ETL access.
+  /// [stsPolicyDocument] Endpoint policy for STS access from the ODB network.
   const NetworkManagedServiceStsAccess({
     required this.domainName,
     required this.ipv4Addresses,
@@ -40,4 +42,3 @@ class NetworkManagedServiceStsAccess {
     );
   }
 }
-

@@ -61,6 +61,20 @@ import 'region_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_account_region" "example" {
+///   region_name = "ap-southeast-3"
+///   enabled     = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'region_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.account.Region;
 /// import com.pulumi.aws.account.RegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

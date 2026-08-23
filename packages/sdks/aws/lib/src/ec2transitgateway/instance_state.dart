@@ -164,7 +164,7 @@ import 'instance_state_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2transitgateway.NewInstanceState(ctx, "test", &ec2transitgateway.InstanceStateArgs{
-/// 			InstanceId: test.ID(),
+/// 			InstanceId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			State:      pulumi.String("stopped"),
 /// 		})
 /// 		if err != nil {
@@ -172,6 +172,41 @@ import 'instance_state_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getami" "ubuntu" {
+///   most_recent = true
+///   filters {
+///     name   = "name"
+///     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+///   }
+///   filters {
+///     name   = "virtualization-type"
+///     values = ["hvm"]
+///   }
+///   owners = ["099720109477"]
+/// }
+///
+/// # Canonical
+/// resource "aws_ec2_instance" "test" {
+///   ami           = data.aws_ec2_getami.ubuntu.id
+///   instance_type = "t3.micro"
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// resource "aws_ec2transitgateway_instancestate" "test" {
+///   instance_id = aws_ec2_instance.test.id
+///   state       = "stopped"
 /// }
 /// ```
 /// ```java
@@ -182,12 +217,13 @@ import 'instance_state_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetAmiArgs;
+/// import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
 /// import com.pulumi.aws.ec2transitgateway.InstanceState;
 /// import com.pulumi.aws.ec2transitgateway.InstanceStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,7 +298,7 @@ import 'instance_state_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.ec2transitgateway.InstanceState` using the `instance_id` attribute. For example:
+/// Using `pulumi import`, import `aws.ec2transitgateway.InstanceState` using the `instanceId` attribute. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2transitgateway/instanceState:InstanceState test i-02cae6557dfcf2f96

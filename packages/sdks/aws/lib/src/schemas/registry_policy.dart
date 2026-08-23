@@ -150,6 +150,33 @@ import 'registry_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     sid    = "example"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["109876543210"]
+///     }
+///     actions   = ["schemas:*"]
+///     resources = ["arn:aws:schemas:us-east-1:123456789012:registry/example", "arn:aws:schemas:us-east-1:123456789012:schema/example*"]
+///   }
+/// }
+///
+/// resource "aws_schemas_registrypolicy" "example" {
+///   registry_name = "example"
+///   policy        = data.aws_iam_getpolicydocument.example.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,10 +185,12 @@ import 'registry_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.schemas.RegistryPolicy;
 /// import com.pulumi.aws.schemas.RegistryPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -226,7 +255,7 @@ import 'registry_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EventBridge Schema Registry Policy using the `registry_name`. For example:
+/// Using `pulumi import`, import EventBridge Schema Registry Policy using the `registryName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:schemas/registryPolicy:RegistryPolicy example example

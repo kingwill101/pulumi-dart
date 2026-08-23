@@ -68,6 +68,21 @@ import 'guardrail_version_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_guardrailversion" "example" {
+///   description   = "example"
+///   guardrail_arn = test.guardrailArn
+///   skip_destroy  = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'guardrail_version_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.GuardrailVersion;
 /// import com.pulumi.aws.bedrock.GuardrailVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -111,7 +126,7 @@ import 'guardrail_version_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Bedrock Guardrail Version using using a comma-delimited string of `guardrail_arn` and `version`. For example:
+/// Using `pulumi import`, import Amazon Bedrock Guardrail Version using using a comma-delimited string of `guardrailArn` and `version`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/guardrailVersion:GuardrailVersion example arn:aws:bedrock:us-west-2:123456789012:guardrail-id-12345678,1

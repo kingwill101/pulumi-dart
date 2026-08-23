@@ -17,7 +17,7 @@ class GetUserArgs {
   final pulumi.Input<Map<String, String>>? tags;
   /// Returns information on a specific User by User id
   ///
-  /// &gt; **NOTE:** `instance_id` and one of either `name` or `user_id` is required.
+  /// &gt; **NOTE:** `instanceId` and one of either `name` or `userId` is required.
   final pulumi.Input<String>? userId;
 
   /// Creates a new [GetUserArgs].
@@ -54,4 +54,3 @@ class GetUserArgs {
     );
   }
 }
-

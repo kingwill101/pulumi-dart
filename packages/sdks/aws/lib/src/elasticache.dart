@@ -21,6 +21,12 @@ export 'elasticache/get_serverless_cache_cache_usage_limits_ecpu_per_second.dart
 export 'elasticache/get_serverless_cache_endpoint.dart';
 export 'elasticache/get_serverless_cache_reader_endpoint.dart';
 export 'elasticache/get_serverless_cache_result.dart';
+export 'elasticache/get_service_update_actions_args.dart';
+export 'elasticache/get_service_update_actions_result.dart';
+export 'elasticache/get_service_update_actions_update_action.dart';
+export 'elasticache/get_service_updates_args.dart';
+export 'elasticache/get_service_updates_result.dart';
+export 'elasticache/get_service_updates_service_update.dart';
 export 'elasticache/get_subnet_group_args.dart';
 export 'elasticache/get_subnet_group_result.dart';
 export 'elasticache/get_user_args.dart';

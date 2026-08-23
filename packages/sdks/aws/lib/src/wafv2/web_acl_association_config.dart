@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_association_config_request_body.dart';
 
 class WebAclAssociationConfig {
-  /// Customizes the request body that your protected resource forward to AWS WAF for inspection. See `request_body` below for details.
+  /// Customizes the request body that your protected resource forward to AWS WAF for inspection. See `requestBody` below for details.
   final pulumi.Input<List<WebAclAssociationConfigRequestBody>>? requestBodies;
 
   /// Creates a new [WebAclAssociationConfig].
-  /// [requestBodies] Customizes the request body that your protected resource forward to AWS WAF for inspection. See `request_body` below for details.
+  /// [requestBodies] Customizes the request body that your protected resource forward to AWS WAF for inspection. See `requestBody` below for details.
   const WebAclAssociationConfig({
     this.requestBodies,
   });
@@ -25,4 +25,3 @@ class WebAclAssociationConfig {
     );
   }
 }
-

@@ -93,6 +93,27 @@ import 'identity_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "example" {
+///   display_name = "example"
+/// }
+/// resource "aws_workspacesweb_identityprovider" "example" {
+///   identity_provider_name = "example-saml"
+///   identity_provider_type = "SAML"
+///   portal_arn             = aws_workspacesweb_portal.example.portal_arn
+///   identity_provider_details = {
+///     "MetadataURL" = "https://example.com/metadata"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +124,8 @@ import 'identity_provider_state.dart';
 /// import com.pulumi.aws.workspacesweb.PortalArgs;
 /// import com.pulumi.aws.workspacesweb.IdentityProvider;
 /// import com.pulumi.aws.workspacesweb.IdentityProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,6 +272,31 @@ import 'identity_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_portal" "test" {
+///   display_name = "test"
+/// }
+/// resource "aws_workspacesweb_identityprovider" "test" {
+///   identity_provider_name = "test-updated"
+///   identity_provider_type = "OIDC"
+///   portal_arn             = aws_workspacesweb_portal.test.portal_arn
+///   identity_provider_details = {
+///     "client_id"                 = "test-client-id"
+///     "client_secret"             = "test-client-secret"
+///     "oidc_issuer"               = "https://accounts.google.com"
+///     "attributes_request_method" = "POST"
+///     "authorize_scopes"          = "openid, email"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -261,8 +307,8 @@ import 'identity_provider_state.dart';
 /// import com.pulumi.aws.workspacesweb.PortalArgs;
 /// import com.pulumi.aws.workspacesweb.IdentityProvider;
 /// import com.pulumi.aws.workspacesweb.IdentityProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,7 +364,7 @@ import 'identity_provider_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WorkSpaces Web Identity Provider using the `identity_provider_arn`. For example:
+/// Using `pulumi import`, import WorkSpaces Web Identity Provider using the `identityProviderArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspacesweb/identityProvider:IdentityProvider example arn:aws:workspaces-web:us-west-2:123456789012:identityprovider/abcdef12345678/12345678-1234-1234-1234-123456789012
@@ -339,9 +385,9 @@ class IdentityProvider extends pulumi.CustomResource {
   late final pulumi.Output<String> portalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IdentityProvider].

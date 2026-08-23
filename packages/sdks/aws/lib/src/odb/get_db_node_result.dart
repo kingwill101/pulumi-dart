@@ -5,93 +5,94 @@
 class GetDbNodeResult {
   /// Additional information about the planned maintenance.
   final String additionalDetails;
+  /// ARN of the DB node.
   final String arn;
-  /// The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
+  /// Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
   final String backupIpId;
-  /// The OCID of the second backup VNIC.
+  /// OCID of the second backup VNIC.
   final String backupVnic2Id;
-  /// The OCID of the backup VNIC.
+  /// OCID of the backup VNIC.
   final String backupVnicId;
-  /// The ID of the cloud VM cluster.
+  /// ID of the cloud VM cluster.
   final String cloudVmClusterId;
-  /// The number of CPU cores enabled on the DB node.
+  /// Number of CPU cores enabled on the DB node.
   final int cpuCoreCount;
-  /// The date and time when the DB node was created.
+  /// Date and time when the DB node was created.
   final String createdAt;
-  /// The unique identifier of the DB server that is associated with the DB node.
+  /// Unique identifier of the DB server that is associated with the DB node.
   final String dbServerId;
-  /// The amount of local node storage, in gigabytes (GB), allocated on the DB node.
+  /// Amount of local node storage, in gigabytes (GB), allocated on the DB node.
   final int dbStorageSizeInGbs;
-  /// The OCID of the DB system.
+  /// OCID of the DB system.
   final String dbSystemId;
-  /// The name of the fault domain the instance is contained in.
+  /// Name of the fault domain the instance is contained in.
   final String faultDomain;
-  /// The floating IP address assigned to the DB node.
+  /// Floating IP address assigned to the DB node.
   final String floatingIpAddress;
-  /// The OCID of the host IP address that's associated with the DB node.
+  /// OCID of the host IP address that's associated with the DB node.
   final String hostIpId;
-  /// The host name for the DB node.
+  /// Host name for the DB node.
   final String hostname;
   final String id;
-  /// The type of database node maintenance. Either VMDB_REBOOT_MIGRATION or EXADBXS_REBOOT_MIGRATION.
+  /// Type of database node maintenance. Either VMDB_REBOOT_MIGRATION or EXADBXS_REBOOT_MIGRATION.
   final String maintenanceType;
-  /// The allocated memory in GBs on the DB node.
+  /// Allocated memory in GBs on the DB node.
   final int memorySizeInGbs;
-  /// The name of the OCI resource anchor for the DB node.
+  /// Name of the OCI resource anchor for the DB node.
   final String ociResourceAnchorName;
-  /// The OCID of the DB node.
+  /// OCID of the DB node.
   final String ocid;
-  /// The private IP address assigned to the DB node.
+  /// Private IP address assigned to the DB node.
   final String privateIpAddress;
   final String region;
-  /// The size (in GB) of the block storage volume allocation for the DB system.
+  /// Size (in GB) of the block storage volume allocation for the DB system.
   final int softwareStorageSizeInGbs;
-  /// The current status of the DB node.
+  /// Current status of the DB node.
   final String status;
   /// Additional information about the status of the DB node.
   final String statusReason;
-  /// The end date and time of the maintenance window.
+  /// End date and time of the maintenance window.
   final String timeMaintenanceWindowEnd;
-  /// The start date and time of the maintenance window.
+  /// Start date and time of the maintenance window.
   final String timeMaintenanceWindowStart;
-  /// The total number of CPU cores reserved on the DB node.
+  /// Total number of CPU cores reserved on the DB node.
   final int totalCpuCoreCount;
-  /// The OCID of the second VNIC.
+  /// OCID of the second VNIC.
   final String vnic2Id;
-  /// The OCID of the VNIC.
+  /// OCID of the VNIC.
   final String vnicId;
 
   /// Creates a new [GetDbNodeResult].
   /// [additionalDetails] Additional information about the planned maintenance.
-  /// [arn] Required.
-  /// [backupIpId] The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
-  /// [backupVnic2Id] The OCID of the second backup VNIC.
-  /// [backupVnicId] The OCID of the backup VNIC.
-  /// [cloudVmClusterId] The ID of the cloud VM cluster.
-  /// [cpuCoreCount] The number of CPU cores enabled on the DB node.
-  /// [createdAt] The date and time when the DB node was created.
-  /// [dbServerId] The unique identifier of the DB server that is associated with the DB node.
-  /// [dbStorageSizeInGbs] The amount of local node storage, in gigabytes (GB), allocated on the DB node.
-  /// [dbSystemId] The OCID of the DB system.
-  /// [faultDomain] The name of the fault domain the instance is contained in.
-  /// [floatingIpAddress] The floating IP address assigned to the DB node.
-  /// [hostIpId] The OCID of the host IP address that's associated with the DB node.
-  /// [hostname] The host name for the DB node.
+  /// [arn] ARN of the DB node.
+  /// [backupIpId] Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
+  /// [backupVnic2Id] OCID of the second backup VNIC.
+  /// [backupVnicId] OCID of the backup VNIC.
+  /// [cloudVmClusterId] ID of the cloud VM cluster.
+  /// [cpuCoreCount] Number of CPU cores enabled on the DB node.
+  /// [createdAt] Date and time when the DB node was created.
+  /// [dbServerId] Unique identifier of the DB server that is associated with the DB node.
+  /// [dbStorageSizeInGbs] Amount of local node storage, in gigabytes (GB), allocated on the DB node.
+  /// [dbSystemId] OCID of the DB system.
+  /// [faultDomain] Name of the fault domain the instance is contained in.
+  /// [floatingIpAddress] Floating IP address assigned to the DB node.
+  /// [hostIpId] OCID of the host IP address that's associated with the DB node.
+  /// [hostname] Host name for the DB node.
   /// [id] Required.
-  /// [maintenanceType] The type of database node maintenance. Either VMDB_REBOOT_MIGRATION or EXADBXS_REBOOT_MIGRATION.
-  /// [memorySizeInGbs] The allocated memory in GBs on the DB node.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor for the DB node.
-  /// [ocid] The OCID of the DB node.
-  /// [privateIpAddress] The private IP address assigned to the DB node.
+  /// [maintenanceType] Type of database node maintenance. Either VMDB_REBOOT_MIGRATION or EXADBXS_REBOOT_MIGRATION.
+  /// [memorySizeInGbs] Allocated memory in GBs on the DB node.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor for the DB node.
+  /// [ocid] OCID of the DB node.
+  /// [privateIpAddress] Private IP address assigned to the DB node.
   /// [region] Required.
-  /// [softwareStorageSizeInGbs] The size (in GB) of the block storage volume allocation for the DB system.
-  /// [status] The current status of the DB node.
+  /// [softwareStorageSizeInGbs] Size (in GB) of the block storage volume allocation for the DB system.
+  /// [status] Current status of the DB node.
   /// [statusReason] Additional information about the status of the DB node.
-  /// [timeMaintenanceWindowEnd] The end date and time of the maintenance window.
-  /// [timeMaintenanceWindowStart] The start date and time of the maintenance window.
-  /// [totalCpuCoreCount] The total number of CPU cores reserved on the DB node.
-  /// [vnic2Id] The OCID of the second VNIC.
-  /// [vnicId] The OCID of the VNIC.
+  /// [timeMaintenanceWindowEnd] End date and time of the maintenance window.
+  /// [timeMaintenanceWindowStart] Start date and time of the maintenance window.
+  /// [totalCpuCoreCount] Total number of CPU cores reserved on the DB node.
+  /// [vnic2Id] OCID of the second VNIC.
+  /// [vnicId] OCID of the VNIC.
   const GetDbNodeResult({
     required this.additionalDetails,
     required this.arn,
@@ -195,4 +196,3 @@ class GetDbNodeResult {
     );
   }
 }
-

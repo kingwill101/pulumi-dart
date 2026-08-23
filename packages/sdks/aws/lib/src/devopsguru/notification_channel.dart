@@ -67,6 +67,21 @@ import 'notification_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_notificationchannel" "example" {
+///   sns = {
+///     topic_arn = exampleAwsSnsTopic.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'notification_channel_state.dart';
 /// import com.pulumi.aws.devopsguru.NotificationChannel;
 /// import com.pulumi.aws.devopsguru.NotificationChannelArgs;
 /// import com.pulumi.aws.devopsguru.inputs.NotificationChannelSnsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,6 +212,25 @@ import 'notification_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_devopsguru_notificationchannel" "example" {
+///   sns = {
+///     topic_arn = exampleAwsSnsTopic.arn
+///   }
+///   filters = {
+///     message_types = ["NEW_INSIGHT"]
+///     severities    = ["HIGH"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +241,8 @@ import 'notification_channel_state.dart';
 /// import com.pulumi.aws.devopsguru.NotificationChannelArgs;
 /// import com.pulumi.aws.devopsguru.inputs.NotificationChannelSnsArgs;
 /// import com.pulumi.aws.devopsguru.inputs.NotificationChannelFiltersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

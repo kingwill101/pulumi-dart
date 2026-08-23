@@ -2,9 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_state.dart';
 
-/// Enables Security Hub for this AWS account.
+/// Enables Security Hub CSPM for this AWS account.
 ///
 /// &gt; **NOTE:** Destroying this resource will disable Security Hub for this AWS account.
+///
+/// &gt; **NOTE:** This resource manages Security Hub CSPM, which is distinct from the unified Security Hub V2 service managed by `aws.securityhub.AccountV2`. Both can coexist in the same account.
 ///
 /// ## Example Usage
 ///
@@ -51,6 +53,18 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_securityhub_account" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -58,8 +72,8 @@ import 'account_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.securityhub.Account;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

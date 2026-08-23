@@ -7,7 +7,7 @@ class DeploymentGroupDeploymentStyle {
   final pulumi.Input<String>? deploymentOption;
   /// Indicates whether to run an in-place deployment or a blue/green deployment. Valid Values are `IN_PLACE` or `BLUE_GREEN`. Default is `IN_PLACE`.
   ///
-  /// _Only one `deployment_style` is allowed_.
+  /// _Only one `deploymentStyle` is allowed_.
   final pulumi.Input<String>? deploymentType;
 
   /// Creates a new [DeploymentGroupDeploymentStyle].
@@ -32,4 +32,3 @@ class DeploymentGroupDeploymentStyle {
     );
   }
 }
-

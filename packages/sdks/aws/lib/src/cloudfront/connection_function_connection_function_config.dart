@@ -6,14 +6,14 @@ import 'connection_function_connection_function_config_key_value_store_associati
 class ConnectionFunctionConnectionFunctionConfig {
   /// Comment to describe the function.
   final pulumi.Input<String> comment;
-  /// Key value store associations. See `key_value_store_association` below.
+  /// Key value store associations. See `keyValueStoreAssociation` below.
   final pulumi.Input<ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation>? keyValueStoreAssociation;
   /// Runtime environment for the function. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   final pulumi.Input<String> runtime;
 
   /// Creates a new [ConnectionFunctionConnectionFunctionConfig].
   /// [comment] Comment to describe the function.
-  /// [keyValueStoreAssociation] Key value store associations. See `key_value_store_association` below.
+  /// [keyValueStoreAssociation] Key value store associations. See `keyValueStoreAssociation` below.
   /// [runtime] Runtime environment for the function. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   const ConnectionFunctionConnectionFunctionConfig({
     required this.comment,
@@ -37,4 +37,3 @@ class ConnectionFunctionConnectionFunctionConfig {
     );
   }
 }
-

@@ -76,6 +76,23 @@ import 'file_system_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_storagegateway_filesystemassociation" "example" {
+///   gateway_arn           = exampleAwsStoragegatewayGateway.arn
+///   location_arn          = exampleAwsFsxWindowsFileSystem.arn
+///   username              = "Admin"
+///   password              = "avoid-plaintext-passwords"
+///   audit_destination_arn = exampleAwsS3Bucket.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +101,8 @@ import 'file_system_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.FileSystemAssociation;
 /// import com.pulumi.aws.storagegateway.FileSystemAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,7 +138,7 @@ import 'file_system_association_state.dart';
 /// ```
 ///
 ///
-/// ## Required Services Example
+/// ### Required Services Example
 ///
 ///
 /// ```typescript
@@ -372,6 +389,57 @@ import 'file_system_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getparameter" "awsServiceStoragegatewayAmiFILES3Latest" {
+///   name = "/aws/service/storagegateway/ami/FILE_S3/latest"
+/// }
+///
+/// resource "aws_ec2_instance" "test" {
+///   depends_on                  = [testAwsRoute, testAwsVpcDhcpOptionsAssociation]
+///   ami                         = data.aws_ssm_getparameter.awsServiceStoragegatewayAmiFILES3Latest.value
+///   associate_public_ip_address = true
+///   instance_type               = available.instanceType
+///   vpc_security_group_ids      = [testAwsSecurityGroup.id]
+///   subnet_id                   = testAwsSubnet[0].id
+/// }
+/// resource "aws_storagegateway_gateway" "test" {
+///   gateway_ip_address = aws_ec2_instance.test.public_ip
+///   gateway_name       = "test-sgw"
+///   gateway_timezone   = "GMT"
+///   gateway_type       = "FILE_FSX_SMB"
+///   smb_active_directory_settings = {
+///     domain_name = testAwsDirectoryServiceDirectory.name
+///     password    = testAwsDirectoryServiceDirectory.password
+///     username    = "Admin"
+///   }
+/// }
+/// resource "aws_fsx_windowsfilesystem" "test" {
+///   active_directory_id = testAwsDirectoryServiceDirectory.id
+///   security_group_ids  = [testAwsSecurityGroup.id]
+///   skip_final_backup   = true
+///   storage_capacity    = 32
+///   subnet_ids          = [testAwsSubnet[0].id]
+///   throughput_capacity = 8
+/// }
+/// resource "aws_storagegateway_filesystemassociation" "fsx" {
+///   gateway_arn  = aws_storagegateway_gateway.test.arn
+///   location_arn = aws_fsx_windowsfilesystem.test.arn
+///   username     = "Admin"
+///   password     = testAwsDirectoryServiceDirectory.password
+///   cache_attributes = {
+///     cache_stale_timeout_in_seconds = 400
+///   }
+///   audit_destination_arn = testAwsCloudwatchLogGroup.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +459,8 @@ import 'file_system_association_state.dart';
 /// import com.pulumi.aws.storagegateway.FileSystemAssociationArgs;
 /// import com.pulumi.aws.storagegateway.inputs.FileSystemAssociationCacheAttributesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -535,9 +603,9 @@ class FileSystemAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> password;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The user name of the user credential that has permission to access the root share of the Amazon FSx file system. The user account must belong to the Amazon FSx delegated admin user group.
   late final pulumi.Output<String> username;

@@ -65,6 +65,21 @@ import 'attachment_routing_policy_label_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_attachmentroutingpolicylabel" "example" {
+///   core_network_id      = exampleAwsNetworkmanagerCoreNetwork.id
+///   attachment_id        = exampleAwsNetworkmanagerVpcAttachment.id
+///   routing_policy_label = "attachmentPolicyLabel"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'attachment_routing_policy_label_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.AttachmentRoutingPolicyLabel;
 /// import com.pulumi.aws.networkmanager.AttachmentRoutingPolicyLabelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

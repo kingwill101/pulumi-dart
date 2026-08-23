@@ -87,6 +87,25 @@ import 'configuration_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticbeanstalk_configurationtemplate" "example" {
+///   name                = "tf-test-template-config"
+///   application         = aws_elasticbeanstalk_application.example.name
+///   solution_stack_name = "64bit Amazon Linux 2015.09 v2.0.8 running Go 1.4"
+/// }
+/// resource "aws_elasticbeanstalk_application" "example" {
+///   name        = "tf-test-name"
+///   description = "tf-test-desc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'configuration_template_state.dart';
 /// import com.pulumi.aws.elasticbeanstalk.ApplicationArgs;
 /// import com.pulumi.aws.elasticbeanstalk.ConfigurationTemplate;
 /// import com.pulumi.aws.elasticbeanstalk.ConfigurationTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -139,16 +158,6 @@ import 'configuration_template_state.dart';
 ///       name: tf-test-name
 ///       description: tf-test-desc
 /// ```
-///
-///
-/// ## Option Settings
-///
-/// The `setting` field supports the following format:
-///
-/// * `namespace` - (Required) Unique namespace identifying the option's associated AWS resource
-/// * `name` - (Required) Name of the configuration option
-/// * `value` - (Required) Value for the configuration option
-/// * `resource` - (Optional) resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
 class ConfigurationTemplate extends pulumi.CustomResource {
   /// name of the application to associate with this configuration template
   late final pulumi.Output<String> application;
@@ -165,7 +174,7 @@ class ConfigurationTemplate extends pulumi.CustomResource {
   /// below in Option Settings
   late final pulumi.Output<List<Map<String, dynamic>>> settings;
   /// A solution stack to base your Template
-  /// off of. Example stacks can be found in the [Amazon API documentation][1]
+  /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
   late final pulumi.Output<String?> solutionStackName;
 
   /// Creates a new [ConfigurationTemplate].

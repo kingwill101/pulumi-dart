@@ -10,7 +10,7 @@ import 'get_directory_workspace_creation_property.dart';
 
 /// Result data returned by getDirectory.
 class GetDirectoryResult {
-  /// Configuration for Active Directory integration when `workspace_type` is set to `POOLS`.
+  /// Configuration for Active Directory integration when `workspaceType` is set to `POOLS`.
   final List<GetDirectoryActiveDirectoryConfig> activeDirectoryConfigs;
   /// Directory alias.
   final String alias;
@@ -48,9 +48,9 @@ class GetDirectoryResult {
   final List<GetDirectoryWorkspaceAccessProperty> workspaceAccessProperties;
   /// The default properties that are used for creating WorkSpaces.
   final List<GetDirectoryWorkspaceCreationProperty> workspaceCreationProperties;
-  /// The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// The description of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   final String workspaceDirectoryDescription;
-  /// The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// The name of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   final String workspaceDirectoryName;
   /// The identifier of the security group that is assigned to new WorkSpaces.
   final String workspaceSecurityGroupId;
@@ -58,7 +58,7 @@ class GetDirectoryResult {
   final String workspaceType;
 
   /// Creates a new [GetDirectoryResult].
-  /// [activeDirectoryConfigs] Configuration for Active Directory integration when `workspace_type` is set to `POOLS`.
+  /// [activeDirectoryConfigs] Configuration for Active Directory integration when `workspaceType` is set to `POOLS`.
   /// [alias] Directory alias.
   /// [certificateBasedAuthProperties] Required.
   /// [customerUserName] User name for the service account.
@@ -79,8 +79,8 @@ class GetDirectoryResult {
   /// [userIdentityType] The user identity type for the WorkSpaces directory.
   /// [workspaceAccessProperties] Specifies which devices and operating systems users can use to access their WorkSpaces.
   /// [workspaceCreationProperties] The default properties that are used for creating WorkSpaces.
-  /// [workspaceDirectoryDescription] The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
-  /// [workspaceDirectoryName] The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
+  /// [workspaceDirectoryDescription] The description of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
+  /// [workspaceDirectoryName] The name of the WorkSpaces directory when `workspaceType` is set to `POOLS`.
   /// [workspaceSecurityGroupId] The identifier of the security group that is assigned to new WorkSpaces.
   /// [workspaceType] The type of WorkSpaces directory.
   const GetDirectoryResult({
@@ -171,4 +171,3 @@ class GetDirectoryResult {
     );
   }
 }
-

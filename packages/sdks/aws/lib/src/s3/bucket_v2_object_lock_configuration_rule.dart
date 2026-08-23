@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_v2_object_lock_configuration_rule_default_retention.dart';
 
 class BucketV2ObjectLockConfigurationRule {
-  /// Default retention period that you want to apply to new objects placed in this bucket (documented below).
+  /// Default retention period that you want to apply to new objects placed in this bucket. See `defaultRetention` Block below for details.
   final pulumi.Input<List<BucketV2ObjectLockConfigurationRuleDefaultRetention>> defaultRetentions;
 
   /// Creates a new [BucketV2ObjectLockConfigurationRule].
-  /// [defaultRetentions] Default retention period that you want to apply to new objects placed in this bucket (documented below).
+  /// [defaultRetentions] Default retention period that you want to apply to new objects placed in this bucket. See `defaultRetention` Block below for details.
   const BucketV2ObjectLockConfigurationRule({
     required this.defaultRetentions,
   });
@@ -25,4 +25,3 @@ class BucketV2ObjectLockConfigurationRule {
     );
   }
 }
-

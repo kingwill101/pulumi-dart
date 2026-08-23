@@ -110,6 +110,30 @@ import 'image_builder_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appstream_imagebuilder" "test_fleet" {
+///   name                           = "Name"
+///   description                    = "Description of a ImageBuilder"
+///   display_name                   = "Display name of a ImageBuilder"
+///   enable_default_internet_access = false
+///   image_name                     = "AppStream-WinServer2019-10-05-2022"
+///   instance_type                  = "stream.standard.large"
+///   vpc_config = {
+///     subnet_ids = [example.id]
+///   }
+///   tags = {
+///     "Name" = "Example Image Builder"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +143,8 @@ import 'image_builder_vpc_config.dart';
 /// import com.pulumi.aws.appstream.ImageBuilder;
 /// import com.pulumi.aws.appstream.ImageBuilderArgs;
 /// import com.pulumi.aws.appstream.inputs.ImageBuilderVpcConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,9 +232,9 @@ class ImageBuilder extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// State of the image builder. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_ImageBuilder.html#AppStream2-Type-ImageBuilder-State).
   late final pulumi.Output<String> state;
-  /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for the VPC configuration for the image builder. See below.
   late final pulumi.Output<ImageBuilderVpcConfig> vpcConfig;

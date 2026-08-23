@@ -6,7 +6,6 @@ import 'get_group_mixed_instances_policy_launch_template_override_launch_templat
 
 class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
   /// List of instance requirements objects.
-  /// * `accelerator_count - List of objects describing the minimum and maximum number of accelerators for an instance type.
   final pulumi.Input<List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement>> instanceRequirements;
   /// Overriding instance type.
   final pulumi.Input<String> instanceType;
@@ -45,4 +44,3 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
     );
   }
 }
-

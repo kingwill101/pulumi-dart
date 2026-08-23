@@ -76,6 +76,23 @@ import 'organization_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_detective_graph" "example" {
+///   enable = true
+/// }
+/// resource "aws_detective_organizationconfiguration" "example" {
+///   auto_enable = true
+///   graph_arn   = aws_detective_graph.example.graph_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'organization_configuration_state.dart';
 /// import com.pulumi.aws.detective.GraphArgs;
 /// import com.pulumi.aws.detective.OrganizationConfiguration;
 /// import com.pulumi.aws.detective.OrganizationConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,15 +145,22 @@ import 'organization_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.detective.OrganizationAdminAccount` using the behavior graph ARN. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `graphArn` (String) ARN of the Detective behavior graph.
+///
+///
+/// Using `pulumi import`, import Detective organization configurations using `graphArn`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:detective/organizationConfiguration:OrganizationConfiguration example arn:aws:detective:us-east-1:123456789012:graph:00b00fd5aecc0ab60a708659477e9617
+/// $ pulumi import aws:detective/organizationConfiguration:OrganizationConfiguration example arn:aws:detective:us-east-1:187416307283:graph:f0bfed23303d420e838158775713bcb2
 /// ```
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s Detective delegated administrator and Detective is enabled in that AWS Region.
   late final pulumi.Output<bool> autoEnable;
-  /// ARN of the behavior graph.
+  /// ARN of the Detective behavior graph.
   late final pulumi.Output<String> graphArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

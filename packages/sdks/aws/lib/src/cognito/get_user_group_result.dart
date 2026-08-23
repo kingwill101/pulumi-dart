@@ -5,7 +5,7 @@
 class GetUserGroupResult {
   /// Description of the user group.
   final String description;
-  /// A comma-delimited string concatenating `name` and `user_pool_id`.
+  /// A comma-delimited string concatenating `name` and `userPoolId`.
   final String id;
   final String name;
   /// Precedence of the user group.
@@ -17,7 +17,7 @@ class GetUserGroupResult {
 
   /// Creates a new [GetUserGroupResult].
   /// [description] Description of the user group.
-  /// [id] A comma-delimited string concatenating `name` and `user_pool_id`.
+  /// [id] A comma-delimited string concatenating `name` and `userPoolId`.
   /// [name] Required.
   /// [precedence] Precedence of the user group.
   /// [region] Required.
@@ -57,4 +57,3 @@ class GetUserGroupResult {
     );
   }
 }
-

@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_xray_encryption_config_encryption_config_args_doc}
 class EncryptionConfigArgs {
-  /// An AWS KMS customer master key (CMK) ARN.
+  /// AWS KMS customer master key (CMK) ARN.
   final pulumi.Input<String>? keyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
+  /// Type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   final pulumi.Input<String> type;
 
   /// Creates a new [EncryptionConfigArgs].
-  /// [keyId] An AWS KMS customer master key (CMK) ARN.
+  /// [keyId] AWS KMS customer master key (CMK) ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [type] The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
+  /// [type] Type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   const EncryptionConfigArgs({
     this.keyId,
     this.region,
@@ -40,4 +40,3 @@ class EncryptionConfigArgs {
     );
   }
 }
-

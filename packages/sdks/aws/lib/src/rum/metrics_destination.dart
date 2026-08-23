@@ -61,6 +61,20 @@ import 'metrics_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rum_metricsdestination" "example" {
+///   app_monitor_name = exampleAwsRumAppMonitor.name
+///   destination      = "CloudWatch"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'metrics_destination_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rum.MetricsDestination;
 /// import com.pulumi.aws.rum.MetricsDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

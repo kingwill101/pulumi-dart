@@ -107,6 +107,30 @@ import 'connector_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_connector" "example" {
+///   access_role = test.arn
+///   as2_config = {
+///     compression           = "DISABLED"
+///     encryption_algorithm  = "AWS128_CBC"
+///     message_subject       = "For Connector"
+///     local_profile_id      = local.profileId
+///     mdn_response          = "NONE"
+///     mdn_signing_algorithm = "NONE"
+///     partner_profile_id    = partner.profileId
+///     signing_algorithm     = "NONE"
+///   }
+///   url = "http://www.test.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +140,8 @@ import 'connector_state.dart';
 /// import com.pulumi.aws.transfer.Connector;
 /// import com.pulumi.aws.transfer.ConnectorArgs;
 /// import com.pulumi.aws.transfer.inputs.ConnectorAs2ConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,6 +269,24 @@ import 'connector_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_connector" "example" {
+///   access_role = test.arn
+///   sftp_config = {
+///     trusted_host_keys = ["ssh-rsa AAAAB3NYourKeysHere"]
+///     user_secret_id    = exampleAwsSecretsmanagerSecret.id
+///   }
+///   url = "sftp://test.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +296,8 @@ import 'connector_state.dart';
 /// import com.pulumi.aws.transfer.Connector;
 /// import com.pulumi.aws.transfer.ConnectorArgs;
 /// import com.pulumi.aws.transfer.inputs.ConnectorSftpConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,6 +436,29 @@ import 'connector_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_connector" "example" {
+///   access_role = test.arn
+///   sftp_config = {
+///     trusted_host_keys = ["ssh-rsa AAAAB3NYourKeysHere"]
+///     user_secret_id    = exampleAwsSecretsmanagerSecret.id
+///   }
+///   egress_config = {
+///     vpc_lattice = {
+///       resource_configuration_arn = "arn:aws:vpc-lattice:us-east-1:123456789012:resourceconfiguration/rcfg-12345678901234567"
+///       port_number                = 22
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -405,8 +470,8 @@ import 'connector_state.dart';
 /// import com.pulumi.aws.transfer.inputs.ConnectorSftpConfigArgs;
 /// import com.pulumi.aws.transfer.inputs.ConnectorEgressConfigArgs;
 /// import com.pulumi.aws.transfer.inputs.ConnectorEgressConfigVpcLatticeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -454,34 +519,34 @@ import 'connector_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer AS2 Connector using the `connector_id`. For example:
+/// Using `pulumi import`, import Transfer AS2 Connector using the `connectorId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/connector:Connector example c-4221a88afd5f4362a
 /// ```
 class Connector extends pulumi.CustomResource {
-  /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  /// IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
   late final pulumi.Output<String> accessRole;
-  /// The ARN of the connector.
+  /// ARN of the connector.
   late final pulumi.Output<String> arn;
-  /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
+  /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `as2Config` Block below.
   late final pulumi.Output<ConnectorAs2Config?> as2Config;
-  /// The unique identifier for the AS2 profile or SFTP Profile.
+  /// Unique identifier for the AS2 profile or SFTP Profile.
   late final pulumi.Output<String> connectorId;
-  /// Specifies the egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. Fields documented below.
+  /// Egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. See `egressConfig` Block below.
   late final pulumi.Output<ConnectorEgressConfig?> egressConfig;
-  /// The IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
+  /// IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
   late final pulumi.Output<String?> loggingRole;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Name of the security policy for the connector.
   late final pulumi.Output<String> securityPolicyName;
-  /// Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
+  /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `sftpConfig` Block below.
   late final pulumi.Output<ConnectorSftpConfig?> sftpConfig;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
+  /// URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
   late final pulumi.Output<String?> url;
 
   /// Creates a new [Connector].

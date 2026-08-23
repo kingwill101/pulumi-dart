@@ -39,4 +39,3 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
     );
   }
 }
-

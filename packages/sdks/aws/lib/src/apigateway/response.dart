@@ -87,7 +87,7 @@ import 'response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewResponse(ctx, "test", &apigateway.ResponseArgs{
-/// 			RestApiId:    main.ID(),
+/// 			RestApiId:    main.ID().ToIDOutput().ToStringOutput(),
 /// 			StatusCode:   pulumi.String("401"),
 /// 			ResponseType: pulumi.String("UNAUTHORIZED"),
 /// 			ResponseTemplates: pulumi.StringMap{
@@ -104,6 +104,30 @@ import 'response_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "main" {
+///   name = "MyDemoAPI"
+/// }
+/// resource "aws_apigateway_response" "test" {
+///   rest_api_id   = aws_apigateway_restapi.main.id
+///   status_code   = "401"
+///   response_type = "UNAUTHORIZED"
+///   response_templates = {
+///     "application/json" = "{\"message\":$context.error.messageString}"
+///   }
+///   response_parameters = {
+///     "gatewayresponse.header.Authorization" = "'Basic'"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +138,8 @@ import 'response_state.dart';
 /// import com.pulumi.aws.apigateway.RestApiArgs;
 /// import com.pulumi.aws.apigateway.Response;
 /// import com.pulumi.aws.apigateway.ResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -33,7 +33,7 @@ import 'deployment_strategy_state.dart';
 ///     description="Example Deployment Strategy",
 ///     deployment_duration_in_minutes=3,
 ///     final_bake_time_in_minutes=4,
-///     growth_factor=10,
+///     growth_factor=float(10),
 ///     growth_type="LINEAR",
 ///     replicate_to="NONE",
 ///     tags={
@@ -94,6 +94,28 @@ import 'deployment_strategy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appconfig_deploymentstrategy" "example" {
+///   name                           = "example-deployment-strategy-tf"
+///   description                    = "Example Deployment Strategy"
+///   deployment_duration_in_minutes = 3
+///   final_bake_time_in_minutes     = 4
+///   growth_factor                  = 10
+///   growth_type                    = "LINEAR"
+///   replicate_to                   = "NONE"
+///   tags = {
+///     "Type" = "AppConfig Deployment Strategy"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +124,8 @@ import 'deployment_strategy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appconfig.DeploymentStrategy;
 /// import com.pulumi.aws.appconfig.DeploymentStrategyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,9 +194,9 @@ class DeploymentStrategy extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Where to save the deployment strategy. Valid values: `NONE` and `SSM_DOCUMENT`.
   late final pulumi.Output<String> replicateTo;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DeploymentStrategy].

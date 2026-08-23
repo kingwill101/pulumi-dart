@@ -17,7 +17,7 @@ class ResponsePlanState {
   final pulumi.Input<String>? displayName;
   /// The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
   final pulumi.Input<List<String>>? engagements;
-  /// The `incident_template` configuration block is required and supports the following arguments:
+  /// The `incidentTemplate` configuration block is required and supports the following arguments:
   final pulumi.Input<ResponsePlanIncidentTemplate>? incidentTemplate;
   /// Information about third-party services integrated into the response plan. The following values are supported:
   final pulumi.Input<ResponsePlanIntegration>? integration;
@@ -27,7 +27,7 @@ class ResponsePlanState {
   final pulumi.Input<String>? region;
   /// The tags applied to the response plan.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [ResponsePlanState].
@@ -36,12 +36,12 @@ class ResponsePlanState {
   /// [chatChannels] The Chatbot chat channel used for collaboration during an incident.
   /// [displayName] The long format of the response plan name. This field can contain spaces.
   /// [engagements] The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
-  /// [incidentTemplate] The `incident_template` configuration block is required and supports the following arguments:
+  /// [incidentTemplate] The `incidentTemplate` configuration block is required and supports the following arguments:
   /// [integration] Information about third-party services integrated into the response plan. The following values are supported:
   /// [name] The name of the response plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The tags applied to the response plan.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ResponsePlanState({
     this.action,
     this.arn,
@@ -88,4 +88,3 @@ class ResponsePlanState {
     );
   }
 }
-

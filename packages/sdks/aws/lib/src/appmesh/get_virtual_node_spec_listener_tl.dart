@@ -5,14 +5,17 @@ import 'get_virtual_node_spec_listener_tl_certificate.dart';
 import 'get_virtual_node_spec_listener_tl_validation.dart';
 
 class GetVirtualNodeSpecListenerTl {
+  /// Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTlCertificate>> certificates;
+  /// Listener's TLS mode.
   final pulumi.Input<String> mode;
+  /// Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTlValidation>> validations;
 
   /// Creates a new [GetVirtualNodeSpecListenerTl].
-  /// [certificates] Required.
-  /// [mode] Required.
-  /// [validations] Required.
+  /// [certificates] Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
+  /// [mode] Listener's TLS mode.
+  /// [validations] Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
   const GetVirtualNodeSpecListenerTl({
     required this.certificates,
     required this.mode,
@@ -35,4 +38,3 @@ class GetVirtualNodeSpecListenerTl {
     );
   }
 }
-

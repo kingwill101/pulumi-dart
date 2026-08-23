@@ -12,6 +12,7 @@ import 'get_group_mixed_instances_policy_launch_template_override_instance_requi
 import 'get_group_mixed_instances_policy_launch_template_override_instance_requirement_vcpu_count.dart';
 
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
+  /// List of objects describing the minimum and maximum number of accelerators for an instance type.
   final pulumi.Input<List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount>> acceleratorCounts;
   /// List of accelerator manufacturer names.
   final pulumi.Input<List<String>> acceleratorManufacturers;
@@ -23,11 +24,11 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
   final pulumi.Input<List<String>> acceleratorTypes;
   /// List of instance types to apply the specified attributes against.
   final pulumi.Input<List<String>> allowedInstanceTypes;
-  /// Indicates whether bare metal instances are included, excluded, or required.
+  /// Whether bare metal instances are included, excluded, or required.
   final pulumi.Input<String> bareMetal;
   /// List of objects describing the minimum and maximum baseline EBS bandwidth (Mbps).
   final pulumi.Input<List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp>> baselineEbsBandwidthMbps;
-  /// Indicates whether burstable performance instance types are included, excluded, or required.
+  /// Whether burstable performance instance types are included, excluded, or required.
   final pulumi.Input<String> burstablePerformance;
   /// List of CPU manufacturer names.
   final pulumi.Input<List<String>> cpuManufacturers;
@@ -35,7 +36,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
   final pulumi.Input<List<String>> excludedInstanceTypes;
   /// List of instance generation names.
   final pulumi.Input<List<String>> instanceGenerations;
-  /// Indicates whether instance types with instance store volumes are included, excluded, or required.
+  /// Whether instance types with instance store volumes are included, excluded, or required.
   final pulumi.Input<String> localStorage;
   /// List of local storage type names.
   final pulumi.Input<List<String>> localStorageTypes;
@@ -51,7 +52,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
   final pulumi.Input<List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount>> networkInterfaceCounts;
   /// Price protection threshold for On-Demand Instances.
   final pulumi.Input<int> onDemandMaxPricePercentageOverLowestPrice;
-  /// Indicates whether instance types must support On-Demand Instance Hibernation.
+  /// Whether instance types must support On-Demand Instance Hibernation.
   final pulumi.Input<bool> requireHibernateSupport;
   /// Price protection threshold for Spot Instances.
   final pulumi.Input<int> spotMaxPricePercentageOverLowestPrice;
@@ -61,19 +62,19 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
   final pulumi.Input<List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount>> vcpuCounts;
 
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement].
-  /// [acceleratorCounts] Required.
+  /// [acceleratorCounts] List of objects describing the minimum and maximum number of accelerators for an instance type.
   /// [acceleratorManufacturers] List of accelerator manufacturer names.
   /// [acceleratorNames] List of accelerator names.
   /// [acceleratorTotalMemoryMibs] List of objects describing the minimum and maximum total memory of the accelerators.
   /// [acceleratorTypes] List of accelerator types.
   /// [allowedInstanceTypes] List of instance types to apply the specified attributes against.
-  /// [bareMetal] Indicates whether bare metal instances are included, excluded, or required.
+  /// [bareMetal] Whether bare metal instances are included, excluded, or required.
   /// [baselineEbsBandwidthMbps] List of objects describing the minimum and maximum baseline EBS bandwidth (Mbps).
-  /// [burstablePerformance] Indicates whether burstable performance instance types are included, excluded, or required.
+  /// [burstablePerformance] Whether burstable performance instance types are included, excluded, or required.
   /// [cpuManufacturers] List of CPU manufacturer names.
   /// [excludedInstanceTypes] List of excluded instance types.
   /// [instanceGenerations] List of instance generation names.
-  /// [localStorage] Indicates whether instance types with instance store volumes are included, excluded, or required.
+  /// [localStorage] Whether instance types with instance store volumes are included, excluded, or required.
   /// [localStorageTypes] List of local storage type names.
   /// [maxSpotPriceAsPercentageOfOptimalOnDemandPrice] Price protection threshold for Spot Instances.
   /// [memoryGibPerVcpus] List of objects describing the minimum and maximum amount of memory (GiB) per vCPU.
@@ -81,7 +82,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
   /// [networkBandwidthGbps] List of objects describing the minimum and maximum amount of network bandwidth (Gbps).
   /// [networkInterfaceCounts] List of objects describing the minimum and maximum amount of network interfaces.
   /// [onDemandMaxPricePercentageOverLowestPrice] Price protection threshold for On-Demand Instances.
-  /// [requireHibernateSupport] Indicates whether instance types must support On-Demand Instance Hibernation.
+  /// [requireHibernateSupport] Whether instance types must support On-Demand Instance Hibernation.
   /// [spotMaxPricePercentageOverLowestPrice] Price protection threshold for Spot Instances.
   /// [totalLocalStorageGbs] List of objects describing the minimum and maximum total storage (GB).
   /// [vcpuCounts] List of objects describing the minimum and maximum number of vCPUs.
@@ -170,4 +171,3 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
     );
   }
 }
-

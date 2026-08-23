@@ -41,7 +41,7 @@ class EnvironmentState {
   final pulumi.Input<EnvironmentStorageConfiguration>? storageConfiguration;
   /// List of subnet ids to deploy environment to.
   final pulumi.Input<List<String>>? subnetIds;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<EnvironmentTimeouts>? timeouts;
@@ -65,7 +65,7 @@ class EnvironmentState {
   /// [securityGroupIds] List of security group ids.
   /// [storageConfiguration] Optional.
   /// [subnetIds] List of subnet ids to deploy environment to.
-  /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   const EnvironmentState({
@@ -144,4 +144,3 @@ class EnvironmentState {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class GatewayRouteSpecHttp2RouteActionTargetVirtualService {
     );
   }
 }
-

@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
-  /// Determines whether to propagate the tags from the task definition to the Amazon EBS volume.
+  /// Whether to propagate the tags from the task definition to the Amazon EBS volume.
   final pulumi.Input<String>? propagateTags;
-  /// The type of volume resource. Valid values, `volume`.
+  /// Type of volume resource. Valid values, `volume`.
   final pulumi.Input<String> resourceType;
-  /// The tags applied to this Amazon EBS volume. `AmazonECSCreated` and `AmazonECSManaged` are reserved tags that can't be used.
+  /// Tags applied to this Amazon EBS volume. `AmazonECSCreated` and `AmazonECSManaged` are reserved tags that can't be used.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ServiceVolumeConfigurationManagedEbsVolumeTagSpecification].
-  /// [propagateTags] Determines whether to propagate the tags from the task definition to the Amazon EBS volume.
-  /// [resourceType] The type of volume resource. Valid values, `volume`.
-  /// [tags] The tags applied to this Amazon EBS volume. `AmazonECSCreated` and `AmazonECSManaged` are reserved tags that can't be used.
+  /// [propagateTags] Whether to propagate the tags from the task definition to the Amazon EBS volume.
+  /// [resourceType] Type of volume resource. Valid values, `volume`.
+  /// [tags] Tags applied to this Amazon EBS volume. `AmazonECSCreated` and `AmazonECSManaged` are reserved tags that can't be used.
   const ServiceVolumeConfigurationManagedEbsVolumeTagSpecification({
     this.propagateTags,
     required this.resourceType,
@@ -36,4 +36,3 @@ class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
     );
   }
 }
-

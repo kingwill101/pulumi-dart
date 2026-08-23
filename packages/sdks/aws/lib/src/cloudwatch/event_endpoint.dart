@@ -157,6 +157,39 @@ import 'event_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_eventendpoint" "this" {
+///   name     = "global-endpoint"
+///   role_arn = replication.arn
+///   event_buses {
+///     event_bus_arn = primary.arn
+///   }
+///   event_buses {
+///     event_bus_arn = secondary.arn
+///   }
+///   replication_config = {
+///     state = "DISABLED"
+///   }
+///   routing_config = {
+///     failover_config = {
+///       primary = {
+///         health_check = primaryAwsRoute53HealthCheck.arn
+///       }
+///       secondary = {
+///         route = "us-east-2"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +204,8 @@ import 'event_endpoint_state.dart';
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointRoutingConfigFailoverConfigArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointRoutingConfigFailoverConfigPrimaryArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointRoutingConfigFailoverConfigSecondaryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,10 +268,22 @@ import 'event_endpoint_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EventBridge Global Endpoints using the `name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the global endpoint.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Global Endpoints using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cloudwatch/eventEndpoint:EventEndpoint imported_endpoint example-endpoint
+/// $ pulumi import aws:cloudwatch/eventEndpoint:EventEndpoint example example-endpoint
 /// ```
 class EventEndpoint extends pulumi.CustomResource {
   /// The ARN of the endpoint that was created.

@@ -72,6 +72,22 @@ import 'tenant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sesv2_tenant" "example" {
+///   tenant_name = "example-tenant"
+///   tags = {
+///     "Environment" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +96,8 @@ import 'tenant_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sesv2.Tenant;
 /// import com.pulumi.aws.sesv2.TenantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +130,7 @@ import 'tenant_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an SESv2 Tenant using the `tenant_name`. For example:
+/// Using `pulumi import`, import an SESv2 Tenant using the `tenantName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sesv2/tenant:Tenant example example-tenant

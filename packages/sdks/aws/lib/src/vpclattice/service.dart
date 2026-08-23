@@ -67,6 +67,21 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_service" "example" {
+///   name               = "example"
+///   auth_type          = "AWS_IAM"
+///   custom_domain_name = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'service_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpclattice.Service;
 /// import com.pulumi.aws.vpclattice.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,6 +141,8 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String?> customDomainName;
   /// DNS name of the service.
   late final pulumi.Output<List<Map<String, dynamic>>> dnsEntries;
+  /// Amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it. The valid range is 60 to 600 seconds. Default is 60 seconds.
+  late final pulumi.Output<int> idleTimeoutSeconds;
   /// Name of the service. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.Must be between 3 and 40 characters in length.
   ///
   /// The following arguments are optional:
@@ -134,9 +151,9 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Status of the service.
   late final pulumi.Output<String> status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Service].
@@ -158,6 +175,7 @@ class Service extends pulumi.CustomResource {
     certificateArn = registerOutput<String?>('certificateArn');
     customDomainName = registerOutput<String?>('customDomainName');
     dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    idleTimeoutSeconds = registerOutput<int>('idleTimeoutSeconds');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -193,6 +211,7 @@ class Service extends pulumi.CustomResource {
     certificateArn = registerOutput<String?>('certificateArn');
     customDomainName = registerOutput<String?>('customDomainName');
     dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    idleTimeoutSeconds = registerOutput<int>('idleTimeoutSeconds');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

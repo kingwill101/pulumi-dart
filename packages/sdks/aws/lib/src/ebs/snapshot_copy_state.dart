@@ -33,7 +33,7 @@ class SnapshotCopyState {
   final pulumi.Input<String>? storageTier;
   /// A map of tags for the snapshot.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   final pulumi.Input<int>? temporaryRestoreDays;
@@ -57,7 +57,7 @@ class SnapshotCopyState {
   /// [sourceSnapshotId] The ARN for the snapshot to be copied.
   /// [storageTier] The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
   /// [tags] A map of tags for the snapshot.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   /// [volumeId] Optional.
   /// [volumeSize] The size of the drive in GiBs.
@@ -131,4 +131,3 @@ class SnapshotCopyState {
     );
   }
 }
-

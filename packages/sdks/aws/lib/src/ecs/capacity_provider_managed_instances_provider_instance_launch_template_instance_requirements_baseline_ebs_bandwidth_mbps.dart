@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps {
+  /// Maximum baseline Amazon EBS bandwidth, in Mbps.
   final pulumi.Input<int>? max;
+  /// Minimum baseline Amazon EBS bandwidth, in Mbps.
   final pulumi.Input<int>? min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps].
-  /// [max] Optional.
-  /// [min] Optional.
+  /// [max] Maximum baseline Amazon EBS bandwidth, in Mbps.
+  /// [min] Minimum baseline Amazon EBS bandwidth, in Mbps.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps({
     this.max,
     this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

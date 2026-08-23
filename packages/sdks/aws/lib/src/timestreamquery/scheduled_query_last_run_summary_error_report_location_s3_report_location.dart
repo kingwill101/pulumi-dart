@@ -30,4 +30,3 @@ class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
     );
   }
 }
-

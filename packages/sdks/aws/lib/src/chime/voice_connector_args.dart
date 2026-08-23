@@ -17,7 +17,7 @@ class VoiceConnectorArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<bool> requireEncryption;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VoiceConnectorArgs].
@@ -25,7 +25,7 @@ class VoiceConnectorArgs {
   /// [name] The name of the Amazon Chime Voice Connector.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requireEncryption] When enabled, requires encryption for the Amazon Chime Voice Connector.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const VoiceConnectorArgs({
     this.awsRegion,
     this.name,
@@ -54,4 +54,3 @@ class VoiceConnectorArgs {
     );
   }
 }
-

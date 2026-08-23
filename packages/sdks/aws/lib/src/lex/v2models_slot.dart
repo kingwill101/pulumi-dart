@@ -77,6 +77,23 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsslot" "example" {
+///   bot_id      = exampleAwsLexv2modelsBot.id
+///   bot_version = exampleAwsLexv2modelsBotVersion.botVersion
+///   intent_id   = exampleAwsLexv2modelsIntent.id
+///   locale_id   = exampleAwsLexv2modelsBotLocale.localeId
+///   name        = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lex.V2modelsSlot;
 /// import com.pulumi.aws.lex.V2modelsSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -122,11 +139,11 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// ```
 ///
 ///
-/// ### `value_elicitation_setting` Example
+/// ### `valueElicitationSetting` Example
 ///
-/// &gt; When using `value_elicitation_setting`, if you do not provide a `prompt_attempts_specification`, AWS Lex will configure default `prompt_attempts_specification`s.
+/// &gt; When using `valueElicitationSetting`, if you do not provide a `promptAttemptsSpecification`, AWS Lex will configure default `promptAttemptsSpecification`s.
 /// As a result, Terraform will report a difference in the configuration.
-/// To avoid this behavior, include `prompt_attempts_specification` blocks matching the default configuration, as shown below.
+/// To avoid this behavior, include `promptAttemptsSpecification` blocks matching the default configuration, as shown below.
 ///
 ///
 /// ```typescript
@@ -478,6 +495,85 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_v2modelsslot" "example" {
+///   bot_id      = test.id
+///   bot_version = testAwsLexv2modelsBotLocale.botVersion
+///   intent_id   = testAwsLexv2modelsIntent.intentId
+///   locale_id   = testAwsLexv2modelsBotLocale.localeId
+///   name        = "example"
+///   value_elicitation_setting = {
+///     slot_constraint = "Required"
+///     prompt_specification = {
+///       allow_interrupt            = true
+///       max_retries                = 1
+///       message_selection_strategy = "Random"
+///       message_groups = [{
+///         "message" = {
+///           "plainTextMessage" = {
+///             "value" = "What is your favorite color?"
+///           }
+///         }
+///       }]
+///       prompt_attempts_specifications = [{
+///         "allowInterrupt" = true
+///         "mapBlockKey"    = "Initial"
+///         "allowedInputTypes" = {
+///           "allowAudioInput" = true
+///           "allowDtmfInput"  = true
+///         }
+///         "audioAndDtmfInputSpecification" = {
+///           "startTimeoutMs" = 4000
+///           "audioSpecification" = {
+///             "endTimeoutMs" = 640
+///             "maxLengthMs"  = 15000
+///           }
+///           "dtmfSpecification" = {
+///             "deletionCharacter" = "*"
+///             "endCharacter"      = "#"
+///             "endTimeoutMs"      = 5000
+///             "maxLength"         = 513
+///           }
+///         }
+///         "textInputSpecification" = {
+///           "startTimeoutMs" = 30000
+///         }
+///         }, {
+///         "allowInterrupt" = true
+///         "mapBlockKey"    = "Retry1"
+///         "allowedInputTypes" = {
+///           "allowAudioInput" = true
+///           "allowDtmfInput"  = true
+///         }
+///         "audioAndDtmfInputSpecification" = {
+///           "startTimeoutMs" = 4000
+///           "audioSpecification" = {
+///             "endTimeoutMs" = 640
+///             "maxLengthMs"  = 15000
+///           }
+///           "dtmfSpecification" = {
+///             "deletionCharacter" = "*"
+///             "endCharacter"      = "#"
+///             "endTimeoutMs"      = 5000
+///             "maxLength"         = 513
+///           }
+///         }
+///         "textInputSpecification" = {
+///           "startTimeoutMs" = 30000
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -488,8 +584,17 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// import com.pulumi.aws.lex.V2modelsSlotArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingArgs;
 /// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessageArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecificationArgs;
+/// import com.pulumi.aws.lex.inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -653,12 +758,12 @@ class V2modelsSlot extends pulumi.CustomResource {
   /// Identifier of the language and locale that the slot will be used in.
   late final pulumi.Output<String> localeId;
   /// Whether the slot returns multiple values in one response.
-  /// See the `multiple_values_setting` argument reference below.
+  /// See the `multipleValuesSetting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> multipleValuesSettings;
   /// Name of the slot.
   late final pulumi.Output<String> name;
   /// Determines how slot values are used in Amazon CloudWatch logs.
-  /// See the `obfuscation_setting` argument reference below.
+  /// See the `obfuscationSetting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> obfuscationSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -667,14 +772,14 @@ class V2modelsSlot extends pulumi.CustomResource {
   /// Unique identifier for the slot type associated with this slot.
   late final pulumi.Output<String> slotTypeId;
   /// Specifications for the constituent sub slots and the expression for the composite slot.
-  /// See the `sub_slot_setting` argument reference below.
+  /// See the `subSlotSetting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> subSlotSettings;
   late final pulumi.Output<V2modelsSlotTimeouts?> timeouts;
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
-  /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `prompt_attempts_specification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
+  /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `promptAttemptsSpecification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
   /// This will cause Terraform to report differences.
-  /// Use the `value_elicitation_setting` configuration above in the `value_elicitation_setting` example to avoid differences resulting from AWS default configurations.
-  /// See the `value_elicitation_setting` argument reference below.
+  /// Use the `valueElicitationSetting` configuration above in the `valueElicitationSetting` example to avoid differences resulting from AWS default configurations.
+  /// See the `valueElicitationSetting` argument reference below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<V2modelsSlotValueElicitationSetting> valueElicitationSetting;

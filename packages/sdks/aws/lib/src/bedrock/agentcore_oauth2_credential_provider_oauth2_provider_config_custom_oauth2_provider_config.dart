@@ -4,32 +4,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config_custom_oauth2_provider_config_oauth_discovery.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig {
-  /// Used together with write-only credentials to trigger an update. Increment this value when an update to `client_id_wo` or `client_secret_wo` is required.
+  /// Used together with write-only credentials to trigger an update. Increment this value when an update to `clientIdWo` or `clientSecretWo` is required.
   ///
   /// **OAuth Discovery Configuration:**
   final pulumi.Input<int>? clientCredentialsWoVersion;
-  /// OAuth2 client ID. Cannot be used with `client_id_wo`. Must be used together with `client_secret`.
+  /// OAuth2 client ID. Cannot be used with `clientIdWo`. Must be used together with `clientSecret`.
   final pulumi.Input<String>? clientId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only OAuth2 client ID. Cannot be used with `client_id`. Must be used together with `client_secret_wo` and `client_credentials_wo_version`.
+  /// Write-only OAuth2 client ID. Cannot be used with `clientId`. Must be used together with `clientSecretWo` and `clientCredentialsWoVersion`.
   final pulumi.Input<String>? clientIdWo;
-  /// OAuth2 client secret. Cannot be used with `client_secret_wo`. Must be used together with `client_id`.
+  /// OAuth2 client secret. Cannot be used with `clientSecretWo`. Must be used together with `clientId`.
   ///
   /// **Write-Only Credentials (choose one pair):**
   final pulumi.Input<String>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only OAuth2 client secret. Cannot be used with `client_secret`. Must be used together with `client_id_wo` and `client_credentials_wo_version`.
+  /// Write-only OAuth2 client secret. Cannot be used with `clientSecret`. Must be used together with `clientIdWo` and `clientCredentialsWoVersion`.
   final pulumi.Input<String>? clientSecretWo;
-  /// OAuth discovery configuration. See `oauth_discovery` below.
+  /// OAuth discovery configuration. See `oauthDiscovery` below.
   final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery>? oauthDiscovery;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig].
-  /// [clientCredentialsWoVersion] Used together with write-only credentials to trigger an update. Increment this value when an update to `client_id_wo` or `client_secret_wo` is required.
-  /// [clientId] OAuth2 client ID. Cannot be used with `client_id_wo`. Must be used together with `client_secret`.
+  /// [clientCredentialsWoVersion] Used together with write-only credentials to trigger an update. Increment this value when an update to `clientIdWo` or `clientSecretWo` is required.
+  /// [clientId] OAuth2 client ID. Cannot be used with `clientIdWo`. Must be used together with `clientSecret`.
   /// [clientIdWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [clientSecret] OAuth2 client secret. Cannot be used with `client_secret_wo`. Must be used together with `client_id`.
+  /// [clientSecret] OAuth2 client secret. Cannot be used with `clientSecretWo`. Must be used together with `clientId`.
   /// [clientSecretWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [oauthDiscovery] OAuth discovery configuration. See `oauth_discovery` below.
+  /// [oauthDiscovery] OAuth discovery configuration. See `oauthDiscovery` below.
   const AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig({
     this.clientCredentialsWoVersion,
     this.clientId,
@@ -61,4 +61,3 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
     );
   }
 }
-

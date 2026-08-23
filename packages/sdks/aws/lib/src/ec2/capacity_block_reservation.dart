@@ -5,7 +5,7 @@ import 'capacity_block_reservation_timeouts.dart';
 
 /// Provides an EC2 Capacity Block Reservation. This allows you to purchase capacity block for your Amazon EC2 instances in a specific Availability Zone for machine learning (ML) Workloads.
 ///
-/// &gt; **NOTE:** Once created, a reservation is valid for the `duration` of the provided `capacity_block_offering_id` and cannot be deleted. Performing a `destroy` will only remove the resource from state. For more information see [EC2 Capacity Block Reservation Documentation](https://aws.amazon.com/ec2/instance-types/p5/) and [PurchaseReservedDBInstancesOffering](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-blocks-pricing-billing.html).
+/// &gt; **NOTE:** Once created, a reservation is valid for the `duration` of the provided `capacityBlockOfferingId` and cannot be deleted. Performing a `destroy` will only remove the resource from state. For more information see [EC2 Capacity Block Reservation Documentation](https://aws.amazon.com/ec2/instance-types/p5/) and [PurchaseReservedDBInstancesOffering](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-blocks-pricing-billing.html).
 ///
 /// &gt; **NOTE:** Due to the expense of testing this resource, we provide it as best effort. If you find it useful, and have the ability to help test or notice issues, consider reaching out to us on GitHub.
 ///
@@ -20,15 +20,12 @@ import 'capacity_block_reservation_timeouts.dart';
 ///     capacityDurationHours: 24,
 ///     endDateRange: "2024-05-30T15:04:05Z",
 ///     instanceCount: 1,
-///     instanceType: "p4d.24xlarge",
+///     instanceType: "p5.4xlarge",
 ///     startDateRange: "2024-04-28T15:04:05Z",
 /// });
 /// const example = new aws.ec2.CapacityBlockReservation("example", {
 ///     capacityBlockOfferingId: test.then(test => test.capacityBlockOfferingId),
 ///     instancePlatform: "Linux/UNIX",
-///     tags: {
-///         Environment: "dev",
-///     },
 /// });
 /// ```
 /// ```python
@@ -38,14 +35,11 @@ import 'capacity_block_reservation_timeouts.dart';
 /// test = aws.ec2.get_capacity_block_offering(capacity_duration_hours=24,
 ///     end_date_range="2024-05-30T15:04:05Z",
 ///     instance_count=1,
-///     instance_type="p4d.24xlarge",
+///     instance_type="p5.4xlarge",
 ///     start_date_range="2024-04-28T15:04:05Z")
 /// example = aws.ec2.CapacityBlockReservation("example",
 ///     capacity_block_offering_id=test.capacity_block_offering_id,
-///     instance_platform="Linux/UNIX",
-///     tags={
-///         "Environment": "dev",
-///     })
+///     instance_platform="Linux/UNIX")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -60,7 +54,7 @@ import 'capacity_block_reservation_timeouts.dart';
 ///         CapacityDurationHours = 24,
 ///         EndDateRange = "2024-05-30T15:04:05Z",
 ///         InstanceCount = 1,
-///         InstanceType = "p4d.24xlarge",
+///         InstanceType = "p5.4xlarge",
 ///         StartDateRange = "2024-04-28T15:04:05Z",
 ///     });
 ///
@@ -68,10 +62,6 @@ import 'capacity_block_reservation_timeouts.dart';
 ///     {
 ///         CapacityBlockOfferingId = test.Apply(getCapacityBlockOfferingResult => getCapacityBlockOfferingResult.CapacityBlockOfferingId),
 ///         InstancePlatform = "Linux/UNIX",
-///         Tags =
-///         {
-///             { "Environment", "dev" },
-///         },
 ///     });
 ///
 /// });
@@ -90,7 +80,7 @@ import 'capacity_block_reservation_timeouts.dart';
 /// 			CapacityDurationHours: 24,
 /// 			EndDateRange:          pulumi.StringRef("2024-05-30T15:04:05Z"),
 /// 			InstanceCount:         1,
-/// 			InstanceType:          "p4d.24xlarge",
+/// 			InstanceType:          "p5.4xlarge",
 /// 			StartDateRange:        pulumi.StringRef("2024-04-28T15:04:05Z"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -99,15 +89,34 @@ import 'capacity_block_reservation_timeouts.dart';
 /// 		_, err = ec2.NewCapacityBlockReservation(ctx, "example", &ec2.CapacityBlockReservationArgs{
 /// 			CapacityBlockOfferingId: pulumi.String(test.CapacityBlockOfferingId),
 /// 			InstancePlatform:        pulumi.String("Linux/UNIX"),
-/// 			Tags: pulumi.StringMap{
-/// 				"Environment": pulumi.String("dev"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2_getcapacityblockoffering" "test" {
+///   capacity_duration_hours = 24
+///   end_date_range          = "2024-05-30T15:04:05Z"
+///   instance_count          = 1
+///   instance_type           = "p5.4xlarge"
+///   start_date_range        = "2024-04-28T15:04:05Z"
+/// }
+///
+/// resource "aws_ec2_capacityblockreservation" "example" {
+///   capacity_block_offering_id = data.aws_ec2_getcapacityblockoffering.test.capacity_block_offering_id
+///   instance_platform          = "Linux/UNIX"
 /// }
 /// ```
 /// ```java
@@ -120,8 +129,8 @@ import 'capacity_block_reservation_timeouts.dart';
 /// import com.pulumi.aws.ec2.inputs.GetCapacityBlockOfferingArgs;
 /// import com.pulumi.aws.ec2.CapacityBlockReservation;
 /// import com.pulumi.aws.ec2.CapacityBlockReservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -137,14 +146,13 @@ import 'capacity_block_reservation_timeouts.dart';
 ///             .capacityDurationHours(24)
 ///             .endDateRange("2024-05-30T15:04:05Z")
 ///             .instanceCount(1)
-///             .instanceType("p4d.24xlarge")
+///             .instanceType("p5.4xlarge")
 ///             .startDateRange("2024-04-28T15:04:05Z")
 ///             .build());
 ///
 ///         var example = new CapacityBlockReservation("example", CapacityBlockReservationArgs.builder()
 ///             .capacityBlockOfferingId(test.capacityBlockOfferingId())
 ///             .instancePlatform("Linux/UNIX")
-///             .tags(Map.of("Environment", "dev"))
 ///             .build());
 ///
 ///     }
@@ -157,8 +165,6 @@ import 'capacity_block_reservation_timeouts.dart';
 ///     properties:
 ///       capacityBlockOfferingId: ${test.capacityBlockOfferingId}
 ///       instancePlatform: Linux/UNIX
-///       tags:
-///         Environment: dev
 /// variables:
 ///   test:
 ///     fn::invoke:
@@ -167,7 +173,7 @@ import 'capacity_block_reservation_timeouts.dart';
 ///         capacityDurationHours: 24
 ///         endDateRange: 2024-05-30T15:04:05Z
 ///         instanceCount: 1
-///         instanceType: p4d.24xlarge
+///         instanceType: p5.4xlarge
 ///         startDateRange: 2024-04-28T15:04:05Z
 /// ```
 class CapacityBlockReservation extends pulumi.CustomResource {
@@ -186,6 +192,8 @@ class CapacityBlockReservation extends pulumi.CustomResource {
   /// Indicates the way in which the Capacity Reservation ends.
   late final pulumi.Output<String> endDateType;
   /// The number of instances for which to reserve capacity.
+  /// This value will not be set until the Capacity Block Reservation is active.
+  /// The requested instance count is set in the tag `aws:ec2capacityreservation:incrementalRequestedQuantity`.
   late final pulumi.Output<int> instanceCount;
   /// The type of operating system for which to reserve capacity. Valid options are `Linux/UNIX`, `Red Hat Enterprise Linux`, `SUSE Linux`, `Windows`, `Windows with SQL Server`, `Windows with SQL Server Enterprise`, `Windows with SQL Server Standard` or `Windows with SQL Server Web`.
   late final pulumi.Output<String> instancePlatform;
@@ -201,9 +209,9 @@ class CapacityBlockReservation extends pulumi.CustomResource {
   late final pulumi.Output<String> reservationType;
   /// The date and time at which the Capacity Block Reservation starts. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   late final pulumi.Output<String> startDate;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Indicates the tenancy of the Capacity Block Reservation. Specify either `default` or `dedicated`.
   late final pulumi.Output<String> tenancy;

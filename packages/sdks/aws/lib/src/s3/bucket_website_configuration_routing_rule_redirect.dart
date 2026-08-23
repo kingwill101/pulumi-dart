@@ -9,7 +9,7 @@ class BucketWebsiteConfigurationRoutingRuleRedirect {
   final pulumi.Input<String>? httpRedirectCode;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
   final pulumi.Input<String>? protocol;
-  /// Object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `key_prefix_equals` set to `docs/` and in the `redirect` set `replace_key_prefix_with` to `/documents`.
+  /// Object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `keyPrefixEquals` set to `docs/` and in the `redirect` set `replaceKeyPrefixWith` to `/documents`.
   final pulumi.Input<String>? replaceKeyPrefixWith;
   /// Specific object key to use in the redirect request. For example, redirect request to `error.html`.
   final pulumi.Input<String>? replaceKeyWith;
@@ -18,7 +18,7 @@ class BucketWebsiteConfigurationRoutingRuleRedirect {
   /// [hostName] Host name to use in the redirect request.
   /// [httpRedirectCode] HTTP redirect code to use on the response.
   /// [protocol] Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
-  /// [replaceKeyPrefixWith] Object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `key_prefix_equals` set to `docs/` and in the `redirect` set `replace_key_prefix_with` to `/documents`.
+  /// [replaceKeyPrefixWith] Object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `keyPrefixEquals` set to `docs/` and in the `redirect` set `replaceKeyPrefixWith` to `/documents`.
   /// [replaceKeyWith] Specific object key to use in the redirect request. For example, redirect request to `error.html`.
   const BucketWebsiteConfigurationRoutingRuleRedirect({
     this.hostName,
@@ -48,4 +48,3 @@ class BucketWebsiteConfigurationRoutingRuleRedirect {
     );
   }
 }
-

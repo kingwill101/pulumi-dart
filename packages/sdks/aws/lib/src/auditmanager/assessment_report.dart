@@ -63,6 +63,20 @@ import 'assessment_report_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_auditmanager_assessmentreport" "test" {
+///   name          = "example"
+///   assessment_id = testAwsAuditmanagerAssessment.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'assessment_report_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.auditmanager.AssessmentReport;
 /// import com.pulumi.aws.auditmanager.AssessmentReportArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

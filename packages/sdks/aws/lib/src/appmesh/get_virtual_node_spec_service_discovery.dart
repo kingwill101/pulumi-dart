@@ -5,12 +5,14 @@ import 'get_virtual_node_spec_service_discovery_aws_cloud_map.dart';
 import 'get_virtual_node_spec_service_discovery_dn.dart';
 
 class GetVirtualNodeSpecServiceDiscovery {
+  /// AWS Cloud Map information for the virtual node. See `spec.service_discovery.aws_cloud_map` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecServiceDiscoveryAwsCloudMap>> awsCloudMaps;
+  /// DNS service name for the virtual node. See `spec.service_discovery.dns` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecServiceDiscoveryDn>> dns;
 
   /// Creates a new [GetVirtualNodeSpecServiceDiscovery].
-  /// [awsCloudMaps] Required.
-  /// [dns] Required.
+  /// [awsCloudMaps] AWS Cloud Map information for the virtual node. See `spec.service_discovery.aws_cloud_map` Block for details.
+  /// [dns] DNS service name for the virtual node. See `spec.service_discovery.dns` Block for details.
   const GetVirtualNodeSpecServiceDiscovery({
     required this.awsCloudMaps,
     required this.dns,
@@ -30,4 +32,3 @@ class GetVirtualNodeSpecServiceDiscovery {
     );
   }
 }
-

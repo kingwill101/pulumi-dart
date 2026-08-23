@@ -77,6 +77,23 @@ import 'route_server_endpoint_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpc_routeserverendpoint" "test" {
+///   route_server_id = example.routeServerId
+///   subnet_id       = main.id
+///   tags = {
+///     "Name" = "Endpoint A"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +102,8 @@ import 'route_server_endpoint_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.vpc.RouteServerEndpoint;
 /// import com.pulumi.aws.vpc.RouteServerEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,7 +138,7 @@ import 'route_server_endpoint_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC (Virtual Private Cloud) Route Server Endpoint using the `route_server_endpoint_id`. For example:
+/// Using `pulumi import`, import VPC (Virtual Private Cloud) Route Server Endpoint using the `routeServerEndpointId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/routeServerEndpoint:RouteServerEndpoint example rse-12345678
@@ -143,9 +160,9 @@ class RouteServerEndpoint extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> subnetId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<RouteServerEndpointTimeouts?> timeouts;
   /// The ID of the VPC containing the endpoint.

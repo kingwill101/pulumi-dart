@@ -114,6 +114,30 @@ import 'ami_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create an AMI that will start a machine whose root device is backed by
+/// # an EBS volume populated from a snapshot. We assume that such a snapshot
+/// # already exists with the id "snap-xxxxxxxx".
+/// resource "aws_ec2_ami" "example" {
+///   name                = "example"
+///   virtualization_type = "hvm"
+///   root_device_name    = "/dev/xvda"
+///   imds_support        = "v2.0"
+///   ebs_block_devices {
+///     device_name = "/dev/xvda"
+///     snapshot_id = "snap-xxxxxxxx"
+///     volume_size = 8
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +147,8 @@ import 'ami_state.dart';
 /// import com.pulumi.aws.ec2.Ami;
 /// import com.pulumi.aws.ec2.AmiArgs;
 /// import com.pulumi.aws.ec2.inputs.AmiEbsBlockDeviceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,7 +205,7 @@ import 'ami_state.dart';
 /// $ pulumi import aws:ec2/ami:Ami example ami-12345678
 /// ```
 class Ami extends pulumi.CustomResource {
-  /// Machine architecture for created instances. Defaults to `x86_64`.
+  /// Machine architecture for created instances. Defaults to `x8664`.
   late final pulumi.Output<String?> architecture;
   /// ARN of the AMI.
   late final pulumi.Output<String> arn;
@@ -230,9 +254,9 @@ class Ami extends pulumi.CustomResource {
   /// Snapshot ID for the root volume (for EBS-backed AMIs)
   late final pulumi.Output<String> rootSnapshotId;
   late final pulumi.Output<String?> sriovNetSupport;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   late final pulumi.Output<String?> tpmSupport;

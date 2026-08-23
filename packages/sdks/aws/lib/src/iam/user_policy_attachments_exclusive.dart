@@ -4,7 +4,7 @@ import 'user_policy_attachments_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of managed IAM policies assigned to an AWS IAM (Identity & Access Management) user.
 ///
-/// !&gt; This resource takes exclusive ownership over managed IAM policies attached to a user. This includes removal of managed IAM policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.UserPolicyAttachment` resources managed alongside this resource are included in the `policy_arns` argument.
+/// &gt; This resource takes exclusive ownership over managed IAM policies attached to a user. This includes removal of managed IAM policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.UserPolicyAttachment` resources managed alongside this resource are included in the `policyArns` argument.
 ///
 /// &gt; Destruction of this resource means Terraform will no longer manage reconciliation of the configured policy attachments. It **will not** detach the configured policies from the user.
 ///
@@ -72,6 +72,20 @@ import 'user_policy_attachments_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_userpolicyattachmentsexclusive" "example" {
+///   user_name   = exampleAwsIamUser.name
+///   policy_arns = [exampleAwsIamPolicy.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +94,8 @@ import 'user_policy_attachments_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.UserPolicyAttachmentsExclusive;
 /// import com.pulumi.aws.iam.UserPolicyAttachmentsExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +128,7 @@ import 'user_policy_attachments_exclusive_state.dart';
 ///
 /// ### Disallow Managed IAM Policies
 ///
-/// To automatically remove any configured managed IAM policies, set the `policy_arns` argument to an empty list.
+/// To automatically remove any configured managed IAM policies, set the `policyArns` argument to an empty list.
 ///
 /// &gt; This will not **prevent** managed IAM policies from being assigned to a user via Terraform (or any other interface). This resource enables bringing managed IAM policy assignments into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
@@ -173,6 +187,20 @@ import 'user_policy_attachments_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_userpolicyattachmentsexclusive" "example" {
+///   user_name   = exampleAwsIamUser.name
+///   policy_arns = []
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +209,8 @@ import 'user_policy_attachments_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.UserPolicyAttachmentsExclusive;
 /// import com.pulumi.aws.iam.UserPolicyAttachmentsExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,7 +242,7 @@ import 'user_policy_attachments_exclusive_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import exclusive management of managed IAM policy assignments using the `user_name`. For example:
+/// Using `pulumi import`, import exclusive management of managed IAM policy assignments using the `userName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iam/userPolicyAttachmentsExclusive:UserPolicyAttachmentsExclusive example MyUser

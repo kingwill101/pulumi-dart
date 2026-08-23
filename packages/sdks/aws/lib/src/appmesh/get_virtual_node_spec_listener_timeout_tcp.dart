@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_listener_timeout_tcp_idle.dart';
 
 class GetVirtualNodeSpecListenerTimeoutTcp {
+  /// Idle timeout. See `spec.listener.timeout.tcp.idle` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutTcpIdle>> idles;
 
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutTcp].
-  /// [idles] Required.
+  /// [idles] Idle timeout. See `spec.listener.timeout.tcp.idle` Block for details.
   const GetVirtualNodeSpecListenerTimeoutTcp({
     required this.idles,
   });
@@ -24,4 +25,3 @@ class GetVirtualNodeSpecListenerTimeoutTcp {
     );
   }
 }
-

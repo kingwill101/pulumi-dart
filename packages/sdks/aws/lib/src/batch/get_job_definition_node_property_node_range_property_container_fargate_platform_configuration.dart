@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration {
-  /// The AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
+  /// AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
   final pulumi.Input<String> platformVersion;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration].
-  /// [platformVersion] The AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
+  /// [platformVersion] AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration({
     required this.platformVersion,
   });
@@ -24,4 +24,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfi
     );
   }
 }
-

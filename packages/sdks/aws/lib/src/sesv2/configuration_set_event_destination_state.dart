@@ -7,17 +7,17 @@ import 'configuration_set_event_destination_event_destination.dart';
 class ConfigurationSetEventDestinationState {
   /// The name of the configuration set.
   final pulumi.Input<String>? configurationSetName;
-  /// A name that identifies the event destination within the configuration set.
+  /// An object that defines the event destination. See `eventDestination` Block for details.
   final pulumi.Input<ConfigurationSetEventDestinationEventDestination>? eventDestination;
-  /// An object that defines the event destination. See `event_destination` Block for details.
+  /// A name that identifies the event destination within the configuration set.
   final pulumi.Input<String>? eventDestinationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [ConfigurationSetEventDestinationState].
   /// [configurationSetName] The name of the configuration set.
-  /// [eventDestination] A name that identifies the event destination within the configuration set.
-  /// [eventDestinationName] An object that defines the event destination. See `event_destination` Block for details.
+  /// [eventDestination] An object that defines the event destination. See `eventDestination` Block for details.
+  /// [eventDestinationName] A name that identifies the event destination within the configuration set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ConfigurationSetEventDestinationState({
     this.configurationSetName,
@@ -44,4 +44,3 @@ class ConfigurationSetEventDestinationState {
     );
   }
 }
-

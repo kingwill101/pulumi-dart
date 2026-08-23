@@ -112,14 +112,14 @@ import 'workforce_workforce_vpc_config.dart';
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:           pulumi.String("example"),
 /// 			GenerateSecret: pulumi.Bool(true),
-/// 			UserPoolId:     exampleUserPool.ID(),
+/// 			UserPoolId:     exampleUserPool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleUserPoolDomain, err := cognito.NewUserPoolDomain(ctx, "example", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example"),
-/// 			UserPoolId: exampleUserPool.ID(),
+/// 			UserPoolId: exampleUserPool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -127,7 +127,7 @@ import 'workforce_workforce_vpc_config.dart';
 /// 		_, err = sagemaker.NewWorkforce(ctx, "example", &sagemaker.WorkforceArgs{
 /// 			WorkforceName: pulumi.String("example"),
 /// 			CognitoConfig: &sagemaker.WorkforceCognitoConfigArgs{
-/// 				ClientId: exampleUserPoolClient.ID(),
+/// 				ClientId: exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
 /// 				UserPool: exampleUserPoolDomain.UserPoolId,
 /// 			},
 /// 		})
@@ -136,6 +136,35 @@ import 'workforce_workforce_vpc_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_workforce" "example" {
+///   workforce_name = "example"
+///   cognito_config = {
+///     client_id = aws_cognito_userpoolclient.example.id
+///     user_pool = aws_cognito_userpooldomain.example.user_pool_id
+///   }
+/// }
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cognito_userpoolclient" "example" {
+///   name            = "example"
+///   generate_secret = true
+///   user_pool_id    = aws_cognito_userpool.example.id
+/// }
+/// resource "aws_cognito_userpooldomain" "example" {
+///   domain       = "example"
+///   user_pool_id = aws_cognito_userpool.example.id
 /// }
 /// ```
 /// ```java
@@ -153,8 +182,8 @@ import 'workforce_workforce_vpc_config.dart';
 /// import com.pulumi.aws.sagemaker.Workforce;
 /// import com.pulumi.aws.sagemaker.WorkforceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.WorkforceCognitoConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -316,6 +345,29 @@ import 'workforce_workforce_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_workforce" "example" {
+///   workforce_name = "example"
+///   oidc_config = {
+///     authorization_endpoint = "https://example.com"
+///     client_id              = "example"
+///     client_secret          = "example"
+///     issuer                 = "https://example.com"
+///     jwks_uri               = "https://example.com"
+///     logout_endpoint        = "https://example.com"
+///     token_endpoint         = "https://example.com"
+///     user_info_endpoint     = "https://example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -325,8 +377,8 @@ import 'workforce_workforce_vpc_config.dart';
 /// import com.pulumi.aws.sagemaker.Workforce;
 /// import com.pulumi.aws.sagemaker.WorkforceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.WorkforceOidcConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -375,7 +427,7 @@ import 'workforce_workforce_vpc_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SageMaker AI Workforces using the `workforce_name`. For example:
+/// Using `pulumi import`, import SageMaker AI Workforces using the `workforceName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/workforce:Workforce example example
@@ -383,9 +435,9 @@ import 'workforce_workforce_vpc_config.dart';
 class Workforce extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Workforce.
   late final pulumi.Output<String> arn;
-  /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidc_config`. see Cognito Config details below.
+  /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidcConfig`. see Cognito Config details below.
   late final pulumi.Output<WorkforceCognitoConfig?> cognitoConfig;
-  /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognito_config`. see OIDC Config details below.
+  /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognitoConfig`. see OIDC Config details below.
   late final pulumi.Output<WorkforceOidcConfig?> oidcConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

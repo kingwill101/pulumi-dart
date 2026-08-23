@@ -7,7 +7,7 @@ class DeploymentGroupAutoRollbackConfiguration {
   final pulumi.Input<bool>? enabled;
   /// The event type or types that trigger a rollback. Supported types are `DEPLOYMENT_FAILURE`, `DEPLOYMENT_STOP_ON_ALARM` and `DEPLOYMENT_STOP_ON_REQUEST`.
   ///
-  /// _Only one `auto_rollback_configuration` is allowed_.
+  /// _Only one `autoRollbackConfiguration` is allowed_.
   final pulumi.Input<List<String>>? events;
 
   /// Creates a new [DeploymentGroupAutoRollbackConfiguration].
@@ -32,4 +32,3 @@ class DeploymentGroupAutoRollbackConfiguration {
     );
   }
 }
-

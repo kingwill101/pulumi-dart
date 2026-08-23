@@ -103,14 +103,14 @@ import 'documentation_version_state.dart';
 /// 				Type: pulumi.String("API"),
 /// 			},
 /// 			Properties: pulumi.String("{\"description\":\"Example\"}"),
-/// 			RestApiId:  exampleRestApi.ID(),
+/// 			RestApiId:  exampleRestApi.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewDocumentationVersion(ctx, "example", &apigateway.DocumentationVersionArgs{
 /// 			Version:     pulumi.String("example_version"),
-/// 			RestApiId:   exampleRestApi.ID(),
+/// 			RestApiId:   exampleRestApi.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("Example description"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleDocumentationPart,
@@ -120,6 +120,32 @@ import 'documentation_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_documentationversion" "example" {
+///   depends_on  = [aws_apigateway_documentationpart.example]
+///   version     = "example_version"
+///   rest_api_id = aws_apigateway_restapi.example.id
+///   description = "Example description"
+/// }
+/// resource "aws_apigateway_restapi" "example" {
+///   name = "example_api"
+/// }
+/// resource "aws_apigateway_documentationpart" "example" {
+///   location = {
+///     type = "API"
+///   }
+///   properties  = "{\"description\":\"Example\"}"
+///   rest_api_id = aws_apigateway_restapi.example.id
 /// }
 /// ```
 /// ```java
@@ -136,8 +162,8 @@ import 'documentation_version_state.dart';
 /// import com.pulumi.aws.apigateway.DocumentationVersion;
 /// import com.pulumi.aws.apigateway.DocumentationVersionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

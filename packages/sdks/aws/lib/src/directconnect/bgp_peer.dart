@@ -65,6 +65,21 @@ import 'bgp_peer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_bgppeer" "peer" {
+///   virtual_interface_id = foo.id
+///   address_family       = "ipv6"
+///   bgp_asn              = 65351
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'bgp_peer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.directconnect.BgpPeer;
 /// import com.pulumi.aws.directconnect.BgpPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

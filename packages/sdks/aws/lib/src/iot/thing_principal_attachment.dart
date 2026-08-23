@@ -109,6 +109,30 @@ import 'thing_principal_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_thing" "example" {
+///   name = "example"
+/// }
+/// resource "aws_iot_certificate" "cert" {
+///   csr    = file("csr.pem")
+///   active = true
+/// }
+/// resource "aws_iot_thingprincipalattachment" "att" {
+///   principal = aws_iot_certificate.cert.arn
+///   thing     = aws_iot_thing.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +147,8 @@ import 'thing_principal_attachment_state.dart';
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.aws.iot.ThingPrincipalAttachment;
 /// import com.pulumi.aws.iot.ThingPrincipalAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -130,6 +130,32 @@ import 'game_server_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_gamelift_gameservergroup" "example" {
+///   depends_on             = [exampleAwsIamRolePolicyAttachment]
+///   game_server_group_name = "example"
+///   instance_definitions {
+///     instance_type = "c5.large"
+///   }
+///   instance_definitions {
+///     instance_type = "c5a.large"
+///   }
+///   launch_template = {
+///     id = exampleAwsLaunchTemplate.id
+///   }
+///   max_size = 1
+///   min_size = 1
+///   role_arn = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +167,8 @@ import 'game_server_group_state.dart';
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupInstanceDefinitionArgs;
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupLaunchTemplateArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -249,7 +275,7 @@ import 'game_server_group_state.dart';
 ///     auto_scaling_policy={
 ///         "estimated_instance_warmup": 60,
 ///         "target_tracking_configuration": {
-///             "target_value": 75,
+///             "target_value": float(75),
 ///         },
 ///     },
 ///     balancing_strategy="SPOT_ONLY",
@@ -396,6 +422,47 @@ import 'game_server_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_gamelift_gameservergroup" "example" {
+///   depends_on = [exampleAwsIamRolePolicyAttachment]
+///   auto_scaling_policy = {
+///     estimated_instance_warmup = 60
+///     target_tracking_configuration = {
+///       target_value = 75
+///     }
+///   }
+///   balancing_strategy            = "SPOT_ONLY"
+///   game_server_group_name        = "example"
+///   game_server_protection_policy = "FULL_PROTECTION"
+///   instance_definitions {
+///     instance_type     = "c5.large"
+///     weighted_capacity = "1"
+///   }
+///   instance_definitions {
+///     instance_type     = "c5.2xlarge"
+///     weighted_capacity = "2"
+///   }
+///   launch_template = {
+///     id      = exampleAwsLaunchTemplate.id
+///     version = "1"
+///   }
+///   max_size = 1
+///   min_size = 1
+///   role_arn = exampleAwsIamRole.arn
+///   tags = {
+///     "Name" = "example"
+///   }
+///   vpc_subnets = ["subnet-12345678", "subnet-23456789"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -409,8 +476,8 @@ import 'game_server_group_state.dart';
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupInstanceDefinitionArgs;
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupLaunchTemplateArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -652,6 +719,37 @@ import 'game_server_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["autoscaling.amazonaws.com", "gamelift.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   name               = "gamelift-game-server-group-example"
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   policy_arn ="arn:${data.aws_getpartition.current.partition}:iam::aws:policy/GameLiftGameServerGroupPolicy"
+///   role       = aws_iam_role.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -662,12 +760,14 @@ import 'game_server_group_state.dart';
 /// import com.pulumi.aws.inputs.GetPartitionArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

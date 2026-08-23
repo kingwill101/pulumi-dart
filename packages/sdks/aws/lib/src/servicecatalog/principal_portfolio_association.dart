@@ -63,6 +63,20 @@ import 'principal_portfolio_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_servicecatalog_principalportfolioassociation" "example" {
+///   portfolio_id  = "port-68656c6c6f"
+///   principal_arn = "arn:aws:iam::123456789012:user/Eleanor"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'principal_portfolio_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicecatalog.PrincipalPortfolioAssociation;
 /// import com.pulumi.aws.servicecatalog.PrincipalPortfolioAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -104,7 +118,7 @@ import 'principal_portfolio_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.servicecatalog.PrincipalPortfolioAssociation` using `accept_language`, `principal_arn`, `portfolio_id`, and `principal_type` separated by a comma. For example:
+/// Using `pulumi import`, import `aws.servicecatalog.PrincipalPortfolioAssociation` using `acceptLanguage`, `principalArn`, `portfolioId`, and `principalType` separated by a comma. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation example en,arn:aws:iam::123456789012:user/Eleanor,port-68656c6c6f,IAM
@@ -118,7 +132,7 @@ class PrincipalPortfolioAssociation extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> principalArn;
-  /// Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
+  /// Principal type. Setting this argument empty (e.g., `principalType = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   late final pulumi.Output<String?> principalType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

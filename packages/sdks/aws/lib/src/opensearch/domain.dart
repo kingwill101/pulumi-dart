@@ -5,6 +5,7 @@ import 'domain_args.dart';
 import 'domain_auto_tune_options.dart';
 import 'domain_cluster_config.dart';
 import 'domain_cognito_options.dart';
+import 'domain_deployment_strategy_options.dart';
 import 'domain_domain_endpoint_options.dart';
 import 'domain_ebs_options.dart';
 import 'domain_encrypt_at_rest.dart';
@@ -18,22 +19,7 @@ import 'domain_vpc_options.dart';
 
 /// Manages an Amazon OpenSearch Domain.
 ///
-/// ## Elasticsearch vs. OpenSearch
-///
-/// Amazon OpenSearch Service is the successor to Amazon Elasticsearch Service and supports OpenSearch and legacy Elasticsearch OSS (up to 7.10, the final open source version of the software).
-///
-/// OpenSearch Domain configurations are similar in many ways to Elasticsearch Domain configurations. However, there are important differences including these:
-///
-/// * OpenSearch has `engine_version` while Elasticsearch has `elasticsearch_version`
-/// * Versions are specified differently - _e.g._, `Elasticsearch_7.10` with OpenSearch vs. `7.10` for Elasticsearch.
-/// * `instance_type` argument values end in `search` for OpenSearch vs. `elasticsearch` for Elasticsearch (_e.g._, `t2.micro.search` vs. `t2.micro.elasticsearch`).
-/// * The AWS-managed service-linked role for OpenSearch is called `AWSServiceRoleForAmazonOpenSearchService` instead of `AWSServiceRoleForAmazonElasticsearchService` for Elasticsearch.
-///
-/// There are also some potentially unexpected similarities in configurations:
-///
-/// * ARNs for both are prefaced with `arn:aws:es:`.
-/// * Both OpenSearch and Elasticsearch use assume role policies that refer to the `Principal` `Service` as `es.amazonaws.com`.
-/// * IAM policy actions, such as those you will find in `access_policies`, are prefaced with `es:` for both.
+/// Amazon OpenSearch Service is the successor to Amazon Elasticsearch Service and supports OpenSearch and legacy Elasticsearch OSS (up to 7.10, the final open source version of the software). Notable differences from Elasticsearch: OpenSearch uses `engineVersion` (vs `elasticsearchVersion`), versions are specified as `Elasticsearch_7.10` (vs `7.10`), `instanceType` values end in `search` (vs `elasticsearch`), and the service-linked role is `AWSServiceRoleForAmazonOpenSearchService`. Similarities: ARNs use `arn:aws:es:`, assume role policies reference `es.amazonaws.com`, and IAM policy actions are prefixed with `es:`.
 ///
 /// ## Example Usage
 ///
@@ -120,6 +106,26 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "example" {
+///   domain_name    = "example"
+///   engine_version = "Elasticsearch_7.10"
+///   cluster_config = {
+///     instance_type = "r4.large.search"
+///   }
+///   tags = {
+///     "Domain" = "TestDomain"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +135,8 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.opensearch.Domain;
 /// import com.pulumi.aws.opensearch.DomainArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainClusterConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -366,6 +372,45 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["es:*"]
+///     resources = ["arn:aws:es:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*"]
+///     conditions {
+///       test     = "IpAddress"
+///       variable = "aws:SourceIp"
+///       values   = ["66.193.100.22/32"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "example" {
+///   domain_name     = var.domain
+///   access_policies = data.aws_iam_getpolicydocument.example.json
+/// }
+/// variable "domain" {
+///   type    = string
+///   default = "tf-test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -377,10 +422,13 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.opensearch.Domain;
 /// import com.pulumi.aws.opensearch.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -657,6 +705,41 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "example" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["es.amazonaws.com"]
+///     }
+///     actions   = ["logs:PutLogEvents", "logs:PutLogEventsBatch", "logs:CreateLogStream"]
+///     resources = ["arn:aws:logs:*"]
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cloudwatch_logresourcepolicy" "example" {
+///   policy_name     = "example"
+///   policy_document = data.aws_iam_getpolicydocument.example.json
+/// }
+/// resource "aws_opensearch_domain" "example" {
+///   log_publishing_options {
+///     cloudwatch_log_group_arn = aws_cloudwatch_loggroup.example.arn
+///     log_type                 = "INDEX_SLOW_LOGS"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -667,13 +750,15 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.cloudwatch.LogGroupArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicy;
 /// import com.pulumi.aws.cloudwatch.LogResourcePolicyArgs;
 /// import com.pulumi.aws.opensearch.Domain;
 /// import com.pulumi.aws.opensearch.DomainArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainLogPublishingOptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1047,127 +1132,207 @@ import 'domain_vpc_options.dart';
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// cfg := config.New(ctx, "")
-/// vpc := cfg.RequireObject("vpc")
-/// domain := "tf-test";
-/// if param := cfg.Get("domain"); param != ""{
-/// domain = param
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cfg := config.New(ctx, "")
+/// 		var vpc interface{}
+/// 		cfg.RequireObject("vpc", &vpc)
+/// 		domain := "tf-test"
+/// 		if param := cfg.Get("domain"); param != "" {
+/// 			domain = param
+/// 		}
+/// 		example, err := ec2.LookupVpc(ctx, &ec2.LookupVpcArgs{
+/// 			Tags: map[string]pulumi.String{
+/// 				"Name": vpc,
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleGetSubnets, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
+/// 			Filters: []ec2.GetSubnetsFilter{
+/// 				{
+/// 					Name: "vpc-id",
+/// 					Values: pulumi.StringArray{
+/// 						example.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 			Tags: map[string]string{
+/// 				"Tier": "private",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetCallerIdentity, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleSecurityGroup, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
+/// 			Name:        pulumi.Sprintf("%v-opensearch-%v", vpc, domain),
+/// 			Description: pulumi.String("Managed by Pulumi"),
+/// 			VpcId:       pulumi.String(example.Id),
+/// 			Ingress: ec2.SecurityGroupIngressArray{
+/// 				&ec2.SecurityGroupIngressArgs{
+/// 					FromPort: pulumi.Int(443),
+/// 					ToPort:   pulumi.Int(443),
+/// 					Protocol: pulumi.String("tcp"),
+/// 					CidrBlocks: pulumi.StringArray{
+/// 						pulumi.String(example.CidrBlock),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleServiceLinkedRole, err := iam.NewServiceLinkedRole(ctx, "example", &iam.ServiceLinkedRoleArgs{
+/// 			AwsServiceName: pulumi.String("opensearchservice.amazonaws.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleGetPolicyDocument, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "*",
+/// 							Identifiers: []string{
+/// 								"*",
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"es:*",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("arn:aws:es:%v:%v:domain/%v/*", current.Region, currentGetCallerIdentity.AccountId, domain),
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = opensearch.NewDomain(ctx, "example", &opensearch.DomainArgs{
+/// 			DomainName:    pulumi.String(domain),
+/// 			EngineVersion: pulumi.String("OpenSearch_1.0"),
+/// 			ClusterConfig: &opensearch.DomainClusterConfigArgs{
+/// 				InstanceType:         pulumi.String("m4.large.search"),
+/// 				ZoneAwarenessEnabled: pulumi.Bool(true),
+/// 			},
+/// 			VpcOptions: &opensearch.DomainVpcOptionsArgs{
+/// 				SubnetIds: pulumi.StringArray{
+/// 					pulumi.String(exampleGetSubnets.Ids[0]),
+/// 					pulumi.String(exampleGetSubnets.Ids[1]),
+/// 				},
+/// 				SecurityGroupIds: pulumi.StringArray{
+/// 					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 			AdvancedOptions: pulumi.StringMap{
+/// 				"rest.action.multi.allow_explicit_index": pulumi.String("true"),
+/// 			},
+/// 			AccessPolicies: pulumi.String(exampleGetPolicyDocument.Json),
+/// 			Tags: pulumi.StringMap{
+/// 				"Domain": pulumi.String("TestDomain"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			exampleServiceLinkedRole,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// example, err := ec2.LookupVpc(ctx, &ec2.LookupVpcArgs{
-/// Tags: pulumi.StringMap{
-/// "Name": vpc,
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// exampleGetSubnets, err := ec2.GetSubnets(ctx, &ec2.GetSubnetsArgs{
-/// Filters: []ec2.GetSubnetsFilter{
-/// {
-/// Name: "vpc-id",
-/// Values: interface{}{
-/// example.Id,
-/// },
-/// },
-/// },
-/// Tags: map[string]interface{}{
-/// "Tier": "private",
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// data "aws_ec2_getvpc" "example" {
+///   tags = {
+///     "Name" = var.vpc
+///   }
 /// }
-/// current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// data "aws_ec2_getsubnets" "exampleGetSubnets" {
+///   filters {
+///     name   = "vpc-id"
+///     values = [data.aws_ec2_getvpc.example.id]
+///   }
+///   tags = {
+///     "Tier" = "private"
+///   }
 /// }
-/// currentGetCallerIdentity, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// data "aws_getregion" "current" {
 /// }
-/// exampleSecurityGroup, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
-/// Name: pulumi.Sprintf("%v-opensearch-%v", vpc, domain),
-/// Description: pulumi.String("Managed by Pulumi"),
-/// VpcId: pulumi.String(example.Id),
-/// Ingress: ec2.SecurityGroupIngressArray{
-/// &ec2.SecurityGroupIngressArgs{
-/// FromPort: pulumi.Int(443),
-/// ToPort: pulumi.Int(443),
-/// Protocol: pulumi.String("tcp"),
-/// CidrBlocks: pulumi.StringArray{
-/// pulumi.String(example.CidrBlock),
-/// },
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
 /// }
-/// exampleServiceLinkedRole, err := iam.NewServiceLinkedRole(ctx, "example", &iam.ServiceLinkedRoleArgs{
-/// AwsServiceName: pulumi.String("opensearchservice.amazonaws.com"),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["es:*"]
+///     resources = ["arn:aws:es:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:domain/${var.domain}/*"]
+///   }
 /// }
-/// exampleGetPolicyDocument, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef("Allow"),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "*",
-/// Identifiers: []string{
-/// "*",
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "es:*",
-/// },
-/// Resources: []string{
-/// fmt.Sprintf("arn:aws:es:%v:%v:domain/%v/*", current.Region, currentGetCallerIdentity.AccountId, domain),
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+///
+/// resource "aws_ec2_securitygroup" "example" {
+///   name        ="${var.vpc}-opensearch-${var.domain}"
+///   description = "Managed by Pulumi"
+///   vpc_id      = data.aws_ec2_getvpc.example.id
+///   ingress {
+///     from_port   = 443
+///     to_port     = 443
+///     protocol    = "tcp"
+///     cidr_blocks = [data.aws_ec2_getvpc.example.cidr_block]
+///   }
 /// }
-/// _, err = opensearch.NewDomain(ctx, "example", &opensearch.DomainArgs{
-/// DomainName: pulumi.String(domain),
-/// EngineVersion: pulumi.String("OpenSearch_1.0"),
-/// ClusterConfig: &opensearch.DomainClusterConfigArgs{
-/// InstanceType: pulumi.String("m4.large.search"),
-/// ZoneAwarenessEnabled: pulumi.Bool(true),
-/// },
-/// VpcOptions: &opensearch.DomainVpcOptionsArgs{
-/// SubnetIds: pulumi.StringArray{
-/// pulumi.String(exampleGetSubnets.Ids[0]),
-/// pulumi.String(exampleGetSubnets.Ids[1]),
-/// },
-/// SecurityGroupIds: pulumi.StringArray{
-/// exampleSecurityGroup.ID(),
-/// },
-/// },
-/// AdvancedOptions: pulumi.StringMap{
-/// "rest.action.multi.allow_explicit_index": pulumi.String("true"),
-/// },
-/// AccessPolicies: pulumi.String(exampleGetPolicyDocument.Json),
-/// Tags: pulumi.StringMap{
-/// "Domain": pulumi.String("TestDomain"),
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// exampleServiceLinkedRole,
-/// }))
-/// if err != nil {
-/// return err
+/// resource "aws_iam_servicelinkedrole" "example" {
+///   aws_service_name = "opensearchservice.amazonaws.com"
 /// }
-/// return nil
-/// })
+/// resource "aws_opensearch_domain" "example" {
+///   depends_on     = [aws_iam_servicelinkedrole.example]
+///   domain_name    = var.domain
+///   engine_version = "OpenSearch_1.0"
+///   cluster_config = {
+///     instance_type          = "m4.large.search"
+///     zone_awareness_enabled = true
+///   }
+///   vpc_options = {
+///     subnet_ids         = [data.aws_ec2_getsubnets.exampleGetSubnets.ids[0], data.aws_ec2_getsubnets.exampleGetSubnets.ids[1]]
+///     security_group_ids = [aws_ec2_securitygroup.example.id]
+///   }
+///   advanced_options = {
+///     "rest.action.multi.allow_explicit_index" = "true"
+///   }
+///   access_policies = data.aws_iam_getpolicydocument.exampleGetPolicyDocument.json
+///   tags = {
+///     "Domain" = "TestDomain"
+///   }
+/// }
+/// variable "vpc" {
+/// }
+/// variable "domain" {
+///   type    = string
+///   default = "tf-test"
 /// }
 /// ```
 /// ```java
@@ -1179,6 +1344,7 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.ec2.Ec2Functions;
 /// import com.pulumi.aws.ec2.inputs.GetVpcArgs;
 /// import com.pulumi.aws.ec2.inputs.GetSubnetsArgs;
+/// import com.pulumi.aws.ec2.inputs.GetSubnetsFilterArgs;
 /// import com.pulumi.aws.AwsFunctions;
 /// import com.pulumi.aws.inputs.GetRegionArgs;
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
@@ -1189,13 +1355,15 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.iam.ServiceLinkedRoleArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.opensearch.Domain;
 /// import com.pulumi.aws.opensearch.DomainArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainClusterConfigArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainVpcOptionsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1208,7 +1376,7 @@ import 'domain_vpc_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var vpc = config.get("vpc");
+///         final var vpc = config.require("vpc");
 ///         final var domain = config.get("domain").orElse("tf-test");
 ///         final var example = Ec2Functions.getVpc(GetVpcArgs.builder()
 ///             .tags(Map.of("Name", vpc))
@@ -1282,7 +1450,7 @@ import 'domain_vpc_options.dart';
 /// ```yaml
 /// configuration:
 ///   vpc:
-///     type: dynamic
+///     type: object
 ///   domain:
 ///     type: string
 ///     default: tf-test
@@ -1542,6 +1710,46 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "example" {
+///   domain_name    = "ggkitty"
+///   engine_version = "Elasticsearch_7.1"
+///   cluster_config = {
+///     instance_type = "r5.large.search"
+///   }
+///   advanced_security_options = {
+///     enabled                        = false
+///     anonymous_auth_enabled         = true
+///     internal_user_database_enabled = true
+///     master_user_options = {
+///       master_user_name     = "example"
+///       master_user_password = "Barbarbarbar1!"
+///     }
+///   }
+///   encrypt_at_rest = {
+///     enabled = true
+///   }
+///   domain_endpoint_options = {
+///     enforce_https       = true
+///     tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
+///   }
+///   node_to_node_encryption = {
+///     enabled = true
+///   }
+///   ebs_options = {
+///     ebs_enabled = true
+///     volume_size = 10
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1557,8 +1765,8 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.opensearch.inputs.DomainDomainEndpointOptionsArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainNodeToNodeEncryptionArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainEbsOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1803,6 +2011,46 @@ import 'domain_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "example" {
+///   domain_name    = "ggkitty"
+///   engine_version = "Elasticsearch_7.1"
+///   cluster_config = {
+///     instance_type = "r5.large.search"
+///   }
+///   advanced_security_options = {
+///     enabled                        = true
+///     anonymous_auth_enabled         = true
+///     internal_user_database_enabled = true
+///     master_user_options = {
+///       master_user_name     = "example"
+///       master_user_password = "Barbarbarbar1!"
+///     }
+///   }
+///   encrypt_at_rest = {
+///     enabled = true
+///   }
+///   domain_endpoint_options = {
+///     enforce_https       = true
+///     tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
+///   }
+///   node_to_node_encryption = {
+///     enabled = true
+///   }
+///   ebs_options = {
+///     ebs_enabled = true
+///     volume_size = 10
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1818,8 +2066,8 @@ import 'domain_vpc_options.dart';
 /// import com.pulumi.aws.opensearch.inputs.DomainDomainEndpointOptionsArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainNodeToNodeEncryptionArgs;
 /// import com.pulumi.aws.opensearch.inputs.DomainEbsOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1896,7 +2144,7 @@ import 'domain_vpc_options.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearch domains using the `domain_name`. For example:
+/// Using `pulumi import`, import OpenSearch domains using the `domainName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/domain:Domain example domain_name
@@ -1922,6 +2170,8 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> dashboardEndpoint;
   /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
   late final pulumi.Output<String> dashboardEndpointV2;
+  /// Configuration block for the deployment strategy options of the domain. Detailed below.
+  late final pulumi.Output<DomainDeploymentStrategyOptions> deploymentStrategyOptions;
   /// Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   late final pulumi.Output<DomainDomainEndpointOptions> domainEndpointOptions;
   /// Dual stack hosted zone ID for the domain.
@@ -1960,9 +2210,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainSnapshotOptions?> snapshotOptions;
   /// Software update options for the domain. Detailed below.
   late final pulumi.Output<DomainSoftwareUpdateOptions> softwareUpdateOptions;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
   late final pulumi.Output<DomainVpcOptions?> vpcOptions;
@@ -1991,6 +2241,7 @@ class Domain extends pulumi.CustomResource {
     cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCognitoOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
     dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
+    deploymentStrategyOptions = registerOutput<DomainDeploymentStrategyOptions>('deploymentStrategyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDeploymentStrategyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainEndpointV2HostedZoneId = registerOutput<String>('domainEndpointV2HostedZoneId');
     domainId = registerOutput<String>('domainId');
@@ -2046,6 +2297,7 @@ class Domain extends pulumi.CustomResource {
     cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCognitoOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
     dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
+    deploymentStrategyOptions = registerOutput<DomainDeploymentStrategyOptions>('deploymentStrategyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDeploymentStrategyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDomainEndpointOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainEndpointV2HostedZoneId = registerOutput<String>('domainEndpointV2HostedZoneId');
     domainId = registerOutput<String>('domainId');

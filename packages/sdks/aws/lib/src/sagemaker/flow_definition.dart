@@ -113,6 +113,31 @@ import 'flow_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_flowdefinition" "example" {
+///   flow_definition_name = "example"
+///   role_arn             = exampleAwsIamRole.arn
+///   human_loop_config = {
+///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
+///     task_availability_lifetime_in_seconds = 1
+///     task_count                            = 1
+///     task_description                      = "example"
+///     task_title                            = "example"
+///     workteam_arn                          = exampleAwsSagemakerWorkteam.arn
+///   }
+///   output_config = {
+///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +148,8 @@ import 'flow_definition_state.dart';
 /// import com.pulumi.aws.sagemaker.FlowDefinitionArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionHumanLoopConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionOutputConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,6 +328,37 @@ import 'flow_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_flowdefinition" "example" {
+///   flow_definition_name = "example"
+///   role_arn             = exampleAwsIamRole.arn
+///   human_loop_config = {
+///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
+///     task_availability_lifetime_in_seconds = 1
+///     task_count                            = 1
+///     task_description                      = "example"
+///     task_title                            = "example"
+///     workteam_arn                          ="arn:aws:sagemaker:${current.region}:394669845002:workteam/public-crowd/default"
+///     public_workforce_task_price = {
+///       amount_in_usd = {
+///         cents                     = 1
+///         tenth_fractions_of_a_cent = 2
+///       }
+///     }
+///   }
+///   output_config = {
+///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -315,8 +371,8 @@ import 'flow_definition_state.dart';
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsdArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionOutputConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -554,6 +610,39 @@ import 'flow_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_flowdefinition" "example" {
+///   flow_definition_name = "example"
+///   role_arn             = exampleAwsIamRole.arn
+///   human_loop_config = {
+///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
+///     task_availability_lifetime_in_seconds = 1
+///     task_count                            = 1
+///     task_description                      = "example"
+///     task_title                            = "example"
+///     workteam_arn                          = exampleAwsSagemakerWorkteam.arn
+///   }
+///   human_loop_request_source = {
+///     aws_managed_human_loop_request_source = "AWS/Textract/AnalyzeDocument/Forms/V1"
+///   }
+///   human_loop_activation_config = {
+///     human_loop_activation_conditions_config = {
+///       human_loop_activation_conditions = "        {\n\\t\\t\\t\\\"Conditions\\\": [\n\\t\\t\\t  {\n\\t\\t\\t\\t\\\"ConditionType\\\": \\\"Sampling\\\",\n\\t\\t\\t\\t\\\"ConditionParameters\\\": {\n\\t\\t\\t\\t  \\\"RandomSamplingPercentage\\\": 5\n\\t\\t\\t\\t}\n\\t\\t\\t  }\n\\t\\t\\t]\n\\t\\t}\n"
+///     }
+///   }
+///   output_config = {
+///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -567,8 +656,8 @@ import 'flow_definition_state.dart';
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionHumanLoopActivationConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.FlowDefinitionOutputConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -654,7 +743,7 @@ import 'flow_definition_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SageMaker AI Flow Definitions using the `flow_definition_name`. For example:
+/// Using `pulumi import`, import SageMaker AI Flow Definitions using the `flowDefinitionName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/flowDefinition:FlowDefinition example example
@@ -676,9 +765,9 @@ class FlowDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The Amazon Resource Name (ARN) of the role needed to call other services on your behalf.
   late final pulumi.Output<String> roleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [FlowDefinition].

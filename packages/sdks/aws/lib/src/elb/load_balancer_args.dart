@@ -22,7 +22,7 @@ class LoadBalancerArgs {
   final pulumi.Input<bool>? crossZoneLoadBalancing;
   /// Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
   final pulumi.Input<String>? desyncMitigationMode;
-  /// A health_check block. Health Check documented below.
+  /// A healthCheck block. Health Check documented below.
   final pulumi.Input<LoadBalancerHealthCheck>? healthCheck;
   /// The time in seconds that the connection is allowed to be idle. Default: `60`
   final pulumi.Input<int>? idleTimeout;
@@ -48,9 +48,9 @@ class LoadBalancerArgs {
   final pulumi.Input<String>? sourceSecurityGroup;
   /// A list of subnet IDs to attach to the ELB. When an update to subnets will remove all current subnets, this will force a new resource.
   final pulumi.Input<List<String>>? subnets;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Exactly one of `availability_zones` or `subnets` must be specified: this
+  /// Exactly one of `availabilityZones` or `subnets` must be specified: this
   /// determines if the ELB exists in a VPC or in EC2-classic.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -61,7 +61,7 @@ class LoadBalancerArgs {
   /// [connectionDrainingTimeout] The time in seconds to allow for connections to drain. Default: `300`
   /// [crossZoneLoadBalancing] Enable cross-zone load balancing. Default: `true`
   /// [desyncMitigationMode] Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
-  /// [healthCheck] A health_check block. Health Check documented below.
+  /// [healthCheck] A healthCheck block. Health Check documented below.
   /// [idleTimeout] The time in seconds that the connection is allowed to be idle. Default: `60`
   /// [instances] A list of instance ids to place in the ELB pool.
   /// [internal] If true, ELB will be an internal ELB.
@@ -72,7 +72,7 @@ class LoadBalancerArgs {
   /// [securityGroups] A list of security group IDs to assign to the ELB.
   /// [sourceSecurityGroup] The name of the security group that you can use as
   /// [subnets] A list of subnet IDs to attach to the ELB. When an update to subnets will remove all current subnets, this will force a new resource.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const LoadBalancerArgs({
     this.accessLogs,
     this.availabilityZones,
@@ -140,4 +140,3 @@ class LoadBalancerArgs {
     );
   }
 }
-

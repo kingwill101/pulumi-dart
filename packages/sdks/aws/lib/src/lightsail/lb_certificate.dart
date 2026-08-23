@@ -94,7 +94,7 @@ import 'lb_certificate_state.dart';
 /// 		}
 /// 		_, err = lightsail.NewLbCertificate(ctx, "example", &lightsail.LbCertificateArgs{
 /// 			Name:       pulumi.String("example-load-balancer-certificate"),
-/// 			LbName:     example.ID(),
+/// 			LbName:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
@@ -102,6 +102,29 @@ import 'lb_certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_lb" "example" {
+///   name              = "example-load-balancer"
+///   health_check_path = "/"
+///   instance_port     = "80"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "aws_lightsail_lbcertificate" "example" {
+///   name        = "example-load-balancer-certificate"
+///   lb_name     = aws_lightsail_lb.example.id
+///   domain_name = "example.com"
 /// }
 /// ```
 /// ```java
@@ -114,8 +137,8 @@ import 'lb_certificate_state.dart';
 /// import com.pulumi.aws.lightsail.LbArgs;
 /// import com.pulumi.aws.lightsail.LbCertificate;
 /// import com.pulumi.aws.lightsail.LbCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,7 +200,7 @@ class LbCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
   late final pulumi.Output<String> domainName;
-  /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined.
+  /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Each element contains the following attributes:
   late final pulumi.Output<List<Map<String, dynamic>>> domainValidationRecords;
   /// Load balancer name where you want to create the SSL/TLS certificate.
   late final pulumi.Output<String> lbName;
@@ -187,7 +210,7 @@ class LbCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
+  /// Set of domains that should be SANs in the issued certificate. `domainName` attribute is automatically added as a Subject Alternative Name.
   late final pulumi.Output<List<String>> subjectAlternativeNames;
   /// Support code for the certificate.
   late final pulumi.Output<String> supportCode;

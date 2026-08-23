@@ -14,11 +14,11 @@ class GetClusterResult {
   /// Number of pending tasks for the ECS Cluster
   final int pendingTasksCount;
   final String region;
-  /// The number of registered container instances for the ECS Cluster
+  /// Number of registered container instances for the ECS Cluster
   final int registeredContainerInstancesCount;
   /// Number of running tasks for the ECS Cluster
   final int runningTasksCount;
-  /// The default Service Connect namespace
+  /// Default Service Connect namespace
   final List<GetClusterServiceConnectDefault> serviceConnectDefaults;
   /// Settings associated with the ECS Cluster
   final List<GetClusterSetting> settings;
@@ -33,9 +33,9 @@ class GetClusterResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [pendingTasksCount] Number of pending tasks for the ECS Cluster
   /// [region] Required.
-  /// [registeredContainerInstancesCount] The number of registered container instances for the ECS Cluster
+  /// [registeredContainerInstancesCount] Number of registered container instances for the ECS Cluster
   /// [runningTasksCount] Number of running tasks for the ECS Cluster
-  /// [serviceConnectDefaults] The default Service Connect namespace
+  /// [serviceConnectDefaults] Default Service Connect namespace
   /// [settings] Settings associated with the ECS Cluster
   /// [status] Status of the ECS Cluster
   /// [tags] Key-value map of resource tags
@@ -85,4 +85,3 @@ class GetClusterResult {
     );
   }
 }
-

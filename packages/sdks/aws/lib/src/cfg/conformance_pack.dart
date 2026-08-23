@@ -147,6 +147,25 @@ import 'conformance_pack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_conformancepack" "example" {
+///   depends_on = [exampleAwsConfigConfigurationRecorder]
+///   name       = "example"
+///   input_parameters {
+///     parameter_name  = "AccessKeysRotatedParameterMaxAccessKeyAge"
+///     parameter_value = "90"
+///   }
+///   template_body = "Parameters:\n  AccessKeysRotatedParameterMaxAccessKeyAge:\n    Type: String\nResources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +176,8 @@ import 'conformance_pack_state.dart';
 /// import com.pulumi.aws.cfg.ConformancePackArgs;
 /// import com.pulumi.aws.cfg.inputs.ConformancePackInputParameterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,7 +363,7 @@ import 'conformance_pack_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleBucket.ID(),
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:    pulumi.String("example-key"),
 /// 			Content: pulumi.String(`Resources:
 ///   IAMPasswordPolicy:
@@ -376,6 +395,29 @@ import 'conformance_pack_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_conformancepack" "example" {
+///   depends_on      = [exampleAwsConfigConfigurationRecorder]
+///   name            = "example"
+///   template_s3_uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucketobjectv2.example.key}"
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket  = aws_s3_bucket.example.id
+///   key     = "example-key"
+///   content = "Resources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -389,8 +431,8 @@ import 'conformance_pack_state.dart';
 /// import com.pulumi.aws.cfg.ConformancePack;
 /// import com.pulumi.aws.cfg.ConformancePackArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -470,6 +512,18 @@ import 'conformance_pack_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the conformance pack.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Config Conformance Packs using the `name`. For example:
 ///
 /// ```sh
@@ -482,7 +536,7 @@ class ConformancePack extends pulumi.CustomResource {
   late final pulumi.Output<String?> deliveryS3Bucket;
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
   late final pulumi.Output<String?> deliveryS3KeyPrefix;
-  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `template_body` or in the template stored in Amazon S3 if using `template_s3_uri`.
+  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `templateBody` or in the template stored in Amazon S3 if using `templateS3Uri`.
   late final pulumi.Output<List<Map<String, dynamic>>?> inputParameters;
   /// The name of the conformance pack. Must begin with a letter and contain from 1 to 256 alphanumeric characters and hyphens.
   late final pulumi.Output<String> name;
@@ -492,7 +546,7 @@ class ConformancePack extends pulumi.CustomResource {
   late final pulumi.Output<String?> templateBody;
   /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   ///
-  /// &gt; **Note:** If both `template_body` and `template_s3_uri` are specified, AWS Config uses the `template_s3_uri` and ignores the `template_body`.
+  /// &gt; **Note:** If both `templateBody` and `templateS3Uri` are specified, AWS Config uses the `templateS3Uri` and ignores the `templateBody`.
   late final pulumi.Output<String?> templateS3Uri;
 
   /// Creates a new [ConformancePack].

@@ -36,4 +36,3 @@ class ScheduledQueryErrorReportConfigurationS3Configuration {
     );
   }
 }
-

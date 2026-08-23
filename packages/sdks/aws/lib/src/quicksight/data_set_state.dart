@@ -37,13 +37,13 @@ class DataSetState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-  /// The final set of columns available for use in analyses and dashboards after all data preparation and transformation steps have been applied within the data set.  See `output_columns` Block below.
+  /// The final set of columns available for use in analyses and dashboards after all data preparation and transformation steps have been applied within the data set.  See `outputColumns` Block below.
   final pulumi.Input<List<DataSetOutputColumn>>? outputColumns;
   /// A set of resource permissions on the data source. Maximum of 64 items. See permissions.
   final pulumi.Input<List<DataSetPermission>>? permissions;
   /// Declares the physical tables that are available in the underlying data sources. See physical_table_map.
   final pulumi.Input<List<DataSetPhysicalTableMap>>? physicalTableMaps;
-  /// The refresh properties for the data set. **NOTE**: Only valid when `import_mode` is set to `SPICE`. See refresh_properties.
+  /// The refresh properties for the data set. **NOTE**: Only valid when `importMode` is set to `SPICE`. See refresh_properties.
   final pulumi.Input<DataSetRefreshProperties>? refreshProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -51,9 +51,9 @@ class DataSetState {
   final pulumi.Input<DataSetRowLevelPermissionDataSet>? rowLevelPermissionDataSet;
   /// The configuration of tags on a dataset to set row-level security. Row-level security tags are currently supported for anonymous embedding only. See row_level_permission_tag_configuration.
   final pulumi.Input<DataSetRowLevelPermissionTagConfiguration>? rowLevelPermissionTagConfiguration;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Specifies the purpose of the data set. The only valid value is `RLS_RULES`, which designates this data set as a Row Level Security (RLS) rules dataset. An RLS rules dataset is used to control access to data at the row level in QuickSight analyses and dashboards. See the [AWS documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSet.html#API_CreateDataSet_RequestSyntax) for details.
   final pulumi.Input<String>? useAs;
@@ -69,15 +69,15 @@ class DataSetState {
   /// [importMode] Indicates whether you want to import the data into SPICE. Valid values are `SPICE` and `DIRECT_QUERY`.
   /// [logicalTableMaps] Configures the combination and transformation of the data from the physical tables. Maximum of 1 entry. See logical_table_map.
   /// [name] Display name for the dataset.
-  /// [outputColumns] The final set of columns available for use in analyses and dashboards after all data preparation and transformation steps have been applied within the data set.  See `output_columns` Block below.
+  /// [outputColumns] The final set of columns available for use in analyses and dashboards after all data preparation and transformation steps have been applied within the data set.  See `outputColumns` Block below.
   /// [permissions] A set of resource permissions on the data source. Maximum of 64 items. See permissions.
   /// [physicalTableMaps] Declares the physical tables that are available in the underlying data sources. See physical_table_map.
-  /// [refreshProperties] The refresh properties for the data set. **NOTE**: Only valid when `import_mode` is set to `SPICE`. See refresh_properties.
+  /// [refreshProperties] The refresh properties for the data set. **NOTE**: Only valid when `importMode` is set to `SPICE`. See refresh_properties.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rowLevelPermissionDataSet] The row-level security configuration for the data that you want to create. See row_level_permission_data_set.
   /// [rowLevelPermissionTagConfiguration] The configuration of tags on a dataset to set row-level security. Row-level security tags are currently supported for anonymous embedding only. See row_level_permission_tag_configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [useAs] Specifies the purpose of the data set. The only valid value is `RLS_RULES`, which designates this data set as a Row Level Security (RLS) rules dataset. An RLS rules dataset is used to control access to data at the row level in QuickSight analyses and dashboards. See the [AWS documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSet.html#API_CreateDataSet_RequestSyntax) for details.
   const DataSetState({
     this.arn,
@@ -152,4 +152,3 @@ class DataSetState {
     );
   }
 }
-

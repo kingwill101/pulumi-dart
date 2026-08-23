@@ -69,6 +69,21 @@ import 'trust_provider_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_verifiedaccess_trustprovider" "example" {
+///   policy_reference_name    = "example"
+///   trust_provider_type      = "user"
+///   user_trust_provider_type = "iam-identity-center"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +92,8 @@ import 'trust_provider_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.verifiedaccess.TrustProvider;
 /// import com.pulumi.aws.verifiedaccess.TrustProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,7 +148,7 @@ class TrustProvider extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<TrustProviderSseSpecification> sseSpecification;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of trust provider can be either user or device-based.

@@ -12,9 +12,9 @@ class GatewayState {
   final pulumi.Input<String>? name;
   /// AWS Account ID of the gateway.
   final pulumi.Input<String>? ownerAccountId;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [GatewayState].
@@ -22,8 +22,8 @@ class GatewayState {
   /// [arn] The ARN of the gateway.
   /// [name] The name of the connection.
   /// [ownerAccountId] AWS Account ID of the gateway.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const GatewayState({
     this.amazonSideAsn,
     this.arn,
@@ -55,4 +55,3 @@ class GatewayState {
     );
   }
 }
-

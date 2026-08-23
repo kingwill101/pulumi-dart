@@ -8,8 +8,6 @@ class GetPlanResult {
   final String description;
   /// Execution role ARN for the plan.
   final String executionRole;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// Name of the plan.
   final String name;
   /// Owner of the plan.
@@ -34,7 +32,6 @@ class GetPlanResult {
   /// [arn] Required.
   /// [description] Description of the plan.
   /// [executionRole] Execution role ARN for the plan.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the plan.
   /// [owner] Owner of the plan.
   /// [primaryRegion] Primary region for the plan.
@@ -49,7 +46,6 @@ class GetPlanResult {
     required this.arn,
     required this.description,
     required this.executionRole,
-    required this.id,
     required this.name,
     required this.owner,
     required this.primaryRegion,
@@ -67,7 +63,6 @@ class GetPlanResult {
       'arn': arn,
       'description': description,
       'executionRole': executionRole,
-      'id': id,
       'name': name,
       'owner': owner,
       'primaryRegion': primaryRegion,
@@ -86,7 +81,6 @@ class GetPlanResult {
       arn: map['arn'] as String,
       description: map['description'] as String,
       executionRole: map['executionRole'] as String,
-      id: map['id'] as String,
       name: map['name'] as String,
       owner: map['owner'] as String,
       primaryRegion: map['primaryRegion'] as String,
@@ -100,4 +94,3 @@ class GetPlanResult {
     );
   }
 }
-

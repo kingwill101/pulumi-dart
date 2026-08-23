@@ -109,29 +109,50 @@ import 'get_vpn_attachment_result.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2transitgateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := ec2transitgateway.GetAttachment(ctx, &ec2transitgateway.GetAttachmentArgs{
-/// Filters: []ec2transitgateway.GetAttachmentFilter{
-/// {
-/// Name: "transit-gateway-id",
-/// Values: interface{}{
-/// exampleAwsEc2TransitGateway.Id,
-/// },
-/// },
-/// {
-/// Name: "resource-type",
-/// Values: []string{
-/// "peering",
-/// },
-/// },
-/// },
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := ec2transitgateway.GetAttachment(ctx, &ec2transitgateway.GetAttachmentArgs{
+/// 			Filters: []ec2transitgateway.GetAttachmentFilter{
+/// 				{
+/// 					Name: "transit-gateway-id",
+/// 					Values: pulumi.StringArray{
+/// 						exampleAwsEc2TransitGateway.Id,
+/// 					},
+/// 				},
+/// 				{
+/// 					Name: "resource-type",
+/// 					Values: []string{
+/// 						"peering",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// return nil
-/// })
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getattachment" "example" {
+///   filters {
+///     name   = "transit-gateway-id"
+///     values = [exampleAwsEc2TransitGateway.id]
+///   }
+///   filters {
+///     name   = "resource-type"
+///     values = ["peering"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -142,8 +163,9 @@ import 'get_vpn_attachment_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetAttachmentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetAttachmentFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,6 +299,34 @@ Future<GetAttachmentResult> getAttachment(
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getattachments" "filtered" {
+///   filters {
+///     name   = "state"
+///     values = ["pendingAcceptance"]
+///   }
+///   filters {
+///     name   = "resource-type"
+///     values = ["vpc"]
+///   }
+/// }
+/// data "aws_ec2transitgateway_getattachment" "invoke_1" {
+///   for_each                      = toset(range(length(data.aws_ec2transitgateway_getattachments.filtered.ids)))
+///   transit_gateway_attachment_id = data.aws_ec2transitgateway_getattachments.filtered.ids[each.value]
+/// }
+///
+/// locals {
+///   unit = [for __index in range(length(data.aws_ec2transitgateway_getattachments.filtered.ids)) : data.aws_ec2transitgateway_getattachment.invoke_1[__index]]
+/// }
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_attachments_get_attachments_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAttachmentsResult> getAttachments(
@@ -371,6 +421,22 @@ Future<GetAttachmentsResult> getAttachments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getconnect" "example" {
+///   filters {
+///     name   = "transport-transit-gateway-attachment-id"
+///     values = ["tgw-attach-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -379,8 +445,9 @@ Future<GetAttachmentsResult> getAttachments(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetConnectArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetConnectFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,6 +534,19 @@ Future<GetAttachmentsResult> getAttachments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getconnect" "example" {
+///   transit_gateway_connect_id = "tgw-attach-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -475,8 +555,8 @@ Future<GetAttachmentsResult> getAttachments(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetConnectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -597,6 +677,22 @@ Future<GetConnectResult> getConnect(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getconnectpeer" "example" {
+///   filters {
+///     name   = "transit-gateway-attachment-id"
+///     values = ["tgw-attach-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -605,8 +701,9 @@ Future<GetConnectResult> getConnect(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetConnectPeerArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetConnectPeerFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -693,6 +790,19 @@ Future<GetConnectResult> getConnect(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getconnectpeer" "example" {
+///   transit_gateway_connect_peer_id = "tgw-connect-peer-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -701,8 +811,8 @@ Future<GetConnectResult> getConnect(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetConnectPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -746,7 +856,7 @@ Future<GetConnectPeerResult> getConnectPeer(
 
 /// Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
 ///
-/// !&gt; **Warning:** Using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `transit_gateway_attachment_id` attribute directly from the `aws.directconnect.GatewayAssociation` resource. For example, `transit_gateway_attachment_id  = aws_dx_gateway_association.example.transit_gateway_attachment_id`.
+/// &gt; **Warning:** Using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `transitGatewayAttachmentId` attribute directly from the `aws.directconnect.GatewayAssociation` resource. For example, `transitGatewayAttachmentId  = aws_dx_gateway_association.example.transit_gateway_attachment_id`.
 ///
 /// ## Example Usage
 ///
@@ -806,6 +916,20 @@ Future<GetConnectPeerResult> getConnectPeer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getdirectconnectgatewayattachment" "example" {
+///   transit_gateway_id = exampleAwsEc2TransitGateway.id
+///   dx_gateway_id      = exampleAwsDxGateway.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -814,8 +938,8 @@ Future<GetConnectPeerResult> getConnectPeer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetDirectConnectGatewayAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -938,6 +1062,22 @@ Future<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachmen
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getmulticastdomain" "example" {
+///   filters {
+///     name   = "transit-gateway-multicast-domain-id"
+///     values = ["tgw-mcast-domain-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -946,8 +1086,9 @@ Future<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachmen
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetMulticastDomainArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetMulticastDomainFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1034,6 +1175,19 @@ Future<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachmen
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getmulticastdomain" "example" {
+///   transit_gateway_multicast_domain_id = "tgw-mcast-domain-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1042,8 +1196,8 @@ Future<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachmen
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetMulticastDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1164,6 +1318,22 @@ Future<GetMulticastDomainResult> getMulticastDomain(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getpeeringattachment" "example" {
+///   filters {
+///     name   = "transit-gateway-attachment-id"
+///     values = ["tgw-attach-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1172,8 +1342,9 @@ Future<GetMulticastDomainResult> getMulticastDomain(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetPeeringAttachmentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetPeeringAttachmentFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1260,6 +1431,19 @@ Future<GetMulticastDomainResult> getMulticastDomain(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getpeeringattachment" "attachment" {
+///   id = "tgw-attach-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1268,8 +1452,8 @@ Future<GetMulticastDomainResult> getMulticastDomain(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetPeeringAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1360,6 +1544,18 @@ Future<GetPeeringAttachmentResult> getPeeringAttachment(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getpeeringattachments" "test" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1368,8 +1564,8 @@ Future<GetPeeringAttachmentResult> getPeeringAttachment(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetPeeringAttachmentsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1449,6 +1645,30 @@ Future<GetPeeringAttachmentResult> getPeeringAttachment(
 ///     var unit = ;
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getpeeringattachments" "filtered" {
+///   filters {
+///     name   = "state"
+///     values = ["pendingAcceptance"]
+///   }
+/// }
+/// data "aws_ec2transitgateway_getpeeringattachment" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2transitgateway_getpeeringattachments.filtered.ids)))
+///   id       = data.aws_ec2transitgateway_getpeeringattachments.filtered.ids[each.value]
+/// }
+///
+/// locals {
+///   unit = [for __index in range(length(data.aws_ec2transitgateway_getpeeringattachments.filtered.ids)) : data.aws_ec2transitgateway_getpeeringattachment.invoke_1[__index]]
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_peering_attachments_get_peering_attachments_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1570,6 +1790,26 @@ Future<GetPeeringAttachmentsResult> getPeeringAttachments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getroutetable" "example" {
+///   filters {
+///     name   = "default-association-route-table"
+///     values = ["true"]
+///   }
+///   filters {
+///     name   = "transit-gateway-id"
+///     values = ["tgw-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1578,8 +1818,9 @@ Future<GetPeeringAttachmentsResult> getPeeringAttachments(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetRouteTableArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetRouteTableFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1674,6 +1915,19 @@ Future<GetPeeringAttachmentsResult> getPeeringAttachments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getroutetable" "example" {
+///   id = "tgw-rtb-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1682,8 +1936,8 @@ Future<GetPeeringAttachmentsResult> getPeeringAttachments(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetRouteTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1781,6 +2035,19 @@ Future<GetRouteTableResult> getRouteTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getroutetableassociations" "example" {
+///   transit_gateway_route_table_id = exampleAwsEc2TransitGatewayRouteTable.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1789,8 +2056,8 @@ Future<GetRouteTableResult> getRouteTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetRouteTableAssociationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1888,6 +2155,19 @@ Future<GetRouteTableAssociationsResult> getRouteTableAssociations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getroutetablepropagations" "example" {
+///   transit_gateway_route_table_id = exampleAwsEc2TransitGatewayRouteTable.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1896,8 +2176,8 @@ Future<GetRouteTableAssociationsResult> getRouteTableAssociations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetRouteTablePropagationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2020,6 +2300,23 @@ Future<GetRouteTablePropagationsResult> getRouteTablePropagations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getroutetableroutes" "test" {
+///   filters {
+///     name   = "type"
+///     values = ["propagated"]
+///   }
+///   transit_gateway_route_table_id = example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2028,8 +2325,9 @@ Future<GetRouteTablePropagationsResult> getRouteTablePropagations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetRouteTableRoutesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetRouteTableRoutesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2158,6 +2456,22 @@ Future<GetRouteTableRoutesResult> getRouteTableRoutes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_gettransitgateway" "example" {
+///   filters {
+///     name   = "options.amazon-side-asn"
+///     values = ["64512"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2166,8 +2480,9 @@ Future<GetRouteTableRoutesResult> getRouteTableRoutes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetTransitGatewayArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetTransitGatewayFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2254,6 +2569,19 @@ Future<GetRouteTableRoutesResult> getRouteTableRoutes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_gettransitgateway" "example" {
+///   id = "tgw-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2262,8 +2590,8 @@ Future<GetRouteTableRoutesResult> getRouteTableRoutes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetTransitGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2307,7 +2635,7 @@ Future<GetTransitGatewayResult> getTransitGateway(
 
 /// Get information on an EC2 Transit Gateway VPC Attachment.
 ///
-/// !&gt; **Warning:** Using the `aws.ec2transitgateway.VpcAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `id` attribute directly from the `aws.ec2transitgateway.VpcAttachment` _resource_. For example, `transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.example.id`.
+/// &gt; **Warning:** Using the `aws.ec2transitgateway.VpcAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `id` attribute directly from the `aws.ec2transitgateway.VpcAttachment` _resource_. For example, `transitGatewayAttachmentId  = aws_ec2_transit_gateway_vpc_attachment.example.id`.
 ///
 /// ## Example Usage
 ///
@@ -2386,6 +2714,22 @@ Future<GetTransitGatewayResult> getTransitGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getvpcattachment" "example" {
+///   filters {
+///     name   = "vpc-id"
+///     values = ["vpc-12345678"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2394,8 +2738,9 @@ Future<GetTransitGatewayResult> getTransitGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetVpcAttachmentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetVpcAttachmentFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2482,6 +2827,19 @@ Future<GetTransitGatewayResult> getTransitGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getvpcattachment" "example" {
+///   id = "tgw-attach-12345678"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2490,8 +2848,8 @@ Future<GetTransitGatewayResult> getTransitGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetVpcAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2591,6 +2949,30 @@ Future<GetVpcAttachmentResult> getVpcAttachment(
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getvpcattachments" "filtered" {
+///   filters {
+///     name   = "state"
+///     values = ["pendingAcceptance"]
+///   }
+/// }
+/// data "aws_ec2transitgateway_getvpcattachment" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2transitgateway_getvpcattachments.filtered.ids)))
+///   id       = data.aws_ec2transitgateway_getvpcattachments.filtered.ids[each.value]
+/// }
+///
+/// locals {
+///   unit = [for __index in range(length(data.aws_ec2transitgateway_getvpcattachments.filtered.ids)) : data.aws_ec2transitgateway_getvpcattachment.invoke_1[__index]]
+/// }
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_vpc_attachments_get_vpc_attachments_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVpcAttachmentsResult> getVpcAttachments(
@@ -2608,7 +2990,7 @@ Future<GetVpcAttachmentsResult> getVpcAttachments(
 
 /// Get information on an EC2 Transit Gateway VPN Attachment.
 ///
-/// &gt; EC2 Transit Gateway VPN Attachments are implicitly created by VPN Connections referencing an EC2 Transit Gateway so there is no managed resource. For ease, the `aws.ec2.VpnConnection` resource includes a `transit_gateway_attachment_id` attribute which can replace some usage of this data source. For tagging the attachment, see the `aws.ec2.Tag` resource.
+/// &gt; EC2 Transit Gateway VPN Attachments are implicitly created by VPN Connections referencing an EC2 Transit Gateway so there is no managed resource. For ease, the `aws.ec2.VpnConnection` resource includes a `transitGatewayAttachmentId` attribute which can replace some usage of this data source. For tagging the attachment, see the `aws.ec2.Tag` resource.
 ///
 /// ## Example Usage
 ///
@@ -2668,6 +3050,20 @@ Future<GetVpcAttachmentsResult> getVpcAttachments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getvpnattachment" "example" {
+///   transit_gateway_id = exampleAwsEc2TransitGateway.id
+///   vpn_connection_id  = exampleAwsVpnConnection.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2676,8 +3072,8 @@ Future<GetVpcAttachmentsResult> getVpcAttachments(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetVpnAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2783,6 +3179,22 @@ Future<GetVpcAttachmentsResult> getVpcAttachments(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ec2transitgateway_getvpnattachment" "test" {
+///   filters {
+///     name   = "resource-id"
+///     values = ["some-resource"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2791,8 +3203,9 @@ Future<GetVpcAttachmentsResult> getVpcAttachments(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.Ec2transitgatewayFunctions;
 /// import com.pulumi.aws.ec2transitgateway.inputs.GetVpnAttachmentArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ec2transitgateway.inputs.GetVpnAttachmentFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

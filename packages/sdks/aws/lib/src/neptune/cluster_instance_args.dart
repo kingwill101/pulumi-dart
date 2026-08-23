@@ -28,7 +28,7 @@ class ClusterInstanceArgs {
   final pulumi.Input<String> instanceClass;
   /// The name of the neptune parameter group to associate with this instance.
   final pulumi.Input<String>? neptuneParameterGroupName;
-  /// A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptune_subnet_group_name` of the attached `aws.neptune.Cluster`.
+  /// A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
   final pulumi.Input<String>? neptuneSubnetGroupName;
   /// The port on which the DB accepts connections. Defaults to `8182`.
   final pulumi.Input<int>? port;
@@ -45,7 +45,7 @@ class ClusterInstanceArgs {
   final pulumi.Input<String>? region;
   /// Determines whether a final DB snapshot is created before the DB instance is deleted.
   final pulumi.Input<bool>? skipFinalSnapshot;
-  /// A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ClusterInstanceArgs].
@@ -59,7 +59,7 @@ class ClusterInstanceArgs {
   /// [identifierPrefix] Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
   /// [instanceClass] The instance class to use.
   /// [neptuneParameterGroupName] The name of the neptune parameter group to associate with this instance.
-  /// [neptuneSubnetGroupName] A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptune_subnet_group_name` of the attached `aws.neptune.Cluster`.
+  /// [neptuneSubnetGroupName] A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
   /// [port] The port on which the DB accepts connections. Defaults to `8182`.
   /// [preferredBackupWindow] The daily time range during which automated backups are created if automated backups are enabled. Eg: "04:00-09:00"
   /// [preferredMaintenanceWindow] The window to perform maintenance in.
@@ -67,7 +67,7 @@ class ClusterInstanceArgs {
   /// [publiclyAccessible] Bool to control if instance is publicly accessible. Default is `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipFinalSnapshot] Determines whether a final DB snapshot is created before the DB instance is deleted.
-  /// [tags] A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ClusterInstanceArgs({
     this.applyImmediately,
     this.autoMinorVersionUpgrade,
@@ -138,4 +138,3 @@ class ClusterInstanceArgs {
     );
   }
 }
-

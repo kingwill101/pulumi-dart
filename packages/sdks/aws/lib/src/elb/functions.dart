@@ -105,6 +105,29 @@ import 'get_service_account_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elb_gethostedzoneid" "main" {
+/// }
+///
+/// resource "aws_route53_record" "www" {
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
+///   aliases {
+///     name                   = mainAwsElb.dnsName
+///     zone_id                = data.aws_elb_gethostedzoneid.main.id
+///     evaluate_target_health = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +139,8 @@ import 'get_service_account_result.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,6 +276,24 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_elb_getloadbalancer" "test" {
+///   name = var.lbName
+/// }
+///
+/// variable "lbName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -261,8 +302,8 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elb.ElbFunctions;
 /// import com.pulumi.aws.elb.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,20 +369,20 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///     bucket: elbLogs.id,
 ///     acl: "private",
 /// });
-/// const allowElbLogging = pulumi.all([main, elbLogs.arn]).apply(([main, arn]) => aws.iam.getPolicyDocumentOutput({
+/// const allowElbLogging = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
 ///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
-///             identifiers: [main.arn],
+///             identifiers: [main.then(main => main.arn)],
 ///         }],
 ///         actions: ["s3:PutObject"],
-///         resources: [`${arn}/AWSLogs/*`],
+///         resources: [pulumi.interpolate`${elbLogs.arn}/AWSLogs/*`],
 ///     }],
-/// }));
+/// });
 /// const allowElbLoggingBucketPolicy = new aws.s3.BucketPolicy("allow_elb_logging", {
 ///     bucket: elbLogs.id,
-///     policy: allowElbLogging.apply(allowElbLogging => allowElbLogging.json),
+///     policy: allowElbLogging.json,
 /// });
 /// const bar = new aws.elb.LoadBalancer("bar", {
 ///     name: "my-foobar-elb",
@@ -367,15 +408,15 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// elb_logs_acl = aws.s3.BucketAcl("elb_logs_acl",
 ///     bucket=elb_logs.id,
 ///     acl="private")
-/// allow_elb_logging = elb_logs.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
+/// allow_elb_logging = aws.iam.get_policy_document_output(statements=[{
 ///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [main.arn],
 ///     }],
 ///     "actions": ["s3:PutObject"],
-///     "resources": [f"{arn}/AWSLogs/*"],
-/// }]))
+///     "resources": [elb_logs.arn.apply(lambda arn: f"{arn}/AWSLogs/*")],
+/// }])
 /// allow_elb_logging_bucket_policy = aws.s3.BucketPolicy("allow_elb_logging",
 ///     bucket=elb_logs.id,
 ///     policy=allow_elb_logging.json)
@@ -418,12 +459,12 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Type = "AWS",
 ///                         Identifiers = new[]
@@ -487,81 +528,128 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// main, err := elb.GetServiceAccount(ctx, &elb.GetServiceAccountArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		main, err := elb.GetServiceAccount(ctx, &elb.GetServiceAccountArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		elbLogs, err := s3.NewBucket(ctx, "elb_logs", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("my-elb-tf-test-bucket"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = s3.NewBucketAcl(ctx, "elb_logs_acl", &s3.BucketAclArgs{
+/// 			Bucket: elbLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Acl:    pulumi.String("private"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		allowElbLogging := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Effect: pulumi.String("Allow"),
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String(main.Arn),
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						elbLogs.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/AWSLogs/*", arn), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = s3.NewBucketPolicy(ctx, "allow_elb_logging", &s3.BucketPolicyArgs{
+/// 			Bucket: elbLogs.ID().ToIDOutput().ToStringOutput(),
+/// 			Policy: allowElbLogging.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = elb.NewLoadBalancer(ctx, "bar", &elb.LoadBalancerArgs{
+/// 			Name: pulumi.String("my-foobar-elb"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-west-2a"),
+/// 			},
+/// 			AccessLogs: &elb.LoadBalancerAccessLogsArgs{
+/// 				Bucket:   elbLogs.ID().ToIDOutput().ToStringOutput(),
+/// 				Interval: pulumi.Int(5),
+/// 			},
+/// 			Listeners: elb.LoadBalancerListenerArray{
+/// 				&elb.LoadBalancerListenerArgs{
+/// 					InstancePort:     pulumi.Int(8000),
+/// 					InstanceProtocol: pulumi.String("http"),
+/// 					LbPort:           pulumi.Int(80),
+/// 					LbProtocol:       pulumi.String("http"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// elbLogs, err := s3.NewBucket(ctx, "elb_logs", &s3.BucketArgs{
-/// Bucket: pulumi.String("my-elb-tf-test-bucket"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// _, err = s3.NewBucketAcl(ctx, "elb_logs_acl", &s3.BucketAclArgs{
-/// Bucket: elbLogs.ID(),
-/// Acl: pulumi.String("private"),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_elb_getserviceaccount" "main" {
 /// }
-/// allowElbLogging := elbLogs.Arn.ApplyT(func(arn string) (iam.GetPolicyDocumentResult, error) {
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement([]iam.GetPolicyDocumentStatement{
-/// {
-/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Type: "AWS",
-/// Identifiers: interface{}{
-/// main.Arn,
-/// },
-/// },
-/// },
-/// Actions: []string{
-/// "s3:PutObject",
-/// },
-/// Resources: []string{
-/// fmt.Sprintf("%v/AWSLogs/*", arn),
-/// },
-/// },
-/// }),
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = s3.NewBucketPolicy(ctx, "allow_elb_logging", &s3.BucketPolicyArgs{
-/// Bucket: elbLogs.ID(),
-/// Policy: pulumi.String(allowElbLogging.ApplyT(func(allowElbLogging iam.GetPolicyDocumentResult) (*string, error) {
-/// return &allowElbLogging.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "allowElbLogging" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = [data.aws_elb_getserviceaccount.main.arn]
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.elb_logs.arn}/AWSLogs/*"]
+///   }
 /// }
-/// _, err = elb.NewLoadBalancer(ctx, "bar", &elb.LoadBalancerArgs{
-/// Name: pulumi.String("my-foobar-elb"),
-/// AvailabilityZones: pulumi.StringArray{
-/// pulumi.String("us-west-2a"),
-/// },
-/// AccessLogs: &elb.LoadBalancerAccessLogsArgs{
-/// Bucket: elbLogs.ID(),
-/// Interval: pulumi.Int(5),
-/// },
-/// Listeners: elb.LoadBalancerListenerArray{
-/// &elb.LoadBalancerListenerArgs{
-/// InstancePort: pulumi.Int(8000),
-/// InstanceProtocol: pulumi.String("http"),
-/// LbPort: pulumi.Int(80),
-/// LbProtocol: pulumi.String("http"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_s3_bucket" "elb_logs" {
+///   bucket = "my-elb-tf-test-bucket"
 /// }
-/// return nil
-/// })
+/// resource "aws_s3_bucketacl" "elb_logs_acl" {
+///   bucket = aws_s3_bucket.elb_logs.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucketpolicy" "allow_elb_logging" {
+///   bucket = aws_s3_bucket.elb_logs.id
+///   policy = data.aws_iam_getpolicydocument.allowElbLogging.json
+/// }
+/// resource "aws_elb_loadbalancer" "bar" {
+///   name               = "my-foobar-elb"
+///   availability_zones = ["us-west-2a"]
+///   access_logs = {
+///     bucket   = aws_s3_bucket.elb_logs.id
+///     interval = 5
+///   }
+///   listeners {
+///     instance_port     = 8000
+///     instance_protocol = "http"
+///     lb_port           = 80
+///     lb_protocol       = "http"
+///   }
 /// }
 /// ```
 /// ```java
@@ -578,14 +666,16 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.elb.LoadBalancer;
 /// import com.pulumi.aws.elb.LoadBalancerArgs;
 /// import com.pulumi.aws.elb.inputs.LoadBalancerAccessLogsArgs;
 /// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -609,7 +699,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///             .acl("private")
 ///             .build());
 ///
-///         final var allowElbLogging = elbLogs.arn().applyValue(_arn -> IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         final var allowElbLogging = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
@@ -617,13 +707,13 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///                     .identifiers(main.arn())
 ///                     .build())
 ///                 .actions("s3:PutObject")
-///                 .resources(String.format("%s/AWSLogs/*", _arn))
+///                 .resources(elbLogs.arn().applyValue(_arn -> String.format("%s/AWSLogs/*", _arn)))
 ///                 .build())
-///             .build()));
+///             .build());
 ///
 ///         var allowElbLoggingBucketPolicy = new BucketPolicy("allowElbLoggingBucketPolicy", BucketPolicyArgs.builder()
 ///             .bucket(elbLogs.id())
-///             .policy(allowElbLogging.json())
+///             .policy(allowElbLogging.applyValue(_allowElbLogging -> _allowElbLogging.json()))
 ///             .build());
 ///
 ///         var bar = new LoadBalancer("bar", LoadBalancerArgs.builder()

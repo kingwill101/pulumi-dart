@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib {
+  /// Maximum total accelerator memory, in MiB.
   final pulumi.Input<int>? max;
+  /// Minimum total accelerator memory, in MiB.
   final pulumi.Input<int>? min;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib].
-  /// [max] Optional.
-  /// [min] Optional.
+  /// [max] Maximum total accelerator memory, in MiB.
+  /// [min] Minimum total accelerator memory, in MiB.
   const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib({
     this.max,
     this.min,
@@ -28,4 +30,3 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
     );
   }
 }
-

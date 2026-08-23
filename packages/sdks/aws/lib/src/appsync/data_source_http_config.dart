@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_http_config_authorization_config.dart';
 
 class DataSourceHttpConfig {
-  /// Authorization configuration in case the HTTP endpoint requires authorization. See `authorization_config` Block for details.
+  /// Authorization configuration in case the HTTP endpoint requires authorization. See `authorizationConfig` Block for details.
   final pulumi.Input<DataSourceHttpConfigAuthorizationConfig>? authorizationConfig;
   /// HTTP URL.
   final pulumi.Input<String> endpoint;
 
   /// Creates a new [DataSourceHttpConfig].
-  /// [authorizationConfig] Authorization configuration in case the HTTP endpoint requires authorization. See `authorization_config` Block for details.
+  /// [authorizationConfig] Authorization configuration in case the HTTP endpoint requires authorization. See `authorizationConfig` Block for details.
   /// [endpoint] HTTP URL.
   const DataSourceHttpConfig({
     this.authorizationConfig,
@@ -31,4 +31,3 @@ class DataSourceHttpConfig {
     );
   }
 }
-

@@ -96,7 +96,7 @@ import 'invite_accepter_state.dart';
 /// 		}
 /// 		memberMember, err := guardduty.NewMember(ctx, "member", &guardduty.MemberArgs{
 /// 			AccountId:  memberDetector.AccountId,
-/// 			DetectorId: primary.ID(),
+/// 			DetectorId: primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Email:      pulumi.String("required@example.com"),
 /// 			Invite:     pulumi.Bool(true),
 /// 		})
@@ -104,7 +104,7 @@ import 'invite_accepter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewInviteAccepter(ctx, "member", &guardduty.InviteAccepterArgs{
-/// 			DetectorId:      memberDetector.ID(),
+/// 			DetectorId:      memberDetector.ID().ToIDOutput().ToStringOutput(),
 /// 			MasterAccountId: primary.AccountId,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			memberMember,
@@ -114,6 +114,31 @@ import 'invite_accepter_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_guardduty_inviteaccepter" "member" {
+///   depends_on        = [aws_guardduty_member.member]
+///   detector_id       = aws_guardduty_detector.member.id
+///   master_account_id = aws_guardduty_detector.primary.account_id
+/// }
+/// resource "aws_guardduty_member" "member" {
+///   account_id  = aws_guardduty_detector.member.account_id
+///   detector_id = aws_guardduty_detector.primary.id
+///   email       = "required@example.com"
+///   invite      = true
+/// }
+/// resource "aws_guardduty_detector" "primary" {
+/// }
+/// resource "aws_guardduty_detector" "member" {
 /// }
 /// ```
 /// ```java
@@ -128,8 +153,8 @@ import 'invite_accepter_state.dart';
 /// import com.pulumi.aws.guardduty.InviteAccepter;
 /// import com.pulumi.aws.guardduty.InviteAccepterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

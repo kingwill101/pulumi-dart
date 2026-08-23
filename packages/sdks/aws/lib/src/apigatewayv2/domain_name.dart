@@ -86,6 +86,24 @@ import 'domain_name_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_domainname" "example" {
+///   domain_name = "ws-api.example.com"
+///   domain_name_configuration = {
+///     certificate_arn = exampleAwsAcmCertificate.arn
+///     endpoint_type   = "REGIONAL"
+///     security_policy = "TLS_1_2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'domain_name_state.dart';
 /// import com.pulumi.aws.apigatewayv2.DomainName;
 /// import com.pulumi.aws.apigatewayv2.DomainNameArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.DomainNameDomainNameConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,8 +171,8 @@ import 'domain_name_state.dart';
 ///     type: aws.route53.RecordType.A,
 ///     zoneId: exampleAwsRoute53Zone.zoneId,
 ///     aliases: [{
-///         name: example.domainNameConfiguration.apply(domainNameConfiguration => domainNameConfiguration.targetDomainName),
-///         zoneId: example.domainNameConfiguration.apply(domainNameConfiguration => domainNameConfiguration.hostedZoneId),
+///         name: example.domainNameConfiguration.targetDomainName,
+///         zoneId: example.domainNameConfiguration.hostedZoneId,
 ///         evaluateTargetHealth: false,
 ///     }],
 /// });
@@ -245,12 +263,8 @@ import 'domain_name_state.dart';
 /// 			ZoneId: pulumi.Any(exampleAwsRoute53Zone.ZoneId),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
-/// 					Name: example.DomainNameConfiguration.ApplyT(func(domainNameConfiguration apigatewayv2.DomainNameDomainNameConfiguration) (*string, error) {
-/// 						return &domainNameConfiguration.TargetDomainName, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ZoneId: example.DomainNameConfiguration.ApplyT(func(domainNameConfiguration apigatewayv2.DomainNameDomainNameConfiguration) (*string, error) {
-/// 						return &domainNameConfiguration.HostedZoneId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					Name:                 example.DomainNameConfiguration.TargetDomainName(),
+/// 					ZoneId:               example.DomainNameConfiguration.HostedZoneId(),
 /// 					EvaluateTargetHealth: pulumi.Bool(false),
 /// 				},
 /// 			},
@@ -260,6 +274,34 @@ import 'domain_name_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_domainname" "example" {
+///   domain_name = "http-api.example.com"
+///   domain_name_configuration = {
+///     certificate_arn = exampleAwsAcmCertificate.arn
+///     endpoint_type   = "REGIONAL"
+///     security_policy = "TLS_1_2"
+///   }
+/// }
+/// resource "aws_route53_record" "example" {
+///   name    = aws_apigatewayv2_domainname.example.domain_name
+///   type    = "A"
+///   zone_id = exampleAwsRoute53Zone.zoneId
+///   aliases {
+///     name                   = aws_apigatewayv2_domainname.example.domain_name_configuration.target_domain_name
+///     zone_id                = aws_apigatewayv2_domainname.example.domain_name_configuration.hosted_zone_id
+///     evaluate_target_health = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -274,8 +316,8 @@ import 'domain_name_state.dart';
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.route53.inputs.RecordAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,9 +398,9 @@ class DomainName extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Mode to route traffic for the domain name. Valid values: `API_MAPPING_ONLY`, `ROUTING_RULE_ONLY`, `ROUTING_RULE_THEN_API_MAPPING`.
   late final pulumi.Output<String> routingMode;
-  /// Map of tags to assign to the domain name. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the domain name. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DomainName].

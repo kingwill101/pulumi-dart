@@ -7,6 +7,7 @@ import 'get_image_state_change_reason.dart';
 
 /// Result data returned by getImage.
 class GetImageResult {
+  /// Application object that contains the following:
   final List<GetImageApplication> applications;
   /// Version of the AppStream 2.0 agent to use for instances that are launched from this image. Has a maximum length of 100 characters.
   final String appstreamAgentVersion;
@@ -20,47 +21,46 @@ class GetImageResult {
   final String description;
   /// Image name to display.
   final String displayName;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  /// The name of the image builder that was used to created the private image. If the image is sharedthen the value is null.
+  /// Name of the image builder that was used to created the private image. If the image is shared then the value is null.
   final String imageBuilderName;
-  /// Boolean to indicate whether an image builder can be launched from this image.
-  /// * `image error` - Resource error object that describes the error containing the following:
+  /// Whether an image builder can be launched from this image.
   final bool imageBuilderSupported;
-  /// List of strings describing the image permissions containing the following:
+  /// List of objects describing the image permissions containing the following:
   final List<GetImageImagePermission> imagePermissions;
   final bool? mostRecent;
+  /// Name of the application.
   final String name;
   final String? nameRegex;
   /// Operating system platform of the image. Values will be from: WINDOWS | WINDOWS_SERVER_2016 | WINDOWS_SERVER_2019 | WINDOWS_SERVER_2022 | AMAZON_LINUX2
   final String platform;
+  /// Release date of base image if public. For private images, it is the release date of the base image that it was created from.
   final String publicBaseImageReleasedDate;
   final String region;
   /// Current state of image. Image starts in PENDING state which changes to AVAILABLE if creation passes and FAILED if it fails. Values will be from: PENDING | AVAILABLE | FAILED | COPYING | DELETING | CREATING | IMPORTING.
   final String state;
+  /// Reason for the last state change.
   final List<GetImageStateChangeReason> stateChangeReasons;
   final String? type;
 
   /// Creates a new [GetImageResult].
-  /// [applications] Required.
+  /// [applications] Application object that contains the following:
   /// [appstreamAgentVersion] Version of the AppStream 2.0 agent to use for instances that are launched from this image. Has a maximum length of 100 characters.
   /// [arn] ARN of the image.
   /// [baseImageArn] ARN of the image from which the image was created.
   /// [createdTime] Time at which this image was created.
   /// [description] Description of image.
   /// [displayName] Image name to display.
-  /// [id] The provider-assigned unique ID for this managed resource.
-  /// [imageBuilderName] The name of the image builder that was used to created the private image. If the image is sharedthen the value is null.
-  /// [imageBuilderSupported] Boolean to indicate whether an image builder can be launched from this image.
-  /// [imagePermissions] List of strings describing the image permissions containing the following:
+  /// [imageBuilderName] Name of the image builder that was used to created the private image. If the image is shared then the value is null.
+  /// [imageBuilderSupported] Whether an image builder can be launched from this image.
+  /// [imagePermissions] List of objects describing the image permissions containing the following:
   /// [mostRecent] Optional.
-  /// [name] Required.
+  /// [name] Name of the application.
   /// [nameRegex] Optional.
   /// [platform] Operating system platform of the image. Values will be from: WINDOWS | WINDOWS_SERVER_2016 | WINDOWS_SERVER_2019 | WINDOWS_SERVER_2022 | AMAZON_LINUX2
-  /// [publicBaseImageReleasedDate] Required.
+  /// [publicBaseImageReleasedDate] Release date of base image if public. For private images, it is the release date of the base image that it was created from.
   /// [region] Required.
   /// [state] Current state of image. Image starts in PENDING state which changes to AVAILABLE if creation passes and FAILED if it fails. Values will be from: PENDING | AVAILABLE | FAILED | COPYING | DELETING | CREATING | IMPORTING.
-  /// [stateChangeReasons] Required.
+  /// [stateChangeReasons] Reason for the last state change.
   /// [type] Optional.
   const GetImageResult({
     required this.applications,
@@ -70,7 +70,6 @@ class GetImageResult {
     required this.createdTime,
     required this.description,
     required this.displayName,
-    required this.id,
     required this.imageBuilderName,
     required this.imageBuilderSupported,
     required this.imagePermissions,
@@ -94,7 +93,6 @@ class GetImageResult {
       'createdTime': createdTime,
       'description': description,
       'displayName': displayName,
-      'id': id,
       'imageBuilderName': imageBuilderName,
       'imageBuilderSupported': imageBuilderSupported,
       'imagePermissions': pulumi.Input.encodeList<GetImageImagePermission, Map<String, dynamic>>(imagePermissions, (value) => value.toMap()),
@@ -119,7 +117,6 @@ class GetImageResult {
       createdTime: map['createdTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      id: map['id'] as String,
       imageBuilderName: map['imageBuilderName'] as String,
       imageBuilderSupported: map['imageBuilderSupported'] as bool,
       imagePermissions: pulumi.Input.decodeList<GetImageImagePermission>(map['imagePermissions']!, (value) => GetImageImagePermission.fromMap((value as Map).cast<String, dynamic>())),
@@ -135,4 +132,3 @@ class GetImageResult {
     );
   }
 }
-

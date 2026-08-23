@@ -30,4 +30,3 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessC
     );
   }
 }
-

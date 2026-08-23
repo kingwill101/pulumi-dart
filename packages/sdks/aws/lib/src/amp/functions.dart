@@ -53,6 +53,18 @@ import 'get_workspaces_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_amp_getdefaultscraperconfiguration" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +73,8 @@ import 'get_workspaces_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.amp.AmpFunctions;
 /// import com.pulumi.aws.amp.inputs.GetDefaultScraperConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,6 +170,19 @@ Future<GetDefaultScraperConfigurationResult> getDefaultScraperConfiguration(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_amp_getworkspace" "example" {
+///   workspace_id = "ws-41det8a1-2c67-6a1a-9381-9b83d3d78ef7"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +191,8 @@ Future<GetDefaultScraperConfigurationResult> getDefaultScraperConfiguration(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.amp.AmpFunctions;
 /// import com.pulumi.aws.amp.inputs.GetWorkspaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,6 +283,18 @@ Future<GetWorkspaceResult> getWorkspace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_amp_getworkspaces" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +303,8 @@ Future<GetWorkspaceResult> getWorkspace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.amp.AmpFunctions;
 /// import com.pulumi.aws.amp.inputs.GetWorkspacesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,7 +332,7 @@ Future<GetWorkspaceResult> getWorkspace(
 ///
 ///
 /// The following example filters the workspaces by alias. Only the workspaces with
-/// aliases that begin with the value of `alias_prefix` will be returned:
+/// aliases that begin with the value of `aliasPrefix` will be returned:
 ///
 ///
 /// ```typescript
@@ -347,6 +384,19 @@ Future<GetWorkspaceResult> getWorkspace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_amp_getworkspaces" "example" {
+///   alias_prefix = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +405,8 @@ Future<GetWorkspaceResult> getWorkspace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.amp.AmpFunctions;
 /// import com.pulumi.aws.amp.inputs.GetWorkspacesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

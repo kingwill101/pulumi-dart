@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement.dart';
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement {
-  /// The statements to combine.
+  /// The statements to combine with `AND` logic. You can use any statements that can be nested. See Statement above for details.
   final pulumi.Input<List<RuleGroupRuleStatement>> statements;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement].
-  /// [statements] The statements to combine.
+  /// [statements] The statements to combine with `AND` logic. You can use any statements that can be nested. See Statement above for details.
   const RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement({
     required this.statements,
   });
@@ -25,4 +25,3 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement {
     );
   }
 }
-

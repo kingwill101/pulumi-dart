@@ -54,4 +54,3 @@ class CrawlerS3Target {
     );
   }
 }
-

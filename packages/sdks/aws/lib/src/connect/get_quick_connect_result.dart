@@ -13,7 +13,7 @@ class GetQuickConnectResult {
   final String id;
   final String instanceId;
   final String name;
-  /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
+  /// A block that defines the configuration information for the Quick Connect: `quickConnectType` and one of `phoneConfig`, `queueConfig`, `userConfig` . The Quick Connect Config block is documented below.
   final List<GetQuickConnectQuickConnectConfig> quickConnectConfigs;
   /// Identifier for the Quick Connect.
   final String quickConnectId;
@@ -27,7 +27,7 @@ class GetQuickConnectResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Required.
   /// [name] Required.
-  /// [quickConnectConfigs] A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
+  /// [quickConnectConfigs] A block that defines the configuration information for the Quick Connect: `quickConnectType` and one of `phoneConfig`, `queueConfig`, `userConfig` . The Quick Connect Config block is documented below.
   /// [quickConnectId] Identifier for the Quick Connect.
   /// [region] Required.
   /// [tags] Map of tags to assign to the Quick Connect.
@@ -71,4 +71,3 @@ class GetQuickConnectResult {
     );
   }
 }
-

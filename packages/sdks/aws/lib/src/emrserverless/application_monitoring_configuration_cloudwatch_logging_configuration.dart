@@ -12,7 +12,7 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
   final pulumi.Input<String>? logGroupName;
   /// Prefix for the CloudWatch log stream name.
   final pulumi.Input<String>? logStreamNamePrefix;
-  /// The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See log_types for more details.
+  /// The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See logTypes for more details.
   final pulumi.Input<List<ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType>>? logTypes;
 
   /// Creates a new [ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration].
@@ -20,7 +20,7 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
   /// [encryptionKeyArn] The AWS Key Management Service (KMS) key ARN to encrypt the logs that you store in CloudWatch Logs.
   /// [logGroupName] The name of the log group in Amazon CloudWatch Logs where you want to publish your logs.
   /// [logStreamNamePrefix] Prefix for the CloudWatch log stream name.
-  /// [logTypes] The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See log_types for more details.
+  /// [logTypes] The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See logTypes for more details.
   const ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration({
     required this.enabled,
     this.encryptionKeyArn,
@@ -49,4 +49,3 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
     );
   }
 }
-

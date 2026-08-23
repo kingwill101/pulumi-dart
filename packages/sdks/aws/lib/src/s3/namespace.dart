@@ -76,6 +76,23 @@ import 'namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3tables_namespace" "example" {
+///   namespace        = "example_namespace"
+///   table_bucket_arn = aws_s3tables_tablebucket.example.arn
+/// }
+/// resource "aws_s3tables_tablebucket" "example" {
+///   name = "example-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'namespace_state.dart';
 /// import com.pulumi.aws.s3tables.TableBucketArgs;
 /// import com.pulumi.aws.s3tables.Namespace;
 /// import com.pulumi.aws.s3tables.NamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,7 +145,7 @@ import 'namespace_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Tables Namespace using the `table_bucket_arn` and the value of `namespace`, separated by a semicolon (`;`). For example:
+/// Using `pulumi import`, import S3 Tables Namespace using the `tableBucketArn` and the value of `namespace`, separated by a semicolon (`;`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3tables/namespace:Namespace example 'arn:aws:s3tables:us-west-2:123456789012:bucket/example-bucket;example-namespace'
@@ -138,9 +155,7 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// Account ID of the account that created the namespace.
   late final pulumi.Output<String> createdBy;
-  /// Name of the namespace.
-  /// Must be between 1 and 255 characters in length.
-  /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
+  /// Name of the namespace. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   late final pulumi.Output<String> namespace;
   /// Account ID of the account that owns the namespace.
   late final pulumi.Output<String> ownerAccountId;

@@ -80,6 +80,23 @@ import 'bot_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_botassociation" "example" {
+///   instance_id = exampleAwsConnectInstance.id
+///   lex_bot = {
+///     lex_region = "us-west-2"
+///     name       = "Test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +106,8 @@ import 'bot_association_state.dart';
 /// import com.pulumi.aws.connect.BotAssociation;
 /// import com.pulumi.aws.connect.BotAssociationArgs;
 /// import com.pulumi.aws.connect.inputs.BotAssociationLexBotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,6 +376,56 @@ import 'bot_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_lex_intent" "example" {
+///   create_version = true
+///   name           = "connect_lex_intent"
+///   fulfillment_activity = {
+///     type = "ReturnIntent"
+///   }
+///   sample_utterances = ["I would like to pick up flowers."]
+/// }
+/// resource "aws_lex_bot" "example" {
+///   abort_statement = {
+///     messages = [{
+///       "content"     = "Sorry, I am not able to assist at this time."
+///       "contentType" = "PlainText"
+///     }]
+///   }
+///   clarification_prompt = {
+///     max_attempts = 2
+///     messages = [{
+///       "content"     = "I didn't understand you, what would you like to do?"
+///       "contentType" = "PlainText"
+///     }]
+///   }
+///   intents {
+///     intent_name    = aws_lex_intent.example.name
+///     intent_version = "1"
+///   }
+///   child_directed   = false
+///   name             = "connect_lex_bot"
+///   process_behavior = "BUILD"
+/// }
+/// resource "aws_connect_botassociation" "example" {
+///   instance_id = exampleAwsConnectInstance.id
+///   lex_bot = {
+///     lex_region = data.aws_getregion.current.region
+///     name       = aws_lex_bot.example.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -373,13 +440,15 @@ import 'bot_association_state.dart';
 /// import com.pulumi.aws.lex.Bot;
 /// import com.pulumi.aws.lex.BotArgs;
 /// import com.pulumi.aws.lex.inputs.BotAbortStatementArgs;
+/// import com.pulumi.aws.lex.inputs.BotAbortStatementMessageArgs;
 /// import com.pulumi.aws.lex.inputs.BotClarificationPromptArgs;
+/// import com.pulumi.aws.lex.inputs.BotClarificationPromptMessageArgs;
 /// import com.pulumi.aws.lex.inputs.BotIntentArgs;
 /// import com.pulumi.aws.connect.BotAssociation;
 /// import com.pulumi.aws.connect.BotAssociationArgs;
 /// import com.pulumi.aws.connect.inputs.BotAssociationLexBotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

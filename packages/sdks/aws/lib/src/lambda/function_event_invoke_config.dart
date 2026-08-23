@@ -187,6 +187,46 @@ import 'function_event_invoke_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # SQS queue for failed invocations
+/// resource "aws_sqs_queue" "dlq" {
+///   name = "lambda-dlq"
+///   tags = {
+///     "Environment" = "production"
+///     "Purpose"     = "lambda-error-handling"
+///   }
+/// }
+/// # SNS topic for successful invocations
+/// resource "aws_sns_topic" "success" {
+///   name = "lambda-success-notifications"
+///   tags = {
+///     "Environment" = "production"
+///     "Purpose"     = "lambda-success-notifications"
+///   }
+/// }
+/// # Complete event invoke configuration
+/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   maximum_event_age_in_seconds = 300 # 5 minutes
+///   maximum_retry_attempts       = 1 # Retry once on failure
+///   destination_config = {
+///     on_failure = {
+///       destination = aws_sqs_queue.dlq.arn
+///     }
+///     on_success = {
+///       destination = aws_sns_topic.success.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +242,8 @@ import 'function_event_invoke_config_state.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnSuccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,6 +385,21 @@ import 'function_event_invoke_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   maximum_event_age_in_seconds = 60 # 1 minute - fail fast
+///   maximum_retry_attempts       = 0 # No retries
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -353,8 +408,8 @@ import 'function_event_invoke_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.FunctionEventInvokeConfig;
 /// import com.pulumi.aws.lambda.FunctionEventInvokeConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -501,6 +556,33 @@ import 'function_event_invoke_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_alias" "example" {
+///   name             = "production"
+///   description      = "Production alias"
+///   function_name    = exampleAwsLambdaFunction.functionName
+///   function_version = exampleAwsLambdaFunction.version
+/// }
+/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   qualifier                    = aws_lambda_alias.example.name
+///   maximum_event_age_in_seconds = 1800 # 30 minutes for production
+///   maximum_retry_attempts       = 2 # Default retry behavior
+///   destination_config = {
+///     on_failure = {
+///       destination = productionDlq.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -513,8 +595,8 @@ import 'function_event_invoke_config_state.dart';
 /// import com.pulumi.aws.lambda.FunctionEventInvokeConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -671,6 +753,30 @@ import 'function_event_invoke_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   qualifier                    = exampleAwsLambdaFunction.version
+///   maximum_event_age_in_seconds = 21600 # 6 hours maximum
+///   maximum_retry_attempts       = 2
+///   destination_config = {
+///     on_failure = {
+///       destination = versionDlq.arn
+///     }
+///     on_success = {
+///       destination = versionSuccess.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -682,8 +788,8 @@ import 'function_event_invoke_config_state.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnSuccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,6 +923,27 @@ import 'function_event_invoke_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   qualifier                    = "$LATEST"
+///   maximum_event_age_in_seconds = 120 # 2 minutes
+///   maximum_retry_attempts       = 0 # No retries in development
+///   destination_config = {
+///     on_failure = {
+///       destination = devDlq.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -827,8 +954,8 @@ import 'function_event_invoke_config_state.dart';
 /// import com.pulumi.aws.lambda.FunctionEventInvokeConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -994,6 +1121,35 @@ import 'function_event_invoke_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # S3 bucket for archiving successful events
+/// resource "aws_s3_bucket" "lambda_success_archive" {
+///   bucket ="lambda-success-archive-${bucketSuffix.hex}"
+/// }
+/// # EventBridge custom bus for failed events
+/// resource "aws_cloudwatch_eventbus" "lambda_failures" {
+///   name = "lambda-failure-events"
+/// }
+/// resource "aws_lambda_functioneventinvokeconfig" "example" {
+///   function_name = exampleAwsLambdaFunction.functionName
+///   destination_config = {
+///     on_failure = {
+///       destination = aws_cloudwatch_eventbus.lambda_failures.arn
+///     }
+///     on_success = {
+///       destination = aws_s3_bucket.lambda_success_archive.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1009,8 +1165,8 @@ import 'function_event_invoke_config_state.dart';
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs;
 /// import com.pulumi.aws.lambda.inputs.FunctionEventInvokeConfigDestinationConfigOnSuccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

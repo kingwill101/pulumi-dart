@@ -42,4 +42,3 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource {
     );
   }
 }
-

@@ -13,6 +13,7 @@ class TableBucketReplicationState {
   final pulumi.Input<TableBucketReplicationRule>? rule;
   /// ARN referencing the Table Bucket that owns this replication configuration.
   final pulumi.Input<String>? tableBucketArn;
+  /// Version token of the replication configuration.
   final pulumi.Input<String>? versionToken;
 
   /// Creates a new [TableBucketReplicationState].
@@ -20,7 +21,7 @@ class TableBucketReplicationState {
   /// [role] ARN referencing the IAM role assumed by S3 when replicating tables in this bucket.
   /// [rule] Replication rules. See Rule below for more details.
   /// [tableBucketArn] ARN referencing the Table Bucket that owns this replication configuration.
-  /// [versionToken] Optional.
+  /// [versionToken] Version token of the replication configuration.
   const TableBucketReplicationState({
     this.region,
     this.role,
@@ -49,4 +50,3 @@ class TableBucketReplicationState {
     );
   }
 }
-

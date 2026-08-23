@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_data_protection_config_data_protection.dart';
 
 class WebAclDataProtectionConfig {
-  /// A block for data protection configurations for specific web request field types. See `data_protection` block for details.
+  /// A block for data protection configurations for specific web request field types. See `dataProtection` block for details.
   final pulumi.Input<List<WebAclDataProtectionConfigDataProtection>>? dataProtections;
 
   /// Creates a new [WebAclDataProtectionConfig].
-  /// [dataProtections] A block for data protection configurations for specific web request field types. See `data_protection` block for details.
+  /// [dataProtections] A block for data protection configurations for specific web request field types. See `dataProtection` block for details.
   const WebAclDataProtectionConfig({
     this.dataProtections,
   });
@@ -25,4 +25,3 @@ class WebAclDataProtectionConfig {
     );
   }
 }
-

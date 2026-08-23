@@ -149,6 +149,36 @@ import 'infrastructure_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_imagebuilder_infrastructureconfiguration" "example" {
+///   description                   = "example description"
+///   instance_profile_name         = exampleAwsIamInstanceProfile.name
+///   instance_types                = ["t2.nano", "t3.micro"]
+///   key_pair                      = exampleAwsKeyPair.keyName
+///   name                          = "example"
+///   security_group_ids            = [exampleAwsSecurityGroup.id]
+///   sns_topic_arn                 = exampleAwsSnsTopic.arn
+///   subnet_id                     = main.id
+///   terminate_instance_on_failure = true
+///   logging = {
+///     s3_logs = {
+///       s3_bucket_name = exampleAwsS3Bucket.bucket
+///       s3_key_prefix  = "logs"
+///     }
+///   }
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +189,8 @@ import 'infrastructure_configuration_state.dart';
 /// import com.pulumi.aws.imagebuilder.InfrastructureConfigurationArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.InfrastructureConfigurationLoggingArgs;
 /// import com.pulumi.aws.imagebuilder.inputs.InfrastructureConfigurationLoggingS3LogsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,11 +299,11 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> securityGroupIds;
   /// Amazon Resource Name (ARN) of SNS Topic.
   late final pulumi.Output<String?> snsTopicArn;
-  /// EC2 Subnet identifier. Also requires `security_group_ids` argument.
+  /// EC2 Subnet identifier. Also requires `securityGroupIds` argument.
   late final pulumi.Output<String?> subnetId;
-  /// Key-value map of resource tags to assign to the configuration. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags to assign to the configuration. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
   late final pulumi.Output<bool?> terminateInstanceOnFailure;

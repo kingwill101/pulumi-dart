@@ -6,7 +6,7 @@ import 'vpc_endpoint_association_timeouts.dart';
 
 /// Manages a firewall endpoint for an AWS Network Firewall firewall.
 ///
-/// Use `aws.networkfirewall.VpcEndpointAssociation` to establish new firewall endpoints in any Availability Zone where the firewall is already being used. The first use of a firewall in an Availability Zone must be defined by `aws.networkfirewall.Firewall` resource and `subnet_mapping` argument.
+/// Use `aws.networkfirewall.VpcEndpointAssociation` to establish new firewall endpoints in any Availability Zone where the firewall is already being used. The first use of a firewall in an Availability Zone must be defined by `aws.networkfirewall.Firewall` resource and `subnetMapping` argument.
 ///
 /// ## Example Usage
 ///
@@ -93,6 +93,26 @@ import 'vpc_endpoint_association_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_vpcendpointassociation" "example" {
+///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
+///   vpc_id       = exampleAwsVpc.id
+///   subnet_mapping = {
+///     subnet_id = exampleAwsSubnet.id
+///   }
+///   tags = {
+///     "Name" = "example endpoint"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +122,8 @@ import 'vpc_endpoint_association_timeouts.dart';
 /// import com.pulumi.aws.networkfirewall.VpcEndpointAssociation;
 /// import com.pulumi.aws.networkfirewall.VpcEndpointAssociationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.VpcEndpointAssociationSubnetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,7 +163,7 @@ import 'vpc_endpoint_association_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Network Firewall VPC Endpoint Association using the `vpc_endpoint_association_arn`. For example:
+/// Using `pulumi import`, import Network Firewall VPC Endpoint Association using the `vpcEndpointAssociationArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation example arn:aws:network-firewall:us-west-1:123456789012:vpc-endpoint-association/example
@@ -157,9 +177,9 @@ class VpcEndpointAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ID for a subnet that's used in an association with a firewall. See Subnet Mapping below for details.
   late final pulumi.Output<VpcEndpointAssociationSubnetMapping> subnetMapping;
-  /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcEndpointAssociationTimeouts?> timeouts;
   /// ARN of the VPC Endpoint Association.

@@ -15,7 +15,7 @@ class ServerlessClusterArgs {
   final pulumi.Input<String>? clusterName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// VPC configuration information. See below.
   final pulumi.Input<List<ServerlessClusterVpcConfig>> vpcConfigs;
@@ -24,7 +24,7 @@ class ServerlessClusterArgs {
   /// [clientAuthentication] Specifies client authentication information for the serverless cluster. See below.
   /// [clusterName] The name of the serverless cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfigs] VPC configuration information. See below.
   const ServerlessClusterArgs({
     required this.clientAuthentication,
@@ -54,4 +54,3 @@ class ServerlessClusterArgs {
     );
   }
 }
-

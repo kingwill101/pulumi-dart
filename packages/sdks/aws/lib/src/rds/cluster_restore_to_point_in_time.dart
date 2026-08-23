@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRestoreToPointInTime {
-  /// Date and time in UTC format to restore the database cluster to. Conflicts with `use_latest_restorable_time`.
+  /// Date and time in UTC format to restore the database cluster to. Conflicts with `useLatestRestorableTime`.
   final pulumi.Input<String>? restoreToTime;
   /// Type of restore to be performed.
   /// Valid options are `full-copy` (default) and `copy-on-write`.
@@ -12,15 +12,15 @@ class ClusterRestoreToPointInTime {
   final pulumi.Input<String>? sourceClusterIdentifier;
   /// Cluster resource ID of the source database cluster from which to restore. To be used for restoring a deleted cluster in the same account which still has a retained automatic backup available.
   final pulumi.Input<String>? sourceClusterResourceId;
-  /// Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with `restore_to_time`.
+  /// Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with `restoreToTime`.
   final pulumi.Input<bool>? useLatestRestorableTime;
 
   /// Creates a new [ClusterRestoreToPointInTime].
-  /// [restoreToTime] Date and time in UTC format to restore the database cluster to. Conflicts with `use_latest_restorable_time`.
+  /// [restoreToTime] Date and time in UTC format to restore the database cluster to. Conflicts with `useLatestRestorableTime`.
   /// [restoreType] Type of restore to be performed.
   /// [sourceClusterIdentifier] Identifier of the source database cluster from which to restore. When restoring from a cluster in another AWS account, the identifier is the ARN of that cluster.
   /// [sourceClusterResourceId] Cluster resource ID of the source database cluster from which to restore. To be used for restoring a deleted cluster in the same account which still has a retained automatic backup available.
-  /// [useLatestRestorableTime] Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with `restore_to_time`.
+  /// [useLatestRestorableTime] Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with `restoreToTime`.
   const ClusterRestoreToPointInTime({
     this.restoreToTime,
     this.restoreType,
@@ -49,4 +49,3 @@ class ClusterRestoreToPointInTime {
     );
   }
 }
-

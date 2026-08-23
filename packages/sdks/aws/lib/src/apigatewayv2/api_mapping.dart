@@ -68,6 +68,21 @@ import 'api_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_apimapping" "example" {
+///   api_id      = exampleAwsApigatewayv2Api.id
+///   domain_name = exampleAwsApigatewayv2DomainName.id
+///   stage       = exampleAwsApigatewayv2Stage.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'api_mapping_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.ApiMapping;
 /// import com.pulumi.aws.apigatewayv2.ApiMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,7 +134,7 @@ import 'api_mapping_state.dart';
 class ApiMapping extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
-  /// The API mapping key. Refer to [REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mappings.html), [HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mappings.html) or [WebSocket API](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-mappings.html).
+  /// API mapping key. Refer to [REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mappings.html), [HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mappings.html) or [WebSocket API](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-mappings.html).
   late final pulumi.Output<String?> apiMappingKey;
   /// Domain name. Use the `aws.apigatewayv2.DomainName` resource to configure a domain name.
   late final pulumi.Output<String> domainName;

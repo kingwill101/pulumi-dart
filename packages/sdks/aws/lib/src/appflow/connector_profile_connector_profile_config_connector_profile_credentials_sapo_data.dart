@@ -5,14 +5,14 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 import 'connector_profile_connector_profile_config_connector_profile_credentials_sapo_data_oauth_credentials.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData {
-  /// The SAPOData basic authentication credentials.
+  /// SAPOData basic authentication credentials. See `connector_profile_config.connector_profile_credentials.sapo_data.basic_auth_credentials` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials>? basicAuthCredentials;
-  /// The SAPOData OAuth type authentication credentials.
+  /// SAPOData OAuth type authentication credentials. See `connector_profile_config.connector_profile_credentials.sapo_data.oauth_credentials` Block for details.
   final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials>? oauthCredentials;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData].
-  /// [basicAuthCredentials] The SAPOData basic authentication credentials.
-  /// [oauthCredentials] The SAPOData OAuth type authentication credentials.
+  /// [basicAuthCredentials] SAPOData basic authentication credentials. See `connector_profile_config.connector_profile_credentials.sapo_data.basic_auth_credentials` Block for details.
+  /// [oauthCredentials] SAPOData OAuth type authentication credentials. See `connector_profile_config.connector_profile_credentials.sapo_data.oauth_credentials` Block for details.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData({
     this.basicAuthCredentials,
     this.oauthCredentials,
@@ -32,4 +32,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData 
     );
   }
 }
-

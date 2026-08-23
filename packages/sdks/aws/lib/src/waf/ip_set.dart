@@ -100,6 +100,27 @@ import 'ip_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_waf_ipset" "ipset" {
+///   name = "tfIPSet"
+///   ip_set_descriptors {
+///     type  = "IPV4"
+///     value = "192.0.7.0/24"
+///   }
+///   ip_set_descriptors {
+///     type  = "IPV4"
+///     value = "10.16.16.0/16"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +130,8 @@ import 'ip_set_state.dart';
 /// import com.pulumi.aws.waf.IpSet;
 /// import com.pulumi.aws.waf.IpSetArgs;
 /// import com.pulumi.aws.waf.inputs.IpSetIpSetDescriptorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

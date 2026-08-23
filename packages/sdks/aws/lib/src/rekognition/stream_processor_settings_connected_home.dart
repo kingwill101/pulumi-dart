@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorSettingsConnectedHome {
-  /// Specifies what you want to detect in the video, such as people, packages, or pets. The current valid labels you can include in this list are: `PERSON`, `PET`, `PACKAGE`, and `ALL`.
+  /// What you want to detect in the video, such as people, packages, or pets. The current valid labels you can include in this list are: `PERSON`, `PET`, `PACKAGE`, and `ALL`.
   final pulumi.Input<List<String>>? labels;
   /// Minimum confidence required to label an object in the video.
   final pulumi.Input<double>? minConfidence;
 
   /// Creates a new [StreamProcessorSettingsConnectedHome].
-  /// [labels] Specifies what you want to detect in the video, such as people, packages, or pets. The current valid labels you can include in this list are: `PERSON`, `PET`, `PACKAGE`, and `ALL`.
+  /// [labels] What you want to detect in the video, such as people, packages, or pets. The current valid labels you can include in this list are: `PERSON`, `PET`, `PACKAGE`, and `ALL`.
   /// [minConfidence] Minimum confidence required to label an object in the video.
   const StreamProcessorSettingsConnectedHome({
     this.labels,
@@ -30,4 +30,3 @@ class StreamProcessorSettingsConnectedHome {
     );
   }
 }
-

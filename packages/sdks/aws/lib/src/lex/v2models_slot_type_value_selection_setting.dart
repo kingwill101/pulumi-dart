@@ -7,10 +7,10 @@ import 'v2models_slot_type_value_selection_setting_regex_filter.dart';
 class V2modelsSlotTypeValueSelectionSetting {
   /// Provides settings that enable advanced recognition settings for slot values.
   /// You can use this to enable using slot values as a custom vocabulary for recognizing user utterances.
-  /// See `advanced_recognition_setting` argument reference below.
+  /// See `advancedRecognitionSetting` argument reference below.
   final pulumi.Input<List<V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting>>? advancedRecognitionSettings;
   /// Used to validate the value of the slot.
-  /// See `regex_filter` argument reference below.
+  /// See `regexFilter` argument reference below.
   final pulumi.Input<List<V2modelsSlotTypeValueSelectionSettingRegexFilter>>? regexFilters;
   /// Determines the slot resolution strategy that Amazon Lex uses to return slot type values.
   /// Valid values are `OriginalValue`, `TopResolution`, and `Concatenation`.
@@ -42,4 +42,3 @@ class V2modelsSlotTypeValueSelectionSetting {
     );
   }
 }
-

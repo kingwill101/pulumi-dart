@@ -12,8 +12,6 @@ class GetSavingsPlanResult {
   final String ec2InstanceFamily;
   /// The end time of the Savings Plan.
   final String end;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// The ID of the offering.
   final String offeringId;
   /// The payment option for the Savings Plan.
@@ -48,7 +46,6 @@ class GetSavingsPlanResult {
   /// [description] Required.
   /// [ec2InstanceFamily] The EC2 instance family for the Savings Plan.
   /// [end] The end time of the Savings Plan.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [offeringId] The ID of the offering.
   /// [paymentOption] The payment option for the Savings Plan.
   /// [productTypes] Required.
@@ -71,7 +68,6 @@ class GetSavingsPlanResult {
     required this.description,
     required this.ec2InstanceFamily,
     required this.end,
-    required this.id,
     required this.offeringId,
     required this.paymentOption,
     required this.productTypes,
@@ -97,7 +93,6 @@ class GetSavingsPlanResult {
       'description': description,
       'ec2InstanceFamily': ec2InstanceFamily,
       'end': end,
-      'id': id,
       'offeringId': offeringId,
       'paymentOption': paymentOption,
       'productTypes': productTypes,
@@ -124,7 +119,6 @@ class GetSavingsPlanResult {
       description: map['description'] as String,
       ec2InstanceFamily: map['ec2InstanceFamily'] as String,
       end: map['end'] as String,
-      id: map['id'] as String,
       offeringId: map['offeringId'] as String,
       paymentOption: map['paymentOption'] as String,
       productTypes: (map['productTypes'] as List).cast<String>(),
@@ -144,4 +138,3 @@ class GetSavingsPlanResult {
     );
   }
 }
-

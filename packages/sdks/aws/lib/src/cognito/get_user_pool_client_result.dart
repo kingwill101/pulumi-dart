@@ -7,7 +7,7 @@ import 'get_user_pool_client_token_validity_unit.dart';
 
 /// Result data returned by getUserPoolClient.
 class GetUserPoolClientResult {
-  /// (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
+  /// (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `tokenValidityUnits`.
   final int accessTokenValidity;
   /// (Optional) List of allowed OAuth flows (code, implicit, client_credentials).
   final List<String> allowedOauthFlows;
@@ -15,7 +15,7 @@ class GetUserPoolClientResult {
   final bool allowedOauthFlowsUserPoolClient;
   /// (Optional) List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
   final List<String> allowedOauthScopes;
-  /// (Optional) Configuration block for Amazon Pinpoint analytics for collecting metrics for this user pool. Detailed below.
+  /// (Optional) Configuration block for AWS End User Messaging analytics for collecting metrics for this user pool. Detailed below.
   final List<GetUserPoolClientAnalyticsConfiguration> analyticsConfigurations;
   /// (Optional) List of allowed callback URLs for the identity providers.
   final List<String> callbackUrls;
@@ -33,7 +33,7 @@ class GetUserPoolClientResult {
   final bool generateSecret;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
+  /// (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `tokenValidityUnits`.
   final int idTokenValidity;
   /// (Optional) List of allowed logout URLs for the identity providers.
   final List<String> logoutUrls;
@@ -47,7 +47,7 @@ class GetUserPoolClientResult {
   /// (Optional) Time limit in days refresh tokens are valid for.
   final int refreshTokenValidity;
   final String region;
-  /// (Optional) List of provider names for the identity providers that are supported on this client. Uses the `provider_name` attribute of `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
+  /// (Optional) List of provider names for the identity providers that are supported on this client. Uses the `providerName` attribute of `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
   final List<String> supportedIdentityProviders;
   /// (Optional) Configuration block for units in which the validity times are represented in. Detailed below.
   final List<GetUserPoolClientTokenValidityUnit> tokenValidityUnits;
@@ -56,11 +56,11 @@ class GetUserPoolClientResult {
   final List<String> writeAttributes;
 
   /// Creates a new [GetUserPoolClientResult].
-  /// [accessTokenValidity] (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
+  /// [accessTokenValidity] (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `tokenValidityUnits`.
   /// [allowedOauthFlows] (Optional) List of allowed OAuth flows (code, implicit, client_credentials).
   /// [allowedOauthFlowsUserPoolClient] (Optional) Whether the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
   /// [allowedOauthScopes] (Optional) List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
-  /// [analyticsConfigurations] (Optional) Configuration block for Amazon Pinpoint analytics for collecting metrics for this user pool. Detailed below.
+  /// [analyticsConfigurations] (Optional) Configuration block for AWS End User Messaging analytics for collecting metrics for this user pool. Detailed below.
   /// [callbackUrls] (Optional) List of allowed callback URLs for the identity providers.
   /// [clientId] Required.
   /// [clientSecret] Client secret of the user pool client.
@@ -70,7 +70,7 @@ class GetUserPoolClientResult {
   /// [explicitAuthFlows] (Optional) List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH).
   /// [generateSecret] (Optional) Should an application secret be generated.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [idTokenValidity] (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
+  /// [idTokenValidity] (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `tokenValidityUnits`.
   /// [logoutUrls] (Optional) List of allowed logout URLs for the identity providers.
   /// [name] Required.
   /// [preventUserExistenceErrors] (Optional) Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the user pool.
@@ -78,7 +78,7 @@ class GetUserPoolClientResult {
   /// [refreshTokenRotations] (Optional) A block that specifies the configuration of refresh token rotation. Detailed below.
   /// [refreshTokenValidity] (Optional) Time limit in days refresh tokens are valid for.
   /// [region] Required.
-  /// [supportedIdentityProviders] (Optional) List of provider names for the identity providers that are supported on this client. Uses the `provider_name` attribute of `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
+  /// [supportedIdentityProviders] (Optional) List of provider names for the identity providers that are supported on this client. Uses the `providerName` attribute of `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
   /// [tokenValidityUnits] (Optional) Configuration block for units in which the validity times are represented in. Detailed below.
   /// [userPoolId] Required.
   /// [writeAttributes] (Optional) List of user pool attributes the application client can write to.
@@ -173,4 +173,3 @@ class GetUserPoolClientResult {
     );
   }
 }
-

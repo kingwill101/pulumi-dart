@@ -110,14 +110,14 @@ import 'user_pool_uicustomization_state.dart';
 /// 		}
 /// 		exampleUserPoolDomain, err := cognito.NewUserPoolDomain(ctx, "example", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example"),
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("example"),
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -129,7 +129,7 @@ import 'user_pool_uicustomization_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUserPoolUICustomization(ctx, "example", &cognito.UserPoolUICustomizationArgs{
-/// 			ClientId:   exampleUserPoolClient.ID(),
+/// 			ClientId:   exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
 /// 			Css:        pulumi.String(".label-customizable {font-weight: 400;}"),
 /// 			ImageFile:  pulumi.String(invokeFilebase64.Result),
 /// 			UserPoolId: exampleUserPoolDomain.UserPoolId,
@@ -139,6 +139,36 @@ import 'user_pool_uicustomization_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cognito_userpooldomain" "example" {
+///   domain       = "example"
+///   user_pool_id = aws_cognito_userpool.example.id
+/// }
+/// resource "aws_cognito_userpoolclient" "example" {
+///   name         = "example"
+///   user_pool_id = aws_cognito_userpool.example.id
+/// }
+/// resource "aws_cognito_userpooluicustomization" "example" {
+///   client_id    = aws_cognito_userpoolclient.example.id
+///   css          = ".label-customizable {font-weight: 400;}"
+///   image_file   = filebase64("logo.png")
+///   user_pool_id = aws_cognito_userpooldomain.example.user_pool_id
 /// }
 /// ```
 /// ```java
@@ -157,8 +187,8 @@ import 'user_pool_uicustomization_state.dart';
 /// import com.pulumi.aws.cognito.UserPoolUICustomizationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -316,7 +346,7 @@ import 'user_pool_uicustomization_state.dart';
 /// 		}
 /// 		exampleUserPoolDomain, err := cognito.NewUserPoolDomain(ctx, "example", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example"),
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -339,6 +369,31 @@ import 'user_pool_uicustomization_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example"
+/// }
+/// resource "aws_cognito_userpooldomain" "example" {
+///   domain       = "example"
+///   user_pool_id = aws_cognito_userpool.example.id
+/// }
+/// resource "aws_cognito_userpooluicustomization" "example" {
+///   css          = ".label-customizable {font-weight: 400;}"
+///   image_file   = filebase64("logo.png")
+///   user_pool_id = aws_cognito_userpooldomain.example.user_pool_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -353,8 +408,8 @@ import 'user_pool_uicustomization_state.dart';
 /// import com.pulumi.aws.cognito.UserPoolUICustomizationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -415,21 +470,21 @@ import 'user_pool_uicustomization_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cognito User Pool UI Customizations using the `user_pool_id` and `client_id` separated by `,`. For example:
+/// Using `pulumi import`, import Cognito User Pool UI Customizations using the `userPoolId` and `clientId` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cognito/userPoolUICustomization:UserPoolUICustomization example us-west-2_ZCTarbt5C,12bu4fuk3mlgqa2rtrujgp6egq
 /// ```
 class UserPoolUICustomization extends pulumi.CustomResource {
-  /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
+  /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.
   late final pulumi.Output<String?> clientId;
   /// The creation date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
   late final pulumi.Output<String> creationDate;
-  /// The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
+  /// The CSS values in the UI customization, provided as a String. At least one of `css` or `imageFile` is required.
   late final pulumi.Output<String?> css;
   /// The CSS version number.
   late final pulumi.Output<String> cssVersion;
-  /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
+  /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `imageFile` is required.
   late final pulumi.Output<String?> imageFile;
   /// The logo image URL for the UI customization.
   late final pulumi.Output<String> imageUrl;

@@ -76,6 +76,21 @@ import 'get_virtual_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appmesh_getgatewayroute" "test" {
+///   name                 = "test-route"
+///   mesh_name            = "test-mesh"
+///   virtual_gateway_name = "test-gateway"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +99,8 @@ import 'get_virtual_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetGatewayRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,6 +200,19 @@ Future<GetGatewayRouteResult> getGatewayRoute(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appmesh_getmesh" "simple" {
+///   name = "simpleapp"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +221,8 @@ Future<GetGatewayRouteResult> getGatewayRoute(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetMeshArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,6 +314,22 @@ Future<GetGatewayRouteResult> getGatewayRoute(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_appmesh_getmesh" "simple" {
+///   name       = "simpleapp"
+///   mesh_owner = data.aws_getcalleridentity.current.account_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +340,8 @@ Future<GetGatewayRouteResult> getGatewayRoute(
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetMeshArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -410,6 +454,21 @@ Future<GetMeshResult> getMesh(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appmesh_getroute" "test" {
+///   name                = "test-route"
+///   mesh_name           = "test-mesh"
+///   virtual_router_name = "test-router"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -418,8 +477,8 @@ Future<GetMeshResult> getMesh(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -525,6 +584,20 @@ Future<GetRouteResult> getRoute(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appmesh_getvirtualgateway" "example" {
+///   mesh_name = "mesh-gateway"
+///   name      = "example-mesh"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -533,8 +606,8 @@ Future<GetRouteResult> getRoute(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetVirtualGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -566,6 +639,23 @@ Future<GetRouteResult> getRoute(
 ///
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_appmesh_getvirtualgateway" "test" {
+///   name       = "example.mesh.local"
+///   mesh_name  = "example-mesh"
+///   mesh_owner = data.aws_getcalleridentity.current.account_id
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   current:
@@ -653,6 +743,20 @@ Future<GetVirtualGatewayResult> getVirtualGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appmesh_getvirtualnode" "test" {
+///   name      = "serviceBv1"
+///   mesh_name = "example-mesh"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -661,8 +765,8 @@ Future<GetVirtualGatewayResult> getVirtualGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetVirtualNodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -764,6 +868,20 @@ Future<GetVirtualNodeResult> getVirtualNode(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appmesh_getvirtualrouter" "test" {
+///   name      = "example-router-name"
+///   mesh_name = "example-mesh-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -772,8 +890,8 @@ Future<GetVirtualNodeResult> getVirtualNode(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetVirtualRouterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -875,6 +993,20 @@ Future<GetVirtualRouterResult> getVirtualRouter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appmesh_getvirtualservice" "test" {
+///   name      = "example.mesh.local"
+///   mesh_name = "example-mesh"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -883,8 +1015,8 @@ Future<GetVirtualRouterResult> getVirtualRouter(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetVirtualServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -982,6 +1114,23 @@ Future<GetVirtualRouterResult> getVirtualRouter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_appmesh_getvirtualservice" "test" {
+///   name       = "example.mesh.local"
+///   mesh_name  = "example-mesh"
+///   mesh_owner = data.aws_getcalleridentity.current.account_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -992,8 +1141,8 @@ Future<GetVirtualRouterResult> getVirtualRouter(
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.appmesh.AppmeshFunctions;
 /// import com.pulumi.aws.appmesh.inputs.GetVirtualServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

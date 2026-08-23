@@ -5,12 +5,14 @@ import 'get_virtual_node_spec_backend_default_client_policy_tl_validation_subjec
 import 'get_virtual_node_spec_backend_default_client_policy_tl_validation_trust.dart';
 
 class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation {
+  /// SANs for a TLS validation context. See `spec.listener.tls.validation.subject_alternative_names` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName>> subjectAlternativeNames;
+  /// TLS validation context trust. See `spec.listener.tls.validation.trust` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrust>> trusts;
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation].
-  /// [subjectAlternativeNames] Required.
-  /// [trusts] Required.
+  /// [subjectAlternativeNames] SANs for a TLS validation context. See `spec.listener.tls.validation.subject_alternative_names` Block for details.
+  /// [trusts] TLS validation context trust. See `spec.listener.tls.validation.trust` Block for details.
   const GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation({
     required this.subjectAlternativeNames,
     required this.trusts,
@@ -30,4 +32,3 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation {
     );
   }
 }
-

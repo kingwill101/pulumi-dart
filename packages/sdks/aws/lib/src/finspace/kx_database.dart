@@ -97,7 +97,7 @@ import 'kx_database_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = finspace.NewKxDatabase(ctx, "example", &finspace.KxDatabaseArgs{
-/// 			EnvironmentId: exampleKxEnvironment.ID(),
+/// 			EnvironmentId: exampleKxEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:          pulumi.String("my-tf-kx-database"),
 /// 			Description:   pulumi.String("Example database description"),
 /// 		})
@@ -106,6 +106,29 @@ import 'kx_database_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "Example KMS Key"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_finspace_kxenvironment" "example" {
+///   name       = "my-tf-kx-environment"
+///   kms_key_id = aws_kms_key.example.arn
+/// }
+/// resource "aws_finspace_kxdatabase" "example" {
+///   environment_id = aws_finspace_kxenvironment.example.id
+///   name           = "my-tf-kx-database"
+///   description    = "Example database description"
 /// }
 /// ```
 /// ```java
@@ -120,8 +143,8 @@ import 'kx_database_state.dart';
 /// import com.pulumi.aws.finspace.KxEnvironmentArgs;
 /// import com.pulumi.aws.finspace.KxDatabase;
 /// import com.pulumi.aws.finspace.KxDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,9 +222,9 @@ class KxDatabase extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [KxDatabase].

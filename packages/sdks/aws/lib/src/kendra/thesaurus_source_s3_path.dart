@@ -32,4 +32,3 @@ class ThesaurusSourceS3Path {
     );
   }
 }
-

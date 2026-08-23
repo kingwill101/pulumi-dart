@@ -3,18 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceS3Access {
+  /// Domain name for which the DNS queries are forwarded.
   final pulumi.Input<String> domainName;
+  /// List of IPv4 addresses for the Amazon STS access.
   final pulumi.Input<List<String>> ipv4Addresses;
-  /// Specifies the endpoint policy for Amazon S3 access from the ODB network.
+  /// Endpoint policy for Amazon S3 access from the ODB network.
   final pulumi.Input<String> s3PolicyDocument;
-  /// The status of the network resource.
+  /// Status of the Zero-ETL access.
   final pulumi.Input<String> status;
 
   /// Creates a new [NetworkManagedServiceS3Access].
-  /// [domainName] Required.
-  /// [ipv4Addresses] Required.
-  /// [s3PolicyDocument] Specifies the endpoint policy for Amazon S3 access from the ODB network.
-  /// [status] The status of the network resource.
+  /// [domainName] Domain name for which the DNS queries are forwarded.
+  /// [ipv4Addresses] List of IPv4 addresses for the Amazon STS access.
+  /// [s3PolicyDocument] Endpoint policy for Amazon S3 access from the ODB network.
+  /// [status] Status of the Zero-ETL access.
   const NetworkManagedServiceS3Access({
     required this.domainName,
     required this.ipv4Addresses,
@@ -40,4 +42,3 @@ class NetworkManagedServiceS3Access {
     );
   }
 }
-

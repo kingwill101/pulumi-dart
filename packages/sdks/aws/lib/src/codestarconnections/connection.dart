@@ -223,6 +223,52 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codestarconnections_connection" "example" {
+///   name          = "example-connection"
+///   provider_type = "Bitbucket"
+/// }
+/// resource "aws_codepipeline_pipeline" "example" {
+///   artifact_stores {
+///   }
+///   stages {
+///     name = "Source"
+///     actions {
+///       name             = "Source"
+///       category         = "Source"
+///       owner            = "AWS"
+///       provider         = "CodeStarSourceConnection"
+///       version          = "1"
+///       output_artifacts = ["source_output"]
+///       configuration = {
+///         "ConnectionArn"    = aws_codestarconnections_connection.example.arn
+///         "FullRepositoryId" = "my-organization/test"
+///         "BranchName"       = "main"
+///       }
+///     }
+///   }
+///   stages {
+///     actions {
+///     }
+///     name = "Build"
+///   }
+///   stages {
+///     actions {
+///     }
+///     name = "Deploy"
+///   }
+///   name     = "tf-test-pipeline"
+///   role_arn = codepipelineRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -235,8 +281,9 @@ import 'connection_state.dart';
 /// import com.pulumi.aws.codepipeline.PipelineArgs;
 /// import com.pulumi.aws.codepipeline.inputs.PipelineArtifactStoreArgs;
 /// import com.pulumi.aws.codepipeline.inputs.PipelineStageArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.codepipeline.inputs.PipelineStageActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,17 +394,17 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The codestar connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   late final pulumi.Output<String> connectionStatus;
-  /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `provider_type`
+  /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `providerType`
   late final pulumi.Output<String?> hostArn;
   /// The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
   late final pulumi.Output<String> name;
-  /// The name of the external provider where your third-party code repository is configured. Valid values are `Bitbucket`, `GitHub`, `GitHubEnterpriseServer`, `GitLab` or `GitLabSelfManaged`. Changing `provider_type` will create a new resource. Conflicts with `host_arn`
+  /// The name of the external provider where your third-party code repository is configured. Valid values are `Bitbucket`, `GitHub`, `GitHubEnterpriseServer`, `GitLab` or `GitLabSelfManaged`. Changing `providerType` will create a new resource. Conflicts with `hostArn`
   late final pulumi.Output<String> providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of key-value resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of key-value resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Connection].

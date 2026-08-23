@@ -65,6 +65,20 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_ontapstoragevirtualmachine" "test" {
+///   file_system_id = testAwsFsxOntapFileSystem.id
+///   name           = "test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.OntapStorageVirtualMachine;
 /// import com.pulumi.aws.fsx.OntapStorageVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,6 +228,29 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_ontapstoragevirtualmachine" "test" {
+///   file_system_id = testAwsFsxOntapFileSystem.id
+///   name           = "mysvm"
+///   active_directory_configuration = {
+///     netbios_name = "mysvm"
+///     self_managed_active_directory_configuration = {
+///       dns_ips     = ["10.0.0.111", "10.0.0.222"]
+///       domain_name = "corp.example.com"
+///       password    = "avoid-plaintext-passwords"
+///       username    = "Admin"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +261,8 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// import com.pulumi.aws.fsx.OntapStorageVirtualMachineArgs;
 /// import com.pulumi.aws.fsx.inputs.OntapStorageVirtualMachineActiveDirectoryConfigurationArgs;
 /// import com.pulumi.aws.fsx.inputs.OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -283,7 +320,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// $ pulumi import aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine example svm-12345678abcdef123
 /// ```
 ///
-/// Certain resource arguments, like `svm_admin_password` and the `self_managed_active_directory` configuation block `password`, do not have a FSx API method for reading the information after creation. If these arguments are set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
+/// Certain resource arguments, like `svmAdminPassword` and the `selfManagedActiveDirectory` configuation block `password`, do not have a FSx API method for reading the information after creation. If these arguments are set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
 ///
 ///
 /// ```typescript
@@ -333,6 +370,19 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_fsx_ontapstoragevirtualmachine" "example" {
+///   svm_admin_password = "avoid-plaintext-passwords"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -341,8 +391,8 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.OntapStorageVirtualMachine;
 /// import com.pulumi.aws.fsx.OntapStorageVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -373,25 +423,25 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<OntapStorageVirtualMachineActiveDirectoryConfiguration?> activeDirectoryConfiguration;
   /// Amazon Resource Name of the storage virtual machine.
   late final pulumi.Output<String> arn;
-  /// The endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See Endpoints below.
+  /// Endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See `endpoints` below.
   late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
-  /// The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
+  /// ID of the Amazon FSx ONTAP File System that this SVM will be created on.
   late final pulumi.Output<String> fileSystemId;
-  /// The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
+  /// Name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
+  /// Root volume security style. Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
   late final pulumi.Output<String?> rootVolumeSecurityStyle;
-  /// Describes the SVM's subtype, e.g. `DEFAULT`
+  /// SVM's subtype, e.g. `DEFAULT`
   late final pulumi.Output<String> subtype;
-  /// Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
+  /// Password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
   late final pulumi.Output<String?> svmAdminPassword;
-  /// A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the storage virtual machine. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The SVM's UUID (universally unique identifier).
+  /// SVM's UUID (universally unique identifier).
   late final pulumi.Output<String> uuid;
 
   /// Creates a new [OntapStorageVirtualMachine].

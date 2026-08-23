@@ -5,7 +5,7 @@ import 'user_hierarchy_structure_hierarchy_structure.dart';
 
 /// Input properties used for looking up and filtering UserHierarchyStructure resources.
 class UserHierarchyStructureState {
-  /// A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
+  /// A block that defines the hierarchy structure's levels. The `hierarchyStructure` block is documented below.
   final pulumi.Input<UserHierarchyStructureHierarchyStructure>? hierarchyStructure;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String>? instanceId;
@@ -13,7 +13,7 @@ class UserHierarchyStructureState {
   final pulumi.Input<String>? region;
 
   /// Creates a new [UserHierarchyStructureState].
-  /// [hierarchyStructure] A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
+  /// [hierarchyStructure] A block that defines the hierarchy structure's levels. The `hierarchyStructure` block is documented below.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const UserHierarchyStructureState({
@@ -38,4 +38,3 @@ class UserHierarchyStructureState {
     );
   }
 }
-

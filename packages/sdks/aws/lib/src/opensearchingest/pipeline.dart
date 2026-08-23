@@ -19,7 +19,7 @@ import 'pipeline_vpc_options.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const current = aws.getRegion({});
-/// const example = new aws.iam.Role("example", {assumeRolePolicy: JSON.stringify({
+/// const exampleRole = new aws.iam.Role("example", {assumeRolePolicy: JSON.stringify({
 ///     Version: "2012-10-17",
 ///     Statement: [{
 ///         Action: "sts:AssumeRole",
@@ -30,9 +30,9 @@ import 'pipeline_vpc_options.dart';
 ///         },
 ///     }],
 /// })});
-/// const examplePipeline = new aws.opensearchingest.Pipeline("example", {
+/// const example = new aws.opensearchingest.Pipeline("example", {
 ///     pipelineName: "example",
-///     pipelineConfigurationBody: Promise.all([example.arn, current]).then(([arn, current]) => `version: \"2\"
+///     pipelineConfigurationBody: pulumi.all([exampleRole.arn, current]).apply(([arn, current]) => `version: \"2\"
 /// example-pipeline:
 ///   source:
 ///     http:
@@ -58,7 +58,7 @@ import 'pipeline_vpc_options.dart';
 /// import pulumi_aws as aws
 ///
 /// current = aws.get_region()
-/// example = aws.iam.Role("example", assume_role_policy=json.dumps({
+/// example_role = aws.iam.Role("example", assume_role_policy=json.dumps({
 ///     "Version": "2012-10-17",
 ///     "Statement": [{
 ///         "Action": "sts:AssumeRole",
@@ -69,9 +69,9 @@ import 'pipeline_vpc_options.dart';
 ///         },
 ///     }],
 /// }))
-/// example_pipeline = aws.opensearchingest.Pipeline("example",
+/// example = aws.opensearchingest.Pipeline("example",
 ///     pipeline_name="example",
-///     pipeline_configuration_body=example.arn.apply(lambda arn: f"""version: \"2\"
+///     pipeline_configuration_body=example_role.arn.apply(lambda arn: f"""version: \"2\"
 /// example-pipeline:
 ///   source:
 ///     http:
@@ -101,7 +101,7 @@ import 'pipeline_vpc_options.dart';
 /// {
 ///     var current = Aws.GetRegion.Invoke();
 ///
-///     var example = new Aws.Iam.Role("example", new()
+///     var exampleRole = new Aws.Iam.Role("example", new()
 ///     {
 ///         AssumeRolePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
 ///         {
@@ -122,10 +122,10 @@ import 'pipeline_vpc_options.dart';
 ///         }),
 ///     });
 ///
-///     var examplePipeline = new Aws.OpenSearchIngest.Pipeline("example", new()
+///     var example = new Aws.OpenSearchIngest.Pipeline("example", new()
 ///     {
 ///         PipelineName = "example",
-///         PipelineConfigurationBody = Output.Tuple(example.Arn, current).Apply(values =>
+///         PipelineConfigurationBody = Output.Tuple(exampleRole.Arn, current).Apply(values =>
 ///         {
 ///             var arn = values.Item1;
 ///             var current = values.Item2;
@@ -178,7 +178,7 @@ import 'pipeline_vpc_options.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "osis-pipelines.amazonaws.com",
 /// 					},
 /// 				},
@@ -188,7 +188,7 @@ import 'pipeline_vpc_options.dart';
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
+/// 		exampleRole, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
 /// 			AssumeRolePolicy: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -196,7 +196,7 @@ import 'pipeline_vpc_options.dart';
 /// 		}
 /// 		_, err = opensearchingest.NewPipeline(ctx, "example", &opensearchingest.PipelineArgs{
 /// 			PipelineName: pulumi.String("example"),
-/// 			PipelineConfigurationBody: example.Arn.ApplyT(func(arn string) (string, error) {
+/// 			PipelineConfigurationBody: exampleRole.Arn.ApplyT(func(arn string) (string, error) {
 /// 				return fmt.Sprintf(`version: \"2\"
 /// example-pipeline:
 ///   source:
@@ -224,6 +224,53 @@ import 'pipeline_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_opensearchingest_pipeline" "example" {
+///   pipeline_name               = "example"
+///   pipeline_configuration_body ="version: \"2\"
+/// example-pipeline:
+///   source:
+///     http:
+///       path: \"/example\"
+///   sink:
+///     - s3:
+///         aws:
+///           sts_role_arn: \"${aws_iam_role.example.arn}\"
+///           region: \"${data.aws_getregion.current.region}\"
+///         bucket: \"example\"
+///         threshold:
+///           event_collect_timeout: \"60s\"
+///         codec:
+///           ndjson:
+/// "
+///   max_units                   = 1
+///   min_units                   = 1
+/// }
+/// resource "aws_iam_role" "example" {
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "osis-pipelines.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +284,8 @@ import 'pipeline_vpc_options.dart';
 /// import com.pulumi.aws.opensearchingest.Pipeline;
 /// import com.pulumi.aws.opensearchingest.PipelineArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,7 +300,7 @@ import 'pipeline_vpc_options.dart';
 ///         final var current = AwsFunctions.getRegion(GetRegionArgs.builder()
 ///             .build());
 ///
-///         var example = new Role("example", RoleArgs.builder()
+///         var exampleRole = new Role("exampleRole", RoleArgs.builder()
 ///             .assumeRolePolicy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2012-10-17"),
@@ -268,9 +315,9 @@ import 'pipeline_vpc_options.dart';
 ///                 )))
 ///             .build());
 ///
-///         var examplePipeline = new Pipeline("examplePipeline", PipelineArgs.builder()
+///         var example = new Pipeline("example", PipelineArgs.builder()
 ///             .pipelineName("example")
-///             .pipelineConfigurationBody(example.arn().applyValue(_arn -> """
+///             .pipelineConfigurationBody(exampleRole.arn().applyValue(_arn -> """
 /// version: \"2\"
 /// example-pipeline:
 ///   source:
@@ -297,20 +344,7 @@ import 'pipeline_vpc_options.dart';
 /// ```yaml
 /// resources:
 ///   example:
-///     type: aws:iam:Role
-///     properties:
-///       assumeRolePolicy:
-///         fn::toJSON:
-///           Version: 2012-10-17
-///           Statement:
-///             - Action: sts:AssumeRole
-///               Effect: Allow
-///               Sid: ""
-///               Principal:
-///                 Service: osis-pipelines.amazonaws.com
-///   examplePipeline:
 ///     type: aws:opensearchingest:Pipeline
-///     name: example
 ///     properties:
 ///       pipelineName: example
 ///       pipelineConfigurationBody: |
@@ -322,7 +356,7 @@ import 'pipeline_vpc_options.dart';
 ///           sink:
 ///             - s3:
 ///                 aws:
-///                   sts_role_arn: \"${example.arn}\"
+///                   sts_role_arn: \"${exampleRole.arn}\"
 ///                   region: \"${current.region}\"
 ///                 bucket: \"example\"
 ///                 threshold:
@@ -331,6 +365,19 @@ import 'pipeline_vpc_options.dart';
 ///                   ndjson:
 ///       maxUnits: 1
 ///       minUnits: 1
+///   exampleRole:
+///     type: aws:iam:Role
+///     name: example
+///     properties:
+///       assumeRolePolicy:
+///         fn::toJSON:
+///           Version: 2012-10-17
+///           Statement:
+///             - Action: sts:AssumeRole
+///               Effect: Allow
+///               Sid: ""
+///               Principal:
+///                 Service: osis-pipelines.amazonaws.com
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -419,6 +466,25 @@ import 'pipeline_vpc_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearchingest_pipeline" "example" {
+///   pipeline_name               = "example"
+///   pipeline_configuration_body = file("example.yaml")
+///   max_units                   = 1
+///   min_units                   = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -429,8 +495,8 @@ import 'pipeline_vpc_options.dart';
 /// import com.pulumi.aws.opensearchingest.PipelineArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -473,19 +539,31 @@ import 'pipeline_vpc_options.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearch Ingestion Pipeline using the `id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the pipeline.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import OpenSearch Ingestion Pipeline using the `pipelineName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearchingest/pipeline:Pipeline example example
 /// ```
 class Pipeline extends pulumi.CustomResource {
-  /// Key-value pairs to configure persistent buffering for the pipeline. See `buffer_options` below.
+  /// Key-value pairs to configure persistent buffering for the pipeline. See `bufferOptions` below.
   late final pulumi.Output<PipelineBufferOptions?> bufferOptions;
-  /// Key-value pairs to configure encryption for data that is written to a persistent buffer. See `encryption_at_rest_options` below.
+  /// Key-value pairs to configure encryption for data that is written to a persistent buffer. See `encryptionAtRestOptions` below.
   late final pulumi.Output<PipelineEncryptionAtRestOptions?> encryptionAtRestOptions;
   /// The list of ingestion endpoints for the pipeline, which you can send data to.
   late final pulumi.Output<List<String>> ingestEndpointUrls;
-  /// Key-value pairs to configure log publishing. See `log_publishing_options` below.
+  /// Key-value pairs to configure log publishing. See `logPublishingOptions` below.
   late final pulumi.Output<PipelineLogPublishingOptions?> logPublishingOptions;
   /// The maximum pipeline capacity, in Ingestion Compute Units (ICUs).
   late final pulumi.Output<int> maxUnits;
@@ -493,9 +571,9 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<int> minUnits;
   /// Amazon Resource Name (ARN) of the pipeline.
   late final pulumi.Output<String> pipelineArn;
-  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with \n.
+  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with `\n`.
   late final pulumi.Output<String> pipelineConfigurationBody;
-  /// The name of the OpenSearch Ingestion pipeline to create. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
+  /// Name of the pipeline. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> pipelineName;
@@ -503,11 +581,11 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<String> pipelineRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the pipeline. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PipelineTimeouts?> timeouts;
-  /// Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpc_options` below.
+  /// Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpcOptions` below.
   late final pulumi.Output<PipelineVpcOptions?> vpcOptions;
 
   /// Creates a new [Pipeline].

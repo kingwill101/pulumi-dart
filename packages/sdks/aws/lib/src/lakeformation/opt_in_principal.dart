@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInPrincipal {
+  /// Identifier for the Lake Formation principal.
   final pulumi.Input<String> dataLakePrincipalIdentifier;
 
   /// Creates a new [OptInPrincipal].
-  /// [dataLakePrincipalIdentifier] Required.
+  /// [dataLakePrincipalIdentifier] Identifier for the Lake Formation principal.
   const OptInPrincipal({
     required this.dataLakePrincipalIdentifier,
   });
@@ -23,4 +24,3 @@ class OptInPrincipal {
     );
   }
 }
-

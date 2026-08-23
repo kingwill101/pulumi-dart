@@ -64,6 +64,20 @@ import 'get_stack_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudformation_getcloudformationtype" "example" {
+///   type      = "RESOURCE"
+///   type_name = "AWS::Athena::WorkGroup"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'get_stack_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudformation.CloudformationFunctions;
 /// import com.pulumi.aws.cloudformation.inputs.GetCloudFormationTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,6 +213,25 @@ Future<GetCloudFormationTypeResult> getCloudFormationType(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudformation_getexport" "subnetId" {
+///   name = "mySubnetIdExportName"
+/// }
+///
+/// resource "aws_ec2_instance" "web" {
+///   ami           = "ami-abb07bcb"
+///   instance_type = "t2.micro"
+///   subnet_id     = data.aws_cloudformation_getexport.subnetId.value
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -209,8 +242,8 @@ Future<GetCloudFormationTypeResult> getCloudFormationType(
 /// import com.pulumi.aws.cloudformation.inputs.GetExportArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -358,6 +391,28 @@ Future<GetExportResult> getExport(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudformation_getstack" "network" {
+///   name = "my-network-stack"
+/// }
+///
+/// resource "aws_ec2_instance" "web" {
+///   ami           = "ami-abb07bcb"
+///   instance_type = "t2.micro"
+///   subnet_id     = data.aws_cloudformation_getstack.network.outputs["SubnetId"]
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -368,8 +423,8 @@ Future<GetExportResult> getExport(
 /// import com.pulumi.aws.cloudformation.inputs.GetStackArgs;
 /// import com.pulumi.aws.ec2.Instance;
 /// import com.pulumi.aws.ec2.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -73,7 +73,7 @@ import 'backup_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewBackupPolicy(ctx, "policy", &efs.BackupPolicyArgs{
-/// 			FileSystemId: fs.ID(),
+/// 			FileSystemId: fs.ID().ToIDOutput().ToStringOutput(),
 /// 			BackupPolicy: &efs.BackupPolicyBackupPolicyArgs{
 /// 				Status: pulumi.String("ENABLED"),
 /// 			},
@@ -83,6 +83,25 @@ import 'backup_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_efs_filesystem" "fs" {
+///   creation_token = "my-product"
+/// }
+/// resource "aws_efs_backuppolicy" "policy" {
+///   file_system_id = aws_efs_filesystem.fs.id
+///   backup_policy = {
+///     status = "ENABLED"
+///   }
 /// }
 /// ```
 /// ```java
@@ -96,8 +115,8 @@ import 'backup_policy_state.dart';
 /// import com.pulumi.aws.efs.BackupPolicy;
 /// import com.pulumi.aws.efs.BackupPolicyArgs;
 /// import com.pulumi.aws.efs.inputs.BackupPolicyBackupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,7 +165,7 @@ import 'backup_policy_state.dart';
 /// $ pulumi import aws:efs/backupPolicy:BackupPolicy example fs-6fa144c6
 /// ```
 class BackupPolicy extends pulumi.CustomResource {
-  /// A backup_policy object (documented below).
+  /// A backupPolicy object (documented below).
   late final pulumi.Output<BackupPolicyBackupPolicy> backupPolicy;
   /// The ID of the EFS file system.
   late final pulumi.Output<String> fileSystemId;

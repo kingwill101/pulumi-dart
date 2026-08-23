@@ -10,32 +10,32 @@ import 'webhook_scope_configuration.dart';
 /// {@endtemplate}
 /// {@macro pulumi_codebuild_webhook_webhook_args_doc}
 class WebhookArgs {
-  /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filter_group` over `branch_filter`.
+  /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filterGroup` over `branchFilter`.
   final pulumi.Input<String>? branchFilter;
   /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
   final pulumi.Input<String>? buildType;
-  /// Information about the webhook's trigger. See filter_group for details.
+  /// Information about the webhook's trigger. See filterGroup for details.
   final pulumi.Input<List<WebhookFilterGroup>>? filterGroups;
-  /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payload_url` and `secret` values for the webhook. The `payload_url` and `secret` values in the output can be used to manually create a webhook within GitHub.
+  /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payloadUrl` and `secret` values for the webhook. The `payloadUrl` and `secret` values in the output can be used to manually create a webhook within GitHub.
   final pulumi.Input<bool>? manualCreation;
   /// The name of the build project.
   final pulumi.Input<String> projectName;
-  /// Defines comment-based approval requirements for triggering builds on pull requests. See pull_request_build_policy for details.
+  /// Defines comment-based approval requirements for triggering builds on pull requests. See pullRequestBuildPolicy for details.
   final pulumi.Input<WebhookPullRequestBuildPolicy>? pullRequestBuildPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Scope configuration for global or organization webhooks. See scope_configuration for details.
+  /// Scope configuration for global or organization webhooks. See scopeConfiguration for details.
   final pulumi.Input<WebhookScopeConfiguration>? scopeConfiguration;
 
   /// Creates a new [WebhookArgs].
-  /// [branchFilter] A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filter_group` over `branch_filter`.
+  /// [branchFilter] A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filterGroup` over `branchFilter`.
   /// [buildType] The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
-  /// [filterGroups] Information about the webhook's trigger. See filter_group for details.
-  /// [manualCreation] If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payload_url` and `secret` values for the webhook. The `payload_url` and `secret` values in the output can be used to manually create a webhook within GitHub.
+  /// [filterGroups] Information about the webhook's trigger. See filterGroup for details.
+  /// [manualCreation] If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payloadUrl` and `secret` values for the webhook. The `payloadUrl` and `secret` values in the output can be used to manually create a webhook within GitHub.
   /// [projectName] The name of the build project.
-  /// [pullRequestBuildPolicy] Defines comment-based approval requirements for triggering builds on pull requests. See pull_request_build_policy for details.
+  /// [pullRequestBuildPolicy] Defines comment-based approval requirements for triggering builds on pull requests. See pullRequestBuildPolicy for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [scopeConfiguration] Scope configuration for global or organization webhooks. See scope_configuration for details.
+  /// [scopeConfiguration] Scope configuration for global or organization webhooks. See scopeConfiguration for details.
   const WebhookArgs({
     this.branchFilter,
     this.buildType,
@@ -73,4 +73,3 @@ class WebhookArgs {
     );
   }
 }
-

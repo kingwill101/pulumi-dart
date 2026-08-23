@@ -244,6 +244,54 @@ import 'load_balancer_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create a new load balancer
+/// resource "aws_elb_loadbalancer" "bar" {
+///   name               = "foobar-elb"
+///   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+///   access_logs = {
+///     bucket        = "foo"
+///     bucket_prefix = "bar"
+///     interval      = 60
+///   }
+///   listeners {
+///     instance_port     = 8000
+///     instance_protocol = "http"
+///     lb_port           = 80
+///     lb_protocol       = "http"
+///   }
+///   listeners {
+///     instance_port      = 8000
+///     instance_protocol  = "http"
+///     lb_port            = 443
+///     lb_protocol        = "https"
+///     ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
+///   }
+///   health_check = {
+///     healthy_threshold   = 2
+///     unhealthy_threshold = 2
+///     timeout             = 3
+///     target              = "HTTP:8000/"
+///     interval            = 30
+///   }
+///   instances                   = [foo.id]
+///   cross_zone_load_balancing   = true
+///   idle_timeout                = 400
+///   connection_draining         = true
+///   connection_draining_timeout = 400
+///   tags = {
+///     "Name" = "foobar-elb"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +303,8 @@ import 'load_balancer_state.dart';
 /// import com.pulumi.aws.elb.inputs.LoadBalancerAccessLogsArgs;
 /// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
 /// import com.pulumi.aws.elb.inputs.LoadBalancerHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,20 +402,24 @@ import 'load_balancer_state.dart';
 /// ```
 ///
 ///
-/// ## Note on ECDSA Key Algorithm
-///
-/// If the ARN of the `ssl_certificate_id` that is pointed to references a
-/// certificate that was signed by an ECDSA key, note that ELB only supports the
-/// P256 and P384 curves.  Using a certificate signed by a key using a different
-/// curve could produce the error `ERR_SSL_VERSION_OR_CIPHER_MISMATCH` in your
-/// browser.
-///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the ELB.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import ELBs using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:elb/loadBalancer:LoadBalancer bar elb-production-12345
+/// $ pulumi import aws:elb/loadBalancer:LoadBalancer example elb-production-12345
 /// ```
 class LoadBalancer extends pulumi.CustomResource {
   /// An Access Logs block. Access Logs documented below.
@@ -386,7 +438,7 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<String?> desyncMitigationMode;
   /// The DNS name of the ELB
   late final pulumi.Output<String> dnsName;
-  /// A health_check block. Health Check documented below.
+  /// A healthCheck block. Health Check documented below.
   late final pulumi.Output<LoadBalancerHealthCheck> healthCheck;
   /// The time in seconds that the connection is allowed to be idle. Default: `60`
   late final pulumi.Output<int?> idleTimeout;
@@ -416,12 +468,12 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<String> sourceSecurityGroupId;
   /// A list of subnet IDs to attach to the ELB. When an update to subnets will remove all current subnets, this will force a new resource.
   late final pulumi.Output<List<String>> subnets;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Exactly one of `availability_zones` or `subnets` must be specified: this
+  /// Exactly one of `availabilityZones` or `subnets` must be specified: this
   /// determines if the ELB exists in a VPC or in EC2-classic.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The canonical hosted zone ID of the ELB (to be used in a Route 53 Alias record)
   late final pulumi.Output<String> zoneId;

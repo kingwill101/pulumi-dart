@@ -61,6 +61,19 @@ import 'organizations_access_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_notifications_organizationsaccess" "example" {
+///   enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +82,8 @@ import 'organizations_access_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.notifications.OrganizationsAccess;
 /// import com.pulumi.aws.notifications.OrganizationsAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

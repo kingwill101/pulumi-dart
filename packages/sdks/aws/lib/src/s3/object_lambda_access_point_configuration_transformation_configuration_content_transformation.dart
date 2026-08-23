@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_lambda_access_point_configuration_transformation_configuration_content_transformation_aws_lambda.dart';
 
 class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation {
-  /// Configuration for an AWS Lambda function. See AWS Lambda below for more details.
+  /// Configuration for an AWS Lambda function. See `awsLambda` Block below for more details.
   final pulumi.Input<ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda> awsLambda;
 
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation].
-  /// [awsLambda] Configuration for an AWS Lambda function. See AWS Lambda below for more details.
+  /// [awsLambda] Configuration for an AWS Lambda function. See `awsLambda` Block below for more details.
   const ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation({
     required this.awsLambda,
   });
@@ -25,4 +25,3 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
     );
   }
 }
-

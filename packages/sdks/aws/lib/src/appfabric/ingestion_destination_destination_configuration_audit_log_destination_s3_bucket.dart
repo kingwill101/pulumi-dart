@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket {
+  /// Name of the Amazon S3 bucket.
   final pulumi.Input<String> bucketName;
-  /// The object key to use.
+  /// Object key to use.
   final pulumi.Input<String>? prefix;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket].
-  /// [bucketName] Required.
-  /// [prefix] The object key to use.
+  /// [bucketName] Name of the Amazon S3 bucket.
+  /// [prefix] Object key to use.
   const IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket({
     required this.bucketName,
     this.prefix,
@@ -29,4 +30,3 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket {
     );
   }
 }
-

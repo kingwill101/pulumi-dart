@@ -5,7 +5,7 @@ import 'contacts_rotation_state.dart';
 
 /// Provides a Terraform resource for managing a Contacts Rotation in AWS Systems Manager Incident Manager.
 ///
-/// &gt; **NOTE:** A rotation implicitly depends on a replication set. If you configured your replication set in Terraform, we recommend you add it to the `depends_on` argument for the Terraform Contact Resource.
+/// &gt; **NOTE:** A rotation implicitly depends on a replication set. If you configured your replication set in Terraform, we recommend you add it to the `dependsOn` argument for the Terraform Contact Resource.
 ///
 /// ## Example Usage
 ///
@@ -125,6 +125,30 @@ import 'contacts_rotation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_contactsrotation" "example" {
+///   depends_on  = [exampleAwsSsmincidentsReplicationSet]
+///   contact_ids = [exampleAwsSsmcontactsContact.arn]
+///   name        = "rotation"
+///   recurrence = {
+///     number_of_on_calls    = 1
+///     recurrence_multiplier = 1
+///     daily_settings = [{
+///       "hourOfDay"    = 9
+///       "minuteOfHour" = 0
+///     }]
+///   }
+///   time_zone_id = "Australia/Sydney"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,9 +158,10 @@ import 'contacts_rotation_state.dart';
 /// import com.pulumi.aws.ssm.ContactsRotation;
 /// import com.pulumi.aws.ssm.ContactsRotationArgs;
 /// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceDailySettingArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,6 +463,57 @@ import 'contacts_rotation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_contactsrotation" "example" {
+///   depends_on  = [exampleAwsSsmincidentsReplicationSet]
+///   contact_ids = [exampleAwsSsmcontactsContact.arn]
+///   name        = "rotation"
+///   recurrence = {
+///     number_of_on_calls    = 1
+///     recurrence_multiplier = 1
+///     weekly_settings = [{
+///       "dayOfWeek" = "WED"
+///       "handOffTime" = {
+///         "hourOfDay"    = 4
+///         "minuteOfHour" = 25
+///       }
+///       }, {
+///       "dayOfWeek" = "FRI"
+///       "handOffTime" = {
+///         "hourOfDay"    = 15
+///         "minuteOfHour" = 57
+///       }
+///     }]
+///     shift_coverages = [{
+///       "mapBlockKey" = "MON"
+///       "coverageTimes" = [{
+///         "start" = {
+///           "hourOfDay"    = 1
+///           "minuteOfHour" = 0
+///         }
+///         "end" = {
+///           "hourOfDay"    = 23
+///           "minuteOfHour" = 0
+///         }
+///       }]
+///     }]
+///   }
+///   start_time   = "2023-07-20T02:21:49+00:00"
+///   time_zone_id = "Australia/Sydney"
+///   tags = {
+///     "key1" = "tag1"
+///     "key2" = "tag2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -447,9 +523,15 @@ import 'contacts_rotation_state.dart';
 /// import com.pulumi.aws.ssm.ContactsRotation;
 /// import com.pulumi.aws.ssm.ContactsRotationArgs;
 /// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceWeeklySettingArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceWeeklySettingHandOffTimeArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceShiftCoverageArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceShiftCoverageCoverageTimeArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceShiftCoverageCoverageTimeStartArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceShiftCoverageCoverageTimeEndArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -712,6 +794,39 @@ import 'contacts_rotation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ssm_contactsrotation" "example" {
+///   depends_on  = [exampleAwsSsmincidentsReplicationSet]
+///   contact_ids = [exampleAwsSsmcontactsContact.arn]
+///   name        = "rotation"
+///   recurrence = {
+///     number_of_on_calls    = 1
+///     recurrence_multiplier = 1
+///     monthly_settings = [{
+///       "dayOfMonth" = 20
+///       "handOffTime" = {
+///         "hourOfDay"    = 8
+///         "minuteOfHour" = 0
+///       }
+///       }, {
+///       "dayOfMonth" = 13
+///       "handOffTime" = {
+///         "hourOfDay"    = 12
+///         "minuteOfHour" = 34
+///       }
+///     }]
+///   }
+///   time_zone_id = "Australia/Sydney"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -721,9 +836,11 @@ import 'contacts_rotation_state.dart';
 /// import com.pulumi.aws.ssm.ContactsRotation;
 /// import com.pulumi.aws.ssm.ContactsRotationArgs;
 /// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceMonthlySettingArgs;
+/// import com.pulumi.aws.ssm.inputs.ContactsRotationRecurrenceMonthlySettingHandOffTimeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -813,7 +930,7 @@ class ContactsRotation extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> contactIds;
   /// The name for the rotation.
   late final pulumi.Output<String> name;
-  /// Information about when an on-call rotation is in effect and how long the rotation period lasts. Exactly one of either `daily_settings`, `monthly_settings`, or `weekly_settings` must be populated. See Recurrence for more details.
+  /// Information about when an on-call rotation is in effect and how long the rotation period lasts. Exactly one of either `dailySettings`, `monthlySettings`, or `weeklySettings` must be populated. See Recurrence for more details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<ContactsRotationRecurrence> recurrence;
@@ -821,9 +938,9 @@ class ContactsRotation extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The date and time, in RFC 3339 format, that the rotation goes into effect.
   late final pulumi.Output<String?> startTime;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
   late final pulumi.Output<String> timeZoneId;

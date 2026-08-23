@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_associated_alarm.dart';
+import 'plan_report_configuration.dart';
 import 'plan_timeouts.dart';
 import 'plan_trigger.dart';
 import 'plan_workflow.dart';
@@ -10,7 +11,7 @@ import 'plan_workflow.dart';
 class PlanState {
   /// ARN of the plan.
   final pulumi.Input<String>? arn;
-  /// Set of CloudWatch alarms associated with the plan. See Associated Alarms below.
+  /// CloudWatch alarms associated with the plan. See `associatedAlarms` Block for details.
   final pulumi.Input<List<PlanAssociatedAlarm>>? associatedAlarms;
   /// Description of the plan.
   final pulumi.Input<String>? description;
@@ -26,23 +27,25 @@ class PlanState {
   final pulumi.Input<int>? recoveryTimeObjectiveMinutes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// List of AWS regions involved in the plan.
+  /// List of AWS regions involved in the plan. Must contain at least 2 regions.
   final pulumi.Input<List<String>>? regions;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Configuration for automated execution reports. See `reportConfiguration` Block for details.
+  final pulumi.Input<List<PlanReportConfiguration>>? reportConfigurations;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<PlanTimeouts>? timeouts;
-  /// Set of triggers that can initiate the plan execution. See Triggers below.
+  /// Triggers that can initiate the plan execution. See `triggers` Block for details.
   final pulumi.Input<List<PlanTrigger>>? triggers;
-  /// List of workflows that define the steps to execute. See Workflow below.
+  /// Workflows that define the steps to execute. See `workflow` Block for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<PlanWorkflow>>? workflows;
 
   /// Creates a new [PlanState].
   /// [arn] ARN of the plan.
-  /// [associatedAlarms] Set of CloudWatch alarms associated with the plan. See Associated Alarms below.
+  /// [associatedAlarms] CloudWatch alarms associated with the plan. See `associatedAlarms` Block for details.
   /// [description] Description of the plan.
   /// [executionRole] ARN of the IAM role that ARC Region Switch will assume to execute the plan.
   /// [name] Name of the plan. Must be unique within the account.
@@ -50,12 +53,13 @@ class PlanState {
   /// [recoveryApproach] Recovery approach for the plan. Valid values: `activeActive`, `activePassive`.
   /// [recoveryTimeObjectiveMinutes] Recovery time objective in minutes.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [regions] List of AWS regions involved in the plan.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [regions] List of AWS regions involved in the plan. Must contain at least 2 regions.
+  /// [reportConfigurations] Configuration for automated execution reports. See `reportConfiguration` Block for details.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
-  /// [triggers] Set of triggers that can initiate the plan execution. See Triggers below.
-  /// [workflows] List of workflows that define the steps to execute. See Workflow below.
+  /// [triggers] Triggers that can initiate the plan execution. See `triggers` Block for details.
+  /// [workflows] Workflows that define the steps to execute. See `workflow` Block for details.
   const PlanState({
     this.arn,
     this.associatedAlarms,
@@ -67,6 +71,7 @@ class PlanState {
     this.recoveryTimeObjectiveMinutes,
     this.region,
     this.regions,
+    this.reportConfigurations,
     this.tags,
     this.tagsAll,
     this.timeouts,
@@ -86,6 +91,7 @@ class PlanState {
       'recoveryTimeObjectiveMinutes': ?recoveryTimeObjectiveMinutes,
       'region': ?region,
       'regions': ?regions,
+      'reportConfigurations': ?pulumi.Input.mapOptionalInputValue<List<PlanReportConfiguration>, List<Map<String, dynamic>>>(reportConfigurations, (value) => pulumi.Input.encodeList<PlanReportConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<PlanTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
@@ -106,6 +112,7 @@ class PlanState {
       recoveryTimeObjectiveMinutes: (() { final guardedValue = map['recoveryTimeObjectiveMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      reportConfigurations: (() { final guardedValue = map['reportConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanReportConfiguration>(guardedValue, (value) => PlanReportConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -114,4 +121,3 @@ class PlanState {
     );
   }
 }
-

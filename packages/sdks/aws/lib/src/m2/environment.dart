@@ -96,6 +96,23 @@ import 'environment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_m2_environment" "test" {
+///   name            = "test-env"
+///   engine_type     = "bluage"
+///   instance_type   = "M2.m5.large"
+///   security_groups = ["sg-01234567890abcdef"]
+///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +121,8 @@ import 'environment_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.m2.Environment;
 /// import com.pulumi.aws.m2.EnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,7 +138,7 @@ import 'environment_timeouts.dart';
 ///             .name("test-env")
 ///             .engineType("bluage")
 ///             .instanceType("M2.m5.large")
-///             .securityGroups(List.of("sg-01234567890abcdef"))
+///             .securityGroups(Arrays.asList("sg-01234567890abcdef"))
 ///             .subnetIds(
 ///                 "subnet-01234567890abcdef",
 ///                 "subnet-01234567890abcdea")
@@ -246,6 +263,26 @@ import 'environment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_m2_environment" "test" {
+///   name            = "test-env"
+///   engine_type     = "bluage"
+///   instance_type   = "M2.m5.large"
+///   security_groups = ["sg-01234567890abcdef"]
+///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
+///   high_availability_config = {
+///     desired_capacity = 2
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +292,8 @@ import 'environment_timeouts.dart';
 /// import com.pulumi.aws.m2.Environment;
 /// import com.pulumi.aws.m2.EnvironmentArgs;
 /// import com.pulumi.aws.m2.inputs.EnvironmentHighAvailabilityConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,7 +309,7 @@ import 'environment_timeouts.dart';
 ///             .name("test-env")
 ///             .engineType("bluage")
 ///             .instanceType("M2.m5.large")
-///             .securityGroups(List.of("sg-01234567890abcdef"))
+///             .securityGroups(Arrays.asList("sg-01234567890abcdef"))
 ///             .subnetIds(
 ///                 "subnet-01234567890abcdef",
 ///                 "subnet-01234567890abcdea")
@@ -415,6 +452,29 @@ import 'environment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_m2_environment" "test" {
+///   name            = "test-env"
+///   engine_type     = "bluage"
+///   instance_type   = "M2.m5.large"
+///   security_groups = ["sg-01234567890abcdef"]
+///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
+///   storage_configuration = {
+///     efs = {
+///       file_system_id = "fs-01234567890abcdef"
+///       mount_point    = "/m2/mount/example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -425,8 +485,8 @@ import 'environment_timeouts.dart';
 /// import com.pulumi.aws.m2.EnvironmentArgs;
 /// import com.pulumi.aws.m2.inputs.EnvironmentStorageConfigurationArgs;
 /// import com.pulumi.aws.m2.inputs.EnvironmentStorageConfigurationEfsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,7 +502,7 @@ import 'environment_timeouts.dart';
 ///             .name("test-env")
 ///             .engineType("bluage")
 ///             .instanceType("M2.m5.large")
-///             .securityGroups(List.of("sg-01234567890abcdef"))
+///             .securityGroups(Arrays.asList("sg-01234567890abcdef"))
 ///             .subnetIds(
 ///                 "subnet-01234567890abcdef",
 ///                 "subnet-01234567890abcdea")
@@ -590,6 +650,29 @@ import 'environment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_m2_environment" "test" {
+///   name            = "test-env"
+///   engine_type     = "bluage"
+///   instance_type   = "M2.m5.large"
+///   security_groups = ["sg-01234567890abcdef"]
+///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
+///   storage_configuration = {
+///     fsx = {
+///       file_system_id = "fs-01234567890abcdef"
+///       mount_point    = "/m2/mount/example"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -600,8 +683,8 @@ import 'environment_timeouts.dart';
 /// import com.pulumi.aws.m2.EnvironmentArgs;
 /// import com.pulumi.aws.m2.inputs.EnvironmentStorageConfigurationArgs;
 /// import com.pulumi.aws.m2.inputs.EnvironmentStorageConfigurationFsxArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -617,7 +700,7 @@ import 'environment_timeouts.dart';
 ///             .name("test-env")
 ///             .engineType("bluage")
 ///             .instanceType("M2.m5.large")
-///             .securityGroups(List.of("sg-01234567890abcdef"))
+///             .securityGroups(Arrays.asList("sg-01234567890abcdef"))
 ///             .subnetIds(
 ///                 "subnet-01234567890abcdef",
 ///                 "subnet-01234567890abcdea")
@@ -694,7 +777,7 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<EnvironmentStorageConfiguration?> storageConfiguration;
   /// List of subnet ids to deploy environment to.
   late final pulumi.Output<List<String>> subnetIds;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<EnvironmentTimeouts?> timeouts;

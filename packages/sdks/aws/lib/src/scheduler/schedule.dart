@@ -103,6 +103,28 @@ import 'schedule_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_scheduler_schedule" "example" {
+///   name       = "my-schedule"
+///   group_name = "default"
+///   flexible_time_window = {
+///     mode = "OFF"
+///   }
+///   schedule_expression = "rate(1 hours)"
+///   target = {
+///     arn      = exampleAwsSqsQueue.arn
+///     role_arn = exampleAwsIamRole.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +135,8 @@ import 'schedule_target.dart';
 /// import com.pulumi.aws.scheduler.ScheduleArgs;
 /// import com.pulumi.aws.scheduler.inputs.ScheduleFlexibleTimeWindowArgs;
 /// import com.pulumi.aws.scheduler.inputs.ScheduleTargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,7 +286,7 @@ import 'schedule_target.dart';
 /// 				RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 				Input: example.Url.ApplyT(func(url string) (pulumi.String, error) {
 /// 					var _zero pulumi.String
-/// 					tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 					tmpJSON0, err := json.Marshal(map[string]string{
 /// 						"MessageBody": "Greetings, programs!",
 /// 						"QueueUrl":    url,
 /// 					})
@@ -283,6 +305,33 @@ import 'schedule_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sqs_queue" "example" {
+/// }
+/// resource "aws_scheduler_schedule" "example" {
+///   name = "my-schedule"
+///   flexible_time_window = {
+///     mode = "OFF"
+///   }
+///   schedule_expression = "rate(1 hours)"
+///   target = {
+///     arn      = "arn:aws:scheduler:::aws-sdk:sqs:sendMessage"
+///     role_arn = exampleAwsIamRole.arn
+///     input = jsonencode({
+///       "MessageBody" = "Greetings, programs!"
+///       "QueueUrl"    = aws_sqs_queue.example.url
+///     })
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +344,8 @@ import 'schedule_target.dart';
 /// import com.pulumi.aws.scheduler.inputs.ScheduleFlexibleTimeWindowArgs;
 /// import com.pulumi.aws.scheduler.inputs.ScheduleTargetArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,6 +403,19 @@ import 'schedule_target.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `groupName` - (String) Name of the schedule group.
+/// * `name` - (String) Name of the schedule.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import schedules using the combination `group_name/name`. For example:
 ///
 /// ```sh
@@ -374,7 +436,7 @@ class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<String> groupName;
   /// ARN for the customer managed KMS key that EventBridge Scheduler will use to encrypt and decrypt your data.
   late final pulumi.Output<String?> kmsKeyArn;
-  /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;

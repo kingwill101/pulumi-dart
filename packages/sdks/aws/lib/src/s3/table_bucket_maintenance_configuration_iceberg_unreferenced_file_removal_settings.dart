@@ -3,16 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings {
-  /// Data objects marked for deletion are deleted after this many days.
-  /// Must be at least `1`.
+  /// Data objects marked for deletion are deleted after this many days. Must be at least `1`.
   final pulumi.Input<int> nonCurrentDays;
-  /// Unreferenced data objects are marked for deletion after this many days.
-  /// Must be at least `1`.
+  /// Unreferenced data objects are marked for deletion after this many days. Must be at least `1`.
   final pulumi.Input<int> unreferencedDays;
 
   /// Creates a new [TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings].
-  /// [nonCurrentDays] Data objects marked for deletion are deleted after this many days.
-  /// [unreferencedDays] Unreferenced data objects are marked for deletion after this many days.
+  /// [nonCurrentDays] Data objects marked for deletion are deleted after this many days. Must be at least `1`.
+  /// [unreferencedDays] Unreferenced data objects are marked for deletion after this many days. Must be at least `1`.
   const TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings({
     required this.nonCurrentDays,
     required this.unreferencedDays,
@@ -32,4 +30,3 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings 
     );
   }
 }
-

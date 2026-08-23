@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering AccessPointPolicy resources.
 class AccessPointPolicyState {
-  /// The ARN of the access point that you want to associate with the specified policy.
+  /// ARN of the access point that you want to associate with the specified policy.
   final pulumi.Input<String>? accessPointArn;
-  /// Indicates whether this access point currently has a policy that allows public access.
+  /// Whether this access point currently has a policy that allows public access.
   final pulumi.Input<bool>? hasPublicAccessPolicy;
-  /// The policy that you want to apply to the specified access point.
+  /// Policy that you want to apply to the specified access point.
   final pulumi.Input<String>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [AccessPointPolicyState].
-  /// [accessPointArn] The ARN of the access point that you want to associate with the specified policy.
-  /// [hasPublicAccessPolicy] Indicates whether this access point currently has a policy that allows public access.
-  /// [policy] The policy that you want to apply to the specified access point.
+  /// [accessPointArn] ARN of the access point that you want to associate with the specified policy.
+  /// [hasPublicAccessPolicy] Whether this access point currently has a policy that allows public access.
+  /// [policy] Policy that you want to apply to the specified access point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const AccessPointPolicyState({
     this.accessPointArn,
@@ -43,4 +43,3 @@ class AccessPointPolicyState {
     );
   }
 }
-

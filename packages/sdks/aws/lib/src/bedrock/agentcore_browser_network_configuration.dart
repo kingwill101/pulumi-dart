@@ -6,12 +6,12 @@ import 'agentcore_browser_network_configuration_vpc_config.dart';
 class AgentcoreBrowserNetworkConfiguration {
   /// Network mode for the browser. Valid values: `PUBLIC`, `VPC`.
   final pulumi.Input<String> networkMode;
-  /// VPC configuration when `network_mode` is `VPC`. See `vpc_config` below.
+  /// VPC configuration when `networkMode` is `VPC`. See `vpcConfig` below.
   final pulumi.Input<AgentcoreBrowserNetworkConfigurationVpcConfig>? vpcConfig;
 
   /// Creates a new [AgentcoreBrowserNetworkConfiguration].
   /// [networkMode] Network mode for the browser. Valid values: `PUBLIC`, `VPC`.
-  /// [vpcConfig] VPC configuration when `network_mode` is `VPC`. See `vpc_config` below.
+  /// [vpcConfig] VPC configuration when `networkMode` is `VPC`. See `vpcConfig` below.
   const AgentcoreBrowserNetworkConfiguration({
     required this.networkMode,
     this.vpcConfig,
@@ -31,4 +31,3 @@ class AgentcoreBrowserNetworkConfiguration {
     );
   }
 }
-

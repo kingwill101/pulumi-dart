@@ -6,7 +6,7 @@ import 'feature_group_feature_definition_collection_config.dart';
 class FeatureGroupFeatureDefinition {
   final pulumi.Input<FeatureGroupFeatureDefinitionCollectionConfig>? collectionConfig;
   final pulumi.Input<String>? collectionType;
-  /// The name of a feature. `feature_name` cannot be any of the following: `is_deleted`, `write_time`, `api_invocation_time`.
+  /// The name of a feature. `featureName` cannot be any of the following: `isDeleted`, `writeTime`, `apiInvocationTime`.
   final pulumi.Input<String>? featureName;
   /// The value type of a feature. Valid values are `Integral`, `Fractional`, or `String`.
   final pulumi.Input<String>? featureType;
@@ -14,7 +14,7 @@ class FeatureGroupFeatureDefinition {
   /// Creates a new [FeatureGroupFeatureDefinition].
   /// [collectionConfig] Optional.
   /// [collectionType] Optional.
-  /// [featureName] The name of a feature. `feature_name` cannot be any of the following: `is_deleted`, `write_time`, `api_invocation_time`.
+  /// [featureName] The name of a feature. `featureName` cannot be any of the following: `isDeleted`, `writeTime`, `apiInvocationTime`.
   /// [featureType] The value type of a feature. Valid values are `Integral`, `Fractional`, or `String`.
   const FeatureGroupFeatureDefinition({
     this.collectionConfig,
@@ -41,4 +41,3 @@ class FeatureGroupFeatureDefinition {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class LabelingJobInputConfigDataSourceS3DataSource {
     );
   }
 }
-

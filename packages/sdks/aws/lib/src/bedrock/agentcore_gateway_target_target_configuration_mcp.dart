@@ -1,27 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agentcore_gateway_target_target_configuration_mcp_api_gateway.dart';
 import 'agentcore_gateway_target_target_configuration_mcp_lambda.dart';
 import 'agentcore_gateway_target_target_configuration_mcp_mcp_server.dart';
 import 'agentcore_gateway_target_target_configuration_mcp_open_api_schema.dart';
 import 'agentcore_gateway_target_target_configuration_mcp_smithy_model.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcp {
+  /// API Gateway target configuration. See `apiGateway` below.
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpApiGateway>? apiGateway;
   /// Lambda function target configuration. See `lambda` below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambda>? lambda;
-  /// MCP server target configuration. See `mcp_server` below.
+  /// MCP server target configuration. See `mcpServer` below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServer>? mcpServer;
-  /// OpenAPI schema-based target configuration. See `api_schema_configuration` below.
+  /// OpenAPI schema-based target configuration. See `apiSchemaConfiguration` below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema>? openApiSchema;
-  /// Smithy model-based target configuration. See `api_schema_configuration` below.
+  /// Smithy model-based target configuration. See `apiSchemaConfiguration` below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel>? smithyModel;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcp].
+  /// [apiGateway] API Gateway target configuration. See `apiGateway` below.
   /// [lambda] Lambda function target configuration. See `lambda` below.
-  /// [mcpServer] MCP server target configuration. See `mcp_server` below.
-  /// [openApiSchema] OpenAPI schema-based target configuration. See `api_schema_configuration` below.
-  /// [smithyModel] Smithy model-based target configuration. See `api_schema_configuration` below.
+  /// [mcpServer] MCP server target configuration. See `mcpServer` below.
+  /// [openApiSchema] OpenAPI schema-based target configuration. See `apiSchemaConfiguration` below.
+  /// [smithyModel] Smithy model-based target configuration. See `apiSchemaConfiguration` below.
   const AgentcoreGatewayTargetTargetConfigurationMcp({
+    this.apiGateway,
     this.lambda,
     this.mcpServer,
     this.openApiSchema,
@@ -30,6 +35,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcp {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'apiGateway': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpApiGateway, Map<String, dynamic>>(apiGateway, (value) => value.toMap()),
       'lambda': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpLambda, Map<String, dynamic>>(lambda, (value) => value.toMap()),
       'mcpServer': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpMcpServer, Map<String, dynamic>>(mcpServer, (value) => value.toMap()),
       'openApiSchema': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema, Map<String, dynamic>>(openApiSchema, (value) => value.toMap()),
@@ -39,6 +45,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcp {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcp.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcp(
+      apiGateway: (() { final guardedValue = map['apiGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpApiGateway.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lambda: (() { final guardedValue = map['lambda']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mcpServer: (() { final guardedValue = map['mcpServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       openApiSchema: (() { final guardedValue = map['openApiSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -46,4 +53,3 @@ class AgentcoreGatewayTargetTargetConfigurationMcp {
     );
   }
 }
-

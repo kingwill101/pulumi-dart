@@ -52,9 +52,9 @@ class DeploymentGroupState {
   final pulumi.Input<String>? region;
   /// The service role ARN that allows deployments.
   final pulumi.Input<String>? serviceRoleArn;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   final pulumi.Input<bool>? terminationHookEnabled;
@@ -81,8 +81,8 @@ class DeploymentGroupState {
   /// [outdatedInstancesStrategy] Configuration block of Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. Valid values are `UPDATE` and `IGNORE`. Defaults to `UPDATE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceRoleArn] The service role ARN that allows deployments.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [terminationHookEnabled] Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   /// [triggerConfigurations] Configuration block(s) of the triggers for the deployment group (documented below).
   const DeploymentGroupState({
@@ -167,4 +167,3 @@ class DeploymentGroupState {
     );
   }
 }
-

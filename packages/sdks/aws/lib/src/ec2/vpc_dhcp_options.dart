@@ -69,6 +69,19 @@ import 'vpc_dhcp_options_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcdhcpoptions" "dns_resolver" {
+///   domain_name_servers = ["8.8.8.8", "8.8.4.4"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +90,8 @@ import 'vpc_dhcp_options_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcDhcpOptions;
 /// import com.pulumi.aws.ec2.VpcDhcpOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +233,27 @@ import 'vpc_dhcp_options_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcdhcpoptions" "foo" {
+///   domain_name                       = "service.consul"
+///   domain_name_servers               = ["127.0.0.1", "10.0.0.2"]
+///   ipv6_address_preferred_lease_time = 1440
+///   ntp_servers                       = ["127.0.0.1"]
+///   netbios_name_servers              = ["127.0.0.1"]
+///   netbios_node_type                 = 2
+///   tags = {
+///     "Name" = "foo-name"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +262,8 @@ import 'vpc_dhcp_options_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcDhcpOptions;
 /// import com.pulumi.aws.ec2.VpcDhcpOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,14 +310,6 @@ import 'vpc_dhcp_options_state.dart';
 /// ```
 ///
 ///
-/// ## Remarks
-///
-/// * Notice that all arguments are optional but you have to specify at least one argument.
-/// * `domain_name_servers`, `netbios_name_servers`, `ntp_servers` are limited by AWS to maximum four servers only.
-/// * To actually use the DHCP Options Set you need to associate it to a VPC using `aws.ec2.VpcDhcpOptionsAssociation`.
-/// * If you delete a DHCP Options Set, all VPCs using it will be associated to AWS's `default` DHCP Option Set.
-/// * In most cases unless you're configuring your own DNS you'll want to set `domain_name_servers` to `AmazonProvidedDNS`.
-///
 /// ## Import
 ///
 /// Using `pulumi import`, import VPC DHCP Options using the DHCP Options `id`. For example:
@@ -310,9 +336,11 @@ class VpcDhcpOptions extends pulumi.CustomResource {
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  ///
+  /// &gt; **Note:** All arguments are optional but at least one must be specified. `domainNameServers`, `netbiosNameServers`, and `ntpServers` are limited to four servers each. To use the DHCP Options Set you must associate it to a VPC using `aws.ec2.VpcDhcpOptionsAssociation`. If you delete a DHCP Options Set, all VPCs using it will be associated to AWS's `default` DHCP Option Set. In most cases, set `domainNameServers` to `AmazonProvidedDNS` unless configuring your own DNS.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcDhcpOptions].

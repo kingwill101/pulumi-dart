@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NatGatewayRegionalNatGatewayAddress {
-  /// The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivity_type` is set to `public` and `availability_mode` is set to `zonal`. When `availability_mode` is set to `regional`, this must not be set; instead, use the `availability_zone_address` block to specify EIPs for each AZ.
+  /// The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivityType` is set to `public` and `availabilityMode` is set to `zonal`. When `availabilityMode` is set to `regional`, this must not be set; instead, use the `availabilityZoneAddress` block to specify EIPs for each AZ.
   final pulumi.Input<String>? allocationId;
   /// Association ID of the Elastic IP address.
   final pulumi.Input<String>? associationId;
@@ -19,7 +19,7 @@ class NatGatewayRegionalNatGatewayAddress {
   final pulumi.Input<String>? status;
 
   /// Creates a new [NatGatewayRegionalNatGatewayAddress].
-  /// [allocationId] The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivity_type` is set to `public` and `availability_mode` is set to `zonal`. When `availability_mode` is set to `regional`, this must not be set; instead, use the `availability_zone_address` block to specify EIPs for each AZ.
+  /// [allocationId] The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivityType` is set to `public` and `availabilityMode` is set to `zonal`. When `availabilityMode` is set to `regional`, this must not be set; instead, use the `availabilityZoneAddress` block to specify EIPs for each AZ.
   /// [associationId] Association ID of the Elastic IP address.
   /// [availabilityZone] Availability Zone where this specific NAT gateway configuration is active.
   /// [availabilityZoneId] Availability Zone ID where this specific NAT gateway configuration is active
@@ -60,4 +60,3 @@ class NatGatewayRegionalNatGatewayAddress {
     );
   }
 }
-

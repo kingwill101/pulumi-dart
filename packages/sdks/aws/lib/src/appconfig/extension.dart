@@ -214,6 +214,48 @@ import 'extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "test" {
+///   statements {
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["appconfig.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "test" {
+///   name = "test"
+/// }
+/// resource "aws_iam_role" "test" {
+///   name               = "test"
+///   assume_role_policy = data.aws_iam_getpolicydocument.test.json
+/// }
+/// resource "aws_appconfig_extension" "test" {
+///   name        = "test"
+///   description = "test description"
+///   action_points {
+///     point = "ON_DEPLOYMENT_COMPLETE"
+///     actions {
+///       name     = "test"
+///       role_arn = aws_iam_role.test.arn
+///       uri      = aws_sns_topic.test.arn
+///     }
+///   }
+///   tags = {
+///     "Type" = "AppConfig Extension"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,13 +266,16 @@ import 'extension_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.appconfig.Extension;
 /// import com.pulumi.aws.appconfig.ExtensionArgs;
 /// import com.pulumi.aws.appconfig.inputs.ExtensionActionPointArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.appconfig.inputs.ExtensionActionPointActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,22 +373,22 @@ import 'extension_state.dart';
 /// $ pulumi import aws:appconfig/extension:Extension example 71rxuzt
 /// ```
 class Extension extends pulumi.CustomResource {
-  /// The action points defined in the extension. Detailed below.
+  /// Action points defined in the extension. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> actionPoints;
   /// ARN of the AppConfig Extension.
   late final pulumi.Output<String> arn;
   /// Information about the extension.
   late final pulumi.Output<String> description;
-  /// A name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
+  /// Name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
   late final pulumi.Output<String> name;
-  /// The parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
+  /// Parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The version number for the extension.
+  /// Version number for the extension.
   late final pulumi.Output<int> version;
 
   /// Creates a new [Extension].

@@ -111,7 +111,7 @@ import 'global_replication_group_state.dart';
 /// 		}
 /// 		example, err := elasticache.NewGlobalReplicationGroup(ctx, "example", &elasticache.GlobalReplicationGroupArgs{
 /// 			GlobalReplicationGroupIdSuffix: pulumi.String("example"),
-/// 			PrimaryReplicationGroupId:      primary.ID(),
+/// 			PrimaryReplicationGroupId:      primary.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -129,6 +129,34 @@ import 'global_replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_globalreplicationgroup" "example" {
+///   global_replication_group_id_suffix = "example"
+///   primary_replication_group_id       = aws_elasticache_replicationgroup.primary.id
+/// }
+/// resource "aws_elasticache_replicationgroup" "primary" {
+///   replication_group_id = "example-primary"
+///   description          = "primary replication group"
+///   engine               = "redis"
+///   engine_version       = "5.0.6"
+///   node_type            = "cache.m5.large"
+///   num_cache_clusters   = 1
+/// }
+/// resource "aws_elasticache_replicationgroup" "secondary" {
+///   replication_group_id        = "example-secondary"
+///   description                 = "secondary replication group"
+///   global_replication_group_id = aws_elasticache_globalreplicationgroup.example.global_replication_group_id
+///   num_cache_clusters          = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +167,8 @@ import 'global_replication_group_state.dart';
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
 /// import com.pulumi.aws.elasticache.GlobalReplicationGroup;
 /// import com.pulumi.aws.elasticache.GlobalReplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,7 +236,7 @@ import 'global_replication_group_state.dart';
 /// However, once it is part of a Global Replication Group,
 /// the Global Replication Group manages the version of all member replication groups.
 ///
-/// The provider is configured to ignore changes to `engine`, `engine_version` and `parameter_group_name` inside `aws.elasticache.ReplicationGroup` resources if they belong to a global replication group.
+/// The provider is configured to ignore changes to `engine`, `engineVersion` and `parameterGroupName` inside `aws.elasticache.ReplicationGroup` resources if they belong to a global replication group.
 ///
 /// In this example,
 /// the primary replication group will be created with Redis 6.0,
@@ -319,7 +347,7 @@ import 'global_replication_group_state.dart';
 /// 		}
 /// 		example, err := elasticache.NewGlobalReplicationGroup(ctx, "example", &elasticache.GlobalReplicationGroupArgs{
 /// 			GlobalReplicationGroupIdSuffix: pulumi.String("example"),
-/// 			PrimaryReplicationGroupId:      primary.ID(),
+/// 			PrimaryReplicationGroupId:      primary.ID().ToIDOutput().ToStringOutput(),
 /// 			EngineVersion:                  pulumi.String("6.2"),
 /// 		})
 /// 		if err != nil {
@@ -338,6 +366,35 @@ import 'global_replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_globalreplicationgroup" "example" {
+///   global_replication_group_id_suffix = "example"
+///   primary_replication_group_id       = aws_elasticache_replicationgroup.primary.id
+///   engine_version                     = "6.2"
+/// }
+/// resource "aws_elasticache_replicationgroup" "primary" {
+///   replication_group_id = "example-primary"
+///   description          = "primary replication group"
+///   engine               = "redis"
+///   engine_version       = "6.0"
+///   node_type            = "cache.m5.large"
+///   num_cache_clusters   = 1
+/// }
+/// resource "aws_elasticache_replicationgroup" "secondary" {
+///   replication_group_id        = "example-secondary"
+///   description                 = "secondary replication group"
+///   global_replication_group_id = aws_elasticache_globalreplicationgroup.example.global_replication_group_id
+///   num_cache_clusters          = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -348,8 +405,8 @@ import 'global_replication_group_state.dart';
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
 /// import com.pulumi.aws.elasticache.GlobalReplicationGroup;
 /// import com.pulumi.aws.elasticache.GlobalReplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -415,7 +472,7 @@ import 'global_replication_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ElastiCache Global Replication Groups using the `global_replication_group_id`. For example:
+/// Using `pulumi import`, import ElastiCache Global Replication Groups using the `globalReplicationGroupId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticache/globalReplicationGroup:GlobalReplicationGroup my_global_replication_group okuqm-global-replication-group-1
@@ -441,7 +498,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
   /// When creating, by default the Global Replication Group inherits the engine of the primary replication group.
   /// If an engine is specified, the Global Replication Group and all member replication groups will be upgraded to this engine.
   /// Valid values are `redis` or `valkey`.
-  /// Default is `redis` if `engine_version` is specified.
+  /// Default is `redis` if `engineVersion` is specified.
   late final pulumi.Output<String> engine;
   /// Engine version to use for the Global Replication Group.
   /// When creating, by default the Global Replication Group inherits the version of the primary replication group.
@@ -450,7 +507,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
   /// When the version is 7 or higher, the major and minor version should be set, e.g., `7.2`.
   /// When the version is 6, the major and minor version can be set, e.g., `6.2`,
   /// or the minor version can be unspecified which will use the latest version at creation time, e.g., `6.x`.
-  /// The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below.
+  /// The actual engine version used is returned in the attribute `engineVersionActual`, see Attribute Reference below.
   late final pulumi.Output<String> engineVersion;
   /// The full version number of the cache engine running on the members of this global replication group.
   late final pulumi.Output<String> engineVersionActual;
@@ -461,7 +518,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
   late final pulumi.Output<String?> globalReplicationGroupDescription;
   /// The full ID of the global replication group.
   late final pulumi.Output<String> globalReplicationGroupId;
-  /// The suffix name of a Global Datastore. If `global_replication_group_id_suffix` is changed, creates a new resource.
+  /// The suffix name of a Global Datastore. If `globalReplicationGroupIdSuffix` is changed, creates a new resource.
   late final pulumi.Output<String> globalReplicationGroupIdSuffix;
   /// The number of node groups (shards) on the global replication group.
   late final pulumi.Output<int> numNodeGroups;
@@ -470,7 +527,7 @@ class GlobalReplicationGroup extends pulumi.CustomResource {
   /// Specifying without a major version upgrade will fail.
   /// Note that ElastiCache creates a copy of this parameter group for each member replication group.
   late final pulumi.Output<String?> parameterGroupName;
-  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primary_replication_group_id` is changed, creates a new resource.
+  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
   late final pulumi.Output<String> primaryReplicationGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

@@ -73,6 +73,22 @@ import 'directory_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_directorybucket" "example" {
+///   bucket = "example--usw2-az1--x-s3"
+///   location = {
+///     name = "usw2-az1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'directory_bucket_state.dart';
 /// import com.pulumi.aws.s3.DirectoryBucket;
 /// import com.pulumi.aws.s3.DirectoryBucketArgs;
 /// import com.pulumi.aws.s3.inputs.DirectoryBucketLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,6 +202,23 @@ import 'directory_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_directorybucket" "example_local_zone" {
+///   bucket = "example--usw2-xxx-lz1--x-s3"
+///   location = {
+///     name = "usw2-xxx-lz1"
+///     type = "LocalZone"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +228,8 @@ import 'directory_bucket_state.dart';
 /// import com.pulumi.aws.s3.DirectoryBucket;
 /// import com.pulumi.aws.s3.DirectoryBucketArgs;
 /// import com.pulumi.aws.s3.inputs.DirectoryBucketLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -242,7 +275,7 @@ import 'directory_bucket_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -254,7 +287,7 @@ import 'directory_bucket_state.dart';
 class DirectoryBucket extends pulumi.CustomResource {
   /// ARN of the bucket.
   late final pulumi.Output<String> arn;
-  /// Name of the bucket. The name must be in the format `[bucket_name]--[azid]--x-s3`. Use the `aws.s3.Bucket` resource to manage general purpose buckets.
+  /// Name of the bucket. The name must be in the format `[bucketName]--[azid]--x-s3`. Use the `aws.s3.Bucket` resource to manage general purpose buckets.
   late final pulumi.Output<String> bucket;
   /// Data redundancy. Valid values: `SingleAvailabilityZone`, `SingleLocalZone`. The default value depends on the value of the `location.type` attribute.
   late final pulumi.Output<String> dataRedundancy;
@@ -264,9 +297,9 @@ class DirectoryBucket extends pulumi.CustomResource {
   late final pulumi.Output<DirectoryBucketLocation> location;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the bucket. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Bucket type. Valid values: `Directory`.
   late final pulumi.Output<String> type;

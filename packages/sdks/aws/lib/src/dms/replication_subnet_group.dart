@@ -99,6 +99,25 @@ import 'replication_subnet_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create a new replication subnet group
+/// resource "aws_dms_replicationsubnetgroup" "example" {
+///   replication_subnet_group_description = "Example replication subnet group"
+///   replication_subnet_group_id          = "example-dms-replication-subnet-group-tf"
+///   subnet_ids                           = ["subnet-12345678", "subnet-12345679"]
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +126,8 @@ import 'replication_subnet_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dms.ReplicationSubnetGroup;
 /// import com.pulumi.aws.dms.ReplicationSubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,7 +320,7 @@ import 'replication_subnet_group_state.dart';
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "dms.amazonaws.com",
 /// 					},
 /// 					"Action": "sts:AssumeRole",
@@ -347,6 +366,43 @@ import 'replication_subnet_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "dms-vpc-role" {
+///   name        = "dms-vpc-role"
+///   description = "Allows DMS to manage VPC"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "dms.amazonaws.com"
+///       }
+///       "Action" = "sts:AssumeRole"
+///     }]
+///   })
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   role       = aws_iam_role.dms-vpc-role.name
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
+/// }
+/// resource "aws_dms_replicationsubnetgroup" "example" {
+///   depends_on                           = [aws_iam_rolepolicyattachment.example]
+///   replication_subnet_group_description = "Example"
+///   replication_subnet_group_id          = "example-id"
+///   subnet_ids                           = ["subnet-12345678", "subnet-12345679"]
+///   tags = {
+///     "Name" = "example-id"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -361,8 +417,8 @@ import 'replication_subnet_group_state.dart';
 /// import com.pulumi.aws.dms.ReplicationSubnetGroupArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -448,7 +504,7 @@ import 'replication_subnet_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import replication subnet groups using the `replication_subnet_group_id`. For example:
+/// Using `pulumi import`, import replication subnet groups using the `replicationSubnetGroupId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dms/replicationSubnetGroup:ReplicationSubnetGroup test test-dms-replication-subnet-group-tf
@@ -463,9 +519,9 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> replicationSubnetGroupId;
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   late final pulumi.Output<List<String>> subnetIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the VPC the subnet group is in.
   late final pulumi.Output<String> vpcId;

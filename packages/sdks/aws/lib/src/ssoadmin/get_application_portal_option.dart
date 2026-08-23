@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_application_portal_option_sign_in_option.dart';
 
 class GetApplicationPortalOption {
+  /// Sign-in options for the access portal. See `signInOptions` Block below.
   final pulumi.Input<List<GetApplicationPortalOptionSignInOption>> signInOptions;
+  /// Whether the application is visible in the access portal.
   final pulumi.Input<String> visibility;
 
   /// Creates a new [GetApplicationPortalOption].
-  /// [signInOptions] Required.
-  /// [visibility] Required.
+  /// [signInOptions] Sign-in options for the access portal. See `signInOptions` Block below.
+  /// [visibility] Whether the application is visible in the access portal.
   const GetApplicationPortalOption({
     required this.signInOptions,
     required this.visibility,
@@ -29,4 +31,3 @@ class GetApplicationPortalOption {
     );
   }
 }
-

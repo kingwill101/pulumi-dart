@@ -14,7 +14,7 @@ import 'webhook_state.dart';
 ///
 /// &gt; **Note:** The AWS account that this provider uses to create this resource *must* have authorized CodeBuild to access Bitbucket/GitHub's OAuth API in each applicable region. This is a manual step that must be done *before* creating webhooks with this resource. If OAuth is not configured, AWS will return an error similar to `ResourceNotFoundException: Could not find access token for server type github`. More information can be found in the CodeBuild User Guide for [Bitbucket](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-bitbucket-pull-request.html) and [GitHub](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-github-pull-request.html).
 ///
-/// &gt; **Note:** Further managing the automatically created Bitbucket/GitHub webhook with the `bitbucket_hook`/`github_repository_webhook` resource is only possible with importing that resource after creation of the `aws.codebuild.Webhook` resource. The CodeBuild API does not ever provide the `secret` attribute for the `aws.codebuild.Webhook` resource in this scenario.
+/// &gt; **Note:** Further managing the automatically created Bitbucket/GitHub webhook with the `bitbucketHook`/`githubRepositoryWebhook` resource is only possible with importing that resource after creation of the `aws.codebuild.Webhook` resource. The CodeBuild API does not ever provide the `secret` attribute for the `aws.codebuild.Webhook` resource in this scenario.
 ///
 ///
 /// ```typescript
@@ -128,6 +128,30 @@ import 'webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_webhook" "example" {
+///   project_name = exampleAwsCodebuildProject.name
+///   build_type   = "BUILD"
+///   filter_groups {
+///     filters {
+///       type    = "EVENT"
+///       pattern = "PUSH"
+///     }
+///     filters {
+///       type    = "BASE_REF"
+///       pattern = "master"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +161,9 @@ import 'webhook_state.dart';
 /// import com.pulumi.aws.codebuild.Webhook;
 /// import com.pulumi.aws.codebuild.WebhookArgs;
 /// import com.pulumi.aws.codebuild.inputs.WebhookFilterGroupArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.codebuild.inputs.WebhookFilterGroupFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,7 +212,7 @@ import 'webhook_state.dart';
 ///
 /// ### GitHub Enterprise
 ///
-/// When working with [GitHub Enterprise](https://enterprise.github.com/) source CodeBuild webhooks, the GHE repository webhook must be separately managed (e.g., manually or with the `github_repository_webhook` resource).
+/// When working with [GitHub Enterprise](https://enterprise.github.com/) source CodeBuild webhooks, the GHE repository webhook must be separately managed (e.g., manually or with the `githubRepositoryWebhook` resource).
 ///
 /// More information creating webhooks with GitHub Enterprise can be found in the [CodeBuild User Guide](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-github-enterprise.html).
 ///
@@ -306,6 +331,34 @@ import 'webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     github = {
+///       source = "pulumi/github"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_webhook" "example" {
+///   project_name = exampleAwsCodebuildProject.name
+/// }
+/// resource "github_repositorywebhook" "example" {
+///   active     = true
+///   events     = ["push"]
+///   name       = "example"
+///   repository = exampleGithubRepository.name
+///   configuration = [{
+///     "url"         = aws_codebuild_webhook.example.payload_url
+///     "secret"      = aws_codebuild_webhook.example.secret
+///     "contentType" = "json"
+///     "insecureSsl" = false
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -316,8 +369,8 @@ import 'webhook_state.dart';
 /// import com.pulumi.aws.codebuild.WebhookArgs;
 /// import com.pulumi.github.RepositoryWebhook;
 /// import com.pulumi.github.RepositoryWebhookArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -338,7 +391,7 @@ import 'webhook_state.dart';
 ///             .events("push")
 ///             .name("example")
 ///             .repository(exampleGithubRepository.name())
-///             .configuration(RepositoryWebhookConfigurationArgs.builder()
+///             .configuration(com.pulumi.github.inputs.RepositoryWebhookConfigurationArgs.builder()
 ///                 .url(example.payloadUrl())
 ///                 .secret(example.secret())
 ///                 .contentType("json")
@@ -468,6 +521,26 @@ import 'webhook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codebuild_webhook" "example" {
+///   project_name = exampleAwsCodebuildProject.name
+///   build_type   = "BUILD"
+///   filter_groups {
+///     filters {
+///       type    = "EVENT"
+///       pattern = "WORKFLOW_JOB_QUEUED"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +550,9 @@ import 'webhook_state.dart';
 /// import com.pulumi.aws.codebuild.Webhook;
 /// import com.pulumi.aws.codebuild.WebhookArgs;
 /// import com.pulumi.aws.codebuild.inputs.WebhookFilterGroupArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.codebuild.inputs.WebhookFilterGroupFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -526,23 +600,23 @@ import 'webhook_state.dart';
 /// $ pulumi import aws:codebuild/webhook:Webhook example MyProjectName
 /// ```
 class Webhook extends pulumi.CustomResource {
-  /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filter_group` over `branch_filter`.
+  /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filterGroup` over `branchFilter`.
   late final pulumi.Output<String?> branchFilter;
   /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
   late final pulumi.Output<String?> buildType;
-  /// Information about the webhook's trigger. See filter_group for details.
+  /// Information about the webhook's trigger. See filterGroup for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> filterGroups;
-  /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payload_url` and `secret` values for the webhook. The `payload_url` and `secret` values in the output can be used to manually create a webhook within GitHub.
+  /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payloadUrl` and `secret` values for the webhook. The `payloadUrl` and `secret` values in the output can be used to manually create a webhook within GitHub.
   late final pulumi.Output<bool?> manualCreation;
   /// The CodeBuild endpoint where webhook events are sent.
   late final pulumi.Output<String> payloadUrl;
   /// The name of the build project.
   late final pulumi.Output<String> projectName;
-  /// Defines comment-based approval requirements for triggering builds on pull requests. See pull_request_build_policy for details.
+  /// Defines comment-based approval requirements for triggering builds on pull requests. See pullRequestBuildPolicy for details.
   late final pulumi.Output<WebhookPullRequestBuildPolicy> pullRequestBuildPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Scope configuration for global or organization webhooks. See scope_configuration for details.
+  /// Scope configuration for global or organization webhooks. See scopeConfiguration for details.
   late final pulumi.Output<WebhookScopeConfiguration?> scopeConfiguration;
   /// The secret token of the associated repository. Not returned by the CodeBuild API for all source types.
   late final pulumi.Output<String> secret;

@@ -5,7 +5,7 @@ import 'volume_attachment_state.dart';
 /// Provides an AWS EBS Volume Attachment as a top level resource, to attach and
 /// detach volumes from AWS Instances.
 ///
-/// &gt; **NOTE on EBS block devices:** If you use `ebs_block_device` on an `aws.ec2.Instance`, this provider will assume management over the full set of non-root EBS block devices for the instance, and treats additional block devices as drift. For this reason, `ebs_block_device` cannot be mixed with external `aws.ebs.Volume` + `aws.ec2.VolumeAttachment` resources for a given instance.
+/// &gt; **NOTE on EBS block devices:** If you use `ebsBlockDevice` on an `aws.ec2.Instance`, this provider will assume management over the full set of non-root EBS block devices for the instance, and treats additional block devices as drift. For this reason, `ebsBlockDevice` cannot be mixed with external `aws.ebs.Volume` + `aws.ec2.VolumeAttachment` resources for a given instance.
 ///
 /// ## Example Usage
 ///
@@ -116,14 +116,41 @@ import 'volume_attachment_state.dart';
 /// 		}
 /// 		_, err = ec2.NewVolumeAttachment(ctx, "ebs_att", &ec2.VolumeAttachmentArgs{
 /// 			DeviceName: pulumi.String("/dev/sdh"),
-/// 			VolumeId:   example.ID(),
-/// 			InstanceId: web.ID(),
+/// 			VolumeId:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			InstanceId: web.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_volumeattachment" "ebs_att" {
+///   device_name = "/dev/sdh"
+///   volume_id   = aws_ebs_volume.example.id
+///   instance_id = aws_ec2_instance.web.id
+/// }
+/// resource "aws_ec2_instance" "web" {
+///   ami               = "ami-21f78e11"
+///   availability_zone = "us-west-2a"
+///   instance_type     = "t2.micro"
+///   tags = {
+///     "Name" = "HelloWorld"
+///   }
+/// }
+/// resource "aws_ebs_volume" "example" {
+///   availability_zone = "us-west-2a"
+///   size              = 1
 /// }
 /// ```
 /// ```java
@@ -138,8 +165,8 @@ import 'volume_attachment_state.dart';
 /// import com.pulumi.aws.ebs.VolumeArgs;
 /// import com.pulumi.aws.ec2.VolumeAttachment;
 /// import com.pulumi.aws.ec2.VolumeAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,15 +226,25 @@ import 'volume_attachment_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `deviceName` (String) Device name exposed to the instance.
+/// * `instanceId` (String) ID of the Instance.
+/// * `volumeId` (String) ID of the Volume.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import EBS Volume Attachments using `DEVICE_NAME:VOLUME_ID:INSTANCE_ID`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/volumeAttachment:VolumeAttachment example /dev/sdh:vol-049df61146c4d7901:i-12345678
 /// ```
-///
-/// [1]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html#available-ec2-device-names
-/// [2]: https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html#available-ec2-device-names
-/// [3]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html
 class VolumeAttachment extends pulumi.CustomResource {
   /// The device name to expose to the instance (for
   /// example, `/dev/sdh` or `xvdh`).  See [Device Naming on Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html#available-ec2-device-names) and [Device Naming on Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html#available-ec2-device-names) for more information.

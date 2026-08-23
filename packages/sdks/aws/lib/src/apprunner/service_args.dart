@@ -15,38 +15,36 @@ import 'service_source_configuration.dart';
 class ServiceArgs {
   /// ARN of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner associates the latest revision of a default auto scaling configuration.
   final pulumi.Input<String>? autoScalingConfigurationArn;
-  /// An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK. See Encryption Configuration below for more details.
+  /// Custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK. See `encryptionConfiguration` below.
   final pulumi.Input<ServiceEncryptionConfiguration>? encryptionConfiguration;
-  /// Settings of the health check that AWS App Runner performs to monitor the health of your service. See Health Check Configuration below for more details.
+  /// Settings of the health check that AWS App Runner performs to monitor the health of your service. See `healthCheckConfiguration` below.
   final pulumi.Input<ServiceHealthCheckConfiguration>? healthCheckConfiguration;
-  /// The runtime configuration of instances (scaling units) of the App Runner service. See Instance Configuration below for more details.
+  /// Runtime configuration of instances (scaling units) of the App Runner service. See `instanceConfiguration` below.
   final pulumi.Input<ServiceInstanceConfiguration>? instanceConfiguration;
-  /// Configuration settings related to network traffic of the web application that the App Runner service runs. See Network Configuration below for more details.
+  /// Configuration settings related to network traffic of the web application that the App Runner service runs. See `networkConfiguration` below.
   final pulumi.Input<ServiceNetworkConfiguration>? networkConfiguration;
-  /// The observability configuration of your service. See Observability Configuration below for more details.
+  /// Observability configuration of your service. See `observabilityConfiguration` below.
   final pulumi.Input<ServiceObservabilityConfiguration>? observabilityConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Name of the service.
   final pulumi.Input<String> serviceName;
-  /// The source to deploy to the App Runner service. Can be a code or an image repository. See Source Configuration below for more details.
-  ///
-  /// The following arguments are optional:
+  /// Source to deploy to the App Runner service. Can be a code or an image repository. See `sourceConfiguration` below.
   final pulumi.Input<ServiceSourceConfiguration> sourceConfiguration;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ServiceArgs].
   /// [autoScalingConfigurationArn] ARN of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner associates the latest revision of a default auto scaling configuration.
-  /// [encryptionConfiguration] An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK. See Encryption Configuration below for more details.
-  /// [healthCheckConfiguration] Settings of the health check that AWS App Runner performs to monitor the health of your service. See Health Check Configuration below for more details.
-  /// [instanceConfiguration] The runtime configuration of instances (scaling units) of the App Runner service. See Instance Configuration below for more details.
-  /// [networkConfiguration] Configuration settings related to network traffic of the web application that the App Runner service runs. See Network Configuration below for more details.
-  /// [observabilityConfiguration] The observability configuration of your service. See Observability Configuration below for more details.
+  /// [encryptionConfiguration] Custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK. See `encryptionConfiguration` below.
+  /// [healthCheckConfiguration] Settings of the health check that AWS App Runner performs to monitor the health of your service. See `healthCheckConfiguration` below.
+  /// [instanceConfiguration] Runtime configuration of instances (scaling units) of the App Runner service. See `instanceConfiguration` below.
+  /// [networkConfiguration] Configuration settings related to network traffic of the web application that the App Runner service runs. See `networkConfiguration` below.
+  /// [observabilityConfiguration] Observability configuration of your service. See `observabilityConfiguration` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceName] Name of the service.
-  /// [sourceConfiguration] The source to deploy to the App Runner service. Can be a code or an image repository. See Source Configuration below for more details.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [sourceConfiguration] Source to deploy to the App Runner service. Can be a code or an image repository. See `sourceConfiguration` below.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ServiceArgs({
     this.autoScalingConfigurationArn,
     this.encryptionConfiguration,
@@ -90,4 +88,3 @@ class ServiceArgs {
     );
   }
 }
-

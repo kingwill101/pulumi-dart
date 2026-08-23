@@ -109,6 +109,29 @@ import 'eip_domain_name_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_eip" "example" {
+///   domain = "vpc"
+/// }
+/// resource "aws_route53_record" "example" {
+///   zone_id = main.zoneId
+///   name    = "reverse"
+///   type    = "A"
+///   records = [aws_ec2_eip.example.public_ip]
+/// }
+/// resource "aws_ec2_eipdomainname" "example" {
+///   allocation_id = aws_ec2_eip.example.allocation_id
+///   domain_name   = aws_route53_record.example.fqdn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +144,8 @@ import 'eip_domain_name_timeouts.dart';
 /// import com.pulumi.aws.route53.RecordArgs;
 /// import com.pulumi.aws.ec2.EipDomainName;
 /// import com.pulumi.aws.ec2.EipDomainNameArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +197,15 @@ import 'eip_domain_name_timeouts.dart';
 ///     properties:
 ///       allocationId: ${example.allocationId}
 ///       domainName: ${exampleRecord.fqdn}
+/// ```
+///
+///
+/// ## Import
+///
+/// Using `pulumi import`, import a static reverse DNS record to an Elastic IP addresses using their association IDs. For example:
+///
+/// ```sh
+/// $ pulumi import aws:ec2/eipDomainName:EipDomainName test eipalloc-ab12c345
 /// ```
 class EipDomainName extends pulumi.CustomResource {
   /// The allocation ID.

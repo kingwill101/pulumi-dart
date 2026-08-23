@@ -21,9 +21,9 @@ class RouteServerEndpointState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? subnetId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<RouteServerEndpointTimeouts>? timeouts;
   /// The ID of the VPC containing the endpoint.
@@ -37,8 +37,8 @@ class RouteServerEndpointState {
   /// [routeServerEndpointId] The unique identifier of the route server endpoint.
   /// [routeServerId] The ID of the route server for which to create an endpoint.
   /// [subnetId] The ID of the subnet in which to create the route server endpoint.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC containing the endpoint.
   const RouteServerEndpointState({
@@ -87,4 +87,3 @@ class RouteServerEndpointState {
     );
   }
 }
-

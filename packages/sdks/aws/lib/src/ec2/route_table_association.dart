@@ -12,18 +12,18 @@ import 'route_table_association_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const a = new aws.ec2.RouteTableAssociation("a", {
-///     subnetId: foo.id,
-///     routeTableId: bar.id,
+/// const example = new aws.ec2.RouteTableAssociation("example", {
+///     subnetId: exampleAwsSubnet.id,
+///     routeTableId: exampleAwsRouteTable.id,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// a = aws.ec2.RouteTableAssociation("a",
-///     subnet_id=foo["id"],
-///     route_table_id=bar["id"])
+/// example = aws.ec2.RouteTableAssociation("example",
+///     subnet_id=example_aws_subnet["id"],
+///     route_table_id=example_aws_route_table["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -33,10 +33,10 @@ import 'route_table_association_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var a = new Aws.Ec2.RouteTableAssociation("a", new()
+///     var example = new Aws.Ec2.RouteTableAssociation("example", new()
 ///     {
-///         SubnetId = foo.Id,
-///         RouteTableId = bar.Id,
+///         SubnetId = exampleAwsSubnet.Id,
+///         RouteTableId = exampleAwsRouteTable.Id,
 ///     });
 ///
 /// });
@@ -51,15 +51,29 @@ import 'route_table_association_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := ec2.NewRouteTableAssociation(ctx, "a", &ec2.RouteTableAssociationArgs{
-/// 			SubnetId:     pulumi.Any(foo.Id),
-/// 			RouteTableId: pulumi.Any(bar.Id),
+/// 		_, err := ec2.NewRouteTableAssociation(ctx, "example", &ec2.RouteTableAssociationArgs{
+/// 			SubnetId:     pulumi.Any(exampleAwsSubnet.Id),
+/// 			RouteTableId: pulumi.Any(exampleAwsRouteTable.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_routetableassociation" "example" {
+///   subnet_id      = exampleAwsSubnet.id
+///   route_table_id = exampleAwsRouteTable.id
 /// }
 /// ```
 /// ```java
@@ -70,8 +84,8 @@ import 'route_table_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.RouteTableAssociation;
 /// import com.pulumi.aws.ec2.RouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -83,9 +97,9 @@ import 'route_table_association_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var a = new RouteTableAssociation("a", RouteTableAssociationArgs.builder()
-///             .subnetId(foo.id())
-///             .routeTableId(bar.id())
+///         var example = new RouteTableAssociation("example", RouteTableAssociationArgs.builder()
+///             .subnetId(exampleAwsSubnet.id())
+///             .routeTableId(exampleAwsRouteTable.id())
 ///             .build());
 ///
 ///     }
@@ -93,11 +107,11 @@ import 'route_table_association_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   a:
+///   example:
 ///     type: aws:ec2:RouteTableAssociation
 ///     properties:
-///       subnetId: ${foo.id}
-///       routeTableId: ${bar.id}
+///       subnetId: ${exampleAwsSubnet.id}
+///       routeTableId: ${exampleAwsRouteTable.id}
 /// ```
 ///
 ///
@@ -106,18 +120,18 @@ import 'route_table_association_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const b = new aws.ec2.RouteTableAssociation("b", {
-///     gatewayId: foo.id,
-///     routeTableId: bar.id,
+/// const example = new aws.ec2.RouteTableAssociation("example", {
+///     gatewayId: exampleAwsInternetGateway.id,
+///     routeTableId: exampleAwsRouteTable.id,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// b = aws.ec2.RouteTableAssociation("b",
-///     gateway_id=foo["id"],
-///     route_table_id=bar["id"])
+/// example = aws.ec2.RouteTableAssociation("example",
+///     gateway_id=example_aws_internet_gateway["id"],
+///     route_table_id=example_aws_route_table["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -127,10 +141,10 @@ import 'route_table_association_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var b = new Aws.Ec2.RouteTableAssociation("b", new()
+///     var example = new Aws.Ec2.RouteTableAssociation("example", new()
 ///     {
-///         GatewayId = foo.Id,
-///         RouteTableId = bar.Id,
+///         GatewayId = exampleAwsInternetGateway.Id,
+///         RouteTableId = exampleAwsRouteTable.Id,
 ///     });
 ///
 /// });
@@ -145,15 +159,29 @@ import 'route_table_association_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := ec2.NewRouteTableAssociation(ctx, "b", &ec2.RouteTableAssociationArgs{
-/// 			GatewayId:    pulumi.Any(foo.Id),
-/// 			RouteTableId: pulumi.Any(bar.Id),
+/// 		_, err := ec2.NewRouteTableAssociation(ctx, "example", &ec2.RouteTableAssociationArgs{
+/// 			GatewayId:    pulumi.Any(exampleAwsInternetGateway.Id),
+/// 			RouteTableId: pulumi.Any(exampleAwsRouteTable.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_routetableassociation" "example" {
+///   gateway_id     = exampleAwsInternetGateway.id
+///   route_table_id = exampleAwsRouteTable.id
 /// }
 /// ```
 /// ```java
@@ -164,8 +192,8 @@ import 'route_table_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.RouteTableAssociation;
 /// import com.pulumi.aws.ec2.RouteTableAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,9 +205,9 @@ import 'route_table_association_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var b = new RouteTableAssociation("b", RouteTableAssociationArgs.builder()
-///             .gatewayId(foo.id())
-///             .routeTableId(bar.id())
+///         var example = new RouteTableAssociation("example", RouteTableAssociationArgs.builder()
+///             .gatewayId(exampleAwsInternetGateway.id())
+///             .routeTableId(exampleAwsRouteTable.id())
 ///             .build());
 ///
 ///     }
@@ -187,15 +215,27 @@ import 'route_table_association_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   b:
+///   example:
 ///     type: aws:ec2:RouteTableAssociation
 ///     properties:
-///       gatewayId: ${foo.id}
-///       routeTableId: ${bar.id}
+///       gatewayId: ${exampleAwsInternetGateway.id}
+///       routeTableId: ${exampleAwsRouteTable.id}
 /// ```
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` - (String) ID of the association.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// With EC2 Internet Gateways:
 ///
@@ -205,24 +245,24 @@ import 'route_table_association_state.dart';
 /// With EC2 Subnets:
 ///
 /// ```sh
-/// $ pulumi import aws:ec2/routeTableAssociation:RouteTableAssociation assoc subnet-6777656e646f6c796e/rtb-656c65616e6f72
+/// $ pulumi import aws:ec2/routeTableAssociation:RouteTableAssociation example subnet-6777656e646f6c796e/rtb-656c65616e6f72
 /// ```
 ///
 /// With EC2 Internet Gateways:
 ///
 /// ```sh
-/// $ pulumi import aws:ec2/routeTableAssociation:RouteTableAssociation assoc igw-01b3a60780f8d034a/rtb-656c65616e6f72
+/// $ pulumi import aws:ec2/routeTableAssociation:RouteTableAssociation example igw-01b3a60780f8d034a/rtb-656c65616e6f72
 /// ```
 class RouteTableAssociation extends pulumi.CustomResource {
-  /// The gateway ID to create an association. Conflicts with `subnet_id`.
+  /// The gateway ID to create an association. Conflicts with `subnetId`.
   late final pulumi.Output<String?> gatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The ID of the routing table to associate with.
   ///
-  /// &gt; **NOTE:** Please note that one of either `subnet_id` or `gateway_id` is required.
+  /// &gt; **NOTE:** Please note that one of either `subnetId` or `gatewayId` is required.
   late final pulumi.Output<String> routeTableId;
-  /// The subnet ID to create an association. Conflicts with `gateway_id`.
+  /// The subnet ID to create an association. Conflicts with `gatewayId`.
   late final pulumi.Output<String?> subnetId;
 
   /// Creates a new [RouteTableAssociation].

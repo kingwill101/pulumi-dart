@@ -30,4 +30,3 @@ class ResourceSetResourceDnsTargetResourceTargetResourceR53Resource {
     );
   }
 }
-

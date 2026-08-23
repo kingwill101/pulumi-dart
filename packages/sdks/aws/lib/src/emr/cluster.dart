@@ -500,6 +500,56 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_cluster" "cluster" {
+///   name                              = "emr-test-arn"
+///   release_label                     = "emr-4.6.0"
+///   applications                      = ["Spark"]
+///   additional_info                   = "{\n  \\\"instanceAwsClientConfiguration\\\": {\n    \\\"proxyPort\\\": 8099,\n    \\\"proxyHost\\\": \\\"myproxy.example.com\\\"\n  }\n}\n"
+///   termination_protection            = false
+///   keep_job_flow_alive_when_no_steps = true
+///   ec2_attributes = {
+///     subnet_id                         = main.id
+///     emr_managed_master_security_group = sg.id
+///     emr_managed_slave_security_group  = sg.id
+///     instance_profile                  = emrProfile.arn
+///   }
+///   master_instance_group = {
+///     instance_type = "m4.large"
+///   }
+///   core_instance_group = {
+///     instance_type  = "c4.large"
+///     instance_count = 1
+///     ebs_configs = [{
+///       "size"               = "40"
+///       "type"               = "gp2"
+///       "volumesPerInstance" = 1
+///     }]
+///     bid_price          = "0.30"
+///     autoscaling_policy = "{\n\\\"Constraints\\\": {\n  \\\"MinCapacity\\\": 1,\n  \\\"MaxCapacity\\\": 2\n},\n\\\"Rules\\\": [\n  {\n    \\\"Name\\\": \\\"ScaleOutMemoryPercentage\\\",\n    \\\"Description\\\": \\\"Scale out if YARNMemoryAvailablePercentage is less than 15\\\",\n    \\\"Action\\\": {\n      \\\"SimpleScalingPolicyConfiguration\\\": {\n        \\\"AdjustmentType\\\": \\\"CHANGE_IN_CAPACITY\\\",\n        \\\"ScalingAdjustment\\\": 1,\n        \\\"CoolDown\\\": 300\n      }\n    },\n    \\\"Trigger\\\": {\n      \\\"CloudWatchAlarmDefinition\\\": {\n        \\\"ComparisonOperator\\\": \\\"LESS_THAN\\\",\n        \\\"EvaluationPeriods\\\": 1,\n        \\\"MetricName\\\": \\\"YARNMemoryAvailablePercentage\\\",\n        \\\"Namespace\\\": \\\"AWS/ElasticMapReduce\\\",\n        \\\"Period\\\": 300,\n        \\\"Statistic\\\": \\\"AVERAGE\\\",\n        \\\"Threshold\\\": 15.0,\n        \\\"Unit\\\": \\\"PERCENT\\\"\n      }\n    }\n  }\n]\n}\n"
+///   }
+///   ebs_root_volume_size = 100
+///   tags = {
+///     "role" = "rolename"
+///     "env"  = "env"
+///   }
+///   bootstrap_actions {
+///     path = "s3://elasticmapreduce/bootstrap-actions/run-if"
+///     name = "runif"
+///     args = ["instance.isMaster=true", "echo running on master node"]
+///   }
+///   configurations_json = "  [\n    {\n      \\\"Classification\\\": \\\"hadoop-env\\\",\n      \\\"Configurations\\\": [\n        {\n          \\\"Classification\\\": \\\"export\\\",\n          \\\"Properties\\\": {\n            \\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n          }\n        }\n      ],\n      \\\"Properties\\\": {}\n    },\n    {\n      \\\"Classification\\\": \\\"spark-env\\\",\n      \\\"Configurations\\\": [\n        {\n          \\\"Classification\\\": \\\"export\\\",\n          \\\"Properties\\\": {\n            \\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n          }\n        }\n      ],\n      \\\"Properties\\\": {}\n    }\n  ]\n"
+///   service_role        = iamEmrServiceRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -511,9 +561,10 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.emr.inputs.ClusterEc2AttributesArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterMasterInstanceGroupArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceGroupArgs;
+/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceGroupEbsConfigArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterBootstrapActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -858,7 +909,7 @@ import 'cluster_state.dart';
 ///     core_instance_fleet={
 ///         "instance_type_configs": [
 ///             {
-///                 "bid_price_as_percentage_of_on_demand_price": 80,
+///                 "bid_price_as_percentage_of_on_demand_price": float(80),
 ///                 "ebs_configs": [{
 ///                     "size": 100,
 ///                     "type": "gp2",
@@ -868,7 +919,7 @@ import 'cluster_state.dart';
 ///                 "weighted_capacity": 1,
 ///             },
 ///             {
-///                 "bid_price_as_percentage_of_on_demand_price": 100,
+///                 "bid_price_as_percentage_of_on_demand_price": float(100),
 ///                 "ebs_configs": [{
 ///                     "size": 100,
 ///                     "type": "gp2",
@@ -878,7 +929,7 @@ import 'cluster_state.dart';
 ///                 "weighted_capacity": 1,
 ///             },
 ///             {
-///                 "bid_price_as_percentage_of_on_demand_price": 100,
+///                 "bid_price_as_percentage_of_on_demand_price": float(100),
 ///                 "ebs_configs": [{
 ///                     "size": 100,
 ///                     "type": "gp2",
@@ -904,7 +955,7 @@ import 'cluster_state.dart';
 ///     cluster_id=example.id,
 ///     instance_type_configs=[
 ///         {
-///             "bid_price_as_percentage_of_on_demand_price": 100,
+///             "bid_price_as_percentage_of_on_demand_price": float(100),
 ///             "ebs_configs": [{
 ///                 "size": 100,
 ///                 "type": "gp2",
@@ -914,7 +965,7 @@ import 'cluster_state.dart';
 ///             "weighted_capacity": 1,
 ///         },
 ///         {
-///             "bid_price_as_percentage_of_on_demand_price": 100,
+///             "bid_price_as_percentage_of_on_demand_price": float(100),
 ///             "ebs_configs": [{
 ///                 "size": 100,
 ///                 "type": "gp2",
@@ -1159,7 +1210,7 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = emr.NewInstanceFleet(ctx, "task", &emr.InstanceFleetArgs{
-/// 			ClusterId: example.ID(),
+/// 			ClusterId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			InstanceTypeConfigs: emr.InstanceFleetInstanceTypeConfigArray{
 /// 				&emr.InstanceFleetInstanceTypeConfigArgs{
 /// 					BidPriceAsPercentageOfOnDemandPrice: pulumi.Float64(100),
@@ -1207,6 +1258,99 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_cluster" "example" {
+///   master_instance_fleet = {
+///     instance_type_configs = [{
+///       "instanceType" = "m4.xlarge"
+///     }]
+///     target_on_demand_capacity = 1
+///   }
+///   core_instance_fleet = {
+///     instance_type_configs = [{
+///       "bidPriceAsPercentageOfOnDemandPrice" = 80
+///       "ebsConfigs" = [{
+///         "size"               = 100
+///         "type"               = "gp2"
+///         "volumesPerInstance" = 1
+///       }]
+///       "instanceType"     = "m3.xlarge"
+///       "weightedCapacity" = 1
+///       }, {
+///       "bidPriceAsPercentageOfOnDemandPrice" = 100
+///       "ebsConfigs" = [{
+///         "size"               = 100
+///         "type"               = "gp2"
+///         "volumesPerInstance" = 1
+///       }]
+///       "instanceType"     = "m4.xlarge"
+///       "weightedCapacity" = 1
+///       }, {
+///       "bidPriceAsPercentageOfOnDemandPrice" = 100
+///       "ebsConfigs" = [{
+///         "size"               = 100
+///         "type"               = "gp2"
+///         "volumesPerInstance" = 1
+///       }]
+///       "instanceType"     = "m4.2xlarge"
+///       "weightedCapacity" = 2
+///     }]
+///     launch_specifications = {
+///       spot_specifications = [{
+///         "allocationStrategy"     = "capacity-optimized"
+///         "blockDurationMinutes"   = 0
+///         "timeoutAction"          = "SWITCH_TO_ON_DEMAND"
+///         "timeoutDurationMinutes" = 10
+///       }]
+///     }
+///     name                      = "core fleet"
+///     target_on_demand_capacity = 2
+///     target_spot_capacity      = 2
+///   }
+/// }
+/// resource "aws_emr_instancefleet" "task" {
+///   cluster_id = aws_emr_cluster.example.id
+///   instance_type_configs {
+///     bid_price_as_percentage_of_on_demand_price = 100
+///     ebs_configs {
+///       size                 = 100
+///       type                 = "gp2"
+///       volumes_per_instance = 1
+///     }
+///     instance_type     = "m4.xlarge"
+///     weighted_capacity = 1
+///   }
+///   instance_type_configs {
+///     bid_price_as_percentage_of_on_demand_price = 100
+///     ebs_configs {
+///       size                 = 100
+///       type                 = "gp2"
+///       volumes_per_instance = 1
+///     }
+///     instance_type     = "m4.2xlarge"
+///     weighted_capacity = 2
+///   }
+///   launch_specifications = {
+///     spot_specifications = [{
+///       "allocationStrategy"     = "capacity-optimized"
+///       "blockDurationMinutes"   = 0
+///       "timeoutAction"          = "TERMINATE_CLUSTER"
+///       "timeoutDurationMinutes" = 10
+///     }]
+///   }
+///   name                      = "task fleet"
+///   target_on_demand_capacity = 1
+///   target_spot_capacity      = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1216,14 +1360,20 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.emr.Cluster;
 /// import com.pulumi.aws.emr.ClusterArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterMasterInstanceFleetArgs;
+/// import com.pulumi.aws.emr.inputs.ClusterMasterInstanceFleetInstanceTypeConfigArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetArgs;
+/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetInstanceTypeConfigArgs;
+/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetInstanceTypeConfigEbsConfigArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetLaunchSpecificationsArgs;
+/// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationArgs;
 /// import com.pulumi.aws.emr.InstanceFleet;
 /// import com.pulumi.aws.emr.InstanceFleetArgs;
 /// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigArgs;
+/// import com.pulumi.aws.emr.inputs.InstanceFleetInstanceTypeConfigEbsConfigArgs;
 /// import com.pulumi.aws.emr.inputs.InstanceFleetLaunchSpecificationsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.emr.inputs.InstanceFleetLaunchSpecificationsSpotSpecificationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1491,6 +1641,26 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_cluster" "example" {
+///   steps {
+///     action_on_failure = "TERMINATE_CLUSTER"
+///     name              = "Setup Hadoop Debugging"
+///     hadoop_jar_step = {
+///       jar  = "command-runner.jar"
+///       args = ["state-pusher-script"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1501,8 +1671,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.emr.ClusterArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterStepArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterStepHadoopJarStepArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1644,7 +1814,7 @@ import 'cluster_state.dart';
 /// 			ReleaseLabel:          pulumi.String("emr-5.24.1"),
 /// 			TerminationProtection: pulumi.Bool(true),
 /// 			Ec2Attributes: &emr.ClusterEc2AttributesArgs{
-/// 				SubnetId: example.ID(),
+/// 				SubnetId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			MasterInstanceGroup: &emr.ClusterMasterInstanceGroupArgs{
 /// 				InstanceCount: pulumi.Int(3),
@@ -1656,6 +1826,36 @@ import 'cluster_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # This configuration is for illustrative purposes and highlights
+/// # only relevant configurations for working with this functionality.
+/// # Map public IP on launch must be enabled for public (Internet accessible) subnets
+/// resource "aws_ec2_subnet" "example" {
+///   map_public_ip_on_launch = true
+/// }
+/// resource "aws_emr_cluster" "example" {
+///   release_label          = "emr-5.24.1"
+///   termination_protection = true
+///   ec2_attributes = {
+///     subnet_id = aws_ec2_subnet.example.id
+///   }
+///   # ... other configuration ...
+///   master_instance_group = {
+///     instance_count = 3
+///   }
+///   # ... other configuration ...
+///   # Master instance count must be set to 3
+///   core_instance_group = {}
 /// }
 /// ```
 /// ```java
@@ -1671,8 +1871,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.emr.inputs.ClusterEc2AttributesArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterMasterInstanceGroupArgs;
 /// import com.pulumi.aws.emr.inputs.ClusterCoreInstanceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1739,7 +1939,7 @@ import 'cluster_state.dart';
 /// $ pulumi import aws:emr/cluster:Cluster cluster j-123456ABCDEF
 /// ```
 ///
-/// Since the API does not return the actual values for Kerberos configurations, environments with those options set will need to use the `lifecycle` configuration block `ignore_changes` argument available to all Pulumi resources to prevent perpetual differences. For example:
+/// Since the API does not return the actual values for Kerberos configurations, environments with those options set will need to use the `lifecycle` configuration block `ignoreChanges` argument available to all Pulumi resources to prevent perpetual differences. For example:
 ///
 ///
 /// ```typescript
@@ -1784,6 +1984,18 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_cluster" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1791,8 +2003,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.Cluster;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1832,7 +2044,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> configurations;
   /// JSON string for supplying list of configurations for the EMR cluster.
   ///
-  /// &gt; **NOTE on `configurations_json`:** If the `Configurations` value is empty then you should skip the `Configurations` field instead of providing an empty list as a value, `"Configurations": []`.
+  /// &gt; **NOTE on `configurationsJson`:** If the `Configurations` value is empty then you should skip the `Configurations` field instead of providing an empty list as a value, `"Configurations": []`.
   ///
   ///
   /// ```typescript
@@ -1938,6 +2150,19 @@ class Cluster extends pulumi.CustomResource {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_emr_cluster" "cluster" {
+  ///   configurations_json = "[\n{\n\\\"Classification\\\": \\\"hadoop-env\\\",\n\\\"Configurations\\\": [\n{\n\\\"Classification\\\": \\\"export\\\",\n\\\"Properties\\\": {\n\\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n}\n}\n],\n\\\"Properties\\\": {}\n}\n]\n"
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -1946,8 +2171,8 @@ class Cluster extends pulumi.CustomResource {
   /// import com.pulumi.core.Output;
   /// import com.pulumi.aws.emr.Cluster;
   /// import com.pulumi.aws.emr.ClusterArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -2003,7 +2228,7 @@ class Cluster extends pulumi.CustomResource {
   ///         ]
   /// ```
   late final pulumi.Output<String?> configurationsJson;
-  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `core_instance_group` configuration blocks are set. Detailed below.
+  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `coreInstanceGroup` configuration blocks are set. Detailed below.
   late final pulumi.Output<ClusterCoreInstanceFleet> coreInstanceFleet;
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
   late final pulumi.Output<ClusterCoreInstanceGroup> coreInstanceGroup;
@@ -2023,7 +2248,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> logEncryptionKmsKeyId;
   /// S3 bucket to write the log files of the job flow. If a value is not provided, logs are not created.
   late final pulumi.Output<String?> logUri;
-  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `master_instance_group` configuration blocks are set. Detailed below.
+  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `masterInstanceGroup` configuration blocks are set. Detailed below.
   late final pulumi.Output<ClusterMasterInstanceFleet> masterInstanceFleet;
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [master node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-master).
   late final pulumi.Output<ClusterMasterInstanceGroup> masterInstanceGroup;
@@ -2041,19 +2266,19 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> releaseLabel;
   /// Way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an `instance group` is resized.
   late final pulumi.Output<String> scaleDownBehavior;
-  /// Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater.
+  /// Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `releaseLabel` 4.8.0 or greater.
   late final pulumi.Output<String?> securityConfiguration;
   /// IAM role that will be assumed by the Amazon EMR service to access AWS resources.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceRole;
-  /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater (default is 1).
+  /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `releaseLabel` 5.28.0 or greater (default is 1).
   late final pulumi.Output<int?> stepConcurrencyLevel;
   /// List of steps to run when creating the cluster. See below. It is highly recommended to utilize the lifecycle resource options block with `ignoreChanges` if other steps are being managed outside of this provider.
   late final pulumi.Output<List<Map<String, dynamic>>> steps;
-  /// list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// list of tags to apply to the EMR Cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
   late final pulumi.Output<bool> terminationProtection;

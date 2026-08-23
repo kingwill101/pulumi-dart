@@ -85,6 +85,25 @@ import 'default_auto_scaling_configuration_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_autoscalingconfigurationversion" "example" {
+///   auto_scaling_configuration_name = "example"
+///   max_concurrency                 = 50
+///   max_size                        = 10
+///   min_size                        = 2
+/// }
+/// resource "aws_apprunner_defaultautoscalingconfigurationversion" "example" {
+///   auto_scaling_configuration_arn = aws_apprunner_autoscalingconfigurationversion.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'default_auto_scaling_configuration_version_state.dart';
 /// import com.pulumi.aws.apprunner.AutoScalingConfigurationVersionArgs;
 /// import com.pulumi.aws.apprunner.DefaultAutoScalingConfigurationVersion;
 /// import com.pulumi.aws.apprunner.DefaultAutoScalingConfigurationVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -147,7 +166,7 @@ import 'default_auto_scaling_configuration_version_state.dart';
 /// $ pulumi import aws:apprunner/defaultAutoScalingConfigurationVersion:DefaultAutoScalingConfigurationVersion example us-west-2
 /// ```
 class DefaultAutoScalingConfigurationVersion extends pulumi.CustomResource {
-  /// The ARN of the App Runner auto scaling configuration that you want to set as the default.
+  /// ARN of the App Runner auto scaling configuration that you want to set as the default.
   late final pulumi.Output<String> autoScalingConfigurationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

@@ -25,6 +25,8 @@ class RouteTableRoute {
   final pulumi.Input<String>? natGatewayId;
   /// Identifier of an EC2 network interface.
   final pulumi.Input<String>? networkInterfaceId;
+  /// The Amazon Resource Name (ARN) of an ODB network.
+  final pulumi.Input<String>? odbNetworkArn;
   /// Identifier of an EC2 Transit Gateway.
   final pulumi.Input<String>? transitGatewayId;
   /// Identifier of a VPC Endpoint.
@@ -45,6 +47,7 @@ class RouteTableRoute {
   /// [localGatewayId] Identifier of a Outpost local gateway.
   /// [natGatewayId] Identifier of a VPC NAT gateway.
   /// [networkInterfaceId] Identifier of an EC2 network interface.
+  /// [odbNetworkArn] The Amazon Resource Name (ARN) of an ODB network.
   /// [transitGatewayId] Identifier of an EC2 Transit Gateway.
   /// [vpcEndpointId] Identifier of a VPC Endpoint.
   /// [vpcPeeringConnectionId] Identifier of a VPC peering connection.
@@ -59,6 +62,7 @@ class RouteTableRoute {
     this.localGatewayId,
     this.natGatewayId,
     this.networkInterfaceId,
+    this.odbNetworkArn,
     this.transitGatewayId,
     this.vpcEndpointId,
     this.vpcPeeringConnectionId,
@@ -76,6 +80,7 @@ class RouteTableRoute {
       'localGatewayId': ?localGatewayId,
       'natGatewayId': ?natGatewayId,
       'networkInterfaceId': ?networkInterfaceId,
+      'odbNetworkArn': ?odbNetworkArn,
       'transitGatewayId': ?transitGatewayId,
       'vpcEndpointId': ?vpcEndpointId,
       'vpcPeeringConnectionId': ?vpcPeeringConnectionId,
@@ -94,10 +99,10 @@ class RouteTableRoute {
       localGatewayId: (() { final guardedValue = map['localGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       natGatewayId: (() { final guardedValue = map['natGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      odbNetworkArn: (() { final guardedValue = map['odbNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transitGatewayId: (() { final guardedValue = map['transitGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcEndpointId: (() { final guardedValue = map['vpcEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcPeeringConnectionId: (() { final guardedValue = map['vpcPeeringConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

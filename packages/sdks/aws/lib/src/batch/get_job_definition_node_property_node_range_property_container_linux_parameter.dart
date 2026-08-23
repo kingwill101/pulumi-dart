@@ -5,26 +5,26 @@ import 'get_job_definition_node_property_node_range_property_container_linux_par
 import 'get_job_definition_node_property_node_range_property_container_linux_parameter_tmpf.dart';
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
-  /// Any of the host devices to expose to the container.
+  /// Host devices to expose to the container. See `devices` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice>> devices;
   /// If true, run an init process inside the container that forwards signals and reaps processes.
   final pulumi.Input<bool> initProcessEnabled;
-  /// The total amount of swap memory (in MiB) a container can use.
+  /// Total amount of swap memory (in MiB) a container can use.
   final pulumi.Input<int> maxSwap;
-  /// The value for the size (in MiB) of the `/dev/shm` volume.
+  /// Value for the size (in MiB) of the `/dev/shm` volume.
   final pulumi.Input<int> sharedMemorySize;
-  /// You can use this parameter to tune a container's memory swappiness behavior.
+  /// Value used to tune a container's memory swappiness behavior.
   final pulumi.Input<int> swappiness;
-  /// The container path, mount options, and size (in MiB) of the tmpfs mount.
+  /// Container path, mount options, and size (in MiB) of the tmpfs mount. See `tmpfs` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf>> tmpfs;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter].
-  /// [devices] Any of the host devices to expose to the container.
+  /// [devices] Host devices to expose to the container. See `devices` below.
   /// [initProcessEnabled] If true, run an init process inside the container that forwards signals and reaps processes.
-  /// [maxSwap] The total amount of swap memory (in MiB) a container can use.
-  /// [sharedMemorySize] The value for the size (in MiB) of the `/dev/shm` volume.
-  /// [swappiness] You can use this parameter to tune a container's memory swappiness behavior.
-  /// [tmpfs] The container path, mount options, and size (in MiB) of the tmpfs mount.
+  /// [maxSwap] Total amount of swap memory (in MiB) a container can use.
+  /// [sharedMemorySize] Value for the size (in MiB) of the `/dev/shm` volume.
+  /// [swappiness] Value used to tune a container's memory swappiness behavior.
+  /// [tmpfs] Container path, mount options, and size (in MiB) of the tmpfs mount. See `tmpfs` below.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter({
     required this.devices,
     required this.initProcessEnabled,
@@ -56,4 +56,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
     );
   }
 }
-

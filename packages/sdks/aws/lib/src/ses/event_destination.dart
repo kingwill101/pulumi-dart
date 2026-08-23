@@ -112,6 +112,27 @@ import 'event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_eventdestination" "cloudwatch" {
+///   name                   = "event-destination-cloudwatch"
+///   configuration_set_name = example.name
+///   enabled                = true
+///   matching_types         = ["bounce", "send"]
+///   cloudwatch_destinations {
+///     default_value  = "default"
+///     dimension_name = "dimension"
+///     value_source   = "emailHeader"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +142,8 @@ import 'event_destination_state.dart';
 /// import com.pulumi.aws.ses.EventDestination;
 /// import com.pulumi.aws.ses.EventDestinationArgs;
 /// import com.pulumi.aws.ses.inputs.EventDestinationCloudwatchDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,6 +285,26 @@ import 'event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_eventdestination" "kinesis" {
+///   name                   = "event-destination-kinesis"
+///   configuration_set_name = exampleAwsSesConfigurationSet.name
+///   enabled                = true
+///   matching_types         = ["bounce", "send"]
+///   kinesis_destination = {
+///     stream_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
+///     role_arn   = example.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -273,8 +314,8 @@ import 'event_destination_state.dart';
 /// import com.pulumi.aws.ses.EventDestination;
 /// import com.pulumi.aws.ses.EventDestinationArgs;
 /// import com.pulumi.aws.ses.inputs.EventDestinationKinesisDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -410,6 +451,25 @@ import 'event_destination_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_eventdestination" "sns" {
+///   name                   = "event-destination-sns"
+///   configuration_set_name = exampleAwsSesConfigurationSet.name
+///   enabled                = true
+///   matching_types         = ["bounce", "send"]
+///   sns_destination = {
+///     topic_arn = example.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -419,8 +479,8 @@ import 'event_destination_state.dart';
 /// import com.pulumi.aws.ses.EventDestination;
 /// import com.pulumi.aws.ses.EventDestinationArgs;
 /// import com.pulumi.aws.ses.inputs.EventDestinationSnsDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -465,7 +525,7 @@ import 'event_destination_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SES event destinations using `configuration_set_name` together with the event destination's `name`. For example:
+/// Using `pulumi import`, import SES event destinations using `configurationSetName` together with the event destination's `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ses/eventDestination:EventDestination sns some-configuration-set-test/event-destination-sns
@@ -489,7 +549,7 @@ class EventDestination extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Send the events to an SNS Topic destination
   ///
-  /// &gt; **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
+  /// &gt; **NOTE:** You can specify `"cloudwatchDestination"` or `"kinesisDestination"` but not both
   late final pulumi.Output<EventDestinationSnsDestination?> snsDestination;
 
   /// Creates a new [EventDestination].

@@ -125,21 +125,21 @@ import 'user_in_group_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleUser, err := cognito.NewUser(ctx, "example", &cognito.UserArgs{
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleUserGroup, err := cognito.NewUserGroup(ctx, "example", &cognito.UserGroupArgs{
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:       pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUserInGroup(ctx, "example", &cognito.UserInGroupArgs{
-/// 			UserPoolId: example.ID(),
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			GroupName:  exampleUserGroup.Name,
 /// 			Username:   exampleUser.Username,
 /// 		})
@@ -148,6 +148,39 @@ import 'user_in_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cognito_userpool" "example" {
+///   name = "example"
+///   password_policy = {
+///     temporary_password_validity_days = 7
+///     minimum_length                   = 6
+///     require_uppercase                = false
+///     require_symbols                  = false
+///     require_numbers                  = false
+///   }
+/// }
+/// resource "aws_cognito_user" "example" {
+///   user_pool_id = aws_cognito_userpool.example.id
+///   username     = "example"
+/// }
+/// resource "aws_cognito_usergroup" "example" {
+///   user_pool_id = aws_cognito_userpool.example.id
+///   name         = "example"
+/// }
+/// resource "aws_cognito_useringroup" "example" {
+///   user_pool_id = aws_cognito_userpool.example.id
+///   group_name   = aws_cognito_usergroup.example.name
+///   username     = aws_cognito_user.example.username
 /// }
 /// ```
 /// ```java
@@ -165,8 +198,8 @@ import 'user_in_group_state.dart';
 /// import com.pulumi.aws.cognito.UserGroupArgs;
 /// import com.pulumi.aws.cognito.UserInGroup;
 /// import com.pulumi.aws.cognito.UserInGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,7 +277,7 @@ import 'user_in_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a Cognito Group User using a comma-delimited string concatenating the `user_pool_id`, `group_name`, and `username` arguments. For example:
+/// Using `pulumi import`, import a Cognito Group User using a comma-delimited string concatenating the `userPoolId`, `groupName`, and `username` arguments. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cognito/userInGroup:UserInGroup example us-east-1_vG78M4goG,example-group,example-user

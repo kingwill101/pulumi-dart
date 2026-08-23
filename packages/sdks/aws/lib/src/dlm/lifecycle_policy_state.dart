@@ -13,15 +13,15 @@ class LifecyclePolicyState {
   final pulumi.Input<String>? description;
   /// The ARN of an IAM role that is able to be assumed by the DLM service.
   final pulumi.Input<String>? executionRoleArn;
-  /// See the `policy_details` configuration block. Max of 1.
+  /// See the `policyDetails` configuration block. Max of 1.
   final pulumi.Input<LifecyclePolicyPolicyDetails>? policyDetails;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
   final pulumi.Input<String>? state;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [LifecyclePolicyState].
@@ -29,11 +29,11 @@ class LifecyclePolicyState {
   /// [defaultPolicy] Specify the type of default policy to create. valid values are `VOLUME` or `INSTANCE`.
   /// [description] A description for the DLM lifecycle policy.
   /// [executionRoleArn] The ARN of an IAM role that is able to be assumed by the DLM service.
-  /// [policyDetails] See the `policy_details` configuration block. Max of 1.
+  /// [policyDetails] See the `policyDetails` configuration block. Max of 1.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const LifecyclePolicyState({
     this.arn,
     this.defaultPolicy,
@@ -74,4 +74,3 @@ class LifecyclePolicyState {
     );
   }
 }
-

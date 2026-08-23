@@ -120,7 +120,7 @@ import 'get_rules_packages_result.dart';
 /// 			Name:             pulumi.String("Test"),
 /// 			TargetArn:        assessment.Arn,
 /// 			Duration:         pulumi.Int(60),
-/// 			RulesPackageArns: interface{}(rules.Arns),
+/// 			RulesPackageArns: toPulumiStringArray(rules.Arns),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -128,6 +128,43 @@ import 'get_rules_packages_result.dart';
 /// 		return nil
 /// 	})
 /// }
+/// func toPulumiStringArray(arr []string) pulumi.StringArray {
+/// 	var pulumiArr pulumi.StringArray
+/// 	for _, v := range arr {
+/// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+/// 	}
+/// 	return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_inspector_getrulespackages" "rules" {
+/// }
+///
+/// # e.g., Use in aws_inspector_assessment_template
+/// resource "aws_inspector_resourcegroup" "group" {
+///   tags = {
+///     "test" = "test"
+///   }
+/// }
+/// resource "aws_inspector_assessmenttarget" "assessment" {
+///   name               = "test"
+///   resource_group_arn = aws_inspector_resourcegroup.group.arn
+/// }
+/// resource "aws_inspector_assessmenttemplate" "assessment" {
+///   name               = "Test"
+///   target_arn         = aws_inspector_assessmenttarget.assessment.arn
+///   duration           = "60"
+///   rules_package_arns = data.aws_inspector_getrulespackages.rules.arns
+/// }
+/// # Declare the data source
 /// ```
 /// ```java
 /// package generated_program;
@@ -143,8 +180,8 @@ import 'get_rules_packages_result.dart';
 /// import com.pulumi.aws.inspector.AssessmentTargetArgs;
 /// import com.pulumi.aws.inspector.AssessmentTemplate;
 /// import com.pulumi.aws.inspector.AssessmentTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

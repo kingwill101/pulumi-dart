@@ -68,6 +68,20 @@ import 'get_web_acl_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_wafv2_getipset" "example" {
+///   name  = "some-ip-set"
+///   scope = "REGIONAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +90,8 @@ import 'get_web_acl_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.wafv2.Wafv2Functions;
 /// import com.pulumi.aws.wafv2.inputs.GetIpSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,6 +197,21 @@ Future<GetIpSetResult> getIpSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_wafv2_getmanagedrulegroup" "example" {
+///   name        = "AWSManagedRulesCommonRuleSet"
+///   scope       = "REGIONAL"
+///   vendor_name = "AWS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -191,8 +220,8 @@ Future<GetIpSetResult> getIpSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.wafv2.Wafv2Functions;
 /// import com.pulumi.aws.wafv2.inputs.GetManagedRuleGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -296,6 +325,20 @@ Future<GetManagedRuleGroupResult> getManagedRuleGroup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_wafv2_getregexpatternset" "example" {
+///   name  = "some-regex-pattern-set"
+///   scope = "REGIONAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +347,8 @@ Future<GetManagedRuleGroupResult> getManagedRuleGroup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.wafv2.Wafv2Functions;
 /// import com.pulumi.aws.wafv2.inputs.GetRegexPatternSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -407,6 +450,20 @@ Future<GetRegexPatternSetResult> getRegexPatternSet(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_wafv2_getrulegroup" "example" {
+///   name  = "some-rule-group"
+///   scope = "REGIONAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -415,8 +472,8 @@ Future<GetRegexPatternSetResult> getRegexPatternSet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.wafv2.Wafv2Functions;
 /// import com.pulumi.aws.wafv2.inputs.GetRuleGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

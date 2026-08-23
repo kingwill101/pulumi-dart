@@ -91,6 +91,25 @@ import 'key_registration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_keyregistration" "example" {
+///   key_registrations {
+///     key_arn = example1.arn
+///   }
+///   key_registrations {
+///     key_arn     = example2.arn
+///     default_key = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +119,8 @@ import 'key_registration_state.dart';
 /// import com.pulumi.aws.quicksight.KeyRegistration;
 /// import com.pulumi.aws.quicksight.KeyRegistrationArgs;
 /// import com.pulumi.aws.quicksight.inputs.KeyRegistrationKeyRegistrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

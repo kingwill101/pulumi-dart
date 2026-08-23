@@ -8,13 +8,13 @@ import 'security_configuration_encryption_configuration_s3_encryption.dart';
 class SecurityConfigurationEncryptionConfiguration {
   final pulumi.Input<SecurityConfigurationEncryptionConfigurationCloudwatchEncryption> cloudwatchEncryption;
   final pulumi.Input<SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption> jobBookmarksEncryption;
-  /// A `s3_encryption ` block as described below, which contains encryption configuration for S3 data.
+  /// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
   final pulumi.Input<SecurityConfigurationEncryptionConfigurationS3Encryption> s3Encryption;
 
   /// Creates a new [SecurityConfigurationEncryptionConfiguration].
   /// [cloudwatchEncryption] Required.
   /// [jobBookmarksEncryption] Required.
-  /// [s3Encryption] A `s3_encryption ` block as described below, which contains encryption configuration for S3 data.
+  /// [s3Encryption] A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
   const SecurityConfigurationEncryptionConfiguration({
     required this.cloudwatchEncryption,
     required this.jobBookmarksEncryption,
@@ -37,4 +37,3 @@ class SecurityConfigurationEncryptionConfiguration {
     );
   }
 }
-

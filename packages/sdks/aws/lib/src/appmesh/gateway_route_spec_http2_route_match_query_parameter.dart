@@ -4,14 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_route_spec_http2_route_match_query_parameter_match.dart';
 
 class GatewayRouteSpecHttp2RouteMatchQueryParameter {
-  /// The query parameter to match on.
   final pulumi.Input<GatewayRouteSpecHttp2RouteMatchQueryParameterMatch>? match;
-  /// Name for the query parameter that will be matched on.
+  /// Name to use for the gateway route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> name;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteMatchQueryParameter].
-  /// [match] The query parameter to match on.
-  /// [name] Name for the query parameter that will be matched on.
+  /// [match] Optional.
+  /// [name] Name to use for the gateway route. Must be between 1 and 255 characters in length.
   const GatewayRouteSpecHttp2RouteMatchQueryParameter({
     this.match,
     required this.name,
@@ -31,4 +30,3 @@ class GatewayRouteSpecHttp2RouteMatchQueryParameter {
     );
   }
 }
-

@@ -5,21 +5,21 @@ import 'deployment_timeouts.dart';
 
 /// Input properties used for looking up and filtering Deployment resources.
 class DeploymentState {
-  /// The unique ID of the operation associated with deployment.
+  /// Unique ID of the operation associated with deployment.
   final pulumi.Input<String>? operationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
+  /// Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
   final pulumi.Input<String>? serviceArn;
-  /// The current status of the App Runner service deployment.
+  /// Current status of the App Runner service deployment.
   final pulumi.Input<String>? status;
   final pulumi.Input<DeploymentTimeouts>? timeouts;
 
   /// Creates a new [DeploymentState].
-  /// [operationId] The unique ID of the operation associated with deployment.
+  /// [operationId] Unique ID of the operation associated with deployment.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceArn] The Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
-  /// [status] The current status of the App Runner service deployment.
+  /// [serviceArn] Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
+  /// [status] Current status of the App Runner service deployment.
   /// [timeouts] Optional.
   const DeploymentState({
     this.operationId,
@@ -49,4 +49,3 @@ class DeploymentState {
     );
   }
 }
-

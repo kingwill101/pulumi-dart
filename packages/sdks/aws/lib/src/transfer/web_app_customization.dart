@@ -8,7 +8,7 @@ import 'web_app_customization_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer Family Web App Customization using the `web_app_id`. For example:
+/// Using `pulumi import`, import Transfer Family Web App Customization using the `webAppId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/webAppCustomization:WebAppCustomization example webapp-12345678901234567890
@@ -22,7 +22,7 @@ class WebAppCustomization extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Title of the web app. Must be between 1 and 100 characters in length (an empty string is not allowed). To remove the title, omit this argument from your configuration.
   late final pulumi.Output<String?> title;
-  /// The identifier of the web app to be customized.
+  /// Identifier of the web app to be customized.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> webAppId;

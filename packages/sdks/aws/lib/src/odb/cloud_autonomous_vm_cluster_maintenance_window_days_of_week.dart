@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek {
+  /// Name of the day of the week. Valid values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
   final pulumi.Input<String> name;
 
   /// Creates a new [CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek].
-  /// [name] Required.
+  /// [name] Name of the day of the week. Valid values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
   const CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek({
     required this.name,
   });
@@ -23,4 +24,3 @@ class CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek {
     );
   }
 }
-

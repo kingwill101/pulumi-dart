@@ -5,7 +5,7 @@ import 'v2models_intent_confirmation_setting_confirmation_conditional_default_br
 import 'v2models_intent_confirmation_setting_confirmation_conditional_default_branch_next_step_intent.dart';
 
 class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep {
-  /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialog_action`.
+  /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepDialogAction>? dialogAction;
   /// Configuration block for override settings to configure the intent state. See `intent`.
   final pulumi.Input<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntent>? intent;
@@ -13,7 +13,7 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextS
   final pulumi.Input<Map<String, String>>? sessionAttributes;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep].
-  /// [dialogAction] Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialog_action`.
+  /// [dialogAction] Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialogAction`.
   /// [intent] Configuration block for override settings to configure the intent state. See `intent`.
   /// [sessionAttributes] Map of key/value pairs representing session-specific context information. It contains application information passed between Amazon Lex and a client application.
   const V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep({
@@ -38,4 +38,3 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextS
     );
   }
 }
-

@@ -6,12 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppCookieStickinessPolicyState {
   /// Application cookie whose lifetime the ELB's cookie should follow.
   final pulumi.Input<String>? cookieName;
-  /// Load balancer port to which the policy
-  /// should be applied. This must be an active listener on the load
-  /// balancer.
+  /// Load balancer port to which the policy should be applied. This must be an active listener on the load balancer.
   final pulumi.Input<int>? lbPort;
-  /// Name of load balancer to which the policy
-  /// should be attached.
+  /// Name of load balancer to which the policy should be attached.
   final pulumi.Input<String>? loadBalancer;
   /// Name of the stickiness policy.
   final pulumi.Input<String>? name;
@@ -20,8 +17,8 @@ class AppCookieStickinessPolicyState {
 
   /// Creates a new [AppCookieStickinessPolicyState].
   /// [cookieName] Application cookie whose lifetime the ELB's cookie should follow.
-  /// [lbPort] Load balancer port to which the policy
-  /// [loadBalancer] Name of load balancer to which the policy
+  /// [lbPort] Load balancer port to which the policy should be applied. This must be an active listener on the load balancer.
+  /// [loadBalancer] Name of load balancer to which the policy should be attached.
   /// [name] Name of the stickiness policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const AppCookieStickinessPolicyState({
@@ -52,4 +49,3 @@ class AppCookieStickinessPolicyState {
     );
   }
 }
-

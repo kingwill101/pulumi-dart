@@ -4,7 +4,7 @@ import 'stage_args.dart';
 import 'stage_canary_settings.dart';
 import 'stage_state.dart';
 
-/// Manages an API Gateway Stage. A stage is a named reference to a deployment, which can be done via the `aws.apigateway.Deployment` resource. Stages can be optionally managed further with the `aws.apigateway.BasePathMapping` resource, `aws.apigateway.DomainName` resource, and `aws_api_method_settings` resource. For more information, see the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-stages.html).
+/// Manages an API Gateway Stage. A stage is a named reference to a deployment, which can be done via the `aws.apigateway.Deployment` resource. Stages can be optionally managed further with the `aws.apigateway.BasePathMapping` resource, `aws.apigateway.DomainName` resource, and `aws.apigateway.MethodSettings` resource. For more information, see the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-stages.html).
 ///
 /// ### Managing the API Logging CloudWatch Log Group
 ///
@@ -97,7 +97,7 @@ import 'stage_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogGroup, err := cloudwatch.NewLogGroup(ctx, "example", &cloudwatch.LogGroupArgs{
-/// 			Name: example.ID().ApplyT(func(id string) (string, error) {
+/// 			Name: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("API-Gateway-Execution-Logs_%v/%v", id, stageName), nil
 /// 			}).(pulumi.StringOutput),
 /// 			RetentionInDays: pulumi.Int(7),
@@ -117,6 +117,30 @@ import 'stage_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_restapi" "example" {
+/// }
+/// resource "aws_apigateway_stage" "example" {
+///   depends_on = [aws_cloudwatch_loggroup.example]
+///   stage_name = var.stageName
+/// }
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name              ="API-Gateway-Execution-Logs_${aws_apigateway_restapi.example.id}/${var.stageName}"
+///   retention_in_days = 7
+/// }
+/// variable "stageName" {
+///   type    = string
+///   default = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +153,8 @@ import 'stage_state.dart';
 /// import com.pulumi.aws.apigateway.Stage;
 /// import com.pulumi.aws.apigateway.StageArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,12 +235,9 @@ class Stage extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Version of the associated API documentation.
   late final pulumi.Output<String?> documentationVersion;
-  /// Execution ARN to be used in `lambda_permission`'s `source_arn`
-  /// when allowing API Gateway to invoke a Lambda function,
-  /// e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
+  /// Execution ARN to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
   late final pulumi.Output<String> executionArn;
-  /// URL to invoke the API pointing to the stage,
-  /// e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
+  /// URL to invoke the API pointing to the stage, e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
   late final pulumi.Output<String> invokeUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -224,9 +245,9 @@ class Stage extends pulumi.CustomResource {
   late final pulumi.Output<String> restApi;
   /// Name of the stage
   late final pulumi.Output<String> stageName;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Map that defines the stage variables.
   late final pulumi.Output<Map<String, String>?> variables;

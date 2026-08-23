@@ -99,14 +99,38 @@ import 'connection_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewConnectionAssociation(ctx, "example", &directconnect.ConnectionAssociationArgs{
-/// 			ConnectionId: example.ID(),
-/// 			LagId:        exampleLinkAggregationGroup.ID(),
+/// 			ConnectionId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			LagId:        exampleLinkAggregationGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_directconnect_connection" "example" {
+///   name      = "example"
+///   bandwidth = "1Gbps"
+///   location  = "EqSe2-EQ"
+/// }
+/// resource "aws_directconnect_linkaggregationgroup" "example" {
+///   name                  = "example"
+///   connections_bandwidth = "1Gbps"
+///   location              = "EqSe2-EQ"
+/// }
+/// resource "aws_directconnect_connectionassociation" "example" {
+///   connection_id = aws_directconnect_connection.example.id
+///   lag_id        = aws_directconnect_linkaggregationgroup.example.id
 /// }
 /// ```
 /// ```java
@@ -121,8 +145,8 @@ import 'connection_association_state.dart';
 /// import com.pulumi.aws.directconnect.LinkAggregationGroupArgs;
 /// import com.pulumi.aws.directconnect.ConnectionAssociation;
 /// import com.pulumi.aws.directconnect.ConnectionAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

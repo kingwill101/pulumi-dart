@@ -120,7 +120,7 @@ import 'lb_https_redirection_policy_state.dart';
 /// 		}
 /// 		exampleLbCertificate, err := lightsail.NewLbCertificate(ctx, "example", &lightsail.LbCertificateArgs{
 /// 			Name:       pulumi.String("example-load-balancer-certificate"),
-/// 			LbName:     example.ID(),
+/// 			LbName:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
@@ -144,6 +144,37 @@ import 'lb_https_redirection_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_lb" "example" {
+///   name              = "example-load-balancer"
+///   health_check_path = "/"
+///   instance_port     = "80"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "aws_lightsail_lbcertificate" "example" {
+///   name        = "example-load-balancer-certificate"
+///   lb_name     = aws_lightsail_lb.example.id
+///   domain_name = "example.com"
+/// }
+/// resource "aws_lightsail_lbcertificateattachment" "example" {
+///   lb_name          = aws_lightsail_lb.example.name
+///   certificate_name = aws_lightsail_lbcertificate.example.name
+/// }
+/// resource "aws_lightsail_lbhttpsredirectionpolicy" "example" {
+///   lb_name = aws_lightsail_lb.example.name
+///   enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +189,8 @@ import 'lb_https_redirection_policy_state.dart';
 /// import com.pulumi.aws.lightsail.LbCertificateAttachmentArgs;
 /// import com.pulumi.aws.lightsail.LbHttpsRedirectionPolicy;
 /// import com.pulumi.aws.lightsail.LbHttpsRedirectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,7 +262,7 @@ import 'lb_https_redirection_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.lightsail.LbHttpsRedirectionPolicy` using the `lb_name` attribute. For example:
+/// Using `pulumi import`, import `aws.lightsail.LbHttpsRedirectionPolicy` using the `lbName` attribute. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lightsail/lbHttpsRedirectionPolicy:LbHttpsRedirectionPolicy example example-load-balancer

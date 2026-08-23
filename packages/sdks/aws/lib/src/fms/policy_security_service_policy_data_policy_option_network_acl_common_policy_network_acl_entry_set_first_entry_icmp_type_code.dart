@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode {
-  /// An integer value containing ICMP code.
+  /// ICMP code.
   final pulumi.Input<int>? code;
-  /// An integer value containing ICMP type.
+  /// ICMP type.
   final pulumi.Input<int>? type;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode].
-  /// [code] An integer value containing ICMP code.
-  /// [type] An integer value containing ICMP type.
+  /// [code] ICMP code.
+  /// [type] ICMP type.
   const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode({
     this.code,
     this.type,
@@ -30,4 +30,3 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     );
   }
 }
-

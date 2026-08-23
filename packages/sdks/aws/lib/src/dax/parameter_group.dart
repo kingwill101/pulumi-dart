@@ -100,6 +100,27 @@ import 'parameter_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dax_parametergroup" "example" {
+///   name = "example"
+///   parameters {
+///     name  = "query-ttl-millis"
+///     value = "100000"
+///   }
+///   parameters {
+///     name  = "record-ttl-millis"
+///     value = "100000"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +130,8 @@ import 'parameter_group_state.dart';
 /// import com.pulumi.aws.dax.ParameterGroup;
 /// import com.pulumi.aws.dax.ParameterGroupArgs;
 /// import com.pulumi.aws.dax.inputs.ParameterGroupParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

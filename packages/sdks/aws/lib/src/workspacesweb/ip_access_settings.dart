@@ -77,6 +77,22 @@ import 'ip_access_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_ipaccesssettings" "example" {
+///   display_name = "example"
+///   ip_rules {
+///     ip_range = "10.0.0.0/16"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +102,8 @@ import 'ip_access_settings_state.dart';
 /// import com.pulumi.aws.workspacesweb.IpAccessSettings;
 /// import com.pulumi.aws.workspacesweb.IpAccessSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.IpAccessSettingsIpRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,6 +236,28 @@ import 'ip_access_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspacesweb_ipaccesssettings" "example" {
+///   display_name = "example"
+///   description  = "Example IP access settings"
+///   ip_rules {
+///     ip_range    = "10.0.0.0/16"
+///     description = "Main office"
+///   }
+///   ip_rules {
+///     ip_range    = "192.168.0.0/24"
+///     description = "Branch office"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +267,8 @@ import 'ip_access_settings_state.dart';
 /// import com.pulumi.aws.workspacesweb.IpAccessSettings;
 /// import com.pulumi.aws.workspacesweb.IpAccessSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.IpAccessSettingsIpRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,6 +463,39 @@ import 'ip_access_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description             = "KMS key for WorkSpaces Web IP Access Settings"
+///   deletion_window_in_days = 7
+/// }
+/// resource "aws_workspacesweb_ipaccesssettings" "example" {
+///   display_name         = "example"
+///   description          = "Example IP access settings"
+///   customer_managed_key = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
+///   }
+///   ip_rules {
+///     ip_range    = "10.0.0.0/16"
+///     description = "Main office"
+///   }
+///   ip_rules {
+///     ip_range    = "192.168.0.0/24"
+///     description = "Branch office"
+///   }
+///   tags = {
+///     "Name" = "example-ip-access-settings"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -436,8 +507,8 @@ import 'ip_access_settings_state.dart';
 /// import com.pulumi.aws.workspacesweb.IpAccessSettings;
 /// import com.pulumi.aws.workspacesweb.IpAccessSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.inputs.IpAccessSettingsIpRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -502,7 +573,7 @@ import 'ip_access_settings_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WorkSpaces Web IP Access Settings using the `ip_access_settings_arn`. For example:
+/// Using `pulumi import`, import WorkSpaces Web IP Access Settings using the `ipAccessSettingsArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspacesweb/ipAccessSettings:IpAccessSettings example arn:aws:workspaces-web:us-west-2:123456789012:ipAccessSettings/abcdef12345
@@ -526,9 +597,9 @@ class IpAccessSettings extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> ipRules;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IpAccessSettings].

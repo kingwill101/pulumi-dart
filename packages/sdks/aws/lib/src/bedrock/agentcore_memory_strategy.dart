@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_memory_strategy_args.dart';
 import 'agentcore_memory_strategy_configuration.dart';
+import 'agentcore_memory_strategy_reflection_configuration.dart';
 import 'agentcore_memory_strategy_state.dart';
 import 'agentcore_memory_strategy_timeouts.dart';
 
@@ -9,7 +10,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// **Important Limitations:**
 ///
 /// - Each memory can have a maximum of 6 strategies total
-/// - Only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`) can exist per memory
+/// - Only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`) can exist per memory
 /// - Multiple `CUSTOM` strategies are allowed (subject to the total limit of 6)
 ///
 /// ## Example Usage
@@ -26,7 +27,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memoryId: example.id,
 ///     type: "SEMANTIC",
 ///     description: "Semantic understanding strategy",
-///     namespaces: ["default"],
+///     namespaceTemplates: ["default"],
 /// });
 /// ```
 /// ```python
@@ -38,7 +39,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memory_id=example["id"],
 ///     type="SEMANTIC",
 ///     description="Semantic understanding strategy",
-///     namespaces=["default"])
+///     namespace_templates=["default"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -54,7 +55,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         MemoryId = example.Id,
 ///         Type = "SEMANTIC",
 ///         Description = "Semantic understanding strategy",
-///         Namespaces = new[]
+///         NamespaceTemplates = new[]
 ///         {
 ///             "default",
 ///         },
@@ -77,7 +78,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("SEMANTIC"),
 /// 			Description: pulumi.String("Semantic understanding strategy"),
-/// 			Namespaces: pulumi.StringArray{
+/// 			NamespaceTemplates: pulumi.StringArray{
 /// 				pulumi.String("default"),
 /// 			},
 /// 		})
@@ -88,6 +89,23 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "semantic" {
+///   name                = "semantic-strategy"
+///   memory_id           = example.id
+///   type                = "SEMANTIC"
+///   description         = "Semantic understanding strategy"
+///   namespace_templates = ["default"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +114,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategy;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +132,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             .memoryId(example.id())
 ///             .type("SEMANTIC")
 ///             .description("Semantic understanding strategy")
-///             .namespaces("default")
+///             .namespaceTemplates("default")
 ///             .build());
 ///
 ///     }
@@ -129,7 +147,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///       memoryId: ${example.id}
 ///       type: SEMANTIC
 ///       description: Semantic understanding strategy
-///       namespaces:
+///       namespaceTemplates:
 ///         - default
 /// ```
 ///
@@ -146,7 +164,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memoryId: example.id,
 ///     type: "SUMMARIZATION",
 ///     description: "Text summarization strategy",
-///     namespaces: ["{sessionId}"],
+///     namespaceTemplates: ["{sessionId}"],
 /// });
 /// ```
 /// ```python
@@ -158,7 +176,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memory_id=example["id"],
 ///     type="SUMMARIZATION",
 ///     description="Text summarization strategy",
-///     namespaces=["{sessionId}"])
+///     namespace_templates=["{sessionId}"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -174,7 +192,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         MemoryId = example.Id,
 ///         Type = "SUMMARIZATION",
 ///         Description = "Text summarization strategy",
-///         Namespaces = new[]
+///         NamespaceTemplates = new[]
 ///         {
 ///             "{sessionId}",
 ///         },
@@ -197,7 +215,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("SUMMARIZATION"),
 /// 			Description: pulumi.String("Text summarization strategy"),
-/// 			Namespaces: pulumi.StringArray{
+/// 			NamespaceTemplates: pulumi.StringArray{
 /// 				pulumi.String("{sessionId}"),
 /// 			},
 /// 		})
@@ -208,6 +226,23 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "summary" {
+///   name                = "summary-strategy"
+///   memory_id           = example.id
+///   type                = "SUMMARIZATION"
+///   description         = "Text summarization strategy"
+///   namespace_templates = ["{sessionId}"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +251,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategy;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +269,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             .memoryId(example.id())
 ///             .type("SUMMARIZATION")
 ///             .description("Text summarization strategy")
-///             .namespaces("{sessionId}")
+///             .namespaceTemplates("{sessionId}")
 ///             .build());
 ///
 ///     }
@@ -249,7 +284,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///       memoryId: ${example.id}
 ///       type: SUMMARIZATION
 ///       description: Text summarization strategy
-///       namespaces:
+///       namespaceTemplates:
 ///         - '{sessionId}'
 /// ```
 ///
@@ -266,7 +301,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memoryId: example.id,
 ///     type: "USER_PREFERENCE",
 ///     description: "User preference tracking strategy",
-///     namespaces: ["preferences"],
+///     namespaceTemplates: ["preferences"],
 /// });
 /// ```
 /// ```python
@@ -278,7 +313,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memory_id=example["id"],
 ///     type="USER_PREFERENCE",
 ///     description="User preference tracking strategy",
-///     namespaces=["preferences"])
+///     namespace_templates=["preferences"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -294,7 +329,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         MemoryId = example.Id,
 ///         Type = "USER_PREFERENCE",
 ///         Description = "User preference tracking strategy",
-///         Namespaces = new[]
+///         NamespaceTemplates = new[]
 ///         {
 ///             "preferences",
 ///         },
@@ -317,7 +352,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("USER_PREFERENCE"),
 /// 			Description: pulumi.String("User preference tracking strategy"),
-/// 			Namespaces: pulumi.StringArray{
+/// 			NamespaceTemplates: pulumi.StringArray{
 /// 				pulumi.String("preferences"),
 /// 			},
 /// 		})
@@ -328,6 +363,23 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "user_pref" {
+///   name                = "user-preference-strategy"
+///   memory_id           = example.id
+///   type                = "USER_PREFERENCE"
+///   description         = "User preference tracking strategy"
+///   namespace_templates = ["preferences"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -336,8 +388,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategy;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,7 +406,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             .memoryId(example.id())
 ///             .type("USER_PREFERENCE")
 ///             .description("User preference tracking strategy")
-///             .namespaces("preferences")
+///             .namespaceTemplates("preferences")
 ///             .build());
 ///
 ///     }
@@ -370,8 +422,145 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///       memoryId: ${example.id}
 ///       type: USER_PREFERENCE
 ///       description: User preference tracking strategy
-///       namespaces:
+///       namespaceTemplates:
 ///         - preferences
+/// ```
+///
+///
+/// ### Episodic Strategy
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const episodic = new aws.bedrock.AgentcoreMemoryStrategy("episodic", {
+///     name: "episodic-strategy",
+///     memoryId: example.id,
+///     type: "EPISODIC",
+///     description: "Episodic memory strategy",
+///     namespaceTemplates: ["/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// episodic = aws.bedrock.AgentcoreMemoryStrategy("episodic",
+///     name="episodic-strategy",
+///     memory_id=example["id"],
+///     type="EPISODIC",
+///     description="Episodic memory strategy",
+///     namespace_templates=["/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var episodic = new Aws.Bedrock.AgentcoreMemoryStrategy("episodic", new()
+///     {
+///         Name = "episodic-strategy",
+///         MemoryId = example.Id,
+///         Type = "EPISODIC",
+///         Description = "Episodic memory strategy",
+///         NamespaceTemplates = new[]
+///         {
+///             "/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "episodic", &bedrock.AgentcoreMemoryStrategyArgs{
+/// 			Name:        pulumi.String("episodic-strategy"),
+/// 			MemoryId:    pulumi.Any(example.Id),
+/// 			Type:        pulumi.String("EPISODIC"),
+/// 			Description: pulumi.String("Episodic memory strategy"),
+/// 			NamespaceTemplates: pulumi.StringArray{
+/// 				pulumi.String("/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "episodic" {
+///   name                = "episodic-strategy"
+///   memory_id           = example.id
+///   type                = "EPISODIC"
+///   description         = "Episodic memory strategy"
+///   namespace_templates = ["/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategy;
+/// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var episodic = new AgentcoreMemoryStrategy("episodic", AgentcoreMemoryStrategyArgs.builder()
+///             .name("episodic-strategy")
+///             .memoryId(example.id())
+///             .type("EPISODIC")
+///             .description("Episodic memory strategy")
+///             .namespaceTemplates("/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   episodic:
+///     type: aws:bedrock:AgentcoreMemoryStrategy
+///     properties:
+///       name: episodic-strategy
+///       memoryId: ${example.id}
+///       type: EPISODIC
+///       description: Episodic memory strategy
+///       namespaceTemplates:
+///         - /strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}
 /// ```
 ///
 ///
@@ -388,7 +577,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memoryExecutionRoleArn: example.memoryExecutionRoleArn,
 ///     type: "CUSTOM",
 ///     description: "Custom semantic processing strategy",
-///     namespaces: ["{sessionId}"],
+///     namespaceTemplates: ["{sessionId}"],
 ///     configuration: {
 ///         type: "SEMANTIC_OVERRIDE",
 ///         consolidation: {
@@ -412,7 +601,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memory_execution_role_arn=example["memoryExecutionRoleArn"],
 ///     type="CUSTOM",
 ///     description="Custom semantic processing strategy",
-///     namespaces=["{sessionId}"],
+///     namespace_templates=["{sessionId}"],
 ///     configuration={
 ///         "type": "SEMANTIC_OVERRIDE",
 ///         "consolidation": {
@@ -440,7 +629,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         MemoryExecutionRoleArn = example.MemoryExecutionRoleArn,
 ///         Type = "CUSTOM",
 ///         Description = "Custom semantic processing strategy",
-///         Namespaces = new[]
+///         NamespaceTemplates = new[]
 ///         {
 ///             "{sessionId}",
 ///         },
@@ -478,7 +667,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 			MemoryExecutionRoleArn: pulumi.Any(example.MemoryExecutionRoleArn),
 /// 			Type:                   pulumi.String("CUSTOM"),
 /// 			Description:            pulumi.String("Custom semantic processing strategy"),
-/// 			Namespaces: pulumi.StringArray{
+/// 			NamespaceTemplates: pulumi.StringArray{
 /// 				pulumi.String("{sessionId}"),
 /// 			},
 /// 			Configuration: &bedrock.AgentcoreMemoryStrategyConfigurationArgs{
@@ -500,6 +689,35 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "custom_semantic" {
+///   name                      = "custom-semantic-strategy"
+///   memory_id                 = example.id
+///   memory_execution_role_arn = example.memoryExecutionRoleArn
+///   type                      = "CUSTOM"
+///   description               = "Custom semantic processing strategy"
+///   namespace_templates       = ["{sessionId}"]
+///   configuration = {
+///     type = "SEMANTIC_OVERRIDE"
+///     consolidation = {
+///       append_to_prompt = "Focus on extracting key semantic relationships and concepts"
+///       model_id         = "anthropic.claude-3-sonnet-20240229-v1:0"
+///     }
+///     extraction = {
+///       append_to_prompt = "Extract and categorize semantic information"
+///       model_id         = "anthropic.claude-3-haiku-20240307-v1:0"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -511,8 +729,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationConsolidationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationExtractionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,7 +748,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             .memoryExecutionRoleArn(example.memoryExecutionRoleArn())
 ///             .type("CUSTOM")
 ///             .description("Custom semantic processing strategy")
-///             .namespaces("{sessionId}")
+///             .namespaceTemplates("{sessionId}")
 ///             .configuration(AgentcoreMemoryStrategyConfigurationArgs.builder()
 ///                 .type("SEMANTIC_OVERRIDE")
 ///                 .consolidation(AgentcoreMemoryStrategyConfigurationConsolidationArgs.builder()
@@ -558,7 +776,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///       memoryExecutionRoleArn: ${example.memoryExecutionRoleArn}
 ///       type: CUSTOM
 ///       description: Custom semantic processing strategy
-///       namespaces:
+///       namespaceTemplates:
 ///         - '{sessionId}'
 ///       configuration:
 ///         type: SEMANTIC_OVERRIDE
@@ -583,7 +801,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memoryId: example.id,
 ///     type: "CUSTOM",
 ///     description: "Custom summarization strategy",
-///     namespaces: ["summaries"],
+///     namespaceTemplates: ["summaries"],
 ///     configuration: {
 ///         type: "SUMMARY_OVERRIDE",
 ///         consolidation: {
@@ -602,7 +820,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memory_id=example["id"],
 ///     type="CUSTOM",
 ///     description="Custom summarization strategy",
-///     namespaces=["summaries"],
+///     namespace_templates=["summaries"],
 ///     configuration={
 ///         "type": "SUMMARY_OVERRIDE",
 ///         "consolidation": {
@@ -625,7 +843,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         MemoryId = example.Id,
 ///         Type = "CUSTOM",
 ///         Description = "Custom summarization strategy",
-///         Namespaces = new[]
+///         NamespaceTemplates = new[]
 ///         {
 ///             "summaries",
 ///         },
@@ -657,7 +875,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("CUSTOM"),
 /// 			Description: pulumi.String("Custom summarization strategy"),
-/// 			Namespaces: pulumi.StringArray{
+/// 			NamespaceTemplates: pulumi.StringArray{
 /// 				pulumi.String("summaries"),
 /// 			},
 /// 			Configuration: &bedrock.AgentcoreMemoryStrategyConfigurationArgs{
@@ -675,6 +893,30 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "custom_summary" {
+///   name                = "custom-summary-strategy"
+///   memory_id           = example.id
+///   type                = "CUSTOM"
+///   description         = "Custom summarization strategy"
+///   namespace_templates = ["summaries"]
+///   configuration = {
+///     type = "SUMMARY_OVERRIDE"
+///     consolidation = {
+///       append_to_prompt = "Create concise summaries while preserving key details"
+///       model_id         = "anthropic.claude-3-sonnet-20240229-v1:0"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -685,8 +927,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationConsolidationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -703,7 +945,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             .memoryId(example.id())
 ///             .type("CUSTOM")
 ///             .description("Custom summarization strategy")
-///             .namespaces("summaries")
+///             .namespaceTemplates("summaries")
 ///             .configuration(AgentcoreMemoryStrategyConfigurationArgs.builder()
 ///                 .type("SUMMARY_OVERRIDE")
 ///                 .consolidation(AgentcoreMemoryStrategyConfigurationConsolidationArgs.builder()
@@ -726,7 +968,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///       memoryId: ${example.id}
 ///       type: CUSTOM
 ///       description: Custom summarization strategy
-///       namespaces:
+///       namespaceTemplates:
 ///         - summaries
 ///       configuration:
 ///         type: SUMMARY_OVERRIDE
@@ -748,7 +990,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memoryId: example.id,
 ///     type: "CUSTOM",
 ///     description: "Custom user preference tracking strategy",
-///     namespaces: ["user_prefs"],
+///     namespaceTemplates: ["user_prefs"],
 ///     configuration: {
 ///         type: "USER_PREFERENCE_OVERRIDE",
 ///         consolidation: {
@@ -771,7 +1013,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     memory_id=example["id"],
 ///     type="CUSTOM",
 ///     description="Custom user preference tracking strategy",
-///     namespaces=["user_prefs"],
+///     namespace_templates=["user_prefs"],
 ///     configuration={
 ///         "type": "USER_PREFERENCE_OVERRIDE",
 ///         "consolidation": {
@@ -798,7 +1040,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         MemoryId = example.Id,
 ///         Type = "CUSTOM",
 ///         Description = "Custom user preference tracking strategy",
-///         Namespaces = new[]
+///         NamespaceTemplates = new[]
 ///         {
 ///             "user_prefs",
 ///         },
@@ -835,7 +1077,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("CUSTOM"),
 /// 			Description: pulumi.String("Custom user preference tracking strategy"),
-/// 			Namespaces: pulumi.StringArray{
+/// 			NamespaceTemplates: pulumi.StringArray{
 /// 				pulumi.String("user_prefs"),
 /// 			},
 /// 			Configuration: &bedrock.AgentcoreMemoryStrategyConfigurationArgs{
@@ -857,6 +1099,34 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "custom_user_pref" {
+///   name                = "custom-user-preference-strategy"
+///   memory_id           = example.id
+///   type                = "CUSTOM"
+///   description         = "Custom user preference tracking strategy"
+///   namespace_templates = ["user_prefs"]
+///   configuration = {
+///     type = "USER_PREFERENCE_OVERRIDE"
+///     consolidation = {
+///       append_to_prompt = "Consolidate user preferences and behavioral patterns"
+///       model_id         = "anthropic.claude-3-sonnet-20240229-v1:0"
+///     }
+///     extraction = {
+///       append_to_prompt = "Extract user preferences and interaction patterns"
+///       model_id         = "anthropic.claude-3-haiku-20240307-v1:0"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -868,8 +1138,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationConsolidationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationExtractionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -886,7 +1156,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             .memoryId(example.id())
 ///             .type("CUSTOM")
 ///             .description("Custom user preference tracking strategy")
-///             .namespaces("user_prefs")
+///             .namespaceTemplates("user_prefs")
 ///             .configuration(AgentcoreMemoryStrategyConfigurationArgs.builder()
 ///                 .type("USER_PREFERENCE_OVERRIDE")
 ///                 .consolidation(AgentcoreMemoryStrategyConfigurationConsolidationArgs.builder()
@@ -913,7 +1183,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///       memoryId: ${example.id}
 ///       type: CUSTOM
 ///       description: Custom user preference tracking strategy
-///       namespaces:
+///       namespaceTemplates:
 ///         - user_prefs
 ///       configuration:
 ///         type: USER_PREFERENCE_OVERRIDE
@@ -926,6 +1196,231 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// ```
 ///
 ///
+/// ### Custom Strategy with Episodic Override
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const customEpisodic = new aws.bedrock.AgentcoreMemoryStrategy("custom_episodic", {
+///     name: "custom-episodic-strategy",
+///     memoryId: example.id,
+///     memoryExecutionRoleArn: example.memoryExecutionRoleArn,
+///     type: "CUSTOM",
+///     description: "Custom episodic processing strategy",
+///     namespaceTemplates: ["/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"],
+///     configuration: {
+///         type: "EPISODIC_OVERRIDE",
+///         consolidation: {
+///             appendToPrompt: "Consolidate episodic memories into coherent narratives",
+///             modelId: "anthropic.claude-3-sonnet-20240229-v1:0",
+///         },
+///         extraction: {
+///             appendToPrompt: "Extract key events and episodes from interactions",
+///             modelId: "anthropic.claude-3-haiku-20240307-v1:0",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// custom_episodic = aws.bedrock.AgentcoreMemoryStrategy("custom_episodic",
+///     name="custom-episodic-strategy",
+///     memory_id=example["id"],
+///     memory_execution_role_arn=example["memoryExecutionRoleArn"],
+///     type="CUSTOM",
+///     description="Custom episodic processing strategy",
+///     namespace_templates=["/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"],
+///     configuration={
+///         "type": "EPISODIC_OVERRIDE",
+///         "consolidation": {
+///             "append_to_prompt": "Consolidate episodic memories into coherent narratives",
+///             "model_id": "anthropic.claude-3-sonnet-20240229-v1:0",
+///         },
+///         "extraction": {
+///             "append_to_prompt": "Extract key events and episodes from interactions",
+///             "model_id": "anthropic.claude-3-haiku-20240307-v1:0",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var customEpisodic = new Aws.Bedrock.AgentcoreMemoryStrategy("custom_episodic", new()
+///     {
+///         Name = "custom-episodic-strategy",
+///         MemoryId = example.Id,
+///         MemoryExecutionRoleArn = example.MemoryExecutionRoleArn,
+///         Type = "CUSTOM",
+///         Description = "Custom episodic processing strategy",
+///         NamespaceTemplates = new[]
+///         {
+///             "/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}",
+///         },
+///         Configuration = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationArgs
+///         {
+///             Type = "EPISODIC_OVERRIDE",
+///             Consolidation = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationConsolidationArgs
+///             {
+///                 AppendToPrompt = "Consolidate episodic memories into coherent narratives",
+///                 ModelId = "anthropic.claude-3-sonnet-20240229-v1:0",
+///             },
+///             Extraction = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationExtractionArgs
+///             {
+///                 AppendToPrompt = "Extract key events and episodes from interactions",
+///                 ModelId = "anthropic.claude-3-haiku-20240307-v1:0",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "custom_episodic", &bedrock.AgentcoreMemoryStrategyArgs{
+/// 			Name:                   pulumi.String("custom-episodic-strategy"),
+/// 			MemoryId:               pulumi.Any(example.Id),
+/// 			MemoryExecutionRoleArn: pulumi.Any(example.MemoryExecutionRoleArn),
+/// 			Type:                   pulumi.String("CUSTOM"),
+/// 			Description:            pulumi.String("Custom episodic processing strategy"),
+/// 			NamespaceTemplates: pulumi.StringArray{
+/// 				pulumi.String("/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"),
+/// 			},
+/// 			Configuration: &bedrock.AgentcoreMemoryStrategyConfigurationArgs{
+/// 				Type: pulumi.String("EPISODIC_OVERRIDE"),
+/// 				Consolidation: &bedrock.AgentcoreMemoryStrategyConfigurationConsolidationArgs{
+/// 					AppendToPrompt: pulumi.String("Consolidate episodic memories into coherent narratives"),
+/// 					ModelId:        pulumi.String("anthropic.claude-3-sonnet-20240229-v1:0"),
+/// 				},
+/// 				Extraction: &bedrock.AgentcoreMemoryStrategyConfigurationExtractionArgs{
+/// 					AppendToPrompt: pulumi.String("Extract key events and episodes from interactions"),
+/// 					ModelId:        pulumi.String("anthropic.claude-3-haiku-20240307-v1:0"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcorememorystrategy" "custom_episodic" {
+///   name                      = "custom-episodic-strategy"
+///   memory_id                 = example.id
+///   memory_execution_role_arn = example.memoryExecutionRoleArn
+///   type                      = "CUSTOM"
+///   description               = "Custom episodic processing strategy"
+///   namespace_templates       = ["/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}"]
+///   configuration = {
+///     type = "EPISODIC_OVERRIDE"
+///     consolidation = {
+///       append_to_prompt = "Consolidate episodic memories into coherent narratives"
+///       model_id         = "anthropic.claude-3-sonnet-20240229-v1:0"
+///     }
+///     extraction = {
+///       append_to_prompt = "Extract key events and episodes from interactions"
+///       model_id         = "anthropic.claude-3-haiku-20240307-v1:0"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategy;
+/// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationConsolidationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationExtractionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var customEpisodic = new AgentcoreMemoryStrategy("customEpisodic", AgentcoreMemoryStrategyArgs.builder()
+///             .name("custom-episodic-strategy")
+///             .memoryId(example.id())
+///             .memoryExecutionRoleArn(example.memoryExecutionRoleArn())
+///             .type("CUSTOM")
+///             .description("Custom episodic processing strategy")
+///             .namespaceTemplates("/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}")
+///             .configuration(AgentcoreMemoryStrategyConfigurationArgs.builder()
+///                 .type("EPISODIC_OVERRIDE")
+///                 .consolidation(AgentcoreMemoryStrategyConfigurationConsolidationArgs.builder()
+///                     .appendToPrompt("Consolidate episodic memories into coherent narratives")
+///                     .modelId("anthropic.claude-3-sonnet-20240229-v1:0")
+///                     .build())
+///                 .extraction(AgentcoreMemoryStrategyConfigurationExtractionArgs.builder()
+///                     .appendToPrompt("Extract key events and episodes from interactions")
+///                     .modelId("anthropic.claude-3-haiku-20240307-v1:0")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   customEpisodic:
+///     type: aws:bedrock:AgentcoreMemoryStrategy
+///     name: custom_episodic
+///     properties:
+///       name: custom-episodic-strategy
+///       memoryId: ${example.id}
+///       memoryExecutionRoleArn: ${example.memoryExecutionRoleArn}
+///       type: CUSTOM
+///       description: Custom episodic processing strategy
+///       namespaceTemplates:
+///         - /strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}
+///       configuration:
+///         type: EPISODIC_OVERRIDE
+///         consolidation:
+///           appendToPrompt: Consolidate episodic memories into coherent narratives
+///           modelId: anthropic.claude-3-sonnet-20240229-v1:0
+///         extraction:
+///           appendToPrompt: Extract key events and episodes from interactions
+///           modelId: anthropic.claude-3-haiku-20240307-v1:0
+/// ```
+///
+///
 /// ## Import
 ///
 /// Using `pulumi import`, import Bedrock AgentCore Memory Strategy using the `memory_id,strategy_id`. For example:
@@ -934,10 +1429,11 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentcoreMemoryStrategy:AgentcoreMemoryStrategy example MEMORY1234567890,STRATEGY0987654321
 /// ```
 class AgentcoreMemoryStrategy extends pulumi.CustomResource {
-  /// Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` below.
+  /// Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` Block below.
   late final pulumi.Output<AgentcoreMemoryStrategyConfiguration?> configuration;
   /// Description of the memory strategy.
   late final pulumi.Output<String?> description;
+  /// ARN of the IAM role that the memory service assumes to perform operations.
   late final pulumi.Output<String?> memoryExecutionRoleArn;
   /// ID of the memory to associate with this strategy. Changing this forces a new resource.
   late final pulumi.Output<String> memoryId;
@@ -945,14 +1441,18 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
   late final pulumi.Output<String> memoryStrategyId;
   /// Name of the memory strategy.
   late final pulumi.Output<String> name;
-  /// Set of namespace identifiers where this strategy applies. Namespaces help organize and scope memory content.
-  ///
-  /// The following arguments are optional:
+  /// Set containing exactly one namespace template where this strategy applies (for example `/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}`). Namespace templates help organize and scope memory content. Exactly one of `namespaceTemplates` or `namespaces` must be configured.
+  late final pulumi.Output<List<String>> namespaceTemplates;
+  /// Set of namespace identifiers where this strategy applies. Exactly one of `namespaces` or `namespaceTemplates` must be configured. The API treats this as a legacy parameter; prefer `namespaceTemplates`. Since the API mirrors the two fields, switching an existing configuration from `namespaces` to `namespaceTemplates` with the same value is an in-place no-op.
   late final pulumi.Output<List<String>> namespaces;
+  /// Configuration for the reflections created with the episodic memory strategy. Valid when `type` is `EPISODIC`, must be omitted for other types. See `reflectionConfiguration` Block below.
+  late final pulumi.Output<AgentcoreMemoryStrategyReflectionConfiguration?> reflectionConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<AgentcoreMemoryStrategyTimeouts?> timeouts;
-  /// Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`) can exist per memory.
+  /// Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`) can exist per memory.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> type;
 
   /// Creates a new [AgentcoreMemoryStrategy].
@@ -975,7 +1475,9 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
     memoryId = registerOutput<String>('memoryId');
     memoryStrategyId = registerOutput<String>('memoryStrategyId');
     this.name = registerOutput<String>('name');
+    namespaceTemplates = registerOutput<List<String>>('namespaceTemplates');
     namespaces = registerOutput<List<String>>('namespaces');
+    reflectionConfiguration = registerOutput<AgentcoreMemoryStrategyReflectionConfiguration?>('reflectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStrategyReflectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     timeouts = registerOutput<AgentcoreMemoryStrategyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStrategyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
@@ -1010,7 +1512,9 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
     memoryId = registerOutput<String>('memoryId');
     memoryStrategyId = registerOutput<String>('memoryStrategyId');
     this.name = registerOutput<String>('name');
+    namespaceTemplates = registerOutput<List<String>>('namespaceTemplates');
     namespaces = registerOutput<List<String>>('namespaces');
+    reflectionConfiguration = registerOutput<AgentcoreMemoryStrategyReflectionConfiguration?>('reflectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStrategyReflectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     timeouts = registerOutput<AgentcoreMemoryStrategyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStrategyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

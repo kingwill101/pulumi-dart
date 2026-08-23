@@ -65,6 +65,21 @@ import 'phone_number_contact_flow_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_phonenumbercontactflowassociation" "example" {
+///   phone_number_id = exampleAwsConnectPhoneNumber.id
+///   instance_id     = exampleAwsConnectInstance.id
+///   contact_flow_id = exampleAwsConnectContactFlow.contactFlowId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'phone_number_contact_flow_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.PhoneNumberContactFlowAssociation;
 /// import com.pulumi.aws.connect.PhoneNumberContactFlowAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -108,7 +123,7 @@ import 'phone_number_contact_flow_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.connect.PhoneNumberContactFlowAssociation` using the `phone_number_id`, `instance_id` and `contact_flow_id` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import `aws.connect.PhoneNumberContactFlowAssociation` using the `phoneNumberId`, `instanceId` and `contactFlowId` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/phoneNumberContactFlowAssociation:PhoneNumberContactFlowAssociation example 36727a4c-4683-4e49-880c-3347c61110a4,fa6c1691-e2eb-4487-bdb9-1aaed6268ebd,c4acdc79-395e-4280-a294-9062f56b07bb

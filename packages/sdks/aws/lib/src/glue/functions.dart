@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_catalog_args.dart';
+import 'get_catalog_result.dart';
 import 'get_catalog_table_args.dart';
 import 'get_catalog_table_result.dart';
 import 'get_connection_args.dart';
@@ -9,6 +11,124 @@ import 'get_registry_args.dart';
 import 'get_registry_result.dart';
 import 'get_script_args.dart';
 import 'get_script_result.dart';
+
+/// Provides details about an AWS Glue Catalog.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.glue.getCatalog({
+///     name: "example",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.glue.get_catalog(name="example")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Glue.GetCatalog.Invoke(new()
+///     {
+///         Name = "example",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/glue"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := glue.LookupCatalog(ctx, &glue.LookupCatalogArgs{
+/// 			Name: "example",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_glue_getcatalog" "example" {
+///   name = "example"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.glue.GlueFunctions;
+/// import com.pulumi.aws.glue.inputs.GetCatalogArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = GlueFunctions.getCatalog(GetCatalogArgs.builder()
+///             .name("example")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:glue:getCatalog
+///       arguments:
+///         name: example
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_glue_get_catalog_get_catalog_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetCatalogResult> getCatalog(
+  GetCatalogArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:glue/getCatalog:getCatalog',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetCatalogResult.fromMap(result);
+}
 
 /// This data source can be used to fetch information about an AWS Glue Data Catalog Table.
 ///
@@ -68,6 +188,20 @@ import 'get_script_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_glue_getcatalogtable" "example" {
+///   name          = "MyCatalogTable"
+///   database_name = "MyCatalogDatabase"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +210,8 @@ import 'get_script_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.GlueFunctions;
 /// import com.pulumi.aws.glue.inputs.GetCatalogTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,7 +255,7 @@ Future<GetCatalogTableResult> getCatalogTable(
   return GetCatalogTableResult.fromMap(result);
 }
 
-/// This data source can be used to fetch information about a specific Glue Connection.
+/// Provides details about an AWS Glue Connection.
 ///
 /// ## Example Usage
 ///
@@ -175,6 +309,19 @@ Future<GetCatalogTableResult> getCatalogTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_glue_getconnection" "example" {
+///   id = "123456789123:connection"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +330,8 @@ Future<GetCatalogTableResult> getCatalogTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.GlueFunctions;
 /// import com.pulumi.aws.glue.inputs.GetConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,6 +378,19 @@ Future<GetConnectionResult> getConnection(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_glue_getdatacatalogencryptionsettings" "example" {
+///   id = "123456789123"
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   example:
@@ -310,6 +470,19 @@ Future<GetDataCatalogEncryptionSettingsResult> getDataCatalogEncryptionSettings(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_glue_getregistry" "example" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -318,8 +491,8 @@ Future<GetDataCatalogEncryptionSettingsResult> getDataCatalogEncryptionSettings(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.GlueFunctions;
 /// import com.pulumi.aws.glue.inputs.GetRegistryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,6 +960,95 @@ Future<GetRegistryResult> getRegistry(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_glue_getscript" "example" {
+///   language = "PYTHON"
+///   dag_edges {
+///     source = "datasource0"
+///     target = "applymapping1"
+///   }
+///   dag_edges {
+///     source = "applymapping1"
+///     target = "selectfields2"
+///   }
+///   dag_edges {
+///     source = "selectfields2"
+///     target = "resolvechoice3"
+///   }
+///   dag_edges {
+///     source = "resolvechoice3"
+///     target = "datasink4"
+///   }
+///   dag_nodes {
+///     id        = "datasource0"
+///     node_type = "DataSource"
+///     args {
+///       name  = "database"
+///       value =""${source.name}""
+///     }
+///     args {
+///       name  = "table_name"
+///       value =""${sourceAwsGlueCatalogTable.name}""
+///     }
+///   }
+///   dag_nodes {
+///     id        = "applymapping1"
+///     node_type = "ApplyMapping"
+///     args {
+///       name  = "mapping"
+///       value = "[(\"column1\", \"string\", \"column1\", \"string\")]"
+///     }
+///   }
+///   dag_nodes {
+///     id        = "selectfields2"
+///     node_type = "SelectFields"
+///     args {
+///       name  = "paths"
+///       value = "[\"column1\"]"
+///     }
+///   }
+///   dag_nodes {
+///     id        = "resolvechoice3"
+///     node_type = "ResolveChoice"
+///     args {
+///       name  = "choice"
+///       value = "\"MATCH_CATALOG\""
+///     }
+///     args {
+///       name  = "database"
+///       value =""${destination.name}""
+///     }
+///     args {
+///       name  = "table_name"
+///       value =""${destinationAwsGlueCatalogTable.name}""
+///     }
+///   }
+///   dag_nodes {
+///     id        = "datasink4"
+///     node_type = "DataSink"
+///     args {
+///       name  = "database"
+///       value =""${destination.name}""
+///     }
+///     args {
+///       name  = "table_name"
+///       value =""${destinationAwsGlueCatalogTable.name}""
+///     }
+///   }
+/// }
+///
+/// output "pythonScript" {
+///   value = data.aws_glue_getscript.example.python_script
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -795,8 +1057,11 @@ Future<GetRegistryResult> getRegistry(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.GlueFunctions;
 /// import com.pulumi.aws.glue.inputs.GetScriptArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.glue.inputs.GetScriptDagEdgeArgs;
+/// import com.pulumi.aws.glue.inputs.GetScriptDagNodeArgs;
+/// import com.pulumi.aws.glue.inputs.GetScriptDagNodeArgArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1370,6 +1635,95 @@ Future<GetRegistryResult> getRegistry(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_glue_getscript" "example" {
+///   language = "SCALA"
+///   dag_edges {
+///     source = "datasource0"
+///     target = "applymapping1"
+///   }
+///   dag_edges {
+///     source = "applymapping1"
+///     target = "selectfields2"
+///   }
+///   dag_edges {
+///     source = "selectfields2"
+///     target = "resolvechoice3"
+///   }
+///   dag_edges {
+///     source = "resolvechoice3"
+///     target = "datasink4"
+///   }
+///   dag_nodes {
+///     id        = "datasource0"
+///     node_type = "DataSource"
+///     args {
+///       name  = "database"
+///       value =""${source.name}""
+///     }
+///     args {
+///       name  = "table_name"
+///       value =""${sourceAwsGlueCatalogTable.name}""
+///     }
+///   }
+///   dag_nodes {
+///     id        = "applymapping1"
+///     node_type = "ApplyMapping"
+///     args {
+///       name  = "mappings"
+///       value = "[(\"column1\", \"string\", \"column1\", \"string\")]"
+///     }
+///   }
+///   dag_nodes {
+///     id        = "selectfields2"
+///     node_type = "SelectFields"
+///     args {
+///       name  = "paths"
+///       value = "[\"column1\"]"
+///     }
+///   }
+///   dag_nodes {
+///     id        = "resolvechoice3"
+///     node_type = "ResolveChoice"
+///     args {
+///       name  = "choice"
+///       value = "\"MATCH_CATALOG\""
+///     }
+///     args {
+///       name  = "database"
+///       value =""${destination.name}""
+///     }
+///     args {
+///       name  = "table_name"
+///       value =""${destinationAwsGlueCatalogTable.name}""
+///     }
+///   }
+///   dag_nodes {
+///     id        = "datasink4"
+///     node_type = "DataSink"
+///     args {
+///       name  = "database"
+///       value =""${destination.name}""
+///     }
+///     args {
+///       name  = "table_name"
+///       value =""${destinationAwsGlueCatalogTable.name}""
+///     }
+///   }
+/// }
+///
+/// output "scalaCode" {
+///   value = data.aws_glue_getscript.example.scala_code
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1378,8 +1732,11 @@ Future<GetRegistryResult> getRegistry(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.glue.GlueFunctions;
 /// import com.pulumi.aws.glue.inputs.GetScriptArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.glue.inputs.GetScriptDagEdgeArgs;
+/// import com.pulumi.aws.glue.inputs.GetScriptDagNodeArgs;
+/// import com.pulumi.aws.glue.inputs.GetScriptDagNodeArgArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -10,30 +10,32 @@ import 'app_authorization_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appfabric_app_authorization_app_authorization_args_doc}
 class AppAuthorizationArgs {
-  /// The name of the application for valid values see https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html.
+  /// Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
   final pulumi.Input<String> app;
-  /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String> appBundleArn;
-  /// The authorization type for the app authorization valid values are oauth2 and apiKey.
+  /// Authorization type for the app authorization. Valid values are `oauth2` and `apiKey`.
   final pulumi.Input<String> authType;
-  /// Contains credentials for the application, such as an API key or OAuth2 client ID and secret.
-  /// Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (oauth2), then you should provide only the OAuth2 credentials.
+  /// Credentials for the application, such as an API key or OAuth2 client ID and secret. Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (`oauth2`), then you should provide only the OAuth2 credentials. See `credential` Block for details.
   final pulumi.Input<AppAuthorizationCredential> credential;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Contains information about an application tenant, such as the application display name and identifier.
+  /// Information about an application tenant, such as the application display name and identifier. See `tenant` Block for details.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<List<AppAuthorizationTenant>> tenants;
   final pulumi.Input<AppAuthorizationTimeouts>? timeouts;
 
   /// Creates a new [AppAuthorizationArgs].
-  /// [app] The name of the application for valid values see https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html.
-  /// [appBundleArn] The Amazon Resource Name (ARN) of the app bundle to use for the request.
-  /// [authType] The authorization type for the app authorization valid values are oauth2 and apiKey.
-  /// [credential] Contains credentials for the application, such as an API key or OAuth2 client ID and secret.
+  /// [app] Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
+  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [authType] Authorization type for the app authorization. Valid values are `oauth2` and `apiKey`.
+  /// [credential] Credentials for the application, such as an API key or OAuth2 client ID and secret. Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (`oauth2`), then you should provide only the OAuth2 credentials. See `credential` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Optional.
-  /// [tenants] Contains information about an application tenant, such as the application display name and identifier.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tenants] Information about an application tenant, such as the application display name and identifier. See `tenant` Block for details.
   /// [timeouts] Optional.
   const AppAuthorizationArgs({
     required this.app,
@@ -72,4 +74,3 @@ class AppAuthorizationArgs {
     );
   }
 }
-

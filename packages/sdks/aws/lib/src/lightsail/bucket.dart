@@ -61,6 +61,20 @@ import 'bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_bucket" "example" {
+///   name      = "example-bucket"
+///   bundle_id = "small_1_0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'bucket_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.Bucket;
 /// import com.pulumi.aws.lightsail.BucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,7 +130,7 @@ class Bucket extends pulumi.CustomResource {
   late final pulumi.Output<String> bundleId;
   /// Date and time when the bucket was created.
   late final pulumi.Output<String> createdAt;
-  /// Whether to force delete non-empty buckets using `pulumi destroy`. AWS by default will not delete a bucket which is not empty, to prevent losing bucket data and affecting other resources in Lightsail. If `force_delete` is set to `true` the bucket will be deleted even when not empty.
+  /// Whether to force delete non-empty buckets using `pulumi destroy`. AWS by default will not delete a bucket which is not empty, to prevent losing bucket data and affecting other resources in Lightsail. If `forceDelete` is set to `true` the bucket will be deleted even when not empty.
   late final pulumi.Output<bool?> forceDelete;
   /// Name for the bucket.
   ///
@@ -126,9 +140,9 @@ class Bucket extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Support code for the resource. Include this code in your email to support when you have questions about a resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.
   late final pulumi.Output<String> supportCode;
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// URL of the bucket.
   late final pulumi.Output<String> url;

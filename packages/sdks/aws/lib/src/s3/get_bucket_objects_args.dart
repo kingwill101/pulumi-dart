@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_s3_get_bucket_objects_get_bucket_objects_args_doc}
 class GetBucketObjectsArgs {
-  /// Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+  /// Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified. Use the `aws.s3.getObjects` data source instead.
   final pulumi.Input<String> bucket;
   /// Character used to group keys (Default: none)
   final pulumi.Input<String>? delimiter;
@@ -25,7 +25,7 @@ class GetBucketObjectsArgs {
   final pulumi.Input<String>? startAfter;
 
   /// Creates a new [GetBucketObjectsArgs].
-  /// [bucket] Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+  /// [bucket] Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified. Use the `aws.s3.getObjects` data source instead.
   /// [delimiter] Character used to group keys (Default: none)
   /// [encodingType] Encodes keys using this method (Default: none; besides none, only "url" can be used)
   /// [fetchOwner] Boolean specifying whether to populate the owner list (Default: false)
@@ -70,4 +70,3 @@ class GetBucketObjectsArgs {
     );
   }
 }
-

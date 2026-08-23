@@ -29,7 +29,7 @@ import 'domain_permissions_state.dart';
 /// });
 /// const testDomainPermissions = new aws.codeartifact.DomainPermissions("test", {
 ///     domain: exampleDomain.domain,
-///     policyDocument: test.apply(test => test.json),
+///     policyDocument: test.json,
 /// });
 /// ```
 /// ```python
@@ -157,16 +157,47 @@ import 'domain_permissions_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = codeartifact.NewDomainPermissions(ctx, "test", &codeartifact.DomainPermissionsArgs{
-/// 			Domain: exampleDomain.Domain,
-/// 			PolicyDocument: pulumi.String(test.ApplyT(func(test iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &test.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Domain:         exampleDomain.Domain,
+/// 			PolicyDocument: test.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "test" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     actions   = ["codeartifact:CreateRepository"]
+///     resources = [aws_codeartifact_domain.example.arn]
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "domain key"
+/// }
+/// resource "aws_codeartifact_domain" "example" {
+///   domain         = "example"
+///   encryption_key = aws_kms_key.example.arn
+/// }
+/// resource "aws_codeartifact_domainpermissions" "test" {
+///   domain          = aws_codeartifact_domain.example.domain
+///   policy_document = data.aws_iam_getpolicydocument.test.json
 /// }
 /// ```
 /// ```java
@@ -181,10 +212,12 @@ import 'domain_permissions_state.dart';
 /// import com.pulumi.aws.codeartifact.DomainArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.codeartifact.DomainPermissions;
 /// import com.pulumi.aws.codeartifact.DomainPermissionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,7 +300,7 @@ import 'domain_permissions_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeArtifact domain.
+/// - `resourceArn` (String) Amazon Resource Name (ARN) of the CodeArtifact domain.
 ///
 ///
 /// Using `pulumi import`, import CodeArtifact Domain Permissions Policies using the CodeArtifact Domain ARN. For example:

@@ -117,6 +117,31 @@ import 'resource_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_resourceconfiguration" "example" {
+///   name                        = "Example"
+///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
+///   port_ranges                 = ["80"]
+///   protocol                    = "TCP"
+///   resource_configuration_definition = {
+///     dns_resource = {
+///       domain_name     = "example.com"
+///       ip_address_type = "IPV4"
+///     }
+///   }
+///   tags = {
+///     "Environment" = "Example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'resource_configuration_timeouts.dart';
 /// import com.pulumi.aws.vpclattice.ResourceConfigurationArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +306,30 @@ import 'resource_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_resourceconfiguration" "example" {
+///   name                        = "Example"
+///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
+///   port_ranges                 = ["80"]
+///   protocol                    = "TCP"
+///   resource_configuration_definition = {
+///     ip_resource = {
+///       ip_address = "10.0.0.1"
+///     }
+///   }
+///   tags = {
+///     "Environment" = "Example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -291,8 +340,8 @@ import 'resource_configuration_timeouts.dart';
 /// import com.pulumi.aws.vpclattice.ResourceConfigurationArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionIpResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,7 +495,7 @@ import 'resource_configuration_timeouts.dart';
 /// 			Name:                      pulumi.String("Example"),
 /// 			ResourceGatewayIdentifier: pulumi.Any(exampleAwsVpclatticeResourceGateway.Id),
 /// 			CustomDomainName:          pulumi.String("custom.example.com"),
-/// 			DomainVerificationId:      example.ID(),
+/// 			DomainVerificationId:      example.ID().ToIDOutput().ToStringOutput(),
 /// 			PortRanges: pulumi.StringArray{
 /// 				pulumi.String("443"),
 /// 			},
@@ -468,6 +517,36 @@ import 'resource_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_domainverification" "example" {
+///   domain_name = "example.com"
+/// }
+/// resource "aws_vpclattice_resourceconfiguration" "example" {
+///   name                        = "Example"
+///   resource_gateway_identifier = exampleAwsVpclatticeResourceGateway.id
+///   custom_domain_name          = "custom.example.com"
+///   domain_verification_id      = aws_vpclattice_domainverification.example.id
+///   port_ranges                 = ["443"]
+///   protocol                    = "TCP"
+///   resource_configuration_definition = {
+///     dns_resource = {
+///       domain_name     = "test.example.com"
+///       ip_address_type = "IPV4"
+///     }
+///   }
+///   tags = {
+///     "Environment" = "Example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -480,8 +559,8 @@ import 'resource_configuration_timeouts.dart';
 /// import com.pulumi.aws.vpclattice.ResourceConfigurationArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionDnsResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -625,6 +704,26 @@ import 'resource_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_vpclattice_resourceconfiguration" "test" {
+///   name                        = "Example"
+///   resource_gateway_identifier = testAwsVpclatticeResourceGateway.id
+///   type                        = "ARN"
+///   resource_configuration_definition = {
+///     arn_resource = {
+///       arn = example.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -635,8 +734,8 @@ import 'resource_configuration_timeouts.dart';
 /// import com.pulumi.aws.vpclattice.ResourceConfigurationArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionArgs;
 /// import com.pulumi.aws.vpclattice.inputs.ResourceConfigurationResourceConfigurationDefinitionArnResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -688,11 +787,11 @@ class ResourceConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<bool> allowAssociationToShareableServiceNetwork;
   /// ARN of the resource gateway.
   late final pulumi.Output<String> arn;
-  /// Custom domain name for your resource configuration. Additionally, provide a `domain_verification_id` to prove your ownership of a domain.
+  /// Custom domain name for your resource configuration. Additionally, provide a `domainVerificationId` to prove your ownership of a domain.
   late final pulumi.Output<String?> customDomainName;
   /// ARN of the domain verification.
   late final pulumi.Output<String> domainVerificationArn;
-  /// The domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
+  /// Domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
   late final pulumi.Output<String> domainVerificationId;
   /// Domain verification status.
   late final pulumi.Output<String> domainVerificationStatus;
@@ -700,21 +799,21 @@ class ResourceConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Port ranges to access the Resource either single port `80` or range `80-81` range.
   late final pulumi.Output<List<String>> portRanges;
-  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resource_configuration_group_id` is not.
+  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resourceConfigurationGroupId` is not.
   late final pulumi.Output<String> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Details of the Resource Configuration. See `resource_configuration_definition` Block for details.
+  /// Details of the Resource Configuration. See `resourceConfigurationDefinition` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<ResourceConfigurationResourceConfigurationDefinition?> resourceConfigurationDefinition;
   /// ID of Resource Configuration where `type` is `CHILD`.
   late final pulumi.Output<String?> resourceConfigurationGroupId;
-  /// ID of the Resource Gateway used to access the resource. MUST be specified if `resource_configuration_group_id` is not.
+  /// ID of the Resource Gateway used to access the resource. MUST be specified if `resourceConfigurationGroupId` is not.
   late final pulumi.Output<String> resourceGatewayIdentifier;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ResourceConfigurationTimeouts?> timeouts;
   /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.

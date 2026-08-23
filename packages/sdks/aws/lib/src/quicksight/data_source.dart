@@ -106,6 +106,29 @@ import 'data_source_vpc_connection_properties.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_datasource" "default" {
+///   data_source_id = "example-id"
+///   name           = "My Cool Data in S3"
+///   parameters = {
+///     s3 = {
+///       manifest_file_location = {
+///         bucket = "my-bucket"
+///         key    = "path/to/manifest.json"
+///       }
+///     }
+///   }
+///   type = "S3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +140,8 @@ import 'data_source_vpc_connection_properties.dart';
 /// import com.pulumi.aws.quicksight.inputs.DataSourceParametersArgs;
 /// import com.pulumi.aws.quicksight.inputs.DataSourceParametersS3Args;
 /// import com.pulumi.aws.quicksight.inputs.DataSourceParametersS3ManifestFileLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,7 +202,7 @@ import 'data_source_vpc_connection_properties.dart';
 ///     key: "manifest.json",
 ///     content: pulumi.jsonStringify({
 ///         fileLocations: [{
-///             URIPrefixes: [Promise.all([example.id, currentGetRegion, currentGetPartition]).then(([id, currentGetRegion, currentGetPartition]) => `https://${id}.s3-${currentGetRegion.region}.${currentGetPartition.dnsSuffix}`)],
+///             URIPrefixes: [pulumi.all([example.id, currentGetRegion, currentGetPartition]).apply(([id, currentGetRegion, currentGetPartition]) => `https://${id}.s3-${currentGetRegion.region}.${currentGetPartition.dnsSuffix}`)],
 ///         }],
 ///         globalUploadSettings: {
 ///             format: "CSV",
@@ -499,11 +522,11 @@ import 'data_source_vpc_connection_properties.dart';
 /// 		exampleBucketObjectv2, err := s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
 /// 			Bucket: example.Bucket,
 /// 			Key:    pulumi.String("manifest.json"),
-/// 			Content: example.ID().ApplyT(func(id string) (pulumi.String, error) {
+/// 			Content: example.ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 					"fileLocations": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"fileLocations": []map[string][]string{
+/// 						{
 /// 							"URIPrefixes": []string{
 /// 								fmt.Sprintf("https://%v.s3-%v.%v", id, currentGetRegion.Region, currentGetPartition.DnsSuffix),
 /// 							},
@@ -532,10 +555,10 @@ import 'data_source_vpc_connection_properties.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "quicksight.amazonaws.com",
 /// 					},
-/// 					"Condition": map[string]interface{}{
+/// 					"Condition": map[string]map[string]interface{}{
 /// 						"StringEquals": map[string]interface{}{
 /// 							"aws:SourceAccount": current.AccountId,
 /// 						},
@@ -549,7 +572,7 @@ import 'data_source_vpc_connection_properties.dart';
 /// 		json1 := string(tmpJSON1)
 /// 		exampleRole, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			AssumeRolePolicy: pulumi.String(json1),
+/// 			AssumeRolePolicy: json1,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -557,10 +580,9 @@ import 'data_source_vpc_connection_properties.dart';
 /// 		examplePolicy, err := iam.NewPolicy(ctx, "example", &iam.PolicyArgs{
 /// 			Name:        pulumi.String("example"),
 /// 			Description: pulumi.String("Policy to allow QuickSight access to S3 bucket"),
-/// 			Policy: pulumi.All(example.Arn, exampleBucketObjectv2.Key, example.Arn).ApplyT(func(_args []interface{}) (string, error) {
-/// 				exampleArn := _args[0].(string)
+/// 			Policy: pulumi.All(example.Arn, exampleBucketObjectv2.Key).ApplyT(func(_args []interface{}) (string, error) {
+/// 				arn := _args[0].(string)
 /// 				key := _args[1].(string)
-/// 				exampleArn1 := _args[2].(string)
 /// 				var _zero string
 /// 				tmpJSON2, err := json.Marshal(map[string]interface{}{
 /// 					"Version": "2012-10-17",
@@ -570,14 +592,14 @@ import 'data_source_vpc_connection_properties.dart';
 /// 								"s3:GetObject",
 /// 							},
 /// 							"Effect":   "Allow",
-/// 							"Resource": fmt.Sprintf("%v/%v", exampleArn, key),
+/// 							"Resource": fmt.Sprintf("%v/%v", arn, key),
 /// 						},
 /// 						map[string]interface{}{
 /// 							"Action": []string{
 /// 								"s3:ListBucket",
 /// 							},
 /// 							"Effect":   "Allow",
-/// 							"Resource": exampleArn1,
+/// 							"Resource": arn,
 /// 						},
 /// 					},
 /// 				})
@@ -619,6 +641,92 @@ import 'data_source_vpc_connection_properties.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket = aws_s3_bucket.example.bucket
+///   key    = "manifest.json"
+///   content = jsonencode({
+///     "fileLocations" = [{
+///       "URIPrefixes" = ["https://${aws_s3_bucket.example.id}.s3-${data.aws_getregion.currentGetRegion.region}.${data.aws_getpartition.currentGetPartition.dns_suffix}"]
+///     }]
+///     "globalUploadSettings" = {
+///       "format"         = "CSV"
+///       "delimiter"      = ","
+///       "textqualifier"  = "\""
+///       "containsHeader" = true
+///     }
+///   })
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "quicksight.amazonaws.com"
+///       }
+///       "Condition" = {
+///         "StringEquals" = {
+///           "aws:SourceAccount" = data.aws_getcalleridentity.current.account_id
+///         }
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_iam_policy" "example" {
+///   name        = "example"
+///   description = "Policy to allow QuickSight access to S3 bucket"
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["s3:GetObject"]
+///       "Effect"   = "Allow"
+///       "Resource" ="${aws_s3_bucket.example.arn}/${aws_s3_bucketobjectv2.example.key}"
+///       }, {
+///       "Action"   = ["s3:ListBucket"]
+///       "Effect"   = "Allow"
+///       "Resource" = aws_s3_bucket.example.arn
+///     }]
+///   })
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   policy_arn = aws_iam_policy.example.arn
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_quicksight_datasource" "example" {
+///   data_source_id = "example-id"
+///   name           = "manifest in S3"
+///   parameters = {
+///     s3 = {
+///       manifest_file_location = {
+///         bucket = aws_s3_bucket.example.bucket
+///         key    = aws_s3_bucketobjectv2.example.key
+///       }
+///       role_arn = aws_iam_role.example.arn
+///     }
+///   }
+///   type = "S3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -644,8 +752,8 @@ import 'data_source_vpc_connection_properties.dart';
 /// import com.pulumi.aws.quicksight.inputs.DataSourceParametersS3Args;
 /// import com.pulumi.aws.quicksight.inputs.DataSourceParametersS3ManifestFileLocationArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -708,10 +816,9 @@ import 'data_source_vpc_connection_properties.dart';
 ///         var examplePolicy = new Policy("examplePolicy", PolicyArgs.builder()
 ///             .name("example")
 ///             .description("Policy to allow QuickSight access to S3 bucket")
-///             .policy(Output.tuple(example.arn(), exampleBucketObjectv2.key(), example.arn()).applyValue(values -> {
-///                 var exampleArn = values.t1;
+///             .policy(Output.tuple(example.arn(), exampleBucketObjectv2.key()).applyValue(values -> {
+///                 var arn = values.t1;
 ///                 var key = values.t2;
-///                 var exampleArn1 = values.t3;
 ///                 return serializeJson(
 ///                     jsonObject(
 ///                         jsonProperty("Version", "2012-10-17"),
@@ -719,12 +826,12 @@ import 'data_source_vpc_connection_properties.dart';
 ///                             jsonObject(
 ///                                 jsonProperty("Action", jsonArray("s3:GetObject")),
 ///                                 jsonProperty("Effect", "Allow"),
-///                                 jsonProperty("Resource", String.format("%s/%s", exampleArn,key))
+///                                 jsonProperty("Resource", String.format("%s/%s", arn,key))
 ///                             ),
 ///                             jsonObject(
 ///                                 jsonProperty("Action", jsonArray("s3:ListBucket")),
 ///                                 jsonProperty("Effect", "Allow"),
-///                                 jsonProperty("Resource", exampleArn1)
+///                                 jsonProperty("Resource", arn)
 ///                             )
 ///                         ))
 ///                     ));
@@ -869,9 +976,9 @@ class DataSource extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your underlying source. See SSL Properties below for more details.
   late final pulumi.Output<DataSourceSslProperties> sslProperties;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of the data source. See the [AWS Documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSource.html#QS-CreateDataSource-request-Type) for the complete list of valid values.
   ///

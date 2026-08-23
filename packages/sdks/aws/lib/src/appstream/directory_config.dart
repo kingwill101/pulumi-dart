@@ -102,6 +102,28 @@ import 'directory_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_appstream_directoryconfig" "example" {
+///   directory_name                          = "NAME OF DIRECTORY"
+///   organizational_unit_distinguished_names = ["DISTINGUISHED NAME"]
+///   service_account_credentials = {
+///     account_name     = "NAME OF ACCOUNT"
+///     account_password = "PASSWORD OF ACCOUNT"
+///   }
+///   certificate_based_auth_properties = {
+///     certificate_authority_arn = "ARN OF CERTIFICATE AUTHORITY"
+///     status                    = "STATUS OF CERTIFICATE BASED AUTHENTICATION"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +134,8 @@ import 'directory_config_state.dart';
 /// import com.pulumi.aws.appstream.DirectoryConfigArgs;
 /// import com.pulumi.aws.appstream.inputs.DirectoryConfigServiceAccountCredentialsArgs;
 /// import com.pulumi.aws.appstream.inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,7 +188,7 @@ import 'directory_config_state.dart';
 /// $ pulumi import aws:appstream/directoryConfig:DirectoryConfig example directoryNameExample
 /// ```
 class DirectoryConfig extends pulumi.CustomResource {
-  /// Configuration block for the certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances. See `certificate_based_auth_properties` below.
+  /// Configuration block for the certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances. See `certificateBasedAuthProperties` below.
   late final pulumi.Output<DirectoryConfigCertificateBasedAuthProperties?> certificateBasedAuthProperties;
   /// Date and time, in UTC and extended RFC 3339 format, when the directory config was created.
   late final pulumi.Output<String> createdTime;
@@ -176,7 +198,7 @@ class DirectoryConfig extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> organizationalUnitDistinguishedNames;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See `service_account_credentials` below.
+  /// Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See `serviceAccountCredentials` below.
   late final pulumi.Output<DirectoryConfigServiceAccountCredentials> serviceAccountCredentials;
 
   /// Creates a new [DirectoryConfig].

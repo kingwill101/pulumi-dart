@@ -71,6 +71,22 @@ import 'workspace_api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_grafana_workspaceapikey" "key" {
+///   key_name        = "test-key"
+///   key_role        = "VIEWER"
+///   seconds_to_live = 3600
+///   workspace_id    = test.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +95,8 @@ import 'workspace_api_key_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.grafana.WorkspaceApiKey;
 /// import com.pulumi.aws.grafana.WorkspaceApiKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

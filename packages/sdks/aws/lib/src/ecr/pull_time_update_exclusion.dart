@@ -161,7 +161,7 @@ import 'pull_time_update_exclusion_state.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "ec2.amazonaws.com",
 /// 					},
 /// 				},
@@ -199,7 +199,7 @@ import 'pull_time_update_exclusion_state.dart';
 /// 		json1 := string(tmpJSON1)
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example-role-policy"),
-/// 			Role:   example.ID(),
+/// 			Role:   example.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(json1),
 /// 		})
 /// 		if err != nil {
@@ -215,6 +215,44 @@ import 'pull_time_update_exclusion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name = "example-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "ec2.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_iam_rolepolicy" "example" {
+///   name = "example-role-policy"
+///   role = aws_iam_role.example.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect"   = "Allow"
+///       "Action"   = ["ecr:GetAuthorizationToken", "ecr:BatchCheckLayerAvailability", "ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage"]
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// resource "aws_ecr_pulltimeupdateexclusion" "example" {
+///   principal_arn = aws_iam_role.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +266,8 @@ import 'pull_time_update_exclusion_state.dart';
 /// import com.pulumi.aws.ecr.PullTimeUpdateExclusion;
 /// import com.pulumi.aws.ecr.PullTimeUpdateExclusionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -474,6 +512,34 @@ import 'pull_time_update_exclusion_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_user" "example" {
+///   name = "example-user"
+/// }
+/// resource "aws_iam_userpolicy" "example" {
+///   name = "example-user-policy"
+///   user = aws_iam_user.example.name
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect"   = "Allow"
+///       "Action"   = ["ecr:GetAuthorizationToken", "ecr:BatchCheckLayerAvailability", "ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage"]
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// resource "aws_ecr_pulltimeupdateexclusion" "example" {
+///   principal_arn = aws_iam_user.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -487,8 +553,8 @@ import 'pull_time_update_exclusion_state.dart';
 /// import com.pulumi.aws.ecr.PullTimeUpdateExclusion;
 /// import com.pulumi.aws.ecr.PullTimeUpdateExclusionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -563,7 +629,7 @@ import 'pull_time_update_exclusion_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ECR (Elastic Container Registry) Pull Time Update Exclusion using the `principal_arn`. For example:
+/// Using `pulumi import`, import ECR (Elastic Container Registry) Pull Time Update Exclusion using the `principalArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecr/pullTimeUpdateExclusion:PullTimeUpdateExclusion example arn:aws:iam::123456789012:role/example-role

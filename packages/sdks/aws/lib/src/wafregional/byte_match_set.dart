@@ -100,6 +100,28 @@ import 'byte_match_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafregional_bytematchset" "byte_set" {
+///   name = "my_waf_byte_match_set"
+///   byte_match_tuples {
+///     text_transformation   = "NONE"
+///     target_string         = "badrefer1"
+///     positional_constraint = "CONTAINS"
+///     field_to_match = {
+///       type = "HEADER"
+///       data = "referer"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +132,8 @@ import 'byte_match_set_state.dart';
 /// import com.pulumi.aws.wafregional.ByteMatchSetArgs;
 /// import com.pulumi.aws.wafregional.inputs.ByteMatchSetByteMatchTupleArgs;
 /// import com.pulumi.aws.wafregional.inputs.ByteMatchSetByteMatchTupleFieldToMatchArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

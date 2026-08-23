@@ -87,6 +87,21 @@ import 'query_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_querydefinition" "example" {
+///   name            = "custom_query"
+///   log_group_names = ["/aws/logGroup1", "/aws/logGroup2"]
+///   query_string    = "fields @timestamp, @message\n| sort @timestamp desc\n| limit 25\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +110,8 @@ import 'query_definition_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.QueryDefinition;
 /// import com.pulumi.aws.cloudwatch.QueryDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,12 +156,26 @@ import 'query_definition_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudWatch query definitions using the query definition ARN. The ARN can be found on the "Edit Query" page for the query in the AWS Console. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `queryDefinitionId` (String) ID of the query definition.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Query Definitions using `arn`. The ARN can be found on the "Edit Query" page for the query in the AWS Console. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/queryDefinition:QueryDefinition example arn:aws:logs:us-west-2:123456789012:query-definition:269951d7-6f75-496d-9d7b-6b7a5486bdbd
 /// ```
 class QueryDefinition extends pulumi.CustomResource {
+  /// The query definition ARN.
+  late final pulumi.Output<String> arn;
   /// Specific log groups to use with the query.
   late final pulumi.Output<List<String>?> logGroupNames;
   /// The name of the query.
@@ -172,6 +201,7 @@ class QueryDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     logGroupNames = registerOutput<List<String>?>('logGroupNames');
     this.name = registerOutput<String>('name');
     queryDefinitionId = registerOutput<String>('queryDefinitionId');
@@ -202,6 +232,7 @@ class QueryDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
     logGroupNames = registerOutput<List<String>?>('logGroupNames');
     this.name = registerOutput<String>('name');
     queryDefinitionId = registerOutput<String>('queryDefinitionId');

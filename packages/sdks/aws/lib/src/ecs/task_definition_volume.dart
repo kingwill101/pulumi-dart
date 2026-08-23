@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_definition_volume_docker_volume_configuration.dart';
 import 'task_definition_volume_efs_volume_configuration.dart';
 import 'task_definition_volume_fsx_windows_file_server_volume_configuration.dart';
+import 'task_definition_volume_s3files_volume_configuration.dart';
 
 class TaskDefinitionVolume {
   /// Whether the volume should be configured at launch time. This is used to create Amazon EBS volumes for standalone tasks or tasks created as part of a service. Each task definition revision may only have one volume configured at launch in the volume configuration.
@@ -16,9 +17,10 @@ class TaskDefinitionVolume {
   final pulumi.Input<TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration>? fsxWindowsFileServerVolumeConfiguration;
   /// Path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
   final pulumi.Input<String>? hostPath;
-  /// Name of the volume. This name is referenced in the `sourceVolume`
-  /// parameter of container definition in the `mountPoints` section.
+  /// Name of the volume. This name is referenced in the `sourceVolume` parameter of container definition in the `mountPoints` section.
   final pulumi.Input<String> name;
+  /// Configuration block for an S3 Files volume. Detailed below.
+  final pulumi.Input<TaskDefinitionVolumeS3filesVolumeConfiguration>? s3filesVolumeConfiguration;
 
   /// Creates a new [TaskDefinitionVolume].
   /// [configureAtLaunch] Whether the volume should be configured at launch time. This is used to create Amazon EBS volumes for standalone tasks or tasks created as part of a service. Each task definition revision may only have one volume configured at launch in the volume configuration.
@@ -26,7 +28,8 @@ class TaskDefinitionVolume {
   /// [efsVolumeConfiguration] Configuration block for an EFS volume. Detailed below.
   /// [fsxWindowsFileServerVolumeConfiguration] Configuration block for an FSX Windows File Server volume. Detailed below.
   /// [hostPath] Path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
-  /// [name] Name of the volume. This name is referenced in the `sourceVolume`
+  /// [name] Name of the volume. This name is referenced in the `sourceVolume` parameter of container definition in the `mountPoints` section.
+  /// [s3filesVolumeConfiguration] Configuration block for an S3 Files volume. Detailed below.
   const TaskDefinitionVolume({
     this.configureAtLaunch,
     this.dockerVolumeConfiguration,
@@ -34,6 +37,7 @@ class TaskDefinitionVolume {
     this.fsxWindowsFileServerVolumeConfiguration,
     this.hostPath,
     required this.name,
+    this.s3filesVolumeConfiguration,
   });
 
   Map<String, dynamic> toMap() {
@@ -44,6 +48,7 @@ class TaskDefinitionVolume {
       'fsxWindowsFileServerVolumeConfiguration': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration, Map<String, dynamic>>(fsxWindowsFileServerVolumeConfiguration, (value) => value.toMap()),
       'hostPath': ?hostPath,
       'name': name,
+      's3filesVolumeConfiguration': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionVolumeS3filesVolumeConfiguration, Map<String, dynamic>>(s3filesVolumeConfiguration, (value) => value.toMap()),
     };
   }
 
@@ -55,7 +60,7 @@ class TaskDefinitionVolume {
       fsxWindowsFileServerVolumeConfiguration: (() { final guardedValue = map['fsxWindowsFileServerVolumeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hostPath: (() { final guardedValue = map['hostPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
+      s3filesVolumeConfiguration: (() { final guardedValue = map['s3filesVolumeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionVolumeS3filesVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

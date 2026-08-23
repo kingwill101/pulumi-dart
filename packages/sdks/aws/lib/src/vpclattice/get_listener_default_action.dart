@@ -5,12 +5,14 @@ import 'get_listener_default_action_fixed_response.dart';
 import 'get_listener_default_action_forward.dart';
 
 class GetListenerDefaultAction {
+  /// Fixed response action. See `fixedResponse` Block below.
   final pulumi.Input<List<GetListenerDefaultActionFixedResponse>> fixedResponses;
+  /// Forward action. See `forward` Block below.
   final pulumi.Input<List<GetListenerDefaultActionForward>> forwards;
 
   /// Creates a new [GetListenerDefaultAction].
-  /// [fixedResponses] Required.
-  /// [forwards] Required.
+  /// [fixedResponses] Fixed response action. See `fixedResponse` Block below.
+  /// [forwards] Forward action. See `forward` Block below.
   const GetListenerDefaultAction({
     required this.fixedResponses,
     required this.forwards,
@@ -30,4 +32,3 @@ class GetListenerDefaultAction {
     );
   }
 }
-

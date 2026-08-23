@@ -21,7 +21,7 @@ class ReservedInstanceState {
   final pulumi.Input<String>? leaseId;
   /// Whether the reservation applies to Multi-AZ deployments.
   final pulumi.Input<bool>? multiAz;
-  /// ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
+  /// ID of the Reserved DB instance offering to purchase. To determine an `offeringId`, see the `aws.rds.getReservedInstanceOffering` data source.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? offeringId;
@@ -39,9 +39,9 @@ class ReservedInstanceState {
   final pulumi.Input<String>? startTime;
   /// State of the reserved DB instance.
   final pulumi.Input<String>? state;
-  /// Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the DB reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Hourly price charged for this reserved DB instance.
   final pulumi.Input<double>? usagePrice;
@@ -55,7 +55,7 @@ class ReservedInstanceState {
   /// [instanceCount] Number of instances to reserve. Default value is `1`.
   /// [leaseId] Unique identifier for the lease associated with the reserved DB instance. Amazon Web Services Support might request the lease ID for an issue related to a reserved DB instance.
   /// [multiAz] Whether the reservation applies to Multi-AZ deployments.
-  /// [offeringId] ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
+  /// [offeringId] ID of the Reserved DB instance offering to purchase. To determine an `offeringId`, see the `aws.rds.getReservedInstanceOffering` data source.
   /// [offeringType] Offering type of this reserved DB instance.
   /// [productDescription] Description of the reserved DB instance.
   /// [recurringCharges] Recurring price charged to run this reserved DB instance.
@@ -63,8 +63,8 @@ class ReservedInstanceState {
   /// [reservationId] Customer-specified identifier to track this reservation.
   /// [startTime] Time the reservation started.
   /// [state] State of the reserved DB instance.
-  /// [tags] Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the DB reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [usagePrice] Hourly price charged for this reserved DB instance.
   const ReservedInstanceState({
     this.arn,
@@ -136,4 +136,3 @@ class ReservedInstanceState {
     );
   }
 }
-

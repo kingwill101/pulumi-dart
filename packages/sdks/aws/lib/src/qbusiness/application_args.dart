@@ -10,13 +10,13 @@ import 'application_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_qbusiness_application_application_args_doc}
 class ApplicationArgs {
-  /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
+  /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.
   final pulumi.Input<ApplicationAttachmentsConfiguration> attachmentsConfiguration;
   /// Description of the Amazon Q application.
   final pulumi.Input<String>? description;
   /// Name of the Amazon Q application.
   final pulumi.Input<String> displayName;
-  /// Information about encryption configuration. See `encryption_configuration` below.
+  /// Information about encryption configuration. See `encryptionConfiguration` below.
   final pulumi.Input<ApplicationEncryptionConfiguration>? encryptionConfiguration;
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   final pulumi.Input<String> iamServiceRoleArn;
@@ -30,10 +30,10 @@ class ApplicationArgs {
   final pulumi.Input<ApplicationTimeouts>? timeouts;
 
   /// Creates a new [ApplicationArgs].
-  /// [attachmentsConfiguration] Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
+  /// [attachmentsConfiguration] Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.
   /// [description] Description of the Amazon Q application.
   /// [displayName] Name of the Amazon Q application.
-  /// [encryptionConfiguration] Information about encryption configuration. See `encryption_configuration` below.
+  /// [encryptionConfiguration] Information about encryption configuration. See `encryptionConfiguration` below.
   /// [iamServiceRoleArn] ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   /// [identityCenterInstanceArn] ARN of the IAM Identity Center instance you are either creating for — or connecting to — your Amazon Q Business application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -79,4 +79,3 @@ class ApplicationArgs {
     );
   }
 }
-

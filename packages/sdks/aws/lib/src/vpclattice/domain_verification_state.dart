@@ -4,40 +4,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering DomainVerification resources.
 class DomainVerificationState {
-  /// The Amazon Resource Name (ARN) of the domain verification.
+  /// Amazon Resource Name (ARN) of the domain verification.
   final pulumi.Input<String>? arn;
-  /// The date and time that the domain verification was created, in ISO-8601 format.
+  /// Date and time that the domain verification was created, in ISO-8601 format.
   final pulumi.Input<String>? createdAt;
-  /// The domain name to verify ownership for.
+  /// Domain name to verify ownership for.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? domainName;
-  /// The date and time that the domain was last successfully verified, in ISO-8601 format.
+  /// Date and time that the domain was last successfully verified, in ISO-8601 format.
   final pulumi.Input<String>? lastVerifiedTime;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The current status of the domain verification process. Valid values: `VERIFIED`, `PENDING`, `VERIFICATION_TIMED_OUT`.
+  /// Current status of the domain verification process. Valid values: `VERIFIED`, `PENDING`, `VERIFICATION_TIMED_OUT`.
   final pulumi.Input<String>? status;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The name of the TXT record that must be created for domain verification.
+  /// Name of the TXT record that must be created for domain verification.
   final pulumi.Input<String>? txtRecordName;
-  /// The value that must be added to the TXT record for domain verification.
+  /// Value that must be added to the TXT record for domain verification.
   final pulumi.Input<String>? txtRecordValue;
 
   /// Creates a new [DomainVerificationState].
-  /// [arn] The Amazon Resource Name (ARN) of the domain verification.
-  /// [createdAt] The date and time that the domain verification was created, in ISO-8601 format.
-  /// [domainName] The domain name to verify ownership for.
-  /// [lastVerifiedTime] The date and time that the domain was last successfully verified, in ISO-8601 format.
+  /// [arn] Amazon Resource Name (ARN) of the domain verification.
+  /// [createdAt] Date and time that the domain verification was created, in ISO-8601 format.
+  /// [domainName] Domain name to verify ownership for.
+  /// [lastVerifiedTime] Date and time that the domain was last successfully verified, in ISO-8601 format.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [status] The current status of the domain verification process. Valid values: `VERIFIED`, `PENDING`, `VERIFICATION_TIMED_OUT`.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [txtRecordName] The name of the TXT record that must be created for domain verification.
-  /// [txtRecordValue] The value that must be added to the TXT record for domain verification.
+  /// [status] Current status of the domain verification process. Valid values: `VERIFIED`, `PENDING`, `VERIFICATION_TIMED_OUT`.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [txtRecordName] Name of the TXT record that must be created for domain verification.
+  /// [txtRecordValue] Value that must be added to the TXT record for domain verification.
   const DomainVerificationState({
     this.arn,
     this.createdAt,
@@ -81,4 +81,3 @@ class DomainVerificationState {
     );
   }
 }
-

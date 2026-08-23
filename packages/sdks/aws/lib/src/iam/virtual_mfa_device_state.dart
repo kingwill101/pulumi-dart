@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMfaDeviceState {
   /// Amazon Resource Name (ARN), which is also the serial number, of the virtual MFA device.
   final pulumi.Input<String>? arn;
-  /// Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base_32_string_seed` is base64-encoded.
+  /// Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base32StringSeed` is base64-encoded.
   final pulumi.Input<String>? base32StringSeed;
   /// Date and time when the virtual MFA device was enabled.
   final pulumi.Input<String>? enableDate;
@@ -16,9 +16,9 @@ class VirtualMfaDeviceState {
   final pulumi.Input<String>? qrCodePng;
   /// Serial number associated with the virtual MFA device.
   final pulumi.Input<String>? serialNumber;
-  /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Name of the IAM user associated with this virtual MFA device.
   final pulumi.Input<String>? userName;
@@ -27,13 +27,13 @@ class VirtualMfaDeviceState {
 
   /// Creates a new [VirtualMfaDeviceState].
   /// [arn] Amazon Resource Name (ARN), which is also the serial number, of the virtual MFA device.
-  /// [base32StringSeed] Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base_32_string_seed` is base64-encoded.
+  /// [base32StringSeed] Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base32StringSeed` is base64-encoded.
   /// [enableDate] Date and time when the virtual MFA device was enabled.
   /// [path] Path for the virtual MFA device.
   /// [qrCodePng] QR code PNG image that encodes `otpauth://totp/$virtualMFADeviceName@$AccountName?secret=$Base32String` where `$virtualMFADeviceName` is one of the create call arguments. `AccountName` is the user name if set (otherwise, the account ID), and `Base32String` is the seed in base32 format.
   /// [serialNumber] Serial number associated with the virtual MFA device.
-  /// [tags] Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [userName] Name of the IAM user associated with this virtual MFA device.
   /// [virtualMfaDeviceName] Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   const VirtualMfaDeviceState({
@@ -79,4 +79,3 @@ class VirtualMfaDeviceState {
     );
   }
 }
-

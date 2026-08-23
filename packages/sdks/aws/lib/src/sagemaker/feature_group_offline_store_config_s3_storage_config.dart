@@ -36,4 +36,3 @@ class FeatureGroupOfflineStoreConfigS3StorageConfig {
     );
   }
 }
-

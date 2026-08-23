@@ -16,9 +16,9 @@ class CentralizationRuleForOrganizationState {
   final pulumi.Input<String>? ruleArn;
   /// Name of the centralization rule. Must be unique within the organization.
   final pulumi.Input<String>? ruleName;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<CentralizationRuleForOrganizationTimeouts>? timeouts;
 
@@ -27,8 +27,8 @@ class CentralizationRuleForOrganizationState {
   /// [rule] Configuration block for the centralization rule. See `rule` below.
   /// [ruleArn] ARN of the centralization rule.
   /// [ruleName] Name of the centralization rule. Must be unique within the organization.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const CentralizationRuleForOrganizationState({
     this.region,
@@ -64,4 +64,3 @@ class CentralizationRuleForOrganizationState {
     );
   }
 }
-

@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_count_custom_request_handling.dart';
 
 class GetManagedRuleGroupRuleActionCount {
+  /// Custom handling for the counted request. See `customRequestHandling` Block for details.
   final pulumi.Input<List<GetManagedRuleGroupRuleActionCountCustomRequestHandling>> customRequestHandlings;
 
   /// Creates a new [GetManagedRuleGroupRuleActionCount].
-  /// [customRequestHandlings] Required.
+  /// [customRequestHandlings] Custom handling for the counted request. See `customRequestHandling` Block for details.
   const GetManagedRuleGroupRuleActionCount({
     required this.customRequestHandlings,
   });
@@ -24,4 +25,3 @@ class GetManagedRuleGroupRuleActionCount {
     );
   }
 }
-

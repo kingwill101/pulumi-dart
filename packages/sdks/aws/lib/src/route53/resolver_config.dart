@@ -76,7 +76,7 @@ import 'resolver_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewResolverConfig(ctx, "example", &route53.ResolverConfigArgs{
-/// 			ResourceId:             example.ID(),
+/// 			ResourceId:             example.ID().ToIDOutput().ToStringOutput(),
 /// 			AutodefinedReverseFlag: pulumi.String("DISABLE"),
 /// 		})
 /// 		if err != nil {
@@ -84,6 +84,25 @@ import 'resolver_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block           = "10.0.0.0/16"
+///   enable_dns_support   = true
+///   enable_dns_hostnames = true
+/// }
+/// resource "aws_route53_resolverconfig" "example" {
+///   resource_id              = aws_ec2_vpc.example.id
+///   autodefined_reverse_flag = "DISABLE"
 /// }
 /// ```
 /// ```java
@@ -96,8 +115,8 @@ import 'resolver_config_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.route53.ResolverConfig;
 /// import com.pulumi.aws.route53.ResolverConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

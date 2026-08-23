@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_transformer_transformer_config_rename_key_entry.dart';
 
 class LogTransformerTransformerConfigRenameKey {
-  /// Objects containing the information about the keys to rename. You must include at least one entry, and five at most. See `rename_keys` `entry` below for details.
+  /// Objects containing the information about the keys to rename. You must include at least one entry, and five at most. See `renameKeys` `entry` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigRenameKeyEntry>> entries;
 
   /// Creates a new [LogTransformerTransformerConfigRenameKey].
-  /// [entries] Objects containing the information about the keys to rename. You must include at least one entry, and five at most. See `rename_keys` `entry` below for details.
+  /// [entries] Objects containing the information about the keys to rename. You must include at least one entry, and five at most. See `renameKeys` `entry` below for details.
   const LogTransformerTransformerConfigRenameKey({
     required this.entries,
   });
@@ -25,4 +25,3 @@ class LogTransformerTransformerConfigRenameKey {
     );
   }
 }
-

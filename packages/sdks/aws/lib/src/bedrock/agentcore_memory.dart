@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_memory_args.dart';
 import 'agentcore_memory_state.dart';
+import 'agentcore_memory_stream_delivery_resources.dart';
 import 'agentcore_memory_timeouts.dart';
 
 /// Manages an AWS Bedrock AgentCore Memory. Memory provides persistent storage for AI agent interactions, allowing agents to retain context across conversations and sessions.
@@ -170,6 +171,39 @@ import 'agentcore_memory_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
+///     principals {
+///       type        = "Service"
+///       identifiers = ["bedrock-agentcore.amazonaws.com"]
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "bedrock-agentcore-memory-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   role       = aws_iam_role.example.name
+///   policy_arn = "arn:aws:iam::aws:policy/AmazonBedrockAgentCoreMemoryBedrockModelInferenceExecutionRolePolicy"
+/// }
+/// resource "aws_bedrock_agentcorememory" "example" {
+///   name                  = "example_memory"
+///   event_expiry_duration = 30
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -178,14 +212,16 @@ import 'agentcore_memory_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import com.pulumi.aws.bedrock.AgentcoreMemory;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -348,6 +384,27 @@ import 'agentcore_memory_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "KMS key for Bedrock AgentCore Memory"
+/// }
+/// resource "aws_bedrock_agentcorememory" "example" {
+///   name                      = "example_memory"
+///   description               = "Memory for customer service agent"
+///   event_expiry_duration     = 60
+///   encryption_key_arn        = aws_kms_key.example.arn
+///   memory_execution_role_arn = exampleAwsIamRole.arn
+///   client_token              = "unique-client-token"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +415,8 @@ import 'agentcore_memory_timeouts.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.bedrock.AgentcoreMemory;
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -421,18 +478,22 @@ class AgentcoreMemory extends pulumi.CustomResource {
   /// ARN of the KMS key used to encrypt the memory. If not provided, AWS managed encryption is used.
   late final pulumi.Output<String?> encryptionKeyArn;
   /// Number of days after which memory events expire. Must be a positive integer in the range of 7 to 365.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<int> eventExpiryDuration;
+  /// Metadata keys to index for filtering. Up to 10 entries. Changing this forces a new resource to be created. See `indexedKey` below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> indexedKeys;
   /// ARN of the IAM role that the memory service assumes to perform operations. Required when using custom memory strategies with model processing.
   late final pulumi.Output<String?> memoryExecutionRoleArn;
   /// Name of the memory.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Configuration for streaming memory record data to external resources. See `streamDeliveryResources` below.
+  late final pulumi.Output<AgentcoreMemoryStreamDeliveryResources?> streamDeliveryResources;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreMemoryTimeouts?> timeouts;
 
@@ -454,9 +515,11 @@ class AgentcoreMemory extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
     eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
+    indexedKeys = registerOutput<List<Map<String, dynamic>>?>('indexedKeys');
     memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    streamDeliveryResources = registerOutput<AgentcoreMemoryStreamDeliveryResources?>('streamDeliveryResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStreamDeliveryResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -489,9 +552,11 @@ class AgentcoreMemory extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
     eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
+    indexedKeys = registerOutput<List<Map<String, dynamic>>?>('indexedKeys');
     memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    streamDeliveryResources = registerOutput<AgentcoreMemoryStreamDeliveryResources?>('streamDeliveryResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStreamDeliveryResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

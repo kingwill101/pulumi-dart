@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalNetworkArgs {
   /// Description of the Global Network.
   final pulumi.Input<String>? description;
-  /// Key-value tags for the Global Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Global Network. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GlobalNetworkArgs].
   /// [description] Description of the Global Network.
-  /// [tags] Key-value tags for the Global Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the Global Network. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const GlobalNetworkArgs({
     this.description,
     this.tags,
@@ -34,4 +34,3 @@ class GlobalNetworkArgs {
     );
   }
 }
-

@@ -247,7 +247,7 @@ import 'web_acl_association_state.dart';
 /// 			MetricName: pulumi.String("tfWAFRule"),
 /// 			Predicates: wafregional.RulePredicateArray{
 /// 				&wafregional.RulePredicateArgs{
-/// 					DataId:  ipset.ID(),
+/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -268,7 +268,7 @@ import 'web_acl_association_state.dart';
 /// 						Type: pulumi.String("BLOCK"),
 /// 					},
 /// 					Priority: pulumi.Int(1),
-/// 					RuleId:   foo.ID(),
+/// 					RuleId:   foo.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -286,7 +286,7 @@ import 'web_acl_association_state.dart';
 /// 			return err
 /// 		}
 /// 		fooSubnet, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            fooVpc.ID(),
+/// 			VpcId:            fooVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
 /// 			AvailabilityZone: pulumi.String(available.Names[0]),
 /// 		})
@@ -294,7 +294,7 @@ import 'web_acl_association_state.dart';
 /// 			return err
 /// 		}
 /// 		bar, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            fooVpc.ID(),
+/// 			VpcId:            fooVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			CidrBlock:        pulumi.String("10.1.2.0/24"),
 /// 			AvailabilityZone: pulumi.String(available.Names[1]),
 /// 		})
@@ -304,8 +304,8 @@ import 'web_acl_association_state.dart';
 /// 		fooLoadBalancer, err := alb.NewLoadBalancer(ctx, "foo", &alb.LoadBalancerArgs{
 /// 			Internal: pulumi.Bool(true),
 /// 			Subnets: pulumi.StringArray{
-/// 				fooSubnet.ID(),
-/// 				bar.ID(),
+/// 				fooSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				bar.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -313,13 +313,77 @@ import 'web_acl_association_state.dart';
 /// 		}
 /// 		_, err = wafregional.NewWebAclAssociation(ctx, "foo", &wafregional.WebAclAssociationArgs{
 /// 			ResourceArn: fooLoadBalancer.Arn,
-/// 			WebAclId:    fooWebAcl.ID(),
+/// 			WebAclId:    fooWebAcl.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+/// }
+///
+/// resource "aws_wafregional_ipset" "ipset" {
+///   name = "tfIPSet"
+///   ip_set_descriptors {
+///     type  = "IPV4"
+///     value = "192.0.7.0/24"
+///   }
+/// }
+/// resource "aws_wafregional_rule" "foo" {
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
+///   predicates {
+///     data_id = aws_wafregional_ipset.ipset.id
+///     negated = false
+///     type    = "IPMatch"
+///   }
+/// }
+/// resource "aws_wafregional_webacl" "foo" {
+///   name        = "foo"
+///   metric_name = "foo"
+///   default_action = {
+///     type = "ALLOW"
+///   }
+///   rules {
+///     action = {
+///       type = "BLOCK"
+///     }
+///     priority = 1
+///     rule_id  = aws_wafregional_rule.foo.id
+///   }
+/// }
+/// resource "aws_ec2_vpc" "foo" {
+///   cidr_block = "10.1.0.0/16"
+/// }
+/// resource "aws_ec2_subnet" "foo" {
+///   vpc_id            = aws_ec2_vpc.foo.id
+///   cidr_block        = "10.1.1.0/24"
+///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+/// }
+/// resource "aws_ec2_subnet" "bar" {
+///   vpc_id            = aws_ec2_vpc.foo.id
+///   cidr_block        = "10.1.2.0/24"
+///   availability_zone = data.aws_getavailabilityzones.available.names[1]
+/// }
+/// resource "aws_alb_loadbalancer" "foo" {
+///   internal = true
+///   subnets  = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
+/// }
+/// resource "aws_wafregional_webaclassociation" "foo" {
+///   resource_arn = aws_alb_loadbalancer.foo.arn
+///   web_acl_id   = aws_wafregional_webacl.foo.id
 /// }
 /// ```
 /// ```java
@@ -349,8 +413,8 @@ import 'web_acl_association_state.dart';
 /// import com.pulumi.aws.alb.LoadBalancerArgs;
 /// import com.pulumi.aws.wafregional.WebAclAssociation;
 /// import com.pulumi.aws.wafregional.WebAclAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

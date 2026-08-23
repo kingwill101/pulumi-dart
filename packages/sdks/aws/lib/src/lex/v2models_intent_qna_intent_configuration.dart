@@ -5,14 +5,14 @@ import 'v2models_intent_qna_intent_configuration_bedrock_model_configuration.dar
 import 'v2models_intent_qna_intent_configuration_data_source_configuration.dart';
 
 class V2modelsIntentQnaIntentConfiguration {
-  /// Configuration block for the Amazon Bedrock model to use for generating responses. See `bedrock_model_configuration`.
+  /// Configuration block for the Amazon Bedrock model to use for generating responses. See `bedrockModelConfiguration`.
   final pulumi.Input<V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration>? bedrockModelConfiguration;
-  /// Configuration block for the data sources to use for the QnA intent. Only one data source (Bedrock Knowledge Base, Kendra, or OpenSearch) can be specified. See `data_source_configuration`.
+  /// Configuration block for the data sources to use for the QnA intent. Only one data source (Bedrock Knowledge Base, Kendra, or OpenSearch) can be specified. See `dataSourceConfiguration`.
   final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfiguration>? dataSourceConfiguration;
 
   /// Creates a new [V2modelsIntentQnaIntentConfiguration].
-  /// [bedrockModelConfiguration] Configuration block for the Amazon Bedrock model to use for generating responses. See `bedrock_model_configuration`.
-  /// [dataSourceConfiguration] Configuration block for the data sources to use for the QnA intent. Only one data source (Bedrock Knowledge Base, Kendra, or OpenSearch) can be specified. See `data_source_configuration`.
+  /// [bedrockModelConfiguration] Configuration block for the Amazon Bedrock model to use for generating responses. See `bedrockModelConfiguration`.
+  /// [dataSourceConfiguration] Configuration block for the data sources to use for the QnA intent. Only one data source (Bedrock Knowledge Base, Kendra, or OpenSearch) can be specified. See `dataSourceConfiguration`.
   const V2modelsIntentQnaIntentConfiguration({
     this.bedrockModelConfiguration,
     this.dataSourceConfiguration,
@@ -32,4 +32,3 @@ class V2modelsIntentQnaIntentConfiguration {
     );
   }
 }
-

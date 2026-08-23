@@ -171,6 +171,41 @@ import 'workflow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_workflow" "example" {
+///   name = "example"
+/// }
+/// resource "aws_glue_trigger" "example-start" {
+///   name          = "trigger-start"
+///   type          = "ON_DEMAND"
+///   workflow_name = aws_glue_workflow.example.name
+///   actions {
+///     job_name = "example-job"
+///   }
+/// }
+/// resource "aws_glue_trigger" "example-inner" {
+///   name          = "trigger-inner"
+///   type          = "CONDITIONAL"
+///   workflow_name = aws_glue_workflow.example.name
+///   predicate = {
+///     conditions = [{
+///       "jobName" = "example-job"
+///       "state"   = "SUCCEEDED"
+///     }]
+///   }
+///   actions {
+///     job_name = "another-example-job"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +218,9 @@ import 'workflow_state.dart';
 /// import com.pulumi.aws.glue.TriggerArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerActionArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerPredicateArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.glue.inputs.TriggerPredicateConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,9 +312,9 @@ class Workflow extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Workflow].

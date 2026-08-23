@@ -115,7 +115,7 @@ import 'input_vpc.dart';
 /// 		_, err = medialive.NewInput(ctx, "example", &medialive.InputArgs{
 /// 			Name: pulumi.String("example-input"),
 /// 			InputSecurityGroups: pulumi.StringArray{
-/// 				example.ID(),
+/// 				example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Type: pulumi.String("UDP_PUSH"),
 /// 			Tags: pulumi.StringMap{
@@ -129,6 +129,32 @@ import 'input_vpc.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_medialive_inputsecuritygroup" "example" {
+///   whitelist_rules {
+///     cidr = "10.0.0.8/32"
+///   }
+///   tags = {
+///     "ENVIRONMENT" = "prod"
+///   }
+/// }
+/// resource "aws_medialive_input" "example" {
+///   name                  = "example-input"
+///   input_security_groups = [aws_medialive_inputsecuritygroup.example.id]
+///   type                  = "UDP_PUSH"
+///   tags = {
+///     "ENVIRONMENT" = "prod"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +166,8 @@ import 'input_vpc.dart';
 /// import com.pulumi.aws.medialive.inputs.InputSecurityGroupWhitelistRuleArgs;
 /// import com.pulumi.aws.medialive.Input;
 /// import com.pulumi.aws.medialive.InputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +220,18 @@ import 'input_vpc.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the MediaLive Input.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import MediaLive Input using the `id`. For example:
 ///
 /// ```sh
@@ -226,7 +264,7 @@ class InputType extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// The source URLs for a PULL-type input. See Sources for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
-  /// A map of tags to assign to the Input. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The different types of inputs that AWS Elemental MediaLive supports.

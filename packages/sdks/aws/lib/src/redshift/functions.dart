@@ -29,7 +29,7 @@ import 'get_subnet_group_result.dart';
 ///     destination: "redshift",
 ///     redshiftConfiguration: {
 ///         roleArn: firehoseRole.arn,
-///         clusterJdbcurl: Promise.all([example, example]).then(([example, example1]) => `jdbc:redshift://${example.endpoint}/${example1.databaseName}`),
+///         clusterJdbcurl: example.then(example => `jdbc:redshift://${example.endpoint}/${example.databaseName}`),
 ///         username: "exampleuser",
 ///         password: "Exampl3Pass",
 ///         dataTableName: "example-table",
@@ -90,12 +90,7 @@ import 'get_subnet_group_result.dart';
 ///         RedshiftConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamRedshiftConfigurationArgs
 ///         {
 ///             RoleArn = firehoseRole.Arn,
-///             ClusterJdbcurl = Output.Tuple(example, example).Apply(values =>
-///             {
-///                 var example = values.Item1;
-///                 var example1 = values.Item2;
-///                 return $"jdbc:redshift://{example.Apply(getClusterResult => getClusterResult.Endpoint)}/{example1.DatabaseName}";
-///             }),
+///             ClusterJdbcurl = $"jdbc:redshift://{example.Apply(getClusterResult => getClusterResult.Endpoint)}/{example.Apply(getClusterResult => getClusterResult.DatabaseName)}",
 ///             Username = "exampleuser",
 ///             Password = "Exampl3Pass",
 ///             DataTableName = "example-table",
@@ -158,6 +153,40 @@ import 'get_subnet_group_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshift_getcluster" "example" {
+///   cluster_identifier = "example-cluster"
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "example_stream" {
+///   name        = "kinesis-firehose-example-stream"
+///   destination = "redshift"
+///   redshift_configuration = {
+///     role_arn           = firehoseRole.arn
+///     cluster_jdbcurl    ="jdbc:redshift://${data.aws_redshift_getcluster.example.endpoint}/${data.aws_redshift_getcluster.example.database_name}"
+///     username           = "exampleuser"
+///     password           = "Exampl3Pass"
+///     data_table_name    = "example-table"
+///     copy_options       = "delimiter '|'"
+///     data_table_columns = "example-col"
+///     s3_configuration = {
+///       role_arn           = firehoseRole.arn
+///       bucket_arn         = bucket.arn
+///       buffer_size        = 10
+///       buffer_interval    = 400
+///       compression_format = "GZIP"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +199,8 @@ import 'get_subnet_group_result.dart';
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamRedshiftConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -313,6 +342,20 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshift_getclustercredentials" "example" {
+///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
+///   db_user            = exampleAwsRedshiftCluster.masterUsername
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -321,8 +364,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.RedshiftFunctions;
 /// import com.pulumi.aws.redshift.inputs.GetClusterCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -415,6 +458,18 @@ Future<GetClusterCredentialsResult> getClusterCredentials(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshift_getdatashares" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -423,8 +478,8 @@ Future<GetClusterCredentialsResult> getClusterCredentials(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.RedshiftFunctions;
 /// import com.pulumi.aws.redshift.inputs.GetDataSharesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -535,6 +590,20 @@ Future<GetDataSharesResult> getDataShares(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshift_getorderablecluster" "test" {
+///   cluster_type         = "multi-node"
+///   preferred_node_types = ["dc2.large", "ds2.xlarge"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -543,8 +612,8 @@ Future<GetDataSharesResult> getDataShares(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.RedshiftFunctions;
 /// import com.pulumi.aws.redshift.inputs.GetOrderableClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -648,6 +717,19 @@ Future<GetOrderableClusterResult> getOrderableCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshift_getproducerdatashares" "example" {
+///   producer_arn = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -656,8 +738,8 @@ Future<GetOrderableClusterResult> getOrderableCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.RedshiftFunctions;
 /// import com.pulumi.aws.redshift.inputs.GetProducerDataSharesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -753,6 +835,19 @@ Future<GetProducerDataSharesResult> getProducerDataShares(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_redshift_getsubnetgroup" "example" {
+///   name = exampleAwsRedshiftSubnetGroup.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -761,8 +856,8 @@ Future<GetProducerDataSharesResult> getProducerDataShares(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshift.RedshiftFunctions;
 /// import com.pulumi.aws.redshift.inputs.GetSubnetGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

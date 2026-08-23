@@ -63,6 +63,20 @@ import 'image_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_imageversion" "example" {
+///   image_name = test.id
+///   base_image = "012345678912.dkr.ecr.us-west-2.amazonaws.com/image:latest"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'image_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.ImageVersion;
 /// import com.pulumi.aws.sagemaker.ImageVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,6 +190,21 @@ import 'image_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_imageversion" "test" {
+///   image_name = testAwsSagemakerImage.id
+///   base_image = "012345678912.dkr.ecr.us-west-2.amazonaws.com/image:latest"
+///   aliases    = ["latest", "stable"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +213,8 @@ import 'image_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.ImageVersion;
 /// import com.pulumi.aws.sagemaker.ImageVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -223,7 +252,7 @@ import 'image_version_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SageMaker AI Image Versions using a comma-delimited string concatenating `image_name` and `version`. For example:
+/// Using `pulumi import`, import SageMaker AI Image Versions using a comma-delimited string concatenating `imageName` and `version`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/imageVersion:ImageVersion example example-name,1

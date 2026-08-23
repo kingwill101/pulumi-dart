@@ -7,18 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_glue_get_connection_get_connection_args_doc}
 class GetConnectionArgs {
-  /// Concatenation of the catalog ID and connection name. For example, if your account ID is
-  /// `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
+  /// Concatenation of the catalog ID and connection name. For example, if your account ID is `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Tags assigned to the resource
+  /// Tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetConnectionArgs].
-  /// [id] Concatenation of the catalog ID and connection name. For example, if your account ID is
+  /// [id] Concatenation of the catalog ID and connection name. For example, if your account ID is `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Tags assigned to the resource
+  /// [tags] Tags assigned to the resource.
   const GetConnectionArgs({
     required this.id,
     this.region,
@@ -41,4 +42,3 @@ class GetConnectionArgs {
     );
   }
 }
-

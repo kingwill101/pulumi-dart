@@ -71,6 +71,22 @@ import 'component_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_imagebuilder_component" "example" {
+///   name     = "example"
+///   platform = "Linux"
+///   uri      ="s3://${exampleAwsS3Object.bucket}/${exampleAwsS3Object.key}"
+///   version  = "1.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +95,8 @@ import 'component_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.imagebuilder.Component;
 /// import com.pulumi.aws.imagebuilder.ComponentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,15 +166,15 @@ class Component extends pulumi.CustomResource {
   late final pulumi.Output<bool?> skipDestroy;
   /// Set of Operating Systems (OS) supported by the component.
   late final pulumi.Output<List<String>?> supportedOsVersions;
-  /// Key-value map of resource tags for the component. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the component. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of the component.
   late final pulumi.Output<String> type;
   /// S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   ///
-  /// &gt; **NOTE:** Updating `data` or `uri` requires specifying a new `version`. This causes replacement of the resource. The `skip_destroy` argument can be used to retain the old version.
+  /// &gt; **NOTE:** Updating `data` or `uri` requires specifying a new `version`. This causes replacement of the resource. The `skipDestroy` argument can be used to retain the old version.
   late final pulumi.Output<String?> uri;
   /// Version of the component.
   ///

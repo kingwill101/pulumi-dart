@@ -98,6 +98,27 @@ import 'workspace_service_account_token_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_grafana_workspaceserviceaccount" "example" {
+///   name         = "example-admin"
+///   grafana_role = "ADMIN"
+///   workspace_id = exampleAwsGrafanaWorkspace.id
+/// }
+/// resource "aws_grafana_workspaceserviceaccounttoken" "example" {
+///   name               = "example-key"
+///   service_account_id = aws_grafana_workspaceserviceaccount.example.service_account_id
+///   seconds_to_live    = 3600
+///   workspace_id       = exampleAwsGrafanaWorkspace.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +129,8 @@ import 'workspace_service_account_token_state.dart';
 /// import com.pulumi.aws.grafana.WorkspaceServiceAccountArgs;
 /// import com.pulumi.aws.grafana.WorkspaceServiceAccountToken;
 /// import com.pulumi.aws.grafana.WorkspaceServiceAccountTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

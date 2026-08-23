@@ -5,20 +5,20 @@ import 'flow_destination_flow_config_destination_connector_properties_s3_s3_outp
 import 'flow_destination_flow_config_destination_connector_properties_s3_s3_output_format_config_prefix_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig {
-  /// Aggregation settings that you can use to customize the output format of your flow data. See Aggregation Config for more details.
+  /// Aggregation settings that you can use to customize the output format of your flow data. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config.aggregation_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig>? aggregationConfig;
-  /// File type that Amazon AppFlow places in the Amazon S3 bucket. Valid values are `CSV`, `JSON`, and `PARQUET`.
+  /// File type that Amazon AppFlow places in the Upsolver Amazon S3 bucket. Valid values are `CSV`, `JSON`, and `PARQUET`.
   final pulumi.Input<String>? fileType;
-  /// Determines the prefix that Amazon AppFlow applies to the folder name in the Amazon S3 bucket. You can name folders according to the flow frequency and date. See Prefix Config for more details.
+  /// Prefix that Amazon AppFlow applies to the folder name in the Amazon S3 bucket. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config.prefix_config` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfig>? prefixConfig;
-  /// Whether the data types from the source system need to be preserved (Only valid for `Parquet` file type)
+  /// Whether to preserve the data types from the source system. Only valid for the `PARQUET` file type.
   final pulumi.Input<bool>? preserveSourceDataTyping;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig].
-  /// [aggregationConfig] Aggregation settings that you can use to customize the output format of your flow data. See Aggregation Config for more details.
-  /// [fileType] File type that Amazon AppFlow places in the Amazon S3 bucket. Valid values are `CSV`, `JSON`, and `PARQUET`.
-  /// [prefixConfig] Determines the prefix that Amazon AppFlow applies to the folder name in the Amazon S3 bucket. You can name folders according to the flow frequency and date. See Prefix Config for more details.
-  /// [preserveSourceDataTyping] Whether the data types from the source system need to be preserved (Only valid for `Parquet` file type)
+  /// [aggregationConfig] Aggregation settings that you can use to customize the output format of your flow data. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config.aggregation_config` Block for details.
+  /// [fileType] File type that Amazon AppFlow places in the Upsolver Amazon S3 bucket. Valid values are `CSV`, `JSON`, and `PARQUET`.
+  /// [prefixConfig] Prefix that Amazon AppFlow applies to the folder name in the Amazon S3 bucket. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config.prefix_config` Block for details.
+  /// [preserveSourceDataTyping] Whether to preserve the data types from the source system. Only valid for the `PARQUET` file type.
   const FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig({
     this.aggregationConfig,
     this.fileType,
@@ -44,4 +44,3 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatCon
     );
   }
 }
-

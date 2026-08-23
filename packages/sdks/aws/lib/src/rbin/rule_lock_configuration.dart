@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_lock_configuration_unlock_delay.dart';
 
 class RuleLockConfiguration {
-  /// Information about the retention rule unlock delay. See `unlock_delay` below.
+  /// Information about the retention rule unlock delay. See `unlockDelay` below.
   final pulumi.Input<RuleLockConfigurationUnlockDelay> unlockDelay;
 
   /// Creates a new [RuleLockConfiguration].
-  /// [unlockDelay] Information about the retention rule unlock delay. See `unlock_delay` below.
+  /// [unlockDelay] Information about the retention rule unlock delay. See `unlockDelay` below.
   const RuleLockConfiguration({
     required this.unlockDelay,
   });
@@ -25,4 +25,3 @@ class RuleLockConfiguration {
     );
   }
 }
-

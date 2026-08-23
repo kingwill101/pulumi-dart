@@ -5,7 +5,7 @@ import 'method_settings_state.dart';
 
 /// Manages API Gateway Stage Method Settings. For example, CloudWatch logging and metrics.
 ///
-/// &gt; **NOTE:** We recommend using this resource in conjunction with the `aws.apigateway.Stage` resource instead of a stage managed by the `aws.apigateway.Deployment` resource optional `stage_name` argument. Stages managed by the `aws.apigateway.Deployment` resource are recreated on redeployment and this resource will require a second apply to recreate the method settings.
+/// &gt; **NOTE:** We recommend using this resource in conjunction with the `aws.apigateway.Stage` resource instead of a stage managed by the `aws.apigateway.Deployment` resource optional `stageName` argument. Stages managed by the `aws.apigateway.Deployment` resource are recreated on redeployment and this resource will require a second apply to recreate the method settings.
 ///
 /// ## Example Usage
 ///
@@ -86,6 +86,24 @@ import 'method_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_methodsettings" "path_specific" {
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
+///   settings = {
+///     logging_level = "OFF"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'method_settings_state.dart';
 /// import com.pulumi.aws.apigateway.MethodSettings;
 /// import com.pulumi.aws.apigateway.MethodSettingsArgs;
 /// import com.pulumi.aws.apigateway.inputs.MethodSettingsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,6 +234,26 @@ import 'method_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_methodsettings" "path_specific" {
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
+///   settings = {
+///     logging_level      = "ERROR"
+///     metrics_enabled    = true
+///     data_trace_enabled = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -225,8 +263,8 @@ import 'method_settings_state.dart';
 /// import com.pulumi.aws.apigateway.MethodSettings;
 /// import com.pulumi.aws.apigateway.MethodSettingsArgs;
 /// import com.pulumi.aws.apigateway.inputs.MethodSettingsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -350,6 +388,26 @@ import 'method_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_methodsettings" "path_specific" {
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
+///   settings = {
+///     logging_level      = "INFO"
+///     metrics_enabled    = true
+///     data_trace_enabled = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -359,8 +417,8 @@ import 'method_settings_state.dart';
 /// import com.pulumi.aws.apigateway.MethodSettings;
 /// import com.pulumi.aws.apigateway.MethodSettingsArgs;
 /// import com.pulumi.aws.apigateway.inputs.MethodSettingsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +542,26 @@ import 'method_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigateway_methodsettings" "path_specific" {
+///   rest_api    = example.id
+///   stage_name  = exampleAwsApiGatewayStage.stageName
+///   method_path = "path1/GET"
+///   settings = {
+///     logging_level      = "INFO"
+///     metrics_enabled    = true
+///     data_trace_enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -493,8 +571,8 @@ import 'method_settings_state.dart';
 /// import com.pulumi.aws.apigateway.MethodSettings;
 /// import com.pulumi.aws.apigateway.MethodSettingsArgs;
 /// import com.pulumi.aws.apigateway.inputs.MethodSettingsSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

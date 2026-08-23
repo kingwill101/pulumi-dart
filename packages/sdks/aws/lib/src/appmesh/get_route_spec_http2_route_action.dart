@@ -24,4 +24,3 @@ class GetRouteSpecHttp2RouteAction {
     );
   }
 }
-

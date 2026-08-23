@@ -61,6 +61,20 @@ import 'single_scram_secret_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_msk_singlescramsecretassociation" "example" {
+///   cluster_arn = exampleAwsMskCluster.arn
+///   secret_arn  = exampleAwsSecretsmanagerSecret.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'single_scram_secret_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.SingleScramSecretAssociation;
 /// import com.pulumi.aws.msk.SingleScramSecretAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,7 @@ import 'single_scram_secret_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an MSK SCRAM Secret Association using the `cluster_arn` and `secret_arn`. For example:
+/// Using `pulumi import`, import an MSK SCRAM Secret Association using the `clusterArn` and `secretArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:msk/singleScramSecretAssociation:SingleScramSecretAssociation example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3,arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456

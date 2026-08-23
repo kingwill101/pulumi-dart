@@ -41,9 +41,9 @@ class KeyState {
   final pulumi.Input<String>? region;
   /// Custom period of time between each rotation date. Must be a number between 90 and 2560 (inclusive).
   final pulumi.Input<int>? rotationPeriodInDays;
-  /// A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// Identifies the external key that serves as key material for the KMS key in an external key store.
   final pulumi.Input<String>? xksKeyId;
@@ -63,8 +63,8 @@ class KeyState {
   /// [policy] A valid policy JSON document. Although this is a key policy, not an IAM policy, an `aws.iam.getPolicyDocument`, in the form that designates a principal, can be used.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rotationPeriodInDays] Custom period of time between each rotation date. Must be a number between 90 and 2560 (inclusive).
-  /// [tags] A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [xksKeyId] Identifies the external key that serves as key material for the KMS key in an external key store.
   const KeyState({
     this.arn,
@@ -130,4 +130,3 @@ class KeyState {
     );
   }
 }
-

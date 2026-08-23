@@ -4,16 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_maintenance_configuration_iceberg_snapshot_management_settings.dart';
 
 class TableMaintenanceConfigurationIcebergSnapshotManagement {
-  /// Settings object for snapshot management.
-  /// See `iceberg_snapshot_management.settings` below.
+  /// Settings object for snapshot management. See `iceberg_snapshot_management.settings` below.
   final pulumi.Input<TableMaintenanceConfigurationIcebergSnapshotManagementSettings> settings;
-  /// Whether the configuration is enabled.
-  /// Valid values are `enabled` and `disabled`.
+  /// Whether the configuration is enabled. Valid values are `enabled` and `disabled`.
   final pulumi.Input<String> status;
 
   /// Creates a new [TableMaintenanceConfigurationIcebergSnapshotManagement].
-  /// [settings] Settings object for snapshot management.
-  /// [status] Whether the configuration is enabled.
+  /// [settings] Settings object for snapshot management. See `iceberg_snapshot_management.settings` below.
+  /// [status] Whether the configuration is enabled. Valid values are `enabled` and `disabled`.
   const TableMaintenanceConfigurationIcebergSnapshotManagement({
     required this.settings,
     required this.status,
@@ -33,4 +31,3 @@ class TableMaintenanceConfigurationIcebergSnapshotManagement {
     );
   }
 }
-

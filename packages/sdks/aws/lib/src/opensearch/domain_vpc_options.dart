@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainVpcOptions {
-  /// If the domain was created inside a VPC, the names of the availability zones the configured `subnet_ids` were created inside.
+  /// If the domain was created inside a VPC, the names of the availability zones the configured `subnetIds` were created inside.
   final pulumi.Input<List<String>>? availabilityZones;
   /// List of VPC Security Group IDs to be applied to the OpenSearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
   final pulumi.Input<List<String>>? securityGroupIds;
@@ -13,7 +13,7 @@ class DomainVpcOptions {
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [DomainVpcOptions].
-  /// [availabilityZones] If the domain was created inside a VPC, the names of the availability zones the configured `subnet_ids` were created inside.
+  /// [availabilityZones] If the domain was created inside a VPC, the names of the availability zones the configured `subnetIds` were created inside.
   /// [securityGroupIds] List of VPC Security Group IDs to be applied to the OpenSearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
   /// [subnetIds] List of VPC Subnet IDs for the OpenSearch domain endpoints to be created in.
   /// [vpcId] If the domain was created inside a VPC, the ID of the VPC.
@@ -42,4 +42,3 @@ class DomainVpcOptions {
     );
   }
 }
-

@@ -11,27 +11,27 @@ import 'resource_configuration_timeouts.dart';
 class ResourceConfigurationArgs {
   /// Allow or Deny the association of this resource to a shareable service network.
   final pulumi.Input<bool>? allowAssociationToShareableServiceNetwork;
-  /// Custom domain name for your resource configuration. Additionally, provide a `domain_verification_id` to prove your ownership of a domain.
+  /// Custom domain name for your resource configuration. Additionally, provide a `domainVerificationId` to prove your ownership of a domain.
   final pulumi.Input<String>? customDomainName;
-  /// The domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
+  /// Domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
   final pulumi.Input<String>? domainVerificationId;
   /// Name for the Resource Configuration.
   final pulumi.Input<String>? name;
   /// Port ranges to access the Resource either single port `80` or range `80-81` range.
   final pulumi.Input<List<String>>? portRanges;
-  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resource_configuration_group_id` is not.
+  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resourceConfigurationGroupId` is not.
   final pulumi.Input<String>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Details of the Resource Configuration. See `resource_configuration_definition` Block for details.
+  /// Details of the Resource Configuration. See `resourceConfigurationDefinition` Block for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<ResourceConfigurationResourceConfigurationDefinition>? resourceConfigurationDefinition;
   /// ID of Resource Configuration where `type` is `CHILD`.
   final pulumi.Input<String>? resourceConfigurationGroupId;
-  /// ID of the Resource Gateway used to access the resource. MUST be specified if `resource_configuration_group_id` is not.
+  /// ID of the Resource Gateway used to access the resource. MUST be specified if `resourceConfigurationGroupId` is not.
   final pulumi.Input<String>? resourceGatewayIdentifier;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ResourceConfigurationTimeouts>? timeouts;
   /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
@@ -39,16 +39,16 @@ class ResourceConfigurationArgs {
 
   /// Creates a new [ResourceConfigurationArgs].
   /// [allowAssociationToShareableServiceNetwork] Allow or Deny the association of this resource to a shareable service network.
-  /// [customDomainName] Custom domain name for your resource configuration. Additionally, provide a `domain_verification_id` to prove your ownership of a domain.
-  /// [domainVerificationId] The domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
+  /// [customDomainName] Custom domain name for your resource configuration. Additionally, provide a `domainVerificationId` to prove your ownership of a domain.
+  /// [domainVerificationId] Domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
   /// [name] Name for the Resource Configuration.
   /// [portRanges] Port ranges to access the Resource either single port `80` or range `80-81` range.
-  /// [protocol] Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resource_configuration_group_id` is not.
+  /// [protocol] Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resourceConfigurationGroupId` is not.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceConfigurationDefinition] Details of the Resource Configuration. See `resource_configuration_definition` Block for details.
+  /// [resourceConfigurationDefinition] Details of the Resource Configuration. See `resourceConfigurationDefinition` Block for details.
   /// [resourceConfigurationGroupId] ID of Resource Configuration where `type` is `CHILD`.
-  /// [resourceGatewayIdentifier] ID of the Resource Gateway used to access the resource. MUST be specified if `resource_configuration_group_id` is not.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [resourceGatewayIdentifier] ID of the Resource Gateway used to access the resource. MUST be specified if `resourceConfigurationGroupId` is not.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [type] Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
   const ResourceConfigurationArgs({
@@ -103,4 +103,3 @@ class ResourceConfigurationArgs {
     );
   }
 }
-

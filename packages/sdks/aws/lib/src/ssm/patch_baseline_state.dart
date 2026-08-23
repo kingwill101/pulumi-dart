@@ -7,9 +7,9 @@ import 'patch_baseline_source.dart';
 
 /// Input properties used for looking up and filtering PatchBaseline resources.
 class PatchBaselineState {
-  /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approval_rule` below.
+  /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approvalRule` below.
   final pulumi.Input<List<PatchBaselineApprovalRule>>? approvalRules;
-  /// List of explicitly approved patches for the baseline. Cannot be specified with `approval_rule`.
+  /// List of explicitly approved patches for the baseline. Cannot be specified with `approvalRule`.
   final pulumi.Input<List<String>>? approvedPatches;
   /// Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
   final pulumi.Input<String>? approvedPatchesComplianceLevel;
@@ -35,18 +35,18 @@ class PatchBaselineState {
   final pulumi.Input<String>? region;
   /// List of rejected patches.
   final pulumi.Input<List<String>>? rejectedPatches;
-  /// Action for Patch Manager to take on patches included in the `rejected_patches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
+  /// Action for Patch Manager to take on patches included in the `rejectedPatches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
   final pulumi.Input<String>? rejectedPatchesAction;
   /// Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
   final pulumi.Input<List<PatchBaselineSource>>? sources;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [PatchBaselineState].
-  /// [approvalRules] Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approval_rule` below.
-  /// [approvedPatches] List of explicitly approved patches for the baseline. Cannot be specified with `approval_rule`.
+  /// [approvalRules] Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approvalRule` below.
+  /// [approvedPatches] List of explicitly approved patches for the baseline. Cannot be specified with `approvalRule`.
   /// [approvedPatchesComplianceLevel] Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
   /// [approvedPatchesEnableNonSecurity] Whether the list of approved patches includes non-security updates that should be applied to the instances. Applies to Linux instances only.
   /// [arn] ARN of the baseline.
@@ -58,10 +58,10 @@ class PatchBaselineState {
   /// [operatingSystem] Operating system the patch baseline applies to. Valid values are `ALMA_LINUX`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `AMAZON_LINUX_2022`, `AMAZON_LINUX_2023`, `CENTOS`, `DEBIAN`, `MACOS`, `ORACLE_LINUX`, `RASPBIAN`, `REDHAT_ENTERPRISE_LINUX`, `ROCKY_LINUX`, `SUSE`, `UBUNTU`, and `WINDOWS`. The default value is `WINDOWS`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rejectedPatches] List of rejected patches.
-  /// [rejectedPatchesAction] Action for Patch Manager to take on patches included in the `rejected_patches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
+  /// [rejectedPatchesAction] Action for Patch Manager to take on patches included in the `rejectedPatches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
   /// [sources] Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const PatchBaselineState({
     this.approvalRules,
     this.approvedPatches,
@@ -126,4 +126,3 @@ class PatchBaselineState {
     );
   }
 }
-

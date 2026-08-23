@@ -7,18 +7,16 @@ import 'get_availability_zone_filter.dart';
 class GetAvailabilityZoneResult {
   final bool? allAvailabilityZones;
   final List<GetAvailabilityZoneFilter>? filters;
-  /// The long name of the Availability Zone group, Local Zone group, or Wavelength Zone group.
+  /// Long name of the Availability Zone group, Local Zone group, or Wavelength Zone group.
   final String groupLongName;
-  /// The name of the zone group. For example: `us-east-1-zg-1`, `us-west-2-lax-1`, or `us-east-1-wl1-bos-wlz-1`.
+  /// Name of the zone group. For example: `us-east-1-zg-1`, `us-west-2-lax-1`, or `us-east-1-wl1-bos-wlz-1`.
   final String groupName;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-  /// Part of the AZ name that appears after the region name, uniquely identifying the AZ within its region.
-  /// For Availability Zones this is usually a single letter, for example `a` for the `us-west-2a` zone.
-  /// For Local and Wavelength Zones this is a longer string, for example `wl1-sfo-wlz-1` for the `us-west-2-wl1-sfo-wlz-1` zone.
+  /// Part of the AZ name that appears after the region name, uniquely identifying the AZ within its region. For Availability Zones this is usually a single letter, for example `a` for the `us-west-2a` zone. For Local and Wavelength Zones this is a longer string, for example `wl1-sfo-wlz-1` for the `us-west-2-wl1-sfo-wlz-1` zone.
   final String nameSuffix;
-  /// The name of the location from which the address is advertised.
+  /// Name of the location from which the address is advertised.
   final String networkBorderGroup;
   /// For Availability Zones, this always has the value of `opt-in-not-required`. For Local Zones, this is the opt in status. The possible values are `opted-in` and `not-opted-in`.
   final String optInStatus;
@@ -35,12 +33,12 @@ class GetAvailabilityZoneResult {
   /// Creates a new [GetAvailabilityZoneResult].
   /// [allAvailabilityZones] Optional.
   /// [filters] Optional.
-  /// [groupLongName] The long name of the Availability Zone group, Local Zone group, or Wavelength Zone group.
-  /// [groupName] The name of the zone group. For example: `us-east-1-zg-1`, `us-west-2-lax-1`, or `us-east-1-wl1-bos-wlz-1`.
+  /// [groupLongName] Long name of the Availability Zone group, Local Zone group, or Wavelength Zone group.
+  /// [groupName] Name of the zone group. For example: `us-east-1-zg-1`, `us-west-2-lax-1`, or `us-east-1-wl1-bos-wlz-1`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  /// [nameSuffix] Part of the AZ name that appears after the region name, uniquely identifying the AZ within its region.
-  /// [networkBorderGroup] The name of the location from which the address is advertised.
+  /// [nameSuffix] Part of the AZ name that appears after the region name, uniquely identifying the AZ within its region. For Availability Zones this is usually a single letter, for example `a` for the `us-west-2a` zone. For Local and Wavelength Zones this is a longer string, for example `wl1-sfo-wlz-1` for the `us-west-2-wl1-sfo-wlz-1` zone.
+  /// [networkBorderGroup] Name of the location from which the address is advertised.
   /// [optInStatus] For Availability Zones, this always has the value of `opt-in-not-required`. For Local Zones, this is the opt in status. The possible values are `opted-in` and `not-opted-in`.
   /// [parentZoneId] ID of the zone that handles some of the Local Zone or Wavelength Zone control plane operations, such as API calls.
   /// [parentZoneName] Name of the zone that handles some of the Local Zone or Wavelength Zone control plane operations, such as API calls.
@@ -106,4 +104,3 @@ class GetAvailabilityZoneResult {
     );
   }
 }
-

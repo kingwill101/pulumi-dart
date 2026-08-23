@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'adm_channel_args.dart';
 import 'adm_channel_state.dart';
 
-/// Provides a Pinpoint ADM (Amazon Device Messaging) Channel resource.
+/// Provides an End User Messaging ADM (Amazon Device Messaging) Channel resource.
 ///
 /// &gt; **Note:** All arguments including the Client ID and Client Secret will be stored in the raw state as plain-text.
 /// ## Example Usage
@@ -78,6 +78,24 @@ import 'adm_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pinpoint_app" "app" {
+/// }
+/// resource "aws_pinpoint_admchannel" "channel" {
+///   application_id = aws_pinpoint_app.app.application_id
+///   client_id      = ""
+///   client_secret  = ""
+///   enabled        = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +105,8 @@ import 'adm_channel_state.dart';
 /// import com.pulumi.aws.pinpoint.App;
 /// import com.pulumi.aws.pinpoint.AdmChannel;
 /// import com.pulumi.aws.pinpoint.AdmChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,19 +146,19 @@ import 'adm_channel_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Pinpoint ADM Channel using the `application-id`. For example:
+/// Using `pulumi import`, import End User Messaging ADM Channel using the `application-id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:pinpoint/admChannel:AdmChannel channel application-id
 /// ```
 class AdmChannel extends pulumi.CustomResource {
-  /// The application ID.
+  /// Application ID.
   late final pulumi.Output<String> applicationId;
   /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
   late final pulumi.Output<String> clientId;
   /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
   late final pulumi.Output<String> clientSecret;
-  /// Specifies whether to enable the channel. Defaults to `true`.
+  /// Whether to enable the channel. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

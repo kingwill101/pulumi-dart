@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_template_args.dart';
 import 'email_template_state.dart';
 
-/// Provides a Pinpoint Email Template resource
+/// &gt; **NOTE:** This resource is deprecated. AWS End User Messaging email features are being discontinued on October 30, 2026. Migrate to Amazon SES using `aws.ses.Template` or `aws.sesv2.EmailIdentity` and related SESv2 resources. See the [AWS End User Messaging migration guide](https://docs.aws.amazon.com/pinpoint/latest/userguide/migrate.html) for details.
+///
+/// Provides an End User Messaging Email Template resource
 ///
 /// ## Example Usage
 ///
@@ -101,6 +103,27 @@ import 'email_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pinpoint_emailtemplate" "test" {
+///   template_name = "testing"
+///   email_templates {
+///     subject   = "testing"
+///     text_part = "we are testing template text part"
+///     headers {
+///       name  = "testingname"
+///       value = "testingvalue"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +133,9 @@ import 'email_template_state.dart';
 /// import com.pulumi.aws.pinpoint.EmailTemplate;
 /// import com.pulumi.aws.pinpoint.EmailTemplateArgs;
 /// import com.pulumi.aws.pinpoint.inputs.EmailTemplateEmailTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.pinpoint.inputs.EmailTemplateEmailTemplateHeaderArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,7 +179,7 @@ import 'email_template_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Pinpoint Email Template using the `template_name`. For example:
+/// Using `pulumi import`, import End User Messaging Email Template using the `templateName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:pinpoint/emailTemplate:EmailTemplate reset template_name
@@ -163,13 +187,15 @@ import 'email_template_state.dart';
 class EmailTemplate extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the message template.
   late final pulumi.Output<String> arn;
-  /// Specifies the content and settings for a message template that can be used in messages that are sent through the email channel. See Email Template
+  /// Content and settings for a message template that can be used in messages that are sent through the email channel. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> emailTemplates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
+  /// Name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
   late final pulumi.Output<String> templateName;
 
   /// Creates a new [EmailTemplate].

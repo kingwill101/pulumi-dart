@@ -66,6 +66,21 @@ import 'multicast_group_source_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_multicastgroupsource" "example" {
+///   group_ip_address                    = "224.0.0.1"
+///   network_interface_id                = exampleAwsNetworkInterface.id
+///   transit_gateway_multicast_domain_id = exampleAwsEc2TransitGatewayMulticastDomain.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'multicast_group_source_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.MulticastGroupSource;
 /// import com.pulumi.aws.ec2transitgateway.MulticastGroupSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

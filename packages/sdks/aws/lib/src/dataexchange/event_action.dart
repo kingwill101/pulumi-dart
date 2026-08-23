@@ -129,6 +129,35 @@ import 'event_action_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dataexchange_eventaction" "example" {
+///   event = {
+///     revision_published = {
+///       data_set_id = exampleAwsDataexchangeDataSet.id
+///     }
+///   }
+///   action = {
+///     export_revision_to_s3 = {
+///       revision_destination = {
+///         bucket      = exampleAwsS3Bucket.bucket
+///         key_pattern = "$${Revision.CreatedAt}/$${Asset.Name}"
+///       }
+///       encryption = {
+///         type        = "aws:kms"
+///         kms_key_arn = exampleAwsKmsKey.arn
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +172,8 @@ import 'event_action_state.dart';
 /// import com.pulumi.aws.dataexchange.inputs.EventActionActionExportRevisionToS3Args;
 /// import com.pulumi.aws.dataexchange.inputs.EventActionActionExportRevisionToS3RevisionDestinationArgs;
 /// import com.pulumi.aws.dataexchange.inputs.EventActionActionExportRevisionToS3EncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

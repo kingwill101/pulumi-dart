@@ -12,7 +12,7 @@ import 'fleet_vpc_config.dart';
 class FleetArgs {
   /// Number of machines allocated to the ﬂeet.
   final pulumi.Input<int> baseCapacity;
-  /// The compute configuration of the compute fleet. This is only required if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `compute_configuration` below.
+  /// The compute configuration of the compute fleet. This is only required if `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `computeConfiguration` below.
   final pulumi.Input<FleetComputeConfiguration>? computeConfiguration;
   /// Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   final pulumi.Input<String> computeType;
@@ -30,16 +30,16 @@ class FleetArgs {
   final pulumi.Input<String>? overflowBehavior;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scaling_configuration` below.
+  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
   final pulumi.Input<FleetScalingConfiguration>? scalingConfiguration;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Configuration block. See `vpc_config` below.
+  /// Configuration block. See `vpcConfig` below.
   final pulumi.Input<List<FleetVpcConfig>>? vpcConfigs;
 
   /// Creates a new [FleetArgs].
   /// [baseCapacity] Number of machines allocated to the ﬂeet.
-  /// [computeConfiguration] The compute configuration of the compute fleet. This is only required if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `compute_configuration` below.
+  /// [computeConfiguration] The compute configuration of the compute fleet. This is only required if `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `computeConfiguration` below.
   /// [computeType] Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   /// [environmentType] Environment type of the compute fleet. See [environment types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   /// [fleetServiceRole] The service role associated with the compute fleet.
@@ -47,9 +47,9 @@ class FleetArgs {
   /// [name] Fleet name.
   /// [overflowBehavior] Overflow behavior for compute fleet. Valid values: `ON_DEMAND`, `QUEUE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [scalingConfiguration] Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scaling_configuration` below.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [vpcConfigs] Configuration block. See `vpc_config` below.
+  /// [scalingConfiguration] Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [vpcConfigs] Configuration block. See `vpcConfig` below.
   const FleetArgs({
     required this.baseCapacity,
     this.computeConfiguration,
@@ -99,4 +99,3 @@ class FleetArgs {
     );
   }
 }
-

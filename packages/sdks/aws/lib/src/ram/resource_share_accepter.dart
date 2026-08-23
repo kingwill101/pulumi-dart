@@ -120,6 +120,33 @@ import 'resource_share_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "receiver" {
+/// }
+///
+/// resource "aws_ram_resourceshare" "sender_share" {
+///   name                      = "tf-test-resource-share"
+///   allow_external_principals = true
+///   tags = {
+///     "Name" = "tf-test-resource-share"
+///   }
+/// }
+/// resource "aws_ram_principalassociation" "sender_invite" {
+///   principal          = data.aws_getcalleridentity.receiver.account_id
+///   resource_share_arn = aws_ram_resourceshare.sender_share.arn
+/// }
+/// resource "aws_ram_resourceshareaccepter" "receiver_accept" {
+///   share_arn = aws_ram_principalassociation.sender_invite.resource_share_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +161,8 @@ import 'resource_share_accepter_state.dart';
 /// import com.pulumi.aws.ram.PrincipalAssociationArgs;
 /// import com.pulumi.aws.ram.ResourceShareAccepter;
 /// import com.pulumi.aws.ram.ResourceShareAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,23 +232,23 @@ import 'resource_share_accepter_state.dart';
 /// $ pulumi import aws:ram/resourceShareAccepter:ResourceShareAccepter example arn:aws:ram:us-east-1:123456789012:resource-share/c4b56393-e8d9-89d9-6dc9-883752de4767
 /// ```
 class ResourceShareAccepter extends pulumi.CustomResource {
-  /// The ARN of the resource share invitation.
+  /// ARN of the resource share invitation.
   late final pulumi.Output<String> invitationArn;
-  /// The account ID of the receiver account which accepts the invitation.
+  /// Account ID of the receiver account which accepts the invitation.
   late final pulumi.Output<String> receiverAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A list of the resource ARNs shared via the resource share.
+  /// List of the resource ARNs shared via the resource share.
   late final pulumi.Output<List<String>> resources;
-  /// The account ID of the sender account which submits the invitation.
+  /// Account ID of the sender account which submits the invitation.
   late final pulumi.Output<String> senderAccountId;
-  /// The ARN of the resource share.
+  /// ARN of the resource share.
   late final pulumi.Output<String> shareArn;
-  /// The ID of the resource share as displayed in the console.
+  /// ID of the resource share as displayed in the console.
   late final pulumi.Output<String> shareId;
-  /// The name of the resource share.
+  /// Name of the resource share.
   late final pulumi.Output<String> shareName;
-  /// The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
+  /// Status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
   late final pulumi.Output<String> status;
 
   /// Creates a new [ResourceShareAccepter].

@@ -8,18 +8,18 @@ import 'graph_qlapi_additional_authentication_provider_user_pool_config.dart';
 class GraphQLApiAdditionalAuthenticationProvider {
   /// Authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`
   final pulumi.Input<String> authenticationType;
-  /// Nested argument containing Lambda authorizer configuration. See `lambda_authorizer_config` Block for details.
+  /// Nested argument containing Lambda authorizer configuration. See `lambdaAuthorizerConfig` Block for details.
   final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderLambdaAuthorizerConfig>? lambdaAuthorizerConfig;
-  /// Nested argument containing OpenID Connect configuration. See `openid_connect_config` Block for details.
+  /// Nested argument containing OpenID Connect configuration. See `openidConnectConfig` Block for details.
   final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig>? openidConnectConfig;
-  /// Amazon Cognito User Pool configuration. See `user_pool_config` Block for details.
+  /// Amazon Cognito User Pool configuration. See `additional_authentication_provider.user_pool_config` Block for details.
   final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderUserPoolConfig>? userPoolConfig;
 
   /// Creates a new [GraphQLApiAdditionalAuthenticationProvider].
   /// [authenticationType] Authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`
-  /// [lambdaAuthorizerConfig] Nested argument containing Lambda authorizer configuration. See `lambda_authorizer_config` Block for details.
-  /// [openidConnectConfig] Nested argument containing OpenID Connect configuration. See `openid_connect_config` Block for details.
-  /// [userPoolConfig] Amazon Cognito User Pool configuration. See `user_pool_config` Block for details.
+  /// [lambdaAuthorizerConfig] Nested argument containing Lambda authorizer configuration. See `lambdaAuthorizerConfig` Block for details.
+  /// [openidConnectConfig] Nested argument containing OpenID Connect configuration. See `openidConnectConfig` Block for details.
+  /// [userPoolConfig] Amazon Cognito User Pool configuration. See `additional_authentication_provider.user_pool_config` Block for details.
   const GraphQLApiAdditionalAuthenticationProvider({
     required this.authenticationType,
     this.lambdaAuthorizerConfig,
@@ -45,4 +45,3 @@ class GraphQLApiAdditionalAuthenticationProvider {
     );
   }
 }
-

@@ -30,4 +30,3 @@ class DomainMatchingExportingConfigS3Exporting {
     );
   }
 }
-

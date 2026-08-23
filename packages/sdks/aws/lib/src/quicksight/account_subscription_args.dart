@@ -23,19 +23,19 @@ class AccountSubscriptionArgs {
   final pulumi.Input<List<String>>? authorProGroups;
   /// AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
   final pulumi.Input<String>? awsAccountId;
-  /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? contactNumber;
   /// Active Directory ID that is associated with your Amazon QuickSight account.
   final pulumi.Input<String>? directoryId;
   /// Edition of Amazon QuickSight that you want your account to have. Currently, you can choose from `STANDARD`, `ENTERPRISE` or `ENTERPRISE_AND_Q`.
   final pulumi.Input<String> edition;
-  /// Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? emailAddress;
-  /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? firstName;
   /// The Amazon Resource Name (ARN) for the IAM Identity Center instance.
   final pulumi.Input<String>? iamIdentityCenterInstanceArn;
-  /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String>? lastName;
   /// Email address that you want Amazon QuickSight to send notifications to regarding your Amazon QuickSight account or Amazon QuickSight subscription.
   ///
@@ -59,13 +59,13 @@ class AccountSubscriptionArgs {
   /// [authorGroups] Author group associated with your Active Directory or IAM Identity Center account.
   /// [authorProGroups] Author PRO group associated with your Active Directory or IAM Identity Center account.
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
-  /// [contactNumber] A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// [contactNumber] A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   /// [directoryId] Active Directory ID that is associated with your Amazon QuickSight account.
   /// [edition] Edition of Amazon QuickSight that you want your account to have. Currently, you can choose from `STANDARD`, `ENTERPRISE` or `ENTERPRISE_AND_Q`.
-  /// [emailAddress] Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
-  /// [firstName] First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// [emailAddress] Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// [firstName] First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   /// [iamIdentityCenterInstanceArn] The Amazon Resource Name (ARN) for the IAM Identity Center instance.
-  /// [lastName] Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// [lastName] Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   /// [notificationEmail] Email address that you want Amazon QuickSight to send notifications to regarding your Amazon QuickSight account or Amazon QuickSight subscription.
   /// [readerGroups] Reader group associated with your Active Directory or IAM Identity Center account.
   /// [readerProGroups] Reader PRO group associated with your Active Directory or IAM Identity Center account.
@@ -144,4 +144,3 @@ class AccountSubscriptionArgs {
     );
   }
 }
-

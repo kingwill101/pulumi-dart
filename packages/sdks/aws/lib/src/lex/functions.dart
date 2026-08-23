@@ -66,6 +66,20 @@ import 'get_slot_type_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lex_getbot" "orderFlowersBot" {
+///   name    = "OrderFlowers"
+///   version = "$LATEST"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'get_slot_type_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lex.LexFunctions;
 /// import com.pulumi.aws.lex.inputs.GetBotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +191,20 @@ Future<GetBotResult> getBot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lex_getbotalias" "orderFlowersProd" {
+///   bot_name = "OrderFlowers"
+///   name     = "OrderFlowersProd"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +213,8 @@ Future<GetBotResult> getBot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lex.LexFunctions;
 /// import com.pulumi.aws.lex.inputs.GetBotAliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,6 +316,20 @@ Future<GetBotAliasResult> getBotAlias(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lex_getintent" "orderFlowers" {
+///   name    = "OrderFlowers"
+///   version = "$LATEST"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +338,8 @@ Future<GetBotAliasResult> getBotAlias(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lex.LexFunctions;
 /// import com.pulumi.aws.lex.inputs.GetIntentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +441,20 @@ Future<GetIntentResult> getIntent(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_lex_getslottype" "flowerTypes" {
+///   name    = "FlowerTypes"
+///   version = "1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +463,8 @@ Future<GetIntentResult> getIntent(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lex.LexFunctions;
 /// import com.pulumi.aws.lex.inputs.GetSlotTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -117,6 +117,31 @@ import 'regex_pattern_set_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_wafv2_regexpatternset" "example" {
+///   name        = "example"
+///   description = "Example regex pattern set"
+///   scope       = "REGIONAL"
+///   regular_expressions {
+///     regex_string = "one"
+///   }
+///   regular_expressions {
+///     regex_string = "two"
+///   }
+///   tags = {
+///     "Tag1" = "Value1"
+///     "Tag2" = "Value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +151,8 @@ import 'regex_pattern_set_state.dart';
 /// import com.pulumi.aws.wafv2.RegexPatternSet;
 /// import com.pulumi.aws.wafv2.RegexPatternSetArgs;
 /// import com.pulumi.aws.wafv2.inputs.RegexPatternSetRegularExpressionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,7 +214,7 @@ class RegexPatternSet extends pulumi.CustomResource {
   /// A friendly description of the regular expression pattern set.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<String> lockToken;
-  /// A friendly name of the regular expression pattern set. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// A friendly name of the regular expression pattern set. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -199,9 +224,9 @@ class RegexPatternSet extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> regularExpressions;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   late final pulumi.Output<String> scope;
-  /// An array of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// An array of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [RegexPatternSet].

@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inventory_destination_bucket_encryption_sse_kms.dart';
 
 class InventoryDestinationBucketEncryption {
-  /// Specifies to use server-side encryption with AWS KMS-managed keys to encrypt the inventory file (documented below).
+  /// Server-side encryption with AWS KMS-managed keys to encrypt the inventory file. See `sseKms` Block below.
   final pulumi.Input<InventoryDestinationBucketEncryptionSseKms>? sseKms;
-  /// Specifies to use server-side encryption with Amazon S3-managed keys (SSE-S3) to encrypt the inventory file.
+  /// Server-side encryption with Amazon S3-managed keys (SSE-S3) to encrypt the inventory file.
   final pulumi.Input<Map<String, dynamic>>? sseS3;
 
   /// Creates a new [InventoryDestinationBucketEncryption].
-  /// [sseKms] Specifies to use server-side encryption with AWS KMS-managed keys to encrypt the inventory file (documented below).
-  /// [sseS3] Specifies to use server-side encryption with Amazon S3-managed keys (SSE-S3) to encrypt the inventory file.
+  /// [sseKms] Server-side encryption with AWS KMS-managed keys to encrypt the inventory file. See `sseKms` Block below.
+  /// [sseS3] Server-side encryption with Amazon S3-managed keys (SSE-S3) to encrypt the inventory file.
   const InventoryDestinationBucketEncryption({
     this.sseKms,
     this.sseS3,
@@ -31,4 +31,3 @@ class InventoryDestinationBucketEncryption {
     );
   }
 }
-

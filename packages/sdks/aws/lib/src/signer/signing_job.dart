@@ -132,6 +132,36 @@ import 'signing_job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_signer_signingprofile" "test_sp" {
+///   platform_id = "AWSLambda-SHA384-ECDSA"
+/// }
+/// resource "aws_signer_signingjob" "build_signing_job" {
+///   profile_name = aws_signer_signingprofile.test_sp.name
+///   source = {
+///     s3 = {
+///       bucket  = "s3-bucket-name"
+///       key     = "object-to-be-signed.zip"
+///       version = "jADjFYYYEXAMPLETszPjOmCMFDzd9dN1"
+///     }
+///   }
+///   destination = {
+///     s3 = {
+///       bucket = "s3-bucket-name"
+///       prefix = "signed/"
+///     }
+///   }
+///   ignore_signing_job_failure = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +176,8 @@ import 'signing_job_state.dart';
 /// import com.pulumi.aws.signer.inputs.SigningJobSourceS3Args;
 /// import com.pulumi.aws.signer.inputs.SigningJobDestinationArgs;
 /// import com.pulumi.aws.signer.inputs.SigningJobDestinationS3Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,7 +241,7 @@ import 'signing_job_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Signer signing jobs using the `job_id`. For example:
+/// Using `pulumi import`, import Signer signing jobs using the `jobId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:signer/signingJob:SigningJob test_signer_signing_job 9ed7e5c3-b8d4-4da0-8459-44e0b068f7ee

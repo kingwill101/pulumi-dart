@@ -70,6 +70,22 @@ import 'peering_attachment_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2transitgateway_peeringattachmentaccepter" "example" {
+///   transit_gateway_attachment_id = exampleAwsEc2TransitGatewayPeeringAttachment.id
+///   tags = {
+///     "Name" = "Example cross-account attachment"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +94,8 @@ import 'peering_attachment_accepter_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2transitgateway.PeeringAttachmentAccepter;
 /// import com.pulumi.aws.ec2transitgateway.PeeringAttachmentAccepterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -125,9 +141,9 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
   late final pulumi.Output<String> peerTransitGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the EC2 Transit Gateway Peering Attachment to manage.
   late final pulumi.Output<String> transitGatewayAttachmentId;

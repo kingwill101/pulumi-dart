@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_web_configuration_source_configuration_url_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration {
-  /// The URL configuration of your web data source. See `url_configuration` block for details.
+  /// The URL configuration of your web data source. See `urlConfiguration` block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration> urlConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration].
-  /// [urlConfiguration] The URL configuration of your web data source. See `url_configuration` block for details.
+  /// [urlConfiguration] The URL configuration of your web data source. See `urlConfiguration` block for details.
   const AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration({
     required this.urlConfiguration,
   });
@@ -25,4 +25,3 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration 
     );
   }
 }
-

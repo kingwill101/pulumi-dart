@@ -10,7 +10,7 @@ import 'bucket_acl_access_control_policy.dart';
 class BucketAclArgs {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
   final pulumi.Input<BucketAclAccessControlPolicy>? accessControlPolicy;
-  /// Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
+  /// Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   final pulumi.Input<String>? acl;
   /// Bucket to which to apply the ACL.
   final pulumi.Input<String> bucket;
@@ -21,7 +21,7 @@ class BucketAclArgs {
 
   /// Creates a new [BucketAclArgs].
   /// [accessControlPolicy] Configuration block that sets the ACL permissions for an object per grantee. See below.
-  /// [acl] Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
+  /// [acl] Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   /// [bucket] Bucket to which to apply the ACL.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -53,4 +53,3 @@ class BucketAclArgs {
     );
   }
 }
-

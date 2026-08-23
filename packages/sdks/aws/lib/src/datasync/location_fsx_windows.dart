@@ -74,6 +74,22 @@ import 'location_fsx_windows_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_locationfsxwindows" "example" {
+///   fsx_filesystem_arn  = exampleAwsFsxWindowsFileSystem.arn
+///   user                = "SomeUser"
+///   password            = "SuperSecretPassw0rd"
+///   security_group_arns = [exampleAwsSecurityGroup.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'location_fsx_windows_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datasync.LocationFsxWindows;
 /// import com.pulumi.aws.datasync.LocationFsxWindowsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -142,9 +158,9 @@ class LocationFsxWindows extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> securityGroupArns;
   /// Subdirectory to perform actions as source or destination.
   late final pulumi.Output<String> subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The URL of the FSx for Windows location that was described.
   late final pulumi.Output<String> uri;

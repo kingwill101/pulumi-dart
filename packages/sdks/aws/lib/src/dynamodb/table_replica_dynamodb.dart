@@ -4,7 +4,7 @@ import 'table_replica_state.dart';
 
 /// Provides a DynamoDB table replica resource for [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html).
 ///
-/// &gt; **Note:** Use `lifecycle` `ignore_changes` for `replica` in the associated aws.dynamodb.Table configuration.
+/// &gt; **Note:** Use `lifecycle` `ignoreChanges` for `replica` in the associated aws.dynamodb.Table configuration.
 ///
 /// &gt; **Note:** Do not use the `replica` configuration block of aws.dynamodb.Table together with this resource as the two configuration options are mutually exclusive.
 ///
@@ -134,6 +134,34 @@ import 'table_replica_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dynamodb_table" "example" {
+///   name             = "TestTable"
+///   hash_key         = "BrodoBaggins"
+///   billing_mode     = "PAY_PER_REQUEST"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   attributes {
+///     name = "BrodoBaggins"
+///     type = "S"
+///   }
+/// }
+/// resource "aws_dynamodb_tablereplica" "example" {
+///   global_table_arn = aws_dynamodb_table.example.arn
+///   tags = {
+///     "Name" = "IZPAWS"
+///     "Pozo" = "Amargo"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +173,8 @@ import 'table_replica_state.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.TableReplica;
 /// import com.pulumi.aws.dynamodb.TableReplicaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,9 +259,9 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Storage class of the table replica. Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`. If not used, the table replica will use the same class as the global table.
   late final pulumi.Output<String?> tableClassOverride;
-  /// Map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to populate on the created table. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [TableReplicaDynamodb].

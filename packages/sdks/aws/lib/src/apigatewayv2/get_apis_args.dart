@@ -13,15 +13,14 @@ class GetApisArgs {
   final pulumi.Input<String>? protocolType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags, each pair of which must exactly match
-  /// a pair on the desired APIs.
+  /// Map of tags, each pair of which must exactly match a pair on the desired APIs.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetApisArgs].
   /// [name] API name.
   /// [protocolType] API protocol.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags, each pair of which must exactly match
+  /// [tags] Map of tags, each pair of which must exactly match a pair on the desired APIs.
   const GetApisArgs({
     this.name,
     this.protocolType,
@@ -47,4 +46,3 @@ class GetApisArgs {
     );
   }
 }
-

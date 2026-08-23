@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountPasswordPolicyState {
   /// Whether to allow users to change their own password
   final pulumi.Input<bool>? allowUsersToChangePassword;
-  /// Indicates whether passwords in the account expire. Returns `true` if `max_password_age` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
+  /// Indicates whether passwords in the account expire. Returns `true` if `maxPasswordAge` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
   final pulumi.Input<bool>? expirePasswords;
   /// Whether users are prevented from setting a new password after their password has expired (i.e., require administrator reset)
   final pulumi.Input<bool>? hardExpiry;
@@ -27,7 +27,7 @@ class AccountPasswordPolicyState {
 
   /// Creates a new [AccountPasswordPolicyState].
   /// [allowUsersToChangePassword] Whether to allow users to change their own password
-  /// [expirePasswords] Indicates whether passwords in the account expire. Returns `true` if `max_password_age` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
+  /// [expirePasswords] Indicates whether passwords in the account expire. Returns `true` if `maxPasswordAge` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
   /// [hardExpiry] Whether users are prevented from setting a new password after their password has expired (i.e., require administrator reset)
   /// [maxPasswordAge] The number of days that an user password is valid.
   /// [minimumPasswordLength] Minimum length to require for user passwords.
@@ -79,4 +79,3 @@ class AccountPasswordPolicyState {
     );
   }
 }
-

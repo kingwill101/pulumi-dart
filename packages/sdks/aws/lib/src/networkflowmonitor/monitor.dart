@@ -151,6 +151,37 @@ import 'monitor_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "example" {
+///   cidr_block = "10.0.0.0/16"
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// resource "aws_networkflowmonitor_monitor" "example" {
+///   monitor_name = "example-monitor"
+///   scope_arn    = exampleAwsNetworkflowmonitorScope.scopeArn
+///   local_resources {
+///     type       = "AWS::EC2::VPC"
+///     identifier = aws_ec2_vpc.example.arn
+///   }
+///   remote_resources {
+///     type       = "AWS::EC2::VPC"
+///     identifier = aws_ec2_vpc.example.arn
+///   }
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +194,8 @@ import 'monitor_timeouts.dart';
 /// import com.pulumi.aws.networkflowmonitor.MonitorArgs;
 /// import com.pulumi.aws.networkflowmonitor.inputs.MonitorLocalResourceArgs;
 /// import com.pulumi.aws.networkflowmonitor.inputs.MonitorRemoteResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,9 +276,9 @@ class Monitor extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> scopeArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<MonitorTimeouts?> timeouts;
 

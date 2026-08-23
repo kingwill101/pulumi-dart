@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_job_definition_retry_strategy_evaluate_on_exit.dart';
 
 class GetJobDefinitionRetryStrategy {
-  /// The number of times to move a job to the RUNNABLE status.
+  /// Number of times to move a job to the RUNNABLE status.
   final pulumi.Input<int> attempts;
-  /// Array of up to 5 objects that specify the conditions where jobs are retried or failed.
+  /// Conditions where jobs are retried or failed. See `evaluateOnExit` below.
   final pulumi.Input<List<GetJobDefinitionRetryStrategyEvaluateOnExit>> evaluateOnExits;
 
   /// Creates a new [GetJobDefinitionRetryStrategy].
-  /// [attempts] The number of times to move a job to the RUNNABLE status.
-  /// [evaluateOnExits] Array of up to 5 objects that specify the conditions where jobs are retried or failed.
+  /// [attempts] Number of times to move a job to the RUNNABLE status.
+  /// [evaluateOnExits] Conditions where jobs are retried or failed. See `evaluateOnExit` below.
   const GetJobDefinitionRetryStrategy({
     required this.attempts,
     required this.evaluateOnExits,
@@ -31,4 +31,3 @@ class GetJobDefinitionRetryStrategy {
     );
   }
 }
-

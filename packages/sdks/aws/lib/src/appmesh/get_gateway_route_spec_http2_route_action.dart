@@ -30,4 +30,3 @@ class GetGatewayRouteSpecHttp2RouteAction {
     );
   }
 }
-

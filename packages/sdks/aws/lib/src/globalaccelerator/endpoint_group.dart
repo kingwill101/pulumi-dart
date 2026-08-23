@@ -79,6 +79,23 @@ import 'endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_globalaccelerator_endpointgroup" "example" {
+///   listener_arn = exampleAwsGlobalacceleratorListener.arn
+///   endpoint_configurations {
+///     endpoint_id = exampleAwsLb.arn
+///     weight      = 100
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +105,8 @@ import 'endpoint_group_state.dart';
 /// import com.pulumi.aws.globalaccelerator.EndpointGroup;
 /// import com.pulumi.aws.globalaccelerator.EndpointGroupArgs;
 /// import com.pulumi.aws.globalaccelerator.inputs.EndpointGroupEndpointConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

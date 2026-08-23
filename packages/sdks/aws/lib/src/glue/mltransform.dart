@@ -436,6 +436,95 @@ import 'mltransform_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_mltransform" "test" {
+///   depends_on = [testAwsIamRolePolicyAttachment]
+///   name       = "example"
+///   role_arn   = testAwsIamRole.arn
+///   input_record_tables {
+///     database_name = aws_glue_catalogtable.test.database_name
+///     table_name    = aws_glue_catalogtable.test.name
+///   }
+///   parameters = {
+///     transform_type = "FIND_MATCHES"
+///     find_matches_parameters = {
+///       primary_key_column_name = "my_column_1"
+///     }
+///   }
+/// }
+/// resource "aws_glue_catalogdatabase" "test" {
+///   name = "example"
+/// }
+/// resource "aws_glue_catalogtable" "test" {
+///   name               = "example"
+///   database_name      = aws_glue_catalogdatabase.test.name
+///   owner              = "my_owner"
+///   retention          = 1
+///   table_type         = "VIRTUAL_VIEW"
+///   view_expanded_text = "view_expanded_text_1"
+///   view_original_text = "view_original_text_1"
+///   storage_descriptor = {
+///     bucket_columns            = ["bucket_column_1"]
+///     compressed                = false
+///     input_format              = "SequenceFileInputFormat"
+///     location                  = "my_location"
+///     number_of_buckets         = 1
+///     output_format             = "SequenceFileInputFormat"
+///     stored_as_sub_directories = false
+///     parameters = {
+///       "param1" = "param1_val"
+///     }
+///     columns = [{
+///       "name"    = "my_column_1"
+///       "type"    = "int"
+///       "comment" = "my_column1_comment"
+///       }, {
+///       "name"    = "my_column_2"
+///       "type"    = "string"
+///       "comment" = "my_column2_comment"
+///     }]
+///     ser_de_info = {
+///       name = "ser_de_name"
+///       parameters = {
+///         "param1" = "param_val_1"
+///       }
+///       serialization_library = "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"
+///     }
+///     sort_columns = [{
+///       "column"    = "my_column_1"
+///       "sortOrder" = 1
+///     }]
+///     skewed_info = {
+///       skewed_column_names = ["my_column_1"]
+///       skewed_column_value_location_maps = {
+///         "my_column_1" = "my_column_1_val_loc_map"
+///       }
+///       skewed_column_values = ["skewed_val_1"]
+///     }
+///   }
+///   partition_keys {
+///     name    = "my_column_1"
+///     type    = "int"
+///     comment = "my_column_1_comment"
+///   }
+///   partition_keys {
+///     name    = "my_column_2"
+///     type    = "string"
+///     comment = "my_column_2_comment"
+///   }
+///   parameters = {
+///     "param1" = "param1_val"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -447,7 +536,9 @@ import 'mltransform_state.dart';
 /// import com.pulumi.aws.glue.CatalogTable;
 /// import com.pulumi.aws.glue.CatalogTableArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorArgs;
+/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorColumnArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorSerDeInfoArgs;
+/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorSortColumnArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorSkewedInfoArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTablePartitionKeyArgs;
 /// import com.pulumi.aws.glue.MLTransform;
@@ -456,8 +547,8 @@ import 'mltransform_state.dart';
 /// import com.pulumi.aws.glue.inputs.MLTransformParametersArgs;
 /// import com.pulumi.aws.glue.inputs.MLTransformParametersFindMatchesParametersArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -646,13 +737,13 @@ class MLTransform extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> inputRecordTables;
   /// The number of labels available for this transform.
   late final pulumi.Output<int> labelCount;
-  /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `max_capacity` is a mutually exclusive option with `number_of_workers` and `worker_type`.
+  /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `maxCapacity` is a mutually exclusive option with `numberOfWorkers` and `workerType`.
   late final pulumi.Output<double> maxCapacity;
   /// The maximum number of times to retry this ML Transform if it fails.
   late final pulumi.Output<int?> maxRetries;
   /// The name you assign to this ML Transform. It must be unique in your account.
   late final pulumi.Output<String> name;
-  /// The number of workers of a defined `worker_type` that are allocated when an ML Transform runs. Required with `worker_type`.
+  /// The number of workers of a defined `workerType` that are allocated when an ML Transform runs. Required with `workerType`.
   late final pulumi.Output<int?> numberOfWorkers;
   /// The algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. see Parameters.
   late final pulumi.Output<MLTransformParameters> parameters;
@@ -662,13 +753,13 @@ class MLTransform extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// The object that represents the schema that this transform accepts. see Schema.
   late final pulumi.Output<List<Map<String, dynamic>>> schemas;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
   late final pulumi.Output<int?> timeout;
-  /// The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `number_of_workers`.
+  /// The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `numberOfWorkers`.
   late final pulumi.Output<String?> workerType;
 
   /// Creates a new [MLTransform].

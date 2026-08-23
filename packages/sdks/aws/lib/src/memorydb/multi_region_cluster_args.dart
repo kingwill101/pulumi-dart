@@ -26,7 +26,7 @@ class MultiRegionClusterArgs {
   final pulumi.Input<int>? numShards;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<MultiRegionClusterTimeouts>? timeouts;
   /// A flag to enable in-transit encryption on the cluster.
@@ -42,7 +42,7 @@ class MultiRegionClusterArgs {
   /// [nodeType] The node type to be used for the multi-region cluster.
   /// [numShards] The number of shards for the multi-region cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [tlsEnabled] A flag to enable in-transit encryption on the cluster.
   /// [updateStrategy] Optional.
@@ -95,4 +95,3 @@ class MultiRegionClusterArgs {
     );
   }
 }
-

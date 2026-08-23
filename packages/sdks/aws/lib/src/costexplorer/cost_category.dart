@@ -229,6 +229,50 @@ import 'cost_category_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_costexplorer_costcategory" "test" {
+///   name         = "NAME"
+///   rule_version = "CostCategoryExpression.v1"
+///   rules {
+///     value = "production"
+///     rule = {
+///       dimension = {
+///         key           = "LINKED_ACCOUNT_NAME"
+///         values        = ["-prod"]
+///         match_options = ["ENDS_WITH"]
+///       }
+///     }
+///   }
+///   rules {
+///     value = "staging"
+///     rule = {
+///       dimension = {
+///         key           = "LINKED_ACCOUNT_NAME"
+///         values        = ["-stg"]
+///         match_options = ["ENDS_WITH"]
+///       }
+///     }
+///   }
+///   rules {
+///     value = "testing"
+///     rule = {
+///       dimension = {
+///         key           = "LINKED_ACCOUNT_NAME"
+///         values        = ["-dev"]
+///         match_options = ["ENDS_WITH"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +284,8 @@ import 'cost_category_state.dart';
 /// import com.pulumi.aws.costexplorer.inputs.CostCategoryRuleArgs;
 /// import com.pulumi.aws.costexplorer.inputs.CostCategoryRuleRuleArgs;
 /// import com.pulumi.aws.costexplorer.inputs.CostCategoryRuleRuleDimensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,9 +404,9 @@ class CostCategory extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
   /// Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> splitChargeRules;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CostCategory].

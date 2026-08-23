@@ -122,6 +122,33 @@ import 'scope_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_networkflowmonitor_scope" "example" {
+///   targets {
+///     region = "us-east-1"
+///     target_identifier = {
+///       target_type = "ACCOUNT"
+///       target_id = {
+///         account_id = data.aws_getcalleridentity.current.account_id
+///       }
+///     }
+///   }
+///   tags = {
+///     "Name" = "example"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +162,8 @@ import 'scope_timeouts.dart';
 /// import com.pulumi.aws.networkflowmonitor.inputs.ScopeTargetArgs;
 /// import com.pulumi.aws.networkflowmonitor.inputs.ScopeTargetTargetIdentifierArgs;
 /// import com.pulumi.aws.networkflowmonitor.inputs.ScopeTargetTargetIdentifierTargetIdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,9 +229,9 @@ class Scope extends pulumi.CustomResource {
   late final pulumi.Output<String> scopeArn;
   /// The identifier for the scope that includes the resources you want to get data results for.
   late final pulumi.Output<String> scopeId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   ///

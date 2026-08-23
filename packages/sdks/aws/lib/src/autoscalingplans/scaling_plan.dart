@@ -95,7 +95,7 @@ import 'scaling_plan_state.dart';
 ///             "predefined_scaling_metric_specification": {
 ///                 "predefined_scaling_metric_type": "ASGAverageCPUUtilization",
 ///             },
-///             "target_value": 70,
+///             "target_value": float(70),
 ///         }],
 ///     }])
 /// ```
@@ -264,6 +264,60 @@ import 'scaling_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_format" "invoke_0" {
+///   input = "autoScalingGroup/%s"
+///   args  = [aws_autoscaling_group.example.name]
+/// }
+/// data "aws_getavailabilityzones" "available" {
+/// }
+///
+/// resource "aws_autoscaling_group" "example" {
+///   name_prefix          = "example"
+///   launch_configuration = exampleAwsLaunchConfiguration.name
+///   availability_zones   = [data.aws_getavailabilityzones.available.names[0]]
+///   min_size             = 0
+///   max_size             = 3
+///   tags {
+///     key                 = "application"
+///     value               = "example"
+///     propagate_at_launch = true
+///   }
+/// }
+/// resource "aws_autoscalingplans_scalingplan" "example" {
+///   name = "example-dynamic-cost-optimization"
+///   application_source = {
+///     tag_filters = [{
+///       "key"    = "application"
+///       "values" = ["example"]
+///     }]
+///   }
+///   scaling_instructions {
+///     max_capacity       = 3
+///     min_capacity       = 0
+///     resource_id        = data.std_format.invoke_0.result
+///     scalable_dimension = "autoscaling:autoScalingGroup:DesiredCapacity"
+///     service_namespace  = "autoscaling"
+///     target_tracking_configurations {
+///       predefined_scaling_metric_specification = {
+///         predefined_scaling_metric_type = "ASGAverageCPUUtilization"
+///       }
+///       target_value = 70
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -278,11 +332,14 @@ import 'scaling_plan_state.dart';
 /// import com.pulumi.aws.autoscalingplans.ScalingPlan;
 /// import com.pulumi.aws.autoscalingplans.ScalingPlanArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanApplicationSourceArgs;
+/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanApplicationSourceTagFilterArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionArgs;
+/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs;
+/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -479,7 +536,7 @@ import 'scaling_plan_state.dart';
 ///             "predefined_scaling_metric_specification": {
 ///                 "predefined_scaling_metric_type": "ASGAverageCPUUtilization",
 ///             },
-///             "target_value": 70,
+///             "target_value": float(70),
 ///         }],
 ///         "predictive_scaling_max_capacity_behavior": "SetForecastCapacityToMaxCapacity",
 ///         "predictive_scaling_mode": "ForecastAndScale",
@@ -666,6 +723,66 @@ import 'scaling_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_format" "invoke_0" {
+///   input = "autoScalingGroup/%s"
+///   args  = [aws_autoscaling_group.example.name]
+/// }
+/// data "aws_getavailabilityzones" "available" {
+/// }
+///
+/// resource "aws_autoscaling_group" "example" {
+///   name_prefix          = "example"
+///   launch_configuration = exampleAwsLaunchConfiguration.name
+///   availability_zones   = [data.aws_getavailabilityzones.available.names[0]]
+///   min_size             = 0
+///   max_size             = 3
+///   tags {
+///     key                 = "application"
+///     value               = "example"
+///     propagate_at_launch = true
+///   }
+/// }
+/// resource "aws_autoscalingplans_scalingplan" "example" {
+///   name = "example-predictive-cost-optimization"
+///   application_source = {
+///     tag_filters = [{
+///       "key"    = "application"
+///       "values" = ["example"]
+///     }]
+///   }
+///   scaling_instructions {
+///     disable_dynamic_scaling = true
+///     max_capacity            = 3
+///     min_capacity            = 0
+///     resource_id             = data.std_format.invoke_0.result
+///     scalable_dimension      = "autoscaling:autoScalingGroup:DesiredCapacity"
+///     service_namespace       = "autoscaling"
+///     target_tracking_configurations {
+///       predefined_scaling_metric_specification = {
+///         predefined_scaling_metric_type = "ASGAverageCPUUtilization"
+///       }
+///       target_value = 70
+///     }
+///     predictive_scaling_max_capacity_behavior = "SetForecastCapacityToMaxCapacity"
+///     predictive_scaling_mode                  = "ForecastAndScale"
+///     predefined_load_metric_specification = {
+///       predefined_load_metric_type = "ASGTotalCPUUtilization"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -680,12 +797,15 @@ import 'scaling_plan_state.dart';
 /// import com.pulumi.aws.autoscalingplans.ScalingPlan;
 /// import com.pulumi.aws.autoscalingplans.ScalingPlanArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanApplicationSourceArgs;
+/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanApplicationSourceTagFilterArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionArgs;
+/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs;
+/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -70,6 +70,25 @@ import 'identity_center_configuration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_lakeformation_identitycenterconfiguration" "example" {
+///   instance_arn = local.identityCenterInstanceArn
+/// }
+/// locals {
+///   identityCenterInstanceArn = data.aws_ssoadmin_getinstances.example.arns[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +99,8 @@ import 'identity_center_configuration_state.dart';
 /// import com.pulumi.aws.ssoadmin.inputs.GetInstancesArgs;
 /// import com.pulumi.aws.lakeformation.IdentityCenterConfiguration;
 /// import com.pulumi.aws.lakeformation.IdentityCenterConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,7 +142,19 @@ import 'identity_center_configuration_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Lake Formation Identity Center Configuration using the `catalog_id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `catalogId` (String) Account ID of the Lake Formation catalog.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Lake Formation Identity Center Configuration using the `catalogId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lakeformation/identityCenterConfiguration:IdentityCenterConfiguration example 123456789012

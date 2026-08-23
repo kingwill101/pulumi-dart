@@ -5,25 +5,25 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_size_co
 import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatement {
-  /// Operator to use to compare the request part to the size setting. Valid values include: `EQ`, `NE`, `LE`, `LT`, `GE`, or `GT`.
+  /// Operator to use to compare the request part to the size setting. Valid values: `EQ`, `NE`, `LE`, `LT`, `GE`, `GT`.
   final pulumi.Input<String> comparisonOperator;
-  /// Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
+  /// Part of the web request that you want WAF to inspect. See Field to Match below.
   final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatch>? fieldToMatch;
-  /// Size, in bytes, to compare to the request part, after any transformations. Valid values are integers between 0 and 21474836480, inclusive.
+  /// Size, in bytes, to compare to the request part, after any transformations.
   final pulumi.Input<int> size;
-  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>> textTransformations;
+  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatement].
-  /// [comparisonOperator] Operator to use to compare the request part to the size setting. Valid values include: `EQ`, `NE`, `LE`, `LT`, `GE`, or `GT`.
-  /// [fieldToMatch] Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
-  /// [size] Size, in bytes, to compare to the request part, after any transformations. Valid values are integers between 0 and 21474836480, inclusive.
-  /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
+  /// [comparisonOperator] Operator to use to compare the request part to the size setting. Valid values: `EQ`, `NE`, `LE`, `LT`, `GE`, `GT`.
+  /// [fieldToMatch] Part of the web request that you want WAF to inspect. See Field to Match below.
+  /// [size] Size, in bytes, to compare to the request part, after any transformations.
+  /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
   const WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatement({
     required this.comparisonOperator,
     this.fieldToMatch,
     required this.size,
-    required this.textTransformations,
+    this.textTransformations,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,7 +31,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintState
       'comparisonOperator': comparisonOperator,
       'fieldToMatch': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
       'size': size,
-      'textTransformations': pulumi.Input.mapInputValue<List<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'textTransformations': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -40,8 +40,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintState
       comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       fieldToMatch: (() { final guardedValue = map['fieldToMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       size: pulumi.Input.fromValue(map['size'] as int),
-      textTransformations: pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))),
+      textTransformations: (() { final guardedValue = map['textTransformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>(guardedValue, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

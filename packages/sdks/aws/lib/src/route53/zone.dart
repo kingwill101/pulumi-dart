@@ -56,6 +56,19 @@ import 'zone_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_zone" "primary" {
+///   name = "example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'zone_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.route53.Zone;
 /// import com.pulumi.aws.route53.ZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,6 +221,32 @@ import 'zone_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_zone" "main" {
+///   name = "example.com"
+/// }
+/// resource "aws_route53_zone" "dev" {
+///   name = "dev.example.com"
+///   tags = {
+///     "Environment" = "dev"
+///   }
+/// }
+/// resource "aws_route53_record" "dev-ns" {
+///   zone_id = aws_route53_zone.main.zone_id
+///   name    = "dev.example.com"
+///   type    = "NS"
+///   ttl     = "30"
+///   records = aws_route53_zone.dev.name_servers
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +257,8 @@ import 'zone_state.dart';
 /// import com.pulumi.aws.route53.ZoneArgs;
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,10 +440,10 @@ import 'zone_state.dart';
 /// 			Name: pulumi.String("example.com"),
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: primary.ID(),
+/// 					VpcId: primary.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				&route53.ZoneVpcArgs{
-/// 					VpcId: secondary.ID(),
+/// 					VpcId: secondary.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -413,6 +452,35 @@ import 'zone_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpc" "primary" {
+///   cidr_block           = "10.6.0.0/16"
+///   enable_dns_hostnames = true
+///   enable_dns_support   = true
+/// }
+/// resource "aws_ec2_vpc" "secondary" {
+///   cidr_block           = "10.7.0.0/16"
+///   enable_dns_hostnames = true
+///   enable_dns_support   = true
+/// }
+/// resource "aws_route53_zone" "private" {
+///   name = "example.com"
+///   vpcs {
+///     vpc_id = aws_ec2_vpc.primary.id
+///   }
+///   vpcs {
+///     vpc_id = aws_ec2_vpc.secondary.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -426,8 +494,8 @@ import 'zone_state.dart';
 /// import com.pulumi.aws.route53.Zone;
 /// import com.pulumi.aws.route53.ZoneArgs;
 /// import com.pulumi.aws.route53.inputs.ZoneVpcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,6 +559,17 @@ import 'zone_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `zoneId` (String) The Hosted Zone ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Route53 Zones using the zone `id`. For example:
 ///
 /// ```sh
@@ -514,11 +593,11 @@ class Zone extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> nameServers;
   /// The Route 53 name server that created the SOA record.
   late final pulumi.Output<String> primaryNameServer;
-  /// A mapping of tags to assign to the zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegation_set_id` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
+  /// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> vpcs;
   /// The Hosted Zone ID. This can be referenced by zone records.
   late final pulumi.Output<String> zoneId;

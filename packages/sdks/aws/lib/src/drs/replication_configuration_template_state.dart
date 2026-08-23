@@ -38,7 +38,7 @@ class ReplicationConfigurationTemplateState {
   final pulumi.Input<Map<String, String>>? stagingAreaTags;
   /// Set of tags to be associated with the Replication Configuration Template resource.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ReplicationConfigurationTemplateTimeouts>? timeouts;
   /// Whether to use a dedicated Replication Server in the replication staging area.
@@ -63,7 +63,7 @@ class ReplicationConfigurationTemplateState {
   /// [stagingAreaSubnetId] Subnet to be used by the replication staging area.
   /// [stagingAreaTags] Set of tags to be associated with all resources created in the replication staging area: EC2 replication server, EBS volumes, EBS snapshots, etc.
   /// [tags] Set of tags to be associated with the Replication Configuration Template resource.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [useDedicatedReplicationServer] Whether to use a dedicated Replication Server in the replication staging area.
   const ReplicationConfigurationTemplateState({
@@ -136,4 +136,3 @@ class ReplicationConfigurationTemplateState {
     );
   }
 }
-

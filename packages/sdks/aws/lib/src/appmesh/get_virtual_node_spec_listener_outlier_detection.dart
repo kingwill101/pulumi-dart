@@ -5,16 +5,20 @@ import 'get_virtual_node_spec_listener_outlier_detection_base_ejection_duration.
 import 'get_virtual_node_spec_listener_outlier_detection_interval.dart';
 
 class GetVirtualNodeSpecListenerOutlierDetection {
+  /// Base amount of time for which a host is ejected. See `spec.listener.outlier_detection.base_ejection_duration` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration>> baseEjectionDurations;
+  /// Time interval between ejection sweep analysis. See `spec.listener.outlier_detection.interval` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerOutlierDetectionInterval>> intervals;
+  /// Maximum percentage of hosts in load balancing pool for upstream service that can be ejected.
   final pulumi.Input<int> maxEjectionPercent;
+  /// Number of consecutive `5xx` errors required for ejection.
   final pulumi.Input<int> maxServerErrors;
 
   /// Creates a new [GetVirtualNodeSpecListenerOutlierDetection].
-  /// [baseEjectionDurations] Required.
-  /// [intervals] Required.
-  /// [maxEjectionPercent] Required.
-  /// [maxServerErrors] Required.
+  /// [baseEjectionDurations] Base amount of time for which a host is ejected. See `spec.listener.outlier_detection.base_ejection_duration` Block for details.
+  /// [intervals] Time interval between ejection sweep analysis. See `spec.listener.outlier_detection.interval` Block for details.
+  /// [maxEjectionPercent] Maximum percentage of hosts in load balancing pool for upstream service that can be ejected.
+  /// [maxServerErrors] Number of consecutive `5xx` errors required for ejection.
   const GetVirtualNodeSpecListenerOutlierDetection({
     required this.baseEjectionDurations,
     required this.intervals,
@@ -40,4 +44,3 @@ class GetVirtualNodeSpecListenerOutlierDetection {
     );
   }
 }
-

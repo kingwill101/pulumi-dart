@@ -21,7 +21,7 @@ class DefaultNetworkAclArgs {
   final pulumi.Input<String>? region;
   /// List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
   final pulumi.Input<List<String>>? subnetIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DefaultNetworkAclArgs].
@@ -30,7 +30,7 @@ class DefaultNetworkAclArgs {
   /// [ingress] Configuration block for an ingress rule. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetIds] List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const DefaultNetworkAclArgs({
     required this.defaultNetworkAclId,
     this.egress,
@@ -62,4 +62,3 @@ class DefaultNetworkAclArgs {
     );
   }
 }
-

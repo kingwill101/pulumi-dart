@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OptInResourceDataDatabase {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final pulumi.Input<String>? catalogId;
-  /// Name of the table.
+  /// Name of the database resource. Unique to the Data Catalog.
   final pulumi.Input<String> name;
 
   /// Creates a new [OptInResourceDataDatabase].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  /// [name] Name of the table.
+  /// [name] Name of the database resource. Unique to the Data Catalog.
   const OptInResourceDataDatabase({
     this.catalogId,
     required this.name,
@@ -30,4 +30,3 @@ class OptInResourceDataDatabase {
     );
   }
 }
-

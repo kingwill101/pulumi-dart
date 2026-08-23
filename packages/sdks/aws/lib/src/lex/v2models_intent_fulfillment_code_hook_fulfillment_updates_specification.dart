@@ -5,7 +5,7 @@ import 'v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_
 import 'v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_update_response.dart';
 
 class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
-  /// Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the `start_response`, `update_response`, and `timeout_in_seconds` fields are required.
+  /// Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the `startResponse`, `updateResponse`, and `timeoutInSeconds` fields are required.
   final pulumi.Input<bool> active;
   /// Configuration block for the message sent to users when the fulfillment Lambda functions starts running.
   final pulumi.Input<V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse>? startResponse;
@@ -15,7 +15,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
   final pulumi.Input<V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse>? updateResponse;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification].
-  /// [active] Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the `start_response`, `update_response`, and `timeout_in_seconds` fields are required.
+  /// [active] Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the `startResponse`, `updateResponse`, and `timeoutInSeconds` fields are required.
   /// [startResponse] Configuration block for the message sent to users when the fulfillment Lambda functions starts running.
   /// [timeoutInSeconds] Length of time that the fulfillment Lambda function should run before it times out.
   /// [updateResponse] Configuration block for messages sent periodically to the user while the fulfillment Lambda function is running.
@@ -44,4 +44,3 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
     );
   }
 }
-

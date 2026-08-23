@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_share_args.dart';
+import 'resource_share_resource_share_configuration.dart';
 import 'resource_share_state.dart';
 
 /// Manages a Resource Access Manager (RAM) Resource Share. To associate principals with the share, see the `aws.ram.PrincipalAssociation` resource. To associate resources with the share, see the `aws.ram.ResourceAssociation` resource.
@@ -74,6 +75,23 @@ import 'resource_share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ram_resourceshare" "example" {
+///   name                      = "example"
+///   allow_external_principals = true
+///   tags = {
+///     "Environment" = "Production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +100,8 @@ import 'resource_share_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ram.ResourceShare;
 /// import com.pulumi.aws.ram.ResourceShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -124,19 +142,21 @@ import 'resource_share_state.dart';
 /// $ pulumi import aws:ram/resourceShare:ResourceShare example arn:aws:ram:eu-west-1:123456789012:resource-share/73da1ab9-b94a-4ba3-8eb4-45917f7f4b12
 /// ```
 class ResourceShare extends pulumi.CustomResource {
-  /// Indicates whether principals outside your organization can be associated with a resource share.
+  /// Whether principals outside your organization can be associated with a resource share.
   late final pulumi.Output<bool?> allowExternalPrincipals;
-  /// The Amazon Resource Name (ARN) of the resource share.
+  /// Amazon Resource Name (ARN) of the resource share.
   late final pulumi.Output<String> arn;
-  /// The name of the resource share.
+  /// Name of the resource share.
   late final pulumi.Output<String> name;
-  /// Specifies the Amazon Resource Names (ARNs) of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
+  /// Amazon Resource Names (ARNs) of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
   late final pulumi.Output<List<String>> permissionArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Configuration block for the resource share. See `resourceShareConfiguration` Block for details.
+  late final pulumi.Output<ResourceShareResourceShareConfiguration> resourceShareConfiguration;
+  /// Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ResourceShare].
@@ -158,6 +178,7 @@ class ResourceShare extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     permissionArns = registerOutput<List<String>>('permissionArns');
     region = registerOutput<String>('region');
+    resourceShareConfiguration = registerOutput<ResourceShareResourceShareConfiguration>('resourceShareConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceShareResourceShareConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -190,6 +211,7 @@ class ResourceShare extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     permissionArns = registerOutput<List<String>>('permissionArns');
     region = registerOutput<String>('region');
+    resourceShareConfiguration = registerOutput<ResourceShareResourceShareConfiguration>('resourceShareConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceShareResourceShareConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

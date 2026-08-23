@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorNotificationChannel {
-  /// The Amazon Resource Number (ARN) of the Amazon Amazon Simple Notification Service topic to which Amazon Rekognition posts the completion status.
+  /// Amazon Resource Number (ARN) of the Amazon Amazon Simple Notification Service topic to which Amazon Rekognition posts the completion status.
   final pulumi.Input<String>? snsTopicArn;
 
   /// Creates a new [StreamProcessorNotificationChannel].
-  /// [snsTopicArn] The Amazon Resource Number (ARN) of the Amazon Amazon Simple Notification Service topic to which Amazon Rekognition posts the completion status.
+  /// [snsTopicArn] Amazon Resource Number (ARN) of the Amazon Amazon Simple Notification Service topic to which Amazon Rekognition posts the completion status.
   const StreamProcessorNotificationChannel({
     this.snsTopicArn,
   });
@@ -24,4 +24,3 @@ class StreamProcessorNotificationChannel {
     );
   }
 }
-

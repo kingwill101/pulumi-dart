@@ -78,20 +78,41 @@ import 'delegation_set_state.dart';
 /// 		}
 /// 		_, err = route53.NewZone(ctx, "primary", &route53.ZoneArgs{
 /// 			Name:            pulumi.String("mydomain.com"),
-/// 			DelegationSetId: main.ID(),
+/// 			DelegationSetId: main.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewZone(ctx, "secondary", &route53.ZoneArgs{
 /// 			Name:            pulumi.String("coolcompany.io"),
-/// 			DelegationSetId: main.ID(),
+/// 			DelegationSetId: main.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_delegationset" "main" {
+///   reference_name = "DynDNS"
+/// }
+/// resource "aws_route53_zone" "primary" {
+///   name              = "mydomain.com"
+///   delegation_set_id = aws_route53_delegationset.main.id
+/// }
+/// resource "aws_route53_zone" "secondary" {
+///   name              = "coolcompany.io"
+///   delegation_set_id = aws_route53_delegationset.main.id
 /// }
 /// ```
 /// ```java
@@ -104,8 +125,8 @@ import 'delegation_set_state.dart';
 /// import com.pulumi.aws.route53.DelegationSetArgs;
 /// import com.pulumi.aws.route53.Zone;
 /// import com.pulumi.aws.route53.ZoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

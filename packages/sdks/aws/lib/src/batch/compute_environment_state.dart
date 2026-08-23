@@ -29,9 +29,9 @@ class ComputeEnvironmentState {
   final pulumi.Input<String>? status;
   /// A short, human-readable string to provide additional details about the current status of the compute environment.
   final pulumi.Input<String>? statusReason;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   final pulumi.Input<String>? type;
@@ -50,8 +50,8 @@ class ComputeEnvironmentState {
   /// [state] The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   /// [status] The current status of the compute environment (for example, CREATING or VALID).
   /// [statusReason] A short, human-readable string to provide additional details about the current status of the compute environment.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [type] The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   /// [updatePolicy] Specifies the infrastructure update policy for the compute environment. See details below.
   const ComputeEnvironmentState({
@@ -112,4 +112,3 @@ class ComputeEnvironmentState {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'agent_state.dart';
 
 /// Manages an AWS DataSync Agent deployed on premises.
 ///
-/// &gt; **NOTE:** One of `activation_key` or `ip_address` must be provided for resource creation (agent activation). Neither is required for resource import. If using `ip_address`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running. The agent will turn off that HTTP server after activation.
+/// &gt; **NOTE:** One of `activationKey` or `ipAddress` must be provided for resource creation (agent activation). Neither is required for resource import. If using `ipAddress`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running. The agent will turn off that HTTP server after activation.
 ///
 /// ## Example Usage
 ///
@@ -63,6 +63,20 @@ import 'agent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_agent" "example" {
+///   ip_address = "1.2.3.4"
+///   name       = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'agent_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.datasync.Agent;
 /// import com.pulumi.aws.datasync.AgentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,8 +116,7 @@ import 'agent_state.dart';
 /// ```
 ///
 ///
-///
-/// ### With VPC Endpoints
+/// ### Example Usage with VPC Endpoints
 ///
 ///
 /// ```typescript
@@ -126,7 +139,7 @@ import 'agent_state.dart';
 ///     securityGroupArns: [exampleAwsSecurityGroup.arn],
 ///     subnetArns: [exampleAwsSubnet.arn],
 ///     vpcEndpointId: exampleVpcEndpoint.id,
-///     privateLinkEndpoint: example.apply(example => example.privateIp),
+///     privateLinkEndpoint: example.privateIp,
 ///     name: "example",
 /// });
 /// ```
@@ -241,17 +254,46 @@ import 'agent_state.dart';
 /// 			SubnetArns: pulumi.StringArray{
 /// 				exampleAwsSubnet.Arn,
 /// 			},
-/// 			VpcEndpointId: exampleVpcEndpoint.ID(),
-/// 			PrivateLinkEndpoint: pulumi.String(example.ApplyT(func(example ec2.GetNetworkInterfaceResult) (*string, error) {
-/// 				return &example.PrivateIp, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Name: pulumi.String("example"),
+/// 			VpcEndpointId:       exampleVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			PrivateLinkEndpoint: example.PrivateIp(),
+/// 			Name:                pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_ec2_getnetworkinterface" "example" {
+///   id = aws_ec2_vpcendpoint.example.network_interface_ids[0]
+/// }
+///
+/// resource "aws_datasync_agent" "example" {
+///   ip_address            = "1.2.3.4"
+///   security_group_arns   = [exampleAwsSecurityGroup.arn]
+///   subnet_arns           = [exampleAwsSubnet.arn]
+///   vpc_endpoint_id       = aws_ec2_vpcendpoint.example.id
+///   private_link_endpoint = data.aws_ec2_getnetworkinterface.example.private_ip
+///   name                  = "example"
+/// }
+/// resource "aws_ec2_vpcendpoint" "example" {
+///   service_name       ="com.amazonaws.${data.aws_getregion.current.region}.datasync"
+///   vpc_id             = exampleAwsVpc.id
+///   security_group_ids = [exampleAwsSecurityGroup.id]
+///   subnet_ids         = [exampleAwsSubnet.id]
+///   vpc_endpoint_type  = "Interface"
 /// }
 /// ```
 /// ```java
@@ -268,8 +310,8 @@ import 'agent_state.dart';
 /// import com.pulumi.aws.ec2.inputs.GetNetworkInterfaceArgs;
 /// import com.pulumi.aws.datasync.Agent;
 /// import com.pulumi.aws.datasync.AgentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,15 +403,15 @@ import 'agent_state.dart';
 /// $ pulumi import aws:datasync/agent:Agent example arn:aws:datasync:us-east-1:123456789012:agent/agent-12345678901234567
 /// ```
 class Agent extends pulumi.CustomResource {
-  /// DataSync Agent activation key during resource creation. Conflicts with `ip_address`. If an `ip_address` is provided instead, the provider will retrieve the `activation_key` as part of the resource creation.
+  /// DataSync Agent activation key during resource creation. Conflicts with `ipAddress`. If an `ipAddress` is provided instead, the provider will retrieve the `activationKey` as part of the resource creation.
   late final pulumi.Output<String> activationKey;
   /// Amazon Resource Name (ARN) of the DataSync Agent.
   late final pulumi.Output<String> arn;
-  /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activation_key`. DataSync Agent must be accessible on port 80 from where the provider is running.
+  /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. DataSync Agent must be accessible on port 80 from where the provider is running.
   late final pulumi.Output<String> ipAddress;
   /// Name of the DataSync Agent.
   late final pulumi.Output<String> name;
-  /// The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with `activation_key`.
+  /// The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with `activationKey`.
   late final pulumi.Output<String> privateLinkEndpoint;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -377,9 +419,9 @@ class Agent extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> securityGroupArns;
   /// The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
   late final pulumi.Output<List<String>?> subnetArns;
-  /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
   late final pulumi.Output<String?> vpcEndpointId;

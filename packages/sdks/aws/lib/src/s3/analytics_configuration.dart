@@ -114,7 +114,7 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAnalyticsConfiguration(ctx, "example-entire-bucket", &s3.AnalyticsConfigurationArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("EntireBucket"),
 /// 			StorageClassAnalysis: &s3.AnalyticsConfigurationStorageClassAnalysisArgs{
 /// 				DataExport: &s3.AnalyticsConfigurationStorageClassAnalysisDataExportArgs{
@@ -133,6 +133,35 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_analyticsconfiguration" "example-entire-bucket" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "EntireBucket"
+///   storage_class_analysis = {
+///     data_export = {
+///       destination = {
+///         s3_bucket_destination = {
+///           bucket_arn = aws_s3_bucket.analytics.arn
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucket" "analytics" {
+///   bucket = "analytics-destination"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +176,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// import com.pulumi.aws.s3.inputs.AnalyticsConfigurationStorageClassAnalysisDataExportArgs;
 /// import com.pulumi.aws.s3.inputs.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs;
 /// import com.pulumi.aws.s3.inputs.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +320,7 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAnalyticsConfiguration(ctx, "example-filtered", &s3.AnalyticsConfigurationArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Filter: &s3.AnalyticsConfigurationFilterArgs{
 /// 				Prefix: pulumi.String("documents/"),
@@ -308,6 +337,30 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_analyticsconfiguration" "example-filtered" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "ImportantBlueDocuments"
+///   filter = {
+///     prefix = "documents/"
+///     tags = {
+///       "priority" = "high"
+///       "class"    = "blue"
+///     }
+///   }
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +372,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// import com.pulumi.aws.s3.AnalyticsConfiguration;
 /// import com.pulumi.aws.s3.AnalyticsConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.AnalyticsConfigurationFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

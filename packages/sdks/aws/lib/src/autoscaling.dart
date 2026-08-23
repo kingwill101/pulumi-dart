@@ -35,6 +35,8 @@ export 'autoscaling/group_availability_zone_distribution.dart';
 export 'autoscaling/group_capacity_reservation_specification.dart';
 export 'autoscaling/group_capacity_reservation_specification_capacity_reservation_target.dart';
 export 'autoscaling/group_initial_lifecycle_hook.dart';
+export 'autoscaling/group_instance_lifecycle_policy.dart';
+export 'autoscaling/group_instance_lifecycle_policy_retention_triggers.dart';
 export 'autoscaling/group_instance_maintenance_policy.dart';
 export 'autoscaling/group_instance_refresh.dart';
 export 'autoscaling/group_instance_refresh_preferences.dart';

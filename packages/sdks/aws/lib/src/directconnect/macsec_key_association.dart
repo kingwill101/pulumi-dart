@@ -7,7 +7,7 @@ import 'macsec_key_association_state.dart';
 /// Creating this resource will also create a resource of type `aws.secretsmanager.Secret` which is managed by Direct Connect. While you can import this resource into your state, because this secret is managed by Direct Connect, you will not be able to make any modifications to it. See [How AWS Direct Connect uses AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_how-services-use-secrets_directconnect.html) for details.
 ///
 /// &gt; **Note:** All arguments including `ckn` and `cak` will be stored in the raw state as plain-text.
-/// &gt; **Note:** The `secret_arn` argument can only be used to reference a previously created MACSec key. You cannot associate a Secrets Manager secret created outside of the `aws.directconnect.MacsecKeyAssociation` resource.
+/// &gt; **Note:** The `secretArn` argument can only be used to reference a previously created MACSec key. You cannot associate a Secrets Manager secret created outside of the `aws.directconnect.MacsecKeyAssociation` resource.
 ///
 /// ## Example Usage
 ///
@@ -87,6 +87,25 @@ import 'macsec_key_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directconnect_getconnection" "example" {
+///   name = "tf-dx-connection"
+/// }
+///
+/// resource "aws_directconnect_macseckeyassociation" "test" {
+///   connection_id = data.aws_directconnect_getconnection.example.id
+///   ckn           = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+///   cak           = "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +116,8 @@ import 'macsec_key_association_state.dart';
 /// import com.pulumi.aws.directconnect.inputs.GetConnectionArgs;
 /// import com.pulumi.aws.directconnect.MacsecKeyAssociation;
 /// import com.pulumi.aws.directconnect.MacsecKeyAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,6 +247,27 @@ import 'macsec_key_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_directconnect_getconnection" "example" {
+///   name = "tf-dx-connection"
+/// }
+/// data "aws_secretsmanager_getsecret" "exampleGetSecret" {
+///   name = "directconnect!prod/us-east-1/directconnect/0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+/// }
+///
+/// resource "aws_directconnect_macseckeyassociation" "test" {
+///   connection_id = data.aws_directconnect_getconnection.example.id
+///   secret_arn    = data.aws_secretsmanager_getsecret.exampleGetSecret.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +280,8 @@ import 'macsec_key_association_state.dart';
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretArgs;
 /// import com.pulumi.aws.directconnect.MacsecKeyAssociation;
 /// import com.pulumi.aws.directconnect.MacsecKeyAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,7 +339,7 @@ class MacsecKeyAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   ///
-  /// &gt; **Note:** `ckn` and `cak` are mutually exclusive with `secret_arn` - these arguments cannot be used together. If you use `ckn` and `cak`, you should not use `secret_arn`. If you use the `secret_arn` argument to reference an existing MAC Security (MACSec) secret key, you should not use `ckn` or `cak`.
+  /// &gt; **Note:** `ckn` and `cak` are mutually exclusive with `secretArn` - these arguments cannot be used together. If you use `ckn` and `cak`, you should not use `secretArn`. If you use the `secretArn` argument to reference an existing MAC Security (MACSec) secret key, you should not use `ckn` or `cak`.
   late final pulumi.Output<String> secretArn;
   /// The date in UTC format that the MAC Security (MACsec) secret key takes effect.
   late final pulumi.Output<String> startOn;

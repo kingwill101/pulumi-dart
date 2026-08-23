@@ -8,9 +8,9 @@ import 'directory_bucket_access_point_scope_scope.dart';
 /// {@endtemplate}
 /// {@macro pulumi_s3_control_directory_bucket_access_point_scope_directory_bucket_access_point_scope_args_doc}
 class DirectoryBucketAccessPointScopeArgs {
-  /// The AWS account ID that owns the specified access point.
+  /// AWS account ID that owns the specified access point.
   final pulumi.Input<String> accountId;
-  /// The name of the access point that you want to apply the scope to.
+  /// Name of the access point that you want to apply the scope to.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -18,8 +18,8 @@ class DirectoryBucketAccessPointScopeArgs {
   final pulumi.Input<DirectoryBucketAccessPointScopeScope> scope;
 
   /// Creates a new [DirectoryBucketAccessPointScopeArgs].
-  /// [accountId] The AWS account ID that owns the specified access point.
-  /// [name] The name of the access point that you want to apply the scope to.
+  /// [accountId] AWS account ID that owns the specified access point.
+  /// [name] Name of the access point that you want to apply the scope to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
   const DirectoryBucketAccessPointScopeArgs({
@@ -47,4 +47,3 @@ class DirectoryBucketAccessPointScopeArgs {
     );
   }
 }
-

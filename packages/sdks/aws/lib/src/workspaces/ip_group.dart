@@ -121,6 +121,32 @@ import 'ip_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_workspaces_ipgroup" "contractors" {
+///   name        = "Contractors"
+///   description = "Contractors IP access control group"
+///   rules {
+///     source      = "150.24.14.0/24"
+///     description = "NY"
+///   }
+///   rules {
+///     source      = "125.191.14.85/32"
+///     description = "LA"
+///   }
+///   rules {
+///     source      = "44.98.100.0/24"
+///     description = "STL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +156,8 @@ import 'ip_group_state.dart';
 /// import com.pulumi.aws.workspaces.IpGroup;
 /// import com.pulumi.aws.workspaces.IpGroupArgs;
 /// import com.pulumi.aws.workspaces.inputs.IpGroupRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -197,9 +223,9 @@ class IpGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IpGroup].

@@ -94,6 +94,27 @@ import 'studio_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_emr_studio" "example" {
+///   auth_mode                   = "SSO"
+///   default_s3_location         ="s3://${test.bucket}/test"
+///   engine_security_group_id    = testAwsSecurityGroup.id
+///   name                        = "example"
+///   service_role                = testAwsIamRole.arn
+///   subnet_ids                  = [testAwsSubnet.id]
+///   user_role                   = testAwsIamRole.arn
+///   vpc_id                      = testAwsVpc.id
+///   workspace_security_group_id = testAwsSecurityGroup.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +123,8 @@ import 'studio_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.emr.Studio;
 /// import com.pulumi.aws.emr.StudioArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,7 +187,7 @@ class Studio extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The AWS KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
   late final pulumi.Output<String?> encryptionKeyArn;
-  /// The ID of the Amazon EMR Studio Engine security group. The Engine security group allows inbound network traffic from the Workspace security group, and it must be in the same VPC specified by `vpc_id`.
+  /// The ID of the Amazon EMR Studio Engine security group. The Engine security group allows inbound network traffic from the Workspace security group, and it must be in the same VPC specified by `vpcId`.
   late final pulumi.Output<String> engineSecurityGroupId;
   /// The authentication endpoint of your identity provider (IdP). Specify this value when you use IAM authentication and want to let federated users log in to a Studio with the Studio URL and credentials from your IdP. Amazon EMR Studio redirects users to this endpoint to enter credentials.
   late final pulumi.Output<String?> idpAuthUrl;
@@ -178,9 +199,9 @@ class Studio extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The IAM role that the Amazon EMR Studio assumes. The service role provides a way for Amazon EMR Studio to interoperate with other Amazon Web Services services.
   late final pulumi.Output<String> serviceRole;
-  /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC specified by `vpc_id`. Studio users can create a Workspace in any of the specified subnets.
+  /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC specified by `vpcId`. Studio users can create a Workspace in any of the specified subnets.
   late final pulumi.Output<List<String>> subnetIds;
-  /// list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// list of tags to apply to the EMR Cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The unique access URL of the Amazon EMR Studio.
@@ -189,7 +210,7 @@ class Studio extends pulumi.CustomResource {
   late final pulumi.Output<String?> userRole;
   /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the Studio.
   late final pulumi.Output<String> vpcId;
-  /// The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpc_id`.
+  /// The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpcId`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> workspaceSecurityGroupId;

@@ -124,6 +124,33 @@ import 'custom_routing_listener_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_globalaccelerator_customroutingaccelerator" "example" {
+///   name            = "Example"
+///   ip_address_type = "IPV4"
+///   enabled         = true
+///   attributes = {
+///     flow_logs_enabled   = true
+///     flow_logs_s3_bucket = "example-bucket"
+///     flow_logs_s3_prefix = "flow-logs/"
+///   }
+/// }
+/// resource "aws_globalaccelerator_customroutinglistener" "example" {
+///   accelerator_arn = aws_globalaccelerator_customroutingaccelerator.example.arn
+///   port_ranges {
+///     from_port = 80
+///     to_port   = 80
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +163,8 @@ import 'custom_routing_listener_state.dart';
 /// import com.pulumi.aws.globalaccelerator.CustomRoutingListener;
 /// import com.pulumi.aws.globalaccelerator.CustomRoutingListenerArgs;
 /// import com.pulumi.aws.globalaccelerator.inputs.CustomRoutingListenerPortRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

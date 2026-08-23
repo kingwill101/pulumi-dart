@@ -1,28 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'web_acl_rule_statement.dart';
+import 'web_acl_rule_statement_rate_based_statement_scope_down_statement.dart';
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement {
-  /// The statements to combine.
-  final pulumi.Input<List<WebAclRuleStatement>> statements;
+  /// List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatement>>? statements;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement].
-  /// [statements] The statements to combine.
+  /// [statements] List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
   const WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement({
-    required this.statements,
+    this.statements,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements': pulumi.Input.mapInputValue<List<WebAclRuleStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statements': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementRateBasedStatementScopeDownStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementScopeDownStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementAndStatement(
-      statements: pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatement>(map['statements']!, (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))),
+      statements: (() { final guardedValue = map['statements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatement>(guardedValue, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatement.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

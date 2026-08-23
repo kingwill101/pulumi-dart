@@ -11,11 +11,11 @@ class GetOrderableDbInstanceArgs {
   final pulumi.Input<String>? engine;
   /// Version of the DB engine.
   final pulumi.Input<String>? engineVersion;
-  /// DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferred_instance_classes`.)
+  /// DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferredInstanceClasses`.)
   final pulumi.Input<String>? instanceClass;
   /// License model. Default: `na`
   final pulumi.Input<String>? licenseModel;
-  /// Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instance_class`.)
+  /// Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instanceClass`.)
   final pulumi.Input<List<String>>? preferredInstanceClasses;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
@@ -25,9 +25,9 @@ class GetOrderableDbInstanceArgs {
   /// Creates a new [GetOrderableDbInstanceArgs].
   /// [engine] DB engine. Default: `docdb`
   /// [engineVersion] Version of the DB engine.
-  /// [instanceClass] DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferred_instance_classes`.)
+  /// [instanceClass] DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferredInstanceClasses`.)
   /// [licenseModel] License model. Default: `na`
-  /// [preferredInstanceClasses] Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instance_class`.)
+  /// [preferredInstanceClasses] Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instanceClass`.)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpc] Enable to show only VPC.
   const GetOrderableDbInstanceArgs({
@@ -64,4 +64,3 @@ class GetOrderableDbInstanceArgs {
     );
   }
 }
-

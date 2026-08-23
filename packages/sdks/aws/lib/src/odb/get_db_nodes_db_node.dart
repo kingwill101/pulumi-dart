@@ -5,77 +5,84 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbNodesDbNode {
   /// Additional information about the planned maintenance.
   final pulumi.Input<String> additionalDetails;
+  /// Amazon Resource Name (ARN) of the DB node.
   final pulumi.Input<String> arn;
-  /// The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
+  /// Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
   final pulumi.Input<String> backupIpId;
+  /// OCID of the second backup virtual network interface card (VNIC) for the DB node.
   final pulumi.Input<String> backupVnic2Id;
-  /// The OCID of the backup VNIC for the DB node.
+  /// OCID of the backup VNIC for the DB node.
   final pulumi.Input<String> backupVnicId;
-  /// The number of CPU cores enabled on the DB node.
+  /// Number of CPU cores enabled on the DB node.
   final pulumi.Input<int> cpuCoreCount;
-  /// The date and time when the DB node was created.
+  /// Date and time when the DB node was created.
   final pulumi.Input<String> createdAt;
+  /// Amount of local node storage, in gigabytes (GB), that's allocated on the DB node.
   final pulumi.Input<int> dbNodeStorageSize;
-  /// The unique identifier of the database server that's associated with the DB node.
+  /// Unique identifier of the database server that's associated with the DB node.
   final pulumi.Input<String> dbServerId;
-  /// The OCID of the DB system.
+  /// OCID of the DB system.
   final pulumi.Input<String> dbSystemId;
-  /// The name of the fault domain where the DB node is located.
+  /// Name of the fault domain where the DB node is located.
   final pulumi.Input<String> faultDomain;
-  /// The OCID of the host IP address that's associated with the DB node.
+  /// OCID of the host IP address that's associated with the DB node.
   final pulumi.Input<String> hostIpId;
-  /// The host name for the DB node.
+  /// Host name for the DB node.
   final pulumi.Input<String> hostname;
+  /// Unique identifier of the DB node.
   final pulumi.Input<String> id;
-  /// The type of maintenance the DB node is undergoing.
+  /// Type of maintenance the DB node is undergoing.
   final pulumi.Input<String> maintenanceType;
+  /// Amount of memory, in gigabytes (GB), that's allocated on the DB node.
   final pulumi.Input<int> memorySize;
-  /// The name of the OCI resource anchor for the DB node.
+  /// Name of the OCI resource anchor for the DB node.
   final pulumi.Input<String> ociResourceAnchorName;
-  /// The OCID of the DB node.
+  /// OCID of the DB node.
   final pulumi.Input<String> ocid;
+  /// Size of the block storage volume, in gigabytes (GB), that's allocated for the DB system. This attribute applies only for virtual machine DB systems.
   final pulumi.Input<int> softwareStorageSize;
-  /// The current status of the DB node.
+  /// Current status of the DB node.
   final pulumi.Input<String> status;
   /// Additional information about the status of the DB node.
   final pulumi.Input<String> statusReason;
-  /// The end date and time of the maintenance window.
+  /// End date and time of the maintenance window.
   final pulumi.Input<String> timeMaintenanceWindowEnd;
-  /// The start date and time of the maintenance window.
+  /// Start date and time of the maintenance window.
   final pulumi.Input<String> timeMaintenanceWindowStart;
-  /// The total number of CPU cores reserved on the DB node.
+  /// Total number of CPU cores reserved on the DB node.
   final pulumi.Input<int> totalCpuCoreCount;
+  /// OCID of the second VNIC.
   final pulumi.Input<String> vnic2Id;
-  /// The OCID of the VNIC.
+  /// OCID of the VNIC.
   final pulumi.Input<String> vnicId;
 
   /// Creates a new [GetDbNodesDbNode].
   /// [additionalDetails] Additional information about the planned maintenance.
-  /// [arn] Required.
-  /// [backupIpId] The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
-  /// [backupVnic2Id] Required.
-  /// [backupVnicId] The OCID of the backup VNIC for the DB node.
-  /// [cpuCoreCount] The number of CPU cores enabled on the DB node.
-  /// [createdAt] The date and time when the DB node was created.
-  /// [dbNodeStorageSize] Required.
-  /// [dbServerId] The unique identifier of the database server that's associated with the DB node.
-  /// [dbSystemId] The OCID of the DB system.
-  /// [faultDomain] The name of the fault domain where the DB node is located.
-  /// [hostIpId] The OCID of the host IP address that's associated with the DB node.
-  /// [hostname] The host name for the DB node.
-  /// [id] Required.
-  /// [maintenanceType] The type of maintenance the DB node is undergoing.
-  /// [memorySize] Required.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor for the DB node.
-  /// [ocid] The OCID of the DB node.
-  /// [softwareStorageSize] Required.
-  /// [status] The current status of the DB node.
+  /// [arn] Amazon Resource Name (ARN) of the DB node.
+  /// [backupIpId] Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
+  /// [backupVnic2Id] OCID of the second backup virtual network interface card (VNIC) for the DB node.
+  /// [backupVnicId] OCID of the backup VNIC for the DB node.
+  /// [cpuCoreCount] Number of CPU cores enabled on the DB node.
+  /// [createdAt] Date and time when the DB node was created.
+  /// [dbNodeStorageSize] Amount of local node storage, in gigabytes (GB), that's allocated on the DB node.
+  /// [dbServerId] Unique identifier of the database server that's associated with the DB node.
+  /// [dbSystemId] OCID of the DB system.
+  /// [faultDomain] Name of the fault domain where the DB node is located.
+  /// [hostIpId] OCID of the host IP address that's associated with the DB node.
+  /// [hostname] Host name for the DB node.
+  /// [id] Unique identifier of the DB node.
+  /// [maintenanceType] Type of maintenance the DB node is undergoing.
+  /// [memorySize] Amount of memory, in gigabytes (GB), that's allocated on the DB node.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor for the DB node.
+  /// [ocid] OCID of the DB node.
+  /// [softwareStorageSize] Size of the block storage volume, in gigabytes (GB), that's allocated for the DB system. This attribute applies only for virtual machine DB systems.
+  /// [status] Current status of the DB node.
   /// [statusReason] Additional information about the status of the DB node.
-  /// [timeMaintenanceWindowEnd] The end date and time of the maintenance window.
-  /// [timeMaintenanceWindowStart] The start date and time of the maintenance window.
-  /// [totalCpuCoreCount] The total number of CPU cores reserved on the DB node.
-  /// [vnic2Id] Required.
-  /// [vnicId] The OCID of the VNIC.
+  /// [timeMaintenanceWindowEnd] End date and time of the maintenance window.
+  /// [timeMaintenanceWindowStart] Start date and time of the maintenance window.
+  /// [totalCpuCoreCount] Total number of CPU cores reserved on the DB node.
+  /// [vnic2Id] OCID of the second VNIC.
+  /// [vnicId] OCID of the VNIC.
   const GetDbNodesDbNode({
     required this.additionalDetails,
     required this.arn,
@@ -167,4 +174,3 @@ class GetDbNodesDbNode {
     );
   }
 }
-

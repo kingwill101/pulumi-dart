@@ -89,6 +89,24 @@ import 'app_image_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_appimageconfig" "test" {
+///   app_image_config_name = "example"
+///   kernel_gateway_image_config = {
+///     kernel_specs = [{
+///       "name" = "example"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +116,9 @@ import 'app_image_config_state.dart';
 /// import com.pulumi.aws.sagemaker.AppImageConfig;
 /// import com.pulumi.aws.sagemaker.AppImageConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigKernelSpecArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +211,20 @@ import 'app_image_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_appimageconfig" "test" {
+///   app_image_config_name        = "example"
+///   code_editor_app_image_config = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +234,8 @@ import 'app_image_config_state.dart';
 /// import com.pulumi.aws.sagemaker.AppImageConfig;
 /// import com.pulumi.aws.sagemaker.AppImageConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AppImageConfigCodeEditorAppImageConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,6 +350,25 @@ import 'app_image_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_appimageconfig" "test" {
+///   app_image_config_name = "example"
+///   kernel_gateway_image_config = {
+///     kernel_specs = [{
+///       "name" = "example"
+///     }]
+///     file_system_config = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,9 +378,10 @@ import 'app_image_config_state.dart';
 /// import com.pulumi.aws.sagemaker.AppImageConfig;
 /// import com.pulumi.aws.sagemaker.AppImageConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigKernelSpecArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AppImageConfigKernelGatewayImageConfigFileSystemConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,11 +440,11 @@ class AppImageConfig extends pulumi.CustomResource {
   late final pulumi.Output<AppImageConfigKernelGatewayImageConfig?> kernelGatewayImageConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// &gt; **NOTE:** Exactly one of `code_editor_app_image_config`, `jupyter_lab_image_config`, or `kernel_gateway_image_config` must be configured. Empty blocks (e.g., `code_editor_app_image_config {}`) are valid configurations.
+  /// &gt; **NOTE:** Exactly one of `codeEditorAppImageConfig`, `jupyterLabImageConfig`, or `kernelGatewayImageConfig` must be configured. Empty blocks (e.g., `codeEditorAppImageConfig {}`) are valid configurations.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AppImageConfig].

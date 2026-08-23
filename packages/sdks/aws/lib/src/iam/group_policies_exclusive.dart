@@ -4,7 +4,7 @@ import 'group_policies_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of inline policies assigned to an AWS IAM (Identity & Access Management) group.
 ///
-/// !&gt; This resource takes exclusive ownership over inline policies assigned to a group. This includes removal of inline policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.GroupPolicy` resources managed alongside this resource are included in the `policy_names` argument.
+/// &gt; This resource takes exclusive ownership over inline policies assigned to a group. This includes removal of inline policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.GroupPolicy` resources managed alongside this resource are included in the `policyNames` argument.
 ///
 /// &gt; Destruction of this resource means Terraform will no longer manage reconciliation of the configured inline policy assignments. It __will not__ delete the configured policies from the group.
 ///
@@ -72,6 +72,20 @@ import 'group_policies_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_grouppoliciesexclusive" "example" {
+///   group_name   = exampleAwsIamGroup.name
+///   policy_names = [exampleAwsIamGroupPolicy.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +94,8 @@ import 'group_policies_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.GroupPoliciesExclusive;
 /// import com.pulumi.aws.iam.GroupPoliciesExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +128,7 @@ import 'group_policies_exclusive_state.dart';
 ///
 /// ### Disallow Inline Policies
 ///
-/// To automatically remove any configured inline policies, set the `policy_names` argument to an empty list.
+/// To automatically remove any configured inline policies, set the `policyNames` argument to an empty list.
 ///
 /// &gt; This will not __prevent__ inline policies from being assigned to a group via Terraform (or any other interface). This resource enables bringing inline policy assignments into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
@@ -173,6 +187,20 @@ import 'group_policies_exclusive_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_grouppoliciesexclusive" "example" {
+///   group_name   = exampleAwsIamGroup.name
+///   policy_names = []
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +209,8 @@ import 'group_policies_exclusive_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.GroupPoliciesExclusive;
 /// import com.pulumi.aws.iam.GroupPoliciesExclusiveArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,7 +242,7 @@ import 'group_policies_exclusive_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import exclusive management of inline policy assignments using the `group_name`. For example:
+/// Using `pulumi import`, import exclusive management of inline policy assignments using the `groupName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive example MyGroup

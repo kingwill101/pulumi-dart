@@ -6,12 +6,12 @@ import 'v2models_intent_confirmation_setting_declination_conditional_conditional
 class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
   final pulumi.Input<bool>? allowInterrupt;
-  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   final pulumi.Input<List<V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroup>>? messageGroups;
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
-  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   const V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponse({
     this.allowInterrupt,
     this.messageGroups,
@@ -31,4 +31,3 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchRe
     );
   }
 }
-

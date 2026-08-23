@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform {
-  /// The vCPU architecture. The default value is X86_64. Valid values are X86_64 and ARM64.
+  /// vCPU architecture. The default value is X86_64. Valid values are X86_64 and ARM64.
   final pulumi.Input<String> cpuArchitecture;
-  /// The operating system for the compute environment. V
+  /// Operating system for the compute environment.
   final pulumi.Input<String> operatingSystemFamily;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform].
-  /// [cpuArchitecture] The vCPU architecture. The default value is X86_64. Valid values are X86_64 and ARM64.
-  /// [operatingSystemFamily] The operating system for the compute environment. V
+  /// [cpuArchitecture] vCPU architecture. The default value is X86_64. Valid values are X86_64 and ARM64.
+  /// [operatingSystemFamily] Operating system for the compute environment.
   const GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform({
     required this.cpuArchitecture,
     required this.operatingSystemFamily,
@@ -30,4 +30,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform {
     );
   }
 }
-

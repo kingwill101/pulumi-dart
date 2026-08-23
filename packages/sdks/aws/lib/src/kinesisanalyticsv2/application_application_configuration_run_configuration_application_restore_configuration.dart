@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration {
   /// Specifies how the application should be restored. Valid values: `RESTORE_FROM_CUSTOM_SNAPSHOT`, `RESTORE_FROM_LATEST_SNAPSHOT`, `SKIP_RESTORE_FROM_SNAPSHOT`.
   final pulumi.Input<String>? applicationRestoreType;
-  /// The identifier of an existing snapshot of application state to use to restart an application. The application uses this value if `RESTORE_FROM_CUSTOM_SNAPSHOT` is specified for `application_restore_type`.
+  /// The identifier of an existing snapshot of application state to use to restart an application. The application uses this value if `RESTORE_FROM_CUSTOM_SNAPSHOT` is specified for `applicationRestoreType`.
   final pulumi.Input<String>? snapshotName;
 
   /// Creates a new [ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration].
   /// [applicationRestoreType] Specifies how the application should be restored. Valid values: `RESTORE_FROM_CUSTOM_SNAPSHOT`, `RESTORE_FROM_LATEST_SNAPSHOT`, `SKIP_RESTORE_FROM_SNAPSHOT`.
-  /// [snapshotName] The identifier of an existing snapshot of application state to use to restart an application. The application uses this value if `RESTORE_FROM_CUSTOM_SNAPSHOT` is specified for `application_restore_type`.
+  /// [snapshotName] The identifier of an existing snapshot of application state to use to restart an application. The application uses this value if `RESTORE_FROM_CUSTOM_SNAPSHOT` is specified for `applicationRestoreType`.
   const ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration({
     this.applicationRestoreType,
     this.snapshotName,
@@ -30,4 +30,3 @@ class ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfi
     );
   }
 }
-

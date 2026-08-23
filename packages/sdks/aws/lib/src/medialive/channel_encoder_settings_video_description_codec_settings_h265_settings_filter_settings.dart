@@ -24,4 +24,3 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSetti
     );
   }
 }
-

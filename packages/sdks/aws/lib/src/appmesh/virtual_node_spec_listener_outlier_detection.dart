@@ -5,20 +5,19 @@ import 'virtual_node_spec_listener_outlier_detection_base_ejection_duration.dart
 import 'virtual_node_spec_listener_outlier_detection_interval.dart';
 
 class VirtualNodeSpecListenerOutlierDetection {
-  /// Base amount of time for which a host is ejected.
+  /// Base amount of time for which a host is ejected. See `spec.listener.outlier_detection.base_ejection_duration` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration> baseEjectionDuration;
-  /// Time interval between ejection sweep analysis.
+  /// Time interval between ejection sweep analysis. See `spec.listener.outlier_detection.interval` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerOutlierDetectionInterval> interval;
-  /// Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value.
-  /// Minimum value of `0`. Maximum value of `100`.
+  /// Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value. Minimum value of `0`. Maximum value of `100`.
   final pulumi.Input<int> maxEjectionPercent;
   /// Number of consecutive `5xx` errors required for ejection. Minimum value of `1`.
   final pulumi.Input<int> maxServerErrors;
 
   /// Creates a new [VirtualNodeSpecListenerOutlierDetection].
-  /// [baseEjectionDuration] Base amount of time for which a host is ejected.
-  /// [interval] Time interval between ejection sweep analysis.
-  /// [maxEjectionPercent] Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value.
+  /// [baseEjectionDuration] Base amount of time for which a host is ejected. See `spec.listener.outlier_detection.base_ejection_duration` Block for details.
+  /// [interval] Time interval between ejection sweep analysis. See `spec.listener.outlier_detection.interval` Block for details.
+  /// [maxEjectionPercent] Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value. Minimum value of `0`. Maximum value of `100`.
   /// [maxServerErrors] Number of consecutive `5xx` errors required for ejection. Minimum value of `1`.
   const VirtualNodeSpecListenerOutlierDetection({
     required this.baseEjectionDuration,
@@ -45,4 +44,3 @@ class VirtualNodeSpecListenerOutlierDetection {
     );
   }
 }
-

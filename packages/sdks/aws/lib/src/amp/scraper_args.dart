@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scraper_destination.dart';
+import 'scraper_exporter.dart';
 import 'scraper_role_configuration.dart';
 import 'scraper_source.dart';
 import 'scraper_timeouts.dart';
@@ -11,35 +12,40 @@ import 'scraper_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_amp_scraper_scraper_args_doc}
 class ScraperArgs {
-  /// a name to associate with the managed scraper. This is for your use, and does not need to be unique.
+  /// Name to associate with the managed scraper. This is for your use, and does not need to be unique.
   final pulumi.Input<String>? alias;
-  /// Configuration block for the managed scraper to send metrics to. See `destination`.
+  /// Configuration block for the managed scraper to send metrics to. See `destination` Block for details.
   final pulumi.Input<ScraperDestination> destination;
+  /// Configuration block for additional exporters. See `exporter` Block for details.
+  final pulumi.Input<ScraperExporter>? exporter;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `role_configuration` below.
+  /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `roleConfiguration` Block for details.
   final pulumi.Input<ScraperRoleConfiguration>? roleConfiguration;
-  /// The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
+  /// Configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
   final pulumi.Input<String> scrapeConfiguration;
-  /// Configuration block to specify where the managed scraper will collect metrics from. See `source`.
+  /// Configuration block to specify where the managed scraper will collect metrics from. See `source` Block for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<ScraperSource>? source;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ScraperTimeouts>? timeouts;
 
   /// Creates a new [ScraperArgs].
-  /// [alias] a name to associate with the managed scraper. This is for your use, and does not need to be unique.
-  /// [destination] Configuration block for the managed scraper to send metrics to. See `destination`.
+  /// [alias] Name to associate with the managed scraper. This is for your use, and does not need to be unique.
+  /// [destination] Configuration block for the managed scraper to send metrics to. See `destination` Block for details.
+  /// [exporter] Configuration block for additional exporters. See `exporter` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleConfiguration] Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `role_configuration` below.
-  /// [scrapeConfiguration] The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
-  /// [source] Configuration block to specify where the managed scraper will collect metrics from. See `source`.
-  /// [tags] Optional.
+  /// [roleConfiguration] Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `roleConfiguration` Block for details.
+  /// [scrapeConfiguration] Configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
+  /// [source] Configuration block to specify where the managed scraper will collect metrics from. See `source` Block for details.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const ScraperArgs({
     this.alias,
     required this.destination,
+    this.exporter,
     this.region,
     this.roleConfiguration,
     required this.scrapeConfiguration,
@@ -52,6 +58,7 @@ class ScraperArgs {
     return <String, dynamic>{
       'alias': ?alias,
       'destination': pulumi.Input.mapInputValue<ScraperDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'exporter': ?pulumi.Input.mapOptionalInputValue<ScraperExporter, Map<String, dynamic>>(exporter, (value) => value.toMap()),
       'region': ?region,
       'roleConfiguration': ?pulumi.Input.mapOptionalInputValue<ScraperRoleConfiguration, Map<String, dynamic>>(roleConfiguration, (value) => value.toMap()),
       'scrapeConfiguration': scrapeConfiguration,
@@ -65,6 +72,7 @@ class ScraperArgs {
     return ScraperArgs(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: pulumi.Input.fromValue(ScraperDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
+      exporter: (() { final guardedValue = map['exporter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScraperExporter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleConfiguration: (() { final guardedValue = map['roleConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScraperRoleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scrapeConfiguration: pulumi.Input.fromValue(map['scrapeConfiguration'] as String),
@@ -74,4 +82,3 @@ class ScraperArgs {
     );
   }
 }
-

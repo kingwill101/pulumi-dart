@@ -3,8 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackStorageConnector {
-  /// Type of storage connector.
-  /// Valid values are `HOMEFOLDERS`, `GOOGLE_DRIVE`, or `ONE_DRIVE`.
+  /// Type of storage connector. Valid values are `HOMEFOLDERS`, `GOOGLE_DRIVE`, or `ONE_DRIVE`.
   final pulumi.Input<String> connectorType;
   /// Names of the domains for the account.
   final pulumi.Input<List<String>>? domains;
@@ -12,7 +11,7 @@ class StackStorageConnector {
   final pulumi.Input<String>? resourceIdentifier;
 
   /// Creates a new [StackStorageConnector].
-  /// [connectorType] Type of storage connector.
+  /// [connectorType] Type of storage connector. Valid values are `HOMEFOLDERS`, `GOOGLE_DRIVE`, or `ONE_DRIVE`.
   /// [domains] Names of the domains for the account.
   /// [resourceIdentifier] ARN of the storage connector.
   const StackStorageConnector({
@@ -37,4 +36,3 @@ class StackStorageConnector {
     );
   }
 }
-

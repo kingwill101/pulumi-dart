@@ -116,6 +116,31 @@ import 'experience_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_experience" "example" {
+///   index_id    = exampleAwsKendraIndex.id
+///   description = "My Kendra Experience"
+///   name        = "example"
+///   role_arn    = exampleAwsIamRole.arn
+///   configuration = {
+///     content_source_configuration = {
+///       direct_put_content = true
+///       faq_ids            = [exampleAwsKendraFaq.faqId]
+///     }
+///     user_identity_configuration = {
+///       identity_attribute_name = "12345ec453-1546651e-79c4-4554-91fa-00b43ccfa245"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'experience_state.dart';
 /// import com.pulumi.aws.kendra.inputs.ExperienceConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.ExperienceConfigurationContentSourceConfigurationArgs;
 /// import com.pulumi.aws.kendra.inputs.ExperienceConfigurationUserIdentityConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

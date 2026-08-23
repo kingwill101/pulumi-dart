@@ -24,4 +24,3 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful {
     );
   }
 }
-

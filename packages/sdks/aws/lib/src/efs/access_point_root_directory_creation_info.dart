@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPointRootDirectoryCreationInfo {
-  /// POSIX group ID to apply to the `root_directory`.
+  /// POSIX group ID to apply to the `rootDirectory`.
   final pulumi.Input<int> ownerGid;
-  /// POSIX user ID to apply to the `root_directory`.
+  /// POSIX user ID to apply to the `rootDirectory`.
   final pulumi.Input<int> ownerUid;
   /// POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
   final pulumi.Input<String> permissions;
 
   /// Creates a new [AccessPointRootDirectoryCreationInfo].
-  /// [ownerGid] POSIX group ID to apply to the `root_directory`.
-  /// [ownerUid] POSIX user ID to apply to the `root_directory`.
+  /// [ownerGid] POSIX group ID to apply to the `rootDirectory`.
+  /// [ownerUid] POSIX user ID to apply to the `rootDirectory`.
   /// [permissions] POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
   const AccessPointRootDirectoryCreationInfo({
     required this.ownerGid,
@@ -36,4 +36,3 @@ class AccessPointRootDirectoryCreationInfo {
     );
   }
 }
-

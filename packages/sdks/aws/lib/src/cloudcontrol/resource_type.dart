@@ -79,8 +79,8 @@ import 'resource_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 			"ClusterName": "example",
-/// 			"Tags": []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			"Tags": []map[string]string{
+/// 				{
 /// 					"Key":   "CostCenter",
 /// 					"Value": "IT",
 /// 				},
@@ -101,6 +101,26 @@ import 'resource_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudcontrol_resource" "example" {
+///   type_name = "AWS::ECS::Cluster"
+///   desired_state = jsonencode({
+///     "ClusterName" = "example"
+///     "Tags" = [{
+///       "Key"   = "CostCenter"
+///       "Value" = "IT"
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +130,8 @@ import 'resource_state.dart';
 /// import com.pulumi.aws.cloudcontrol.Resource;
 /// import com.pulumi.aws.cloudcontrol.ResourceArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -160,7 +180,7 @@ class ResourceType extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Amazon Resource Name (ARN) of the IAM Role to assume for operations.
   late final pulumi.Output<String?> roleArn;
-  /// JSON string of the CloudFormation resource type schema which is used for plan time validation where possible. Automatically fetched if not provided. In large scale environments with multiple resources using the same `type_name`, it is recommended to fetch the schema once via the `aws.cloudformation.CloudFormationType` data source and use this argument to reduce `DescribeType` API operation throttling. This value is marked sensitive only to prevent large plan differences from showing.
+  /// JSON string of the CloudFormation resource type schema which is used for plan time validation where possible. Automatically fetched if not provided. In large scale environments with multiple resources using the same `typeName`, it is recommended to fetch the schema once via the `aws.cloudformation.CloudFormationType` data source and use this argument to reduce `DescribeType` API operation throttling. This value is marked sensitive only to prevent large plan differences from showing.
   late final pulumi.Output<String> schema;
   /// CloudFormation resource type name. For example, `AWS::EC2::VPC`.
   ///

@@ -54,4 +54,3 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
     );
   }
 }
-

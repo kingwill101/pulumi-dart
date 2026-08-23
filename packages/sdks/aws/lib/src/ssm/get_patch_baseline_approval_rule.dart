@@ -6,7 +6,7 @@ import 'get_patch_baseline_approval_rule_patch_filter.dart';
 class GetPatchBaselineApprovalRule {
   /// Number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.
   final pulumi.Input<int> approveAfterDays;
-  /// Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with `approve_after_days`
+  /// Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with `approveAfterDays`
   final pulumi.Input<String> approveUntilDate;
   /// Compliance level for patches approved by this rule.
   final pulumi.Input<String> complianceLevel;
@@ -17,7 +17,7 @@ class GetPatchBaselineApprovalRule {
 
   /// Creates a new [GetPatchBaselineApprovalRule].
   /// [approveAfterDays] Number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.
-  /// [approveUntilDate] Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with `approve_after_days`
+  /// [approveUntilDate] Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with `approveAfterDays`
   /// [complianceLevel] Compliance level for patches approved by this rule.
   /// [enableNonSecurity] Boolean enabling the application of non-security updates.
   /// [patchFilters] Patch filter group that defines the criteria for the rule.
@@ -49,4 +49,3 @@ class GetPatchBaselineApprovalRule {
     );
   }
 }
-

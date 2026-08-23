@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_logging_access_log_file_format.dart';
 
 class VirtualNodeSpecLoggingAccessLogFile {
-  /// The specified format for the logs.
+  /// Format for the logs. See `spec.logging.access_log.file.format` Block for details.
   final pulumi.Input<VirtualNodeSpecLoggingAccessLogFileFormat>? format;
   /// File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> path;
 
   /// Creates a new [VirtualNodeSpecLoggingAccessLogFile].
-  /// [format] The specified format for the logs.
+  /// [format] Format for the logs. See `spec.logging.access_log.file.format` Block for details.
   /// [path] File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
   const VirtualNodeSpecLoggingAccessLogFile({
     this.format,
@@ -31,4 +31,3 @@ class VirtualNodeSpecLoggingAccessLogFile {
     );
   }
 }
-

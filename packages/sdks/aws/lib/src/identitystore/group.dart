@@ -67,6 +67,21 @@ import 'group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_identitystore_group" "this" {
+///   display_name      = "Example group"
+///   description       = "Example description"
+///   identity_store_id = example.identityStoreIds[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.identitystore.Group;
 /// import com.pulumi.aws.identitystore.GroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

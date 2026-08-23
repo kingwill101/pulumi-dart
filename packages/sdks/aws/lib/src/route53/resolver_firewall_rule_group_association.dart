@@ -71,7 +71,7 @@ import 'resolver_firewall_rule_group_association_state.dart';
 /// 		}
 /// 		_, err = route53.NewResolverFirewallRuleGroupAssociation(ctx, "example", &route53.ResolverFirewallRuleGroupAssociationArgs{
 /// 			Name:                pulumi.String("example"),
-/// 			FirewallRuleGroupId: example.ID(),
+/// 			FirewallRuleGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:            pulumi.Int(100),
 /// 			VpcId:               pulumi.Any(exampleAwsVpc.Id),
 /// 		})
@@ -80,6 +80,25 @@ import 'resolver_firewall_rule_group_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_route53_resolverfirewallrulegroup" "example" {
+///   name = "example"
+/// }
+/// resource "aws_route53_resolverfirewallrulegroupassociation" "example" {
+///   name                   = "example"
+///   firewall_rule_group_id = aws_route53_resolverfirewallrulegroup.example.id
+///   priority               = 100
+///   vpc_id                 = exampleAwsVpc.id
 /// }
 /// ```
 /// ```java
@@ -92,8 +111,8 @@ import 'resolver_firewall_rule_group_association_state.dart';
 /// import com.pulumi.aws.route53.ResolverFirewallRuleGroupArgs;
 /// import com.pulumi.aws.route53.ResolverFirewallRuleGroupAssociation;
 /// import com.pulumi.aws.route53.ResolverFirewallRuleGroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -156,9 +175,9 @@ class ResolverFirewallRuleGroupAssociation extends pulumi.CustomResource {
   late final pulumi.Output<int> priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The unique identifier of the VPC that you want to associate with the rule group.
   late final pulumi.Output<String> vpcId;

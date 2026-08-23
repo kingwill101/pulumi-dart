@@ -8,7 +8,117 @@ import 'agent_flow_timeouts.dart';
 ///
 /// ## Example Usage
 ///
-/// The default definition:
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.bedrock.AgentFlow("example", {
+///     name: "example-flow",
+///     executionRoleArn: exampleAwsIamRole.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.bedrock.AgentFlow("example",
+///     name="example-flow",
+///     execution_role_arn=example_aws_iam_role["arn"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Bedrock.AgentFlow("example", new()
+///     {
+///         Name = "example-flow",
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.NewAgentFlow(ctx, "example", &bedrock.AgentFlowArgs{
+/// 			Name:             pulumi.String("example-flow"),
+/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentflow" "example" {
+///   name               = "example-flow"
+///   execution_role_arn = exampleAwsIamRole.arn
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentFlow;
+/// import com.pulumi.aws.bedrock.AgentFlowArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AgentFlow("example", AgentFlowArgs.builder()
+///             .name("example-flow")
+///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:bedrock:AgentFlow
+///     properties:
+///       name: example-flow
+///       executionRoleArn: ${exampleAwsIamRole.arn}
+/// ```
+///
+///
+/// ### Default definition
 ///
 ///
 /// ```typescript
@@ -171,7 +281,7 @@ import 'agent_flow_timeouts.dart';
 ///                                     "text": {
 ///                                         "max_tokens": 2048,
 ///                                         "stop_sequences": ["User:"],
-///                                         "temperature": 0,
+///                                         "temperature": float(0),
 ///                                         "top_p": 0.8999999761581421,
 ///                                     },
 ///                                 },
@@ -490,6 +600,105 @@ import 'agent_flow_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentflow" "example" {
+///   name               = "example"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   definition = {
+///     connections = [{
+///       "name"   = "FlowInputNodeFlowInputNode0ToPrompt_1PromptsNode0"
+///       "source" = "FlowInputNode"
+///       "target" = "Prompt_1"
+///       "type"   = "Data"
+///       "configuration" = {
+///         "data" = {
+///           "sourceOutput" = "document"
+///           "targetInput"  = "topic"
+///         }
+///       }
+///       }, {
+///       "name"   = "Prompt_1PromptsNode0ToFlowOutputNodeFlowOutputNode0"
+///       "source" = "Prompt_1"
+///       "target" = "FlowOutputNode"
+///       "type"   = "Data"
+///       "configuration" = {
+///         "data" = {
+///           "sourceOutput" = "modelCompletion"
+///           "targetInput"  = "document"
+///         }
+///       }
+///     }]
+///     nodes = [{
+///       "name" = "FlowInputNode"
+///       "type" = "Input"
+///       "configuration" = {
+///         "input" = {}
+///       }
+///       "outputs" = [{
+///         "name" = "document"
+///         "type" = "String"
+///       }]
+///       }, {
+///       "name" = "Prompt_1"
+///       "type" = "Prompt"
+///       "configuration" = {
+///         "prompt" = {
+///           "sourceConfiguration" = {
+///             "inline" = {
+///               "modelId"      = "amazon.titan-text-express-v1"
+///               "templateType" = "TEXT"
+///               "inferenceConfiguration" = {
+///                 "text" = {
+///                   "maxTokens"     = 2048
+///                   "stopSequences" = ["User:"]
+///                   "temperature"   = 0
+///                   "topP"          = 0.8999999761581421
+///                 }
+///               }
+///               "templateConfiguration" = {
+///                 "text" = {
+///                   "text" = "Write a paragraph about {{topic}}."
+///                   "inputVariables" = [{
+///                     "name" = "topic"
+///                   }]
+///                 }
+///               }
+///             }
+///           }
+///         }
+///       }
+///       "inputs" = [{
+///         "expression" = "$.data"
+///         "name"       = "topic"
+///         "type"       = "String"
+///       }]
+///       "outputs" = [{
+///         "name" = "modelCompletion"
+///         "type" = "String"
+///       }]
+///       }, {
+///       "name" = "FlowOutputNode"
+///       "type" = "Output"
+///       "configuration" = {
+///         "output" = {}
+///       }
+///       "inputs" = [{
+///         "expression" = "$.data"
+///         "name"       = "document"
+///         "type"       = "String"
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -499,8 +708,25 @@ import 'agent_flow_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentFlow;
 /// import com.pulumi.aws.bedrock.AgentFlowArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionConnectionArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionConnectionConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionConnectionConfigurationDataArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationInputArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeOutputArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationTextArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariableArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeInputArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentFlowDefinitionNodeConfigurationOutputArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -711,9 +937,9 @@ class AgentFlow extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The status of the flow.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentFlowTimeouts?> timeouts;
   /// The time at which the flow was last updated.

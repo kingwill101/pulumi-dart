@@ -77,6 +77,23 @@ import 'device_fleet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_devicefleet" "example" {
+///   device_fleet_name = "example"
+///   role_arn          = test.arn
+///   output_config = {
+///     s3_output_location ="s3://${exampleAwsS3Bucket.bucket}/prefix/"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'device_fleet_state.dart';
 /// import com.pulumi.aws.sagemaker.DeviceFleet;
 /// import com.pulumi.aws.sagemaker.DeviceFleetArgs;
 /// import com.pulumi.aws.sagemaker.inputs.DeviceFleetOutputConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,9 +162,9 @@ class DeviceFleet extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The Amazon Resource Name (ARN) that has access to AWS Internet of Things (IoT).
   late final pulumi.Output<String> roleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DeviceFleet].

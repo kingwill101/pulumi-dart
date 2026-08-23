@@ -63,6 +63,21 @@ import 'graph_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_detective_graph" "example" {
+///   tags = {
+///     "Name" = "example-detective-graph"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +86,8 @@ import 'graph_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.detective.Graph;
 /// import com.pulumi.aws.detective.GraphArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,7 +118,14 @@ import 'graph_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.detective.Graph` using the ARN. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `graphArn` (String) ARN of the Detective graph.
+///
+///
+/// Using `pulumi import`, import Detective graphs using `graphArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:detective/graph:Graph example arn:aws:detective:us-east-1:123456789101:graph:231684d34gh74g4bae1dbc7bd807d02d
@@ -115,7 +137,7 @@ class Graph extends pulumi.CustomResource {
   late final pulumi.Output<String> graphArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 

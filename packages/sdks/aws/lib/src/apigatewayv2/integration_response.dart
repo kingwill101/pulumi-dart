@@ -68,6 +68,21 @@ import 'integration_response_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_integrationresponse" "example" {
+///   api_id                   = exampleAwsApigatewayv2Api.id
+///   integration_id           = exampleAwsApigatewayv2Integration.id
+///   integration_response_key = "/200/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'integration_response_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.IntegrationResponse;
 /// import com.pulumi.aws.apigatewayv2.IntegrationResponseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,7 +144,7 @@ class IntegrationResponse extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
   late final pulumi.Output<Map<String, String>?> responseTemplates;
-  /// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+  /// [Template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
   late final pulumi.Output<String?> templateSelectionExpression;
 
   /// Creates a new [IntegrationResponse].

@@ -31,7 +31,7 @@ class CapacityReservationArgs {
   final pulumi.Input<String>? placementGroupArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   final pulumi.Input<String>? tenancy;
@@ -49,7 +49,7 @@ class CapacityReservationArgs {
   /// [outpostArn] The Amazon Resource Name (ARN) of the Outpost on which to create the Capacity Reservation.
   /// [placementGroupArn] The Amazon Resource Name (ARN) of the cluster placement group in which to create the Capacity Reservation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tenancy] Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   const CapacityReservationArgs({
     required this.availabilityZone,
@@ -106,4 +106,3 @@ class CapacityReservationArgs {
     );
   }
 }
-

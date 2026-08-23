@@ -85,6 +85,29 @@ import 'get_custom_routing_accelerator_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_globalaccelerator_getaccelerator" "example" {
+///   arn  = var.acceleratorArn
+///   name = var.acceleratorName
+/// }
+///
+/// variable "acceleratorArn" {
+///   type    = string
+///   default = ""
+/// }
+/// variable "acceleratorName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +116,8 @@ import 'get_custom_routing_accelerator_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.globalaccelerator.GlobalacceleratorFunctions;
 /// import com.pulumi.aws.globalaccelerator.inputs.GetAcceleratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +252,29 @@ Future<GetAcceleratorResult> getAccelerator(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_globalaccelerator_getcustomroutingaccelerator" "example" {
+///   arn  = var.acceleratorArn
+///   name = var.acceleratorName
+/// }
+///
+/// variable "acceleratorArn" {
+///   type    = string
+///   default = ""
+/// }
+/// variable "acceleratorName" {
+///   type    = string
+///   default = ""
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -237,8 +283,8 @@ Future<GetAcceleratorResult> getAccelerator(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.globalaccelerator.GlobalacceleratorFunctions;
 /// import com.pulumi.aws.globalaccelerator.inputs.GetCustomRoutingAcceleratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

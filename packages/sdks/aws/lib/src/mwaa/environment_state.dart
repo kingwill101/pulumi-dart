@@ -7,7 +7,7 @@ import 'environment_network_configuration.dart';
 
 /// Input properties used for looking up and filtering Environment resources.
 class EnvironmentState {
-  /// The `airflow_configuration_options` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
+  /// The `airflowConfigurationOptions` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
   final pulumi.Input<Map<String, String>>? airflowConfigurationOptions;
   /// Airflow version of your environment, will be set by default to the latest version that MWAA supports.
   final pulumi.Input<String>? airflowVersion;
@@ -29,29 +29,29 @@ class EnvironmentState {
   /// The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key `aws/airflow` by default. Please check the [Official Documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/custom-keys-certs.html) for more information.
   final pulumi.Input<String>? kmsKey;
   final pulumi.Input<List<EnvironmentLastUpdated>>? lastUpdateds;
-  /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `logging_configuration` Block for details.
+  /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `loggingConfiguration` Block for details.
   final pulumi.Input<EnvironmentLoggingConfiguration>? loggingConfiguration;
-  /// The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
+  /// The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   final pulumi.Input<int>? maxWebservers;
   /// The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`. Will be `10` by default.
   final pulumi.Input<int>? maxWorkers;
-  /// The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
+  /// The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   final pulumi.Input<int>? minWebservers;
   /// The minimum number of workers that you want to run in your environment. Will be `1` by default.
   final pulumi.Input<int>? minWorkers;
   /// The name of the Apache Airflow Environment
   final pulumi.Input<String>? name;
-  /// Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `network_configuration` Block for details.
+  /// Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `networkConfiguration` Block for details.
   final pulumi.Input<EnvironmentNetworkConfiguration>? networkConfiguration;
   /// The plugins.zip file version you want to use.
   final pulumi.Input<String>? pluginsS3ObjectVersion;
-  /// The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then plugins_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then pluginsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   final pulumi.Input<String>? pluginsS3Path;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// The requirements.txt file version you want to use.
   final pulumi.Input<String>? requirementsS3ObjectVersion;
-  /// The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirements_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirementsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   final pulumi.Input<String>? requirementsS3Path;
   /// The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.
   final pulumi.Input<int>? schedulers;
@@ -65,11 +65,11 @@ class EnvironmentState {
   final pulumi.Input<String>? startupScriptS3Path;
   /// The status of the Amazon MWAA Environment
   final pulumi.Input<String>? status;
-  /// A map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default) and `PUBLIC_ONLY`.
+  /// Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default), `PUBLIC_ONLY` and `PUBLIC_AND_PRIVATE`.
   final pulumi.Input<String>? webserverAccessMode;
   /// The webserver URL of the MWAA Environment
   final pulumi.Input<String>? webserverUrl;
@@ -81,7 +81,7 @@ class EnvironmentState {
   final pulumi.Input<String>? workerReplacementStrategy;
 
   /// Creates a new [EnvironmentState].
-  /// [airflowConfigurationOptions] The `airflow_configuration_options` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
+  /// [airflowConfigurationOptions] The `airflowConfigurationOptions` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
   /// [airflowVersion] Airflow version of your environment, will be set by default to the latest version that MWAA supports.
   /// [arn] The ARN of the MWAA Environment
   /// [createdAt] The Created At date of the MWAA Environment
@@ -92,27 +92,27 @@ class EnvironmentState {
   /// [executionRoleArn] The Amazon Resource Name (ARN) of the task execution role that the Amazon MWAA and its environment can assume. Check the [official AWS documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html) for the detailed role specification.
   /// [kmsKey] The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key `aws/airflow` by default. Please check the [Official Documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/custom-keys-certs.html) for more information.
   /// [lastUpdateds] Optional.
-  /// [loggingConfiguration] The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `logging_configuration` Block for details.
-  /// [maxWebservers] The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
+  /// [loggingConfiguration] The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `loggingConfiguration` Block for details.
+  /// [maxWebservers] The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   /// [maxWorkers] The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`. Will be `10` by default.
-  /// [minWebservers] The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
+  /// [minWebservers] The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   /// [minWorkers] The minimum number of workers that you want to run in your environment. Will be `1` by default.
   /// [name] The name of the Apache Airflow Environment
-  /// [networkConfiguration] Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `network_configuration` Block for details.
+  /// [networkConfiguration] Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `networkConfiguration` Block for details.
   /// [pluginsS3ObjectVersion] The plugins.zip file version you want to use.
-  /// [pluginsS3Path] The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then plugins_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// [pluginsS3Path] The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then pluginsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requirementsS3ObjectVersion] The requirements.txt file version you want to use.
-  /// [requirementsS3Path] The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirements_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// [requirementsS3Path] The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirementsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   /// [schedulers] The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.
   /// [serviceRoleArn] The Service Role ARN of the Amazon MWAA Environment
   /// [sourceBucketArn] The Amazon Resource Name (ARN) of your Amazon S3 storage bucket. For example, arn:aws:s3:::airflow-mybucketname.
   /// [startupScriptS3ObjectVersion] The version of the startup shell script you want to use. You must specify the version ID that Amazon S3 assigns to the file every time you update the script.
   /// [startupScriptS3Path] The relative path to the script hosted in your bucket. The script runs as your environment starts before starting the Apache Airflow process. Use this script to install dependencies, modify configuration options, and set environment variables. See [Using a startup script](https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html). Supported for environment versions 2.x and later.
   /// [status] The status of the Amazon MWAA Environment
-  /// [tags] A map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [webserverAccessMode] Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default) and `PUBLIC_ONLY`.
+  /// [tags] A map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [webserverAccessMode] Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default), `PUBLIC_ONLY` and `PUBLIC_AND_PRIVATE`.
   /// [webserverUrl] The webserver URL of the MWAA Environment
   /// [webserverVpcEndpointService] The VPC endpoint for the environment's web server
   /// [weeklyMaintenanceWindowStart] Specifies the start date for the weekly maintenance window.
@@ -238,4 +238,3 @@ class EnvironmentState {
     );
   }
 }
-

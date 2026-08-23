@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
-  /// Name of the schema registry that contains the schema. Must be provided when `schema_name` is specified and conflicts with `schema_arn`.
+  /// Name of the schema registry that contains the schema. Must be provided when `schemaName` is specified and conflicts with `schemaArn`.
   final pulumi.Input<String>? registryName;
-  /// ARN of the schema. One of `schema_arn` or `schema_name` has to be provided.
+  /// ARN of the schema. One of `schemaArn` or `schemaName` has to be provided.
   final pulumi.Input<String>? schemaArn;
-  /// Name of the schema. One of `schema_arn` or `schema_name` has to be provided.
+  /// Name of the schema. One of `schemaArn` or `schemaName` has to be provided.
   final pulumi.Input<String>? schemaName;
 
   /// Creates a new [CatalogTableStorageDescriptorSchemaReferenceSchemaId].
-  /// [registryName] Name of the schema registry that contains the schema. Must be provided when `schema_name` is specified and conflicts with `schema_arn`.
-  /// [schemaArn] ARN of the schema. One of `schema_arn` or `schema_name` has to be provided.
-  /// [schemaName] Name of the schema. One of `schema_arn` or `schema_name` has to be provided.
+  /// [registryName] Name of the schema registry that contains the schema. Must be provided when `schemaName` is specified and conflicts with `schemaArn`.
+  /// [schemaArn] ARN of the schema. One of `schemaArn` or `schemaName` has to be provided.
+  /// [schemaName] Name of the schema. One of `schemaArn` or `schemaName` has to be provided.
   const CatalogTableStorageDescriptorSchemaReferenceSchemaId({
     this.registryName,
     this.schemaArn,
@@ -36,4 +36,3 @@ class CatalogTableStorageDescriptorSchemaReferenceSchemaId {
     );
   }
 }
-

@@ -6,14 +6,14 @@ import 'get_application_providers_application_provider_display_data.dart';
 class GetApplicationProvidersApplicationProvider {
   /// ARN of the application provider.
   final pulumi.Input<String> applicationProviderArn;
-  /// An object describing how IAM Identity Center represents the application provider in the portal. See `display_data` below.
+  /// An object describing how IAM Identity Center represents the application provider in the portal. See `displayData` below.
   final pulumi.Input<List<GetApplicationProvidersApplicationProviderDisplayData>> displayDatas;
   /// Protocol that the application provider uses to perform federation. Valid values are `SAML` and `OAUTH`.
   final pulumi.Input<String> federationProtocol;
 
   /// Creates a new [GetApplicationProvidersApplicationProvider].
   /// [applicationProviderArn] ARN of the application provider.
-  /// [displayDatas] An object describing how IAM Identity Center represents the application provider in the portal. See `display_data` below.
+  /// [displayDatas] An object describing how IAM Identity Center represents the application provider in the portal. See `displayData` below.
   /// [federationProtocol] Protocol that the application provider uses to perform federation. Valid values are `SAML` and `OAUTH`.
   const GetApplicationProvidersApplicationProvider({
     required this.applicationProviderArn,
@@ -37,4 +37,3 @@ class GetApplicationProvidersApplicationProvider {
     );
   }
 }
-

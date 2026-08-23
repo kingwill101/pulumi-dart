@@ -113,6 +113,21 @@ import 'model_card_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_modelcard" "example" {
+///   model_card_name   = "my-model-card"
+///   model_card_status = "Draft"
+///   content           = "{\n  \\\"business_details\\\": {\n    \\\"business_problem\\\": \\\"Quality\\\"\n  },\n  \\\"intended_uses\\\": {\n    \\\"intended_uses\\\": \\\"Testing\\\"\n  },\n  \\\"additional_information\\\": {\n    \\\"caveats_and_recommendations\\\": \\\"Use this\\\"\n  }\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +136,8 @@ import 'model_card_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.ModelCard;
 /// import com.pulumi.aws.sagemaker.ModelCardArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,7 +194,7 @@ import 'model_card_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import model cards using the `model_card_name`. For example:
+/// Using `pulumi import`, import model cards using the `modelCardName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/modelCard:ModelCard example my-model-card
@@ -197,9 +212,9 @@ class ModelCard extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
   late final pulumi.Output<ModelCardSecurityConfig?> securityConfig;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ModelCardTimeouts?> timeouts;
 

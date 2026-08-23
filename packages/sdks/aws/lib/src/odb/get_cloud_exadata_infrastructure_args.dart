@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_odb_get_cloud_exadata_infrastructure_get_cloud_exadata_infrastructure_args_doc}
 class GetCloudExadataInfrastructureArgs {
-  /// The unique identifier of the Exadata infrastructure.
+  /// Unique identifier of the Exadata infrastructure.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
@@ -15,7 +15,7 @@ class GetCloudExadataInfrastructureArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetCloudExadataInfrastructureArgs].
-  /// [id] The unique identifier of the Exadata infrastructure.
+  /// [id] Unique identifier of the Exadata infrastructure.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetCloudExadataInfrastructureArgs({
     required this.id,
@@ -36,4 +36,3 @@ class GetCloudExadataInfrastructureArgs {
     );
   }
 }
-

@@ -84,6 +84,25 @@ import 'billing_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_billinggroup" "example" {
+///   name = "example"
+///   properties = {
+///     description = "This is my billing group"
+///   }
+///   tags = {
+///     "terraform" = "true"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +112,8 @@ import 'billing_group_state.dart';
 /// import com.pulumi.aws.iot.BillingGroup;
 /// import com.pulumi.aws.iot.BillingGroupArgs;
 /// import com.pulumi.aws.iot.inputs.BillingGroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

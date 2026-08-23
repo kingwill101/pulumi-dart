@@ -49,6 +49,24 @@ import 'get_controls_result.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_organizations_getorganization" "this" {
+/// }
+/// data "aws_organizations_getorganizationalunits" "thisGetOrganizationalUnits" {
+///   parent_id = data.aws_organizations_getorganization.this.roots[0].id
+/// }
+/// data "aws_controltower_getcontrols" "thisGetControls" {
+///   target_identifier = [for x in data.aws_organizations_getorganizationalunits.thisGetOrganizationalUnits.children : x.arn if x.name == "Security"][0]
+/// }
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_controltower_get_controls_get_controls_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetControlsResult> getControls(

@@ -10,7 +10,7 @@ import 'connection_function_connection_function_config.dart';
 class ConnectionFunctionArgs {
   /// Code for the connection function. Maximum length is 40960 characters.
   final pulumi.Input<String> connectionFunctionCode;
-  /// Configuration information for the connection function. See `connection_function_config` below.
+  /// Configuration information for the connection function. See `connectionFunctionConfig` below.
   final pulumi.Input<ConnectionFunctionConnectionFunctionConfig> connectionFunctionConfig;
   /// Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   ///
@@ -18,15 +18,15 @@ class ConnectionFunctionArgs {
   final pulumi.Input<String>? name;
   /// Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
   final pulumi.Input<bool>? publish;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ConnectionFunctionArgs].
   /// [connectionFunctionCode] Code for the connection function. Maximum length is 40960 characters.
-  /// [connectionFunctionConfig] Configuration information for the connection function. See `connection_function_config` below.
+  /// [connectionFunctionConfig] Configuration information for the connection function. See `connectionFunctionConfig` below.
   /// [name] Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   /// [publish] Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ConnectionFunctionArgs({
     required this.connectionFunctionCode,
     required this.connectionFunctionConfig,
@@ -55,4 +55,3 @@ class ConnectionFunctionArgs {
     );
   }
 }
-

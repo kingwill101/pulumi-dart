@@ -108,7 +108,7 @@ import 'serverless_lifecycle_policy_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]interface{}{
 /// 			"Rules": []interface{}{
 /// 				map[string]interface{}{
 /// 					"ResourceType": "index",
@@ -142,6 +142,31 @@ import 'serverless_lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesslifecyclepolicy" "example" {
+///   name = "example"
+///   type = "retention"
+///   policy = jsonencode({
+///     "Rules" = [{
+///       "ResourceType"      = "index"
+///       "Resource"          = ["index/autoparts-inventory/*"]
+///       "MinIndexRetention" = "81d"
+///       }, {
+///       "ResourceType"        = "index"
+///       "Resource"            = ["index/sales/orders*"]
+///       "NoMinIndexRetention" = true
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +176,8 @@ import 'serverless_lifecycle_policy_state.dart';
 /// import com.pulumi.aws.opensearch.ServerlessLifecyclePolicy;
 /// import com.pulumi.aws.opensearch.ServerlessLifecyclePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -209,6 +234,19 @@ import 'serverless_lifecycle_policy_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the policy.
+/// * `type` (String) Type of lifecycle policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import OpenSearch Serverless Lifecycle Policy using the `name` and `type` arguments separated by a slash (`/`). For example:
 ///

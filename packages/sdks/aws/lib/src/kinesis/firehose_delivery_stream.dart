@@ -61,7 +61,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     name: "firehose_lambda_processor",
 ///     role: lambdaIam.arn,
 ///     handler: "exports.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// });
 /// const extendedS3Stream = new aws.kinesis.FirehoseDeliveryStream("extended_s3_stream", {
 ///     name: "kinesis-firehose-extended-s3-test-stream",
@@ -118,7 +118,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     name="firehose_lambda_processor",
 ///     role=lambda_iam.arn,
 ///     handler="exports.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X)
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X)
 /// extended_s3_stream = aws.kinesis.FirehoseDeliveryStream("extended_s3_stream",
 ///     name="kinesis-firehose-extended-s3-test-stream",
 ///     destination="extended_s3",
@@ -223,7 +223,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         Name = "firehose_lambda_processor",
 ///         Role = lambdaIam.Arn,
 ///         Handler = "exports.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     });
 ///
 ///     var extendedS3Stream = new Aws.Kinesis.FirehoseDeliveryStream("extended_s3_stream", new()
@@ -346,7 +346,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			Name:    pulumi.String("firehose_lambda_processor"),
 /// 			Role:    lambdaIam.Arn,
 /// 			Handler: pulumi.String("exports.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -379,7 +379,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -387,6 +387,77 @@ import 'firehose_delivery_stream_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "firehoseAssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["firehose.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "lambdaAssumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["lambda.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
+///   name        = "kinesis-firehose-extended-s3-test-stream"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     role_arn   = aws_iam_role.firehose_role.arn
+///     bucket_arn = aws_s3_bucket.bucket.arn
+///     processing_configuration = {
+///       enabled = "true"
+///       processors = [{
+///         "type" = "Lambda"
+///         "parameters" = [{
+///           "parameterName"  = "LambdaArn"
+///           "parameterValue" ="${aws_lambda_function.lambda_processor.arn}:$LATEST"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket = "tf-test-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "bucket_acl" {
+///   bucket = aws_s3_bucket.bucket.id
+///   acl    = "private"
+/// }
+/// resource "aws_iam_role" "firehose_role" {
+///   name               = "firehose_test_role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.firehoseAssumeRole.json
+/// }
+/// resource "aws_iam_role" "lambda_iam" {
+///   name               = "lambda_iam"
+///   assume_role_policy = data.aws_iam_getpolicydocument.lambdaAssumeRole.json
+/// }
+/// resource "aws_lambda_function" "lambda_processor" {
+///   code    = fileArchive("lambda.zip")
+///   name    = "firehose_lambda_processor"
+///   role    = aws_iam_role.lambda_iam.arn
+///   handler = "exports.handler"
+///   runtime = "nodejs24.x"
 /// }
 /// ```
 /// ```java
@@ -399,6 +470,8 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.lambda.Function;
@@ -407,11 +480,13 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs;
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -464,7 +539,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             .name("firehose_lambda_processor")
 ///             .role(lambdaIam.arn())
 ///             .handler("exports.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .build());
 ///
 ///         var extendedS3Stream = new FirehoseDeliveryStream("extendedS3Stream", FirehoseDeliveryStreamArgs.builder()
@@ -539,11 +614,11 @@ import 'firehose_delivery_stream_state.dart';
 ///     name: lambda_processor
 ///     properties:
 ///       code:
-///         fn::FileArchive: lambda.zip
+///         fn::fileArchive: lambda.zip
 ///       name: firehose_lambda_processor
 ///       role: ${lambdaIam.arn}
 ///       handler: exports.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 /// variables:
 ///   firehoseAssumeRole:
 ///     fn::invoke:
@@ -799,6 +874,51 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
+///   name        = "kinesis-firehose-extended-s3-test-stream"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     role_arn       = firehoseRole.arn
+///     bucket_arn     = bucket.arn
+///     buffering_size = 64
+///     dynamic_partitioning_configuration = {
+///       enabled = "true"
+///     }
+///     prefix              = "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"
+///     error_output_prefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"
+///     processing_configuration = {
+///       enabled = "true"
+///       processors = [{
+///         "type" = "RecordDeAggregation"
+///         "parameters" = [{
+///           "parameterName"  = "SubRecordType"
+///           "parameterValue" = "JSON"
+///         }]
+///         }, {
+///         "type" = "AppendDelimiterToRecord"
+///         }, {
+///         "type" = "MetadataExtraction"
+///         "parameters" = [{
+///           "parameterName"  = "JsonParsingEngine"
+///           "parameterValue" = "JQ-1.6"
+///           }, {
+///           "parameterName"  = "MetadataExtractionQuery"
+///           "parameterValue" = "{customer_id:.customer_id}"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -810,8 +930,10 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -900,9 +1022,9 @@ import 'firehose_delivery_stream_state.dart';
 /// ```
 ///
 ///
-/// Multiple Dynamic Partitioning Keys (maximum of 50) can be added by comma separating the `parameter_value`.
+/// Multiple Dynamic Partitioning Keys (maximum of 50) can be added by comma separating the `parameterValue`.
 ///
-/// The following example adds the Dynamic Partitioning Keys: `store_id` and `customer_id` to the S3 prefix.
+/// The following example adds the Dynamic Partitioning Keys: `storeId` and `customerId` to the S3 prefix.
 ///
 ///
 /// ```typescript
@@ -1075,6 +1197,43 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
+///   name        = "kinesis-firehose-extended-s3-test-stream"
+///   destination = "extended_s3"
+///   extended_s3_configuration = {
+///     role_arn       = firehoseRole.arn
+///     bucket_arn     = bucket.arn
+///     buffering_size = 64
+///     dynamic_partitioning_configuration = {
+///       enabled = "true"
+///     }
+///     prefix              = "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"
+///     error_output_prefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"
+///     processing_configuration = {
+///       enabled = "true"
+///       processors = [{
+///         "type" = "MetadataExtraction"
+///         "parameters" = [{
+///           "parameterName"  = "JsonParsingEngine"
+///           "parameterValue" = "JQ-1.6"
+///           }, {
+///           "parameterName"  = "MetadataExtractionQuery"
+///           "parameterValue" = "{store_id:.store_id,customer_id:.customer_id}"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1086,8 +1245,10 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1368,6 +1529,52 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshift_cluster" "test_cluster" {
+///   cluster_identifier = "tf-redshift-cluster"
+///   database_name      = "test"
+///   master_username    = "testuser"
+///   master_password    = "T3stPass"
+///   node_type          = "dc1.large"
+///   cluster_type       = "single-node"
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "redshift"
+///   redshift_configuration = {
+///     role_arn           = firehoseRole.arn
+///     cluster_jdbcurl    ="jdbc:redshift://${aws_redshift_cluster.test_cluster.endpoint}/${aws_redshift_cluster.test_cluster.database_name}"
+///     username           = "testuser"
+///     password           = "T3stPass"
+///     data_table_name    = "test-table"
+///     copy_options       = "delimiter '|'"
+///     data_table_columns = "test-col"
+///     s3_backup_mode     = "Enabled"
+///     s3_configuration = {
+///       role_arn           = firehoseRole.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
+///     s3_backup_configuration = {
+///       role_arn           = firehoseRole.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 15
+///       buffering_interval = 300
+///       compression_format = "GZIP"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1381,8 +1588,8 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamRedshiftConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1659,6 +1866,46 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticsearch_domain" "test_cluster" {
+///   domain_name = "firehose-es-test"
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "elasticsearch"
+///   elasticsearch_configuration = {
+///     domain_arn = aws_elasticsearch_domain.test_cluster.arn
+///     role_arn   = firehoseRole.arn
+///     index_name = "test"
+///     type_name  = "test"
+///     s3_configuration = {
+///       role_arn           = firehoseRole.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
+///     processing_configuration = {
+///       enabled = "true"
+///       processors = [{
+///         "type" = "Lambda"
+///         "parameters" = [{
+///           "parameterName"  = "LambdaArn"
+///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1672,8 +1919,10 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamElasticsearchConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1809,7 +2058,7 @@ import 'firehose_delivery_stream_state.dart';
 /// const firehose_elasticsearchRolePolicy = new aws.iam.RolePolicy("firehose-elasticsearch", {
 ///     name: "elasticsearch",
 ///     role: firehose.id,
-///     policy: firehose_elasticsearch.apply(firehose_elasticsearch => firehose_elasticsearch.json),
+///     policy: firehose_elasticsearch.json,
 /// });
 /// const test = new aws.kinesis.FirehoseDeliveryStream("test", {
 ///     name: "kinesis-firehose-es",
@@ -2101,11 +2350,9 @@ import 'firehose_delivery_stream_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		firehose_elasticsearchRolePolicy, err := iam.NewRolePolicy(ctx, "firehose-elasticsearch", &iam.RolePolicyArgs{
-/// 			Name: pulumi.String("elasticsearch"),
-/// 			Role: pulumi.Any(firehose.Id),
-/// 			Policy: pulumi.String(firehose_elasticsearch.ApplyT(func(firehose_elasticsearch iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &firehose_elasticsearch.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:   pulumi.String("elasticsearch"),
+/// 			Role:   pulumi.Any(firehose.Id),
+/// 			Policy: firehose_elasticsearch.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2143,6 +2390,70 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "firehose-elasticsearch" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["es:*"]
+///     resources = [aws_elasticsearch_domain.test_cluster.arn, "${aws_elasticsearch_domain.test_cluster.arn}/*"]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:DescribeVpcs", "ec2:DescribeVpcAttribute", "ec2:DescribeSubnets", "ec2:DescribeSecurityGroups", "ec2:DescribeNetworkInterfaces", "ec2:CreateNetworkInterface", "ec2:CreateNetworkInterfacePermission", "ec2:DeleteNetworkInterface"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_elasticsearch_domain" "test_cluster" {
+///   domain_name = "es-test"
+///   cluster_config = {
+///     instance_count         = 2
+///     zone_awareness_enabled = true
+///     instance_type          = "t2.small.elasticsearch"
+///   }
+///   ebs_options = {
+///     ebs_enabled = true
+///     volume_size = 10
+///   }
+///   vpc_options = {
+///     security_group_ids = [first.id]
+///     subnet_ids         = [firstAwsSubnet.id, second.id]
+///   }
+/// }
+/// resource "aws_iam_rolepolicy" "firehose-elasticsearch" {
+///   name   = "elasticsearch"
+///   role   = firehose.id
+///   policy = data.aws_iam_getpolicydocument.firehose-elasticsearch.json
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test" {
+///   depends_on  = [aws_iam_rolepolicy.firehose-elasticsearch]
+///   name        = "kinesis-firehose-es"
+///   destination = "elasticsearch"
+///   elasticsearch_configuration = {
+///     domain_arn = aws_elasticsearch_domain.test_cluster.arn
+///     role_arn   = firehose.arn
+///     index_name = "test"
+///     type_name  = "test"
+///     s3_configuration = {
+///       role_arn   = firehose.arn
+///       bucket_arn = bucket.arn
+///     }
+///     vpc_config = {
+///       subnet_ids         = [firstAwsSubnet.id, second.id]
+///       security_group_ids = [first.id]
+///       role_arn           = firehose.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2156,6 +2467,7 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.elasticsearch.inputs.DomainVpcOptionsArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
@@ -2164,8 +2476,8 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2504,6 +2816,45 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "test_cluster" {
+///   domain_name = "firehose-os-test"
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "opensearch"
+///   opensearch_configuration = {
+///     domain_arn = aws_opensearch_domain.test_cluster.arn
+///     role_arn   = firehoseRole.arn
+///     index_name = "test"
+///     s3_configuration = {
+///       role_arn           = firehoseRole.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
+///     processing_configuration = {
+///       enabled = "true"
+///       processors = [{
+///         "type" = "Lambda"
+///         "parameters" = [{
+///           "parameterName"  = "LambdaArn"
+///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2517,8 +2868,10 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2708,10 +3061,7 @@ import 'firehose_delivery_stream_state.dart';
 /// firehose_opensearch = aws.iam.RolePolicy("firehose-opensearch",
 ///     name="opensearch",
 ///     role=firehose["id"],
-///     policy=pulumi.Output.all(
-///         testClusterArn=test_cluster.arn,
-///         testClusterArn1=test_cluster.arn
-/// ).apply(lambda resolved_outputs: f"""{{
+///     policy=test_cluster.arn.apply(lambda arn: f"""{{
 ///   \"Version\": \"2012-10-17\",
 ///   \"Statement\": [
 ///     {{
@@ -2720,8 +3070,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         \"es:*\"
 ///       ],
 ///       \"Resource\": [
-///         \"{resolved_outputs['testClusterArn']}\",
-///         \"{resolved_outputs['testClusterArn1']}/*\"
+///         \"{arn}\",
+///         \"{arn}/*\"
 ///       ]
 ///         }},
 ///         {{
@@ -2742,8 +3092,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         }}
 ///   ]
 /// }}
-/// """)
-/// )
+/// """))
 /// test = aws.kinesis.FirehoseDeliveryStream("test",
 ///     name="pulumi-kinesis-firehose-os",
 ///     destination="opensearch",
@@ -2806,11 +3155,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     {
 ///         Name = "opensearch",
 ///         Role = firehose.Id,
-///         Policy = Output.Tuple(testCluster.Arn, testCluster.Arn).Apply(values =>
-///         {
-///             var testClusterArn = values.Item1;
-///             var testClusterArn1 = values.Item2;
-///             return @$"{{
+///         Policy = testCluster.Arn.Apply(arn => @$"{{
 ///   \""Version\"": \""2012-10-17\"",
 ///   \""Statement\"": [
 ///     {{
@@ -2819,8 +3164,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         \""es:*\""
 ///       ],
 ///       \""Resource\"": [
-///         \""{testClusterArn}\"",
-///         \""{testClusterArn1}/*\""
+///         \""{arn}\"",
+///         \""{arn}/*\""
 ///       ]
 ///         }},
 ///         {{
@@ -2841,8 +3186,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         }}
 ///   ]
 /// }}
-/// ";
-///         }),
+/// "),
 ///     });
 ///
 ///     var test = new Aws.Kinesis.FirehoseDeliveryStream("test", new()
@@ -2924,9 +3268,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 		firehose_opensearch, err := iam.NewRolePolicy(ctx, "firehose-opensearch", &iam.RolePolicyArgs{
 /// 			Name: pulumi.String("opensearch"),
 /// 			Role: pulumi.Any(firehose.Id),
-/// 			Policy: pulumi.All(testCluster.Arn, testCluster.Arn).ApplyT(func(_args []interface{}) (string, error) {
-/// 				testClusterArn := _args[0].(string)
-/// 				testClusterArn1 := _args[1].(string)
+/// 			Policy: testCluster.Arn.ApplyT(func(arn string) (string, error) {
 /// 				return fmt.Sprintf(`{
 ///   \"Version\": \"2012-10-17\",
 ///   \"Statement\": [
@@ -2958,7 +3300,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         }
 ///   ]
 /// }
-/// `, testClusterArn, testClusterArn1), nil
+/// `, arn, arn), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
@@ -2996,6 +3338,87 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_domain" "test_cluster" {
+///   domain_name = "es-test"
+///   cluster_config = {
+///     instance_count         = 2
+///     zone_awareness_enabled = true
+///     instance_type          = "m4.large.search"
+///   }
+///   ebs_options = {
+///     ebs_enabled = true
+///     volume_size = 10
+///   }
+///   vpc_options = {
+///     security_group_ids = [first.id]
+///     subnet_ids         = [firstAwsSubnet.id, second.id]
+///   }
+/// }
+/// resource "aws_iam_rolepolicy" "firehose-opensearch" {
+///   name   = "opensearch"
+///   role   = firehose.id
+///   policy ="{
+///   \"Version\": \"2012-10-17\",
+///   \"Statement\": [
+///     {
+///       \"Effect\": \"Allow\",
+///       \"Action\": [
+///         \"es:*\"
+///       ],
+///       \"Resource\": [
+///         \"${aws_opensearch_domain.test_cluster.arn}\",
+///         \"${aws_opensearch_domain.test_cluster.arn}/*\"
+///       ]
+///         },
+///         {
+///           \"Effect\": \"Allow\",
+///           \"Action\": [
+///             \"ec2:DescribeVpcs\",
+///             \"ec2:DescribeVpcAttribute\",
+///             \"ec2:DescribeSubnets\",
+///             \"ec2:DescribeSecurityGroups\",
+///             \"ec2:DescribeNetworkInterfaces\",
+///             \"ec2:CreateNetworkInterface\",
+///             \"ec2:CreateNetworkInterfacePermission\",
+///             \"ec2:DeleteNetworkInterface\"
+///           ],
+///           \"Resource\": [
+///             \"*\"
+///           ]
+///         }
+///   ]
+/// }
+/// "
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test" {
+///   depends_on  = [aws_iam_rolepolicy.firehose-opensearch]
+///   name        = "pulumi-kinesis-firehose-os"
+///   destination = "opensearch"
+///   opensearch_configuration = {
+///     domain_arn = aws_opensearch_domain.test_cluster.arn
+///     role_arn   = firehose.arn
+///     index_name = "test"
+///     s3_configuration = {
+///       role_arn   = firehose.arn
+///       bucket_arn = bucket.arn
+///     }
+///     vpc_config = {
+///       subnet_ids         = [firstAwsSubnet.id, second.id]
+///       security_group_ids = [first.id]
+///       role_arn           = firehose.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3015,8 +3438,8 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchConfigurationVpcConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3050,10 +3473,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         var firehose_opensearch = new RolePolicy("firehose-opensearch", RolePolicyArgs.builder()
 ///             .name("opensearch")
 ///             .role(firehose.id())
-///             .policy(Output.tuple(testCluster.arn(), testCluster.arn()).applyValue(values -> {
-///                 var testClusterArn = values.t1;
-///                 var testClusterArn1 = values.t2;
-///                 return """
+///             .policy(testCluster.arn().applyValue(_arn -> """
 /// {
 ///   \"Version\": \"2012-10-17\",
 ///   \"Statement\": [
@@ -3085,8 +3505,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         }
 ///   ]
 /// }
-/// ", testClusterArn,testClusterArn1);
-///             }))
+/// ", _arn,_arn)))
 ///             .build());
 ///
 ///         var test = new FirehoseDeliveryStream("test", FirehoseDeliveryStreamArgs.builder()
@@ -3371,6 +3790,45 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlesscollection" "test_collection" {
+///   name = "firehose-osserverless-test"
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "opensearchserverless"
+///   opensearchserverless_configuration = {
+///     collection_endpoint = aws_opensearch_serverlesscollection.test_collection.collection_endpoint
+///     role_arn            = firehoseRole.arn
+///     index_name          = "test"
+///     s3_configuration = {
+///       role_arn           = firehoseRole.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
+///     processing_configuration = {
+///       enabled = "true"
+///       processors = [{
+///         "type" = "Lambda"
+///         "parameters" = [{
+///           "parameterName"  = "LambdaArn"
+///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3384,8 +3842,10 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3751,7 +4211,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 				},
 /// 			},
 /// 			StorageDescriptor: &glue.CatalogTableStorageDescriptorArgs{
-/// 				Location: bucket.ID().ApplyT(func(id string) (string, error) {
+/// 				Location: bucket.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("s3://%v", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 				Columns: glue.CatalogTableStorageDescriptorColumnArray{
@@ -3806,6 +4266,79 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_getpartition" "currentGetPartition" {
+/// }
+/// data "aws_getregion" "currentGetRegion" {
+/// }
+///
+/// resource "aws_s3_bucket" "bucket" {
+///   bucket        = "test-bucket"
+///   force_destroy = true
+/// }
+/// resource "aws_glue_catalogdatabase" "test" {
+///   name = "test"
+/// }
+/// resource "aws_glue_catalogtable" "test" {
+///   name          = "test"
+///   database_name = aws_glue_catalogdatabase.test.name
+///   parameters = {
+///     "format" = "parquet"
+///   }
+///   table_type = "EXTERNAL_TABLE"
+///   open_table_format_input = {
+///     iceberg_input = {
+///       metadata_operation = "CREATE"
+///       version            = 2
+///     }
+///   }
+///   storage_descriptor = {
+///     location ="s3://${aws_s3_bucket.bucket.id}"
+///     columns = [{
+///       "name" = "my_column_1"
+///       "type" = "int"
+///     }]
+///   }
+/// }
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "iceberg"
+///   iceberg_configuration = {
+///     role_arn           = firehoseRole.arn
+///     catalog_arn        ="arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:catalog"
+///     buffering_size     = 10
+///     buffering_interval = 400
+///     s3_configuration = {
+///       role_arn   = firehoseRole.arn
+///       bucket_arn = aws_s3_bucket.bucket.arn
+///     }
+///     destination_table_configurations = [{
+///       "databaseName" = aws_glue_catalogdatabase.test.name
+///       "tableName"    = aws_glue_catalogtable.test.name
+///     }]
+///     processing_configuration = {
+///       enabled = "true"
+///       processors = [{
+///         "type" = "Lambda"
+///         "parameters" = [{
+///           "parameterName"  = "LambdaArn"
+///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3825,13 +4358,17 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.glue.inputs.CatalogTableOpenTableFormatInputArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableOpenTableFormatInputIcebergInputArgs;
 /// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorArgs;
+/// import com.pulumi.aws.glue.inputs.CatalogTableStorageDescriptorColumnArgs;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4097,6 +4634,34 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "splunk"
+///   splunk_configuration = {
+///     hec_endpoint               = "https://http-inputs-mydomain.splunkcloud.com:443"
+///     hec_token                  = "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A"
+///     hec_acknowledgment_timeout = 600
+///     hec_endpoint_type          = "Event"
+///     s3_backup_mode             = "FailedEventsOnly"
+///     s3_configuration = {
+///       role_arn           = firehose.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4107,8 +4672,8 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamSplunkConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4165,7 +4730,9 @@ import 'firehose_delivery_stream_state.dart';
 /// ```
 ///
 ///
-/// ### HTTP Endpoint (e.g., New Relic) Destination
+/// ### HTTP Endpoint (e.g., New Relic, Datadog) Destination
+///
+/// The HTTP endpoint destination can be used with any vendor that exposes a compatible HTTP intake, including [New Relic](https://docs.newrelic.com/docs/infrastructure/amazon-integrations/connect/aws-firehose/) and [Datadog](https://docs.datadoghq.com/integrations/amazon_kinesis_data_firehose/). Refer to each vendor's documentation for the correct intake URL and authentication requirements.
 ///
 ///
 /// ```typescript
@@ -4344,6 +4911,46 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "http_endpoint"
+///   http_endpoint_configuration = {
+///     url                = "https://aws-api.newrelic.com/firehose/v1"
+///     name               = "New Relic"
+///     access_key         = "my-key"
+///     buffering_size     = 15
+///     buffering_interval = 600
+///     role_arn           = firehose.arn
+///     s3_backup_mode     = "FailedDataOnly"
+///     s3_configuration = {
+///       role_arn           = firehose.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
+///     request_configuration = {
+///       content_encoding = "GZIP"
+///       common_attributes = [{
+///         "name"  = "testname"
+///         "value" = "testvalue"
+///         }, {
+///         "name"  = "testname2"
+///         "value" = "testvalue2"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4355,8 +4962,9 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamHttpEndpointConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamHttpEndpointConfigurationS3ConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4567,6 +5175,38 @@ import 'firehose_delivery_stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "example_snowflake_destination" {
+///   name        = "example-snowflake-destination"
+///   destination = "snowflake"
+///   snowflake_configuration = {
+///     account_url        = "https://example.snowflakecomputing.com"
+///     buffering_size     = 15
+///     buffering_interval = 600
+///     database           = "example-db"
+///     private_key        = "..."
+///     role_arn           = firehose.arn
+///     schema             = "example-schema"
+///     table              = "example-table"
+///     user               = "example-usr"
+///     s3_configuration = {
+///       role_arn           = firehose.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4577,8 +5217,8 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamSnowflakeConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4645,52 +5285,59 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Kinesis Firehose Delivery streams using the stream ARN. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) ARN of the delivery stream.
+///
+///
+/// Using `pulumi import`, import Kinesis Firehose Delivery Streams using `arn`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream foo arn:aws:firehose:us-east-1:XXX:deliverystream/example
+/// $ pulumi import aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream example arn:aws:firehose:us-east-1:123456789012:deliverystream/example-delivery-stream
 /// ```
 ///
-/// Note: Import does not work for stream destination `s3`. Consider using `extended_s3` since `s3` destination is deprecated.
+/// Note: Import does not work for stream destination `s3`. Consider using `extendedS3` since `s3` destination is deprecated.
 class FirehoseDeliveryStream extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the Stream
   late final pulumi.Output<String> arn;
-  /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extended_s3` instead), `extended_s3`, `redshift`, `elasticsearch`, `splunk`, `http_endpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
+  /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
   late final pulumi.Output<String> destination;
   late final pulumi.Output<String> destinationId;
-  /// Configuration options when `destination` is `elasticsearch`. See `elasticsearch_configuration` block below for details.
+  /// Configuration options when `destination` is `elasticsearch`. See `elasticsearchConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamElasticsearchConfiguration?> elasticsearchConfiguration;
-  /// Enhanced configuration options for the s3 destination. See `extended_s3_configuration` block below for details.
+  /// Enhanced configuration options for the s3 destination. See `extendedS3Configuration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamExtendedS3Configuration?> extendedS3Configuration;
-  /// Configuration options when `destination` is `http_endpoint`. Requires the user to also specify an `s3_configuration` block.  See `http_endpoint_configuration` block below for details.
+  /// Configuration options when `destination` is `httpEndpoint`. Requires the user to also specify an `s3Configuration` block.  See `httpEndpointConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamHttpEndpointConfiguration?> httpEndpointConfiguration;
-  /// Configuration options when `destination` is `iceberg`. See `iceberg_configuration` block below for details.
+  /// Configuration options when `destination` is `iceberg`. See `icebergConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamIcebergConfiguration?> icebergConfiguration;
-  /// The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesis_source_configuration` block below for details.
+  /// The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamKinesisSourceConfiguration?> kinesisSourceConfiguration;
-  /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `msk_source_configuration` block below for details.
+  /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamMskSourceConfiguration?> mskSourceConfiguration;
   /// A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
   late final pulumi.Output<String> name;
-  /// Configuration options when `destination` is `opensearch`. See `opensearch_configuration` block below for details.
+  /// Configuration options when `destination` is `opensearch`. See `opensearchConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamOpensearchConfiguration?> opensearchConfiguration;
-  /// Configuration options when `destination` is `opensearchserverless`. See `opensearchserverless_configuration` block below for details.
+  /// Configuration options when `destination` is `opensearchserverless`. See `opensearchserverlessConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamOpensearchserverlessConfiguration?> opensearchserverlessConfiguration;
-  /// Configuration options when `destination` is `redshift`. Requires the user to also specify an `s3_configuration` block. See `redshift_configuration` block below for details.
+  /// Configuration options when `destination` is `redshift`. Requires the user to also specify an `s3Configuration` block. See `redshiftConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamRedshiftConfiguration?> redshiftConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Encrypt at rest options. See `server_side_encryption` block below for details.
+  /// Encrypt at rest options. See `serverSideEncryption` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamServerSideEncryption?> serverSideEncryption;
-  /// Configuration options when `destination` is `snowflake`. See `snowflake_configuration` block below for details.
+  /// Configuration options when `destination` is `snowflake`. See `snowflakeConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamSnowflakeConfiguration?> snowflakeConfiguration;
-  /// Configuration options when `destination` is `splunk`. See `splunk_configuration` block below for details.
+  /// Configuration options when `destination` is `splunk`. See `splunkConfiguration` block below for details.
   ///
   /// **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
   late final pulumi.Output<FirehoseDeliveryStreamSplunkConfiguration?> splunkConfiguration;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> versionId;
 

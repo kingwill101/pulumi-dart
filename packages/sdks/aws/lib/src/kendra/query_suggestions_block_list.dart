@@ -3,7 +3,7 @@ import 'query_suggestions_block_list_args.dart';
 import 'query_suggestions_block_list_source_s3_path.dart';
 import 'query_suggestions_block_list_state.dart';
 
-/// Use the `aws_kendra_index_block_list` resource to manage an AWS Kendra block list used for query suggestions for an index.
+/// Use the `aws.kendra.QuerySuggestionsBlockList` resource to manage an AWS Kendra block list used for query suggestions for an index.
 ///
 /// ## Example Usage
 ///
@@ -98,6 +98,28 @@ import 'query_suggestions_block_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_querysuggestionsblocklist" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "Example"
+///   role_arn = exampleAwsIamRole.arn
+///   source_s3_path = {
+///     bucket = exampleAwsS3Bucket.id
+///     key    = "example/suggestions.txt"
+///   }
+///   tags = {
+///     "Name" = "Example Kendra Index"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +129,8 @@ import 'query_suggestions_block_list_state.dart';
 /// import com.pulumi.aws.kendra.QuerySuggestionsBlockList;
 /// import com.pulumi.aws.kendra.QuerySuggestionsBlockListArgs;
 /// import com.pulumi.aws.kendra.inputs.QuerySuggestionsBlockListSourceS3PathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,7 +197,7 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
   late final pulumi.Output<QuerySuggestionsBlockListSourceS3Path> sourceS3Path;
   late final pulumi.Output<String> status;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider's default_tags configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider's defaultTags configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [QuerySuggestionsBlockList].

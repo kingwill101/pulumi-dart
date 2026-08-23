@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class DaemonTaskDefinitionContainerDefinitionSecret {
+  /// Name of the secret.
+  final pulumi.Input<String> name;
+  /// Secret to expose to the container. The supported values are either the full ARN of the Secrets Manager secret or the full ARN of the parameter in the SSM Parameter Store.
+  final pulumi.Input<String> valueFrom;
+
+  /// Creates a new [DaemonTaskDefinitionContainerDefinitionSecret].
+  /// [name] Name of the secret.
+  /// [valueFrom] Secret to expose to the container. The supported values are either the full ARN of the Secrets Manager secret or the full ARN of the parameter in the SSM Parameter Store.
+  const DaemonTaskDefinitionContainerDefinitionSecret({
+    required this.name,
+    required this.valueFrom,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'valueFrom': valueFrom,
+    };
+  }
+
+  factory DaemonTaskDefinitionContainerDefinitionSecret.fromMap(Map<String, dynamic> map) {
+    return DaemonTaskDefinitionContainerDefinitionSecret(
+      name: pulumi.Input.fromValue(map['name'] as String),
+      valueFrom: pulumi.Input.fromValue(map['valueFrom'] as String),
+    );
+  }
+}

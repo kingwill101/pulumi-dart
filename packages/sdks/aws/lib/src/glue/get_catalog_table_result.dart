@@ -24,20 +24,20 @@ class GetCatalogTableResult {
   final String owner;
   /// Map of initialization parameters for the SerDe, in key-value form.
   final Map<String, String> parameters;
-  /// Configuration block for a maximum of 3 partition indexes. See `partition_index` below.
+  /// Configuration block for a maximum of 3 partition indexes. See `partitionIndex` below.
   final List<GetCatalogTablePartitionIndex> partitionIndices;
-  /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partition_keys` below.
+  /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partitionKeys` below.
   final List<GetCatalogTablePartitionKey> partitionKeys;
   final String? queryAsOfTime;
   /// Region of the target table.
   final String region;
   /// Retention time for this table.
   final int retention;
-  /// Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storage_descriptor` below.
+  /// Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storageDescriptor` below.
   final List<GetCatalogTableStorageDescriptor> storageDescriptors;
   /// Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as `ALTER TABLE` and `SHOW CREATE TABLE` will fail if this argument is empty.
   final String tableType;
-  /// Configuration block of a target table for resource linking. See `target_table` below.
+  /// Configuration block of a target table for resource linking. See `targetTable` below.
   final List<GetCatalogTableTargetTable> targetTables;
   final int? transactionId;
   /// If the table is a view, the expanded text of the view; otherwise null.
@@ -54,14 +54,14 @@ class GetCatalogTableResult {
   /// [name] Name of the target table.
   /// [owner] Owner of the table.
   /// [parameters] Map of initialization parameters for the SerDe, in key-value form.
-  /// [partitionIndices] Configuration block for a maximum of 3 partition indexes. See `partition_index` below.
-  /// [partitionKeys] Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partition_keys` below.
+  /// [partitionIndices] Configuration block for a maximum of 3 partition indexes. See `partitionIndex` below.
+  /// [partitionKeys] Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partitionKeys` below.
   /// [queryAsOfTime] Optional.
   /// [region] Region of the target table.
   /// [retention] Retention time for this table.
-  /// [storageDescriptors] Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storage_descriptor` below.
+  /// [storageDescriptors] Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storageDescriptor` below.
   /// [tableType] Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as `ALTER TABLE` and `SHOW CREATE TABLE` will fail if this argument is empty.
-  /// [targetTables] Configuration block of a target table for resource linking. See `target_table` below.
+  /// [targetTables] Configuration block of a target table for resource linking. See `targetTable` below.
   /// [transactionId] Optional.
   /// [viewExpandedText] If the table is a view, the expanded text of the view; otherwise null.
   /// [viewOriginalText] If the table is a view, the original text of the view; otherwise null.
@@ -135,4 +135,3 @@ class GetCatalogTableResult {
     );
   }
 }
-

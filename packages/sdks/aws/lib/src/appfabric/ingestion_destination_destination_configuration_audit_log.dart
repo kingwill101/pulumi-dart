@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingestion_destination_destination_configuration_audit_log_destination.dart';
 
 class IngestionDestinationDestinationConfigurationAuditLog {
-  /// Contains information about an audit log destination. Only one destination (Firehose Stream) or (S3 Bucket) can be specified.
+  /// Destination for the audit log. Only one destination, either `firehoseStream` or `s3Bucket`, can be specified. See `destination_configuration.audit_log.destination` Block below.
   final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestination> destination;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLog].
-  /// [destination] Contains information about an audit log destination. Only one destination (Firehose Stream) or (S3 Bucket) can be specified.
+  /// [destination] Destination for the audit log. Only one destination, either `firehoseStream` or `s3Bucket`, can be specified. See `destination_configuration.audit_log.destination` Block below.
   const IngestionDestinationDestinationConfigurationAuditLog({
     required this.destination,
   });
@@ -25,4 +25,3 @@ class IngestionDestinationDestinationConfigurationAuditLog {
     );
   }
 }
-

@@ -7,23 +7,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_workspaces_get_workspace_get_workspace_args_doc}
 class GetWorkspaceArgs {
-  /// ID of the directory for the WorkSpace. You have to specify `user_name` along with `directory_id`. You cannot combine this parameter with `workspace_id`.
+  /// ID of the directory for the WorkSpace. You have to specify `userName` along with `directoryId`. You cannot combine this parameter with `workspaceId`.
   final pulumi.Input<String>? directoryId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Tags for the WorkSpace.
   final pulumi.Input<Map<String, String>>? tags;
-  /// User name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspace_id`.
+  /// User name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspaceId`.
   final pulumi.Input<String>? userName;
-  /// ID of the WorkSpace. You cannot combine this parameter with `directory_id`.
+  /// ID of the WorkSpace. You cannot combine this parameter with `directoryId`.
   final pulumi.Input<String>? workspaceId;
 
   /// Creates a new [GetWorkspaceArgs].
-  /// [directoryId] ID of the directory for the WorkSpace. You have to specify `user_name` along with `directory_id`. You cannot combine this parameter with `workspace_id`.
+  /// [directoryId] ID of the directory for the WorkSpace. You have to specify `userName` along with `directoryId`. You cannot combine this parameter with `workspaceId`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags for the WorkSpace.
-  /// [userName] User name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspace_id`.
-  /// [workspaceId] ID of the WorkSpace. You cannot combine this parameter with `directory_id`.
+  /// [userName] User name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspaceId`.
+  /// [workspaceId] ID of the WorkSpace. You cannot combine this parameter with `directoryId`.
   const GetWorkspaceArgs({
     this.directoryId,
     this.region,
@@ -52,4 +52,3 @@ class GetWorkspaceArgs {
     );
   }
 }
-

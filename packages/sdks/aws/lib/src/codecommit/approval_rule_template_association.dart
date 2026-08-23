@@ -61,6 +61,20 @@ import 'approval_rule_template_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codecommit_approvalruletemplateassociation" "example" {
+///   approval_rule_template_name = exampleAwsCodecommitApprovalRuleTemplate.name
+///   repository_name             = exampleAwsCodecommitRepository.repositoryName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'approval_rule_template_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codecommit.ApprovalRuleTemplateAssociation;
 /// import com.pulumi.aws.codecommit.ApprovalRuleTemplateAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,7 @@ import 'approval_rule_template_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CodeCommit approval rule template associations using the `approval_rule_template_name` and `repository_name` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import CodeCommit approval rule template associations using the `approvalRuleTemplateName` and `repositoryName` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation example approver-rule-for-example,MyExampleRepo

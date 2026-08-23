@@ -107,6 +107,28 @@ import 'user_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_user" "test" {
+///   user_id       = "testUserId"
+///   user_name     = "default"
+///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
+///   engine        = "redis"
+///   passwords     = ["password123456789"]
+/// }
+/// resource "aws_elasticache_usergroup" "test" {
+///   engine        = "redis"
+///   user_group_id = "userGroupId"
+///   user_ids      = [aws_elasticache_user.test.user_id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +139,8 @@ import 'user_group_state.dart';
 /// import com.pulumi.aws.elasticache.UserArgs;
 /// import com.pulumi.aws.elasticache.UserGroup;
 /// import com.pulumi.aws.elasticache.UserGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,7 +193,7 @@ import 'user_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ElastiCache user groups using the `user_group_id`. For example:
+/// Using `pulumi import`, import ElastiCache user groups using the `userGroupId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticache/userGroup:UserGroup my_user_group userGoupId1
@@ -183,9 +205,9 @@ class UserGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> engine;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the user group.
   ///

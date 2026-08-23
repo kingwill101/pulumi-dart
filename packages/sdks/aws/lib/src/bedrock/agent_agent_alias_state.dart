@@ -20,11 +20,11 @@ class AgentAgentAliasState {
   final pulumi.Input<String>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Details about the routing configuration of the alias. See `routing_configuration` Block for details.
+  /// Details about the routing configuration of the alias. See `routingConfiguration` Block for details.
   final pulumi.Input<List<AgentAgentAliasRoutingConfiguration>>? routingConfigurations;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<AgentAgentAliasTimeouts>? timeouts;
 
@@ -35,9 +35,9 @@ class AgentAgentAliasState {
   /// [agentId] Identifier of the agent to create an alias for.
   /// [description] Description of the alias.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routingConfigurations] Details about the routing configuration of the alias. See `routing_configuration` Block for details.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [routingConfigurations] Details about the routing configuration of the alias. See `routingConfiguration` Block for details.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const AgentAgentAliasState({
     this.agentAliasArn,
@@ -82,4 +82,3 @@ class AgentAgentAliasState {
     );
   }
 }
-

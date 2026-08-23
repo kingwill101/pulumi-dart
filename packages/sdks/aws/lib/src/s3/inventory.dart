@@ -7,8 +7,6 @@ import 'inventory_state.dart';
 
 /// Provides a S3 bucket [inventory configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html) resource.
 ///
-/// &gt; This resource cannot be used with S3 directory buckets.
-///
 /// ## Example Usage
 ///
 /// ### Add inventory configuration
@@ -117,7 +115,7 @@ import 'inventory_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewInventory(ctx, "test", &s3.InventoryArgs{
-/// 			Bucket:                 test.ID(),
+/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                   pulumi.String("EntireBucketDaily"),
 /// 			IncludedObjectVersions: pulumi.String("All"),
 /// 			Schedule: &s3.InventoryScheduleArgs{
@@ -137,6 +135,36 @@ import 'inventory_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "test" {
+///   bucket = "my-tf-test-bucket"
+/// }
+/// resource "aws_s3_bucket" "inventory" {
+///   bucket = "my-tf-inventory-bucket"
+/// }
+/// resource "aws_s3_inventory" "test" {
+///   bucket                   = aws_s3_bucket.test.id
+///   name                     = "EntireBucketDaily"
+///   included_object_versions = "All"
+///   schedule = {
+///     frequency = "Daily"
+///   }
+///   destination = {
+///     bucket = {
+///       format     = "ORC"
+///       bucket_arn = aws_s3_bucket.inventory.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +178,8 @@ import 'inventory_state.dart';
 /// import com.pulumi.aws.s3.inputs.InventoryScheduleArgs;
 /// import com.pulumi.aws.s3.inputs.InventoryDestinationArgs;
 /// import com.pulumi.aws.s3.inputs.InventoryDestinationBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -334,7 +362,7 @@ import 'inventory_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewInventory(ctx, "test-prefix", &s3.InventoryArgs{
-/// 			Bucket:                 test.ID(),
+/// 			Bucket:                 test.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                   pulumi.String("DocumentsWeekly"),
 /// 			IncludedObjectVersions: pulumi.String("All"),
 /// 			Schedule: &s3.InventoryScheduleArgs{
@@ -358,6 +386,40 @@ import 'inventory_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "test" {
+///   bucket = "my-tf-test-bucket"
+/// }
+/// resource "aws_s3_bucket" "inventory" {
+///   bucket = "my-tf-inventory-bucket"
+/// }
+/// resource "aws_s3_inventory" "test-prefix" {
+///   bucket                   = aws_s3_bucket.test.id
+///   name                     = "DocumentsWeekly"
+///   included_object_versions = "All"
+///   schedule = {
+///     frequency = "Daily"
+///   }
+///   filter = {
+///     prefix = "documents/"
+///   }
+///   destination = {
+///     bucket = {
+///       format     = "ORC"
+///       bucket_arn = aws_s3_bucket.inventory.arn
+///       prefix     = "inventory"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -372,8 +434,8 @@ import 'inventory_state.dart';
 /// import com.pulumi.aws.s3.inputs.InventoryFilterArgs;
 /// import com.pulumi.aws.s3.inputs.InventoryDestinationArgs;
 /// import com.pulumi.aws.s3.inputs.InventoryDestinationBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -451,13 +513,13 @@ import 'inventory_state.dart';
 /// $ pulumi import aws:s3/inventory:Inventory my-bucket-entire-bucket my-bucket:EntireBucket
 /// ```
 class Inventory extends pulumi.CustomResource {
-  /// Name of the source bucket that inventory lists the objects for.
+  /// Name of the source bucket that inventory lists the objects for. Both general purpose and directory buckets are supported.
   late final pulumi.Output<String> bucket;
-  /// Contains information about where to publish the inventory results (documented below).
+  /// Where to publish the inventory results. See `destination` Block below.
   late final pulumi.Output<InventoryDestination> destination;
-  /// Specifies whether the inventory is enabled or disabled.
+  /// Whether to enable the inventory.
   late final pulumi.Output<bool?> enabled;
-  /// Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria (documented below).
+  /// Inventory filter. The inventory only includes objects that meet the filter's criteria. See `filter` Block below.
   late final pulumi.Output<InventoryFilter?> filter;
   /// Object versions to include in the inventory list. Valid values: `All`, `Current`.
   late final pulumi.Output<String> includedObjectVersions;
@@ -467,7 +529,9 @@ class Inventory extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> optionalFields;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the schedule for generating inventory results (documented below).
+  /// Schedule for generating inventory results. See `schedule` Block below.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<InventorySchedule> schedule;
 
   /// Creates a new [Inventory].

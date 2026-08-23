@@ -154,7 +154,7 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// 		}
 /// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "ruleout", &ec2.TrafficMirrorFilterRuleArgs{
 /// 			Description:           pulumi.String("test rule"),
-/// 			TrafficMirrorFilterId: filter.ID(),
+/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
 /// 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
 /// 			SourceCidrBlock:       pulumi.String("10.0.0.0/8"),
 /// 			RuleNumber:            pulumi.Int(1),
@@ -166,7 +166,7 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// 		}
 /// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "rulein", &ec2.TrafficMirrorFilterRuleArgs{
 /// 			Description:           pulumi.String("test rule"),
-/// 			TrafficMirrorFilterId: filter.ID(),
+/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
 /// 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
 /// 			SourceCidrBlock:       pulumi.String("10.0.0.0/8"),
 /// 			RuleNumber:            pulumi.Int(1),
@@ -189,6 +189,47 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_trafficmirrorfilter" "filter" {
+///   description      = "traffic mirror filter - example"
+///   network_services = ["amazon-dns"]
+/// }
+/// resource "aws_ec2_trafficmirrorfilterrule" "ruleout" {
+///   description              = "test rule"
+///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
+///   destination_cidr_block   = "10.0.0.0/8"
+///   source_cidr_block        = "10.0.0.0/8"
+///   rule_number              = 1
+///   rule_action              = "accept"
+///   traffic_direction        = "egress"
+/// }
+/// resource "aws_ec2_trafficmirrorfilterrule" "rulein" {
+///   description              = "test rule"
+///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
+///   destination_cidr_block   = "10.0.0.0/8"
+///   source_cidr_block        = "10.0.0.0/8"
+///   rule_number              = 1
+///   rule_action              = "accept"
+///   traffic_direction        = "ingress"
+///   protocol                 = 6
+///   destination_port_range = {
+///     from_port = 22
+///     to_port   = 53
+///   }
+///   source_port_range = {
+///     from_port = 0
+///     to_port   = 10
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +242,8 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// import com.pulumi.aws.ec2.TrafficMirrorFilterRuleArgs;
 /// import com.pulumi.aws.ec2.inputs.TrafficMirrorFilterRuleDestinationPortRangeArgs;
 /// import com.pulumi.aws.ec2.inputs.TrafficMirrorFilterRuleSourcePortRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +332,7 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import traffic mirror rules using the `traffic_mirror_filter_id` and `id` separated by `:`. For example:
+/// Using `pulumi import`, import traffic mirror rules using the `trafficMirrorFilterId` and `id` separated by `:`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/trafficMirrorFilterRule:TrafficMirrorFilterRule rule tmf-0fbb93ddf38198f64:tmfr-05a458f06445d0aee

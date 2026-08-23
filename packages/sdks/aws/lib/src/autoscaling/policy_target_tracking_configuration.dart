@@ -5,19 +5,19 @@ import 'policy_target_tracking_configuration_customized_metric_specification.dar
 import 'policy_target_tracking_configuration_predefined_metric_specification.dart';
 
 class PolicyTargetTrackingConfiguration {
-  /// Customized metric. Conflicts with `predefined_metric_specification`.
+  /// Customized metric. Conflicts with `predefinedMetricSpecification`.
   final pulumi.Input<PolicyTargetTrackingConfigurationCustomizedMetricSpecification>? customizedMetricSpecification;
   /// Whether scale in by the target tracking policy is disabled.
   final pulumi.Input<bool>? disableScaleIn;
-  /// Predefined metric. Conflicts with `customized_metric_specification`.
+  /// Predefined metric. Conflicts with `customizedMetricSpecification`.
   final pulumi.Input<PolicyTargetTrackingConfigurationPredefinedMetricSpecification>? predefinedMetricSpecification;
   /// Target value for the metric.
   final pulumi.Input<double> targetValue;
 
   /// Creates a new [PolicyTargetTrackingConfiguration].
-  /// [customizedMetricSpecification] Customized metric. Conflicts with `predefined_metric_specification`.
+  /// [customizedMetricSpecification] Customized metric. Conflicts with `predefinedMetricSpecification`.
   /// [disableScaleIn] Whether scale in by the target tracking policy is disabled.
-  /// [predefinedMetricSpecification] Predefined metric. Conflicts with `customized_metric_specification`.
+  /// [predefinedMetricSpecification] Predefined metric. Conflicts with `customizedMetricSpecification`.
   /// [targetValue] Target value for the metric.
   const PolicyTargetTrackingConfiguration({
     this.customizedMetricSpecification,
@@ -44,4 +44,3 @@ class PolicyTargetTrackingConfiguration {
     );
   }
 }
-

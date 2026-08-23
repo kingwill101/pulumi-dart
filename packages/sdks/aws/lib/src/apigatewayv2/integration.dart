@@ -65,6 +65,20 @@ import 'integration_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_integration" "example" {
+///   api_id           = exampleAwsApigatewayv2Api.id
+///   integration_type = "MOCK"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Integration;
 /// import com.pulumi.aws.apigatewayv2.IntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,7 +130,7 @@ import 'integration_tls_config.dart';
 ///     name: "Example",
 ///     role: exampleAwsIamRole.arn,
 ///     handler: "index.handler",
-///     runtime: aws.lambda.Runtime.NodeJS20dX,
+///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// });
 /// const exampleIntegration = new aws.apigatewayv2.Integration("example", {
 ///     apiId: exampleAwsApigatewayv2Api.id,
@@ -138,7 +152,7 @@ import 'integration_tls_config.dart';
 ///     name="Example",
 ///     role=example_aws_iam_role["arn"],
 ///     handler="index.handler",
-///     runtime=aws.lambda_.Runtime.NODE_JS20D_X)
+///     runtime=aws.lambda_.Runtime.NODE_JS24D_X)
 /// example_integration = aws.apigatewayv2.Integration("example",
 ///     api_id=example_aws_apigatewayv2_api["id"],
 ///     integration_type="AWS_PROXY",
@@ -163,7 +177,7 @@ import 'integration_tls_config.dart';
 ///         Name = "Example",
 ///         Role = exampleAwsIamRole.Arn,
 ///         Handler = "index.handler",
-///         Runtime = Aws.Lambda.Runtime.NodeJS20dX,
+///         Runtime = Aws.Lambda.Runtime.NodeJS24dX,
 ///     });
 ///
 ///     var exampleIntegration = new Aws.ApiGatewayV2.Integration("example", new()
@@ -196,7 +210,7 @@ import 'integration_tls_config.dart';
 /// 			Name:    pulumi.String("Example"),
 /// 			Role:    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Handler: pulumi.String("index.handler"),
-/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS20dX),
+/// 			Runtime: pulumi.String(lambda.RuntimeNodeJS24dX),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -218,6 +232,33 @@ import 'integration_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_function" "example" {
+///   code    = fileArchive("example.zip")
+///   name    = "Example"
+///   role    = exampleAwsIamRole.arn
+///   handler = "index.handler"
+///   runtime = "nodejs24.x"
+/// }
+/// resource "aws_apigatewayv2_integration" "example" {
+///   api_id                    = exampleAwsApigatewayv2Api.id
+///   integration_type          = "AWS_PROXY"
+///   connection_type           = "INTERNET"
+///   content_handling_strategy = "CONVERT_TO_TEXT"
+///   description               = "Lambda example"
+///   integration_method        = "POST"
+///   integration_uri           = aws_lambda_function.example.invoke_arn
+///   passthrough_behavior      = "WHEN_NO_MATCH"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +270,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.aws.apigatewayv2.Integration;
 /// import com.pulumi.aws.apigatewayv2.IntegrationArgs;
 /// import com.pulumi.asset.FileArchive;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -247,7 +288,7 @@ import 'integration_tls_config.dart';
 ///             .name("Example")
 ///             .role(exampleAwsIamRole.arn())
 ///             .handler("index.handler")
-///             .runtime("nodejs20.x")
+///             .runtime("nodejs24.x")
 ///             .build());
 ///
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
@@ -270,11 +311,11 @@ import 'integration_tls_config.dart';
 ///     type: aws:lambda:Function
 ///     properties:
 ///       code:
-///         fn::FileArchive: example.zip
+///         fn::fileArchive: example.zip
 ///       name: Example
 ///       role: ${exampleAwsIamRole.arn}
 ///       handler: index.handler
-///       runtime: nodejs20.x
+///       runtime: nodejs24.x
 ///   exampleIntegration:
 ///     type: aws:apigatewayv2:Integration
 ///     name: example
@@ -376,6 +417,27 @@ import 'integration_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_integration" "example" {
+///   api_id              = exampleAwsApigatewayv2Api.id
+///   credentials_arn     = exampleAwsIamRole.arn
+///   description         = "SQS example"
+///   integration_type    = "AWS_PROXY"
+///   integration_subtype = "SQS-SendMessage"
+///   request_parameters = {
+///     "QueueUrl"    = "$request.header.queueUrl"
+///     "MessageBody" = "$request.body.message"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -384,8 +446,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.Integration;
 /// import com.pulumi.aws.apigatewayv2.IntegrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -600,6 +662,45 @@ import 'integration_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_integration" "example" {
+///   api_id             = exampleAwsApigatewayv2Api.id
+///   credentials_arn    = exampleAwsIamRole.arn
+///   description        = "Example with a load balancer"
+///   integration_type   = "HTTP_PROXY"
+///   integration_uri    = exampleAwsLbListener.arn
+///   integration_method = "ANY"
+///   connection_type    = "VPC_LINK"
+///   connection_id      = exampleAwsApigatewayv2VpcLink.id
+///   tls_config = {
+///     server_name_to_verify = "example.com"
+///   }
+///   request_parameters = {
+///     "append:header.authforintegration" = "$context.authorizer.authorizerResponse"
+///     "overwrite:path"                   = "staticValueForIntegration"
+///   }
+///   response_parameters {
+///     status_code = 403
+///     mappings = {
+///       "append:header.auth" = "$context.authorizer.authorizerResponse"
+///     }
+///   }
+///   response_parameters {
+///     status_code = 200
+///     mappings = {
+///       "overwrite:statuscode" = "204"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -610,8 +711,8 @@ import 'integration_tls_config.dart';
 /// import com.pulumi.aws.apigatewayv2.IntegrationArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.IntegrationTlsConfigArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.IntegrationResponseParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -703,39 +804,31 @@ class Integration extends pulumi.CustomResource {
   late final pulumi.Output<String?> credentialsArn;
   /// Description of the integration.
   late final pulumi.Output<String?> description;
-  /// Integration's HTTP method. Must be specified if `integration_type` is not `MOCK`.
+  /// Integration's HTTP method. Must be specified if `integrationType` is not `MOCK`.
   late final pulumi.Output<String?> integrationMethod;
-  /// The [integration response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-integration-response-selection-expressions) for the integration.
+  /// [Integration response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-integration-response-selection-expressions) for the integration.
   late final pulumi.Output<String> integrationResponseSelectionExpression;
-  /// AWS service action to invoke. Supported only for HTTP APIs when `integration_type` is `AWS_PROXY`. See the [AWS service integration reference](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html) documentation for supported values. Must be between 1 and 128 characters in length.
+  /// AWS service action to invoke. Supported only for HTTP APIs when `integrationType` is `AWS_PROXY`. See the [AWS service integration reference](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html) documentation for supported values. Must be between 1 and 128 characters in length.
   late final pulumi.Output<String?> integrationSubtype;
-  /// Integration type of an integration.
-  /// Valid values: `AWS` (supported only for WebSocket APIs), `AWS_PROXY`, `HTTP` (supported only for WebSocket APIs), `HTTP_PROXY`, `MOCK` (supported only for WebSocket APIs). For an HTTP API private integration, use `HTTP_PROXY`.
+  /// Integration type of an integration. Valid values: `AWS` (supported only for WebSocket APIs), `AWS_PROXY`, `HTTP` (supported only for WebSocket APIs), `HTTP_PROXY`, `MOCK` (supported only for WebSocket APIs). For an HTTP API private integration, use `HTTP_PROXY`.
   late final pulumi.Output<String> integrationType;
-  /// URI of the Lambda function for a Lambda proxy integration, when `integration_type` is `AWS_PROXY`.
-  /// For an `HTTP` integration, specify a fully-qualified URL. For an HTTP API private integration, specify the ARN of an Application Load Balancer listener, Network Load Balancer listener, or AWS Cloud Map service.
+  /// URI of the Lambda function for a Lambda proxy integration, when `integrationType` is `AWS_PROXY`. For an `HTTP` integration, specify a fully-qualified URL. For an HTTP API private integration, specify the ARN of an Application Load Balancer listener, Network Load Balancer listener, or AWS Cloud Map service.
   late final pulumi.Output<String?> integrationUri;
-  /// Pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the `request_templates` attribute.
-  /// Valid values: `WHEN_NO_MATCH`, `WHEN_NO_TEMPLATES`, `NEVER`. Default is `WHEN_NO_MATCH`. Supported only for WebSocket APIs.
+  /// Pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the `requestTemplates` attribute. Valid values: `WHEN_NO_MATCH`, `WHEN_NO_TEMPLATES`, `NEVER`. Default is `WHEN_NO_MATCH`. Supported only for WebSocket APIs.
   late final pulumi.Output<String?> passthroughBehavior;
-  /// The [format of the payload](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.proxy-format) sent to an integration. Valid values: `1.0`, `2.0`. Default is `1.0`.
+  /// [Format of the payload](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.proxy-format) sent to an integration. Valid values: `1.0`, `2.0`. Default is `1.0`.
   late final pulumi.Output<String?> payloadFormatVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// For WebSocket APIs, a key-value map specifying request parameters that are passed from the method request to the backend.
-  /// For HTTP APIs with a specified `integration_subtype`, a key-value map specifying parameters that are passed to `AWS_PROXY` integrations.
-  /// For HTTP APIs without a specified `integration_subtype`, a key-value map specifying how to transform HTTP requests before sending them to the backend.
-  /// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html) for details.
+  /// For WebSocket APIs, a key-value map specifying request parameters that are passed from the method request to the backend. For HTTP APIs with a specified `integrationSubtype`, a key-value map specifying parameters that are passed to `AWS_PROXY` integrations. For HTTP APIs without a specified `integrationSubtype`, a key-value map specifying how to transform HTTP requests before sending them to the backend. See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html) for details.
   late final pulumi.Output<Map<String, String>?> requestParameters;
   /// Map of [Velocity](https://velocity.apache.org/) templates that are applied on the request payload based on the value of the Content-Type header sent by the client. Supported only for WebSocket APIs.
   late final pulumi.Output<Map<String, String>?> requestTemplates;
   /// Mappings to transform the HTTP response from a backend integration before returning the response to clients. Supported only for HTTP APIs.
   late final pulumi.Output<List<Map<String, dynamic>>?> responseParameters;
-  /// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration.
+  /// [Template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration.
   late final pulumi.Output<String?> templateSelectionExpression;
-  /// Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and between 50 and 30,000 milliseconds for HTTP APIs.
-  /// The default timeout is 29 seconds for WebSocket APIs and 30 seconds for HTTP APIs.
-  /// this provider will only perform drift detection of its value when present in a configuration.
+  /// Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is 29 seconds for WebSocket APIs and 30 seconds for HTTP APIs. this provider will only perform drift detection of its value when present in a configuration.
   late final pulumi.Output<int> timeoutMilliseconds;
   /// TLS configuration for a private integration. Supported only for HTTP APIs.
   late final pulumi.Output<IntegrationTlsConfig?> tlsConfig;

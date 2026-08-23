@@ -58,6 +58,19 @@ import 'get_repository_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codecommit_getapprovalruletemplate" "example" {
+///   name = "MyExampleApprovalRuleTemplate"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_repository_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codecommit.CodecommitFunctions;
 /// import com.pulumi.aws.codecommit.inputs.GetApprovalRuleTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -163,6 +176,19 @@ Future<GetApprovalRuleTemplateResult> getApprovalRuleTemplate(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codecommit_getrepository" "test" {
+///   repository_name = "MyTestRepository"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +197,8 @@ Future<GetApprovalRuleTemplateResult> getApprovalRuleTemplate(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codecommit.CodecommitFunctions;
 /// import com.pulumi.aws.codecommit.inputs.GetRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

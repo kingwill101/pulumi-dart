@@ -10,7 +10,7 @@ import 'deployment_group_state.dart';
 
 /// Provides a CodeDeploy Deployment Group for a CodeDeploy Application
 ///
-/// &gt; **NOTE on blue/green deployments:** When using `green_fleet_provisioning_option` with the `COPY_AUTO_SCALING_GROUP` action, CodeDeploy will create a new ASG with a different name. This ASG is _not_ managed by this provider and will conflict with existing configuration and state. You may want to use a different approach to managing deployments that involve multiple ASG, such as `DISCOVER_EXISTING` with separate blue and green ASG.
+/// &gt; **NOTE on blue/green deployments:** When using `greenFleetProvisioningOption` with the `COPY_AUTO_SCALING_GROUP` action, CodeDeploy will create a new ASG with a different name. This ASG is _not_ managed by this provider and will conflict with existing configuration and state. You may want to use a different approach to managing deployments that involve multiple ASG, such as `DISCOVER_EXISTING` with separate blue and green ASG.
 ///
 /// ## Example Usage
 ///
@@ -350,6 +350,72 @@ import 'deployment_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["codedeploy.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name               = "example-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicyattachment" "AWSCodeDeployRole" {
+///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
+///   role       = aws_iam_role.example.name
+/// }
+/// resource "aws_codedeploy_application" "example" {
+///   name = "example-app"
+/// }
+/// resource "aws_sns_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "aws_codedeploy_deploymentgroup" "example" {
+///   app_name              = aws_codedeploy_application.example.name
+///   deployment_group_name = "example-group"
+///   service_role_arn      = aws_iam_role.example.arn
+///   ec2_tag_sets {
+///     ec2_tag_filters {
+///       key   = "filterkey1"
+///       type  = "KEY_AND_VALUE"
+///       value = "filtervalue"
+///     }
+///     ec2_tag_filters {
+///       key   = "filterkey2"
+///       type  = "KEY_AND_VALUE"
+///       value = "filtervalue"
+///     }
+///   }
+///   trigger_configurations {
+///     trigger_events     = ["DeploymentFailure"]
+///     trigger_name       = "example-trigger"
+///     trigger_target_arn = aws_sns_topic.example.arn
+///   }
+///   auto_rollback_configuration = {
+///     enabled = true
+///     events  = ["DEPLOYMENT_FAILURE"]
+///   }
+///   alarm_configuration = {
+///     alarms  = ["my-alarm-name"]
+///     enabled = true
+///   }
+///   outdated_instances_strategy = "UPDATE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,6 +424,8 @@ import 'deployment_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
@@ -369,11 +437,12 @@ import 'deployment_group_state.dart';
 /// import com.pulumi.aws.codedeploy.DeploymentGroup;
 /// import com.pulumi.aws.codedeploy.DeploymentGroupArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupEc2TagSetArgs;
+/// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupEc2TagSetEc2TagFilterArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupTriggerConfigurationArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAutoRollbackConfigurationArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupAlarmConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -769,6 +838,59 @@ import 'deployment_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codedeploy_application" "example" {
+///   compute_platform = "ECS"
+///   name             = "example"
+/// }
+/// resource "aws_codedeploy_deploymentgroup" "example" {
+///   app_name               = aws_codedeploy_application.example.name
+///   deployment_config_name = "CodeDeployDefault.ECSAllAtOnce"
+///   deployment_group_name  = "example"
+///   service_role_arn       = exampleAwsIamRole.arn
+///   auto_rollback_configuration = {
+///     enabled = true
+///     events  = ["DEPLOYMENT_FAILURE"]
+///   }
+///   blue_green_deployment_config = {
+///     deployment_ready_option = {
+///       action_on_timeout = "CONTINUE_DEPLOYMENT"
+///     }
+///     terminate_blue_instances_on_deployment_success = {
+///       action                           = "TERMINATE"
+///       termination_wait_time_in_minutes = 5
+///     }
+///   }
+///   deployment_style = {
+///     deployment_option = "WITH_TRAFFIC_CONTROL"
+///     deployment_type   = "BLUE_GREEN"
+///   }
+///   ecs_service = {
+///     cluster_name = exampleAwsEcsCluster.name
+///     service_name = exampleAwsEcsService.name
+///   }
+///   load_balancer_info = {
+///     target_group_pair_info = {
+///       prod_traffic_route = {
+///         listener_arns = [exampleAwsLbListener.arn]
+///       }
+///       target_groups = [{
+///         "name" = blue.name
+///         }, {
+///         "name" = green.name
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -788,8 +910,9 @@ import 'deployment_group_state.dart';
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupLoadBalancerInfoArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1063,6 +1186,45 @@ import 'deployment_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_codedeploy_application" "example" {
+///   name = "example-app"
+/// }
+/// resource "aws_codedeploy_deploymentgroup" "example" {
+///   app_name              = aws_codedeploy_application.example.name
+///   deployment_group_name = "example-group"
+///   service_role_arn      = exampleAwsIamRole.arn
+///   deployment_style = {
+///     deployment_option = "WITH_TRAFFIC_CONTROL"
+///     deployment_type   = "BLUE_GREEN"
+///   }
+///   load_balancer_info = {
+///     elb_infos = [{
+///       "name" = exampleAwsElb.name
+///     }]
+///   }
+///   blue_green_deployment_config = {
+///     deployment_ready_option = {
+///       action_on_timeout    = "STOP_DEPLOYMENT"
+///       wait_time_in_minutes = 60
+///     }
+///     green_fleet_provisioning_option = {
+///       action = "DISCOVER_EXISTING"
+///     }
+///     terminate_blue_instances_on_deployment_success = {
+///       action = "KEEP_ALIVE"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1075,12 +1237,13 @@ import 'deployment_group_state.dart';
 /// import com.pulumi.aws.codedeploy.DeploymentGroupArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupDeploymentStyleArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupLoadBalancerInfoArgs;
+/// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupLoadBalancerInfoElbInfoArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupBlueGreenDeploymentConfigArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionArgs;
 /// import com.pulumi.aws.codedeploy.inputs.DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1158,13 +1321,11 @@ import 'deployment_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CodeDeploy Deployment Groups using `app_name`, a colon, and `deployment_group_name`. For example:
+/// Using `pulumi import`, import CodeDeploy Deployment Groups using `appName`, a colon, and `deploymentGroupName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:codedeploy/deploymentGroup:DeploymentGroup example my-application:my-deployment-group
 /// ```
-///
-/// [1]: http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html
 class DeploymentGroup extends pulumi.CustomResource {
   /// Configuration block of alarms associated with the deployment group (documented below).
   late final pulumi.Output<DeploymentGroupAlarmConfiguration?> alarmConfiguration;
@@ -1204,9 +1365,9 @@ class DeploymentGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The service role ARN that allows deployments.
   late final pulumi.Output<String> serviceRoleArn;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   late final pulumi.Output<bool?> terminationHookEnabled;

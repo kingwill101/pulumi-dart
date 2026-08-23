@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkManagedServiceManagedS3BackupAccess {
   final pulumi.Input<List<String>> ipv4Addresses;
-  /// The status of the network resource.
+  /// Status of the network resource.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetNetworkManagedServiceManagedS3BackupAccess].
   /// [ipv4Addresses] Required.
-  /// [status] The status of the network resource.
+  /// [status] Status of the network resource.
   const GetNetworkManagedServiceManagedS3BackupAccess({
     required this.ipv4Addresses,
     required this.status,
@@ -29,4 +29,3 @@ class GetNetworkManagedServiceManagedS3BackupAccess {
     );
   }
 }
-

@@ -72,6 +72,19 @@ import 'get_patch_baselines_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getcontactsrotation" "example" {
+///   arn = "arn:aws:ssm-contacts:us-east-1:012345678910:rotation/example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +93,8 @@ import 'get_patch_baselines_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetContactsRotationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,6 +203,24 @@ Future<GetContactsRotationResult> getContactsRotation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getdocument" "foo" {
+///   name            = "AWS-GatherSoftwareInventory"
+///   document_format = "YAML"
+/// }
+///
+/// output "content" {
+///   value = data.aws_ssm_getdocument.foo.content
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +229,8 @@ Future<GetContactsRotationResult> getContactsRotation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetDocumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,6 +320,20 @@ Future<GetContactsRotationResult> getContactsRotation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getdocument" "test" {
+///   name            = testAwsSsmDocument.name
+///   document_format = "JSON"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -297,8 +342,8 @@ Future<GetContactsRotationResult> getContactsRotation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetDocumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -419,6 +464,22 @@ Future<GetDocumentResult> getDocument(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getinstances" "example" {
+///   filters {
+///     name   = "PlatformTypes"
+///     values = ["Linux"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -427,8 +488,9 @@ Future<GetDocumentResult> getDocument(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetInstancesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssm.inputs.GetInstancesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,6 +615,22 @@ Future<GetInstancesResult> getInstances(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getmaintenancewindows" "example" {
+///   filters {
+///     name   = "Enabled"
+///     values = ["true"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -561,8 +639,9 @@ Future<GetInstancesResult> getInstances(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetMaintenanceWindowsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssm.inputs.GetMaintenanceWindowsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -666,6 +745,19 @@ Future<GetMaintenanceWindowsResult> getMaintenanceWindows(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getparameter" "foo" {
+///   name = "foo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -674,8 +766,8 @@ Future<GetMaintenanceWindowsResult> getMaintenanceWindows(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -756,6 +848,19 @@ Future<GetMaintenanceWindowsResult> getMaintenanceWindows(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getparameter" "foo" {
+///   name = "foo:3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -764,8 +869,8 @@ Future<GetMaintenanceWindowsResult> getMaintenanceWindows(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -864,6 +969,19 @@ Future<GetParameterResult> getParameter(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getparametersbypath" "example" {
+///   path = "/site/newyork/department/"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -872,8 +990,8 @@ Future<GetParameterResult> getParameter(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetParametersByPathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -902,7 +1020,7 @@ Future<GetParameterResult> getParameter(
 /// ```
 ///
 ///
-/// &gt; **Note:** When the `with_decryption` argument is set to `true`, the unencrypted values of `SecureString` parameters will be stored in the raw state as plain-text as per normal Terraform behavior. &gt; **Note:** The data source follows the behavior of the [SSM API](https://docs.aws.amazon.com/sdk-for-go/api/service/ssm/#Parameter) to return a string value, regardless of parameter type. For `StringList` type where the value is returned as a comma-separated string with no spaces between comma, you may use the built-in split function to get values in a list. Example: `split(",", data.aws_ssm_parameter.subnets.value)`
+/// &gt; **Note:** When the `withDecryption` argument is set to `true`, the unencrypted values of `SecureString` parameters will be stored in the raw state as plain-text as per normal Terraform behavior. &gt; **Note:** The data source follows the behavior of the [SSM API](https://docs.aws.amazon.com/sdk-for-go/api/service/ssm/#Parameter) to return a string value, regardless of parameter type. For `StringList` type where the value is returned as a comma-separated string with no spaces between comma, you may use the built-in split function to get values in a list. Example: `split(",", data.aws_ssm_parameter.subnets.value)`
 /// [args] Arguments passed to this invoke. {@macro pulumi_ssm_get_parameters_by_path_get_parameters_by_path_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetParametersByPathResult> getParametersByPath(
@@ -982,6 +1100,21 @@ Future<GetParametersByPathResult> getParametersByPath(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getpatchbaseline" "centos" {
+///   owner            = "AWS"
+///   name_prefix      = "AWS-"
+///   operating_system = "CENTOS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -990,8 +1123,8 @@ Future<GetParametersByPathResult> getParametersByPath(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetPatchBaselineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1088,6 +1221,22 @@ Future<GetParametersByPathResult> getParametersByPath(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getpatchbaseline" "defaultCustom" {
+///   owner            = "Self"
+///   name_prefix      = "MyCustomBaseline"
+///   default_baseline = true
+///   operating_system = "WINDOWS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1096,8 +1245,8 @@ Future<GetParametersByPathResult> getParametersByPath(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetPatchBaselineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1194,6 +1343,18 @@ Future<GetPatchBaselineResult> getPatchBaseline(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getpatchbaselines" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1202,8 +1363,8 @@ Future<GetPatchBaselineResult> getPatchBaseline(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetPatchBaselinesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1331,6 +1492,26 @@ Future<GetPatchBaselineResult> getPatchBaseline(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getpatchbaselines" "example" {
+///   filters {
+///     key    = "OWNER"
+///     values = ["AWS"]
+///   }
+///   filters {
+///     key    = "OPERATING_SYSTEM"
+///     values = ["WINDOWS"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1339,8 +1520,9 @@ Future<GetPatchBaselineResult> getPatchBaseline(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.SsmFunctions;
 /// import com.pulumi.aws.ssm.inputs.GetPatchBaselinesArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssm.inputs.GetPatchBaselinesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

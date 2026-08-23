@@ -101,6 +101,28 @@ import 'invitation_accepter_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_detective_graph" "primary" {
+/// }
+/// resource "aws_detective_member" "primary" {
+///   account_id    = "ACCOUNT ID"
+///   email_address = "EMAIL"
+///   graph_arn     = aws_detective_graph.primary.graph_arn
+///   message       = "Message of the invite"
+/// }
+/// resource "aws_detective_invitationaccepter" "member" {
+///   depends_on = [aws_detective_member.primary]
+///   graph_arn  = aws_detective_graph.primary.graph_arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +135,8 @@ import 'invitation_accepter_state.dart';
 /// import com.pulumi.aws.detective.InvitationAccepter;
 /// import com.pulumi.aws.detective.InvitationAccepterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

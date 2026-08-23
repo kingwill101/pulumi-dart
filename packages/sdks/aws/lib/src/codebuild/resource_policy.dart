@@ -179,7 +179,7 @@ import 'resource_policy_state.dart';
 /// 						map[string]interface{}{
 /// 							"Sid":    "default",
 /// 							"Effect": "Allow",
-/// 							"Principal": map[string]interface{}{
+/// 							"Principal": map[string]string{
 /// 								"AWS": fmt.Sprintf("arn:%v:iam::%v:root", current.Partition, currentGetCallerIdentity.AccountId),
 /// 							},
 /// 							"Action": []string{
@@ -206,6 +206,44 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getpartition" "current" {
+/// }
+/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// }
+///
+/// resource "aws_codebuild_reportgroup" "example" {
+///   name = "example"
+///   type = "TEST"
+///   export_config = {
+///     type = "NO_EXPORT"
+///   }
+/// }
+/// resource "aws_codebuild_resourcepolicy" "example" {
+///   resource_arn = aws_codebuild_reportgroup.example.arn
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Id"      = "default"
+///     "Statement" = [{
+///       "Sid"    = "default"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "AWS" ="arn:${data.aws_getpartition.current.partition}:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"
+///       }
+///       "Action"   = ["codebuild:BatchGetReportGroups", "codebuild:BatchGetReports", "codebuild:ListReportsForReportGroup", "codebuild:DescribeTestCases"]
+///       "Resource" = aws_codebuild_reportgroup.example.arn
+///     }]
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -221,8 +259,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.aws.codebuild.ResourcePolicy;
 /// import com.pulumi.aws.codebuild.ResourcePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -321,7 +359,7 @@ import 'resource_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeBuild resource.
+/// - `resourceArn` (String) Amazon Resource Name (ARN) of the CodeBuild resource.
 ///
 ///
 /// Using `pulumi import`, import CodeBuild Resource Policy using the CodeBuild Resource Policy arn. For example:

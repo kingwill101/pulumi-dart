@@ -4,7 +4,7 @@ import 'namespace_state.dart';
 
 /// Creates a new Amazon Redshift Serverless Namespace.
 ///
-/// &gt; **Note:** Write-Only argument `admin_password_wo` is available to use in place of `admin_password`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+/// &gt; **Note:** Write-Only argument `adminPasswordWo` is available to use in place of `adminPassword`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
 ///
 /// ## Example Usage
 ///
@@ -56,6 +56,19 @@ import 'namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftserverless_namespace" "example" {
+///   namespace_name = "concurrency-scaling"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'namespace_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftserverless.Namespace;
 /// import com.pulumi.aws.redshiftserverless.NamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -95,7 +108,7 @@ import 'namespace_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Serverless Namespaces using the `namespace_name`. For example:
+/// Using `pulumi import`, import Redshift Serverless Namespaces using the `namespaceName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshiftserverless/namespace:Namespace example example
@@ -106,13 +119,13 @@ class Namespace extends pulumi.CustomResource {
   /// ID of the KMS key used to encrypt the namespace's admin credentials secret.
   late final pulumi.Output<String> adminPasswordSecretKmsKeyId;
   /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manage_admin_password` and `admin_user_password_wo`.
+  /// Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
   late final pulumi.Output<String?> adminUserPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manage_admin_password` and `admin_user_password`.
+  /// Conflicts with `manageAdminPassword` and `adminUserPassword`.
   late final pulumi.Output<String?> adminUserPasswordWo;
-  /// Used together with `admin_user_password_wo` to trigger an update. Increment this value when an update to the `admin_user_password_wo` is required
+  /// Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
   late final pulumi.Output<int?> adminUserPasswordWoVersion;
   /// The username of the administrator for the first database created in the namespace.
   late final pulumi.Output<String> adminUsername;
@@ -120,7 +133,7 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The name of the first database created in the namespace.
   late final pulumi.Output<String> dbName;
-  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `default_iam_role_arn`, it also must be part of `iam_roles`.
+  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
   late final pulumi.Output<String?> defaultIamRoleArn;
   /// A list of IAM roles to associate with the namespace.
   late final pulumi.Output<List<String>> iamRoles;
@@ -129,7 +142,7 @@ class Namespace extends pulumi.CustomResource {
   /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   late final pulumi.Output<List<String>?> logExports;
   /// Whether to use AWS SecretManager to manage namespace's admin credentials.
-  /// Conflicts with `admin_user_password` and `admin_user_password_wo`.
+  /// Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
   late final pulumi.Output<bool?> manageAdminPassword;
   /// The Redshift Namespace ID.
   late final pulumi.Output<String> namespaceId;
@@ -137,9 +150,9 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String> namespaceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Namespace].

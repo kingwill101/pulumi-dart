@@ -6,7 +6,7 @@ import 'plan_trigger_condition.dart';
 class PlanTrigger {
   /// Action to trigger. Valid values: `activate`, `deactivate`.
   final pulumi.Input<String> action;
-  /// List of conditions that must be met. See Conditions below.
+  /// Conditions that must be met. See `conditions` Block for details.
   final pulumi.Input<List<PlanTriggerCondition>>? conditions;
   /// Description of the trigger.
   final pulumi.Input<String>? description;
@@ -17,7 +17,7 @@ class PlanTrigger {
 
   /// Creates a new [PlanTrigger].
   /// [action] Action to trigger. Valid values: `activate`, `deactivate`.
-  /// [conditions] List of conditions that must be met. See Conditions below.
+  /// [conditions] Conditions that must be met. See `conditions` Block for details.
   /// [description] Description of the trigger.
   /// [minDelayMinutesBetweenExecutions] Minimum delay in minutes between executions.
   /// [targetRegion] Target region for the trigger.
@@ -49,4 +49,3 @@ class PlanTrigger {
     );
   }
 }
-

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionTimeout {
-  /// The job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
+  /// Job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
   final pulumi.Input<int> attemptDurationSeconds;
 
   /// Creates a new [GetJobDefinitionTimeout].
-  /// [attemptDurationSeconds] The job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
+  /// [attemptDurationSeconds] Job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
   const GetJobDefinitionTimeout({
     required this.attemptDurationSeconds,
   });
@@ -24,4 +24,3 @@ class GetJobDefinitionTimeout {
     );
   }
 }
-

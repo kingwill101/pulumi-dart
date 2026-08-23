@@ -5,7 +5,7 @@ import 'vpn_gateway_route_propagation_state.dart';
 /// Requests automatic route propagation between a VPN gateway and a route table.
 ///
 /// &gt; **Note:** This resource should not be used with a route table that has
-/// the `propagating_vgws` argument set. If that argument is set, any route
+/// the `propagatingVgws` argument set. If that argument is set, any route
 /// propagation not explicitly listed in its value will be removed.
 ///
 /// ## Example Usage
@@ -65,6 +65,20 @@ import 'vpn_gateway_route_propagation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpngatewayroutepropagation" "example" {
+///   vpn_gateway_id = exampleAwsVpnGateway.id
+///   route_table_id = exampleAwsRouteTable.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'vpn_gateway_route_propagation_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpnGatewayRoutePropagation;
 /// import com.pulumi.aws.ec2.VpnGatewayRoutePropagationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

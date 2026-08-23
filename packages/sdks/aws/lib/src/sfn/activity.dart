@@ -57,6 +57,19 @@ import 'activity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sfn_activity" "sfn_activity" {
+///   name = "my-activity"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'activity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sfn.Activity;
 /// import com.pulumi.aws.sfn.ActivityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,6 +184,24 @@ import 'activity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sfn_activity" "sfn_activity" {
+///   name = "my-activity"
+///   encryption_configuration = {
+///     kms_key_id                        = kmsKeyForSfn.arn
+///     type                              = "CUSTOMER_MANAGED_KMS_KEY"
+///     kms_data_key_reuse_period_seconds = 900
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +211,8 @@ import 'activity_state.dart';
 /// import com.pulumi.aws.sfn.Activity;
 /// import com.pulumi.aws.sfn.ActivityArgs;
 /// import com.pulumi.aws.sfn.inputs.ActivityEncryptionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,6 +252,13 @@ import 'activity_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `arn` (String) ARN of the activity.
+///
+///
 /// Using `pulumi import`, import activities using the `arn`. For example:
 ///
 /// ```sh
@@ -237,9 +275,9 @@ class Activity extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Activity].

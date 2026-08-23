@@ -42,4 +42,3 @@ class TopicRuleS3 {
     );
   }
 }
-

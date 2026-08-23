@@ -61,6 +61,20 @@ import 'vpc_dhcp_options_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_vpcdhcpoptionsassociation" "dns_resolver" {
+///   vpc_id          = fooAwsVpc.id
+///   dhcp_options_id = foo.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'vpc_dhcp_options_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.VpcDhcpOptionsAssociation;
 /// import com.pulumi.aws.ec2.VpcDhcpOptionsAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,11 +115,6 @@ import 'vpc_dhcp_options_association_state.dart';
 /// ```
 ///
 ///
-/// ## Remarks
-///
-/// * You can only associate one DHCP Options Set to a given VPC ID.
-/// * Removing the DHCP Options Association automatically sets AWS's `default` DHCP Options Set to the VPC.
-///
 /// ## Import
 ///
 /// Using `pulumi import`, import DHCP associations using the VPC ID associated with the options. For example:
@@ -115,6 +124,8 @@ import 'vpc_dhcp_options_association_state.dart';
 /// ```
 class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
   /// The ID of the DHCP Options Set to associate to the VPC.
+  ///
+  /// &gt; **Note:** Only one DHCP Options Set can be associated to a given VPC. Removing the association automatically sets AWS's `default` DHCP Options Set to the VPC.
   late final pulumi.Output<String> dhcpOptionsId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;

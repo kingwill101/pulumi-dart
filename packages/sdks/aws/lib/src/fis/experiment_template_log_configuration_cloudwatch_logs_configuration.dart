@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration {
-  /// The Amazon Resource Name (ARN) of the destination Amazon CloudWatch Logs log group. The ARN must end with `:*`
+  /// Amazon Resource Name (ARN) of the destination Amazon CloudWatch Logs log group. The ARN must end with `:*`
   final pulumi.Input<String> logGroupArn;
 
   /// Creates a new [ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration].
-  /// [logGroupArn] The Amazon Resource Name (ARN) of the destination Amazon CloudWatch Logs log group. The ARN must end with `:*`
+  /// [logGroupArn] Amazon Resource Name (ARN) of the destination Amazon CloudWatch Logs log group. The ARN must end with `:*`
   const ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration({
     required this.logGroupArn,
   });
@@ -24,4 +24,3 @@ class ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration {
     );
   }
 }
-

@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration {
+  /// Unit of time.
   final pulumi.Input<String> unit;
+  /// Value for the JSON.
   final pulumi.Input<int> value;
 
   /// Creates a new [GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration].
-  /// [unit] Required.
-  /// [value] Required.
+  /// [unit] Unit of time.
+  /// [value] Value for the JSON.
   const GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration({
     required this.unit,
     required this.value,
@@ -28,4 +30,3 @@ class GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration {
     );
   }
 }
-

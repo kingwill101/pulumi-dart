@@ -11,31 +11,31 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
   final pulumi.Input<List<String>>? args;
   /// Entrypoint for the container. This isn't run within a shell. If this isn't specified, the ENTRYPOINT of the container image is used. Environment variable references are expanded using the container's environment.
   final pulumi.Input<List<String>>? commands;
-  /// Environment variables to pass to a container. See EKS Environment below.
+  /// Environment variables to pass to a container. See `env` below.
   final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>>? envs;
   /// Docker image used to start the container.
   final pulumi.Input<String> image;
   /// Image pull policy for the container. Supported values are `Always`, `IfNotPresent`, and `Never`.
   final pulumi.Input<String>? imagePullPolicy;
-  /// Name of the job definition.
+  /// Name of the container. If the name isn't specified, the default name "Default" is used. Each container in a pod must have a unique name.
   final pulumi.Input<String>? name;
-  /// Type and amount of resources to assign to a container. The supported resources include `memory`, `cpu`, and `nvidia.com/gpu`.
+  /// Type and amount of resources to assign to a container. See `resources` below.
   final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesInitContainerResources>? resources;
-  /// Security context for a job. See `security_context` below.
+  /// Security context for a job. See `securityContext` below.
   final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext>? securityContext;
-  /// Volume mounts for the container.
+  /// Volume mounts for the container. See `volumeMounts` below.
   final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>>? volumeMounts;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesInitContainer].
   /// [args] Array of arguments to the entrypoint. If this isn't specified, the CMD of the container image is used. This corresponds to the args member in the Entrypoint portion of the Pod in Kubernetes. Environment variable references are expanded using the container's environment.
   /// [commands] Entrypoint for the container. This isn't run within a shell. If this isn't specified, the ENTRYPOINT of the container image is used. Environment variable references are expanded using the container's environment.
-  /// [envs] Environment variables to pass to a container. See EKS Environment below.
+  /// [envs] Environment variables to pass to a container. See `env` below.
   /// [image] Docker image used to start the container.
   /// [imagePullPolicy] Image pull policy for the container. Supported values are `Always`, `IfNotPresent`, and `Never`.
-  /// [name] Name of the job definition.
-  /// [resources] Type and amount of resources to assign to a container. The supported resources include `memory`, `cpu`, and `nvidia.com/gpu`.
-  /// [securityContext] Security context for a job. See `security_context` below.
-  /// [volumeMounts] Volume mounts for the container.
+  /// [name] Name of the container. If the name isn't specified, the default name "Default" is used. Each container in a pod must have a unique name.
+  /// [resources] Type and amount of resources to assign to a container. See `resources` below.
+  /// [securityContext] Security context for a job. See `securityContext` below.
+  /// [volumeMounts] Volume mounts for the container. See `volumeMounts` below.
   const JobDefinitionEksPropertiesPodPropertiesInitContainer({
     this.args,
     this.commands,
@@ -76,4 +76,3 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
     );
   }
 }
-

@@ -61,6 +61,20 @@ import 'logging_options_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_loggingoptions" "example" {
+///   default_log_level = "WARN"
+///   role_arn          = exampleAwsIamRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'logging_options_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iot.LoggingOptions;
 /// import com.pulumi.aws.iot.LoggingOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

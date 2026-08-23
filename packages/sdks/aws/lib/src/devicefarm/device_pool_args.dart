@@ -20,7 +20,7 @@ class DevicePoolArgs {
   final pulumi.Input<String>? region;
   /// The device pool's rules. See Rule.
   final pulumi.Input<List<DevicePoolRule>> rules;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DevicePoolArgs].
@@ -30,7 +30,7 @@ class DevicePoolArgs {
   /// [projectArn] The ARN of the project for the device pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] The device pool's rules. See Rule.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const DevicePoolArgs({
     this.description,
     this.maxDevices,
@@ -65,4 +65,3 @@ class DevicePoolArgs {
     );
   }
 }
-

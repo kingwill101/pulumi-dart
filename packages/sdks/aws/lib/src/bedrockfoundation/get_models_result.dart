@@ -11,7 +11,7 @@ class GetModelsResult {
   final String? byProvider;
   /// AWS region.
   final String id;
-  /// List of model summary objects. See `model_summaries`.
+  /// List of model summary objects. See `modelSummaries`.
   final List<GetModelsModelSummary> modelSummaries;
   final String region;
 
@@ -21,7 +21,7 @@ class GetModelsResult {
   /// [byOutputModality] Optional.
   /// [byProvider] Optional.
   /// [id] AWS region.
-  /// [modelSummaries] List of model summary objects. See `model_summaries`.
+  /// [modelSummaries] List of model summary objects. See `modelSummaries`.
   /// [region] Required.
   const GetModelsResult({
     this.byCustomizationType,
@@ -57,4 +57,3 @@ class GetModelsResult {
     );
   }
 }
-

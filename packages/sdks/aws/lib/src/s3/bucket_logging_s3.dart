@@ -22,24 +22,24 @@ import 'bucket_logging_target_object_key_format.dart';
 ///
 /// const current = aws.getCallerIdentity({});
 /// const logging = new aws.s3.Bucket("logging", {bucket: "access-logging-bucket"});
-/// const loggingBucketPolicy = pulumi.all([logging.arn, current]).apply(([arn, current]) => aws.iam.getPolicyDocumentOutput({
+/// const loggingBucketPolicy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
 ///         principals: [{
 ///             identifiers: ["logging.s3.amazonaws.com"],
 ///             type: "Service",
 ///         }],
 ///         actions: ["s3:PutObject"],
-///         resources: [`${arn}/*`],
+///         resources: [pulumi.interpolate`${logging.arn}/*`],
 ///         conditions: [{
 ///             test: "StringEquals",
 ///             variable: "aws:SourceAccount",
-///             values: [current.accountId],
+///             values: [current.then(current => current.accountId)],
 ///         }],
 ///     }],
-/// }));
+/// });
 /// const loggingBucketPolicy2 = new aws.s3.BucketPolicy("logging", {
 ///     bucket: logging.bucket,
-///     policy: loggingBucketPolicy.apply(loggingBucketPolicy => loggingBucketPolicy.json),
+///     policy: loggingBucketPolicy.json,
 /// });
 /// const example = new aws.s3.Bucket("example", {bucket: "example-bucket"});
 /// const exampleBucketLogging = new aws.s3.BucketLogging("example", {
@@ -59,19 +59,19 @@ import 'bucket_logging_target_object_key_format.dart';
 ///
 /// current = aws.get_caller_identity()
 /// logging = aws.s3.Bucket("logging", bucket="access-logging-bucket")
-/// logging_bucket_policy = logging.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
+/// logging_bucket_policy = aws.iam.get_policy_document_output(statements=[{
 ///     "principals": [{
 ///         "identifiers": ["logging.s3.amazonaws.com"],
 ///         "type": "Service",
 ///     }],
 ///     "actions": ["s3:PutObject"],
-///     "resources": [f"{arn}/*"],
+///     "resources": [logging.arn.apply(lambda arn: f"{arn}/*")],
 ///     "conditions": [{
 ///         "test": "StringEquals",
 ///         "variable": "aws:SourceAccount",
 ///         "values": [current.account_id],
 ///     }],
-/// }]))
+/// }])
 /// logging_bucket_policy2 = aws.s3.BucketPolicy("logging",
 ///     bucket=logging.bucket,
 ///     policy=logging_bucket_policy.json)
@@ -105,11 +105,11 @@ import 'bucket_logging_target_object_key_format.dart';
 ///     {
 ///         Statements = new[]
 ///         {
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
 ///                 Principals = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
 ///                     {
 ///                         Identifiers = new[]
 ///                         {
@@ -128,7 +128,7 @@ import 'bucket_logging_target_object_key_format.dart';
 ///                 },
 ///                 Conditions = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
 ///                     {
 ///                         Test = "StringEquals",
 ///                         Variable = "aws:SourceAccount",
@@ -180,80 +180,126 @@ import 'bucket_logging_target_object_key_format.dart';
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		logging, err := s3.NewBucket(ctx, "logging", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("access-logging-bucket"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		loggingBucketPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+/// 			Statements: iam.GetPolicyDocumentStatementArray{
+/// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("logging.s3.amazonaws.com"),
+/// 							},
+/// 							Type: pulumi.String("Service"),
+/// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						logging.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/*", arn), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("aws:SourceAccount"),
+/// 							Values: pulumi.StringArray{
+/// 								pulumi.String(current.AccountId),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		_, err = s3.NewBucketPolicy(ctx, "logging", &s3.BucketPolicyArgs{
+/// 			Bucket: logging.Bucket,
+/// 			Policy: loggingBucketPolicy.Json(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := s3.NewBucket(ctx, "example", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("example-bucket"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = s3.NewBucketLogging(ctx, "example", &s3.BucketLoggingArgs{
+/// 			Bucket:       example.Bucket,
+/// 			TargetBucket: logging.Bucket,
+/// 			TargetPrefix: pulumi.String("log/"),
+/// 			TargetObjectKeyFormat: &s3.BucketLoggingTargetObjectKeyFormatArgs{
+/// 				PartitionedPrefix: &s3.BucketLoggingTargetObjectKeyFormatPartitionedPrefixArgs{
+/// 					PartitionDateSource: pulumi.String("EventTime"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// logging, err := s3.NewBucket(ctx, "logging", &s3.BucketArgs{
-/// Bucket: pulumi.String("access-logging-bucket"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
-/// loggingBucketPolicy := logging.Arn.ApplyT(func(arn string) (iam.GetPolicyDocumentResult, error) {
-/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// Statements: []iam.GetPolicyDocumentStatement{
-/// {
-/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// {
-/// Identifiers: []string{
-/// "logging.s3.amazonaws.com",
-/// },
-/// Type: "Service",
-/// },
-/// },
-/// Actions: []string{
-/// "s3:PutObject",
-/// },
-/// Resources: []string{
-/// fmt.Sprintf("%v/*", arn),
-/// },
-/// Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// {
-/// Test: "StringEquals",
-/// Variable: "aws:SourceAccount",
-/// Values: interface{}{
-/// current.AccountId,
-/// },
-/// },
-/// },
-/// },
-/// },
-/// }, nil))), nil
-/// }).(iam.GetPolicyDocumentResultOutput)
-/// _, err = s3.NewBucketPolicy(ctx, "logging", &s3.BucketPolicyArgs{
-/// Bucket: logging.Bucket,
-/// Policy: pulumi.String(loggingBucketPolicy.ApplyT(func(loggingBucketPolicy iam.GetPolicyDocumentResult) (*string, error) {
-/// return &loggingBucketPolicy.Json, nil
-/// }).(pulumi.StringPtrOutput)),
-/// })
-/// if err != nil {
-/// return err
+///
+/// data "aws_getcalleridentity" "current" {
 /// }
-/// example, err := s3.NewBucket(ctx, "example", &s3.BucketArgs{
-/// Bucket: pulumi.String("example-bucket"),
-/// })
-/// if err != nil {
-/// return err
+/// data "aws_iam_getpolicydocument" "loggingBucketPolicy" {
+///   statements {
+///     principals {
+///       identifiers = ["logging.s3.amazonaws.com"]
+///       type        = "Service"
+///     }
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.logging.arn}/*"]
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "aws:SourceAccount"
+///       values   = [data.aws_getcalleridentity.current.account_id]
+///     }
+///   }
 /// }
-/// _, err = s3.NewBucketLogging(ctx, "example", &s3.BucketLoggingArgs{
-/// Bucket: example.Bucket,
-/// TargetBucket: logging.Bucket,
-/// TargetPrefix: pulumi.String("log/"),
-/// TargetObjectKeyFormat: &s3.BucketLoggingTargetObjectKeyFormatArgs{
-/// PartitionedPrefix: &s3.BucketLoggingTargetObjectKeyFormatPartitionedPrefixArgs{
-/// PartitionDateSource: pulumi.String("EventTime"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "aws_s3_bucket" "logging" {
+///   bucket = "access-logging-bucket"
 /// }
-/// return nil
-/// })
+/// resource "aws_s3_bucketpolicy" "logging" {
+///   bucket = aws_s3_bucket.logging.bucket
+///   policy = data.aws_iam_getpolicydocument.loggingBucketPolicy.json
+/// }
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example-bucket"
+/// }
+/// resource "aws_s3_bucketlogging" "example" {
+///   bucket        = aws_s3_bucket.example.bucket
+///   target_bucket = aws_s3_bucket.logging.bucket
+///   target_prefix = "log/"
+///   target_object_key_format = {
+///     partitioned_prefix = {
+///       partition_date_source = "EventTime"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -268,14 +314,17 @@ import 'bucket_logging_target_object_key_format.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.s3.BucketLogging;
 /// import com.pulumi.aws.s3.BucketLoggingArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLoggingTargetObjectKeyFormatArgs;
 /// import com.pulumi.aws.s3.inputs.BucketLoggingTargetObjectKeyFormatPartitionedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,25 +343,25 @@ import 'bucket_logging_target_object_key_format.dart';
 ///             .bucket("access-logging-bucket")
 ///             .build());
 ///
-///         final var loggingBucketPolicy = logging.arn().applyValue(_arn -> IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///         final var loggingBucketPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("logging.s3.amazonaws.com")
 ///                     .type("Service")
 ///                     .build())
 ///                 .actions("s3:PutObject")
-///                 .resources(String.format("%s/*", _arn))
+///                 .resources(logging.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("StringEquals")
 ///                     .variable("aws:SourceAccount")
 ///                     .values(current.accountId())
 ///                     .build())
 ///                 .build())
-///             .build()));
+///             .build());
 ///
 ///         var loggingBucketPolicy2 = new BucketPolicy("loggingBucketPolicy2", BucketPolicyArgs.builder()
 ///             .bucket(logging.bucket())
-///             .policy(loggingBucketPolicy.json())
+///             .policy(loggingBucketPolicy.applyValue(_loggingBucketPolicy -> _loggingBucketPolicy.json()))
 ///             .build());
 ///
 ///         var example = new Bucket("example", BucketArgs.builder()
@@ -483,7 +532,7 @@ import 'bucket_logging_target_object_key_format.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -496,15 +545,15 @@ import 'bucket_logging_target_object_key_format.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "log_bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: logBucket.ID(),
+/// 			Bucket: logBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Acl:    pulumi.String("log-delivery-write"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketLogging(ctx, "example", &s3.BucketLoggingArgs{
-/// 			Bucket:       example.ID(),
-/// 			TargetBucket: logBucket.ID(),
+/// 			Bucket:       example.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetBucket: logBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			TargetPrefix: pulumi.String("log/"),
 /// 		})
 /// 		if err != nil {
@@ -512,6 +561,35 @@ import 'bucket_logging_target_object_key_format.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "my-tf-example-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "example" {
+///   bucket = aws_s3_bucket.example.id
+///   acl    = "private"
+/// }
+/// resource "aws_s3_bucket" "log_bucket" {
+///   bucket = "my-tf-log-bucket"
+/// }
+/// resource "aws_s3_bucketacl" "log_bucket_acl" {
+///   bucket = aws_s3_bucket.log_bucket.id
+///   acl    = "log-delivery-write"
+/// }
+/// resource "aws_s3_bucketlogging" "example" {
+///   bucket        = aws_s3_bucket.example.id
+///   target_bucket = aws_s3_bucket.log_bucket.id
+///   target_prefix = "log/"
 /// }
 /// ```
 /// ```java
@@ -526,8 +604,8 @@ import 'bucket_logging_target_object_key_format.dart';
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.s3.BucketLogging;
 /// import com.pulumi.aws.s3.BucketLoggingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -609,14 +687,14 @@ import 'bucket_logging_target_object_key_format.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
-/// **Using `pulumi import` to import** S3 bucket logging using the `bucket` or using the `bucket` and `expected_bucket_owner` separated by a comma (`,`). For example:
+/// **Using `pulumi import` to import** S3 bucket logging using the `bucket` or using the `bucket` and `expectedBucketOwner` separated by a comma (`,`). For example:
 ///
 /// If the owner (account ID) of the source bucket is the same account used to configure the AWS Provider, import using the `bucket`:
 ///
@@ -624,7 +702,7 @@ import 'bucket_logging_target_object_key_format.dart';
 /// $ pulumi import aws:s3/bucketLogging:BucketLogging example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketLogging:BucketLogging example bucket-name,123456789012

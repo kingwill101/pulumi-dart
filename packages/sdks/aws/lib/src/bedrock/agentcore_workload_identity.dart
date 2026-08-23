@@ -68,6 +68,20 @@ import 'agentcore_workload_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreworkloadidentity" "example" {
+///   name                                = "example-workload-identity"
+///   allowed_resource_oauth2_return_urls = ["https://example.com/callback"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +90,8 @@ import 'agentcore_workload_identity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreWorkloadIdentity;
 /// import com.pulumi.aws.bedrock.AgentcoreWorkloadIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,6 +196,20 @@ import 'agentcore_workload_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreworkloadidentity" "example" {
+///   name                                = "example-workload-identity"
+///   allowed_resource_oauth2_return_urls = ["https://app.example.com/oauth/callback", "https://api.example.com/auth/return", "https://example.com/callback"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +218,8 @@ import 'agentcore_workload_identity_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreWorkloadIdentity;
 /// import com.pulumi.aws.bedrock.AgentcoreWorkloadIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

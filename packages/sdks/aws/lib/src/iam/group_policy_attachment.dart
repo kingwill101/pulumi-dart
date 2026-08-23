@@ -100,6 +100,28 @@ import 'group_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_group" "group" {
+///   name = "test-group"
+/// }
+/// resource "aws_iam_policy" "policy" {
+///   name        = "test-policy"
+///   description = "A test policy"
+///   policy      = "{ ... policy JSON ... }"
+/// }
+/// resource "aws_iam_grouppolicyattachment" "test-attach" {
+///   group      = aws_iam_group.group.name
+///   policy_arn = aws_iam_policy.policy.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +134,8 @@ import 'group_policy_attachment_state.dart';
 /// import com.pulumi.aws.iam.PolicyArgs;
 /// import com.pulumi.aws.iam.GroupPolicyAttachment;
 /// import com.pulumi.aws.iam.GroupPolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,6 +186,18 @@ import 'group_policy_attachment_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `group` (String) Name of the IAM group.
+/// * `policyArn` (String) ARN of the IAM policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import IAM group policy attachments using the group name and policy arn separated by `/`. For example:
 ///

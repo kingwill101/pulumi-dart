@@ -141,14 +141,14 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVpcIpamPoolCidr, err := ec2.NewVpcIpamPoolCidr(ctx, "example", &ec2.VpcIpamPoolCidrArgs{
-/// 			IpamPoolId: exampleVpcIpamPool.ID(),
+/// 			IpamPoolId: exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:       pulumi.String("172.20.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPreviewNextCidr(ctx, "example", &ec2.VpcIpamPreviewNextCidrArgs{
-/// 			IpamPoolId:    exampleVpcIpamPool.ID(),
+/// 			IpamPoolId:    exampleVpcIpamPool.ID().ToIDOutput().ToStringOutput(),
 /// 			NetmaskLength: pulumi.Int(28),
 /// 			DisallowedCidrs: pulumi.StringArray{
 /// 				pulumi.String("172.2.0.0/32"),
@@ -161,6 +161,39 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcipampreviewnextcidr" "example" {
+///   depends_on       = [aws_ec2_vpcipampoolcidr.example]
+///   ipam_pool_id     = aws_ec2_vpcipampool.example.id
+///   netmask_length   = 28
+///   disallowed_cidrs = ["172.2.0.0/32"]
+/// }
+/// resource "aws_ec2_vpcipampoolcidr" "example" {
+///   ipam_pool_id = aws_ec2_vpcipampool.example.id
+///   cidr         = "172.20.0.0/16"
+/// }
+/// resource "aws_ec2_vpcipampool" "example" {
+///   address_family = "ipv4"
+///   ipam_scope_id  = aws_ec2_vpcipam.example.private_default_scope_id
+///   locale         = data.aws_getregion.current.region
+/// }
+/// resource "aws_ec2_vpcipam" "example" {
+///   operating_regions {
+///     region_name = data.aws_getregion.current.region
+///   }
 /// }
 /// ```
 /// ```java
@@ -181,8 +214,8 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 /// import com.pulumi.aws.ec2.VpcIpamPreviewNextCidr;
 /// import com.pulumi.aws.ec2.VpcIpamPreviewNextCidrArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

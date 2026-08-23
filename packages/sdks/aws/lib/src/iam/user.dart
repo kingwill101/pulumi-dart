@@ -4,7 +4,7 @@ import 'user_state.dart';
 
 /// Provides an IAM user.
 ///
-/// &gt; *NOTE:* If policies are attached to the user via the `aws.iam.PolicyAttachment` resource and you are modifying the user `name` or `path`, the `force_destroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.UserPolicyAttachment` resource (recommended) does not have this requirement.
+/// &gt; *NOTE:* If policies are attached to the user via the `aws.iam.PolicyAttachment` resource and you are modifying the user `name` or `path`, the `forceDestroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.UserPolicyAttachment` resource (recommended) does not have this requirement.
 ///
 /// ## Example Usage
 ///
@@ -160,6 +160,39 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "lbRo" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:Describe*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_iam_user" "lb" {
+///   name = "loadbalancer"
+///   path = "/system/"
+///   tags = {
+///     "tag-key" = "tag-value"
+///   }
+/// }
+/// resource "aws_iam_accesskey" "lb" {
+///   user = aws_iam_user.lb.name
+/// }
+/// resource "aws_iam_userpolicy" "lb_ro" {
+///   name   = "test"
+///   user   = aws_iam_user.lb.name
+///   policy = data.aws_iam_getpolicydocument.lbRo.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -172,10 +205,11 @@ import 'user_state.dart';
 /// import com.pulumi.aws.iam.AccessKeyArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
 /// import com.pulumi.aws.iam.UserPolicy;
 /// import com.pulumi.aws.iam.UserPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,17 +285,28 @@ import 'user_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) User name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
 /// Using `pulumi import`, import IAM Users using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:iam/user:User lb loadbalancer
+/// $ pulumi import aws:iam/user:User example example-user
 /// ```
 class User extends pulumi.CustomResource {
   /// The ARN assigned by AWS for this user.
   late final pulumi.Output<String> arn;
   /// When destroying this user, destroy even if it
-  /// has non-provider-managed IAM access keys, login profile or MFA devices. Without `force_destroy`
-  /// a user with non-provider-managed access keys and login profile will fail to be destroyed.
+  /// has non-provider-managed IAM access keys, login profile or MFA devices. Without `forceDestroy`
+  /// a user with non-provider-managed access keys and login profile will fail to be destroyed. This only deletes objects when the user is destroyed, not when setting this parameter to true. Once this parameter is set to true, there must be a successful pulumi up run before a destroy is required to update this value in the resource state. Without a successful pulumi up after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the user or destroying the user, this flag will not work. Additionally when importing a user, a successful pulumi up is required to set this value in state before it will take effect on a destroy operation.
   late final pulumi.Output<bool?> forceDestroy;
   /// The user's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".
   late final pulumi.Output<String> name;
@@ -269,11 +314,11 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String?> path;
   /// The ARN of the policy that is used to set the permissions boundary for the user.
   late final pulumi.Output<String?> permissionsBoundary;
-  /// Key-value mapping of tags for the IAM user. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of tags for the IAM user. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The [unique ID][1] assigned by AWS.
+  /// The [unique ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html#GUIDs) assigned by AWS.
   late final pulumi.Output<String> uniqueId;
 
   /// Creates a new [User].

@@ -136,6 +136,35 @@ import 'environment_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datazone_environment" "example" {
+///   name                 = "example"
+///   blueprint_identifier = test.environmentBlueprintId
+///   profile_identifier   = testAwsDatazoneEnvironmentProfile.id
+///   project_identifier   = testAwsDatazoneProject.id
+///   domain_identifier    = testAwsDatazoneDomain.id
+///   user_parameters {
+///     name  = "consumerGlueDbName"
+///     value = "consumer"
+///   }
+///   user_parameters {
+///     name  = "producerGlueDbName"
+///     value = "producer"
+///   }
+///   user_parameters {
+///     name  = "workgroupName"
+///     value = "workgroup"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +174,8 @@ import 'environment_timeouts.dart';
 /// import com.pulumi.aws.datazone.Environment;
 /// import com.pulumi.aws.datazone.EnvironmentArgs;
 /// import com.pulumi.aws.datazone.inputs.EnvironmentUserParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -203,6 +232,19 @@ import 'environment_timeouts.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `domainIdentifier` - (String) Identifier of the DataZone domain.
+/// * `id` - (String) ID of the environment.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import DataZone Environment using the `domain_idntifier,id`. For example:
 ///

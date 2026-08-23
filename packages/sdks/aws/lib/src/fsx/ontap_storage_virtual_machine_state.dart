@@ -10,40 +10,40 @@ class OntapStorageVirtualMachineState {
   final pulumi.Input<OntapStorageVirtualMachineActiveDirectoryConfiguration>? activeDirectoryConfiguration;
   /// Amazon Resource Name of the storage virtual machine.
   final pulumi.Input<String>? arn;
-  /// The endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See Endpoints below.
+  /// Endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See `endpoints` below.
   final pulumi.Input<List<OntapStorageVirtualMachineEndpoint>>? endpoints;
-  /// The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
+  /// ID of the Amazon FSx ONTAP File System that this SVM will be created on.
   final pulumi.Input<String>? fileSystemId;
-  /// The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
+  /// Name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
+  /// Root volume security style. Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
   final pulumi.Input<String>? rootVolumeSecurityStyle;
-  /// Describes the SVM's subtype, e.g. `DEFAULT`
+  /// SVM's subtype, e.g. `DEFAULT`
   final pulumi.Input<String>? subtype;
-  /// Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
+  /// Password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
   final pulumi.Input<String>? svmAdminPassword;
-  /// A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the storage virtual machine. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The SVM's UUID (universally unique identifier).
+  /// SVM's UUID (universally unique identifier).
   final pulumi.Input<String>? uuid;
 
   /// Creates a new [OntapStorageVirtualMachineState].
   /// [activeDirectoryConfiguration] Configuration block that Amazon FSx uses to join the FSx ONTAP Storage Virtual Machine(SVM) to your Microsoft Active Directory (AD) directory. Detailed below.
   /// [arn] Amazon Resource Name of the storage virtual machine.
-  /// [endpoints] The endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See Endpoints below.
-  /// [fileSystemId] The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
-  /// [name] The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
+  /// [endpoints] Endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See `endpoints` below.
+  /// [fileSystemId] ID of the Amazon FSx ONTAP File System that this SVM will be created on.
+  /// [name] Name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [rootVolumeSecurityStyle] Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
-  /// [subtype] Describes the SVM's subtype, e.g. `DEFAULT`
-  /// [svmAdminPassword] Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
-  /// [tags] A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [uuid] The SVM's UUID (universally unique identifier).
+  /// [rootVolumeSecurityStyle] Root volume security style. Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
+  /// [subtype] SVM's subtype, e.g. `DEFAULT`
+  /// [svmAdminPassword] Password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
+  /// [tags] Map of tags to assign to the storage virtual machine. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [uuid] SVM's UUID (universally unique identifier).
   const OntapStorageVirtualMachineState({
     this.activeDirectoryConfiguration,
     this.arn,
@@ -93,4 +93,3 @@ class OntapStorageVirtualMachineState {
     );
   }
 }
-

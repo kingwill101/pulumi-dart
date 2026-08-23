@@ -266,10 +266,10 @@ import 'pipe_target_parameters.dart';
 /// 			"Statement": map[string]interface{}{
 /// 				"Effect": "Allow",
 /// 				"Action": "sts:AssumeRole",
-/// 				"Principal": map[string]interface{}{
+/// 				"Principal": map[string]string{
 /// 					"Service": "pipes.amazonaws.com",
 /// 				},
-/// 				"Condition": map[string]interface{}{
+/// 				"Condition": map[string]map[string]interface{}{
 /// 					"StringEquals": map[string]interface{}{
 /// 						"aws:SourceAccount": main.AccountId,
 /// 					},
@@ -281,7 +281,7 @@ import 'pipe_target_parameters.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		example, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// 			AssumeRolePolicy: pulumi.String(json0),
+/// 			AssumeRolePolicy: json0,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -291,7 +291,7 @@ import 'pipe_target_parameters.dart';
 /// 			return err
 /// 		}
 /// 		source, err := iam.NewRolePolicy(ctx, "source", &iam.RolePolicyArgs{
-/// 			Role: example.ID(),
+/// 			Role: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: sourceQueue.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -325,7 +325,7 @@ import 'pipe_target_parameters.dart';
 /// 			return err
 /// 		}
 /// 		target, err := iam.NewRolePolicy(ctx, "target", &iam.RolePolicyArgs{
-/// 			Role: example.ID(),
+/// 			Role: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: targetQueue.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON2, err := json.Marshal(map[string]interface{}{
@@ -368,6 +368,69 @@ import 'pipe_target_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "main" {
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = {
+///       "Effect" = "Allow"
+///       "Action" = "sts:AssumeRole"
+///       "Principal" = {
+///         "Service" = "pipes.amazonaws.com"
+///       }
+///       "Condition" = {
+///         "StringEquals" = {
+///           "aws:SourceAccount" = data.aws_getcalleridentity.main.account_id
+///         }
+///       }
+///     }
+///   })
+/// }
+/// resource "aws_iam_rolepolicy" "source" {
+///   role = aws_iam_role.example.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect"   = "Allow"
+///       "Action"   = ["sqs:DeleteMessage", "sqs:GetQueueAttributes", "sqs:ReceiveMessage"]
+///       "Resource" = [aws_sqs_queue.source.arn]
+///     }]
+///   })
+/// }
+/// resource "aws_sqs_queue" "source" {
+/// }
+/// resource "aws_iam_rolepolicy" "target" {
+///   role = aws_iam_role.example.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect"   = "Allow"
+///       "Action"   = ["sqs:SendMessage"]
+///       "Resource" = [aws_sqs_queue.target.arn]
+///     }]
+///   })
+/// }
+/// resource "aws_sqs_queue" "target" {
+/// }
+/// resource "aws_pipes_pipe" "example" {
+///   depends_on = [aws_iam_rolepolicy.source, aws_iam_rolepolicy.target]
+///   name       = "example-pipe"
+///   role_arn   = aws_iam_role.example.arn
+///   source     = aws_sqs_queue.source.arn
+///   target     = aws_sqs_queue.target.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -385,8 +448,8 @@ import 'pipe_target_parameters.dart';
 /// import com.pulumi.aws.pipes.PipeArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -663,6 +726,36 @@ import 'pipe_target_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pipes_pipe" "example" {
+///   name       = "example-pipe"
+///   role_arn   = exampleAwsIamRole.arn
+///   source     = source.arn
+///   target     = target.arn
+///   enrichment = exampleAwsCloudwatchEventApiDestination.arn
+///   enrichment_parameters = {
+///     http_parameters = {
+///       path_parameter_values = "example-path-param"
+///       header_parameters = {
+///         "example-header"        = "example-value"
+///         "second-example-header" = "second-example-value"
+///       }
+///       query_string_parameters = {
+///         "example-query-string"        = "example-value"
+///         "second-example-query-string" = "second-example-value"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -673,8 +766,8 @@ import 'pipe_target_parameters.dart';
 /// import com.pulumi.aws.pipes.PipeArgs;
 /// import com.pulumi.aws.pipes.inputs.PipeEnrichmentParametersArgs;
 /// import com.pulumi.aws.pipes.inputs.PipeEnrichmentParametersHttpParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -825,7 +918,7 @@ import 'pipe_target_parameters.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string][]string{
 /// 			"source": []string{
 /// 				"event-source",
 /// 			},
@@ -856,6 +949,31 @@ import 'pipe_target_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pipes_pipe" "example" {
+///   name     = "example-pipe"
+///   role_arn = exampleAwsIamRole.arn
+///   source   = source.arn
+///   target   = target.arn
+///   source_parameters = {
+///     filter_criteria = {
+///       filters = [{
+///         "pattern" = jsonencode({
+///           "source" = ["event-source"]
+///         })
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -866,9 +984,10 @@ import 'pipe_target_parameters.dart';
 /// import com.pulumi.aws.pipes.PipeArgs;
 /// import com.pulumi.aws.pipes.inputs.PipeSourceParametersArgs;
 /// import com.pulumi.aws.pipes.inputs.PipeSourceParametersFilterCriteriaArgs;
+/// import com.pulumi.aws.pipes.inputs.PipeSourceParametersFilterCriteriaFilterArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1052,6 +1171,33 @@ import 'pipe_target_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_loggroup" "example" {
+///   name = "example-pipe-target"
+/// }
+/// resource "aws_pipes_pipe" "example" {
+///   depends_on = [source, target]
+///   name       = "example-pipe"
+///   role_arn   = exampleAwsIamRole.arn
+///   source     = sourceAwsSqsQueue.arn
+///   target     = targetAwsSqsQueue.arn
+///   log_configuration = {
+///     include_execution_datas = ["ALL"]
+///     level                   = "INFO"
+///     cloudwatch_logs_log_destination = {
+///       log_group_arn = targetAwsCloudwatchLogGroup.arn
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1065,8 +1211,8 @@ import 'pipe_target_parameters.dart';
 /// import com.pulumi.aws.pipes.inputs.PipeLogConfigurationArgs;
 /// import com.pulumi.aws.pipes.inputs.PipeLogConfigurationCloudwatchLogsLogDestinationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1247,6 +1393,34 @@ import 'pipe_target_parameters.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_pipes_pipe" "example" {
+///   name     = "example-pipe"
+///   role_arn = exampleAwsIamRole.arn
+///   source   = source.arn
+///   target   = target.arn
+///   source_parameters = {
+///     sqs_queue_parameters = {
+///       batch_size                         = 1
+///       maximum_batching_window_in_seconds = 2
+///     }
+///   }
+///   target_parameters = {
+///     sqs_queue_parameters = {
+///       message_deduplication_id = "example-dedupe"
+///       message_group_id         = "example-group"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1259,8 +1433,8 @@ import 'pipe_target_parameters.dart';
 /// import com.pulumi.aws.pipes.inputs.PipeSourceParametersSqsQueueParametersArgs;
 /// import com.pulumi.aws.pipes.inputs.PipeTargetParametersArgs;
 /// import com.pulumi.aws.pipes.inputs.PipeTargetParametersSqsQueueParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1336,7 +1510,7 @@ class Pipe extends pulumi.CustomResource {
   late final pulumi.Output<String?> kmsKeyIdentifier;
   /// Logging configuration settings for the pipe. Detailed below.
   late final pulumi.Output<PipeLogConfiguration?> logConfiguration;
-  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -1348,9 +1522,9 @@ class Pipe extends pulumi.CustomResource {
   late final pulumi.Output<String> source;
   /// Parameters to configure a source for the pipe. Detailed below.
   late final pulumi.Output<PipeSourceParameters> sourceParameters;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Target resource of the pipe (typically an ARN).
   ///

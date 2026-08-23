@@ -18,7 +18,7 @@ class AcceleratorArgs {
   final pulumi.Input<List<String>>? ipAddresses;
   /// The name of the accelerator.
   final pulumi.Input<String>? name;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AcceleratorArgs].
@@ -27,7 +27,7 @@ class AcceleratorArgs {
   /// [ipAddressType] The value for the address type. Defaults to `IPV4`. Valid values: `IPV4`, `DUAL_STACK`.
   /// [ipAddresses] The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   /// [name] The name of the accelerator.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AcceleratorArgs({
     this.attributes,
     this.enabled,
@@ -59,4 +59,3 @@ class AcceleratorArgs {
     );
   }
 }
-

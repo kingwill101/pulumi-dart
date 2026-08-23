@@ -27,7 +27,7 @@ import 'vault_notifications_state.dart';
 /// });
 /// const testTopicPolicy = new aws.sns.TopicPolicy("test", {
 ///     arn: testTopic.arn,
-///     policy: test.apply(test => test.json),
+///     policy: test.json,
 /// });
 /// const testVaultNotifications = new aws.backup.VaultNotifications("test", {
 ///     backupVaultName: "example_backup_vault",
@@ -171,10 +171,8 @@ import 'vault_notifications_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = sns.NewTopicPolicy(ctx, "test", &sns.TopicPolicyArgs{
-/// 			Arn: testTopic.Arn,
-/// 			Policy: pulumi.String(test.ApplyT(func(test iam.GetPolicyDocumentResult) (*string, error) {
-/// 				return &test.Json, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Arn:    testTopic.Arn,
+/// 			Policy: test.Json(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -194,6 +192,42 @@ import 'vault_notifications_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "test" {
+///   policy_id = "__default_policy_ID"
+///   statements {
+///     actions = ["SNS:Publish"]
+///     effect  = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["backup.amazonaws.com"]
+///     }
+///     resources = [aws_sns_topic.test.arn]
+///     sid       = "__default_statement_ID"
+///   }
+/// }
+///
+/// resource "aws_sns_topic" "test" {
+///   name = "backup-vault-events"
+/// }
+/// resource "aws_sns_topicpolicy" "test" {
+///   arn    = aws_sns_topic.test.arn
+///   policy = data.aws_iam_getpolicydocument.test.json
+/// }
+/// resource "aws_backup_vaultnotifications" "test" {
+///   backup_vault_name   = "example_backup_vault"
+///   sns_topic_arn       = aws_sns_topic.test.arn
+///   backup_vault_events = ["BACKUP_JOB_STARTED", "RESTORE_JOB_COMPLETED"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,12 +238,14 @@ import 'vault_notifications_state.dart';
 /// import com.pulumi.aws.sns.TopicArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.sns.TopicPolicy;
 /// import com.pulumi.aws.sns.TopicPolicyArgs;
 /// import com.pulumi.aws.backup.VaultNotifications;
 /// import com.pulumi.aws.backup.VaultNotificationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -5,8 +5,6 @@ import 'bucket_metric_state.dart';
 
 /// Provides a S3 bucket [metrics configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html) resource.
 ///
-/// &gt; This resource cannot be used with S3 directory buckets.
-///
 /// ## Example Usage
 ///
 /// ### Add metrics configuration for entire S3 bucket
@@ -69,7 +67,7 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketMetric(ctx, "example-entire-bucket", &s3.BucketMetricArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("EntireBucket"),
 /// 		})
 /// 		if err != nil {
@@ -77,6 +75,23 @@ import 'bucket_metric_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketmetric" "example-entire-bucket" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "EntireBucket"
 /// }
 /// ```
 /// ```java
@@ -89,8 +104,8 @@ import 'bucket_metric_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.s3.BucketMetric;
 /// import com.pulumi.aws.s3.BucketMetricArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,7 +226,7 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketMetric(ctx, "example-filtered", &s3.BucketMetricArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Filter: &s3.BucketMetricFilterArgs{
 /// 				Prefix: pulumi.String("documents/"),
@@ -228,6 +243,30 @@ import 'bucket_metric_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_bucketmetric" "example-filtered" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "ImportantBlueDocuments"
+///   filter = {
+///     prefix = "documents/"
+///     tags = {
+///       "priority" = "high"
+///       "class"    = "blue"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +278,8 @@ import 'bucket_metric_state.dart';
 /// import com.pulumi.aws.s3.BucketMetric;
 /// import com.pulumi.aws.s3.BucketMetricArgs;
 /// import com.pulumi.aws.s3.inputs.BucketMetricFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,14 +425,14 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		example_access_point, err := s3.NewAccessPoint(ctx, "example-access-point", &s3.AccessPointArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("example-access-point"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketMetric(ctx, "example-filtered", &s3.BucketMetricArgs{
-/// 			Bucket: example.ID(),
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Filter: &s3.BucketMetricFilterArgs{
 /// 				AccessPoint: example_access_point.Arn,
@@ -410,6 +449,34 @@ import 'bucket_metric_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example"
+/// }
+/// resource "aws_s3_accesspoint" "example-access-point" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "example-access-point"
+/// }
+/// resource "aws_s3_bucketmetric" "example-filtered" {
+///   bucket = aws_s3_bucket.example.id
+///   name   = "ImportantBlueDocuments"
+///   filter = {
+///     access_point = aws_s3_accesspoint.example-access-point.arn
+///     tags = {
+///       "priority" = "high"
+///       "class"    = "blue"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -423,8 +490,8 @@ import 'bucket_metric_state.dart';
 /// import com.pulumi.aws.s3.BucketMetric;
 /// import com.pulumi.aws.s3.BucketMetricArgs;
 /// import com.pulumi.aws.s3.inputs.BucketMetricFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +551,264 @@ import 'bucket_metric_state.dart';
 /// ```
 ///
 ///
+/// ### Add metrics configuration for S3 directory bucket
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const available = aws.getAvailabilityZones({
+///     state: "available",
+/// });
+/// const example = new aws.s3.DirectoryBucket("example", {
+///     bucket: "example--zoneId--x-s3",
+///     location: {
+///         name: available.then(available => available.zoneIds?.[0]),
+///     },
+/// });
+/// const example_access_point = new aws.s3.AccessPoint("example-access-point", {
+///     bucket: example.id,
+///     name: "example--zoneId--xa-s3",
+/// });
+/// const example_bucket_metric = new aws.s3.BucketMetric("example-bucket-metric", {
+///     bucket: example.id,
+///     name: "ExampleBucketMetricForDirectoryBuckets",
+///     filter: {
+///         accessPoint: example_access_point.arn,
+///         prefix: "documents/",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// available = aws.get_availability_zones(state="available")
+/// example = aws.s3.DirectoryBucket("example",
+///     bucket="example--zoneId--x-s3",
+///     location={
+///         "name": available.zone_ids[0],
+///     })
+/// example_access_point = aws.s3.AccessPoint("example-access-point",
+///     bucket=example.id,
+///     name="example--zoneId--xa-s3")
+/// example_bucket_metric = aws.s3.BucketMetric("example-bucket-metric",
+///     bucket=example.id,
+///     name="ExampleBucketMetricForDirectoryBuckets",
+///     filter={
+///         "access_point": example_access_point.arn,
+///         "prefix": "documents/",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var available = Aws.GetAvailabilityZones.Invoke(new()
+///     {
+///         State = "available",
+///     });
+///
+///     var example = new Aws.S3.DirectoryBucket("example", new()
+///     {
+///         Bucket = "example--zoneId--x-s3",
+///         Location = new Aws.S3.Inputs.DirectoryBucketLocationArgs
+///         {
+///             Name = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.ZoneIds[0]),
+///         },
+///     });
+///
+///     var example_access_point = new Aws.S3.AccessPoint("example-access-point", new()
+///     {
+///         Bucket = example.Id,
+///         Name = "example--zoneId--xa-s3",
+///     });
+///
+///     var example_bucket_metric = new Aws.S3.BucketMetric("example-bucket-metric", new()
+///     {
+///         Bucket = example.Id,
+///         Name = "ExampleBucketMetricForDirectoryBuckets",
+///         Filter = new Aws.S3.Inputs.BucketMetricFilterArgs
+///         {
+///             AccessPoint = example_access_point.Arn,
+///             Prefix = "documents/",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+/// 			State: pulumi.StringRef("available"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := s3.NewDirectoryBucket(ctx, "example", &s3.DirectoryBucketArgs{
+/// 			Bucket: pulumi.String("example--zoneId--x-s3"),
+/// 			Location: &s3.DirectoryBucketLocationArgs{
+/// 				Name: pulumi.String(available.ZoneIds[0]),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example_access_point, err := s3.NewAccessPoint(ctx, "example-access-point", &s3.AccessPointArgs{
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("example--zoneId--xa-s3"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = s3.NewBucketMetric(ctx, "example-bucket-metric", &s3.BucketMetricArgs{
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("ExampleBucketMetricForDirectoryBuckets"),
+/// 			Filter: &s3.BucketMetricFilterArgs{
+/// 				AccessPoint: example_access_point.Arn,
+/// 				Prefix:      pulumi.String("documents/"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+/// }
+///
+/// resource "aws_s3_directorybucket" "example" {
+///   bucket = "example--zoneId--x-s3"
+///   location = {
+///     name = data.aws_getavailabilityzones.available.zone_ids[0]
+///   }
+/// }
+/// resource "aws_s3_accesspoint" "example-access-point" {
+///   bucket = aws_s3_directorybucket.example.id
+///   name   = "example--zoneId--xa-s3"
+/// }
+/// resource "aws_s3_bucketmetric" "example-bucket-metric" {
+///   bucket = aws_s3_directorybucket.example.id
+///   name   = "ExampleBucketMetricForDirectoryBuckets"
+///   filter = {
+///     access_point = aws_s3_accesspoint.example-access-point.arn
+///     prefix       = "documents/"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.s3.DirectoryBucket;
+/// import com.pulumi.aws.s3.DirectoryBucketArgs;
+/// import com.pulumi.aws.s3.inputs.DirectoryBucketLocationArgs;
+/// import com.pulumi.aws.s3.AccessPoint;
+/// import com.pulumi.aws.s3.AccessPointArgs;
+/// import com.pulumi.aws.s3.BucketMetric;
+/// import com.pulumi.aws.s3.BucketMetricArgs;
+/// import com.pulumi.aws.s3.inputs.BucketMetricFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+///             .state("available")
+///             .build());
+///
+///         var example = new DirectoryBucket("example", DirectoryBucketArgs.builder()
+///             .bucket("example--zoneId--x-s3")
+///             .location(DirectoryBucketLocationArgs.builder()
+///                 .name(available.zoneIds()[0])
+///                 .build())
+///             .build());
+///
+///         var example_access_point = new AccessPoint("example-access-point", AccessPointArgs.builder()
+///             .bucket(example.id())
+///             .name("example--zoneId--xa-s3")
+///             .build());
+///
+///         var example_bucket_metric = new BucketMetric("example-bucket-metric", BucketMetricArgs.builder()
+///             .bucket(example.id())
+///             .name("ExampleBucketMetricForDirectoryBuckets")
+///             .filter(BucketMetricFilterArgs.builder()
+///                 .accessPoint(example_access_point.arn())
+///                 .prefix("documents/")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:s3:DirectoryBucket
+///     properties:
+///       bucket: example--zoneId--x-s3
+///       location:
+///         name: ${available.zoneIds[0]}
+///   example-access-point:
+///     type: aws:s3:AccessPoint
+///     properties:
+///       bucket: ${example.id}
+///       name: example--zoneId--xa-s3
+///   example-bucket-metric:
+///     type: aws:s3:BucketMetric
+///     properties:
+///       bucket: ${example.id}
+///       name: ExampleBucketMetricForDirectoryBuckets
+///       filter:
+///         accessPoint: ${["example-access-point"].arn}
+///         prefix: documents/
+/// variables:
+///   available:
+///     fn::invoke:
+///       function: aws:getAvailabilityZones
+///       arguments:
+///         state: available
+/// ```
+///
+///
 /// ## Import
 ///
 /// Using `pulumi import`, import S3 bucket metric configurations using `bucket:metric`. For example:
@@ -494,7 +819,7 @@ import 'bucket_metric_state.dart';
 class BucketMetric extends pulumi.CustomResource {
   /// Name of the bucket to put metric configuration.
   late final pulumi.Output<String> bucket;
-  /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
+  /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags. See below.
   late final pulumi.Output<BucketMetricFilter?> filter;
   /// Unique identifier of the metrics configuration for the bucket. Must be less than or equal to 64 characters in length.
   late final pulumi.Output<String> name;

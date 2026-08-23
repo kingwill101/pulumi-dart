@@ -66,7 +66,7 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAccelerateConfiguration(ctx, "example", &s3.BucketAccelerateConfigurationArgs{
-/// 			Bucket: mybucket.ID(),
+/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Status: pulumi.String("Enabled"),
 /// 		})
 /// 		if err != nil {
@@ -74,6 +74,23 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "mybucket" {
+///   bucket = "mybucket"
+/// }
+/// resource "aws_s3_bucketaccelerateconfiguration" "example" {
+///   bucket = aws_s3_bucket.mybucket.id
+///   status = "Enabled"
 /// }
 /// ```
 /// ```java
@@ -86,8 +103,8 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.s3.BucketAccelerateConfiguration;
 /// import com.pulumi.aws.s3.BucketAccelerateConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -127,7 +144,7 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 ///
 /// ## Import
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 ///
 /// **Using `pulumi import` to import.** For example:
@@ -138,7 +155,7 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 /// $ pulumi import aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2 example bucket-name
 /// ```
 ///
-/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expected_bucket_owner` separated by a comma (`,`):
+/// If the owner (account ID) of the source bucket differs from the account used to configure the AWS Provider, import using the `bucket` and `expectedBucketOwner` separated by a comma (`,`):
 ///
 /// ```sh
 /// $ pulumi import aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2 example bucket-name,123456789012

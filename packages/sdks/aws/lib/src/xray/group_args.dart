@@ -16,7 +16,7 @@ class GroupArgs {
   final pulumi.Input<GroupInsightsConfiguration>? insightsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GroupArgs].
@@ -24,7 +24,7 @@ class GroupArgs {
   /// [groupName] The name of the group.
   /// [insightsConfiguration] Configuration options for enabling insights.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   const GroupArgs({
     required this.filterExpression,
     required this.groupName,
@@ -53,4 +53,3 @@ class GroupArgs {
     );
   }
 }
-

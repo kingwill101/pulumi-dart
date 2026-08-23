@@ -119,7 +119,7 @@ import 'resource_policy_state.dart';
 /// 					},
 /// 					"Effect":   "Allow",
 /// 					"Resource": exampleAwsNetworkfirewallFirewallPolicy.Arn,
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": "arn:aws:iam::123456789012:root",
 /// 					},
 /// 				},
@@ -141,6 +141,30 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_resourcepolicy" "example" {
+///   resource_arn = exampleAwsNetworkfirewallFirewallPolicy.arn
+///   policy = jsonencode({
+///     "Statement" = [{
+///       "Action"   = ["network-firewall:ListFirewallPolicies", "network-firewall:CreateFirewall", "network-firewall:UpdateFirewall", "network-firewall:AssociateFirewallPolicy"]
+///       "Effect"   = "Allow"
+///       "Resource" = exampleAwsNetworkfirewallFirewallPolicy.arn
+///       "Principal" = {
+///         "AWS" = "arn:aws:iam::123456789012:root"
+///       }
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +174,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.aws.networkfirewall.ResourcePolicy;
 /// import com.pulumi.aws.networkfirewall.ResourcePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,7 +342,7 @@ import 'resource_policy_state.dart';
 /// 					},
 /// 					"Effect":   "Allow",
 /// 					"Resource": exampleAwsNetworkfirewallRuleGroup.Arn,
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"AWS": "arn:aws:iam::123456789012:root",
 /// 					},
 /// 				},
@@ -340,6 +364,30 @@ import 'resource_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkfirewall_resourcepolicy" "example" {
+///   resource_arn = exampleAwsNetworkfirewallRuleGroup.arn
+///   policy = jsonencode({
+///     "Statement" = [{
+///       "Action"   = ["network-firewall:ListRuleGroups", "network-firewall:CreateFirewallPolicy", "network-firewall:UpdateFirewallPolicy"]
+///       "Effect"   = "Allow"
+///       "Resource" = exampleAwsNetworkfirewallRuleGroup.arn
+///       "Principal" = {
+///         "AWS" = "arn:aws:iam::123456789012:root"
+///       }
+///     }]
+///     "Version" = "2012-10-17"
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -349,8 +397,8 @@ import 'resource_policy_state.dart';
 /// import com.pulumi.aws.networkfirewall.ResourcePolicy;
 /// import com.pulumi.aws.networkfirewall.ResourcePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

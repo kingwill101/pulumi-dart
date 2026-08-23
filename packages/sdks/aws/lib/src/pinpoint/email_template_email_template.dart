@@ -6,11 +6,13 @@ import 'email_template_email_template_header.dart';
 class EmailTemplateEmailTemplate {
   /// JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
   final pulumi.Input<String>? defaultSubstitutions;
+  /// Custom description of the message template.
   final pulumi.Input<String>? description;
+  /// List of [MessageHeaders](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html#templates-template-name-email-model-messageheader) for the email. You can have up to 15 Headers. See below.
   final pulumi.Input<List<EmailTemplateEmailTemplateHeader>>? headers;
-  /// The message body, in HTML format, to use in email messages that are based on the message template. We recommend using HTML format for email clients that render HTML content. You can include links, formatted text, and more in an HTML message.
+  /// Message body, in HTML format, to use in email messages that are based on the message template. We recommend using HTML format for email clients that render HTML content. You can include links, formatted text, and more in an HTML message.
   final pulumi.Input<String>? htmlPart;
-  /// The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+  /// Unique identifier for the recommender model to use for the message template. AWS End User Messaging uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
   final pulumi.Input<String>? recommenderId;
   /// Subject line, or title, to use in email messages that are based on the message template.
   final pulumi.Input<String>? subject;
@@ -19,10 +21,10 @@ class EmailTemplateEmailTemplate {
 
   /// Creates a new [EmailTemplateEmailTemplate].
   /// [defaultSubstitutions] JSON object that specifies the default values to use for message variables in the message template. This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines the default value for that variable. When you create a message that's based on the template, you can override these defaults with message-specific and address-specific variables and values.
-  /// [description] Optional.
-  /// [headers] Optional.
-  /// [htmlPart] The message body, in HTML format, to use in email messages that are based on the message template. We recommend using HTML format for email clients that render HTML content. You can include links, formatted text, and more in an HTML message.
-  /// [recommenderId] The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
+  /// [description] Custom description of the message template.
+  /// [headers] List of [MessageHeaders](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html#templates-template-name-email-model-messageheader) for the email. You can have up to 15 Headers. See below.
+  /// [htmlPart] Message body, in HTML format, to use in email messages that are based on the message template. We recommend using HTML format for email clients that render HTML content. You can include links, formatted text, and more in an HTML message.
+  /// [recommenderId] Unique identifier for the recommender model to use for the message template. AWS End User Messaging uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
   /// [subject] Subject line, or title, to use in email messages that are based on the message template.
   /// [textPart] Message body, in plain text format, to use in email messages that are based on the message template. We recommend using plain text format for email clients that don't render HTML content and clients that are connected to high-latency networks, such as mobile devices.
   const EmailTemplateEmailTemplate({
@@ -59,4 +61,3 @@ class EmailTemplateEmailTemplate {
     );
   }
 }
-

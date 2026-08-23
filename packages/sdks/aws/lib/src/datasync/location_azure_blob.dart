@@ -86,6 +86,24 @@ import 'location_azure_blob_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datasync_locationazureblob" "example" {
+///   agent_arns          = [exampleAwsDatasyncAgent.arn]
+///   authentication_type = "SAS"
+///   container_url       = "https://myaccount.blob.core.windows.net/mycontainer"
+///   sas_configuration = {
+///     token = "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +113,8 @@ import 'location_azure_blob_state.dart';
 /// import com.pulumi.aws.datasync.LocationAzureBlob;
 /// import com.pulumi.aws.datasync.LocationAzureBlobArgs;
 /// import com.pulumi.aws.datasync.inputs.LocationAzureBlobSasConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,9 +185,9 @@ class LocationAzureBlob extends pulumi.CustomResource {
   late final pulumi.Output<LocationAzureBlobSasConfiguration?> sasConfiguration;
   /// Path segments if you want to limit your transfer to a virtual directory in the container.
   late final pulumi.Output<String> subdirectory;
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> uri;
 

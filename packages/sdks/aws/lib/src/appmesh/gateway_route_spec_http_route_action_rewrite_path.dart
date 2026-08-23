@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteActionRewritePath {
-  /// The exact path to match on.
+  /// Exact query parameter to match on.
   final pulumi.Input<String> exact;
 
   /// Creates a new [GatewayRouteSpecHttpRouteActionRewritePath].
-  /// [exact] The exact path to match on.
+  /// [exact] Exact query parameter to match on.
   const GatewayRouteSpecHttpRouteActionRewritePath({
     required this.exact,
   });
@@ -24,4 +24,3 @@ class GatewayRouteSpecHttpRouteActionRewritePath {
     );
   }
 }
-

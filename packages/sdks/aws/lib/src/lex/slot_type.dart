@@ -139,6 +139,30 @@ import 'slot_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_slottype" "flower_types" {
+///   create_version = true
+///   description    = "Types of flowers to order"
+///   enumeration_values {
+///     synonyms = ["Lirium", "Martagon"]
+///     value    = "lilies"
+///   }
+///   enumeration_values {
+///     synonyms = ["Eduardoregelia", "Podonix"]
+///     value    = "tulips"
+///   }
+///   name                     = "FlowerTypes"
+///   value_selection_strategy = "ORIGINAL_VALUE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +172,8 @@ import 'slot_type_state.dart';
 /// import com.pulumi.aws.lex.SlotType;
 /// import com.pulumi.aws.lex.SlotTypeArgs;
 /// import com.pulumi.aws.lex.inputs.SlotTypeEnumerationValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

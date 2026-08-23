@@ -74,6 +74,22 @@ import 'alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_alias" "example" {
+///   name             = "production"
+///   description      = "Production environment alias"
+///   function_name    = exampleAwsLambdaFunction.arn
+///   function_version = "1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'alias_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.Alias;
 /// import com.pulumi.aws.lambda.AliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +220,27 @@ import 'alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_alias" "example" {
+///   name             = "staging"
+///   description      = "Staging environment with traffic splitting"
+///   function_name    = exampleAwsLambdaFunction.functionName
+///   function_version = "2"
+///   routing_config = {
+///     additional_version_weights = {
+///       "1" = 0.1
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -213,8 +250,8 @@ import 'alias_state.dart';
 /// import com.pulumi.aws.lambda.Alias;
 /// import com.pulumi.aws.lambda.AliasArgs;
 /// import com.pulumi.aws.lambda.inputs.AliasRoutingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,6 +382,28 @@ import 'alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Alias for gradual rollout
+/// resource "aws_lambda_alias" "example" {
+///   name             = "live"
+///   description      = "Live traffic with gradual rollout to new version"
+///   function_name    = exampleAwsLambdaFunction.functionName
+///   function_version = "5"
+///   routing_config = {
+///     additional_version_weights = {
+///       "6" = 0.05
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -354,8 +413,8 @@ import 'alias_state.dart';
 /// import com.pulumi.aws.lambda.Alias;
 /// import com.pulumi.aws.lambda.AliasArgs;
 /// import com.pulumi.aws.lambda.inputs.AliasRoutingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -462,6 +521,22 @@ import 'alias_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_alias" "example" {
+///   name             = "dev"
+///   description      = "Development environment - always points to latest"
+///   function_name    = exampleAwsLambdaFunction.functionName
+///   function_version = "$LATEST"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -470,8 +545,8 @@ import 'alias_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lambda.Alias;
 /// import com.pulumi.aws.lambda.AliasArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

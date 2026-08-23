@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_msk_get_kafka_version_get_kafka_version_args_doc}
 class GetKafkaVersionArgs {
-  /// Ordered list of preferred Kafka versions. The first match in this list will be returned. Either `preferred_versions` or `version` must be set.
+  /// Ordered list of preferred Kafka versions. The first match in this list will be returned. Either `preferredVersions` or `version` must be set.
   final pulumi.Input<List<String>>? preferredVersions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferred_versions` or `version` must be set.
+  /// Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferredVersions` or `version` must be set.
   final pulumi.Input<String>? version;
 
   /// Creates a new [GetKafkaVersionArgs].
-  /// [preferredVersions] Ordered list of preferred Kafka versions. The first match in this list will be returned. Either `preferred_versions` or `version` must be set.
+  /// [preferredVersions] Ordered list of preferred Kafka versions. The first match in this list will be returned. Either `preferredVersions` or `version` must be set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [version] Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferred_versions` or `version` must be set.
+  /// [version] Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferredVersions` or `version` must be set.
   const GetKafkaVersionArgs({
     this.preferredVersions,
     this.region,
@@ -40,4 +40,3 @@ class GetKafkaVersionArgs {
     );
   }
 }
-

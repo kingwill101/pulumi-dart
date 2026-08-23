@@ -3,7 +3,7 @@
 
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
-  /// (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
+  /// (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
   final String accountAccessType;
   /// ARN of the Grafana workspace.
   final String arn;
@@ -21,6 +21,8 @@ class GetWorkspaceResult {
   final String grafanaVersion;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  /// The ID or ARN of the AWS KMS key for encrypting workspace data.
+  final String kmsKeyId;
   /// Last updated date of the Grafana workspace.
   final String lastUpdatedDate;
   /// Grafana workspace name.
@@ -46,7 +48,7 @@ class GetWorkspaceResult {
   final String workspaceId;
 
   /// Creates a new [GetWorkspaceResult].
-  /// [accountAccessType] (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
+  /// [accountAccessType] (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
   /// [arn] ARN of the Grafana workspace.
   /// [authenticationProviders] (Required) Authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
   /// [createdDate] Creation date of the Grafana workspace.
@@ -55,6 +57,7 @@ class GetWorkspaceResult {
   /// [endpoint] Endpoint of the Grafana workspace.
   /// [grafanaVersion] Version of Grafana running on the workspace.
   /// [id] The provider-assigned unique ID for this managed resource.
+  /// [kmsKeyId] The ID or ARN of the AWS KMS key for encrypting workspace data.
   /// [lastUpdatedDate] Last updated date of the Grafana workspace.
   /// [name] Grafana workspace name.
   /// [notificationDestinations] The notification destinations.
@@ -78,6 +81,7 @@ class GetWorkspaceResult {
     required this.endpoint,
     required this.grafanaVersion,
     required this.id,
+    required this.kmsKeyId,
     required this.lastUpdatedDate,
     required this.name,
     required this.notificationDestinations,
@@ -104,6 +108,7 @@ class GetWorkspaceResult {
       'endpoint': endpoint,
       'grafanaVersion': grafanaVersion,
       'id': id,
+      'kmsKeyId': kmsKeyId,
       'lastUpdatedDate': lastUpdatedDate,
       'name': name,
       'notificationDestinations': notificationDestinations,
@@ -131,6 +136,7 @@ class GetWorkspaceResult {
       endpoint: map['endpoint'] as String,
       grafanaVersion: map['grafanaVersion'] as String,
       id: map['id'] as String,
+      kmsKeyId: map['kmsKeyId'] as String,
       lastUpdatedDate: map['lastUpdatedDate'] as String,
       name: map['name'] as String,
       notificationDestinations: (map['notificationDestinations'] as List).cast<String>(),
@@ -147,4 +153,3 @@ class GetWorkspaceResult {
     );
   }
 }
-

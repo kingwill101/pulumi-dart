@@ -63,6 +63,20 @@ import 'account_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_accountsetting" "basic_scan_type_version" {
+///   name  = "BASIC_SCAN_TYPE_VERSION"
+///   value = "AWS_NATIVE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'account_setting_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.AccountSetting;
 /// import com.pulumi.aws.ecr.AccountSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -160,6 +174,20 @@ import 'account_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_accountsetting" "blob_mounting" {
+///   name  = "BLOB_MOUNTING"
+///   value = "ENABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +196,8 @@ import 'account_setting_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.AccountSetting;
 /// import com.pulumi.aws.ecr.AccountSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -257,6 +285,20 @@ import 'account_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecr_accountsetting" "registry_policy_scope" {
+///   name  = "REGISTRY_POLICY_SCOPE"
+///   value = "V2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +307,8 @@ import 'account_setting_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecr.AccountSetting;
 /// import com.pulumi.aws.ecr.AccountSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

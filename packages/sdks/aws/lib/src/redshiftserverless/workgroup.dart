@@ -62,6 +62,20 @@ import 'workgroup_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_redshiftserverless_workgroup" "example" {
+///   namespace_name = "concurrency-scaling"
+///   workgroup_name = "concurrency-scaling"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'workgroup_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.redshiftserverless.Workgroup;
 /// import com.pulumi.aws.redshiftserverless.WorkgroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,7 +117,7 @@ import 'workgroup_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift Serverless Workgroups using the `workgroup_name`. For example:
+/// Using `pulumi import`, import Redshift Serverless Workgroups using the `workgroupName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshiftserverless/workgroup:Workgroup example example
@@ -135,9 +149,9 @@ class Workgroup extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> securityGroupIds;
   /// An array of VPC subnet IDs to associate with the workgroup. When set, must contain at least three subnets spanning three Availability Zones. A minimum number of IP addresses is required and scales with the Base Capacity. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-known-issues.html).
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The name of the track for the workgroup. If it is `current`, you get the most up-to-date certified release version with the latest features, security updates, and performance enhancements. If it is `trailing`, you will be on the previous certified release. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/tracks.html).
   late final pulumi.Output<String> trackName;

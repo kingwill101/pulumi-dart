@@ -9,32 +9,32 @@ import 'access_grant_grantee.dart';
 /// {@endtemplate}
 /// {@macro pulumi_s3_control_access_grant_access_grant_args_doc}
 class AccessGrantArgs {
-  /// See Location Configuration below for more details.
+  /// See `accessGrantsLocationConfiguration` Block below for more details.
   final pulumi.Input<AccessGrantAccessGrantsLocationConfiguration>? accessGrantsLocationConfiguration;
-  /// The ID of the S3 Access Grants location to with the access grant is giving access.
+  /// ID of the S3 Access Grants location to with the access grant is giving access.
   final pulumi.Input<String> accessGrantsLocationId;
-  /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? accountId;
-  /// See Grantee below for more details.
+  /// See `grantee` Block below for more details.
   final pulumi.Input<AccessGrantGrantee> grantee;
-  /// The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
+  /// Access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
   final pulumi.Input<String> permission;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
   final pulumi.Input<String>? s3PrefixType;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AccessGrantArgs].
-  /// [accessGrantsLocationConfiguration] See Location Configuration below for more details.
-  /// [accessGrantsLocationId] The ID of the S3 Access Grants location to with the access grant is giving access.
-  /// [accountId] The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [grantee] See Grantee below for more details.
-  /// [permission] The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
+  /// [accessGrantsLocationConfiguration] See `accessGrantsLocationConfiguration` Block below for more details.
+  /// [accessGrantsLocationId] ID of the S3 Access Grants location to with the access grant is giving access.
+  /// [accountId] AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
+  /// [grantee] See `grantee` Block below for more details.
+  /// [permission] Access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3PrefixType] If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AccessGrantArgs({
     this.accessGrantsLocationConfiguration,
     required this.accessGrantsLocationId,
@@ -72,4 +72,3 @@ class AccessGrantArgs {
     );
   }
 }
-

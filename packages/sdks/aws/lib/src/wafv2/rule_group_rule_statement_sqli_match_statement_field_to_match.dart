@@ -23,9 +23,9 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatch {
   final pulumi.Input<List<RuleGroupRuleStatementSqliMatchStatementFieldToMatchHeaderOrder>>? headerOrders;
   /// Inspect the request headers. See Headers below for details.
   final pulumi.Input<List<RuleGroupRuleStatementSqliMatchStatementFieldToMatchHeader>>? headers;
-  /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
+  /// Inspect the JA3 fingerprint. See `ja3Fingerprint` below for details.
   final pulumi.Input<RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
-  /// Inspect the JA4 fingerprint. See `ja4_fingerprint` below for details.
+  /// Inspect the JA4 fingerprint. See `ja4Fingerprint` below for details.
   final pulumi.Input<RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body for details.
   final pulumi.Input<RuleGroupRuleStatementSqliMatchStatementFieldToMatchJsonBody>? jsonBody;
@@ -48,8 +48,8 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatch {
   /// [cookies] Inspect the cookies in the web request. See Cookies below for details.
   /// [headerOrders] Inspect the request headers. See Header Order below for details.
   /// [headers] Inspect the request headers. See Headers below for details.
-  /// [ja3Fingerprint] Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
-  /// [ja4Fingerprint] Inspect the JA4 fingerprint. See `ja4_fingerprint` below for details.
+  /// [ja3Fingerprint] Inspect the JA3 fingerprint. See `ja3Fingerprint` below for details.
+  /// [ja4Fingerprint] Inspect the JA4 fingerprint. See `ja4Fingerprint` below for details.
   /// [jsonBody] Inspect the request body as JSON. See JSON Body for details.
   /// [method] Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
   /// [queryString] Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
@@ -112,4 +112,3 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatch {
     );
   }
 }
-

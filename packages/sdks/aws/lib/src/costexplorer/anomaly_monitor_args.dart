@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_costexplorer_anomaly_monitor_anomaly_monitor_args_doc}
 class AnomalyMonitorArgs {
-  /// The dimensions to evaluate. Valid values: `SERVICE`.
+  /// The dimensions to evaluate. Valid values: `COST_CATEGORY`, `LINKED_ACCOUNT`, `SERVICE`, `TAG`.
   final pulumi.Input<String>? monitorDimension;
   /// A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
   final pulumi.Input<String>? monitorSpecification;
@@ -15,15 +15,15 @@ class AnomalyMonitorArgs {
   final pulumi.Input<String> monitorType;
   /// The name of the monitor.
   final pulumi.Input<String>? name;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AnomalyMonitorArgs].
-  /// [monitorDimension] The dimensions to evaluate. Valid values: `SERVICE`.
+  /// [monitorDimension] The dimensions to evaluate. Valid values: `COST_CATEGORY`, `LINKED_ACCOUNT`, `SERVICE`, `TAG`.
   /// [monitorSpecification] A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
   /// [monitorType] The possible type values. Valid values: `DIMENSIONAL` | `CUSTOM`.
   /// [name] The name of the monitor.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AnomalyMonitorArgs({
     this.monitorDimension,
     this.monitorSpecification,
@@ -52,4 +52,3 @@ class AnomalyMonitorArgs {
     );
   }
 }
-

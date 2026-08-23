@@ -18,7 +18,7 @@ class InstanceConnectEndpointArgs {
   final pulumi.Input<List<String>>? securityGroupIds;
   /// The ID of the subnet in which to create the EC2 Instance Connect Endpoint.
   final pulumi.Input<String> subnetId;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<InstanceConnectEndpointTimeouts>? timeouts;
 
@@ -28,7 +28,7 @@ class InstanceConnectEndpointArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupIds] One or more security groups to associate with the endpoint. If you don't specify a security group, the default security group for the VPC will be associated with the endpoint.
   /// [subnetId] The ID of the subnet in which to create the EC2 Instance Connect Endpoint.
-  /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const InstanceConnectEndpointArgs({
     this.ipAddressType,
@@ -64,4 +64,3 @@ class InstanceConnectEndpointArgs {
     );
   }
 }
-

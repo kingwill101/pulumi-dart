@@ -50,4 +50,3 @@ class BucketLifecycleConfigurationV2RuleFilter {
     );
   }
 }
-

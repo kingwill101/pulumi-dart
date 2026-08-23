@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSessionContextArgs {
   /// ARN for an assumed role.
   ///
-  /// &gt; If `arn` is a non-role ARN, Pulumi gives no error and `issuer_arn` will be equal to the `arn` value. For STS assumed-role ARNs, Pulumi gives an error if the identified IAM role does not exist.
+  /// &gt; If `arn` is a non-role ARN, Pulumi gives no error and `issuerArn` will be equal to the `arn` value. For STS assumed-role ARNs, Pulumi gives an error if the identified IAM role does not exist.
   final pulumi.Input<String> arn;
 
   /// Creates a new [GetSessionContextArgs].
@@ -30,4 +30,3 @@ class GetSessionContextArgs {
     );
   }
 }
-

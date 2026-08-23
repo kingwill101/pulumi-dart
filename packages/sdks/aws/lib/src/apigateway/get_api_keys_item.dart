@@ -17,6 +17,7 @@ class GetApiKeysItem {
   final pulumi.Input<String> lastUpdatedDate;
   /// Name of the API Key.
   final pulumi.Input<String> name;
+  /// List of stage keys associated with the API Key.
   final pulumi.Input<List<String>> stageKeys;
   /// Map of tags for the resource.
   final pulumi.Input<Map<String, String>> tags;
@@ -31,7 +32,7 @@ class GetApiKeysItem {
   /// [id] ID of the API Key.
   /// [lastUpdatedDate] Date and time when the API Key was last updated.
   /// [name] Name of the API Key.
-  /// [stageKeys] Required.
+  /// [stageKeys] List of stage keys associated with the API Key.
   /// [tags] Map of tags for the resource.
   /// [value] Value of the API Key.
   const GetApiKeysItem({
@@ -77,4 +78,3 @@ class GetApiKeysItem {
     );
   }
 }
-

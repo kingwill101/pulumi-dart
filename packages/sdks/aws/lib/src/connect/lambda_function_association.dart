@@ -62,6 +62,20 @@ import 'lambda_function_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_connect_lambdafunctionassociation" "example" {
+///   function_arn = exampleAwsLambdaFunction.arn
+///   instance_id  = exampleAwsConnectInstance.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'lambda_function_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.connect.LambdaFunctionAssociation;
 /// import com.pulumi.aws.connect.LambdaFunctionAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,7 +117,7 @@ import 'lambda_function_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.connect.LambdaFunctionAssociation` using the `instance_id` and `function_arn` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import `aws.connect.LambdaFunctionAssociation` using the `instanceId` and `functionArn` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation example aaaaaaaa-bbbb-cccc-dddd-111111111111,arn:aws:lambda:us-west-2:123456789123:function:example

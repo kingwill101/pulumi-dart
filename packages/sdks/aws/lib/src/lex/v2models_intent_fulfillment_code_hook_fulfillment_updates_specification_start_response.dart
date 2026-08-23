@@ -8,13 +8,13 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartRespo
   final pulumi.Input<bool>? allowInterrupt;
   /// Delay between when the Lambda fulfillment function starts running and the start message is played. If the Lambda function returns before the delay is over, the start message isn't played.
   final pulumi.Input<int>? delayInSeconds;
-  /// Between 1-5 configuration block message groups that contain start messages. Amazon Lex chooses one of the messages to play to the user. See `message_group`.
+  /// Between 1-5 configuration block message groups that contain start messages. Amazon Lex chooses one of the messages to play to the user. See `messageGroup`.
   final pulumi.Input<List<V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponseMessageGroup>>? messageGroups;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse].
   /// [allowInterrupt] Whether the user can interrupt the start message while it is playing.
   /// [delayInSeconds] Delay between when the Lambda fulfillment function starts running and the start message is played. If the Lambda function returns before the delay is over, the start message isn't played.
-  /// [messageGroups] Between 1-5 configuration block message groups that contain start messages. Amazon Lex chooses one of the messages to play to the user. See `message_group`.
+  /// [messageGroups] Between 1-5 configuration block message groups that contain start messages. Amazon Lex chooses one of the messages to play to the user. See `messageGroup`.
   const V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse({
     this.allowInterrupt,
     this.delayInSeconds,
@@ -37,4 +37,3 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartRespo
     );
   }
 }
-

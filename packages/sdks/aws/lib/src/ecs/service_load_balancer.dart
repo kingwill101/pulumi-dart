@@ -10,19 +10,19 @@ class ServiceLoadBalancer {
   final pulumi.Input<String> containerName;
   /// Port on the container to associate with the load balancer.
   final pulumi.Input<int> containerPort;
-  /// Name of the ELB (Classic) to associate with the service.
+  /// Name of the ELB (Classic) to associate with the service. Required for ELB Classic.
   final pulumi.Input<String>? elbName;
-  /// ARN of the Load Balancer target group to associate with the service.
+  /// ARN of the Load Balancer target group to associate with the service. Required for ALB/NLB.
   ///
-  /// &gt; **Version note:** Multiple `load_balancer` configuration block support was added in version 2.22.0 of the provider. This allows configuration of [ECS service support for multiple target groups](https://aws.amazon.com/about-aws/whats-new/2019/07/amazon-ecs-services-now-support-multiple-load-balancer-target-groups/).
+  /// &gt; **Version note:** Multiple `loadBalancer` configuration block support was added in version 2.22.0 of the provider. This allows configuration of [ECS service support for multiple target groups](https://aws.amazon.com/about-aws/whats-new/2019/07/amazon-ecs-services-now-support-multiple-load-balancer-target-groups/).
   final pulumi.Input<String>? targetGroupArn;
 
   /// Creates a new [ServiceLoadBalancer].
   /// [advancedConfiguration] Configuration block for Blue/Green deployment settings. Required when using `BLUE_GREEN` deployment strategy. See below.
   /// [containerName] Name of the container to associate with the load balancer (as it appears in a container definition).
   /// [containerPort] Port on the container to associate with the load balancer.
-  /// [elbName] Name of the ELB (Classic) to associate with the service.
-  /// [targetGroupArn] ARN of the Load Balancer target group to associate with the service.
+  /// [elbName] Name of the ELB (Classic) to associate with the service. Required for ELB Classic.
+  /// [targetGroupArn] ARN of the Load Balancer target group to associate with the service. Required for ALB/NLB.
   const ServiceLoadBalancer({
     this.advancedConfiguration,
     required this.containerName,
@@ -51,4 +51,3 @@ class ServiceLoadBalancer {
     );
   }
 }
-

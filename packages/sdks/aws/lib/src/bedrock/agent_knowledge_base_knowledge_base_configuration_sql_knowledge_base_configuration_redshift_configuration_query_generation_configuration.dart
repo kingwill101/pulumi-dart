@@ -6,12 +6,12 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration {
   /// Time after which query generation will time out.
   final pulumi.Input<int>? executionTimeoutSeconds;
-  /// Configurations for context to use during query generation. See `generation_context` block for details.
+  /// Configurations for context to use during query generation. See `generationContext` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext>? generationContext;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration].
   /// [executionTimeoutSeconds] Time after which query generation will time out.
-  /// [generationContext] Configurations for context to use during query generation. See `generation_context` block for details.
+  /// [generationContext] Configurations for context to use during query generation. See `generationContext` block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration({
     this.executionTimeoutSeconds,
     this.generationContext,
@@ -31,4 +31,3 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
     );
   }
 }
-

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointConnectionNotificationArgs {
   /// One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
   ///
-  /// &gt; **NOTE:** One of `vpc_endpoint_service_id` or `vpc_endpoint_id` must be specified.
+  /// &gt; **NOTE:** One of `vpcEndpointServiceId` or `vpcEndpointId` must be specified.
   final pulumi.Input<List<String>> connectionEvents;
   /// The ARN of the SNS topic for the notifications.
   final pulumi.Input<String> connectionNotificationArn;
@@ -54,4 +54,3 @@ class VpcEndpointConnectionNotificationArgs {
     );
   }
 }
-

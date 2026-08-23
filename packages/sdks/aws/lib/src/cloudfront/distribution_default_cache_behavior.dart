@@ -9,7 +9,7 @@ import 'distribution_default_cache_behavior_lambda_function_association.dart';
 class DistributionDefaultCacheBehavior {
   /// Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin.
   final pulumi.Input<List<String>> allowedMethods;
-  /// Unique identifier of the cache policy that is attached to the cache behavior. If configuring the `default_cache_behavior` either `cache_policy_id` or `forwarded_values` must be set.
+  /// Unique identifier of the cache policy that is attached to the cache behavior. If configuring the `defaultCacheBehavior` either `cachePolicyId` or `forwardedValues` must be set.
   final pulumi.Input<String>? cachePolicyId;
   /// Controls whether CloudFront caches the response to requests using the specified HTTP methods.
   final pulumi.Input<List<String>> cachedMethods;
@@ -50,7 +50,7 @@ class DistributionDefaultCacheBehavior {
 
   /// Creates a new [DistributionDefaultCacheBehavior].
   /// [allowedMethods] Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin.
-  /// [cachePolicyId] Unique identifier of the cache policy that is attached to the cache behavior. If configuring the `default_cache_behavior` either `cache_policy_id` or `forwarded_values` must be set.
+  /// [cachePolicyId] Unique identifier of the cache policy that is attached to the cache behavior. If configuring the `defaultCacheBehavior` either `cachePolicyId` or `forwardedValues` must be set.
   /// [cachedMethods] Controls whether CloudFront caches the response to requests using the specified HTTP methods.
   /// [compress] Whether you want CloudFront to automatically compress content for web requests that include `Accept-Encoding: gzip` in the request header (default: `false`).
   /// [defaultTtl] Default amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request in the absence of an `Cache-Control max-age` or `Expires` header. The TTL defined in Cache Policy overrides this configuration.
@@ -142,4 +142,3 @@ class DistributionDefaultCacheBehavior {
     );
   }
 }
-

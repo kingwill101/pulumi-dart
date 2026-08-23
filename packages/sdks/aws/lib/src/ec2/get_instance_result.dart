@@ -68,7 +68,7 @@ class GetInstanceResult {
   final String networkInterfaceId;
   /// ARN of the Outpost.
   final String outpostArn;
-  /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `get_password_data` is true. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `getPasswordData` is true. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   final String passwordData;
   /// Placement group of the Instance.
   final String placementGroup;
@@ -84,7 +84,7 @@ class GetInstanceResult {
   final String privateIp;
   /// Public DNS name assigned to the Instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC.
   final String publicDns;
-  /// Public IP address assigned to the Instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
+  /// Public IP address assigned to the Instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `publicIp`, as this field will change after the EIP is attached.
   final String publicIp;
   final String region;
   /// Root block device mappings of the Instance
@@ -103,7 +103,7 @@ class GetInstanceResult {
   final String tenancy;
   /// SHA-1 hash of User Data supplied to the Instance.
   final String userData;
-  /// Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if `get_user_data` is true.
+  /// Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if `getUserData` is true.
   final String userDataBase64;
   /// Associated security groups in a non-default VPC.
   final List<String> vpcSecurityGroupIds;
@@ -139,7 +139,7 @@ class GetInstanceResult {
   /// [monitoring] Whether detailed monitoring is enabled or disabled for the Instance (Boolean).
   /// [networkInterfaceId] ID of the network interface that was created with the Instance.
   /// [outpostArn] ARN of the Outpost.
-  /// [passwordData] Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `get_password_data` is true. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// [passwordData] Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `getPasswordData` is true. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   /// [placementGroup] Placement group of the Instance.
   /// [placementGroupId] Placement group ID of the Instance.
   /// [placementPartitionNumber] Number of the partition the instance is in.
@@ -147,7 +147,7 @@ class GetInstanceResult {
   /// [privateDnsNameOptions] Options for the instance hostname.
   /// [privateIp] Private IP address assigned to the Instance.
   /// [publicDns] Public DNS name assigned to the Instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC.
-  /// [publicIp] Public IP address assigned to the Instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
+  /// [publicIp] Public IP address assigned to the Instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `publicIp`, as this field will change after the EIP is attached.
   /// [region] Required.
   /// [rootBlockDevices] Root block device mappings of the Instance
   /// [secondaryPrivateIps] Secondary private IPv4 addresses assigned to the instance's primary network interface (eth0) in a VPC.
@@ -157,7 +157,7 @@ class GetInstanceResult {
   /// [tags] Map of tags assigned to the Instance.
   /// [tenancy] Tenancy of the instance: `dedicated`, `default`, `host`.
   /// [userData] SHA-1 hash of User Data supplied to the Instance.
-  /// [userDataBase64] Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if `get_user_data` is true.
+  /// [userDataBase64] Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if `getUserData` is true.
   /// [vpcSecurityGroupIds] Associated security groups in a non-default VPC.
   const GetInstanceResult({
     required this.ami,
@@ -322,4 +322,3 @@ class GetInstanceResult {
     );
   }
 }
-

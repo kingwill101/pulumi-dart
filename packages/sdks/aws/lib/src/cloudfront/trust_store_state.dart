@@ -8,7 +8,7 @@ import 'trust_store_timeouts.dart';
 class TrustStoreState {
   /// ARN of the trust store.
   final pulumi.Input<String>? arn;
-  /// Configuration block for the CA certificates bundle source. See `ca_certificates_bundle_source` below.
+  /// Configuration block for the CA certificates bundle source. See `caCertificatesBundleSource` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<TrustStoreCaCertificatesBundleSource>? caCertificatesBundleSource;
@@ -18,20 +18,20 @@ class TrustStoreState {
   final pulumi.Input<String>? name;
   /// Number of CA certificates in the trust store.
   final pulumi.Input<int>? numberOfCaCertificates;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<TrustStoreTimeouts>? timeouts;
 
   /// Creates a new [TrustStoreState].
   /// [arn] ARN of the trust store.
-  /// [caCertificatesBundleSource] Configuration block for the CA certificates bundle source. See `ca_certificates_bundle_source` below.
+  /// [caCertificatesBundleSource] Configuration block for the CA certificates bundle source. See `caCertificatesBundleSource` below.
   /// [etag] ETag of the trust store.
   /// [name] Name of the trust store. Changing this forces a new resource to be created.
   /// [numberOfCaCertificates] Number of CA certificates in the trust store.
-  /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const TrustStoreState({
     this.arn,
@@ -70,4 +70,3 @@ class TrustStoreState {
     );
   }
 }
-

@@ -64,6 +64,21 @@ import 'get_image_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_appstream_getimage" "test" {
+///   name        = "AppStream-WinServer2019-06-17-2024"
+///   type        = "PUBLIC"
+///   most_recent = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +87,8 @@ import 'get_image_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appstream.AppstreamFunctions;
 /// import com.pulumi.aws.appstream.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

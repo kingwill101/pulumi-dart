@@ -11,6 +11,8 @@ class GetAssetResult {
   final String hostId;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  /// Instance families supported by the asset.
+  final List<String> instanceFamilies;
   /// Position of an asset in a rack measured in rack units.
   final int rackElevation;
   /// Rack ID of the asset.
@@ -23,6 +25,7 @@ class GetAssetResult {
   /// [assetType] Type of the asset.
   /// [hostId] Host ID of the Dedicated Hosts on the asset, if a Dedicated Host is provisioned.
   /// [id] The provider-assigned unique ID for this managed resource.
+  /// [instanceFamilies] Instance families supported by the asset.
   /// [rackElevation] Position of an asset in a rack measured in rack units.
   /// [rackId] Rack ID of the asset.
   /// [region] Required.
@@ -32,6 +35,7 @@ class GetAssetResult {
     required this.assetType,
     required this.hostId,
     required this.id,
+    required this.instanceFamilies,
     required this.rackElevation,
     required this.rackId,
     required this.region,
@@ -44,6 +48,7 @@ class GetAssetResult {
       'assetType': assetType,
       'hostId': hostId,
       'id': id,
+      'instanceFamilies': instanceFamilies,
       'rackElevation': rackElevation,
       'rackId': rackId,
       'region': region,
@@ -57,10 +62,10 @@ class GetAssetResult {
       assetType: map['assetType'] as String,
       hostId: map['hostId'] as String,
       id: map['id'] as String,
+      instanceFamilies: (map['instanceFamilies'] as List).cast<String>(),
       rackElevation: map['rackElevation'] as int,
       rackId: map['rackId'] as String,
       region: map['region'] as String,
     );
   }
 }
-

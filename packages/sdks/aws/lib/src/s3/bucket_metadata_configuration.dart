@@ -109,6 +109,30 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucketmetadataconfiguration" "example" {
+///   bucket = exampleAwsS3Bucket.bucket
+///   metadata_configuration = {
+///     inventory_table_configuration = {
+///       configuration_state = "ENABLED"
+///     }
+///     journal_table_configuration = {
+///       record_expiration = {
+///         days       = 7
+///         expiration = "ENABLED"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +145,8 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// import com.pulumi.aws.s3.inputs.BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationArgs;
 /// import com.pulumi.aws.s3.inputs.BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpirationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -178,7 +202,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -192,7 +216,7 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-  /// Metadata configuration. See `metadata_configuration` Block for details.
+  /// Metadata configuration. See `metadataConfiguration` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<BucketMetadataConfigurationMetadataConfiguration> metadataConfiguration;

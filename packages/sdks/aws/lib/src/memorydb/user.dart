@@ -31,7 +31,7 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 /// import pulumi_random as random
 ///
-/// example = random.index.Password("example", length=16)
+/// example = random.Password("example", length=16)
 /// example_user = aws.memorydb.User("example",
 ///     user_name="my-user",
 ///     access_string="on ~* &* +@all",
@@ -49,7 +49,7 @@ import 'user_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Random.Index.Password("example", new()
+///     var example = new Random.Password("example", new()
 ///     {
 ///         Length = 16,
 ///     });
@@ -104,6 +104,30 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_password" "example" {
+///   length = 16
+/// }
+/// resource "aws_memorydb_user" "example" {
+///   user_name     = "my-user"
+///   access_string = "on ~* &* +@all"
+///   authentication_mode = {
+///     type      = "password"
+///     passwords = [random_password.example.result]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +139,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.memorydb.User;
 /// import com.pulumi.aws.memorydb.UserArgs;
 /// import com.pulumi.aws.memorydb.inputs.UserAuthenticationModeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,7 +189,7 @@ import 'user_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a user using the `user_name`. For example:
+/// Using `pulumi import`, import a user using the `userName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:memorydb/user:User example my-user
@@ -183,9 +207,9 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String> minimumEngineVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name of the MemoryDB user. Up to 40 characters.
   ///

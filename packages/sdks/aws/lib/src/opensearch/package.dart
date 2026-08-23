@@ -138,6 +138,36 @@ import 'package_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "my_opensearch_packages" {
+///   bucket = "my-opensearch-packages"
+/// }
+/// resource "aws_s3_bucketobjectv2" "example" {
+///   bucket = aws_s3_bucket.my_opensearch_packages.bucket
+///   key    = "example.txt"
+///   source = fileAsset("./example.txt")
+///   etag   = filemd5("./example.txt")
+/// }
+/// resource "aws_opensearch_package" "example" {
+///   package_name = "example-txt"
+///   package_source = {
+///     s3_bucket_name = aws_s3_bucket.my_opensearch_packages.bucket
+///     s3_key         = aws_s3_bucketobjectv2.example.key
+///   }
+///   package_type = "TXT-DICTIONARY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +184,8 @@ import 'package_state.dart';
 /// import com.pulumi.aws.opensearch.PackageArgs;
 /// import com.pulumi.aws.opensearch.inputs.PackagePackageSourceArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,7 +235,7 @@ import 'package_state.dart';
 ///       bucket: ${myOpensearchPackages.bucket}
 ///       key: example.txt
 ///       source:
-///         fn::FileAsset: ./example.txt
+///         fn::fileAsset: ./example.txt
 ///       etag:
 ///         fn::invoke:
 ///           function: std:filemd5
@@ -234,7 +264,7 @@ import 'package_state.dart';
 class Package extends pulumi.CustomResource {
   /// The current version of the package.
   late final pulumi.Output<String> availablePackageVersion;
-  /// Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
+  /// Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   late final pulumi.Output<String?> engineVersion;
   /// Description of the package.
   late final pulumi.Output<String?> packageDescription;

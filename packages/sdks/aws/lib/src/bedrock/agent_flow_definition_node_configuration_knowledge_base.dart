@@ -5,20 +5,21 @@ import 'agent_flow_definition_node_configuration_knowledge_base_guardrail_config
 import 'agent_flow_definition_node_configuration_knowledge_base_inference_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
-  /// Contains configurations for a guardrail to apply during query and response generation for the knowledge base in this configuration. See Guardrail Configuration for more information.
+  /// Configures a guardrail for knowledge base query and response generation. See Guardrail Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration>? guardrailConfiguration;
-  /// Contains inference configurations for the prompt. See Prompt Inference Configuration for more information.
+  /// Configures model inference for knowledge base query and response generation. See Inference Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration>? inferenceConfiguration;
   /// The unique identifier of the knowledge base to query.
   final pulumi.Input<String> knowledgeBaseId;
+  /// The unique identifier of the model or inference profile to use to generate a response from the query results. Omit this field if you want to return the retrieved results as an array.
   final pulumi.Input<String> modelId;
   final pulumi.Input<int>? numberOfResults;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBase].
-  /// [guardrailConfiguration] Contains configurations for a guardrail to apply during query and response generation for the knowledge base in this configuration. See Guardrail Configuration for more information.
-  /// [inferenceConfiguration] Contains inference configurations for the prompt. See Prompt Inference Configuration for more information.
+  /// [guardrailConfiguration] Configures a guardrail for knowledge base query and response generation. See Guardrail Configuration for more information.
+  /// [inferenceConfiguration] Configures model inference for knowledge base query and response generation. See Inference Configuration for more information.
   /// [knowledgeBaseId] The unique identifier of the knowledge base to query.
-  /// [modelId] Required.
+  /// [modelId] The unique identifier of the model or inference profile to use to generate a response from the query results. Omit this field if you want to return the retrieved results as an array.
   /// [numberOfResults] Optional.
   const AgentFlowDefinitionNodeConfigurationKnowledgeBase({
     this.guardrailConfiguration,
@@ -48,4 +49,3 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
     );
   }
 }
-

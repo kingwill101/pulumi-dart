@@ -27,7 +27,7 @@ class FleetState {
   final pulumi.Input<String>? fleetType;
   /// ARN of the IAM role to apply to the fleet.
   final pulumi.Input<String>? iamRoleArn;
-  /// Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnect_timeout_in_seconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
+  /// Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnectTimeoutInSeconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
   final pulumi.Input<int>? idleDisconnectTimeoutInSeconds;
   /// ARN of the public, private, or shared image to use.
   final pulumi.Input<String>? imageArn;
@@ -35,7 +35,7 @@ class FleetState {
   final pulumi.Input<String>? imageName;
   /// Instance type to use when launching fleet instances.
   final pulumi.Input<String>? instanceType;
-  /// The maximum number of user sessions on an instance. This only applies to multi-session fleets.
+  /// Maximum number of user sessions on an instance. This only applies to multi-session fleets.
   final pulumi.Input<int>? maxSessionsPerInstance;
   /// Maximum amount of time that a streaming session can remain active, in seconds.
   final pulumi.Input<int>? maxUserDurationInSeconds;
@@ -66,11 +66,11 @@ class FleetState {
   /// [enableDefaultInternetAccess] Enables or disables default internet access for the fleet.
   /// [fleetType] Fleet type. Valid values are: `ON_DEMAND`, `ALWAYS_ON`
   /// [iamRoleArn] ARN of the IAM role to apply to the fleet.
-  /// [idleDisconnectTimeoutInSeconds] Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnect_timeout_in_seconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
+  /// [idleDisconnectTimeoutInSeconds] Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnectTimeoutInSeconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
   /// [imageArn] ARN of the public, private, or shared image to use.
   /// [imageName] Name of the image used to create the fleet.
   /// [instanceType] Instance type to use when launching fleet instances.
-  /// [maxSessionsPerInstance] The maximum number of user sessions on an instance. This only applies to multi-session fleets.
+  /// [maxSessionsPerInstance] Maximum number of user sessions on an instance. This only applies to multi-session fleets.
   /// [maxUserDurationInSeconds] Maximum amount of time that a streaming session can remain active, in seconds.
   /// [name] Unique name for the fleet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -161,4 +161,3 @@ class FleetState {
     );
   }
 }
-

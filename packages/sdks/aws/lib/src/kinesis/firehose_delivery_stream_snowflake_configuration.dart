@@ -9,13 +9,13 @@ import 'firehose_delivery_stream_snowflake_configuration_snowflake_role_configur
 import 'firehose_delivery_stream_snowflake_configuration_snowflake_vpc_configuration.dart';
 
 class FirehoseDeliveryStreamSnowflakeConfiguration {
-  /// The URL of the Snowflake account. Format: https://[account_identifier].snowflakecomputing.com.
+  /// The URL of the Snowflake account. Format: https://[accountIdentifier].snowflakecomputing.com.
   final pulumi.Input<String> accountUrl;
   /// Buffer incoming data for the specified period of time, in seconds between 0 to 900, before delivering it to the destination.  The default value is 0s.
   final pulumi.Input<int>? bufferingInterval;
   /// Buffer incoming data to the specified size, in MBs between 1 to 128, before delivering it to the destination.  The default value is 1MB.
   final pulumi.Input<int>? bufferingSize;
-  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationCloudwatchLoggingOptions>? cloudwatchLoggingOptions;
   /// The name of the content column.
   final pulumi.Input<String>? contentColumnName;
@@ -27,9 +27,9 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   final pulumi.Input<String>? keyPassphrase;
   /// The name of the metadata column.
   final pulumi.Input<String>? metadataColumnName;
-  /// The private key for authentication. This value is required if `secrets_manager_configuration` is not provided.
+  /// The private key for authentication. This value is required if `secretsManagerConfiguration` is not provided.
   final pulumi.Input<String>? privateKey;
-  /// The processing configuration. See `processing_configuration` block below for details.
+  /// The processing configuration. See `processingConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration>? processingConfiguration;
   /// After an initial failure to deliver to Snowflake, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 60s.  There will be no retry if the value is 0.
   final pulumi.Input<int>? retryDuration;
@@ -37,11 +37,11 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   final pulumi.Input<String> roleArn;
   /// The S3 backup mode.
   final pulumi.Input<String>? s3BackupMode;
-  /// The S3 configuration. See `s3_configuration` block below for details.
+  /// The S3 configuration. See `s3Configuration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationS3Configuration> s3Configuration;
   /// The Snowflake schema name.
   final pulumi.Input<String> schema;
-  /// The Secrets Manager configuration. See `secrets_manager_configuration` block below for details. This value is required if `user` and `private_key` are not provided.
+  /// The Secrets Manager configuration. See `secretsManagerConfiguration` block below for details. This value is required if `user` and `privateKey` are not provided.
   final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration>? secretsManagerConfiguration;
   /// The configuration for Snowflake role.
   final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration>? snowflakeRoleConfiguration;
@@ -49,31 +49,31 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration>? snowflakeVpcConfiguration;
   /// The Snowflake table name.
   final pulumi.Input<String> table;
-  /// The user for authentication. This value is required if `secrets_manager_configuration` is not provided.
+  /// The user for authentication. This value is required if `secretsManagerConfiguration` is not provided.
   final pulumi.Input<String>? user;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfiguration].
-  /// [accountUrl] The URL of the Snowflake account. Format: https://[account_identifier].snowflakecomputing.com.
+  /// [accountUrl] The URL of the Snowflake account. Format: https://[accountIdentifier].snowflakecomputing.com.
   /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds between 0 to 900, before delivering it to the destination.  The default value is 0s.
   /// [bufferingSize] Buffer incoming data to the specified size, in MBs between 1 to 128, before delivering it to the destination.  The default value is 1MB.
-  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
+  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   /// [contentColumnName] The name of the content column.
   /// [dataLoadingOption] The data loading option.
   /// [database] The Snowflake database name.
   /// [keyPassphrase] The passphrase for the private key.
   /// [metadataColumnName] The name of the metadata column.
-  /// [privateKey] The private key for authentication. This value is required if `secrets_manager_configuration` is not provided.
-  /// [processingConfiguration] The processing configuration. See `processing_configuration` block below for details.
+  /// [privateKey] The private key for authentication. This value is required if `secretsManagerConfiguration` is not provided.
+  /// [processingConfiguration] The processing configuration. See `processingConfiguration` block below for details.
   /// [retryDuration] After an initial failure to deliver to Snowflake, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 60s.  There will be no retry if the value is 0.
   /// [roleArn] The ARN of the IAM role.
   /// [s3BackupMode] The S3 backup mode.
-  /// [s3Configuration] The S3 configuration. See `s3_configuration` block below for details.
+  /// [s3Configuration] The S3 configuration. See `s3Configuration` block below for details.
   /// [schema] The Snowflake schema name.
-  /// [secretsManagerConfiguration] The Secrets Manager configuration. See `secrets_manager_configuration` block below for details. This value is required if `user` and `private_key` are not provided.
+  /// [secretsManagerConfiguration] The Secrets Manager configuration. See `secretsManagerConfiguration` block below for details. This value is required if `user` and `privateKey` are not provided.
   /// [snowflakeRoleConfiguration] The configuration for Snowflake role.
   /// [snowflakeVpcConfiguration] The VPC configuration for Snowflake.
   /// [table] The Snowflake table name.
-  /// [user] The user for authentication. This value is required if `secrets_manager_configuration` is not provided.
+  /// [user] The user for authentication. This value is required if `secretsManagerConfiguration` is not provided.
   const FirehoseDeliveryStreamSnowflakeConfiguration({
     required this.accountUrl,
     this.bufferingInterval,
@@ -150,4 +150,3 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
     );
   }
 }
-

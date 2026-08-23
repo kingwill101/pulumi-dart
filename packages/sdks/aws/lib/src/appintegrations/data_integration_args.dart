@@ -8,29 +8,29 @@ import 'data_integration_schedule_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_appintegrations_data_integration_data_integration_args_doc}
 class DataIntegrationArgs {
-  /// Specifies the description of the Data Integration.
+  /// Description of the Data Integration.
   final pulumi.Input<String>? description;
-  /// Specifies the KMS key Amazon Resource Name (ARN) for the Data Integration.
+  /// KMS key Amazon Resource Name (ARN) for the Data Integration.
   final pulumi.Input<String> kmsKey;
-  /// Specifies the name of the Data Integration.
+  /// Name of the Data Integration.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A block that defines the name of the data and how often it should be pulled from the source. The Schedule Config block is documented below.
+  /// Configuration block that defines the name of the data and how often it should be pulled from the source. See `scheduleConfig` Block for details.
   final pulumi.Input<DataIntegrationScheduleConfig> scheduleConfig;
-  /// Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
+  /// URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
   final pulumi.Input<String> sourceUri;
-  /// Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Data Integration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DataIntegrationArgs].
-  /// [description] Specifies the description of the Data Integration.
-  /// [kmsKey] Specifies the KMS key Amazon Resource Name (ARN) for the Data Integration.
-  /// [name] Specifies the name of the Data Integration.
+  /// [description] Description of the Data Integration.
+  /// [kmsKey] KMS key Amazon Resource Name (ARN) for the Data Integration.
+  /// [name] Name of the Data Integration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [scheduleConfig] A block that defines the name of the data and how often it should be pulled from the source. The Schedule Config block is documented below.
-  /// [sourceUri] Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
-  /// [tags] Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [scheduleConfig] Configuration block that defines the name of the data and how often it should be pulled from the source. See `scheduleConfig` Block for details.
+  /// [sourceUri] URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
+  /// [tags] Tags to apply to the Data Integration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const DataIntegrationArgs({
     this.description,
     required this.kmsKey,
@@ -65,4 +65,3 @@ class DataIntegrationArgs {
     );
   }
 }
-

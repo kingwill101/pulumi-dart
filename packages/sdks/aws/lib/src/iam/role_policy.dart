@@ -4,7 +4,7 @@ import 'role_policy_state.dart';
 
 /// Provides an IAM role inline policy.
 ///
-/// &gt; **NOTE:** For a given role, this resource is incompatible with using the `aws.iam.Role` resource `inline_policy` argument. When using that argument and this resource, both will attempt to manage the role's inline policies and the provider will show a permanent difference.
+/// &gt; **NOTE:** For a given role, this resource is incompatible with using the `aws.iam.Role` resource `inlinePolicy` argument. When using that argument and this resource, both will attempt to manage the role's inline policies and the provider will show a permanent difference.
 ///
 /// &gt; **NOTE:** We suggest using explicit JSON encoding or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate configuration to JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
@@ -146,7 +146,7 @@ import 'role_policy_state.dart';
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
 /// 					"Sid":    "",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "ec2.amazonaws.com",
 /// 					},
 /// 				},
@@ -181,7 +181,7 @@ import 'role_policy_state.dart';
 /// 		json1 := string(tmpJSON1)
 /// 		_, err = iam.NewRolePolicy(ctx, "test_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("test_policy"),
-/// 			Role:   testRole.ID(),
+/// 			Role:   testRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(json1),
 /// 		})
 /// 		if err != nil {
@@ -189,6 +189,42 @@ import 'role_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_rolepolicy" "test_policy" {
+///   name = "test_policy"
+///   role = aws_iam_role.test_role.id
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action"   = ["ec2:Describe*"]
+///       "Effect"   = "Allow"
+///       "Resource" = "*"
+///     }]
+///   })
+/// }
+/// resource "aws_iam_role" "test_role" {
+///   name = "test_role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Sid"    = ""
+///       "Principal" = {
+///         "Service" = "ec2.amazonaws.com"
+///       }
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -202,8 +238,8 @@ import 'role_policy_state.dart';
 /// import com.pulumi.aws.iam.RolePolicy;
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,7 +328,7 @@ import 'role_policy_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
 /// Using `pulumi import`, import IAM Role Policies using the `role_name:role_policy_name`. For example:

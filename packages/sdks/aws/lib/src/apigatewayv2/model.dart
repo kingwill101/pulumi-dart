@@ -96,8 +96,8 @@ import 'model_state.dart';
 /// 			"$schema": "http://json-schema.org/draft-04/schema#",
 /// 			"title":   "ExampleModel",
 /// 			"type":    "object",
-/// 			"properties": map[string]interface{}{
-/// 				"id": map[string]interface{}{
+/// 			"properties": map[string]map[string]string{
+/// 				"id": map[string]string{
 /// 					"type": "string",
 /// 				},
 /// 			},
@@ -119,6 +119,31 @@ import 'model_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apigatewayv2_model" "example" {
+///   api_id       = exampleAwsApigatewayv2Api.id
+///   content_type = "application/json"
+///   name         = "example"
+///   schema = jsonencode({
+///     "$schema" = "http://json-schema.org/draft-04/schema#"
+///     "title"   = "ExampleModel"
+///     "type"    = "object"
+///     "properties" = {
+///       "id" = {
+///         "type" = "string"
+///       }
+///     }
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +153,8 @@ import 'model_state.dart';
 /// import com.pulumi.aws.apigatewayv2.Model;
 /// import com.pulumi.aws.apigatewayv2.ModelArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,7 +215,7 @@ import 'model_state.dart';
 class Model extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
-  /// The content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
+  /// Content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
   late final pulumi.Output<String> contentType;
   /// Description of the model. Must be between 1 and 128 characters in length.
   late final pulumi.Output<String?> description;

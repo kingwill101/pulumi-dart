@@ -91,6 +91,21 @@ import 'vpc_connector_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_vpcconnector" "connector" {
+///   vpc_connector_name = "name"
+///   subnets            = ["subnet1", "subnet2"]
+///   security_groups    = ["sg1", "sg2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +114,8 @@ import 'vpc_connector_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apprunner.VpcConnector;
 /// import com.pulumi.aws.apprunner.VpcConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,13 +180,13 @@ class VpcConnector extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// List of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
   late final pulumi.Output<List<String>> subnets;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name for the VPC connector.
   late final pulumi.Output<String> vpcConnectorName;
-  /// The revision of VPC connector. It's unique among all the active connectors ("Status": "ACTIVE") that share the same Name.
+  /// Revision of VPC connector. It's unique among all the active connectors ("Status": "ACTIVE") that share the same Name.
   late final pulumi.Output<int> vpcConnectorRevision;
 
   /// Creates a new [VpcConnector].

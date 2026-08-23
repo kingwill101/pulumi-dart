@@ -10,7 +10,7 @@ import 'input_security_group_whitelist_rule.dart';
 class InputSecurityGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the InputSecurityGroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Whitelist rules. See Whitelist Rules for more details.
   ///
@@ -19,7 +19,7 @@ class InputSecurityGroupArgs {
 
   /// Creates a new [InputSecurityGroupArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the InputSecurityGroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [whitelistRules] Whitelist rules. See Whitelist Rules for more details.
   const InputSecurityGroupArgs({
     this.region,
@@ -43,4 +43,3 @@ class InputSecurityGroupArgs {
     );
   }
 }
-

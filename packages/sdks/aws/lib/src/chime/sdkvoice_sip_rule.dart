@@ -93,6 +93,26 @@ import 'sdkvoice_sip_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_sdkvoicesiprule" "example" {
+///   name          = "example-sip-rule"
+///   trigger_type  = "RequestUriHostname"
+///   trigger_value = example-voice-connector.outboundHostName
+///   target_applications {
+///     priority                 = 1
+///     sip_media_application_id = example-sma.id
+///     aws_region               = "us-east-1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +122,8 @@ import 'sdkvoice_sip_rule_state.dart';
 /// import com.pulumi.aws.chime.SdkvoiceSipRule;
 /// import com.pulumi.aws.chime.SdkvoiceSipRuleArgs;
 /// import com.pulumi.aws.chime.inputs.SdkvoiceSipRuleTargetApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,11 +178,11 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `target_applications`.
+  /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `targetApplications`.
   late final pulumi.Output<List<Map<String, dynamic>>> targetApplications;
-  /// The type of trigger assigned to the SIP rule in `trigger_value`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
+  /// The type of trigger assigned to the SIP rule in `triggerValue`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
   late final pulumi.Output<String> triggerType;
-  /// If `trigger_type` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `trigger_type` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
+  /// If `triggerType` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `triggerType` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> triggerValue;

@@ -36,7 +36,7 @@ class EnvironmentArgs {
   /// A solution stack to base your environment
   /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
   final pulumi.Input<String>? solutionStackName;
-  /// A set of tags to apply to the Environment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A set of tags to apply to the Environment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// The name of the Elastic Beanstalk Configuration
   /// template to use in deployment
@@ -63,7 +63,7 @@ class EnvironmentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [settings] Option settings to configure the new Environment. These
   /// [solutionStackName] A solution stack to base your environment
-  /// [tags] A set of tags to apply to the Environment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A set of tags to apply to the Environment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [templateName] The name of the Elastic Beanstalk Configuration
   /// [tier] Elastic Beanstalk Environment tier. Valid values are `Worker`
   /// [version] The name of the Elastic Beanstalk Application Version
@@ -123,4 +123,3 @@ class EnvironmentArgs {
     );
   }
 }
-

@@ -24,9 +24,9 @@ class VpcPeeringConnectionAccepterState {
   /// A configuration block that describes [VPC Peering Connection]
   /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
   final pulumi.Input<VpcPeeringConnectionAccepterRequester>? requester;
-  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The ID of the accepter VPC.
   final pulumi.Input<String>? vpcId;
@@ -42,8 +42,8 @@ class VpcPeeringConnectionAccepterState {
   /// [peerVpcId] The ID of the requester VPC.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requester] A configuration block that describes [VPC Peering Connection]
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcId] The ID of the accepter VPC.
   /// [vpcPeeringConnectionId] The VPC Peering Connection ID to manage.
   const VpcPeeringConnectionAccepterState({
@@ -95,4 +95,3 @@ class VpcPeeringConnectionAccepterState {
     );
   }
 }
-

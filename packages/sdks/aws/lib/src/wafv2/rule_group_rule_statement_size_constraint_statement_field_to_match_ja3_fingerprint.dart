@@ -24,4 +24,3 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint {
     );
   }
 }
-

@@ -67,6 +67,21 @@ import 'network_insights_path_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_networkinsightspath" "test" {
+///   source      = source.id
+///   destination = destination.id
+///   protocol    = "tcp"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'network_insights_path_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.NetworkInsightsPath;
 /// import com.pulumi.aws.ec2.NetworkInsightsPathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,7 +133,7 @@ import 'network_insights_path_state.dart';
 class NetworkInsightsPath extends pulumi.CustomResource {
   /// ARN of the Network Insights Path.
   late final pulumi.Output<String> arn;
-  /// ID or ARN of the resource which is the destination of the path. Can be an Instance, Internet Gateway, Network Interface, Transit Gateway, VPC Endpoint, VPC Peering Connection or VPN Gateway. If the resource is in another account, you must specify an ARN. Either the `destination` argument or the `destination_address` argument in the `filter_at_source` block must be specified.
+  /// ID or ARN of the resource which is the destination of the path. Can be an Instance, Internet Gateway, Network Interface, Transit Gateway, VPC Endpoint, VPC Peering Connection or VPN Gateway. If the resource is in another account, you must specify an ARN. Either the `destination` argument or the `destinationAddress` argument in the `filterAtSource` block must be specified.
   late final pulumi.Output<String?> destination;
   /// ARN of the destination.
   late final pulumi.Output<String> destinationArn;
@@ -126,9 +141,9 @@ class NetworkInsightsPath extends pulumi.CustomResource {
   late final pulumi.Output<String?> destinationIp;
   /// Destination port to analyze access to.
   late final pulumi.Output<int?> destinationPort;
-  /// Scopes the analysis to network paths that match specific filters at the destination. If you specify this parameter, you can't specify `destination_ip`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
+  /// Scopes the analysis to network paths that match specific filters at the destination. If you specify this parameter, you can't specify `destinationIp`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
   late final pulumi.Output<NetworkInsightsPathFilterAtDestination> filterAtDestination;
-  /// Scopes the analysis to network paths that match specific filters at the source. If you specify this parameter, you can't specify `source_ip` or `destination_port`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
+  /// Scopes the analysis to network paths that match specific filters at the source. If you specify this parameter, you can't specify `sourceIp` or `destinationPort`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
   late final pulumi.Output<NetworkInsightsPathFilterAtSource> filterAtSource;
   /// Protocol to use for analysis. Valid options are `tcp` or `udp`.
   ///
@@ -142,9 +157,9 @@ class NetworkInsightsPath extends pulumi.CustomResource {
   late final pulumi.Output<String> sourceArn;
   /// IP address of the source resource.
   late final pulumi.Output<String?> sourceIp;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [NetworkInsightsPath].

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_action_captcha_custom_request_handling_insert_header.dart';
 
 class RuleGroupRuleActionCaptchaCustomRequestHandling {
-  /// The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  /// The `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
   final pulumi.Input<List<RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader>> insertHeaders;
 
   /// Creates a new [RuleGroupRuleActionCaptchaCustomRequestHandling].
-  /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  /// [insertHeaders] The `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
   const RuleGroupRuleActionCaptchaCustomRequestHandling({
     required this.insertHeaders,
   });
@@ -25,4 +25,3 @@ class RuleGroupRuleActionCaptchaCustomRequestHandling {
     );
   }
 }
-

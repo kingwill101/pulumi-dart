@@ -82,6 +82,32 @@ import 'control_tower_control_state.dart';
 ///
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+/// data "aws_organizations_getorganization" "example" {
+/// }
+/// data "aws_organizations_getorganizationalunits" "exampleGetOrganizationalUnits" {
+///   parent_id = data.aws_organizations_getorganization.example.roots[0].id
+/// }
+///
+/// resource "aws_controltower_controltowercontrol" "example" {
+///   control_identifier ="arn:aws:controltower:${data.aws_getregion.current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK"
+///   target_identifier  = [for x in data.aws_organizations_getorganizationalunits.exampleGetOrganizationalUnits.children : x.arn if x.name == "Infrastructure"][0]
+///   parameters {
+///     key   = "AllowedRegions"
+///     value = jsonencode(["us-east-1"])
+///   }
+/// }
+/// ```
 ///
 ///
 /// ## Import

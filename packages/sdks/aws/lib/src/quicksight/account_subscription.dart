@@ -4,7 +4,7 @@ import 'account_subscription_state.dart';
 
 /// Resource for managing an AWS QuickSight Account Subscription.
 ///
-/// &gt; Due to the absence of the `admin_group`, `author_group`, `reader_group`, `admin_pro_group`, `author_pro_group`, and `reader_pro_group` fields in the [`DescribeAccountSettings`](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAccountSettings.html) API response, changes made to these groups post-subscription will not be detected by this resource.
+/// &gt; Due to the absence of the `adminGroup`, `authorGroup`, `readerGroup`, `adminProGroup`, `authorProGroup`, and `readerProGroup` fields in the [`DescribeAccountSettings`](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAccountSettings.html) API response, changes made to these groups post-subscription will not be detected by this resource.
 ///
 /// ## Example Usage
 ///
@@ -71,6 +71,22 @@ import 'account_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_accountsubscription" "subscription" {
+///   account_name          = "quicksight-pulumi"
+///   authentication_method = "IAM_AND_QUICKSIGHT"
+///   edition               = "ENTERPRISE"
+///   notification_email    = "notification@email.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +95,8 @@ import 'account_subscription_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.AccountSubscription;
 /// import com.pulumi.aws.quicksight.AccountSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,7 +132,7 @@ import 'account_subscription_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a QuickSight Account Subscription using `aws_account_id`. For example:
+/// Using `pulumi import`, import a QuickSight Account Subscription using `awsAccountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:quicksight/accountSubscription:AccountSubscription example "012345678901"
@@ -140,19 +156,19 @@ class AccountSubscription extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> authorProGroups;
   /// AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> contactNumber;
   /// Active Directory ID that is associated with your Amazon QuickSight account.
   late final pulumi.Output<String?> directoryId;
   /// Edition of Amazon QuickSight that you want your account to have. Currently, you can choose from `STANDARD`, `ENTERPRISE` or `ENTERPRISE_AND_Q`.
   late final pulumi.Output<String> edition;
-  /// Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> emailAddress;
-  /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> firstName;
   /// The Amazon Resource Name (ARN) for the IAM Identity Center instance.
   late final pulumi.Output<String?> iamIdentityCenterInstanceArn;
-  /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> lastName;
   /// Email address that you want Amazon QuickSight to send notifications to regarding your Amazon QuickSight account or Amazon QuickSight subscription.
   ///

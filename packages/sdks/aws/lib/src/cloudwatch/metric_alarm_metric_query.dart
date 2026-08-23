@@ -20,7 +20,7 @@ class MetricAlarmMetricQuery {
   /// For metrics with regular resolution, valid values are any multiple of `60`.
   /// For high-resolution metrics, valid values are `1`, `5`, `10`, `20`, `30`, or any multiple of `60`.
   final pulumi.Input<int>? period;
-  /// Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
+  /// Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
   ///
   /// &gt; **NOTE:**  You must specify either `metric` or `expression`. Not both.
   final pulumi.Input<bool>? returnData;
@@ -32,7 +32,7 @@ class MetricAlarmMetricQuery {
   /// [label] A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
   /// [metric] The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
   /// [period] Granularity in seconds of returned data points.
-  /// [returnData] Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
+  /// [returnData] Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
   const MetricAlarmMetricQuery({
     this.accountId,
     this.expression,
@@ -67,4 +67,3 @@ class MetricAlarmMetricQuery {
     );
   }
 }
-

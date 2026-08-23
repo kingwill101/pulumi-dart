@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains {
-  /// Strings in the body of the response that indicate a failed login attempt.
   final pulumi.Input<List<String>> failureStrings;
-  /// Strings in the body of the response that indicate a successful login attempt.
   final pulumi.Input<List<String>> successStrings;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains].
-  /// [failureStrings] Strings in the body of the response that indicate a failed login attempt.
-  /// [successStrings] Strings in the body of the response that indicate a successful login attempt.
+  /// [failureStrings] Required.
+  /// [successStrings] Required.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionBodyContains({
     required this.failureStrings,
     required this.successStrings,
@@ -30,4 +28,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

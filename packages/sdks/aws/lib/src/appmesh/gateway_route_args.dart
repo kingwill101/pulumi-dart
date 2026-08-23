@@ -18,7 +18,7 @@ class GatewayRouteArgs {
   final pulumi.Input<String>? region;
   /// Gateway route specification to apply.
   final pulumi.Input<GatewayRouteSpec> spec;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> virtualGatewayName;
@@ -29,7 +29,7 @@ class GatewayRouteArgs {
   /// [name] Name to use for the gateway route. Must be between 1 and 255 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spec] Gateway route specification to apply.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualGatewayName] Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
   const GatewayRouteArgs({
     required this.meshName,
@@ -65,4 +65,3 @@ class GatewayRouteArgs {
     );
   }
 }
-

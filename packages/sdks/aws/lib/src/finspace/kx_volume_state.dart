@@ -8,64 +8,55 @@ import 'kx_volume_nas1_configuration.dart';
 class KxVolumeState {
   /// Amazon Resource Name (ARN) identifier of the KX volume.
   final pulumi.Input<String>? arn;
+  /// Clusters attached to the volume. See `attachedClusters` Block below.
   final pulumi.Input<List<KxVolumeAttachedCluster>>? attachedClusters;
-  /// The identifier of the AWS Availability Zone IDs.
-  ///
-  /// The following arguments are optional:
+  /// Identifier of the AWS Availability Zone IDs.
   final pulumi.Input<List<String>>? availabilityZones;
-  /// The number of availability zones you want to assign per volume. Currently, Finspace only support SINGLE for volumes.
-  /// * `SINGLE` - Assigns one availability zone per volume.
+  /// Number of availability zones you want to assign per volume. Currently, FinSpace only supports `SINGLE` for volumes, which assigns one availability zone per volume.
   final pulumi.Input<String>? azMode;
-  /// The timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
+  /// Timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
   final pulumi.Input<String>? createdTimestamp;
   /// Description of the volume.
   final pulumi.Input<String>? description;
-  /// A unique identifier for the kdb environment, whose clusters can attach to the volume.
+  /// Unique identifier for the kdb environment, whose clusters can attach to the volume.
   final pulumi.Input<String>? environmentId;
   /// Last timestamp at which the volume was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   final pulumi.Input<String>? lastModifiedTimestamp;
-  /// Unique name for the volumr that you want to create.
+  /// Unique name for the volume that you want to create.
   final pulumi.Input<String>? name;
-  /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
+  /// Configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volumeType` is `NAS_1`. See `nas1Configuration` Block below.
   final pulumi.Input<List<KxVolumeNas1Configuration>>? nas1Configurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// The status of volume creation.
-  /// * `CREATING` - The volume creation is in progress.
-  /// * `CREATE_FAILED` - The volume creation has failed.
-  /// * `ACTIVE` - The volume is active.
-  /// * `UPDATING` - The volume is in the process of being updated.
-  /// * `UPDATE_FAILED` - The update action failed.
-  /// * `UPDATED` - The volume is successfully updated.
-  /// * `DELETING` - The volume is in the process of being deleted.
-  /// * `DELETE_FAILED` - The system failed to delete the volume.
-  /// * `DELETED` - The volume is successfully deleted.
+  /// Status of volume creation. Values are `CREATING` (volume creation is in progress), `CREATE_FAILED` (volume creation has failed), `ACTIVE` (volume is active), `UPDATING` (volume is in the process of being updated), `UPDATE_FAILED` (update action failed), `UPDATED` (volume is successfully updated), `DELETING` (volume is in the process of being deleted), `DELETE_FAILED` (system failed to delete the volume), and `DELETED` (volume is successfully deleted).
   final pulumi.Input<String>? status;
-  /// The error message when a failed state occurs.
+  /// Error message when a failed state occurs.
   final pulumi.Input<String>? statusReason;
-  /// A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
+  /// Key-value pairs to label the volume. You can add up to 50 tags to a volume.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
+  /// Type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1Configuration`.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String>? type;
 
   /// Creates a new [KxVolumeState].
   /// [arn] Amazon Resource Name (ARN) identifier of the KX volume.
-  /// [attachedClusters] Optional.
-  /// [availabilityZones] The identifier of the AWS Availability Zone IDs.
-  /// [azMode] The number of availability zones you want to assign per volume. Currently, Finspace only support SINGLE for volumes.
-  /// [createdTimestamp] The timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
+  /// [attachedClusters] Clusters attached to the volume. See `attachedClusters` Block below.
+  /// [availabilityZones] Identifier of the AWS Availability Zone IDs.
+  /// [azMode] Number of availability zones you want to assign per volume. Currently, FinSpace only supports `SINGLE` for volumes, which assigns one availability zone per volume.
+  /// [createdTimestamp] Timestamp at which the volume was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
   /// [description] Description of the volume.
-  /// [environmentId] A unique identifier for the kdb environment, whose clusters can attach to the volume.
+  /// [environmentId] Unique identifier for the kdb environment, whose clusters can attach to the volume.
   /// [lastModifiedTimestamp] Last timestamp at which the volume was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  /// [name] Unique name for the volumr that you want to create.
-  /// [nas1Configurations] Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
+  /// [name] Unique name for the volume that you want to create.
+  /// [nas1Configurations] Configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volumeType` is `NAS_1`. See `nas1Configuration` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [status] The status of volume creation.
-  /// [statusReason] The error message when a failed state occurs.
-  /// [tags] A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
+  /// [status] Status of volume creation. Values are `CREATING` (volume creation is in progress), `CREATE_FAILED` (volume creation has failed), `ACTIVE` (volume is active), `UPDATING` (volume is in the process of being updated), `UPDATE_FAILED` (update action failed), `UPDATED` (volume is successfully updated), `DELETING` (volume is in the process of being deleted), `DELETE_FAILED` (system failed to delete the volume), and `DELETED` (volume is successfully deleted).
+  /// [statusReason] Error message when a failed state occurs.
+  /// [tags] Key-value pairs to label the volume. You can add up to 50 tags to a volume.
   /// [tagsAll] Optional.
-  /// [type] The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
+  /// [type] Type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1Configuration`.
   const KxVolumeState({
     this.arn,
     this.attachedClusters,
@@ -127,4 +118,3 @@ class KxVolumeState {
     );
   }
 }
-

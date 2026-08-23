@@ -8,28 +8,28 @@ import 'place_index_data_source_configuration.dart';
 /// {@endtemplate}
 /// {@macro pulumi_location_place_index_place_index_args_doc}
 class PlaceIndexArgs {
-  /// Specifies the geospatial data provider for the new place index.
+  /// Geospatial data provider for the new place index.
   final pulumi.Input<String> dataSource;
   /// Configuration block with the data storage option chosen for requesting Places. Detailed below.
   final pulumi.Input<PlaceIndexDataSourceConfiguration>? dataSourceConfiguration;
-  /// The optional description for the place index resource.
+  /// Optional description for the place index resource.
   final pulumi.Input<String>? description;
-  /// The name of the place index resource.
+  /// Name of the place index resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> indexName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [PlaceIndexArgs].
-  /// [dataSource] Specifies the geospatial data provider for the new place index.
+  /// [dataSource] Geospatial data provider for the new place index.
   /// [dataSourceConfiguration] Configuration block with the data storage option chosen for requesting Places. Detailed below.
-  /// [description] The optional description for the place index resource.
-  /// [indexName] The name of the place index resource.
+  /// [description] Optional description for the place index resource.
+  /// [indexName] Name of the place index resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const PlaceIndexArgs({
     required this.dataSource,
     this.dataSourceConfiguration,
@@ -61,4 +61,3 @@ class PlaceIndexArgs {
     );
   }
 }
-

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_stream_stream_mode_detail.dart';
+import 'get_stream_warm_throughput.dart';
 
 /// Result data returned by getStream.
 class GetStreamResult {
@@ -15,7 +16,7 @@ class GetStreamResult {
   final String encryptionType;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// GUID for the customer-managed AWS KMS key to use for encryption.
+  /// The identifier for the customer-managed KMS key to use for encryption. This can be a Key ID (UUID), a Key ARN, an Alias Name (prefixed with `alias/`), or an Alias ARN.
   final String kmsKeyId;
   /// The maximum size for a single data record in KiB.
   final int maxRecordSizeInKib;
@@ -34,6 +35,8 @@ class GetStreamResult {
   final List<GetStreamStreamModeDetail> streamModeDetails;
   /// Map of tags to assigned to the stream.
   final Map<String, String> tags;
+  /// Warm throughput in MB/s for the stream. Detailed below.
+  final List<GetStreamWarmThroughput> warmThroughputs;
 
   /// Creates a new [GetStreamResult].
   /// [arn] ARN of the Kinesis Stream (same as `id`).
@@ -41,7 +44,7 @@ class GetStreamResult {
   /// [creationTimestamp] Approximate UNIX timestamp that the stream was created.
   /// [encryptionType] Encryption type used.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKeyId] GUID for the customer-managed AWS KMS key to use for encryption.
+  /// [kmsKeyId] The identifier for the customer-managed KMS key to use for encryption. This can be a Key ID (UUID), a Key ARN, an Alias Name (prefixed with `alias/`), or an Alias ARN.
   /// [maxRecordSizeInKib] The maximum size for a single data record in KiB.
   /// [name] Name of the Kinesis Stream.
   /// [openShards] List of shard ids in the OPEN state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.
@@ -51,6 +54,7 @@ class GetStreamResult {
   /// [status] Current status of the stream. The stream status is one of CREATING, DELETING, ACTIVE, or UPDATING.
   /// [streamModeDetails] [Capacity mode](https://docs.aws.amazon.com/streams/latest/dev/how-do-i-size-a-stream.html) of the data stream. Detailed below.
   /// [tags] Map of tags to assigned to the stream.
+  /// [warmThroughputs] Warm throughput in MB/s for the stream. Detailed below.
   const GetStreamResult({
     required this.arn,
     required this.closedShards,
@@ -67,6 +71,7 @@ class GetStreamResult {
     required this.status,
     required this.streamModeDetails,
     required this.tags,
+    required this.warmThroughputs,
   });
 
   Map<String, dynamic> toMap() {
@@ -86,6 +91,7 @@ class GetStreamResult {
       'status': status,
       'streamModeDetails': pulumi.Input.encodeList<GetStreamStreamModeDetail, Map<String, dynamic>>(streamModeDetails, (value) => value.toMap()),
       'tags': tags,
+      'warmThroughputs': pulumi.Input.encodeList<GetStreamWarmThroughput, Map<String, dynamic>>(warmThroughputs, (value) => value.toMap()),
     };
   }
 
@@ -106,7 +112,7 @@ class GetStreamResult {
       status: map['status'] as String,
       streamModeDetails: pulumi.Input.decodeList<GetStreamStreamModeDetail>(map['streamModeDetails']!, (value) => GetStreamStreamModeDetail.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
+      warmThroughputs: pulumi.Input.decodeList<GetStreamWarmThroughput>(map['warmThroughputs']!, (value) => GetStreamWarmThroughput.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

@@ -24,7 +24,7 @@ class PolicyArgs {
   final pulumi.Input<int>? estimatedInstanceWarmup;
   /// Aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
   final pulumi.Input<String>? metricAggregationType;
-  /// Minimum value to scale by when `adjustment_type` is set to `PercentChangeInCapacity`.
+  /// Minimum value to scale by when `adjustmentType` is set to `PercentChangeInCapacity`.
   ///
   /// The following arguments are only available to "SimpleScaling" type policies:
   final pulumi.Input<int>? minAdjustmentMagnitude;
@@ -138,6 +138,28 @@ class PolicyArgs {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_autoscaling_policy" "example" {
+  ///   step_adjustments {
+  ///     scaling_adjustment          = -1
+  ///     metric_interval_lower_bound = 1
+  ///     metric_interval_upper_bound = 2
+  ///   }
+  ///   step_adjustments {
+  ///     scaling_adjustment          = 1
+  ///     metric_interval_lower_bound = 2
+  ///     metric_interval_upper_bound = 3
+  ///   }
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -147,8 +169,8 @@ class PolicyArgs {
   /// import com.pulumi.aws.autoscaling.Policy;
   /// import com.pulumi.aws.autoscaling.PolicyArgs;
   /// import com.pulumi.aws.autoscaling.inputs.PolicyStepAdjustmentArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -216,7 +238,7 @@ class PolicyArgs {
   ///     "predefined_metric_specification": {
   ///         "predefined_metric_type": "ASGAverageCPUUtilization",
   ///     },
-  ///     "target_value": 40,
+  ///     "target_value": float(40),
   /// })
   /// ```
   /// ```csharp
@@ -266,6 +288,24 @@ class PolicyArgs {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_autoscaling_policy" "example" {
+  ///   target_tracking_configuration = {
+  ///     predefined_metric_specification = {
+  ///       predefined_metric_type = "ASGAverageCPUUtilization"
+  ///     }
+  ///     target_value = 40
+  ///   }
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -276,8 +316,8 @@ class PolicyArgs {
   /// import com.pulumi.aws.autoscaling.PolicyArgs;
   /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationArgs;
   /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -323,7 +363,7 @@ class PolicyArgs {
   /// [enabled] Whether the scaling policy is enabled or disabled. Default: `true`.
   /// [estimatedInstanceWarmup] Estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
   /// [metricAggregationType] Aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
-  /// [minAdjustmentMagnitude] Minimum value to scale by when `adjustment_type` is set to `PercentChangeInCapacity`.
+  /// [minAdjustmentMagnitude] Minimum value to scale by when `adjustmentType` is set to `PercentChangeInCapacity`.
   /// [name] Name of the policy.
   /// [policyType] Policy type, either "SimpleScaling", "StepScaling", "TargetTrackingScaling", or "PredictiveScaling". If this value isn't provided, AWS will default to "SimpleScaling."
   /// [predictiveScalingConfiguration] Predictive scaling policy configuration to use with Amazon EC2 Auto Scaling.
@@ -386,4 +426,3 @@ class PolicyArgs {
     );
   }
 }
-

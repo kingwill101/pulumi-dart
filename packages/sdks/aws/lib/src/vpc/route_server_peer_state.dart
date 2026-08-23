@@ -28,9 +28,9 @@ class RouteServerPeerState {
   final pulumi.Input<String>? routeServerPeerId;
   /// The ID of the subnet containing the route server peer.
   final pulumi.Input<String>? subnetId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<RouteServerPeerTimeouts>? timeouts;
   /// The ID of the VPC containing the route server peer.
@@ -47,8 +47,8 @@ class RouteServerPeerState {
   /// [routeServerId] The ID of the route server associated with this peer.
   /// [routeServerPeerId] The unique identifier of the route server peer.
   /// [subnetId] The ID of the subnet containing the route server peer.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC containing the route server peer.
   const RouteServerPeerState({
@@ -106,4 +106,3 @@ class RouteServerPeerState {
     );
   }
 }
-

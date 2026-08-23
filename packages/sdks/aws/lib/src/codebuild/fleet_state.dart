@@ -12,7 +12,7 @@ class FleetState {
   final pulumi.Input<String>? arn;
   /// Number of machines allocated to the ﬂeet.
   final pulumi.Input<int>? baseCapacity;
-  /// The compute configuration of the compute fleet. This is only required if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `compute_configuration` below.
+  /// The compute configuration of the compute fleet. This is only required if `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `computeConfiguration` below.
   final pulumi.Input<FleetComputeConfiguration>? computeConfiguration;
   /// Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   final pulumi.Input<String>? computeType;
@@ -34,20 +34,20 @@ class FleetState {
   final pulumi.Input<String>? overflowBehavior;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scaling_configuration` below.
+  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
   final pulumi.Input<FleetScalingConfiguration>? scalingConfiguration;
   /// Nested attribute containing information about the current status of the fleet.
   final pulumi.Input<List<FleetStatus>>? statuses;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// Configuration block. See `vpc_config` below.
+  /// Configuration block. See `vpcConfig` below.
   final pulumi.Input<List<FleetVpcConfig>>? vpcConfigs;
 
   /// Creates a new [FleetState].
   /// [arn] ARN of the Fleet.
   /// [baseCapacity] Number of machines allocated to the ﬂeet.
-  /// [computeConfiguration] The compute configuration of the compute fleet. This is only required if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `compute_configuration` below.
+  /// [computeConfiguration] The compute configuration of the compute fleet. This is only required if `computeType` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `computeConfiguration` below.
   /// [computeType] Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
   /// [created] Creation time of the fleet.
   /// [environmentType] Environment type of the compute fleet. See [environment types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
@@ -57,11 +57,11 @@ class FleetState {
   /// [name] Fleet name.
   /// [overflowBehavior] Overflow behavior for compute fleet. Valid values: `ON_DEMAND`, `QUEUE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [scalingConfiguration] Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scaling_configuration` below.
+  /// [scalingConfiguration] Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
   /// [statuses] Nested attribute containing information about the current status of the fleet.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  /// [vpcConfigs] Configuration block. See `vpc_config` below.
+  /// [vpcConfigs] Configuration block. See `vpcConfig` below.
   const FleetState({
     this.arn,
     this.baseCapacity,
@@ -126,4 +126,3 @@ class FleetState {
     );
   }
 }
-

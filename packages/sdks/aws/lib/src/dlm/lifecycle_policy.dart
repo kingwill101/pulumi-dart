@@ -341,7 +341,7 @@ import 'lifecycle_policy_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "dlm_lifecycle", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("dlm-lifecycle-policy"),
-/// 			Role:   dlmLifecycleRole.ID(),
+/// 			Role:   dlmLifecycleRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(dlmLifecycle.Json),
 /// 		})
 /// 		if err != nil {
@@ -384,6 +384,74 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["dlm.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "dlmLifecycle" {
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:CreateSnapshot", "ec2:CreateSnapshots", "ec2:DeleteSnapshot", "ec2:DescribeInstances", "ec2:DescribeVolumes", "ec2:DescribeSnapshots"]
+///     resources = ["*"]
+///   }
+///   statements {
+///     effect    = "Allow"
+///     actions   = ["ec2:CreateTags"]
+///     resources = ["arn:aws:ec2:*::snapshot/*"]
+///   }
+/// }
+///
+/// resource "aws_iam_role" "dlm_lifecycle_role" {
+///   name               = "dlm-lifecycle-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "dlm_lifecycle" {
+///   name   = "dlm-lifecycle-policy"
+///   role   = aws_iam_role.dlm_lifecycle_role.id
+///   policy = data.aws_iam_getpolicydocument.dlmLifecycle.json
+/// }
+/// resource "aws_dlm_lifecyclepolicy" "example" {
+///   description        = "example DLM lifecycle policy"
+///   execution_role_arn = aws_iam_role.dlm_lifecycle_role.arn
+///   state              = "ENABLED"
+///   policy_details = {
+///     resource_types = ["VOLUME"]
+///     schedules = [{
+///       "name" = "2 weeks of daily snapshots"
+///       "createRule" = {
+///         "interval"     = 24
+///         "intervalUnit" = "HOURS"
+///         "times"        = "23:45"
+///       }
+///       "retainRule" = {
+///         "count" = 14
+///       }
+///       "tagsToAdd" = {
+///         "SnapshotCreator" = "DLM"
+///       }
+///       "copyTags" = false
+///     }]
+///     target_tags = {
+///       "Snapshot" = "true"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -392,6 +460,8 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -399,8 +469,11 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.dlm.LifecyclePolicy;
 /// import com.pulumi.aws.dlm.LifecyclePolicyArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -670,6 +743,33 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_dlm_lifecyclepolicy" "example" {
+///   description        = "tf-acc-basic"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   default_policy     = "VOLUME"
+///   policy_details = {
+///     create_interval = 5
+///     resource_type   = "VOLUME"
+///     policy_language = "SIMPLIFIED"
+///     exclusions = {
+///       exclude_boot_volumes = false
+///       exclude_tags = {
+///         "test" = "exclude"
+///       }
+///       exclude_volume_types = ["gp2"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -680,8 +780,8 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.dlm.LifecyclePolicyArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsExclusionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1056,6 +1156,72 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getpolicydocument" "key" {
+///   statements {
+///     sid    = "Enable IAM User Permissions"
+///     effect = "Allow"
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///     }
+///     actions   = ["kms:*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_kms_key" "dlm_cross_region_copy_cmk" {
+///   description = "Example Alternate Region KMS Key"
+///   policy      = data.aws_iam_getpolicydocument.key.json
+/// }
+/// resource "aws_dlm_lifecyclepolicy" "example" {
+///   description        = "example DLM lifecycle policy"
+///   execution_role_arn = dlmLifecycleRole.arn
+///   state              = "ENABLED"
+///   policy_details = {
+///     resource_types = ["VOLUME"]
+///     schedules = [{
+///       "name" = "2 weeks of daily snapshots"
+///       "createRule" = {
+///         "interval"     = 24
+///         "intervalUnit" = "HOURS"
+///         "times"        = "23:45"
+///       }
+///       "retainRule" = {
+///         "count" = 14
+///       }
+///       "tagsToAdd" = {
+///         "SnapshotCreator" = "DLM"
+///       }
+///       "copyTags" = false
+///       "crossRegionCopyRules" = [{
+///         "target"    = "us-west-2"
+///         "encrypted" = true
+///         "cmkArn"    = aws_kms_key.dlm_cross_region_copy_cmk.arn
+///         "copyTags"  = true
+///         "retainRule" = {
+///           "interval"     = 30
+///           "intervalUnit" = "DAYS"
+///         }
+///       }]
+///     }]
+///     target_tags = {
+///       "Snapshot" = "true"
+///     }
+///   }
+/// }
+/// # ...other configuration...
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1066,13 +1232,20 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.kms.Key;
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.dlm.LifecyclePolicy;
 /// import com.pulumi.aws.dlm.LifecyclePolicyArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1410,6 +1583,52 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+/// data "aws_iam_getpolicy" "example" {
+///   name = "AWSDataLifecycleManagerServiceRole"
+/// }
+///
+/// resource "aws_dlm_lifecyclepolicy" "example" {
+///   description        = "tf-acc-basic"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   policy_details = {
+///     policy_type = "EVENT_BASED_POLICY"
+///     action = {
+///       name = "tf-acc-basic"
+///       cross_region_copies = [{
+///         "encryptionConfiguration" = {}
+///         "retainRule" = {
+///           "interval"     = 15
+///           "intervalUnit" = "MONTHS"
+///         }
+///         "target" = "us-east-1"
+///       }]
+///     }
+///     event_source = {
+///       type = "MANAGED_CWE"
+///       parameters = {
+///         description_regex = "^.*Created for policy: policy-1234567890abcdef0.*$"
+///         event_type        = "shareSnapshot"
+///         snapshot_owners   = [data.aws_getcalleridentity.current.account_id]
+///       }
+///     }
+///   }
+/// }
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   role       = exampleAwsIamRole.id
+///   policy_arn = data.aws_iam_getpolicy.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1422,14 +1641,17 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.dlm.LifecyclePolicyArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsActionArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsActionCrossRegionCopyArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfigurationArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRuleArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsEventSourceArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsEventSourceParametersArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyArgs;
 /// import com.pulumi.aws.iam.RolePolicyAttachment;
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1717,6 +1939,48 @@ import 'lifecycle_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicy" "test" {
+///   name = "AWSDataLifecycleManagerSSMFullAccess"
+/// }
+///
+/// resource "aws_iam_rolepolicyattachment" "example" {
+///   role       = testAwsIamRole.id
+///   policy_arn = exampleAwsIamPolicy.arn
+/// }
+/// resource "aws_dlm_lifecyclepolicy" "example" {
+///   description        = "tf-acc-basic"
+///   execution_role_arn = exampleAwsIamRole.arn
+///   policy_details = {
+///     resource_types = ["INSTANCE"]
+///     schedules = [{
+///       "name" = "Windows VSS"
+///       "createRule" = {
+///         "interval" = 12
+///         "scripts" = {
+///           "executeOperationOnScriptFailure" = false
+///           "executionHandler"                = "AWS_VSS_BACKUP"
+///           "maximumRetryCount"               = 2
+///         }
+///       }
+///       "retainRule" = {
+///         "count" = 10
+///       }
+///     }]
+///     target_tags = {
+///       "tag1" = "Windows"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1730,8 +1994,12 @@ import 'lifecycle_policy_state.dart';
 /// import com.pulumi.aws.dlm.LifecyclePolicy;
 /// import com.pulumi.aws.dlm.LifecyclePolicyArgs;
 /// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleCreateRuleScriptsArgs;
+/// import com.pulumi.aws.dlm.inputs.LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1831,15 +2099,15 @@ class LifecyclePolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> description;
   /// The ARN of an IAM role that is able to be assumed by the DLM service.
   late final pulumi.Output<String> executionRoleArn;
-  /// See the `policy_details` configuration block. Max of 1.
+  /// See the `policyDetails` configuration block. Max of 1.
   late final pulumi.Output<LifecyclePolicyPolicyDetails> policyDetails;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
   late final pulumi.Output<String?> state;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [LifecyclePolicy].

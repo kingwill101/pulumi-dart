@@ -70,6 +70,21 @@ import 'workspace_service_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_grafana_workspaceserviceaccount" "example" {
+///   name         = "example-admin"
+///   grafana_role = "ADMIN"
+///   workspace_id = exampleAwsGrafanaWorkspace.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'workspace_service_account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.grafana.WorkspaceServiceAccount;
 /// import com.pulumi.aws.grafana.WorkspaceServiceAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -113,7 +128,7 @@ import 'workspace_service_account_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Managed Grafana Workspace Service Account using the `workspace_id` and `service_account_id` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import Managed Grafana Workspace Service Account using the `workspaceId` and `serviceAccountId` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount example g-abc12345,1

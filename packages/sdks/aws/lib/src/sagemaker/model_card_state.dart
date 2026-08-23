@@ -18,9 +18,9 @@ class ModelCardState {
   final pulumi.Input<String>? region;
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
   final pulumi.Input<ModelCardSecurityConfig>? securityConfig;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ModelCardTimeouts>? timeouts;
 
@@ -31,8 +31,8 @@ class ModelCardState {
   /// [modelCardStatus] Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityConfig] KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
-  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const ModelCardState({
     this.content,
@@ -74,4 +74,3 @@ class ModelCardState {
     );
   }
 }
-

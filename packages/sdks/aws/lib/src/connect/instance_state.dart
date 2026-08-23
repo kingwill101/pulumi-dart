@@ -14,7 +14,7 @@ class InstanceState {
   final pulumi.Input<bool>? contactLensEnabled;
   /// When the instance was created.
   final pulumi.Input<String>? createdTime;
-  /// The identifier for the directory if identity_management_type is `EXISTING_DIRECTORY`.
+  /// The identifier for the directory if identityManagementType is `EXISTING_DIRECTORY`.
   final pulumi.Input<String>? directoryId;
   /// Specifies whether early media for outbound calls is enabled . Defaults to `true` if outbound calls is enabled.
   final pulumi.Input<bool>? earlyMediaEnabled;
@@ -22,7 +22,7 @@ class InstanceState {
   final pulumi.Input<String>? identityManagementType;
   /// Specifies whether inbound calls are enabled.
   final pulumi.Input<bool>? inboundCallsEnabled;
-  /// Specifies the name of the instance. Required if `directory_id` not specified.
+  /// Specifies the name of the instance. Required if `directoryId` not specified.
   final pulumi.Input<String>? instanceAlias;
   /// Specifies whether multi-party calls/conference is enabled. Defaults to `false`.
   final pulumi.Input<bool>? multiPartyConferenceEnabled;
@@ -34,10 +34,10 @@ class InstanceState {
   final pulumi.Input<String>? serviceRole;
   /// The state of the instance.
   final pulumi.Input<String>? status;
-  /// Tags to apply to the Instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// &lt;!-- * `use_custom_tts_voices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` --&gt;
+  /// Tags to apply to the Instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// &lt;!-- * `useCustomTtsVoices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` --&gt;
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [InstanceState].
@@ -46,18 +46,18 @@ class InstanceState {
   /// [contactFlowLogsEnabled] Specifies whether contact flow logs are enabled. Defaults to `false`.
   /// [contactLensEnabled] Specifies whether contact lens is enabled. Defaults to `true`.
   /// [createdTime] When the instance was created.
-  /// [directoryId] The identifier for the directory if identity_management_type is `EXISTING_DIRECTORY`.
+  /// [directoryId] The identifier for the directory if identityManagementType is `EXISTING_DIRECTORY`.
   /// [earlyMediaEnabled] Specifies whether early media for outbound calls is enabled . Defaults to `true` if outbound calls is enabled.
   /// [identityManagementType] Specifies the identity management type attached to the instance. Allowed Values are: `SAML`, `CONNECT_MANAGED`, `EXISTING_DIRECTORY`.
   /// [inboundCallsEnabled] Specifies whether inbound calls are enabled.
-  /// [instanceAlias] Specifies the name of the instance. Required if `directory_id` not specified.
+  /// [instanceAlias] Specifies the name of the instance. Required if `directoryId` not specified.
   /// [multiPartyConferenceEnabled] Specifies whether multi-party calls/conference is enabled. Defaults to `false`.
   /// [outboundCallsEnabled] Specifies whether outbound calls are enabled.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceRole] The service role of the instance.
   /// [status] The state of the instance.
-  /// [tags] Tags to apply to the Instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Tags to apply to the Instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const InstanceState({
     this.arn,
     this.autoResolveBestVoicesEnabled,
@@ -122,4 +122,3 @@ class InstanceState {
     );
   }
 }
-

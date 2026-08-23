@@ -131,6 +131,33 @@ import 'repository_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ecrpublic_repository" "foo" {
+///   repository_name = "bar"
+///   catalog_data = {
+///     about_text        = "About Text"
+///     architectures     = ["ARM"]
+///     description       = "Description"
+///     logo_image_blob   = filebase64(png)
+///     operating_systems = ["Linux"]
+///     usage_text        = "Usage Text"
+///   }
+///   tags = {
+///     "env" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +169,8 @@ import 'repository_state.dart';
 /// import com.pulumi.aws.ecrpublic.inputs.RepositoryCatalogDataArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,7 +227,7 @@ import 'repository_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ECR Public Repositories using the `repository_name`. For example:
+/// Using `pulumi import`, import ECR Public Repositories using the `repositoryName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecrpublic/repository:Repository example example
@@ -219,9 +246,9 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<String> repositoryName;
   /// The URI of the repository.
   late final pulumi.Output<String> repositoryUri;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Repository].

@@ -8,72 +8,77 @@ import 'get_network_oci_dns_forwarding_config.dart';
 class GetNetworkResult {
   /// Amazon Resource Name (ARN) of the odb network resource.
   final String arn;
-  /// The availability zone where the ODB network is located.
+  /// Availability zone where the ODB network is located.
   final String availabilityZone;
-  /// The AZ ID of the AZ where the ODB network is located.
+  /// AZ ID of the AZ where the ODB network is located.
   final String availabilityZoneId;
-  /// The CIDR range of the backup subnet for the ODB network.
+  /// CIDR range of the backup subnet for the ODB network.
   final String backupSubnetCidr;
-  /// The CIDR notation for the network resource.
+  /// CIDR notation for the network resource.
   final String clientSubnetCidr;
-  /// The date and time when the ODB network was created.
+  /// Date and time when the ODB network was created.
   final String createdAt;
-  /// The name of the custom domain that the network is located.
+  /// Name of the custom domain that the network is located.
   final String customDomainName;
-  /// The default DNS prefix for the network resource.
+  /// Default DNS prefix for the network resource.
   final String defaultDnsPrefix;
   /// Display name for the network resource.
   final String displayName;
+  /// List of EC2 placement group IDs associated with the ODB network.
+  final List<String> ec2PlacementGroupIds;
   /// Unique identifier of the odb network resource.
   final String id;
-  /// The managed services configuration for the ODB network.
+  /// Managed services configuration for the ODB network.
   final List<GetNetworkManagedService> managedServices;
+  /// DNS resolver endpoint in OCI for forwarding DNS queries for the ociPrivateZone domain.
   final List<GetNetworkOciDnsForwardingConfig> ociDnsForwardingConfigs;
-  /// The unique identifier of the OCI network anchor for the ODB network.
+  /// Unique identifier of the OCI network anchor for the ODB network.
   final String ociNetworkAnchorId;
-  /// The URL of the OCI network anchor for the ODB network.
+  /// URL of the OCI network anchor for the ODB network.
   final String ociNetworkAnchorUrl;
-  /// The name of the OCI resource anchor for the ODB network.
+  /// Name of the OCI resource anchor for the ODB network.
   final String ociResourceAnchorName;
-  /// The unique identifier  Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
+  /// Unique identifier Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
   final String ociVcnId;
-  /// The URL of the OCI VCN for the ODB network.
+  /// URL of the OCI VCN for the ODB network.
   final String ociVcnUrl;
-  /// The list of CIDR ranges from the peered VPC that are allowed access to the ODB network. Please refer odb network peering documentation.
+  /// List of CIDR ranges from the peered VPC that are allowed access to the ODB network. Please refer odb network peering documentation.
   final List<String> peeredCidrs;
-  /// The amount of progress made on the current operation on the ODB network, expressed as a percentage.
+  /// Amount of progress made on the current operation on the ODB network, expressed as a percentage.
   final double percentProgress;
   final String region;
-  /// The status of the network resource.
+  /// Status of the network resource.
   final String status;
   /// Additional information about the current status of the ODB network.
   final String statusReason;
+  /// Map of tags assigned to the resource.
   final Map<String, String> tags;
 
   /// Creates a new [GetNetworkResult].
   /// [arn] Amazon Resource Name (ARN) of the odb network resource.
-  /// [availabilityZone] The availability zone where the ODB network is located.
-  /// [availabilityZoneId] The AZ ID of the AZ where the ODB network is located.
-  /// [backupSubnetCidr] The CIDR range of the backup subnet for the ODB network.
-  /// [clientSubnetCidr] The CIDR notation for the network resource.
-  /// [createdAt] The date and time when the ODB network was created.
-  /// [customDomainName] The name of the custom domain that the network is located.
-  /// [defaultDnsPrefix] The default DNS prefix for the network resource.
+  /// [availabilityZone] Availability zone where the ODB network is located.
+  /// [availabilityZoneId] AZ ID of the AZ where the ODB network is located.
+  /// [backupSubnetCidr] CIDR range of the backup subnet for the ODB network.
+  /// [clientSubnetCidr] CIDR notation for the network resource.
+  /// [createdAt] Date and time when the ODB network was created.
+  /// [customDomainName] Name of the custom domain that the network is located.
+  /// [defaultDnsPrefix] Default DNS prefix for the network resource.
   /// [displayName] Display name for the network resource.
+  /// [ec2PlacementGroupIds] List of EC2 placement group IDs associated with the ODB network.
   /// [id] Unique identifier of the odb network resource.
-  /// [managedServices] The managed services configuration for the ODB network.
-  /// [ociDnsForwardingConfigs] Required.
-  /// [ociNetworkAnchorId] The unique identifier of the OCI network anchor for the ODB network.
-  /// [ociNetworkAnchorUrl] The URL of the OCI network anchor for the ODB network.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor for the ODB network.
-  /// [ociVcnId] The unique identifier  Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
-  /// [ociVcnUrl] The URL of the OCI VCN for the ODB network.
-  /// [peeredCidrs] The list of CIDR ranges from the peered VPC that are allowed access to the ODB network. Please refer odb network peering documentation.
-  /// [percentProgress] The amount of progress made on the current operation on the ODB network, expressed as a percentage.
+  /// [managedServices] Managed services configuration for the ODB network.
+  /// [ociDnsForwardingConfigs] DNS resolver endpoint in OCI for forwarding DNS queries for the ociPrivateZone domain.
+  /// [ociNetworkAnchorId] Unique identifier of the OCI network anchor for the ODB network.
+  /// [ociNetworkAnchorUrl] URL of the OCI network anchor for the ODB network.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor for the ODB network.
+  /// [ociVcnId] Unique identifier Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
+  /// [ociVcnUrl] URL of the OCI VCN for the ODB network.
+  /// [peeredCidrs] List of CIDR ranges from the peered VPC that are allowed access to the ODB network. Please refer odb network peering documentation.
+  /// [percentProgress] Amount of progress made on the current operation on the ODB network, expressed as a percentage.
   /// [region] Required.
-  /// [status] The status of the network resource.
+  /// [status] Status of the network resource.
   /// [statusReason] Additional information about the current status of the ODB network.
-  /// [tags] Required.
+  /// [tags] Map of tags assigned to the resource.
   const GetNetworkResult({
     required this.arn,
     required this.availabilityZone,
@@ -84,6 +89,7 @@ class GetNetworkResult {
     required this.customDomainName,
     required this.defaultDnsPrefix,
     required this.displayName,
+    required this.ec2PlacementGroupIds,
     required this.id,
     required this.managedServices,
     required this.ociDnsForwardingConfigs,
@@ -111,6 +117,7 @@ class GetNetworkResult {
       'customDomainName': customDomainName,
       'defaultDnsPrefix': defaultDnsPrefix,
       'displayName': displayName,
+      'ec2PlacementGroupIds': ec2PlacementGroupIds,
       'id': id,
       'managedServices': pulumi.Input.encodeList<GetNetworkManagedService, Map<String, dynamic>>(managedServices, (value) => value.toMap()),
       'ociDnsForwardingConfigs': pulumi.Input.encodeList<GetNetworkOciDnsForwardingConfig, Map<String, dynamic>>(ociDnsForwardingConfigs, (value) => value.toMap()),
@@ -139,6 +146,7 @@ class GetNetworkResult {
       customDomainName: map['customDomainName'] as String,
       defaultDnsPrefix: map['defaultDnsPrefix'] as String,
       displayName: map['displayName'] as String,
+      ec2PlacementGroupIds: (map['ec2PlacementGroupIds'] as List).cast<String>(),
       id: map['id'] as String,
       managedServices: pulumi.Input.decodeList<GetNetworkManagedService>(map['managedServices']!, (value) => GetNetworkManagedService.fromMap((value as Map).cast<String, dynamic>())),
       ociDnsForwardingConfigs: pulumi.Input.decodeList<GetNetworkOciDnsForwardingConfig>(map['ociDnsForwardingConfigs']!, (value) => GetNetworkOciDnsForwardingConfig.fromMap((value as Map).cast<String, dynamic>())),
@@ -156,4 +164,3 @@ class GetNetworkResult {
     );
   }
 }
-

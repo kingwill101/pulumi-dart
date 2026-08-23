@@ -65,6 +65,20 @@ import 'device_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_networkmanager_device" "example" {
+///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
+///   site_id           = exampleAwsNetworkmanagerSite.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'device_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkmanager.Device;
 /// import com.pulumi.aws.networkmanager.DeviceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,9 +144,9 @@ class Device extends pulumi.CustomResource {
   late final pulumi.Output<String?> serialNumber;
   /// ID of the site.
   late final pulumi.Output<String?> siteId;
-  /// Key-value tags for the device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Type of device.
   late final pulumi.Output<String?> type;

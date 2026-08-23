@@ -11,7 +11,7 @@ class ApiState {
   final pulumi.Input<String>? apiId;
   /// DNS configuration for the Event API.
   final pulumi.Input<Map<String, String>>? dns;
-  /// Configuration for the Event API. See Event Config below.
+  /// Configuration for the Event API. See `eventConfig` Block below.
   final pulumi.Input<ApiEventConfig>? eventConfig;
   /// Name of the Event API.
   ///
@@ -21,26 +21,27 @@ class ApiState {
   final pulumi.Input<String>? ownerContact;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// ARN of the associated WAF web ACL.
   final pulumi.Input<String>? wafWebAclArn;
+  /// Whether X-Ray tracing is enabled for the Event API.
   final pulumi.Input<bool>? xrayEnabled;
 
   /// Creates a new [ApiState].
   /// [apiArn] ARN of the Event API.
   /// [apiId] ID of the Event API.
   /// [dns] DNS configuration for the Event API.
-  /// [eventConfig] Configuration for the Event API. See Event Config below.
+  /// [eventConfig] Configuration for the Event API. See `eventConfig` Block below.
   /// [name] Name of the Event API.
   /// [ownerContact] Contact information for the owner of the Event API.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [wafWebAclArn] ARN of the associated WAF web ACL.
-  /// [xrayEnabled] Optional.
+  /// [xrayEnabled] Whether X-Ray tracing is enabled for the Event API.
   const ApiState({
     this.apiArn,
     this.apiId,
@@ -87,4 +88,3 @@ class ApiState {
     );
   }
 }
-

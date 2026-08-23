@@ -169,6 +169,40 @@ import 'mail_from_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ses_mailfrom" "example" {
+///   domain           = aws_ses_domainidentity.example.domain
+///   mail_from_domain ="bounce.${aws_ses_domainidentity.example.domain}"
+/// }
+/// # Example SES Domain Identity
+/// resource "aws_ses_domainidentity" "example" {
+///   domain = "example.com"
+/// }
+/// # Example Route53 MX record
+/// resource "aws_route53_record" "example_ses_domain_mail_from_mx" {
+///   zone_id = exampleAwsRoute53Zone.id
+///   name    = aws_ses_mailfrom.example.mail_from_domain
+///   type    = "MX"
+///   ttl     = "600"
+///   records = ["10 feedback-smtp.us-east-1.amazonses.com"] # Change to the region in which `aws_ses_domain_identity.example` is created
+/// }
+/// # Example Route53 TXT record for SPF
+/// resource "aws_route53_record" "example_ses_domain_mail_from_txt" {
+///   zone_id = exampleAwsRoute53Zone.id
+///   name    = aws_ses_mailfrom.example.mail_from_domain
+///   type    = "TXT"
+///   ttl     = "600"
+///   records = ["v=spf1 include:amazonses.com ~all"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -181,8 +215,8 @@ import 'mail_from_state.dart';
 /// import com.pulumi.aws.ses.MailFromArgs;
 /// import com.pulumi.aws.route53.Record;
 /// import com.pulumi.aws.route53.RecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +371,24 @@ import 'mail_from_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Example SES Email Identity
+/// resource "aws_ses_emailidentity" "example" {
+///   email = "user@example.com"
+/// }
+/// resource "aws_ses_mailfrom" "example" {
+///   domain           = aws_ses_emailidentity.example.email
+///   mail_from_domain = "mail.example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -347,8 +399,8 @@ import 'mail_from_state.dart';
 /// import com.pulumi.aws.ses.EmailIdentityArgs;
 /// import com.pulumi.aws.ses.MailFrom;
 /// import com.pulumi.aws.ses.MailFromArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

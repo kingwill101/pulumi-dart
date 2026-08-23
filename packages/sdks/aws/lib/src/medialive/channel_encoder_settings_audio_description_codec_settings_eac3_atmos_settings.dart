@@ -60,4 +60,3 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings {
     );
   }
 }
-

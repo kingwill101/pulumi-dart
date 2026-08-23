@@ -361,7 +361,7 @@ import 'stream_processor_timeouts.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "rekognition.amazonaws.com",
 /// 					},
 /// 				},
@@ -462,6 +462,85 @@ import 'stream_processor_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_s3_bucket" "example" {
+///   bucket = "example-bucket"
+/// }
+/// resource "aws_sns_topic" "example" {
+///   name = "example-topic"
+/// }
+/// resource "aws_kinesis_videostream" "example" {
+///   name                    = "example-kinesis-input"
+///   data_retention_in_hours = 1
+///   device_name             = "kinesis-video-device-name"
+///   media_type              = "video/h264"
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example-role"
+///   inline_policies {
+///     name = "Rekognition-Access"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Action"   = ["s3:PutObject"]
+///         "Effect"   = "Allow"
+///         "Resource" = ["${aws_s3_bucket.example.arn}/*"]
+///         }, {
+///         "Action"   = ["sns:Publish"]
+///         "Effect"   = "Allow"
+///         "Resource" = [aws_sns_topic.example.arn]
+///         }, {
+///         "Action"   = ["kinesis:Get*", "kinesis:DescribeStreamSummary"]
+///         "Effect"   = "Allow"
+///         "Resource" = [aws_kinesis_videostream.example.arn]
+///       }]
+///     })
+///   }
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "rekognition.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_rekognition_streamprocessor" "example" {
+///   role_arn = aws_iam_role.example.arn
+///   name     = "example-processor"
+///   data_sharing_preference = {
+///     opt_in = false
+///   }
+///   output = {
+///     s3_destination = {
+///       bucket = aws_s3_bucket.example.bucket
+///     }
+///   }
+///   settings = {
+///     connected_home = {
+///       labels = ["PERSON", "PET"]
+///     }
+///   }
+///   input = {
+///     kinesis_video_stream = {
+///       arn = aws_kinesis_videostream.example.arn
+///     }
+///   }
+///   notification_channel = {
+///     sns_topic_arn = aws_sns_topic.example.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -488,8 +567,8 @@ import 'stream_processor_timeouts.dart';
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorInputKinesisVideoStreamArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorNotificationChannelArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1029,7 +1108,7 @@ import 'stream_processor_timeouts.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "rekognition.amazonaws.com",
 /// 					},
 /// 				},
@@ -1127,7 +1206,7 @@ import 'stream_processor_timeouts.dart';
 /// 			},
 /// 			Settings: &rekognition.StreamProcessorSettingsArgs{
 /// 				FaceSearch: &rekognition.StreamProcessorSettingsFaceSearchArgs{
-/// 					CollectionId: exampleCollection.ID(),
+/// 					CollectionId: exampleCollection.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1136,6 +1215,93 @@ import 'stream_processor_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_videostream" "example" {
+///   name                    = "example-kinesis-input"
+///   data_retention_in_hours = 1
+///   device_name             = "kinesis-video-device-name"
+///   media_type              = "video/h264"
+/// }
+/// resource "aws_kinesis_stream" "example" {
+///   name        = "pulumi-kinesis-example"
+///   shard_count = 1
+/// }
+/// resource "aws_iam_role" "example" {
+///   name = "example-role"
+///   inline_policies {
+///     name = "Rekognition-Access"
+///     policy = jsonencode({
+///       "Version" = "2012-10-17"
+///       "Statement" = [{
+///         "Action"   = ["kinesis:Get*", "kinesis:DescribeStreamSummary"]
+///         "Effect"   = "Allow"
+///         "Resource" = [aws_kinesis_videostream.example.arn]
+///         }, {
+///         "Action"   = ["kinesis:PutRecord"]
+///         "Effect"   = "Allow"
+///         "Resource" = [aws_kinesis_stream.example.arn]
+///       }]
+///     })
+///   }
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "rekognition.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_rekognition_collection" "example" {
+///   collection_id = "example-collection"
+/// }
+/// resource "aws_rekognition_streamprocessor" "example" {
+///   role_arn = aws_iam_role.example.arn
+///   name     = "example-processor"
+///   data_sharing_preference = {
+///     opt_in = false
+///   }
+///   regions_of_interests {
+///     polygons {
+///       x = 0.5
+///       y = 0.5
+///     }
+///     polygons {
+///       x = 0.5
+///       y = 0.5
+///     }
+///     polygons {
+///       x = 0.5
+///       y = 0.5
+///     }
+///   }
+///   input = {
+///     kinesis_video_stream = {
+///       arn = aws_kinesis_videostream.example.arn
+///     }
+///   }
+///   output = {
+///     kinesis_data_stream = {
+///       arn = aws_kinesis_stream.example.arn
+///     }
+///   }
+///   settings = {
+///     face_search = {
+///       collection_id = aws_rekognition_collection.example.id
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1157,6 +1323,7 @@ import 'stream_processor_timeouts.dart';
 /// import com.pulumi.aws.rekognition.StreamProcessorArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorDataSharingPreferenceArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorRegionsOfInterestArgs;
+/// import com.pulumi.aws.rekognition.inputs.StreamProcessorRegionsOfInterestPolygonArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorInputArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorInputKinesisVideoStreamArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorOutputArgs;
@@ -1164,8 +1331,8 @@ import 'stream_processor_timeouts.dart';
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorSettingsArgs;
 /// import com.pulumi.aws.rekognition.inputs.StreamProcessorSettingsFaceSearchArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1355,6 +1522,18 @@ import 'stream_processor_timeouts.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the Stream Processor.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Rekognition Stream Processor using the `name`. For example:
 ///
 /// ```sh
@@ -1363,34 +1542,33 @@ import 'stream_processor_timeouts.dart';
 class StreamProcessor extends pulumi.CustomResource {
   /// ARN of the Stream Processor.
   late final pulumi.Output<String> arn;
-  /// See `data_sharing_preference`.
+  /// See `dataSharingPreference`.
   late final pulumi.Output<StreamProcessorDataSharingPreference?> dataSharingPreference;
   /// Input video stream. See `input`.
   late final pulumi.Output<StreamProcessorInput> input;
   /// Optional parameter for label detection stream processors.
   late final pulumi.Output<String?> kmsKeyId;
-  /// The name of the Stream Processor.
+  /// Name of the Stream Processor.
   late final pulumi.Output<String> name;
-  /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the completion status. See `notification_channel`.
+  /// Amazon Simple Notification Service topic to which Amazon Rekognition publishes the completion status. See `notificationChannel`.
   late final pulumi.Output<StreamProcessorNotificationChannel?> notificationChannel;
   /// Kinesis data stream stream or Amazon S3 bucket location to which Amazon Rekognition Video puts the analysis results. See `output`.
   late final pulumi.Output<StreamProcessorOutput> output;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies locations in the frames where Amazon Rekognition checks for objects or people. See `regions_of_interest`.
+  /// Locations in the frames where Amazon Rekognition checks for objects or people. See `regionsOfInterest`.
   late final pulumi.Output<List<Map<String, dynamic>>?> regionsOfInterests;
-  /// The Amazon Resource Number (ARN) of the IAM role that allows access to the stream processor. The IAM role provides Rekognition read permissions for a Kinesis stream. It also provides write permissions to an Amazon S3 bucket and Amazon Simple Notification Service topic for a label detection stream processor. This is required for both face search and label detection stream processors.
+  /// Amazon Resource Number (ARN) of the IAM role that allows access to the stream processor. The IAM role provides Rekognition read permissions for a Kinesis stream. It also provides write permissions to an Amazon S3 bucket and Amazon Simple Notification Service topic for a label detection stream processor. This is required for both face search and label detection stream processors.
   late final pulumi.Output<String> roleArn;
   /// Input parameters used in a streaming video analyzed by a stream processor. See `settings`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<StreamProcessorSettings> settings;
-  /// (**Deprecated**) ARN of the Stream Processor.
-  /// Use `arn` instead.
+  /// (**Deprecated**) ARN of the Stream Processor. Use `arn` instead.
   late final pulumi.Output<String> streamProcessorArn;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<StreamProcessorTimeouts?> timeouts;
 

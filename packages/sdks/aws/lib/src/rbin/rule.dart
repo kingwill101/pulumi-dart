@@ -117,6 +117,31 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rbin_rule" "example" {
+///   description   = "Example tag-level retention rule"
+///   resource_type = "EBS_SNAPSHOT"
+///   resource_tags {
+///     resource_tag_key   = "tag_key"
+///     resource_tag_value = "tag_value"
+///   }
+///   retention_period = {
+///     retention_period_value = 10
+///     retention_period_unit  = "DAYS"
+///   }
+///   tags = {
+///     "test_tag_key" = "test_tag_value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +152,8 @@ import 'rule_state.dart';
 /// import com.pulumi.aws.rbin.RuleArgs;
 /// import com.pulumi.aws.rbin.inputs.RuleResourceTagArgs;
 /// import com.pulumi.aws.rbin.inputs.RuleRetentionPeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,6 +309,31 @@ import 'rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rbin_rule" "example" {
+///   description   = "Example region-level retention rule with exclusion tags"
+///   resource_type = "EC2_IMAGE"
+///   exclude_resource_tags {
+///     resource_tag_key   = "tag_key"
+///     resource_tag_value = "tag_value"
+///   }
+///   retention_period = {
+///     retention_period_value = 10
+///     retention_period_unit  = "DAYS"
+///   }
+///   tags = {
+///     "test_tag_key" = "test_tag_value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,8 +344,8 @@ import 'rule_state.dart';
 /// import com.pulumi.aws.rbin.RuleArgs;
 /// import com.pulumi.aws.rbin.inputs.RuleExcludeResourceTagArgs;
 /// import com.pulumi.aws.rbin.inputs.RuleRetentionPeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -353,21 +403,21 @@ class Rule extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Retention rule description.
   late final pulumi.Output<String> description;
-  /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `exclude_resource_tags` below.
+  /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `excludeResourceTags` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> excludeResourceTags;
-  /// Information about the retention rule lock configuration. See `lock_configuration` below.
+  /// Information about the retention rule lock configuration. See `lockConfiguration` below.
   late final pulumi.Output<RuleLockConfiguration?> lockConfiguration;
   /// (Timestamp) Date and time at which the unlock delay is set to expire. Only returned for retention rules that have been unlocked and that are still within the unlock delay period.
   late final pulumi.Output<String> lockEndTime;
-  /// (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pending_unlock`, `unlocked`.
+  /// (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pendingUnlock`, `unlocked`.
   late final pulumi.Output<String> lockState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resource_tags` below.
+  /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resourceTags` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceTags;
   /// Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
   late final pulumi.Output<String> resourceType;
-  /// Information about the retention period for which the retention rule is to retain resources. See `retention_period` below.
+  /// Information about the retention period for which the retention rule is to retain resources. See `retentionPeriod` below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<RuleRetentionPeriod> retentionPeriod;

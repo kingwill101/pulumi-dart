@@ -63,6 +63,20 @@ import 'policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_policyattachment" "account" {
+///   policy_id = example.id
+///   target_id = "123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'policy_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.PolicyAttachment;
 /// import com.pulumi.aws.organizations.PolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -159,6 +173,20 @@ import 'policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_policyattachment" "root" {
+///   policy_id = example.id
+///   target_id = exampleAwsOrganizationsOrganization.roots[0].id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +195,8 @@ import 'policy_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.PolicyAttachment;
 /// import com.pulumi.aws.organizations.PolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -255,6 +283,20 @@ import 'policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_policyattachment" "unit" {
+///   policy_id = example.id
+///   target_id = exampleAwsOrganizationsOrganizationalUnit.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -263,8 +305,8 @@ import 'policy_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.PolicyAttachment;
 /// import com.pulumi.aws.organizations.PolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -300,12 +342,12 @@ import 'policy_attachment_state.dart';
 ///
 /// #### Required
 ///
-/// * `policy_id` (String) Organizations policy ID.
-/// * `target_id` (String) Organizations target ID (account, OU, or root).
+/// * `policyId` (String) Organizations policy ID.
+/// * `targetId` (String) Organizations target ID (account, OU, or root).
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
 /// Using `pulumi import`, import `aws.organizations.PolicyAttachment` using the target ID and policy ID. For example:

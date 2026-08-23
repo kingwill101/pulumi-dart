@@ -176,6 +176,43 @@ import 'bot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lex_bot" "order_flowers_bot" {
+///   abort_statement = {
+///     messages = [{
+///       "content"     = "Sorry, I am not able to assist at this time"
+///       "contentType" = "PlainText"
+///     }]
+///   }
+///   child_directed = false
+///   clarification_prompt = {
+///     max_attempts = 2
+///     messages = [{
+///       "content"     = "I didn't understand you, what would you like to do?"
+///       "contentType" = "PlainText"
+///     }]
+///   }
+///   create_version              = false
+///   description                 = "Bot to order flowers on the behalf of a user"
+///   idle_session_ttl_in_seconds = 600
+///   intents {
+///     intent_name    = "OrderFlowers"
+///     intent_version = "1"
+///   }
+///   locale           = "en-US"
+///   name             = "OrderFlowers"
+///   process_behavior = "BUILD"
+///   voice_id         = "Salli"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,10 +222,12 @@ import 'bot_state.dart';
 /// import com.pulumi.aws.lex.Bot;
 /// import com.pulumi.aws.lex.BotArgs;
 /// import com.pulumi.aws.lex.inputs.BotAbortStatementArgs;
+/// import com.pulumi.aws.lex.inputs.BotAbortStatementMessageArgs;
 /// import com.pulumi.aws.lex.inputs.BotClarificationPromptArgs;
+/// import com.pulumi.aws.lex.inputs.BotClarificationPromptMessageArgs;
 /// import com.pulumi.aws.lex.inputs.BotIntentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,7 +325,7 @@ class Bot extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// When set to true user utterances are sent to Amazon Comprehend for sentiment analysis. If you don't specify detectSentiment, the default is `false`.
   late final pulumi.Output<bool?> detectSentiment;
-  /// Set to `true` to enable access to natural language understanding improvements. When you set the `enable_model_improvements` parameter to true you can use the `nlu_intent_confidence_threshold` parameter to configure confidence scores. For more information, see [Confidence Scores](https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html). You can only set the `enable_model_improvements` parameter in certain Regions. If you set the parameter to true, your bot has access to accuracy improvements. For more information see the [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-enableModelImprovements).
+  /// Set to `true` to enable access to natural language understanding improvements. When you set the `enableModelImprovements` parameter to true you can use the `nluIntentConfidenceThreshold` parameter to configure confidence scores. For more information, see [Confidence Scores](https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html). You can only set the `enableModelImprovements` parameter in certain Regions. If you set the parameter to true, your bot has access to accuracy improvements. For more information see the [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-enableModelImprovements).
   late final pulumi.Output<bool?> enableModelImprovements;
   /// If status is FAILED, Amazon Lex provides the reason that it failed to build the bot.
   late final pulumi.Output<String> failureReason;
@@ -300,16 +339,16 @@ class Bot extends pulumi.CustomResource {
   late final pulumi.Output<String?> locale;
   /// The name of the bot that you want to create, case sensitive. Must be between 2 and 50 characters in length.
   late final pulumi.Output<String> name;
-  /// Determines the threshold where Amazon Lex will insert the AMAZON.FallbackIntent, AMAZON.KendraSearchIntent, or both when returning alternative intents in a PostContent or PostText response. AMAZON.FallbackIntent and AMAZON.KendraSearchIntent are only inserted if they are configured for the bot. For more information see [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-nluIntentConfidenceThreshold) This value requires `enable_model_improvements` to be set to `true` and the default is `0`. Must be a float between 0 and 1.
+  /// Determines the threshold where Amazon Lex will insert the AMAZON.FallbackIntent, AMAZON.KendraSearchIntent, or both when returning alternative intents in a PostContent or PostText response. AMAZON.FallbackIntent and AMAZON.KendraSearchIntent are only inserted if they are configured for the bot. For more information see [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-nluIntentConfidenceThreshold) This value requires `enableModelImprovements` to be set to `true` and the default is `0`. Must be a float between 0 and 1.
   late final pulumi.Output<double?> nluIntentConfidenceThreshold;
-  /// If you set the `process_behavior` element to `BUILD`, Amazon Lex builds the bot so that it can be run. If you set the element to `SAVE` Amazon Lex saves the bot, but doesn't build it. Default is `SAVE`.
+  /// If you set the `processBehavior` element to `BUILD`, Amazon Lex builds the bot so that it can be run. If you set the element to `SAVE` Amazon Lex saves the bot, but doesn't build it. Default is `SAVE`.
   late final pulumi.Output<String?> processBehavior;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// When you send a request to create or update a bot, Amazon Lex sets the status response
   /// element to BUILDING. After Amazon Lex builds the bot, it sets status to READY. If Amazon Lex can't
   /// build the bot, it sets status to FAILED. Amazon Lex returns the reason for the failure in the
-  /// failure_reason response element.
+  /// failureReason response element.
   late final pulumi.Output<String> status;
   /// The version of the bot.
   late final pulumi.Output<String> version;

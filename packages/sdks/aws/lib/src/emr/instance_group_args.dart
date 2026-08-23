@@ -120,6 +120,19 @@ class InstanceGroupArgs {
   /// 	})
   /// }
   /// ```
+  /// ```hcl
+  /// pulumi {
+  ///   required_providers {
+  ///     aws = {
+  ///       source = "pulumi/aws"
+  ///     }
+  ///   }
+  /// }
+  ///
+  /// resource "aws_emr_instancegroup" "task" {
+  ///   configurations_json = "[\n{\n\\\"Classification\\\": \\\"hadoop-env\\\",\n\\\"Configurations\\\": [\n{\n\\\"Classification\\\": \\\"export\\\",\n\\\"Properties\\\": {\n\\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n}\n}\n],\n\\\"Properties\\\": {}\n}\n]\n"
+  /// }
+  /// ```
   /// ```java
   /// package generated_program;
   ///
@@ -128,8 +141,8 @@ class InstanceGroupArgs {
   /// import com.pulumi.core.Output;
   /// import com.pulumi.aws.emr.InstanceGroup;
   /// import com.pulumi.aws.emr.InstanceGroupArgs;
-  /// import java.util.List;
   /// import java.util.ArrayList;
+  /// import java.util.Arrays;
   /// import java.util.Map;
   /// import java.io.File;
   /// import java.nio.file.Files;
@@ -185,7 +198,7 @@ class InstanceGroupArgs {
   ///         ]
   /// ```
   final pulumi.Input<String>? configurationsJson;
-  /// One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
+  /// One or more `ebsConfig` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<InstanceGroupEbsConfig>>? ebsConfigs;
   /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? ebsOptimized;
@@ -203,7 +216,7 @@ class InstanceGroupArgs {
   /// [bidPrice] If set, the bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
   /// [clusterId] ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
   /// [configurationsJson] A JSON string for supplying list of configurations specific to the EMR instance group. Note that this can only be changed when using EMR release 5.21 or later.
-  /// [ebsConfigs] One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
+  /// [ebsConfigs] One or more `ebsConfig` blocks as defined below. Changing this forces a new resource to be created.
   /// [ebsOptimized] Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
   /// [instanceCount] target number of instances for the instance group. defaults to 0.
   /// [instanceType] The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
@@ -252,4 +265,3 @@ class InstanceGroupArgs {
     );
   }
 }
-

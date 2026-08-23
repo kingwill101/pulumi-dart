@@ -4,7 +4,7 @@ import 'custom_domain_association_state.dart';
 
 /// Manages an App Runner Custom Domain association.
 ///
-/// &gt; **NOTE:** After creation, you must use the information in the `certificate_validation_records` attribute to add CNAME records to your Domain Name System (DNS). For each mapped domain name, add a mapping to the target App Runner subdomain (found in the `dns_target` attribute) and one or more certificate validation records. App Runner then performs DNS validation to verify that you own or control the domain name you associated. App Runner tracks domain validity in a certificate stored in AWS Certificate Manager (ACM).
+/// &gt; **NOTE:** After creation, you must use the information in the `certificateValidationRecords` attribute to add CNAME records to your Domain Name System (DNS). For each mapped domain name, add a mapping to the target App Runner subdomain (found in the `dnsTarget` attribute) and one or more certificate validation records. App Runner then performs DNS validation to verify that you own or control the domain name you associated. App Runner tracks domain validity in a certificate stored in AWS Certificate Manager (ACM).
 ///
 /// ## Example Usage
 ///
@@ -63,6 +63,20 @@ import 'custom_domain_association_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_apprunner_customdomainassociation" "example" {
+///   domain_name = "example.com"
+///   service_arn = exampleAwsApprunnerService.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +85,8 @@ import 'custom_domain_association_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apprunner.CustomDomainAssociation;
 /// import com.pulumi.aws.apprunner.CustomDomainAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -104,13 +118,13 @@ import 'custom_domain_association_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import App Runner Custom Domain Associations using the `domain_name` and `service_arn` separated by a comma (`,`). For example:
+/// Using `pulumi import`, import App Runner Custom Domain Associations using the `domainName` and `serviceArn` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apprunner/customDomainAssociation:CustomDomainAssociation example example.com,arn:aws:apprunner:us-east-1:123456789012:service/example-app/8fe1e10304f84fd2b0df550fe98a71fa
 /// ```
 class CustomDomainAssociation extends pulumi.CustomResource {
-  /// A set of certificate CNAME records used for this domain name. See Certificate Validation Records below for more details.
+  /// Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> certificateValidationRecords;
   /// App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
   late final pulumi.Output<String> dnsTarget;

@@ -10,7 +10,7 @@ import 'get_subnet_filter.dart';
 class GetSubnetArgs {
   /// Availability zone where the subnet must reside.
   final pulumi.Input<String>? availabilityZone;
-  /// ID of the Availability Zone for the subnet. This argument is not supported in all regions or partitions. If necessary, use `availability_zone` instead.
+  /// ID of the Availability Zone for the subnet. This argument is not supported in all regions or partitions. If necessary, use `availabilityZone` instead.
   final pulumi.Input<String>? availabilityZoneId;
   /// CIDR block of the desired subnet.
   final pulumi.Input<String>? cidrBlock;
@@ -33,7 +33,7 @@ class GetSubnetArgs {
 
   /// Creates a new [GetSubnetArgs].
   /// [availabilityZone] Availability zone where the subnet must reside.
-  /// [availabilityZoneId] ID of the Availability Zone for the subnet. This argument is not supported in all regions or partitions. If necessary, use `availability_zone` instead.
+  /// [availabilityZoneId] ID of the Availability Zone for the subnet. This argument is not supported in all regions or partitions. If necessary, use `availabilityZone` instead.
   /// [cidrBlock] CIDR block of the desired subnet.
   /// [defaultForAz] Whether the desired subnet must be the default subnet for its associated availability zone.
   /// [filters] Configuration block. Detailed below.
@@ -89,4 +89,3 @@ class GetSubnetArgs {
     );
   }
 }
-

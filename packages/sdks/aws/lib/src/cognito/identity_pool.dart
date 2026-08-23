@@ -187,6 +187,44 @@ import 'identity_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_samlprovider" "default" {
+///   name                   = "my-saml-provider"
+///   saml_metadata_document = file("saml-metadata.xml")
+/// }
+/// resource "aws_cognito_identitypool" "main" {
+///   identity_pool_name               = "identity pool"
+///   allow_unauthenticated_identities = false
+///   allow_classic_flow               = false
+///   cognito_identity_providers {
+///     client_id               = "6lhlkkfbfb4q5kpp90urffae"
+///     provider_name           = "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ"
+///     server_side_token_check = false
+///   }
+///   cognito_identity_providers {
+///     client_id               = "7kodkvfqfb4qfkp39eurffae"
+///     provider_name           = "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu"
+///     server_side_token_check = false
+///   }
+///   supported_login_providers = {
+///     "graph.facebook.com"  = "7346241598935552"
+///     "accounts.google.com" = "123456789012.apps.googleusercontent.com"
+///   }
+///   saml_provider_arns           = [aws_iam_samlprovider.default.arn]
+///   openid_connect_provider_arns = ["arn:aws:iam::123456789012:oidc-provider/id.example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +238,8 @@ import 'identity_pool_state.dart';
 /// import com.pulumi.aws.cognito.IdentityPool;
 /// import com.pulumi.aws.cognito.IdentityPoolArgs;
 /// import com.pulumi.aws.cognito.inputs.IdentityPoolCognitoIdentityProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -310,9 +348,9 @@ class IdentityPool extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> samlProviderArns;
   /// Key-Value pairs mapping provider names to provider app IDs.
   late final pulumi.Output<Map<String, String>?> supportedLoginProviders;
-  /// A map of tags to assign to the Identity Pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the Identity Pool. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IdentityPool].

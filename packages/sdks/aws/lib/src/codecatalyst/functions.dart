@@ -66,6 +66,21 @@ import 'get_dev_environment_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_codecatalyst_getdevenvironment" "example" {
+///   space_name   = "myspace"
+///   project_name = "myproject"
+///   env_id       = exampleAwsCodecatalystDevEnvironment.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'get_dev_environment_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.codecatalyst.CodecatalystFunctions;
 /// import com.pulumi.aws.codecatalyst.inputs.GetDevEnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

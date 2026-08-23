@@ -7,7 +7,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
   final pulumi.Input<String>? description;
   /// Name of the parameter.
   ///
-  /// **Note:** The argument name `map_block_key` may seem out of context, but is necessary for backward compatibility reasons in the provider.
+  /// **Note:** The argument name `mapBlockKey` may seem out of context, but is necessary for backward compatibility reasons in the provider.
   final pulumi.Input<String> mapBlockKey;
   /// Whether the parameter is required for the agent to complete the function for action group invocation.
   final pulumi.Input<bool>? required;
@@ -44,4 +44,3 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
     );
   }
 }
-

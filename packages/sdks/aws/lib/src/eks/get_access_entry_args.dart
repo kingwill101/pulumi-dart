@@ -14,7 +14,7 @@ class GetAccessEntryArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
-  /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
+  /// (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [GetAccessEntryArgs].
@@ -22,7 +22,7 @@ class GetAccessEntryArgs {
   /// [principalArn] The IAM Principal ARN which requires Authentication access to the EKS cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
-  /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
+  /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
   const GetAccessEntryArgs({
     required this.clusterName,
     required this.principalArn,
@@ -51,4 +51,3 @@ class GetAccessEntryArgs {
     );
   }
 }
-

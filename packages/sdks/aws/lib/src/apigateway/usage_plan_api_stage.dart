@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'usage_plan_api_stage_throttle.dart';
 
 class UsagePlanApiStage {
-  /// API Id of the associated API stage in a usage plan.
+  /// API ID of the associated API stage in a usage plan.
   final pulumi.Input<String> apiId;
   /// API stage name of the associated API stage in a usage plan.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> stage;
-  /// The throttling limits of the usage plan.
+  /// Throttling limits applied to the API stage. See `throttle` Block below.
   final pulumi.Input<List<UsagePlanApiStageThrottle>>? throttles;
 
   /// Creates a new [UsagePlanApiStage].
-  /// [apiId] API Id of the associated API stage in a usage plan.
+  /// [apiId] API ID of the associated API stage in a usage plan.
   /// [stage] API stage name of the associated API stage in a usage plan.
-  /// [throttles] The throttling limits of the usage plan.
+  /// [throttles] Throttling limits applied to the API stage. See `throttle` Block below.
   const UsagePlanApiStage({
     required this.apiId,
     required this.stage,
@@ -37,4 +39,3 @@ class UsagePlanApiStage {
     );
   }
 }
-

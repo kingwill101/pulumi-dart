@@ -28,4 +28,3 @@ class GetGatewayRouteSpecHttp2RouteMatchPath {
     );
   }
 }
-

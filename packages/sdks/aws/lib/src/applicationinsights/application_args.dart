@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_applicationinsights_application_application_args_doc}
 class ApplicationArgs {
-  /// Indicates whether Application Insights automatically configures unmonitored resources in the resource group.
+  /// Whether to automatically configure unmonitored resources in the resource group.
   final pulumi.Input<bool>? autoConfigEnabled;
   /// Configures all of the resources in the resource group by applying the recommended configurations.
   final pulumi.Input<bool>? autoCreate;
-  /// Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.
+  /// Whether to enable Application Insights to listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.
   final pulumi.Input<bool>? cweMonitorEnabled;
   /// Application Insights can create applications based on a resource group or on an account. To create an account-based application using all of the resources in the account, set this parameter to `ACCOUNT_BASED`.
   final pulumi.Input<String>? groupingType;
@@ -25,19 +25,19 @@ class ApplicationArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> resourceGroupName;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ApplicationArgs].
-  /// [autoConfigEnabled] Indicates whether Application Insights automatically configures unmonitored resources in the resource group.
+  /// [autoConfigEnabled] Whether to automatically configure unmonitored resources in the resource group.
   /// [autoCreate] Configures all of the resources in the resource group by applying the recommended configurations.
-  /// [cweMonitorEnabled] Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.
+  /// [cweMonitorEnabled] Whether to enable Application Insights to listen to CloudWatch events for the application resources, such as instance terminated, failed deployment, and others.
   /// [groupingType] Application Insights can create applications based on a resource group or on an account. To create an account-based application using all of the resources in the account, set this parameter to `ACCOUNT_BASED`.
   /// [opsCenterEnabled] When set to `true`, creates opsItems for any problems detected on an application.
   /// [opsItemSnsTopicArn] SNS topic provided to Application Insights that is associated to the created opsItem. Allows you to receive notifications for updates to the opsItem.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceGroupName] Name of the resource group.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ApplicationArgs({
     this.autoConfigEnabled,
     this.autoCreate,
@@ -78,4 +78,3 @@ class ApplicationArgs {
     );
   }
 }
-

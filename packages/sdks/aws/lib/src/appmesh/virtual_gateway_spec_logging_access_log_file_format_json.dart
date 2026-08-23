@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualGatewaySpecLoggingAccessLogFileFormatJson {
-  /// The specified key for the JSON. Must be between 1 and 100 characters in length.
+  /// Specified key for the JSON. Must be between 1 and 100 characters in length.
   final pulumi.Input<String> key;
-  /// The specified value for the JSON. Must be between 1 and 100 characters in length.
+  /// Specified value for the JSON. Must be between 1 and 100 characters in length.
   final pulumi.Input<String> value;
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFileFormatJson].
-  /// [key] The specified key for the JSON. Must be between 1 and 100 characters in length.
-  /// [value] The specified value for the JSON. Must be between 1 and 100 characters in length.
+  /// [key] Specified key for the JSON. Must be between 1 and 100 characters in length.
+  /// [value] Specified value for the JSON. Must be between 1 and 100 characters in length.
   const VirtualGatewaySpecLoggingAccessLogFileFormatJson({
     required this.key,
     required this.value,
@@ -30,4 +30,3 @@ class VirtualGatewaySpecLoggingAccessLogFileFormatJson {
     );
   }
 }
-

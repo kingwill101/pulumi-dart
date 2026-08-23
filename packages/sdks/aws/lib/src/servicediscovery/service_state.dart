@@ -11,13 +11,13 @@ class ServiceState {
   final pulumi.Input<String>? arn;
   /// The description of the service.
   final pulumi.Input<String>? description;
-  /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dns_config` Block for details.
+  /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dnsConfig` Block for details.
   final pulumi.Input<ServiceDnsConfig>? dnsConfig;
   /// A boolean that indicates all instances should be deleted from the service so that the service can be destroyed without error. These instances are not recoverable. Defaults to `false`.
   final pulumi.Input<bool>? forceDestroy;
-  /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `health_check_config` Block for details.
+  /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `healthCheckConfig` Block for details.
   final pulumi.Input<ServiceHealthCheckConfig>? healthCheckConfig;
-  /// Please use `health_check_config` instead. See `health_check_custom_config` Block for details.
+  /// Please use `healthCheckConfig` instead. See `healthCheckCustomConfig` Block for details.
   final pulumi.Input<ServiceHealthCheckCustomConfig>? healthCheckCustomConfig;
   /// The name of the service.
   final pulumi.Input<String>? name;
@@ -25,7 +25,7 @@ class ServiceState {
   final pulumi.Input<String>? namespaceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.
@@ -34,14 +34,14 @@ class ServiceState {
   /// Creates a new [ServiceState].
   /// [arn] The ARN of the service.
   /// [description] The description of the service.
-  /// [dnsConfig] A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dns_config` Block for details.
+  /// [dnsConfig] A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dnsConfig` Block for details.
   /// [forceDestroy] A boolean that indicates all instances should be deleted from the service so that the service can be destroyed without error. These instances are not recoverable. Defaults to `false`.
-  /// [healthCheckConfig] A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `health_check_config` Block for details.
-  /// [healthCheckCustomConfig] Please use `health_check_config` instead. See `health_check_custom_config` Block for details.
+  /// [healthCheckConfig] A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `healthCheckConfig` Block for details.
+  /// [healthCheckCustomConfig] Please use `healthCheckConfig` instead. See `healthCheckCustomConfig` Block for details.
   /// [name] The name of the service.
   /// [namespaceId] The ID of the namespace that you want to use to create the service.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [type] If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.
   const ServiceState({
@@ -93,4 +93,3 @@ class ServiceState {
     );
   }
 }
-

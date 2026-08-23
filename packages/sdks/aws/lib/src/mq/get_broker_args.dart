@@ -12,7 +12,7 @@ class GetBrokerArgs {
   /// Unique name of the MQ broker.
   final pulumi.Input<String>? brokerName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// &gt; **Note:** Either `broker_id` or `broker_name` must be specified.
+  /// &gt; **Note:** Either `brokerId` or `brokerName` must be specified.
   final pulumi.Input<String>? region;
   /// Map of tags assigned to the broker.
   final pulumi.Input<Map<String, String>>? tags;
@@ -47,4 +47,3 @@ class GetBrokerArgs {
     );
   }
 }
-

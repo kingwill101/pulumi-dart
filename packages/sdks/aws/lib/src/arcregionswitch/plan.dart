@@ -226,7 +226,7 @@ import 'plan_timeouts.dart';
 /// 				map[string]interface{}{
 /// 					"Action": "sts:AssumeRole",
 /// 					"Effect": "Allow",
-/// 					"Principal": map[string]interface{}{
+/// 					"Principal": map[string]string{
 /// 						"Service": "arc-region-switch.amazonaws.com",
 /// 					},
 /// 				},
@@ -294,6 +294,60 @@ import 'plan_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iam_role" "example" {
+///   name = "arc-region-switch-role"
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Action" = "sts:AssumeRole"
+///       "Effect" = "Allow"
+///       "Principal" = {
+///         "Service" = "arc-region-switch.amazonaws.com"
+///       }
+///     }]
+///   })
+/// }
+/// resource "aws_arcregionswitch_plan" "example" {
+///   name              = "example-plan"
+///   execution_role    = aws_iam_role.example.arn
+///   recovery_approach = "activePassive"
+///   regions           = ["us-east-1", "us-west-2"]
+///   primary_region    = "us-east-1"
+///   workflows {
+///     workflow_target_action = "activate"
+///     workflow_target_region = "us-west-2"
+///     steps {
+///       name                 = "manual-approval"
+///       execution_block_type = "ManualApproval"
+///       execution_approval_configs {
+///         approval_role   = aws_iam_role.example.arn
+///         timeout_minutes = 60
+///       }
+///     }
+///   }
+///   workflows {
+///     workflow_target_action = "deactivate"
+///     workflow_target_region = "us-east-1"
+///     steps {
+///       name                 = "manual-approval"
+///       execution_block_type = "ManualApproval"
+///       execution_approval_configs {
+///         approval_role   = aws_iam_role.example.arn
+///         timeout_minutes = 60
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -305,9 +359,11 @@ import 'plan_timeouts.dart';
 /// import com.pulumi.aws.arcregionswitch.Plan;
 /// import com.pulumi.aws.arcregionswitch.PlanArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepExecutionApprovalConfigArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -543,7 +599,7 @@ import 'plan_timeouts.dart';
 ///                     "execution_block_type": "CustomActionLambda",
 ///                     "custom_action_lambda_configs": [{
 ///                         "region_to_run": "activatingRegion",
-///                         "retry_interval_minutes": 5,
+///                         "retry_interval_minutes": float(5),
 ///                         "timeout_minutes": 30,
 ///                         "lambdas": [{
 ///                             "arn": example["arn"],
@@ -897,6 +953,96 @@ import 'plan_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_arcregionswitch_plan" "complex" {
+///   name                            = "complex-plan"
+///   execution_role                  = exampleAwsIamRole.arn
+///   recovery_approach               = "activeActive"
+///   regions                         = ["us-east-1", "us-west-2"]
+///   description                     = "Complex plan with multiple execution block types"
+///   recovery_time_objective_minutes = 60
+///   associated_alarms {
+///     name                = "application-health-alarm"
+///     alarm_type          = "applicationHealth"
+///     resource_identifier = "arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm"
+///   }
+///   workflows {
+///     workflow_target_action = "activate"
+///     workflow_target_region = "us-west-2"
+///     steps {
+///       name                 = "lambda-step"
+///       execution_block_type = "CustomActionLambda"
+///       custom_action_lambda_configs {
+///         region_to_run          = "activatingRegion"
+///         retry_interval_minutes = 5
+///         timeout_minutes        = 30
+///         lambdas {
+///           arn = example.arn
+///         }
+///       }
+///     }
+///     steps {
+///       name                 = "parallel-step"
+///       execution_block_type = "Parallel"
+///       parallel_configs {
+///         steps {
+///           name                 = "asg-scaling"
+///           execution_block_type = "EC2AutoScaling"
+///           ec2_asg_capacity_increase_configs {
+///             asgs {
+///               arn = exampleAwsAutoscalingGroup.arn
+///             }
+///             target_percent = 150
+///           }
+///         }
+///         steps {
+///           name                 = "ecs-scaling"
+///           execution_block_type = "ECSServiceScaling"
+///           ecs_capacity_increase_configs {
+///             services {
+///               cluster_arn = exampleAwsEcsCluster.arn
+///               service_arn = exampleAwsEcsService.arn
+///             }
+///             target_percent = 200
+///           }
+///         }
+///       }
+///     }
+///   }
+///   workflows {
+///     workflow_target_action = "deactivate"
+///     workflow_target_region = "us-east-1"
+///     steps {
+///       name                 = "route53-health-check"
+///       execution_block_type = "Route53HealthCheck"
+///       route53_health_check_configs {
+///         hosted_zone_id = exampleAwsRoute53Zone.zoneId
+///         record_name    = "api.example.com"
+///       }
+///     }
+///   }
+///   triggers {
+///     action                               = "activate"
+///     target_region                        = "us-west-2"
+///     min_delay_minutes_between_executions = 30
+///     conditions {
+///       associated_alarm_name = "application-health-alarm"
+///       condition             = "red"
+///     }
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -907,9 +1053,20 @@ import 'plan_timeouts.dart';
 /// import com.pulumi.aws.arcregionswitch.PlanArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanAssociatedAlarmArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepCustomActionLambdaConfigArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepCustomActionLambdaConfigLambdaArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigStepArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsgArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigServiceArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepRoute53HealthCheckConfigArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanTriggerArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanTriggerConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1076,6 +1233,13 @@ import 'plan_timeouts.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the ARC Region Switch Plan.
+///
+///
 /// Using `pulumi import`, import Application Recovery Controller Region Switch Plan using the `arn`. For example:
 ///
 /// ```sh
@@ -1084,7 +1248,7 @@ import 'plan_timeouts.dart';
 class Plan extends pulumi.CustomResource {
   /// ARN of the plan.
   late final pulumi.Output<String> arn;
-  /// Set of CloudWatch alarms associated with the plan. See Associated Alarms below.
+  /// CloudWatch alarms associated with the plan. See `associatedAlarms` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> associatedAlarms;
   /// Description of the plan.
   late final pulumi.Output<String?> description;
@@ -1100,16 +1264,18 @@ class Plan extends pulumi.CustomResource {
   late final pulumi.Output<int?> recoveryTimeObjectiveMinutes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of AWS regions involved in the plan.
+  /// List of AWS regions involved in the plan. Must contain at least 2 regions.
   late final pulumi.Output<List<String>> regions;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Configuration for automated execution reports. See `reportConfiguration` Block for details.
+  late final pulumi.Output<List<Map<String, dynamic>>?> reportConfigurations;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PlanTimeouts?> timeouts;
-  /// Set of triggers that can initiate the plan execution. See Triggers below.
+  /// Triggers that can initiate the plan execution. See `triggers` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
-  /// List of workflows that define the steps to execute. See Workflow below.
+  /// Workflows that define the steps to execute. See `workflow` Block for details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>?> workflows;
@@ -1138,6 +1304,7 @@ class Plan extends pulumi.CustomResource {
     recoveryTimeObjectiveMinutes = registerOutput<int?>('recoveryTimeObjectiveMinutes');
     region = registerOutput<String>('region');
     regions = registerOutput<List<String>>('regions');
+    reportConfigurations = registerOutput<List<Map<String, dynamic>>?>('reportConfigurations');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<PlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1178,6 +1345,7 @@ class Plan extends pulumi.CustomResource {
     recoveryTimeObjectiveMinutes = registerOutput<int?>('recoveryTimeObjectiveMinutes');
     region = registerOutput<String>('region');
     regions = registerOutput<List<String>>('regions');
+    reportConfigurations = registerOutput<List<Map<String, dynamic>>?>('reportConfigurations');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<PlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -10,7 +10,7 @@ import 'assessment_scope.dart';
 /// {@endtemplate}
 /// {@macro pulumi_auditmanager_assessment_assessment_args_doc}
 class AssessmentArgs {
-  /// Assessment report storage destination configuration. See `assessment_reports_destination` below.
+  /// Assessment report storage destination configuration. See `assessmentReportsDestination` below.
   final pulumi.Input<AssessmentAssessmentReportsDestination>? assessmentReportsDestination;
   /// Description of the assessment.
   final pulumi.Input<String>? description;
@@ -26,18 +26,18 @@ class AssessmentArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<AssessmentScope>? scope;
-  /// A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the assessment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AssessmentArgs].
-  /// [assessmentReportsDestination] Assessment report storage destination configuration. See `assessment_reports_destination` below.
+  /// [assessmentReportsDestination] Assessment report storage destination configuration. See `assessmentReportsDestination` below.
   /// [description] Description of the assessment.
   /// [frameworkId] Unique identifier of the framework the assessment will be created from.
   /// [name] Name of the assessment.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roles] List of roles for the assessment. See `roles` below.
   /// [scope] Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
-  /// [tags] A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the assessment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AssessmentArgs({
     this.assessmentReportsDestination,
     this.description,
@@ -75,4 +75,3 @@ class AssessmentArgs {
     );
   }
 }
-

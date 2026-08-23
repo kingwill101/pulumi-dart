@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceNetworkServiceAssociationDnsEntry {
-  /// The domain name of the service.
+  /// Domain name of the service.
   final pulumi.Input<String>? domainName;
-  /// The ID of the hosted zone.
+  /// ID of the hosted zone.
   final pulumi.Input<String>? hostedZoneId;
 
   /// Creates a new [ServiceNetworkServiceAssociationDnsEntry].
-  /// [domainName] The domain name of the service.
-  /// [hostedZoneId] The ID of the hosted zone.
+  /// [domainName] Domain name of the service.
+  /// [hostedZoneId] ID of the hosted zone.
   const ServiceNetworkServiceAssociationDnsEntry({
     this.domainName,
     this.hostedZoneId,
@@ -30,4 +30,3 @@ class ServiceNetworkServiceAssociationDnsEntry {
     );
   }
 }
-

@@ -4,22 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_workflow_step_parallel_config_step_document_db_config_ungraceful.dart';
 
 class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
+  /// Behavior for global cluster operations. Valid values: `switchoverOnly`, `failover`.
   final pulumi.Input<String> behavior;
+  /// ARN of the cross-account role to assume.
   final pulumi.Input<String>? crossAccountRole;
+  /// List of DocumentDB cluster ARNs.
   final pulumi.Input<List<String>> databaseClusterArns;
+  /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
+  /// Global cluster identifier.
   final pulumi.Input<String> globalClusterIdentifier;
+  /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
+  /// Ungraceful behavior configuration. See `workflow.step.document_db_config.ungraceful` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepDocumentDbConfig].
-  /// [behavior] Required.
-  /// [crossAccountRole] Optional.
-  /// [databaseClusterArns] Required.
-  /// [externalId] Optional.
-  /// [globalClusterIdentifier] Required.
-  /// [timeoutMinutes] Optional.
-  /// [ungracefuls] Optional.
+  /// [behavior] Behavior for global cluster operations. Valid values: `switchoverOnly`, `failover`.
+  /// [crossAccountRole] ARN of the cross-account role to assume.
+  /// [databaseClusterArns] List of DocumentDB cluster ARNs.
+  /// [externalId] External ID for cross-account role assumption.
+  /// [globalClusterIdentifier] Global cluster identifier.
+  /// [timeoutMinutes] Timeout in minutes.
+  /// [ungracefuls] Ungraceful behavior configuration. See `workflow.step.document_db_config.ungraceful` Block for details.
   const PlanWorkflowStepParallelConfigStepDocumentDbConfig({
     required this.behavior,
     this.crossAccountRole,
@@ -54,4 +61,3 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
     );
   }
 }
-

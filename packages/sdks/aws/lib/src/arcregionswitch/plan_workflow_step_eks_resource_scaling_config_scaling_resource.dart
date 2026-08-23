@@ -6,12 +6,12 @@ import 'plan_workflow_step_eks_resource_scaling_config_scaling_resource_resource
 class PlanWorkflowStepEksResourceScalingConfigScalingResource {
   /// Kubernetes namespace.
   final pulumi.Input<String> namespace;
-  /// Set of resources to scale. See Resources below.
+  /// Resources to scale. See `resources` Block for details.
   final pulumi.Input<List<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>>? resources;
 
   /// Creates a new [PlanWorkflowStepEksResourceScalingConfigScalingResource].
   /// [namespace] Kubernetes namespace.
-  /// [resources] Set of resources to scale. See Resources below.
+  /// [resources] Resources to scale. See `resources` Block for details.
   const PlanWorkflowStepEksResourceScalingConfigScalingResource({
     required this.namespace,
     this.resources,
@@ -31,4 +31,3 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResource {
     );
   }
 }
-

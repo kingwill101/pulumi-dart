@@ -122,7 +122,7 @@ import 'workspace_workspace_properties.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		workspaces, err := kms.LookupKey(ctx, &kms.LookupKeyArgs{
+/// 		workspaces2, err := kms.LookupKey(ctx, &kms.LookupKeyArgs{
 /// 			KeyId: "alias/aws/workspaces",
 /// 		}, nil)
 /// 		if err != nil {
@@ -134,7 +134,7 @@ import 'workspace_workspace_properties.dart';
 /// 			UserName:                    pulumi.String("john.doe"),
 /// 			RootVolumeEncryptionEnabled: pulumi.Bool(true),
 /// 			UserVolumeEncryptionEnabled: pulumi.Bool(true),
-/// 			VolumeEncryptionKey:         pulumi.String(workspaces.Arn),
+/// 			VolumeEncryptionKey:         pulumi.String(workspaces2.Arn),
 /// 			WorkspaceProperties: &workspaces.WorkspaceWorkspacePropertiesArgs{
 /// 				ComputeTypeName:                     pulumi.String("VALUE"),
 /// 				UserVolumeSizeGib:                   pulumi.Int(10),
@@ -153,6 +153,41 @@ import 'workspace_workspace_properties.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_workspaces_getbundle" "valueWindows10" {
+///   bundle_id = "wsb-bh8rsxt14"
+/// }
+/// data "aws_kms_getkey" "workspaces" {
+///   key_id = "alias/aws/workspaces"
+/// }
+///
+/// resource "aws_workspaces_workspace" "example" {
+///   directory_id                   = exampleAwsWorkspacesDirectory.id
+///   bundle_id                      = data.aws_workspaces_getbundle.valueWindows10.id
+///   user_name                      = "john.doe"
+///   root_volume_encryption_enabled = true
+///   user_volume_encryption_enabled = true
+///   volume_encryption_key          = data.aws_kms_getkey.workspaces.arn
+///   workspace_properties = {
+///     compute_type_name                         = "VALUE"
+///     user_volume_size_gib                      = 10
+///     root_volume_size_gib                      = 80
+///     running_mode                              = "AUTO_STOP"
+///     running_mode_auto_stop_timeout_in_minutes = 60
+///   }
+///   tags = {
+///     "Department" = "IT"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +201,8 @@ import 'workspace_workspace_properties.dart';
 /// import com.pulumi.aws.workspaces.Workspace;
 /// import com.pulumi.aws.workspaces.WorkspaceArgs;
 /// import com.pulumi.aws.workspaces.inputs.WorkspaceWorkspacePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,9 +297,9 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<bool?> rootVolumeEncryptionEnabled;
   /// The operational state of the WorkSpace.
   late final pulumi.Output<String> state;
-  /// The tags for the WorkSpace. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// The tags for the WorkSpace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace.
   late final pulumi.Output<String> userName;

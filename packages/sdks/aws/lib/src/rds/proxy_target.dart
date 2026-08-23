@@ -4,14 +4,14 @@ import 'proxy_target_state.dart';
 
 /// Provides an RDS DB proxy target resource.
 ///
-/// &gt; **NOTE:** When the associated `aws.rds.Proxy` resource is replaced, Terraform will lose track of this resource, causing unexpected differences on the next apply. To ensure proper dependency management, add a `lifecycle` block with `replace_triggered_by` referencing the `aws.rds.Proxy` resource's `id` attribute.
+/// &gt; **NOTE:** When the associated `aws.rds.Proxy` resource is replaced, Terraform will lose track of this resource, causing unexpected differences on the next apply. To ensure proper dependency management, add a `lifecycle` block with `replaceTriggeredBy` referencing the `aws.rds.Proxy` resource's `id` attribute.
 ///
 /// ## Import
 ///
 /// Provisioned Clusters:
 ///
 ///
-/// **Using `pulumi import` to import** RDS DB Proxy Targets using the `db_proxy_name`, `target_group_name`, target type (such as `RDS_INSTANCE` or `TRACKED_CLUSTER`), and resource identifier separated by forward slashes (`/`). For example:
+/// **Using `pulumi import` to import** RDS DB Proxy Targets using the `dbProxyName`, `targetGroupName`, target type (such as `RDS_INSTANCE` or `TRACKED_CLUSTER`), and resource identifier separated by forward slashes (`/`). For example:
 ///
 /// Instances:
 ///
@@ -27,7 +27,7 @@ import 'proxy_target_state.dart';
 class ProxyTarget extends pulumi.CustomResource {
   /// DB cluster identifier.
   ///
-  /// **NOTE:** Either `db_instance_identifier` or `db_cluster_identifier` should be specified and both should not be specified together
+  /// **NOTE:** Either `dbInstanceIdentifier` or `dbClusterIdentifier` should be specified and both should not be specified together
   late final pulumi.Output<String?> dbClusterIdentifier;
   /// DB instance identifier.
   late final pulumi.Output<String?> dbInstanceIdentifier;

@@ -38,6 +38,8 @@ export 'route53/domain_timeouts.dart';
 export 'route53/functions.dart';
 export 'route53/get_delegation_set_args.dart';
 export 'route53/get_delegation_set_result.dart';
+export 'route53/get_profiles_profile_args.dart';
+export 'route53/get_profiles_profile_result.dart';
 export 'route53/get_profiles_profiles_args.dart';
 export 'route53/get_profiles_profiles_profile.dart';
 export 'route53/get_profiles_profiles_result.dart';

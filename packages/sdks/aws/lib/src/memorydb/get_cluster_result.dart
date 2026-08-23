@@ -27,12 +27,16 @@ class GetClusterResult {
   final String finalSnapshotName;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  /// Mechanism that the cluster uses to discover IP addresses.
+  final String ipDiscovery;
   /// ARN of the KMS key used to encrypt the cluster at rest.
   final String kmsKeyArn;
   /// Weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). Example: `sun:23:00-mon:01:30`.
   final String maintenanceWindow;
   /// Name of this node.
   final String name;
+  /// IP address type for the cluster.
+  final String networkType;
   /// Compute and memory capacity of the nodes in the cluster.
   final String nodeType;
   /// The number of replicas to apply to each shard.
@@ -73,9 +77,11 @@ class GetClusterResult {
   /// [engineVersion] Version number of the engine used by the cluster.
   /// [finalSnapshotName] Name of the final cluster snapshot to be created when this resource is deleted. If omitted, no final snapshot will be made.
   /// [id] The provider-assigned unique ID for this managed resource.
+  /// [ipDiscovery] Mechanism that the cluster uses to discover IP addresses.
   /// [kmsKeyArn] ARN of the KMS key used to encrypt the cluster at rest.
   /// [maintenanceWindow] Weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). Example: `sun:23:00-mon:01:30`.
   /// [name] Name of this node.
+  /// [networkType] IP address type for the cluster.
   /// [nodeType] Compute and memory capacity of the nodes in the cluster.
   /// [numReplicasPerShard] The number of replicas to apply to each shard.
   /// [numShards] Number of shards in the cluster.
@@ -102,9 +108,11 @@ class GetClusterResult {
     required this.engineVersion,
     required this.finalSnapshotName,
     required this.id,
+    required this.ipDiscovery,
     required this.kmsKeyArn,
     required this.maintenanceWindow,
     required this.name,
+    required this.networkType,
     required this.nodeType,
     required this.numReplicasPerShard,
     required this.numShards,
@@ -134,9 +142,11 @@ class GetClusterResult {
       'engineVersion': engineVersion,
       'finalSnapshotName': finalSnapshotName,
       'id': id,
+      'ipDiscovery': ipDiscovery,
       'kmsKeyArn': kmsKeyArn,
       'maintenanceWindow': maintenanceWindow,
       'name': name,
+      'networkType': networkType,
       'nodeType': nodeType,
       'numReplicasPerShard': numReplicasPerShard,
       'numShards': numShards,
@@ -167,9 +177,11 @@ class GetClusterResult {
       engineVersion: map['engineVersion'] as String,
       finalSnapshotName: map['finalSnapshotName'] as String,
       id: map['id'] as String,
+      ipDiscovery: map['ipDiscovery'] as String,
       kmsKeyArn: map['kmsKeyArn'] as String,
       maintenanceWindow: map['maintenanceWindow'] as String,
       name: map['name'] as String,
+      networkType: map['networkType'] as String,
       nodeType: map['nodeType'] as String,
       numReplicasPerShard: map['numReplicasPerShard'] as int,
       numShards: map['numShards'] as int,
@@ -187,4 +199,3 @@ class GetClusterResult {
     );
   }
 }
-

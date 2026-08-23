@@ -64,6 +64,20 @@ import 'get_service_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicediscovery_getdnsnamespace" "test" {
+///   name = "example.service.local"
+///   type = "DNS_PRIVATE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +86,8 @@ import 'get_service_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicediscovery.ServicediscoveryFunctions;
 /// import com.pulumi.aws.servicediscovery.inputs.GetDnsNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +183,19 @@ Future<GetDnsNamespaceResult> getDnsNamespace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicediscovery_gethttpnamespace" "example" {
+///   name = "development"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +204,8 @@ Future<GetDnsNamespaceResult> getDnsNamespace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicediscovery.ServicediscoveryFunctions;
 /// import com.pulumi.aws.servicediscovery.inputs.GetHttpNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,6 +305,20 @@ Future<GetHttpNamespaceResult> getHttpNamespace(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_servicediscovery_getservice" "test" {
+///   name         = "example"
+///   namespace_id = "NAMESPACE_ID_VALUE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +327,8 @@ Future<GetHttpNamespaceResult> getHttpNamespace(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.servicediscovery.ServicediscoveryFunctions;
 /// import com.pulumi.aws.servicediscovery.inputs.GetServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

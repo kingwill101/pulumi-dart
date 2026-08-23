@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField {
-  /// The name of the username field.
   final pulumi.Input<String> identifier;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField].
-  /// [identifier] The name of the username field.
+  /// [identifier] Required.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField({
     required this.identifier,
   });
@@ -24,4 +23,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsername
     );
   }
 }
-

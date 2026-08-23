@@ -60,6 +60,20 @@ import 'get_resource_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_cloudcontrol_getresource" "example" {
+///   identifier = "example"
+///   type_name  = "AWS::ECS::Cluster"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +82,8 @@ import 'get_resource_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudcontrol.CloudcontrolFunctions;
 /// import com.pulumi.aws.cloudcontrol.inputs.GetResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

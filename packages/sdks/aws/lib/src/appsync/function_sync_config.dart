@@ -8,13 +8,13 @@ class FunctionSyncConfig {
   final pulumi.Input<String>? conflictDetection;
   /// Conflict Resolution strategy to perform in the event of a conflict. Valid values are `NONE`, `OPTIMISTIC_CONCURRENCY`, `AUTOMERGE`, and `LAMBDA`.
   final pulumi.Input<String>? conflictHandler;
-  /// Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See `lambda_conflict_handler_config` Block for details.
+  /// Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See `lambdaConflictHandlerConfig` Block for details.
   final pulumi.Input<FunctionSyncConfigLambdaConflictHandlerConfig>? lambdaConflictHandlerConfig;
 
   /// Creates a new [FunctionSyncConfig].
   /// [conflictDetection] Conflict Detection strategy to use. Valid values are `NONE` and `VERSION`.
   /// [conflictHandler] Conflict Resolution strategy to perform in the event of a conflict. Valid values are `NONE`, `OPTIMISTIC_CONCURRENCY`, `AUTOMERGE`, and `LAMBDA`.
-  /// [lambdaConflictHandlerConfig] Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See `lambda_conflict_handler_config` Block for details.
+  /// [lambdaConflictHandlerConfig] Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See `lambdaConflictHandlerConfig` Block for details.
   const FunctionSyncConfig({
     this.conflictDetection,
     this.conflictHandler,
@@ -37,4 +37,3 @@ class FunctionSyncConfig {
     );
   }
 }
-

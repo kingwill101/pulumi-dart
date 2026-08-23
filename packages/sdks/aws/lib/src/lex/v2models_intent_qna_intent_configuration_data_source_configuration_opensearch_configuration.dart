@@ -8,7 +8,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
   final pulumi.Input<String> domainEndpoint;
   /// Whether to return exact responses from OpenSearch. Defaults to `false`.
   final pulumi.Input<bool>? exactResponse;
-  /// Configuration block for exact response fields. See `exact_response_fields`.
+  /// Configuration block for exact response fields. See `exactResponseFields`.
   final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields>? exactResponseFields;
   /// List of fields to include in the response.
   final pulumi.Input<List<String>>? includeFields;
@@ -18,7 +18,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration].
   /// [domainEndpoint] Endpoint of the OpenSearch domain.
   /// [exactResponse] Whether to return exact responses from OpenSearch. Defaults to `false`.
-  /// [exactResponseFields] Configuration block for exact response fields. See `exact_response_fields`.
+  /// [exactResponseFields] Configuration block for exact response fields. See `exactResponseFields`.
   /// [includeFields] List of fields to include in the response.
   /// [indexName] Name of the OpenSearch index.
   const V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration({
@@ -49,4 +49,3 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
     );
   }
 }
-

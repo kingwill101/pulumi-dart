@@ -7,22 +7,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_pinpoint_adm_channel_adm_channel_args_doc}
 class AdmChannelArgs {
-  /// The application ID.
+  /// Application ID.
   final pulumi.Input<String> applicationId;
   /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
   final pulumi.Input<String> clientId;
   /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
   final pulumi.Input<String> clientSecret;
-  /// Specifies whether to enable the channel. Defaults to `true`.
+  /// Whether to enable the channel. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [AdmChannelArgs].
-  /// [applicationId] The application ID.
+  /// [applicationId] Application ID.
   /// [clientId] Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
   /// [clientSecret] Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-  /// [enabled] Specifies whether to enable the channel. Defaults to `true`.
+  /// [enabled] Whether to enable the channel. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const AdmChannelArgs({
     required this.applicationId,
@@ -52,4 +52,3 @@ class AdmChannelArgs {
     );
   }
 }
-

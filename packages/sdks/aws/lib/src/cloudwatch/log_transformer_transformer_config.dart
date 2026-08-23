@@ -26,77 +26,77 @@ import 'log_transformer_transformer_config_type_converter.dart';
 import 'log_transformer_transformer_config_upper_case_string.dart';
 
 class LogTransformerTransformerConfig {
-  /// Adds new key-value pairs to the log event. See `add_keys` below for details.
+  /// Adds new key-value pairs to the log event. See `addKeys` below for details.
   final pulumi.Input<LogTransformerTransformerConfigAddKeys>? addKeys;
-  /// Copies values within a log event. See `copy_value` below for details.
+  /// Copies values within a log event. See `copyValue` below for details.
   final pulumi.Input<LogTransformerTransformerConfigCopyValue>? copyValue;
   /// Parses comma-separated values (CSV) from the log events into columns. See `csv` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigCsv>>? csvs;
-  /// Converts a datetime string into a format that you specify. See `date_time_converter` below for details.
+  /// Converts a datetime string into a format that you specify. See `dateTimeConverter` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigDateTimeConverter>>? dateTimeConverters;
-  /// Deletes entry from a log event. See `delete_keys` below for details.
+  /// Deletes entry from a log event. See `deleteKeys` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigDeleteKey>>? deleteKeys;
   /// Parses and structures unstructured data by using pattern matching. See `grok` below for details.
   final pulumi.Input<LogTransformerTransformerConfigGrok>? grok;
-  /// Converts list of objects that contain key fields into a map of target keys. See `list_to_map` below for details.
+  /// Converts list of objects that contain key fields into a map of target keys. See `listToMap` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigListToMap>>? listToMaps;
-  /// Converts a string to lowercase. See `lower_case_string` below for details.
+  /// Converts a string to lowercase. See `lowerCaseString` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigLowerCaseString>>? lowerCaseStrings;
-  /// Moves a key from one field to another. See `move_keys` below for details.
+  /// Moves a key from one field to another. See `moveKeys` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigMoveKey>>? moveKeys;
-  /// Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See `parse_cloudfront` below for details.
+  /// Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See `parseCloudfront` below for details.
   final pulumi.Input<LogTransformerTransformerConfigParseCloudfront>? parseCloudfront;
-  /// Parses log events that are in JSON format. See `parse_json` below for details.
+  /// Parses log events that are in JSON format. See `parseJson` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigParseJson>>? parseJsons;
-  /// Parses a specified field in the original log event into key-value pairs. See `parse_key_value` below for details.
+  /// Parses a specified field in the original log event into key-value pairs. See `parseKeyValue` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigParseKeyValue>>? parseKeyValues;
-  /// Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See `parse_postgres` below for details.
+  /// Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See `parsePostgres` below for details.
   final pulumi.Input<LogTransformerTransformerConfigParsePostgres>? parsePostgres;
-  /// Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See `parse_route53` below for details.
+  /// Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See `parseRoute53` below for details.
   final pulumi.Input<LogTransformerTransformerConfigParseRoute53>? parseRoute53;
-  /// Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See `parse_to_ocsf` below for details.
+  /// Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See `parseToOcsf` below for details.
   final pulumi.Input<LogTransformerTransformerConfigParseToOcsf>? parseToOcsf;
-  /// Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See `parse_vpc` below for details.
+  /// Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See `parseVpc` below for details.
   final pulumi.Input<LogTransformerTransformerConfigParseVpc>? parseVpc;
-  /// Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See `parse_waf` below for details.
+  /// Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See `parseWaf` below for details.
   final pulumi.Input<LogTransformerTransformerConfigParseWaf>? parseWaf;
-  /// Renames keys in a log event. See `rename_keys` below for details.
+  /// Renames keys in a log event. See `renameKeys` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigRenameKey>>? renameKeys;
-  /// Splits a field into an array of strings using a delimiting character. See `split_string` below for details.
+  /// Splits a field into an array of strings using a delimiting character. See `splitString` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigSplitString>>? splitStrings;
-  /// Matches a key’s value against a regular expression and replaces all matches with a replacement string. See `substitute_string` below for details.
+  /// Matches a key’s value against a regular expression and replaces all matches with a replacement string. See `substituteString` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigSubstituteString>>? substituteStrings;
-  /// Removes leading and trailing whitespace from a string. See `trim_string` below for details.
+  /// Removes leading and trailing whitespace from a string. See `trimString` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigTrimString>>? trimStrings;
-  /// Converts a value type associated with the specified key to the specified type. See `type_converter` below for details.
+  /// Converts a value type associated with the specified key to the specified type. See `typeConverter` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigTypeConverter>>? typeConverters;
-  /// Converts a string to uppercase. See `upper_case_string` below for details.
+  /// Converts a string to uppercase. See `upperCaseString` below for details.
   final pulumi.Input<List<LogTransformerTransformerConfigUpperCaseString>>? upperCaseStrings;
 
   /// Creates a new [LogTransformerTransformerConfig].
-  /// [addKeys] Adds new key-value pairs to the log event. See `add_keys` below for details.
-  /// [copyValue] Copies values within a log event. See `copy_value` below for details.
+  /// [addKeys] Adds new key-value pairs to the log event. See `addKeys` below for details.
+  /// [copyValue] Copies values within a log event. See `copyValue` below for details.
   /// [csvs] Parses comma-separated values (CSV) from the log events into columns. See `csv` below for details.
-  /// [dateTimeConverters] Converts a datetime string into a format that you specify. See `date_time_converter` below for details.
-  /// [deleteKeys] Deletes entry from a log event. See `delete_keys` below for details.
+  /// [dateTimeConverters] Converts a datetime string into a format that you specify. See `dateTimeConverter` below for details.
+  /// [deleteKeys] Deletes entry from a log event. See `deleteKeys` below for details.
   /// [grok] Parses and structures unstructured data by using pattern matching. See `grok` below for details.
-  /// [listToMaps] Converts list of objects that contain key fields into a map of target keys. See `list_to_map` below for details.
-  /// [lowerCaseStrings] Converts a string to lowercase. See `lower_case_string` below for details.
-  /// [moveKeys] Moves a key from one field to another. See `move_keys` below for details.
-  /// [parseCloudfront] Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See `parse_cloudfront` below for details.
-  /// [parseJsons] Parses log events that are in JSON format. See `parse_json` below for details.
-  /// [parseKeyValues] Parses a specified field in the original log event into key-value pairs. See `parse_key_value` below for details.
-  /// [parsePostgres] Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See `parse_postgres` below for details.
-  /// [parseRoute53] Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See `parse_route53` below for details.
-  /// [parseToOcsf] Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See `parse_to_ocsf` below for details.
-  /// [parseVpc] Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See `parse_vpc` below for details.
-  /// [parseWaf] Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See `parse_waf` below for details.
-  /// [renameKeys] Renames keys in a log event. See `rename_keys` below for details.
-  /// [splitStrings] Splits a field into an array of strings using a delimiting character. See `split_string` below for details.
-  /// [substituteStrings] Matches a key’s value against a regular expression and replaces all matches with a replacement string. See `substitute_string` below for details.
-  /// [trimStrings] Removes leading and trailing whitespace from a string. See `trim_string` below for details.
-  /// [typeConverters] Converts a value type associated with the specified key to the specified type. See `type_converter` below for details.
-  /// [upperCaseStrings] Converts a string to uppercase. See `upper_case_string` below for details.
+  /// [listToMaps] Converts list of objects that contain key fields into a map of target keys. See `listToMap` below for details.
+  /// [lowerCaseStrings] Converts a string to lowercase. See `lowerCaseString` below for details.
+  /// [moveKeys] Moves a key from one field to another. See `moveKeys` below for details.
+  /// [parseCloudfront] Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See `parseCloudfront` below for details.
+  /// [parseJsons] Parses log events that are in JSON format. See `parseJson` below for details.
+  /// [parseKeyValues] Parses a specified field in the original log event into key-value pairs. See `parseKeyValue` below for details.
+  /// [parsePostgres] Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See `parsePostgres` below for details.
+  /// [parseRoute53] Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See `parseRoute53` below for details.
+  /// [parseToOcsf] Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See `parseToOcsf` below for details.
+  /// [parseVpc] Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See `parseVpc` below for details.
+  /// [parseWaf] Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See `parseWaf` below for details.
+  /// [renameKeys] Renames keys in a log event. See `renameKeys` below for details.
+  /// [splitStrings] Splits a field into an array of strings using a delimiting character. See `splitString` below for details.
+  /// [substituteStrings] Matches a key’s value against a regular expression and replaces all matches with a replacement string. See `substituteString` below for details.
+  /// [trimStrings] Removes leading and trailing whitespace from a string. See `trimString` below for details.
+  /// [typeConverters] Converts a value type associated with the specified key to the specified type. See `typeConverter` below for details.
+  /// [upperCaseStrings] Converts a string to uppercase. See `upperCaseString` below for details.
   const LogTransformerTransformerConfig({
     this.addKeys,
     this.copyValue,
@@ -179,4 +179,3 @@ class LogTransformerTransformerConfig {
     );
   }
 }
-

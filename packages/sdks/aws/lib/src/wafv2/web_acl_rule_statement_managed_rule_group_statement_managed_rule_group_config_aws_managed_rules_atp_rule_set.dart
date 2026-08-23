@@ -5,20 +5,16 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_atp_rule_set_response_inspection.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet {
-  /// Whether or not to allow the use of regular expressions in the login page path.
   final pulumi.Input<bool>? enableRegexInPath;
-  /// The path of the login endpoint for your application.
   final pulumi.Input<String> loginPath;
-  /// The criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See `request_inspection` for more details.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection>? requestInspection;
-  /// The criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See `response_inspection` for more details.
   final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection>? responseInspection;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet].
-  /// [enableRegexInPath] Whether or not to allow the use of regular expressions in the login page path.
-  /// [loginPath] The path of the login endpoint for your application.
-  /// [requestInspection] The criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See `request_inspection` for more details.
-  /// [responseInspection] The criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See `response_inspection` for more details.
+  /// [enableRegexInPath] Optional.
+  /// [loginPath] Required.
+  /// [requestInspection] Optional.
+  /// [responseInspection] Optional.
   const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet({
     this.enableRegexInPath,
     required this.loginPath,
@@ -44,4 +40,3 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     );
   }
 }
-

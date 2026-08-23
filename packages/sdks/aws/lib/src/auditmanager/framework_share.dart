@@ -67,6 +67,21 @@ import 'framework_share_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_auditmanager_frameworkshare" "example" {
+///   destination_account = "123456789012"
+///   destination_region  = "us-east-1"
+///   framework_id        = exampleAwsAuditmanagerFramework.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'framework_share_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.auditmanager.FrameworkShare;
 /// import com.pulumi.aws.auditmanager.FrameworkShareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -109,6 +124,18 @@ import 'framework_share_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier for the framework share request.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import Audit Manager Framework Share using the `id`. For example:
 ///

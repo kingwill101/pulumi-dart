@@ -56,6 +56,19 @@ import 'serial_console_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_serialconsoleaccess" "example" {
+///   enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'serial_console_access_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.SerialConsoleAccess;
 /// import com.pulumi.aws.ec2.SerialConsoleAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -94,6 +107,14 @@ import 'serial_console_access_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import serial console access state. For example:
 ///

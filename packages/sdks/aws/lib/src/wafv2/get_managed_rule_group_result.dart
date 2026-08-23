@@ -13,14 +13,12 @@ class GetManagedRuleGroupResult {
   final int capacity;
   /// Labels that one or more rules in this rule group match against in label match statements. See Labels below for details.
   final List<GetManagedRuleGroupConsumedLabel> consumedLabels;
-  /// The provider-assigned unique ID for this managed resource.
-  final String id;
   /// Label namespace prefix for this rule group. All labels added by rules in this rule group have this prefix.
   final String labelNamespace;
-  /// Name of the rule.
+  /// Name of the header.
   final String name;
   final String region;
-  /// High-level information about the rules. See Rules below for details.
+  /// High-level information about the rules. See `rules` Block below for details.
   final List<GetManagedRuleGroupRule> rules;
   final String scope;
   /// ARN of the SNS topic that's used to provide notification of changes to the managed rule group.
@@ -32,11 +30,10 @@ class GetManagedRuleGroupResult {
   /// [availableLabels] Labels that one or more rules in this rule group add to matching web requests. See Labels below for details.
   /// [capacity] WCUs required for this rule group.
   /// [consumedLabels] Labels that one or more rules in this rule group match against in label match statements. See Labels below for details.
-  /// [id] The provider-assigned unique ID for this managed resource.
   /// [labelNamespace] Label namespace prefix for this rule group. All labels added by rules in this rule group have this prefix.
-  /// [name] Name of the rule.
+  /// [name] Name of the header.
   /// [region] Required.
-  /// [rules] High-level information about the rules. See Rules below for details.
+  /// [rules] High-level information about the rules. See `rules` Block below for details.
   /// [scope] Required.
   /// [snsTopicArn] ARN of the SNS topic that's used to provide notification of changes to the managed rule group.
   /// [vendorName] Required.
@@ -45,7 +42,6 @@ class GetManagedRuleGroupResult {
     required this.availableLabels,
     required this.capacity,
     required this.consumedLabels,
-    required this.id,
     required this.labelNamespace,
     required this.name,
     required this.region,
@@ -61,7 +57,6 @@ class GetManagedRuleGroupResult {
       'availableLabels': pulumi.Input.encodeList<GetManagedRuleGroupAvailableLabel, Map<String, dynamic>>(availableLabels, (value) => value.toMap()),
       'capacity': capacity,
       'consumedLabels': pulumi.Input.encodeList<GetManagedRuleGroupConsumedLabel, Map<String, dynamic>>(consumedLabels, (value) => value.toMap()),
-      'id': id,
       'labelNamespace': labelNamespace,
       'name': name,
       'region': region,
@@ -78,7 +73,6 @@ class GetManagedRuleGroupResult {
       availableLabels: pulumi.Input.decodeList<GetManagedRuleGroupAvailableLabel>(map['availableLabels']!, (value) => GetManagedRuleGroupAvailableLabel.fromMap((value as Map).cast<String, dynamic>())),
       capacity: map['capacity'] as int,
       consumedLabels: pulumi.Input.decodeList<GetManagedRuleGroupConsumedLabel>(map['consumedLabels']!, (value) => GetManagedRuleGroupConsumedLabel.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
       labelNamespace: map['labelNamespace'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
@@ -90,4 +84,3 @@ class GetManagedRuleGroupResult {
     );
   }
 }
-

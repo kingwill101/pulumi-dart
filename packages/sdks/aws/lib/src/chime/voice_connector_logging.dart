@@ -76,13 +76,32 @@ import 'voice_connector_logging_state.dart';
 /// 		_, err = chime.NewVoiceConnectorLogging(ctx, "default", &chime.VoiceConnectorLoggingArgs{
 /// 			EnableSipLogs:         pulumi.Bool(true),
 /// 			EnableMediaMetricLogs: pulumi.Bool(true),
-/// 			VoiceConnectorId:      _default.ID(),
+/// 			VoiceConnectorId:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_chime_voiceconnector" "default" {
+///   name               = "vc-name-test"
+///   require_encryption = true
+/// }
+/// resource "aws_chime_voiceconnectorlogging" "default" {
+///   enable_sip_logs          = true
+///   enable_media_metric_logs = true
+///   voice_connector_id       = aws_chime_voiceconnector.default.id
 /// }
 /// ```
 /// ```java
@@ -95,8 +114,8 @@ import 'voice_connector_logging_state.dart';
 /// import com.pulumi.aws.chime.VoiceConnectorArgs;
 /// import com.pulumi.aws.chime.VoiceConnectorLogging;
 /// import com.pulumi.aws.chime.VoiceConnectorLoggingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,7 +160,7 @@ import 'voice_connector_logging_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chime Voice Connector Logging using the `voice_connector_id`. For example:
+/// Using `pulumi import`, import Chime Voice Connector Logging using the `voiceConnectorId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chime/voiceConnectorLogging:VoiceConnectorLogging default abcdef1ghij2klmno3pqr4

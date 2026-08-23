@@ -43,6 +43,8 @@ class GetUserResult {
   final String userId;
   /// User's user name value.
   final String userName;
+  /// The current status of the user account.
+  final String userStatus;
   /// The user type.
   final String userType;
 
@@ -65,6 +67,7 @@ class GetUserResult {
   /// [title] The user's title.
   /// [userId] Required.
   /// [userName] User's user name value.
+  /// [userStatus] The current status of the user account.
   /// [userType] The user type.
   const GetUserResult({
     required this.addresses,
@@ -85,6 +88,7 @@ class GetUserResult {
     required this.title,
     required this.userId,
     required this.userName,
+    required this.userStatus,
     required this.userType,
   });
 
@@ -108,6 +112,7 @@ class GetUserResult {
       'title': title,
       'userId': userId,
       'userName': userName,
+      'userStatus': userStatus,
       'userType': userType,
     };
   }
@@ -132,8 +137,8 @@ class GetUserResult {
       title: map['title'] as String,
       userId: map['userId'] as String,
       userName: map['userName'] as String,
+      userStatus: map['userStatus'] as String,
       userType: map['userType'] as String,
     );
   }
 }
-

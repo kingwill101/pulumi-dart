@@ -5,7 +5,7 @@ import 'get_user_hierarchy_structure_hierarchy_structure.dart';
 
 /// Result data returned by getUserHierarchyStructure.
 class GetUserHierarchyStructureResult {
-  /// Block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
+  /// Block that defines the hierarchy structure's levels. The `hierarchyStructure` block is documented below.
   final List<GetUserHierarchyStructureHierarchyStructure> hierarchyStructures;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -13,7 +13,7 @@ class GetUserHierarchyStructureResult {
   final String region;
 
   /// Creates a new [GetUserHierarchyStructureResult].
-  /// [hierarchyStructures] Block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
+  /// [hierarchyStructures] Block that defines the hierarchy structure's levels. The `hierarchyStructure` block is documented below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Required.
   /// [region] Required.
@@ -42,4 +42,3 @@ class GetUserHierarchyStructureResult {
     );
   }
 }
-

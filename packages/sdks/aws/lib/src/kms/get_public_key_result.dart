@@ -7,7 +7,7 @@ class GetPublicKeyResult {
   final String arn;
   /// Type of the public key that was downloaded.
   final String customerMasterKeySpec;
-  /// Encryption algorithms that AWS KMS supports for this key. Only set when the `key_usage` of the public key is `ENCRYPT_DECRYPT`.
+  /// Encryption algorithms that AWS KMS supports for this key. Only set when the `keyUsage` of the public key is `ENCRYPT_DECRYPT`.
   final List<String> encryptionAlgorithms;
   final List<String>? grantTokens;
   /// The provider-assigned unique ID for this managed resource.
@@ -20,13 +20,13 @@ class GetPublicKeyResult {
   /// Exported public key. The value is Privacy Enhanced Mail (PEM) encoded.
   final String publicKeyPem;
   final String region;
-  /// Signing algorithms that AWS KMS supports for this key. Only set when the `key_usage` of the public key is `SIGN_VERIFY`.
+  /// Signing algorithms that AWS KMS supports for this key. Only set when the `keyUsage` of the public key is `SIGN_VERIFY`.
   final List<String> signingAlgorithms;
 
   /// Creates a new [GetPublicKeyResult].
   /// [arn] Key ARN of the asymmetric CMK from which the public key was downloaded.
   /// [customerMasterKeySpec] Type of the public key that was downloaded.
-  /// [encryptionAlgorithms] Encryption algorithms that AWS KMS supports for this key. Only set when the `key_usage` of the public key is `ENCRYPT_DECRYPT`.
+  /// [encryptionAlgorithms] Encryption algorithms that AWS KMS supports for this key. Only set when the `keyUsage` of the public key is `ENCRYPT_DECRYPT`.
   /// [grantTokens] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyId] Required.
@@ -34,7 +34,7 @@ class GetPublicKeyResult {
   /// [publicKey] Exported public key. The value is a DER-encoded X.509 public key, also known as SubjectPublicKeyInfo (SPKI), as defined in [RFC 5280](https://tools.ietf.org/html/rfc5280). The value is Base64-encoded.
   /// [publicKeyPem] Exported public key. The value is Privacy Enhanced Mail (PEM) encoded.
   /// [region] Required.
-  /// [signingAlgorithms] Signing algorithms that AWS KMS supports for this key. Only set when the `key_usage` of the public key is `SIGN_VERIFY`.
+  /// [signingAlgorithms] Signing algorithms that AWS KMS supports for this key. Only set when the `keyUsage` of the public key is `SIGN_VERIFY`.
   const GetPublicKeyResult({
     required this.arn,
     required this.customerMasterKeySpec,
@@ -81,4 +81,3 @@ class GetPublicKeyResult {
     );
   }
 }
-

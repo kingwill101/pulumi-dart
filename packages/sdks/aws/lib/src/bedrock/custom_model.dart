@@ -154,6 +154,38 @@ import 'custom_model_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_bedrockfoundation_getmodel" "example" {
+///   model_id = "amazon.titan-text-express-v1"
+/// }
+///
+/// resource "aws_bedrock_custommodel" "example" {
+///   custom_model_name     = "example-model"
+///   job_name              = "example-job-1"
+///   base_model_identifier = data.aws_bedrockfoundation_getmodel.example.model_arn
+///   role_arn              = exampleAwsIamRole.arn
+///   hyperparameters = {
+///     "epochCount"              = "1"
+///     "batchSize"               = "1"
+///     "learningRate"            = "0.005"
+///     "learningRateWarmupSteps" = "0"
+///   }
+///   output_data_config = {
+///     s3_uri ="s3://${output.id}/data/"
+///   }
+///   training_data_config = {
+///     s3_uri ="s3://${training.id}/data/train.jsonl"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -166,8 +198,8 @@ import 'custom_model_vpc_config.dart';
 /// import com.pulumi.aws.bedrock.CustomModelArgs;
 /// import com.pulumi.aws.bedrock.inputs.CustomModelOutputDataConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.CustomModelTrainingDataConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,10 +271,10 @@ import 'custom_model_vpc_config.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Bedrock custom model.
+/// - `jobArn` (String) Amazon Resource Name (ARN) of the Bedrock custom model job.
 ///
 ///
-/// Using `pulumi import`, import Bedrock custom model using the `job_arn`. For example:
+/// Using `pulumi import`, import Bedrock custom model using the `jobArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/customModel:CustomModel example arn:aws:bedrock:us-west-2:123456789012:model-customization-job/amazon.titan-text-express-v1:0:8k/1y5n57gh5y2e
@@ -272,9 +304,9 @@ class CustomModel extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The Amazon Resource Name (ARN) of an IAM role that Bedrock can assume to perform tasks on your behalf.
   late final pulumi.Output<String> roleArn;
-  /// A map of tags to assign to the customization job and custom model. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CustomModelTimeouts?> timeouts;
   /// Information about the training dataset.

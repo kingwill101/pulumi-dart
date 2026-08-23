@@ -76,6 +76,20 @@ import 'acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_memorydb_acl" "example" {
+///   name       = "my-acl"
+///   user_names = ["my-user-1", "my-user-2"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +98,8 @@ import 'acl_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.Acl;
 /// import com.pulumi.aws.memorydb.AclArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -131,15 +145,15 @@ class Acl extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The minimum engine version supported by the ACL.
   late final pulumi.Output<String> minimumEngineVersion;
-  /// Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Set of MemoryDB user names to be included in this ACL.
   late final pulumi.Output<List<String>?> userNames;

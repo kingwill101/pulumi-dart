@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'insight_filters_resource_aws_ec2_instance_launched_at_date_range.dart';
 
 class InsightFiltersResourceAwsEc2InstanceLaunchedAt {
-  /// A configuration block of the date range for the date filter. See date_range below for more details.
+  /// A configuration block of the date range for the date filter. See dateRange below for more details.
   final pulumi.Input<InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange>? dateRange;
-  /// An end date for the date filter. Required with `start` if `date_range` is not specified.
+  /// An end date for the date filter. Required with `start` if `dateRange` is not specified.
   final pulumi.Input<String>? end;
-  /// A start date for the date filter. Required with `end` if `date_range` is not specified.
+  /// A start date for the date filter. Required with `end` if `dateRange` is not specified.
   final pulumi.Input<String>? start;
 
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceLaunchedAt].
-  /// [dateRange] A configuration block of the date range for the date filter. See date_range below for more details.
-  /// [end] An end date for the date filter. Required with `start` if `date_range` is not specified.
-  /// [start] A start date for the date filter. Required with `end` if `date_range` is not specified.
+  /// [dateRange] A configuration block of the date range for the date filter. See dateRange below for more details.
+  /// [end] An end date for the date filter. Required with `start` if `dateRange` is not specified.
+  /// [start] A start date for the date filter. Required with `end` if `dateRange` is not specified.
   const InsightFiltersResourceAwsEc2InstanceLaunchedAt({
     this.dateRange,
     this.end,
@@ -37,4 +37,3 @@ class InsightFiltersResourceAwsEc2InstanceLaunchedAt {
     );
   }
 }
-

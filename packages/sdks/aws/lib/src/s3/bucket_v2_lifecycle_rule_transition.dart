@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2LifecycleRuleTransition {
-  /// Specifies the date after which you want the corresponding action to take effect.
+  /// Date after which you want the corresponding action to take effect.
   final pulumi.Input<String>? date;
-  /// Specifies the number of days after object creation when the specific rule action takes effect.
+  /// Number of days after object creation when the specific rule action takes effect.
   final pulumi.Input<int>? days;
-  /// Specifies the Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
+  /// Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
   final pulumi.Input<String> storageClass;
 
   /// Creates a new [BucketV2LifecycleRuleTransition].
-  /// [date] Specifies the date after which you want the corresponding action to take effect.
-  /// [days] Specifies the number of days after object creation when the specific rule action takes effect.
-  /// [storageClass] Specifies the Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
+  /// [date] Date after which you want the corresponding action to take effect.
+  /// [days] Number of days after object creation when the specific rule action takes effect.
+  /// [storageClass] Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
   const BucketV2LifecycleRuleTransition({
     this.date,
     this.days,
@@ -36,4 +36,3 @@ class BucketV2LifecycleRuleTransition {
     );
   }
 }
-

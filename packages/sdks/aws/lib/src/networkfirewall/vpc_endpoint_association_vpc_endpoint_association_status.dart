@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_association_vpc_endpoint_association_status_association_sync_state.dart';
 
 class VpcEndpointAssociationVpcEndpointAssociationStatus {
+  /// Set of subnets configured for use by the VPC Endpoint Association.
   final pulumi.Input<List<VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState>> associationSyncStates;
 
   /// Creates a new [VpcEndpointAssociationVpcEndpointAssociationStatus].
-  /// [associationSyncStates] Required.
+  /// [associationSyncStates] Set of subnets configured for use by the VPC Endpoint Association.
   const VpcEndpointAssociationVpcEndpointAssociationStatus({
     required this.associationSyncStates,
   });
@@ -24,4 +25,3 @@ class VpcEndpointAssociationVpcEndpointAssociationStatus {
     );
   }
 }
-

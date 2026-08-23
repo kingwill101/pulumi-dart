@@ -16,7 +16,7 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
   final pulumi.Input<List<String>>? destinations;
   /// Associates routing policies with specific edge location pairs. Available in policy version `2025.11` and later. Detailed below.
   final pulumi.Input<GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation>? edgeLocationAssociation;
-  /// String. When `action` is `share`, a `mode` value of `attachment-route` places the attachment and return routes in each of the `share_with` segments. When `action` is `send-via`, indicates the mode used for packets. Valid values: `attachment-route`, `single-hop`, `dual-hop`.
+  /// String. When `action` is `share`, a `mode` value of `attachment-route` places the attachment and return routes in each of the `shareWith` segments. When `action` is `send-via`, indicates the mode used for packets. Valid values: `attachment-route`, `single-hop`, `dual-hop`.
   final pulumi.Input<String>? mode;
   /// A list of routing policy names to apply to segment sharing. The routing policies control how routes are propagated between the shared segments. Only applicable when `action` is `share`. Available in policy version `2025.11` and later.
   final pulumi.Input<List<String>>? routingPolicyNames;
@@ -37,7 +37,7 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
   /// [destinationCidrBlocks] List of strings containing CIDRs. You can define the IPv4 and IPv6 CIDR notation for each AWS Region. For example, `10.1.0.0/16` or `2001:db8::/56`. This is an array of CIDR notation strings.
   /// [destinations] A list of strings. Valid values include `["blackhole"]` or a list of attachment ids.
   /// [edgeLocationAssociation] Associates routing policies with specific edge location pairs. Available in policy version `2025.11` and later. Detailed below.
-  /// [mode] String. When `action` is `share`, a `mode` value of `attachment-route` places the attachment and return routes in each of the `share_with` segments. When `action` is `send-via`, indicates the mode used for packets. Valid values: `attachment-route`, `single-hop`, `dual-hop`.
+  /// [mode] String. When `action` is `share`, a `mode` value of `attachment-route` places the attachment and return routes in each of the `shareWith` segments. When `action` is `send-via`, indicates the mode used for packets. Valid values: `attachment-route`, `single-hop`, `dual-hop`.
   /// [routingPolicyNames] A list of routing policy names to apply to segment sharing. The routing policies control how routes are propagated between the shared segments. Only applicable when `action` is `share`. Available in policy version `2025.11` and later.
   /// [segment] Name of the segment.
   /// [shareWithExcepts] A set subtraction of segments to not share with.
@@ -93,4 +93,3 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
     );
   }
 }
-

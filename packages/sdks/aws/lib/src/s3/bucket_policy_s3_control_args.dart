@@ -40,4 +40,3 @@ class BucketPolicyS3ControlArgs {
     );
   }
 }
-

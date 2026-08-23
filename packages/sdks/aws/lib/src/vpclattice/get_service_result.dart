@@ -17,6 +17,8 @@ class GetServiceResult {
   final List<GetServiceDnsEntry> dnsEntries;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  /// Amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it.
+  final int idleTimeoutSeconds;
   final String name;
   final String region;
   final String serviceIdentifier;
@@ -32,6 +34,7 @@ class GetServiceResult {
   /// [customDomainName] Custom domain name of the service.
   /// [dnsEntries] List of objects with DNS names.
   /// [id] The provider-assigned unique ID for this managed resource.
+  /// [idleTimeoutSeconds] Amount of time, in seconds, that a connection can remain idle (no data sent) before VPC Lattice closes it.
   /// [name] Required.
   /// [region] Required.
   /// [serviceIdentifier] Required.
@@ -44,6 +47,7 @@ class GetServiceResult {
     required this.customDomainName,
     required this.dnsEntries,
     required this.id,
+    required this.idleTimeoutSeconds,
     required this.name,
     required this.region,
     required this.serviceIdentifier,
@@ -59,6 +63,7 @@ class GetServiceResult {
       'customDomainName': customDomainName,
       'dnsEntries': pulumi.Input.encodeList<GetServiceDnsEntry, Map<String, dynamic>>(dnsEntries, (value) => value.toMap()),
       'id': id,
+      'idleTimeoutSeconds': idleTimeoutSeconds,
       'name': name,
       'region': region,
       'serviceIdentifier': serviceIdentifier,
@@ -75,6 +80,7 @@ class GetServiceResult {
       customDomainName: map['customDomainName'] as String,
       dnsEntries: pulumi.Input.decodeList<GetServiceDnsEntry>(map['dnsEntries']!, (value) => GetServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
+      idleTimeoutSeconds: map['idleTimeoutSeconds'] as int,
       name: map['name'] as String,
       region: map['region'] as String,
       serviceIdentifier: map['serviceIdentifier'] as String,
@@ -83,4 +89,3 @@ class GetServiceResult {
     );
   }
 }
-

@@ -78,7 +78,7 @@ import 'rule_group_namespace_state.dart';
 /// 		}
 /// 		_, err = amp.NewRuleGroupNamespace(ctx, "demo", &amp.RuleGroupNamespaceArgs{
 /// 			Name:        pulumi.String("rules"),
-/// 			WorkspaceId: demo.ID(),
+/// 			WorkspaceId: demo.ID().ToIDOutput().ToStringOutput(),
 /// 			Data: pulumi.String(`groups:
 ///   - name: test
 ///     rules:
@@ -93,6 +93,23 @@ import 'rule_group_namespace_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_workspace" "demo" {
+/// }
+/// resource "aws_amp_rulegroupnamespace" "demo" {
+///   name         = "rules"
+///   workspace_id = aws_amp_workspace.demo.id
+///   data         = "groups:\n  - name: test\n    rules:\n    - record: metric:recording_rule\n      expr: avg(rate(container_cpu_usage_seconds_total[5m]))\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +119,8 @@ import 'rule_group_namespace_state.dart';
 /// import com.pulumi.aws.amp.Workspace;
 /// import com.pulumi.aws.amp.RuleGroupNamespace;
 /// import com.pulumi.aws.amp.RuleGroupNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,6 +170,13 @@ import 'rule_group_namespace_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// - `arn` (String) Amazon Resource Name (ARN) of the Prometheus rule group namespace.
+///
+///
 /// Using `pulumi import`, import the prometheus rule group namespace using the arn. For example:
 ///
 /// ```sh
@@ -167,9 +191,9 @@ class RuleGroupNamespace extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the prometheus workspace the rule group namespace should be linked to.
   late final pulumi.Output<String> workspaceId;

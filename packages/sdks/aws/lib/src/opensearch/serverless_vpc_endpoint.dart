@@ -73,6 +73,21 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_opensearch_serverlessvpcendpoint" "example" {
+///   name       = "myendpoint"
+///   subnet_ids = [exampleAwsSubnet.id]
+///   vpc_id     = exampleAwsVpc.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +96,8 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.opensearch.ServerlessVpcEndpoint;
 /// import com.pulumi.aws.opensearch.ServerlessVpcEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -117,7 +132,19 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearchServerless Vpc Endpointa using the `id`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier for the VPC endpoint.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import OpenSearchServerless Vpc Endpoint using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/serverlessVpcEndpoint:ServerlessVpcEndpoint example vpce-8012925589

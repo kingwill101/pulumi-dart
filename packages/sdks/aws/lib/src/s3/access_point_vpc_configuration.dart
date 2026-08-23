@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPointVpcConfiguration {
-  /// This access point will only allow connections from the specified VPC ID.
+  /// VPC ID from which the access point allows connections.
   final pulumi.Input<String> vpcId;
 
   /// Creates a new [AccessPointVpcConfiguration].
-  /// [vpcId] This access point will only allow connections from the specified VPC ID.
+  /// [vpcId] VPC ID from which the access point allows connections.
   const AccessPointVpcConfiguration({
     required this.vpcId,
   });
@@ -24,4 +24,3 @@ class AccessPointVpcConfiguration {
     );
   }
 }
-

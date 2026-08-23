@@ -4,12 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_tcp_route_action_weighted_target.dart';
 
 class RouteSpecTcpRouteAction {
-  /// Targets that traffic is routed to when a request matches the route.
-  /// You can specify one or more targets and their relative weights with which to distribute traffic.
+  /// Targets that traffic is routed to when a request matches the route. You can specify one or more targets and their relative weights with which to distribute traffic. See `spec.tcp_route.action.weighted_target` Block for details.
   final pulumi.Input<List<RouteSpecTcpRouteActionWeightedTarget>> weightedTargets;
 
   /// Creates a new [RouteSpecTcpRouteAction].
-  /// [weightedTargets] Targets that traffic is routed to when a request matches the route.
+  /// [weightedTargets] Targets that traffic is routed to when a request matches the route. You can specify one or more targets and their relative weights with which to distribute traffic. See `spec.tcp_route.action.weighted_target` Block for details.
   const RouteSpecTcpRouteAction({
     required this.weightedTargets,
   });
@@ -26,4 +25,3 @@ class RouteSpecTcpRouteAction {
     );
   }
 }
-

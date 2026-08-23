@@ -3,23 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterScalingGroupConfiguration {
-  /// The number of vCPUs that you want to reserve for each node of this kdb cluster on the scaling group host.
+  /// Number of vCPUs that you want to reserve for each node of this kdb cluster on the scaling group host.
   final pulumi.Input<double>? cpu;
-  /// An optional hard limit on the amount of memory a kdb cluster can use.
+  /// Hard limit on the amount of memory a kdb cluster can use.
   final pulumi.Input<int>? memoryLimit;
-  /// A reservation of the minimum amount of memory that should be available on the scaling group for a kdb cluster to be successfully placed in a scaling group.
+  /// Reservation of the minimum amount of memory that should be available on the scaling group for a kdb cluster to be successfully placed in a scaling group.
   final pulumi.Input<int> memoryReservation;
-  /// The number of kdb cluster nodes.
+  /// Number of kdb cluster nodes.
   final pulumi.Input<int> nodeCount;
-  /// A unique identifier for the kdb scaling group.
+  /// Unique identifier for the kdb scaling group.
   final pulumi.Input<String> scalingGroupName;
 
   /// Creates a new [KxClusterScalingGroupConfiguration].
-  /// [cpu] The number of vCPUs that you want to reserve for each node of this kdb cluster on the scaling group host.
-  /// [memoryLimit] An optional hard limit on the amount of memory a kdb cluster can use.
-  /// [memoryReservation] A reservation of the minimum amount of memory that should be available on the scaling group for a kdb cluster to be successfully placed in a scaling group.
-  /// [nodeCount] The number of kdb cluster nodes.
-  /// [scalingGroupName] A unique identifier for the kdb scaling group.
+  /// [cpu] Number of vCPUs that you want to reserve for each node of this kdb cluster on the scaling group host.
+  /// [memoryLimit] Hard limit on the amount of memory a kdb cluster can use.
+  /// [memoryReservation] Reservation of the minimum amount of memory that should be available on the scaling group for a kdb cluster to be successfully placed in a scaling group.
+  /// [nodeCount] Number of kdb cluster nodes.
+  /// [scalingGroupName] Unique identifier for the kdb scaling group.
   const KxClusterScalingGroupConfiguration({
     this.cpu,
     this.memoryLimit,
@@ -48,4 +48,3 @@ class KxClusterScalingGroupConfiguration {
     );
   }
 }
-

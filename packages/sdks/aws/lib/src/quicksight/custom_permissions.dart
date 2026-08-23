@@ -7,14 +7,135 @@ import 'custom_permissions_state.dart';
 ///
 /// ## Example Usage
 ///
-/// resource "aws.quicksight.CustomPermissions" "example" {
-/// custom_permissions_name = "example-permissions"
 ///
-/// capabilities {
-/// print_reports    = "DENY"
-/// share_dashboards = "DENY"
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.quicksight.CustomPermissions("example", {
+///     customPermissionsName: "example-permissions",
+///     capabilities: {
+///         printReports: "DENY",
+///         shareDashboards: "DENY",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.quicksight.CustomPermissions("example",
+///     custom_permissions_name="example-permissions",
+///     capabilities={
+///         "print_reports": "DENY",
+///         "share_dashboards": "DENY",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Quicksight.CustomPermissions("example", new()
+///     {
+///         CustomPermissionsName = "example-permissions",
+///         Capabilities = new Aws.Quicksight.Inputs.CustomPermissionsCapabilitiesArgs
+///         {
+///             PrintReports = "DENY",
+///             ShareDashboards = "DENY",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/quicksight"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := quicksight.NewCustomPermissions(ctx, "example", &quicksight.CustomPermissionsArgs{
+/// 			CustomPermissionsName: pulumi.String("example-permissions"),
+/// 			Capabilities: &quicksight.CustomPermissionsCapabilitiesArgs{
+/// 				PrintReports:    pulumi.String("DENY"),
+/// 				ShareDashboards: pulumi.String("DENY"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
 /// }
+///
+/// resource "aws_quicksight_custompermissions" "example" {
+///   custom_permissions_name = "example-permissions"
+///   capabilities = {
+///     print_reports    = "DENY"
+///     share_dashboards = "DENY"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.quicksight.CustomPermissions;
+/// import com.pulumi.aws.quicksight.CustomPermissionsArgs;
+/// import com.pulumi.aws.quicksight.inputs.CustomPermissionsCapabilitiesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new CustomPermissions("example", CustomPermissionsArgs.builder()
+///             .customPermissionsName("example-permissions")
+///             .capabilities(CustomPermissionsCapabilitiesArgs.builder()
+///                 .printReports("DENY")
+///                 .shareDashboards("DENY")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:quicksight:CustomPermissions
+///     properties:
+///       customPermissionsName: example-permissions
+///       capabilities:
+///         printReports: DENY
+///         shareDashboards: DENY
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -36,9 +157,9 @@ class CustomPermissions extends pulumi.CustomResource {
   late final pulumi.Output<String> customPermissionsName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CustomPermissions].

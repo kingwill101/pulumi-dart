@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainClusterConfigZoneAwarenessConfig {
-  /// Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
+  /// Number of Availability Zones for the domain to use with `zoneAwarenessEnabled`. Defaults to `2`. Valid values: `2` or `3`.
   final pulumi.Input<int>? availabilityZoneCount;
 
   /// Creates a new [DomainClusterConfigZoneAwarenessConfig].
-  /// [availabilityZoneCount] Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
+  /// [availabilityZoneCount] Number of Availability Zones for the domain to use with `zoneAwarenessEnabled`. Defaults to `2`. Valid values: `2` or `3`.
   const DomainClusterConfigZoneAwarenessConfig({
     this.availabilityZoneCount,
   });
@@ -24,4 +24,3 @@ class DomainClusterConfigZoneAwarenessConfig {
     );
   }
 }
-

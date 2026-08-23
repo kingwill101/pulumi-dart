@@ -166,6 +166,42 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_dataqualityjobdefinition" "test" {
+///   name = "my-data-quality-job-definition"
+///   data_quality_app_specification = {
+///     image_uri = monitor.registryPath
+///   }
+///   data_quality_job_input = {
+///     endpoint_input = {
+///       endpoint_name = myEndpoint.name
+///     }
+///   }
+///   data_quality_job_output_config = {
+///     monitoring_outputs = {
+///       s3_output = {
+///         s3_uri ="https://${myBucket.bucketRegionalDomainName}/output"
+///       }
+///     }
+///   }
+///   job_resources = {
+///     cluster_config = {
+///       instance_count    = 1
+///       instance_type     = "ml.t3.medium"
+///       volume_size_in_gb = 20
+///     }
+///   }
+///   role_arn = myRole.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +218,8 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// import com.pulumi.aws.sagemaker.inputs.DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3OutputArgs;
 /// import com.pulumi.aws.sagemaker.inputs.DataQualityJobDefinitionJobResourcesArgs;
 /// import com.pulumi.aws.sagemaker.inputs.DataQualityJobDefinitionJobResourcesClusterConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,9 +315,9 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// A time limit for how long the monitoring job is allowed to run before stopping. Fields are documented below.
   late final pulumi.Output<DataQualityJobDefinitionStoppingCondition> stoppingCondition;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [DataQualityJobDefinition].

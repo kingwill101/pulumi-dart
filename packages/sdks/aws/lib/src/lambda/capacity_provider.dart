@@ -80,7 +80,7 @@ import 'capacity_provider_vpc_config.dart';
 /// _, err := lambda.NewCapacityProvider(ctx, "example", &lambda.CapacityProviderArgs{
 /// Name: pulumi.String("example"),
 /// VpcConfig: &lambda.CapacityProviderVpcConfigArgs{
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
@@ -96,6 +96,26 @@ import 'capacity_provider_vpc_config.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_capacityprovider" "example" {
+///   name = "example"
+///   vpc_config = {
+///     subnet_ids         = exampleAwsSubnet[*].id
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///   }
+///   permissions_config = {
+///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,8 @@ import 'capacity_provider_vpc_config.dart';
 /// import com.pulumi.aws.lambda.CapacityProviderArgs;
 /// import com.pulumi.aws.lambda.inputs.CapacityProviderVpcConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.CapacityProviderPermissionsConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,7 +211,7 @@ import 'capacity_provider_vpc_config.dart';
 ///         "scaling_mode": "Manual",
 ///         "scaling_policies": [{
 ///             "predefined_metric_type": "LambdaCapacityProviderAverageCPUUtilization",
-///             "target_value": 50,
+///             "target_value": float(50),
 ///         }],
 ///     }])
 /// ```
@@ -264,7 +284,7 @@ import 'capacity_provider_vpc_config.dart';
 /// _, err := lambda.NewCapacityProvider(ctx, "example", &lambda.CapacityProviderArgs{
 /// Name: pulumi.String("example"),
 /// VpcConfig: &lambda.CapacityProviderVpcConfigArgs{
-/// SubnetIds: []pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
 /// SecurityGroupIds: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
@@ -302,6 +322,37 @@ import 'capacity_provider_vpc_config.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_capacityprovider" "example" {
+///   name = "example"
+///   vpc_config = {
+///     subnet_ids         = exampleAwsSubnet[*].id
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///   }
+///   permissions_config = {
+///     capacity_provider_operator_role_arn = exampleAwsIamRole.arn
+///   }
+///   instance_requirements {
+///     architectures          = ["x86_64"]
+///     allowed_instance_types = ["c6i.2xlarge", "c7i.2xlarge"]
+///   }
+///   capacity_provider_scaling_configs {
+///     scaling_mode = "Manual"
+///     scaling_policies {
+///       predefined_metric_type = "LambdaCapacityProviderAverageCPUUtilization"
+///       target_value           = 50
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -314,8 +365,9 @@ import 'capacity_provider_vpc_config.dart';
 /// import com.pulumi.aws.lambda.inputs.CapacityProviderPermissionsConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.CapacityProviderInstanceRequirementArgs;
 /// import com.pulumi.aws.lambda.inputs.CapacityProviderCapacityProviderScalingConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.lambda.inputs.CapacityProviderCapacityProviderScalingConfigScalingPolicyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -358,6 +410,18 @@ import 'capacity_provider_vpc_config.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the Lambda capacity provider.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Lambda Capacity Provider using the `name`. For example:
 ///
 /// ```sh
@@ -370,6 +434,7 @@ class CapacityProvider extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> capacityProviderScalingConfigs;
   /// Configuration block for instance requirements settings. See Instance Requirements below.
   late final pulumi.Output<List<Map<String, dynamic>>> instanceRequirements;
+  /// ARN of the AWS Key Management Service key used to encrypt the Capacity Provider.
   late final pulumi.Output<String?> kmsKeyArn;
   /// The name of the Capacity Provider.
   late final pulumi.Output<String> name;
@@ -379,9 +444,9 @@ class CapacityProvider extends pulumi.CustomResource {
   late final pulumi.Output<CapacityProviderPermissionsConfig> permissionsConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CapacityProviderTimeouts?> timeouts;
   /// Configuration block for VPC settings. See VPC Config below.

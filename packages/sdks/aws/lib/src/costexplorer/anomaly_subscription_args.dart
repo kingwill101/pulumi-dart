@@ -19,7 +19,7 @@ class AnomalySubscriptionArgs {
   final pulumi.Input<String>? name;
   /// A subscriber configuration. Multiple subscribers can be defined.
   final pulumi.Input<List<AnomalySubscriptionSubscriber>> subscribers;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
   final pulumi.Input<AnomalySubscriptionThresholdExpression>? thresholdExpression;
@@ -30,7 +30,7 @@ class AnomalySubscriptionArgs {
   /// [monitorArnLists] A list of cost anomaly monitors.
   /// [name] The name for the subscription.
   /// [subscribers] A subscriber configuration. Multiple subscribers can be defined.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [thresholdExpression] An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
   const AnomalySubscriptionArgs({
     this.accountId,
@@ -66,4 +66,3 @@ class AnomalySubscriptionArgs {
     );
   }
 }
-

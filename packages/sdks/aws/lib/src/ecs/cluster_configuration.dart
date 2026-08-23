@@ -5,14 +5,14 @@ import 'cluster_configuration_execute_command_configuration.dart';
 import 'cluster_configuration_managed_storage_configuration.dart';
 
 class ClusterConfiguration {
-  /// Details of the execute command configuration. See `execute_command_configuration` Block for details.
+  /// Details of the execute command configuration. See `executeCommandConfiguration` Block for details.
   final pulumi.Input<ClusterConfigurationExecuteCommandConfiguration>? executeCommandConfiguration;
-  /// Details of the managed storage configuration. See `managed_storage_configuration` Block for details.
+  /// Details of the managed storage configuration. See `managedStorageConfiguration` Block for details.
   final pulumi.Input<ClusterConfigurationManagedStorageConfiguration>? managedStorageConfiguration;
 
   /// Creates a new [ClusterConfiguration].
-  /// [executeCommandConfiguration] Details of the execute command configuration. See `execute_command_configuration` Block for details.
-  /// [managedStorageConfiguration] Details of the managed storage configuration. See `managed_storage_configuration` Block for details.
+  /// [executeCommandConfiguration] Details of the execute command configuration. See `executeCommandConfiguration` Block for details.
+  /// [managedStorageConfiguration] Details of the managed storage configuration. See `managedStorageConfiguration` Block for details.
   const ClusterConfiguration({
     this.executeCommandConfiguration,
     this.managedStorageConfiguration,
@@ -32,4 +32,3 @@ class ClusterConfiguration {
     );
   }
 }
-

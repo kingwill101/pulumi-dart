@@ -61,6 +61,20 @@ import 'role_custom_permission_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_quicksight_rolecustompermission" "example" {
+///   role                    = "READER"
+///   custom_permissions_name = exampleAwsQuicksightCustomPermissions.customPermissionsName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'role_custom_permission_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.quicksight.RoleCustomPermission;
 /// import com.pulumi.aws.quicksight.RoleCustomPermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +116,7 @@ import 'role_custom_permission_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import QuickSight role custom permissions using a comma-delimited string combining the `aws_account_id`, `namespace`, and `role`. For example:
+/// Using `pulumi import`, import QuickSight role custom permissions using a comma-delimited string combining the `awsAccountId`, `namespace`, and `role`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:quicksight/roleCustomPermission:RoleCustomPermission example 012345678901,default,READER

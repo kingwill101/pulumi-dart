@@ -25,23 +25,23 @@ class AgentAgentArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> foundationModel;
-  /// Details about the guardrail associated with the agent. See `guardrail_configuration` Block for details.
+  /// Details about the guardrail associated with the agent. See `guardrailConfiguration` Block for details.
   final pulumi.Input<List<AgentAgentGuardrailConfiguration>>? guardrailConfigurations;
   /// Number of seconds for which Amazon Bedrock keeps information about a user's conversation with the agent. A user interaction remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Bedrock deletes any data provided before the timeout.
   final pulumi.Input<int>? idleSessionTtlInSeconds;
-  /// Instructions that tell the agent what it should do and how it should interact with users. If `prepare_agent` is `true` this argument is required. The valid range is 40 - 20000 characters.
+  /// Instructions that tell the agent what it should do and how it should interact with users. If `prepareAgent` is `true` this argument is required. The valid range is 40 - 20000 characters.
   final pulumi.Input<String>? instruction;
   /// Configurations for the agent's ability to retain the conversational context.
   final pulumi.Input<List<AgentAgentMemoryConfiguration>>? memoryConfigurations;
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
   final pulumi.Input<bool>? prepareAgent;
-  /// Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `prompt_override_configuration` Block for details.
+  /// Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `promptOverrideConfiguration` Block for details.
   final pulumi.Input<List<AgentAgentPromptOverrideConfiguration>>? promptOverrideConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   /// Whether the in-use check is skipped when deleting the agent.
   final pulumi.Input<bool>? skipResourceInUseCheck;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<AgentAgentTimeouts>? timeouts;
 
@@ -52,15 +52,15 @@ class AgentAgentArgs {
   /// [customerEncryptionKeyArn] ARN of the AWS KMS key that encrypts the agent.
   /// [description] Description of the agent.
   /// [foundationModel] Foundation model used for orchestration by the agent.
-  /// [guardrailConfigurations] Details about the guardrail associated with the agent. See `guardrail_configuration` Block for details.
+  /// [guardrailConfigurations] Details about the guardrail associated with the agent. See `guardrailConfiguration` Block for details.
   /// [idleSessionTtlInSeconds] Number of seconds for which Amazon Bedrock keeps information about a user's conversation with the agent. A user interaction remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Bedrock deletes any data provided before the timeout.
-  /// [instruction] Instructions that tell the agent what it should do and how it should interact with users. If `prepare_agent` is `true` this argument is required. The valid range is 40 - 20000 characters.
+  /// [instruction] Instructions that tell the agent what it should do and how it should interact with users. If `prepareAgent` is `true` this argument is required. The valid range is 40 - 20000 characters.
   /// [memoryConfigurations] Configurations for the agent's ability to retain the conversational context.
   /// [prepareAgent] Whether to prepare the agent after creation or modification. Defaults to `true`.
-  /// [promptOverrideConfigurations] Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `prompt_override_configuration` Block for details.
+  /// [promptOverrideConfigurations] Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `promptOverrideConfiguration` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipResourceInUseCheck] Whether the in-use check is skipped when deleting the agent.
-  /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const AgentAgentArgs({
     this.agentCollaboration,
@@ -123,4 +123,3 @@ class AgentAgentArgs {
     );
   }
 }
-

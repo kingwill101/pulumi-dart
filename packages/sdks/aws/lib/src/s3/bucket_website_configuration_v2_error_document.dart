@@ -24,4 +24,3 @@ class BucketWebsiteConfigurationV2ErrorDocument {
     );
   }
 }
-

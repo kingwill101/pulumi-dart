@@ -70,6 +70,20 @@ import 'get_secrets_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getrandompassword" "test" {
+///   password_length = 50
+///   exclude_numbers = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +92,8 @@ import 'get_secrets_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetRandomPasswordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,6 +193,19 @@ Future<GetRandomPasswordResult> getRandomPassword(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecret" "by-arn" {
+///   arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +214,8 @@ Future<GetRandomPasswordResult> getRandomPassword(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,6 +296,19 @@ Future<GetRandomPasswordResult> getRandomPassword(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecret" "by-name" {
+///   name = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -277,8 +317,8 @@ Future<GetRandomPasswordResult> getRandomPassword(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -376,6 +416,19 @@ Future<GetSecretResult> getSecret(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecretrotation" "example" {
+///   secret_id = exampleAwsSecretsmanagerSecret.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -384,8 +437,8 @@ Future<GetSecretResult> getSecret(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretRotationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -485,6 +538,19 @@ Future<GetSecretRotationResult> getSecretRotation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecretversion" "secret-version" {
+///   secret_id = example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -493,8 +559,8 @@ Future<GetSecretRotationResult> getSecretRotation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -579,6 +645,20 @@ Future<GetSecretRotationResult> getSecretRotation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecretversion" "by-version-stage" {
+///   secret_id     = example.id
+///   version_stage = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -587,8 +667,8 @@ Future<GetSecretRotationResult> getSecretRotation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -672,6 +752,19 @@ Future<GetSecretRotationResult> getSecretRotation(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// output "example" {
+///   value = jsondecode(exampleAwsSecretsmanagerSecretVersion.secretString)["key1"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -680,8 +773,8 @@ Future<GetSecretRotationResult> getSecretRotation(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -781,6 +874,19 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecretversions" "secret-versions" {
+///   secret_id = example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -789,8 +895,8 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -875,6 +981,20 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecretversion" "by-version-stage" {
+///   secret_id     = example.id
+///   version_stage = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -883,8 +1003,8 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -968,6 +1088,19 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// output "example" {
+///   value = jsondecode(exampleAwsSecretsmanagerSecretVersion.secretString)["key1"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -976,8 +1109,8 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JsondecodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1096,6 +1229,22 @@ Future<GetSecretVersionsResult> getSecretVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_secretsmanager_getsecrets" "example" {
+///   filters {
+///     name   = "name"
+///     values = ["example"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1104,8 +1253,9 @@ Future<GetSecretVersionsResult> getSecretVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.secretsmanager.SecretsmanagerFunctions;
 /// import com.pulumi.aws.secretsmanager.inputs.GetSecretsArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.secretsmanager.inputs.GetSecretsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

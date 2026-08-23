@@ -13,9 +13,9 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///
 /// For information about CloudFront multi-tenant distributions, see the [Amazon CloudFront Developer Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/).
 ///
-/// &gt; **NOTE:** CloudFront distributions take about 15 minutes to reach a deployed state after creation or modification. During this time, deletes to resources will be blocked. If you need to delete a distribution that is enabled and you do not want to wait, you need to use the `retain_on_delete` flag.
+/// ## Example Usage
 ///
-/// ## Multi-tenant Distribution Limitations
+/// ### Multi-tenant Distribution Limitations
 ///
 /// Multi-tenant distributions have the following limitations compared to standard CloudFront distributions:
 ///
@@ -29,20 +29,18 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///
 /// The following attributes that are available in standard CloudFront distributions are **not supported** for multi-tenant distributions:
 ///
-/// - `active_trusted_signers` - Use `active_trusted_key_groups` instead
-/// - `alias_icp_recordals` - Managed by connection groups
+/// - `activeTrustedSigners` - Use `activeTrustedKeyGroups` instead
+/// - `aliasIcpRecordals` - Managed by connection groups
 /// - `aliases` - Managed by connection groups
-/// - `anycast_ip_list_id` - Use connection groups instead
-/// - `continuous_deployment_policy_id`
-/// - `forwarded_values` in cache behaviors - Deprecated, use cache policies instead
-/// - `is_ipv6_enabled` - Managed by connection groups
-/// - `price_class` - Managed by connection groups
-/// - `smooth_streaming` in cache behaviors
+/// - `anycastIpListId` - Use connection groups instead
+/// - `continuousDeploymentPolicyId`
+/// - `forwardedValues` in cache behaviors - Deprecated, use cache policies instead
+/// - `isIpv6Enabled` - Managed by connection groups
+/// - `priceClass` - Managed by connection groups
+/// - `smoothStreaming` in cache behaviors
 /// - `staging` mode
-/// - `trusted_signers` in cache behaviors - Use `trusted_key_groups` instead
-/// - Cache behavior TTL settings (`default_ttl`, `max_ttl`, `min_ttl`) - Use cache policies instead
-///
-/// ## Example Usage
+/// - `trustedSigners` in cache behaviors - Use `trustedKeyGroups` instead
+/// - Cache behavior TTL settings (`defaultTtl`, `maxTtl`, `minTtl`) - Use cache policies instead
 ///
 ///
 /// ```typescript
@@ -355,6 +353,62 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudfront_multitenantdistribution" "example" {
+///   comment = "Multi-tenant distribution for my application"
+///   enabled = true
+///   origins {
+///     domain_name = "example.com"
+///     id          = "example-origin"
+///     custom_origin_configs {
+///       http_port              = 80
+///       https_port             = 443
+///       origin_protocol_policy = "https-only"
+///       origin_ssl_protocols   = ["TLSv1.2"]
+///     }
+///   }
+///   default_cache_behavior = {
+///     target_origin_id       = "example-origin"
+///     viewer_protocol_policy = "redirect-to-https"
+///     cache_policy_id        = exampleAwsCloudfrontCachePolicy.id
+///     allowed_methods = {
+///       items          = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+///       cached_methods = ["GET", "HEAD"]
+///     }
+///   }
+///   restrictions = {
+///     geo_restriction = {
+///       restriction_type = "none"
+///     }
+///   }
+///   viewer_certificate = {
+///     acm_certificate_arn = exampleAwsAcmCertificate.arn
+///     ssl_support_method  = "sni-only"
+///   }
+///   tenant_config = {
+///     parameter_definitions = [{
+///       "name" = "origin_domain"
+///       "definitions" = [{
+///         "stringSchemas" = [{
+///           "required" = true
+///           "comment"  = "Origin domain parameter for tenants"
+///         }]
+///       }]
+///     }]
+///   }
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -364,14 +418,18 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// import com.pulumi.aws.cloudfront.MultitenantDistribution;
 /// import com.pulumi.aws.cloudfront.MultitenantDistributionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionOriginArgs;
+/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionOriginCustomOriginConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionDefaultCacheBehaviorArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionDefaultCacheBehaviorAllowedMethodsArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionRestrictionsArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionRestrictionsGeoRestrictionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionViewerCertificateArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionTenantConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionTenantConfigParameterDefinitionArgs;
+/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionTenantConfigParameterDefinitionDefinitionArgs;
+/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchemaArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,7 +586,7 @@ class MultitenantDistribution extends pulumi.CustomResource {
   late final pulumi.Output<int> inProgressInvalidationBatches;
   /// Date and time the distribution was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-  /// One or more origin_group for this distribution (multiples allowed). See Origin Group below.
+  /// One or more originGroup for this distribution (multiples allowed). See Origin Group below.
   late final pulumi.Output<List<Map<String, dynamic>>?> originGroups;
   /// One or more origins for this distribution (multiples allowed). See Origin below.
   late final pulumi.Output<List<Map<String, dynamic>>?> origins;
@@ -536,9 +594,9 @@ class MultitenantDistribution extends pulumi.CustomResource {
   late final pulumi.Output<MultitenantDistributionRestrictions?> restrictions;
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
   late final pulumi.Output<String> status;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   late final pulumi.Output<MultitenantDistributionTenantConfig> tenantConfig;

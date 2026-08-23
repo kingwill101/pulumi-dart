@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleActionForwardTargetGroup {
   /// ARN of the Listener Rule.
-  /// Either `arn` or `listener_arn` must be set.
+  /// Either `arn` or `listenerArn` must be set.
   final pulumi.Input<String> arn;
   /// Weight of the target group.
   final pulumi.Input<int> weight;
@@ -31,4 +31,3 @@ class GetListenerRuleActionForwardTargetGroup {
     );
   }
 }
-

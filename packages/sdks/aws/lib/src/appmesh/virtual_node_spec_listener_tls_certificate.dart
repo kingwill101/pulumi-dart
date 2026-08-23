@@ -6,17 +6,17 @@ import 'virtual_node_spec_listener_tls_certificate_file.dart';
 import 'virtual_node_spec_listener_tls_certificate_sds.dart';
 
 class VirtualNodeSpecListenerTlsCertificate {
-  /// An AWS Certificate Manager (ACM) certificate.
+  /// AWS Certificate Manager (ACM) certificate. See `spec.listener.tls.certificate.acm` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTlsCertificateAcm>? acm;
-  /// Local file certificate.
+  /// File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTlsCertificateFile>? file;
-  /// A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
+  /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate. See `spec.listener.tls.validation.trust.sds` Block for details.
   final pulumi.Input<VirtualNodeSpecListenerTlsCertificateSds>? sds;
 
   /// Creates a new [VirtualNodeSpecListenerTlsCertificate].
-  /// [acm] An AWS Certificate Manager (ACM) certificate.
-  /// [file] Local file certificate.
-  /// [sds] A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
+  /// [acm] AWS Certificate Manager (ACM) certificate. See `spec.listener.tls.certificate.acm` Block for details.
+  /// [file] File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
+  /// [sds] TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate. See `spec.listener.tls.validation.trust.sds` Block for details.
   const VirtualNodeSpecListenerTlsCertificate({
     this.acm,
     this.file,
@@ -39,4 +39,3 @@ class VirtualNodeSpecListenerTlsCertificate {
     );
   }
 }
-

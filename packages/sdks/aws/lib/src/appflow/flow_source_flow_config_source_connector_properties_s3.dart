@@ -6,13 +6,13 @@ import 'flow_source_flow_config_source_connector_properties_s3_s3_input_format_c
 class FlowSourceFlowConfigSourceConnectorPropertiesS3 {
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String> bucketPrefix;
-  /// When you use Amazon S3 as the source, the configuration format that you provide the flow input data. See S3 Input Format Config for details.
+  /// When you use Amazon S3 as the source, configuration format that you provide for the flow input data. See the `source_flow_config.source_connector_properties.s3.s3_input_format_config` Block for details.
   final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig>? s3InputFormatConfig;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesS3].
   /// [bucketName] Required.
   /// [bucketPrefix] Required.
-  /// [s3InputFormatConfig] When you use Amazon S3 as the source, the configuration format that you provide the flow input data. See S3 Input Format Config for details.
+  /// [s3InputFormatConfig] When you use Amazon S3 as the source, configuration format that you provide for the flow input data. See the `source_flow_config.source_connector_properties.s3.s3_input_format_config` Block for details.
   const FlowSourceFlowConfigSourceConnectorPropertiesS3({
     required this.bucketName,
     required this.bucketPrefix,
@@ -35,4 +35,3 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3 {
     );
   }
 }
-

@@ -14,11 +14,11 @@ class EndpointConfigurationState {
   final pulumi.Input<EndpointConfigurationAsyncInferenceConfig>? asyncInferenceConfig;
   /// Parameters to capture input/output of SageMaker AI models endpoints. Fields are documented below.
   final pulumi.Input<EndpointConfigurationDataCaptureConfig>? dataCaptureConfig;
-  /// ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `model_name` is not specified in `production_variants` to support Inference Components.
+  /// ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `modelName` is not specified in `productionVariants` to support Inference Components.
   final pulumi.Input<String>? executionRoleArn;
   /// ARN of a AWS KMS key that SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
   final pulumi.Input<String>? kmsKeyArn;
-  /// Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`. If `namePrefix` is specified, `name` is populated with the full name.
   final pulumi.Input<String>? name;
   /// Unique endpoint configuration name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
@@ -26,26 +26,26 @@ class EndpointConfigurationState {
   final pulumi.Input<List<EndpointConfigurationProductionVariant>>? productionVariants;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `production_variants`. If you use this field, you can only specify one variant for `production_variants` and one variant for `shadow_production_variants`. See below (same arguments as `production_variants`).
+  /// Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `productionVariants`. If you use this field, you can only specify one variant for `productionVariants` and one variant for `shadowProductionVariants`. See below (same arguments as `productionVariants`).
   final pulumi.Input<List<EndpointConfigurationShadowProductionVariant>>? shadowProductionVariants;
-  /// Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
   /// Creates a new [EndpointConfigurationState].
   /// [arn] ARN assigned by AWS to this endpoint configuration.
   /// [asyncInferenceConfig] How an endpoint performs asynchronous inference.
   /// [dataCaptureConfig] Parameters to capture input/output of SageMaker AI models endpoints. Fields are documented below.
-  /// [executionRoleArn] ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `model_name` is not specified in `production_variants` to support Inference Components.
+  /// [executionRoleArn] ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `modelName` is not specified in `productionVariants` to support Inference Components.
   /// [kmsKeyArn] ARN of a AWS KMS key that SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
-  /// [name] Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`. If `namePrefix` is specified, `name` is populated with the full name.
   /// [namePrefix] Unique endpoint configuration name beginning with the specified prefix. Conflicts with `name`.
   /// [productionVariants] List each model that you want to host at this endpoint. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [shadowProductionVariants] Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `production_variants`. If you use this field, you can only specify one variant for `production_variants` and one variant for `shadow_production_variants`. See below (same arguments as `production_variants`).
-  /// [tags] Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [shadowProductionVariants] Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `productionVariants`. If you use this field, you can only specify one variant for `productionVariants` and one variant for `shadowProductionVariants`. See below (same arguments as `productionVariants`).
+  /// [tags] Mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const EndpointConfigurationState({
     this.arn,
     this.asyncInferenceConfig,
@@ -95,4 +95,3 @@ class EndpointConfigurationState {
     );
   }
 }
-

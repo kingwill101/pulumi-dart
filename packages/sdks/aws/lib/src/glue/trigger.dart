@@ -113,6 +113,29 @@ import 'trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_trigger" "example" {
+///   name = "example"
+///   type = "CONDITIONAL"
+///   actions {
+///     job_name = example1.name
+///   }
+///   predicate = {
+///     conditions = [{
+///       "jobName" = example2.name
+///       "state"   = "SUCCEEDED"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +146,9 @@ import 'trigger_state.dart';
 /// import com.pulumi.aws.glue.TriggerArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerActionArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerPredicateArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.glue.inputs.TriggerPredicateConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,6 +268,23 @@ import 'trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_trigger" "example" {
+///   name = "example"
+///   type = "ON_DEMAND"
+///   actions {
+///     job_name = exampleAwsGlueJob.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -253,8 +294,8 @@ import 'trigger_state.dart';
 /// import com.pulumi.aws.glue.Trigger;
 /// import com.pulumi.aws.glue.TriggerArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -368,6 +409,24 @@ import 'trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_trigger" "example" {
+///   name     = "example"
+///   schedule = "cron(15 12 * * ? *)"
+///   type     = "SCHEDULED"
+///   actions {
+///     job_name = exampleAwsGlueJob.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -377,8 +436,8 @@ import 'trigger_state.dart';
 /// import com.pulumi.aws.glue.Trigger;
 /// import com.pulumi.aws.glue.TriggerArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -523,6 +582,29 @@ import 'trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_trigger" "example" {
+///   name = "example"
+///   type = "CONDITIONAL"
+///   actions {
+///     crawler_name = example1.name
+///   }
+///   predicate = {
+///     conditions = [{
+///       "jobName" = example2.name
+///       "state"   = "SUCCEEDED"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -533,8 +615,9 @@ import 'trigger_state.dart';
 /// import com.pulumi.aws.glue.TriggerArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerActionArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerPredicateArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.glue.inputs.TriggerPredicateConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -687,6 +770,29 @@ import 'trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_glue_trigger" "example" {
+///   name = "example"
+///   type = "CONDITIONAL"
+///   actions {
+///     job_name = example1.name
+///   }
+///   predicate = {
+///     conditions = [{
+///       "crawlerName" = example2.name
+///       "crawlState"  = "SUCCEEDED"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -697,8 +803,9 @@ import 'trigger_state.dart';
 /// import com.pulumi.aws.glue.TriggerArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerActionArgs;
 /// import com.pulumi.aws.glue.inputs.TriggerPredicateArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.glue.inputs.TriggerPredicateConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -773,9 +880,9 @@ class Trigger extends pulumi.CustomResource {
   late final pulumi.Output<bool?> startOnCreation;
   /// The current state of the trigger.
   late final pulumi.Output<String> state;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The type of trigger. Valid values are `CONDITIONAL`, `EVENT`, `ON_DEMAND`, and `SCHEDULED`.
   late final pulumi.Output<String> type;

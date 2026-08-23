@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_group_rule_variables_port_set_port_set.dart';
 
 class RuleGroupRuleGroupRuleVariablesPortSet {
-  /// An unique alphanumeric string to identify the `port_set`.
+  /// An unique alphanumeric string to identify the `portSet`.
   final pulumi.Input<String> key;
   /// A configuration block that defines a set of port ranges. See Port Set below for details.
   final pulumi.Input<RuleGroupRuleGroupRuleVariablesPortSetPortSet> portSet;
 
   /// Creates a new [RuleGroupRuleGroupRuleVariablesPortSet].
-  /// [key] An unique alphanumeric string to identify the `port_set`.
+  /// [key] An unique alphanumeric string to identify the `portSet`.
   /// [portSet] A configuration block that defines a set of port ranges. See Port Set below for details.
   const RuleGroupRuleGroupRuleVariablesPortSet({
     required this.key,
@@ -31,4 +31,3 @@ class RuleGroupRuleGroupRuleVariablesPortSet {
     );
   }
 }
-

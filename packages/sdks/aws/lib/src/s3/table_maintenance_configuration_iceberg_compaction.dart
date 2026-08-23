@@ -4,16 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_maintenance_configuration_iceberg_compaction_settings.dart';
 
 class TableMaintenanceConfigurationIcebergCompaction {
-  /// Settings object for compaction.
-  /// See `iceberg_compaction.settings` below.
+  /// Settings object for compaction. See `iceberg_compaction.settings` below.
   final pulumi.Input<TableMaintenanceConfigurationIcebergCompactionSettings> settings;
-  /// Whether the configuration is enabled.
-  /// Valid values are `enabled` and `disabled`.
+  /// Whether the configuration is enabled. Valid values are `enabled` and `disabled`.
   final pulumi.Input<String> status;
 
   /// Creates a new [TableMaintenanceConfigurationIcebergCompaction].
-  /// [settings] Settings object for compaction.
-  /// [status] Whether the configuration is enabled.
+  /// [settings] Settings object for compaction. See `iceberg_compaction.settings` below.
+  /// [status] Whether the configuration is enabled. Valid values are `enabled` and `disabled`.
   const TableMaintenanceConfigurationIcebergCompaction({
     required this.settings,
     required this.status,
@@ -33,4 +31,3 @@ class TableMaintenanceConfigurationIcebergCompaction {
     );
   }
 }
-

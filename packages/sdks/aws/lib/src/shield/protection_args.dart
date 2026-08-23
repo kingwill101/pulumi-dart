@@ -11,13 +11,13 @@ class ProtectionArgs {
   final pulumi.Input<String>? name;
   /// The ARN (Amazon Resource Name) of the resource to be protected.
   final pulumi.Input<String> resourceArn;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ProtectionArgs].
   /// [name] A friendly name for the Protection you are creating.
   /// [resourceArn] The ARN (Amazon Resource Name) of the resource to be protected.
-  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ProtectionArgs({
     this.name,
     required this.resourceArn,
@@ -40,4 +40,3 @@ class ProtectionArgs {
     );
   }
 }
-

@@ -119,6 +119,31 @@ import 'custom_db_engine_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "KMS symmetric key for RDS Custom for Oracle"
+/// }
+/// resource "aws_rds_customdbengineversion" "example" {
+///   database_installation_files_s3_bucket_name = "DOC-EXAMPLE-BUCKET"
+///   database_installation_files_s3_prefix      = "1915_GI/"
+///   engine                                     = "custom-oracle-ee-cdb"
+///   engine_version                             = "19.cdb_cev1"
+///   kms_key_id                                 = aws_kms_key.example.arn
+///   manifest                                   = "  {\n\\t\\\"databaseInstallationFileNames\\\":[\\\"V982063-01.zip\\\"]\n  }\n"
+///   tags = {
+///     "Name" = "example"
+///     "Key"  = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +154,8 @@ import 'custom_db_engine_version_state.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.rds.CustomDbEngineVersion;
 /// import com.pulumi.aws.rds.CustomDbEngineVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,6 +339,35 @@ import 'custom_db_engine_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kms_key" "example" {
+///   description = "KMS symmetric key for RDS Custom for Oracle"
+/// }
+/// resource "aws_rds_customdbengineversion" "example" {
+///   database_installation_files_s3_bucket_name = "DOC-EXAMPLE-BUCKET"
+///   database_installation_files_s3_prefix      = "1915_GI/"
+///   engine                                     = "custom-oracle-ee-cdb"
+///   engine_version                             = "19.cdb_cev1"
+///   kms_key_id                                 = aws_kms_key.example.arn
+///   filename                                   = "manifest_1915_GI.json"
+///   manifest_hash                              = filebase64sha256(json)
+///   tags = {
+///     "Name" = "example"
+///     "Key"  = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +380,8 @@ import 'custom_db_engine_version_state.dart';
 /// import com.pulumi.aws.rds.CustomDbEngineVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64sha256Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -455,6 +509,22 @@ import 'custom_db_engine_version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # CEV creation requires an AMI owned by the operator
+/// resource "aws_rds_customdbengineversion" "test" {
+///   engine          = "custom-sqlserver-se"
+///   engine_version  = "15.00.4249.2.cev-1"
+///   source_image_id = "ami-0aa12345678a12ab1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -463,8 +533,8 @@ import 'custom_db_engine_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.CustomDbEngineVersion;
 /// import com.pulumi.aws.rds.CustomDbEngineVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -583,13 +653,35 @@ import 'custom_db_engine_version_state.dart';
 /// 		_, err = rds.NewCustomDbEngineVersion(ctx, "test", &rds.CustomDbEngineVersionArgs{
 /// 			Engine:        pulumi.String("custom-sqlserver-se"),
 /// 			EngineVersion: pulumi.String("15.00.4249.2.cev-1"),
-/// 			SourceImageId: example.ID(),
+/// 			SourceImageId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_amicopy" "example" {
+///   name              = "sqlserver-se-2019-15.00.4249.2"
+///   description       = "A copy of ami-xxxxxxxx"
+///   source_ami_id     = "ami-xxxxxxxx"
+///   source_ami_region = "us-east-1"
+/// }
+/// # CEV creation requires an AMI owned by the operator
+/// resource "aws_rds_customdbengineversion" "test" {
+///   engine          = "custom-sqlserver-se"
+///   engine_version  = "15.00.4249.2.cev-1"
+///   source_image_id = aws_ec2_amicopy.example.id
 /// }
 /// ```
 /// ```java
@@ -602,8 +694,8 @@ import 'custom_db_engine_version_state.dart';
 /// import com.pulumi.aws.ec2.AmiCopyArgs;
 /// import com.pulumi.aws.rds.CustomDbEngineVersion;
 /// import com.pulumi.aws.rds.CustomDbEngineVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -653,7 +745,7 @@ import 'custom_db_engine_version_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import custom engine versions for Amazon RDS custom using the `engine` and `engine_version` separated by a colon (`:`). For example:
+/// Using `pulumi import`, import custom engine versions for Amazon RDS custom using the `engine` and `engineVersion` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/customDbEngineVersion:CustomDbEngineVersion example custom-oracle-ee-cdb:19.cdb_cev1
@@ -695,9 +787,9 @@ class CustomDbEngineVersion extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceImageId;
   /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   late final pulumi.Output<String> status;
-  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CustomDbEngineVersion].

@@ -110,6 +110,32 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_trustedtokenissuer" "example" {
+///   name                      = "example"
+///   instance_arn              = data.aws_ssoadmin_getinstances.example.arns[0]
+///   trusted_token_issuer_type = "OIDC_JWT"
+///   trusted_token_issuer_configuration = {
+///     oidc_jwt_configuration = {
+///       claim_attribute_path          = "email"
+///       identity_store_attribute_path = "emails.value"
+///       issuer_url                    = "https://example.com"
+///       jwks_retrieval_option         = "OPEN_ID_DISCOVERY"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +148,8 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 /// import com.pulumi.aws.ssoadmin.TrustedTokenIssuerArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.TrustedTokenIssuerTrustedTokenIssuerConfigurationArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +206,17 @@ import 'trusted_token_issuer_trusted_token_issuer_configuration.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `arn` (String) ARN of the Trusted Token Issuer.
+///
+/// #### Optional
+///
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import SSO Admin Trusted Token Issuer using the `id`. For example:
 ///
 /// ```sh
@@ -196,11 +233,11 @@ class TrustedTokenIssuer extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in `trusted_token_issuer_type`. Documented below.
+  /// A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in `trustedTokenIssuerType`. Documented below.
   late final pulumi.Output<TrustedTokenIssuerTrustedTokenIssuerConfiguration> trustedTokenIssuerConfiguration;
   /// Specifies the type of the trusted token issuer. Valid values are `OIDC_JWT`
   ///

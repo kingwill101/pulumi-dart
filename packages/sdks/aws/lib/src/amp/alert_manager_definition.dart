@@ -74,7 +74,7 @@ import 'alert_manager_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewAlertManagerDefinition(ctx, "demo", &amp.AlertManagerDefinitionArgs{
-/// 			WorkspaceId: demo.ID(),
+/// 			WorkspaceId: demo.ID().ToIDOutput().ToStringOutput(),
 /// 			Definition: pulumi.String(`alertmanager_config: |
 ///   route:
 ///     receiver: 'default'
@@ -89,6 +89,22 @@ import 'alert_manager_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_amp_workspace" "demo" {
+/// }
+/// resource "aws_amp_alertmanagerdefinition" "demo" {
+///   workspace_id = aws_amp_workspace.demo.id
+///   definition   = "alertmanager_config: |\n  route:\n    receiver: 'default'\n  receivers:\n    - name: 'default'\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +114,8 @@ import 'alert_manager_definition_state.dart';
 /// import com.pulumi.aws.amp.Workspace;
 /// import com.pulumi.aws.amp.AlertManagerDefinition;
 /// import com.pulumi.aws.amp.AlertManagerDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

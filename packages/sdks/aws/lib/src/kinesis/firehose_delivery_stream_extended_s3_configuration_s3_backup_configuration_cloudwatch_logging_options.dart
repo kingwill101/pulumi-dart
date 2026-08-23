@@ -36,4 +36,3 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwat
     );
   }
 }
-

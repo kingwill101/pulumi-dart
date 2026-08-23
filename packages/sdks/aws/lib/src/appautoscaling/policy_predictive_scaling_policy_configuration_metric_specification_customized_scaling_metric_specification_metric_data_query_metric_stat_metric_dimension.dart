@@ -3,14 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension {
-  /// Name of the dimension.
+  /// Name of the policy. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> name;
-  /// Value of the dimension.
   final pulumi.Input<String> value;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension].
-  /// [name] Name of the dimension.
-  /// [value] Value of the dimension.
+  /// [name] Name of the policy. Must be between 1 and 255 characters in length.
+  /// [value] Required.
   const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension({
     required this.name,
     required this.value,
@@ -30,4 +29,3 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedSca
     );
   }
 }
-

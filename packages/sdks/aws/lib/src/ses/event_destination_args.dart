@@ -26,7 +26,7 @@ class EventDestinationArgs {
   final pulumi.Input<String>? region;
   /// Send the events to an SNS Topic destination
   ///
-  /// &gt; **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
+  /// &gt; **NOTE:** You can specify `"cloudwatchDestination"` or `"kinesisDestination"` but not both
   final pulumi.Input<EventDestinationSnsDestination>? snsDestination;
 
   /// Creates a new [EventDestinationArgs].
@@ -75,4 +75,3 @@ class EventDestinationArgs {
     );
   }
 }
-

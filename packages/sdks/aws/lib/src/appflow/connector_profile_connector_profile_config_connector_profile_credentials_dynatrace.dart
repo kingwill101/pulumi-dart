@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace {
-  /// The API tokens used by Dynatrace API to authenticate various API calls.
+  /// API token used by the Dynatrace API to authenticate various API calls.
   final pulumi.Input<String> apiToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace].
-  /// [apiToken] The API tokens used by Dynatrace API to authenticate various API calls.
+  /// [apiToken] API token used by the Dynatrace API to authenticate various API calls.
   const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace({
     required this.apiToken,
   });
@@ -24,4 +24,3 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace
     );
   }
 }
-

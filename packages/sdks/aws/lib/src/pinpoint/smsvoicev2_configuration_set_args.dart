@@ -7,23 +7,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_pinpoint_smsvoicev2_configuration_set_smsvoicev2_configuration_set_args_doc}
 class Smsvoicev2ConfigurationSetArgs {
-  /// The default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL"
+  /// Default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL".
   final pulumi.Input<String>? defaultMessageType;
-  /// The default sender ID to use for this configuration set.
+  /// Default sender ID to use for this configuration set.
   final pulumi.Input<String>? defaultSenderId;
-  /// The name of the configuration set.
+  /// Name of the configuration set.
   final pulumi.Input<String>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [Smsvoicev2ConfigurationSetArgs].
-  /// [defaultMessageType] The default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL"
-  /// [defaultSenderId] The default sender ID to use for this configuration set.
-  /// [name] The name of the configuration set.
+  /// [defaultMessageType] Default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL".
+  /// [defaultSenderId] Default sender ID to use for this configuration set.
+  /// [name] Name of the configuration set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const Smsvoicev2ConfigurationSetArgs({
     this.defaultMessageType,
     this.defaultSenderId,
@@ -52,4 +52,3 @@ class Smsvoicev2ConfigurationSetArgs {
     );
   }
 }
-

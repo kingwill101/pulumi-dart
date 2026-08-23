@@ -13,9 +13,9 @@ class ReplicationSubnetGroupState {
   final pulumi.Input<String>? replicationSubnetGroupId;
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   final pulumi.Input<List<String>>? subnetIds;
-  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   /// The ID of the VPC the subnet group is in.
   final pulumi.Input<String>? vpcId;
@@ -26,8 +26,8 @@ class ReplicationSubnetGroupState {
   /// [replicationSubnetGroupDescription] Description for the subnet group.
   /// [replicationSubnetGroupId] Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
   /// [subnetIds] List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
-  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcId] The ID of the VPC the subnet group is in.
   const ReplicationSubnetGroupState({
     this.region,
@@ -66,4 +66,3 @@ class ReplicationSubnetGroupState {
     );
   }
 }
-

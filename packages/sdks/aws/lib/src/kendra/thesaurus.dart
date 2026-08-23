@@ -96,6 +96,28 @@ import 'thesaurus_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kendra_thesaurus" "example" {
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "Example"
+///   role_arn = exampleAwsIamRole.arn
+///   source_s3_path = {
+///     bucket = exampleAwsS3Bucket.id
+///     key    = exampleAwsS3Object.key
+///   }
+///   tags = {
+///     "Name" = "Example Kendra Thesaurus"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +127,8 @@ import 'thesaurus_state.dart';
 /// import com.pulumi.aws.kendra.Thesaurus;
 /// import com.pulumi.aws.kendra.ThesaurusArgs;
 /// import com.pulumi.aws.kendra.inputs.ThesaurusSourceS3PathArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,7 +194,7 @@ class Thesaurus extends pulumi.CustomResource {
   /// The current status of the thesaurus.
   late final pulumi.Output<String> status;
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> thesaurusId;
 

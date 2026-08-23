@@ -76,6 +76,22 @@ import 'domain_configuration_tls_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_iot_domainconfiguration" "iot" {
+///   name                    = "iot-"
+///   domain_name             = "iot.example.com"
+///   service_type            = "DATA"
+///   server_certificate_arns = [cert.arn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +100,8 @@ import 'domain_configuration_tls_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iot.DomainConfiguration;
 /// import com.pulumi.aws.iot.DomainConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,7 +150,7 @@ class DomainConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// An enumerated string that speciﬁes the authentication type. Valid values are `CUSTOM_AUTH_X509`, `CUSTOM_AUTH`, `AWS_X509`, `AWS_SIGV4` or `DEFAULT`.
   late final pulumi.Output<String> authenticationType;
-  /// An object that specifies the authorization service for a domain. See the `authorizer_config` Block below for details.
+  /// An object that specifies the authorization service for a domain. See the `authorizerConfig` Block below for details.
   late final pulumi.Output<DomainConfigurationAuthorizerConfig?> authorizerConfig;
   /// Fully-qualified domain name.
   late final pulumi.Output<String> domainName;
@@ -144,17 +160,17 @@ class DomainConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ARNs of the certificates that IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for Amazon Web Services-managed domains. When using a custom `domain_name`, the cert must include it.
+  /// The ARNs of the certificates that IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for Amazon Web Services-managed domains. When using a custom `domainName`, the cert must include it.
   late final pulumi.Output<List<String>?> serverCertificateArns;
   /// The type of service delivered by the endpoint. Note: Amazon Web Services IoT Core currently supports only the `DATA` service type.
   late final pulumi.Output<String?> serviceType;
   /// The status to which the domain configuration should be set. Valid values are `ENABLED` and `DISABLED`.
   late final pulumi.Output<String?> status;
-  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// An object that specifies the TLS configuration for a domain. See the `tls_config` Block below for details.
+  /// An object that specifies the TLS configuration for a domain. See the `tlsConfig` Block below for details.
   late final pulumi.Output<DomainConfigurationTlsConfig> tlsConfig;
   /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.
   late final pulumi.Output<String?> validationCertificateArn;

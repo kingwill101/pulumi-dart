@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_memory_strategy_configuration.dart';
+import 'agentcore_memory_strategy_reflection_configuration.dart';
 import 'agentcore_memory_strategy_timeouts.dart';
 
 /// {@template pulumi_bedrock_agentcore_memory_strategy_agentcore_memory_strategy_args_doc}
@@ -9,42 +10,51 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_bedrock_agentcore_memory_strategy_agentcore_memory_strategy_args_doc}
 class AgentcoreMemoryStrategyArgs {
-  /// Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` below.
+  /// Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` Block below.
   final pulumi.Input<AgentcoreMemoryStrategyConfiguration>? configuration;
   /// Description of the memory strategy.
   final pulumi.Input<String>? description;
+  /// ARN of the IAM role that the memory service assumes to perform operations.
   final pulumi.Input<String>? memoryExecutionRoleArn;
   /// ID of the memory to associate with this strategy. Changing this forces a new resource.
   final pulumi.Input<String> memoryId;
   /// Name of the memory strategy.
   final pulumi.Input<String>? name;
-  /// Set of namespace identifiers where this strategy applies. Namespaces help organize and scope memory content.
-  ///
-  /// The following arguments are optional:
-  final pulumi.Input<List<String>> namespaces;
+  /// Set containing exactly one namespace template where this strategy applies (for example `/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}`). Namespace templates help organize and scope memory content. Exactly one of `namespaceTemplates` or `namespaces` must be configured.
+  final pulumi.Input<List<String>>? namespaceTemplates;
+  /// Set of namespace identifiers where this strategy applies. Exactly one of `namespaces` or `namespaceTemplates` must be configured. The API treats this as a legacy parameter; prefer `namespaceTemplates`. Since the API mirrors the two fields, switching an existing configuration from `namespaces` to `namespaceTemplates` with the same value is an in-place no-op.
+  final pulumi.Input<List<String>>? namespaces;
+  /// Configuration for the reflections created with the episodic memory strategy. Valid when `type` is `EPISODIC`, must be omitted for other types. See `reflectionConfiguration` Block below.
+  final pulumi.Input<AgentcoreMemoryStrategyReflectionConfiguration>? reflectionConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<AgentcoreMemoryStrategyTimeouts>? timeouts;
-  /// Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`) can exist per memory.
+  /// Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`) can exist per memory.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentcoreMemoryStrategyArgs].
-  /// [configuration] Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` below.
+  /// [configuration] Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` Block below.
   /// [description] Description of the memory strategy.
-  /// [memoryExecutionRoleArn] Optional.
+  /// [memoryExecutionRoleArn] ARN of the IAM role that the memory service assumes to perform operations.
   /// [memoryId] ID of the memory to associate with this strategy. Changing this forces a new resource.
   /// [name] Name of the memory strategy.
-  /// [namespaces] Set of namespace identifiers where this strategy applies. Namespaces help organize and scope memory content.
+  /// [namespaceTemplates] Set containing exactly one namespace template where this strategy applies (for example `/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}`). Namespace templates help organize and scope memory content. Exactly one of `namespaceTemplates` or `namespaces` must be configured.
+  /// [namespaces] Set of namespace identifiers where this strategy applies. Exactly one of `namespaces` or `namespaceTemplates` must be configured. The API treats this as a legacy parameter; prefer `namespaceTemplates`. Since the API mirrors the two fields, switching an existing configuration from `namespaces` to `namespaceTemplates` with the same value is an in-place no-op.
+  /// [reflectionConfiguration] Configuration for the reflections created with the episodic memory strategy. Valid when `type` is `EPISODIC`, must be omitted for other types. See `reflectionConfiguration` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  /// [type] Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`) can exist per memory.
+  /// [type] Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`) can exist per memory.
   const AgentcoreMemoryStrategyArgs({
     this.configuration,
     this.description,
     this.memoryExecutionRoleArn,
     required this.memoryId,
     this.name,
-    required this.namespaces,
+    this.namespaceTemplates,
+    this.namespaces,
+    this.reflectionConfiguration,
     this.region,
     this.timeouts,
     required this.type,
@@ -57,7 +67,9 @@ class AgentcoreMemoryStrategyArgs {
       'memoryExecutionRoleArn': ?memoryExecutionRoleArn,
       'memoryId': memoryId,
       'name': ?name,
-      'namespaces': namespaces,
+      'namespaceTemplates': ?namespaceTemplates,
+      'namespaces': ?namespaces,
+      'reflectionConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreMemoryStrategyReflectionConfiguration, Map<String, dynamic>>(reflectionConfiguration, (value) => value.toMap()),
       'region': ?region,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<AgentcoreMemoryStrategyTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'type': type,
@@ -71,11 +83,12 @@ class AgentcoreMemoryStrategyArgs {
       memoryExecutionRoleArn: (() { final guardedValue = map['memoryExecutionRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memoryId: pulumi.Input.fromValue(map['memoryId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      namespaces: pulumi.Input.fromValue((map['namespaces'] as List).cast<String>()),
+      namespaceTemplates: (() { final guardedValue = map['namespaceTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      namespaces: (() { final guardedValue = map['namespaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      reflectionConfiguration: (() { final guardedValue = map['reflectionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreMemoryStrategyReflectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreMemoryStrategyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

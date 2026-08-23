@@ -113,6 +113,32 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "bar" {
+///   allocated_storage       = 10
+///   engine                  = "mysql"
+///   engine_version          = "5.6.21"
+///   instance_class          = "db.t2.micro"
+///   db_name                 = "baz"
+///   password                = "barbarbarbar"
+///   username                = "foo"
+///   maintenance_window      = "Fri:09:00-Fri:09:30"
+///   backup_retention_period = 0
+///   parameter_group_name    = "default.mysql5.6"
+/// }
+/// resource "aws_rds_snapshot" "test" {
+///   db_instance_identifier = aws_rds_instance.bar.identifier
+///   db_snapshot_identifier = "testsnapshot1234"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +149,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.aws.rds.InstanceArgs;
 /// import com.pulumi.aws.rds.Snapshot;
 /// import com.pulumi.aws.rds.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -226,9 +252,9 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Specifies the storage type associated with DB snapshot.
   late final pulumi.Output<String> storageType;
-  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Provides the VPC ID associated with the DB snapshot.
   late final pulumi.Output<String> vpcId;

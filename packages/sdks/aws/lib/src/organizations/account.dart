@@ -6,7 +6,7 @@ import 'account_state.dart';
 ///
 /// &gt; **Note:** Account management must be done from the organization's root account.
 ///
-/// &gt; **Note:** By default, deleting this resource will only remove an AWS account from an organization. You must set the `close_on_deletion` flag to true to close the account. It is worth noting that quotas are enforced when using the `close_on_deletion` argument, which can produce a [CLOSE_ACCOUNT_QUOTA_EXCEEDED](https://docs.aws.amazon.com/organizations/latest/APIReference/API_CloseAccount.html) error, and require you to close the account manually.
+/// &gt; **Note:** By default, deleting this resource will only remove an AWS account from an organization. You must set the `closeOnDeletion` flag to true to close the account. It is worth noting that quotas are enforced when using the `closeOnDeletion` argument, which can produce a [CLOSE_ACCOUNT_QUOTA_EXCEEDED](https://docs.aws.amazon.com/organizations/latest/APIReference/API_CloseAccount.html) error, and require you to close the account manually.
 ///
 /// ## Example Usage
 ///
@@ -65,6 +65,20 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_account" "account" {
+///   name  = "my_new_account"
+///   email = "john@doe.org"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +87,8 @@ import 'account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.Account;
 /// import com.pulumi.aws.organizations.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,10 +128,10 @@ import 'account_state.dart';
 ///
 /// #### Optional
 ///
-/// * `account_id` (String) AWS Account where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import the AWS member account using the `account_id`. For example:
+/// Using `pulumi import`, import the AWS member account using the `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:organizations/account:Account example 111111111111
@@ -129,7 +143,7 @@ import 'account_state.dart';
 /// $ pulumi import aws:organizations/account:Account example 111111111111_ALLOW
 /// ```
 ///
-/// Certain resource arguments, like `role_name`, do not have an Organizations API method for reading the information after account creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
+/// Certain resource arguments, like `roleName`, do not have an Organizations API method for reading the information after account creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
 ///
 ///
 /// ```typescript
@@ -190,6 +204,21 @@ import 'account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_account" "account" {
+///   name      = "my_new_account"
+///   email     = "john@doe.org"
+///   role_name = "myOrganizationRole"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +227,8 @@ import 'account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.Account;
 /// import com.pulumi.aws.organizations.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -234,7 +263,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// If true, a deletion event will close the account. Otherwise, it will only remove from the organization. This is not supported for GovCloud accounts.
   late final pulumi.Output<bool?> closeOnDeletion;
-  /// Whether to also create a GovCloud account. The GovCloud account is tied to the main (commercial) account this resource creates. If `true`, the GovCloud account ID is available in the `govcloud_id` attribute. The only way to manage the GovCloud account with the provider is to subsequently import the account using this resource.
+  /// Whether to also create a GovCloud account. The GovCloud account is tied to the main (commercial) account this resource creates. If `true`, the GovCloud account ID is available in the `govcloudId` attribute. The only way to manage the GovCloud account with the provider is to subsequently import the account using this resource.
   late final pulumi.Output<bool?> createGovcloud;
   /// Email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
   late final pulumi.Output<String> email;
@@ -258,9 +287,9 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// (**Deprecated** use `state` instead) Status of the account in the organization.
   late final pulumi.Output<String> status;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Account].

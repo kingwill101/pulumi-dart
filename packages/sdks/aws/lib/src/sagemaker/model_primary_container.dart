@@ -7,7 +7,7 @@ import 'model_primary_container_model_data_source.dart';
 import 'model_primary_container_multi_model_config.dart';
 
 class ModelPrimaryContainer {
-  /// Additional data sources that are available to the model in addition to those specified in `model_data_source`. See Additional Model Data Source.
+  /// Additional data sources that are available to the model in addition to those specified in `modelDataSource`. See Additional Model Data Source.
   final pulumi.Input<List<ModelPrimaryContainerAdditionalModelDataSource>>? additionalModelDataSources;
   /// DNS host name for the container.
   final pulumi.Input<String>? containerHostname;
@@ -31,7 +31,7 @@ class ModelPrimaryContainer {
   final pulumi.Input<ModelPrimaryContainerMultiModelConfig>? multiModelConfig;
 
   /// Creates a new [ModelPrimaryContainer].
-  /// [additionalModelDataSources] Additional data sources that are available to the model in addition to those specified in `model_data_source`. See Additional Model Data Source.
+  /// [additionalModelDataSources] Additional data sources that are available to the model in addition to those specified in `modelDataSource`. See Additional Model Data Source.
   /// [containerHostname] DNS host name for the container.
   /// [environment] Environment variables for the Docker container.
   /// [image] Registry path where the inference code image is stored in Amazon ECR.
@@ -88,4 +88,3 @@ class ModelPrimaryContainer {
     );
   }
 }
-

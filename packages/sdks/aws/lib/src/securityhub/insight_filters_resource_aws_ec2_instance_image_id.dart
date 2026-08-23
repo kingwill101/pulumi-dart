@@ -28,4 +28,3 @@ class InsightFiltersResourceAwsEc2InstanceImageId {
     );
   }
 }
-

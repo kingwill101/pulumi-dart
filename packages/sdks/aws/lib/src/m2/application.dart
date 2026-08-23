@@ -178,6 +178,48 @@ import 'application_timeouts.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_m2_application" "example" {
+///   name        = "Example"
+///   engine_type = "bluage"
+///   definition = {
+///     content ="{
+///   \"definition\": {
+///     \"listeners\": [
+///       {
+///         \"port\": 8196,
+///         \"type\": \"http\"
+///       }
+///     ],
+///     \"ba-application\": {
+///       \"app-location\": \"${s3-source}/PlanetsDemo-v1.zip\"
+///     }
+///   },
+///   \"source-locations\": [
+///     {
+///       \"source-id\": \"s3-source\",
+///       \"source-type\": \"s3\",
+///       \"properties\": {
+///         \"s3-bucket\": \"example-bucket\",
+///         \"s3-key-prefix\": \"v1\"
+///       }
+///     }
+///   ],
+///   \"template-version\": \"2.0\"
+/// }
+///
+/// "
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +229,8 @@ import 'application_timeouts.dart';
 /// import com.pulumi.aws.m2.Application;
 /// import com.pulumi.aws.m2.ApplicationArgs;
 /// import com.pulumi.aws.m2.inputs.ApplicationDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,9 +345,9 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// ARN of role for application to use to access AWS resources.
   late final pulumi.Output<String?> roleArn;
-  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ApplicationTimeouts?> timeouts;
 

@@ -30,4 +30,3 @@ class GatewayRouteSpecHttp2RouteActionRewritePrefix {
     );
   }
 }
-

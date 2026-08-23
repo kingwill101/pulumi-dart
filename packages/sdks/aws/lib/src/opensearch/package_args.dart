@@ -8,7 +8,7 @@ import 'package_package_source.dart';
 /// {@endtemplate}
 /// {@macro pulumi_opensearch_package_package_args_doc}
 class PackageArgs {
-  /// Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
+  /// Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   final pulumi.Input<String>? engineVersion;
   /// Description of the package.
   final pulumi.Input<String>? packageDescription;
@@ -22,7 +22,7 @@ class PackageArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [PackageArgs].
-  /// [engineVersion] Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
+  /// [engineVersion] Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   /// [packageDescription] Description of the package.
   /// [packageName] Unique name for the package.
   /// [packageSource] Configuration block for the package source options.
@@ -59,4 +59,3 @@ class PackageArgs {
     );
   }
 }
-

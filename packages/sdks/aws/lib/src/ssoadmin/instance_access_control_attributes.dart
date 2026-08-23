@@ -146,6 +146,34 @@ import 'instance_access_control_attributes_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssoadmin_getinstances" "example" {
+/// }
+///
+/// resource "aws_ssoadmin_instanceaccesscontrolattributes" "example" {
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   attributes {
+///     key = "name"
+///     values {
+///       sources = ["$${path:name.givenName}"]
+///     }
+///   }
+///   attributes {
+///     key = "last"
+///     values {
+///       sources = ["$${path:name.familyName}"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +185,9 @@ import 'instance_access_control_attributes_state.dart';
 /// import com.pulumi.aws.ssoadmin.InstanceAccessControlAttributes;
 /// import com.pulumi.aws.ssoadmin.InstanceAccessControlAttributesArgs;
 /// import com.pulumi.aws.ssoadmin.inputs.InstanceAccessControlAttributesAttributeArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.ssoadmin.inputs.InstanceAccessControlAttributesAttributeValueArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,7 +248,7 @@ import 'instance_access_control_attributes_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import SSO Account Assignments using the `instance_arn`. For example:
+/// Using `pulumi import`, import SSO Account Assignments using the `instanceArn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes example arn:aws:sso:::instance/ssoins-0123456789abcdef

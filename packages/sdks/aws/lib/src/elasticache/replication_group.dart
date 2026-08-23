@@ -8,18 +8,18 @@ import 'replication_group_state.dart';
 /// [single-node Redis instance (Cluster Mode Disabled)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html),
 /// see the `aws.elasticache.Cluster` resource.
 ///
-/// &gt; **Note:** When you change an attribute, such as `engine_version`, by
+/// &gt; **Note:** When you change an attribute, such as `engineVersion`, by
 /// default the ElastiCache API applies it in the next maintenance window. Because
 /// of this, this provider may report a difference in its planning phase because the
 /// actual modification has not yet taken place. You can use the
-/// `apply_immediately` flag to instruct the service to apply the change
-/// immediately. Using `apply_immediately` can result in a brief downtime as
+/// `applyImmediately` flag to instruct the service to apply the change
+/// immediately. Using `applyImmediately` can result in a brief downtime as
 /// servers reboots.
 /// See the AWS Documentation on
 /// [Modifying an ElastiCache Cache Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Modify.html)
 /// for more information.
 ///
-/// &gt; **Note:** Any attribute changes that re-create the resource will be applied immediately, regardless of the value of `apply_immediately`.
+/// &gt; **Note:** Any attribute changes that re-create the resource will be applied immediately, regardless of the value of `applyImmediately`.
 ///
 /// &gt; **Note:** Be aware of the terminology collision around "cluster" for `aws.elasticache.ReplicationGroup`. For example, it is possible to create a ["Cluster Mode Disabled [Redis] Cluster"](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Create.CON.Redis.html). With "Cluster Mode Enabled", the data will be stored in shards (called "node groups"). See [Redis Cluster Configuration](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/cluster-create-determine-requirements.html#redis-cluster-configuration) for a diagram of the differences. To enable cluster mode, use a parameter group that has cluster mode enabled. The default parameter groups provided by AWS end with ".cluster.on", for example `default.redis6.x.cluster.on`.
 ///
@@ -121,6 +121,26 @@ import 'replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_replicationgroup" "example" {
+///   automatic_failover_enabled  = true
+///   preferred_cache_cluster_azs = ["us-west-2a", "us-west-2b"]
+///   replication_group_id        = "tf-rep-group-1"
+///   description                 = "example description"
+///   node_type                   = "cache.m4.large"
+///   num_cache_clusters          = 2
+///   parameter_group_name        = "default.redis3.2"
+///   port                        = 6379
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +149,8 @@ import 'replication_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ReplicationGroup;
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -178,8 +198,8 @@ import 'replication_group_state.dart';
 ///
 /// You have two options for adjusting the number of replicas:
 ///
-/// * Adjusting `num_cache_clusters` directly. This will attempt to automatically add or remove replicas, but provides no granular control (e.g., preferred availability zone, cache cluster ID) for the added or removed replicas. This also currently expects cache cluster IDs in the form of `replication_group_id-00#`.
-/// * Otherwise for fine grained control of the underlying cache clusters, they can be added or removed with the `aws.elasticache.Cluster` resource and its `replication_group_id` attribute. In this situation, you will need to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to prevent perpetual differences with the `number_cache_cluster` attribute.
+/// * Adjusting `numCacheClusters` directly. This will attempt to automatically add or remove replicas, but provides no granular control (e.g., preferred availability zone, cache cluster ID) for the added or removed replicas. This also currently expects cache cluster IDs in the form of `replication_group_id-00#`.
+/// * Otherwise for fine grained control of the underlying cache clusters, they can be added or removed with the `aws.elasticache.Cluster` resource and its `replicationGroupId` attribute. In this situation, you will need to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to prevent perpetual differences with the `numberCacheCluster` attribute.
 ///
 ///
 /// ```typescript
@@ -200,15 +220,16 @@ import 'replication_group_state.dart';
 ///     port: 6379,
 /// });
 /// const replica: aws.elasticache.Cluster[] = [];
-/// for (const range = {value: 0}; range.value < 1; range.value++) {
-///     replica.push(new aws.elasticache.Cluster(`replica-${range.value}`, {
-///         clusterId: `tf-rep-group-1-${range.value}`,
+/// for (let range = 0; range < 1; range++) {
+///     replica.push(new aws.elasticache.Cluster(`replica-${range}`, {
+///         clusterId: `tf-rep-group-1-${range}`,
 ///         replicationGroupId: example.id,
 ///     }));
 /// }
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// example = aws.elasticache.ReplicationGroup("example",
@@ -223,10 +244,10 @@ import 'replication_group_state.dart';
 ///     num_cache_clusters=2,
 ///     parameter_group_name="default.redis3.2",
 ///     port=6379)
-/// replica = []
-/// for range in [{"value": i} for i in range(0, 1)]:
-///     replica.append(aws.elasticache.Cluster(f"replica-{range['value']}",
-///         cluster_id=f"tf-rep-group-1-{range['value']}",
+/// replica: list[aws.elasticache.Cluster] = []
+/// for replica_range in [{"value": i} for i in range(0, 1)]:
+///     replica.append(aws.elasticache.Cluster(f"replica-{replica_range['value']}",
+///         cluster_id=f"tf-rep-group-1-{replica_range['value']}",
 ///         replication_group_id=example.id))
 /// ```
 /// ```csharp
@@ -299,7 +320,7 @@ import 'replication_group_state.dart';
 /// 			val0 := index
 /// 			__res, err := elasticache.NewCluster(ctx, fmt.Sprintf("replica-%v", key0), &elasticache.ClusterArgs{
 /// 				ClusterId:          pulumi.Sprintf("tf-rep-group-1-%v", val0),
-/// 				ReplicationGroupId: example.ID(),
+/// 				ReplicationGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			})
 /// 			if err != nil {
 /// 				return err
@@ -308,6 +329,31 @@ import 'replication_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_replicationgroup" "example" {
+///   automatic_failover_enabled  = true
+///   preferred_cache_cluster_azs = ["us-west-2a", "us-west-2b"]
+///   replication_group_id        = "tf-rep-group-1"
+///   description                 = "example description"
+///   node_type                   = "cache.m4.large"
+///   num_cache_clusters          = 2
+///   parameter_group_name        = "default.redis3.2"
+///   port                        = 6379
+/// }
+/// resource "aws_elasticache_cluster" "replica" {
+///   count                = 1
+///   cluster_id           ="tf-rep-group-1-${count.index}"
+///   replication_group_id = aws_elasticache_replicationgroup.example.id
 /// }
 /// ```
 /// ```java
@@ -321,8 +367,8 @@ import 'replication_group_state.dart';
 /// import com.pulumi.aws.elasticache.Cluster;
 /// import com.pulumi.aws.elasticache.ClusterArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -465,6 +511,26 @@ import 'replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_replicationgroup" "baz" {
+///   replication_group_id       = "tf-redis-cluster"
+///   description                = "example description"
+///   node_type                  = "cache.t2.small"
+///   port                       = 6379
+///   parameter_group_name       = "default.redis3.2.cluster.on"
+///   automatic_failover_enabled = true
+///   num_node_groups            = 2
+///   replicas_per_node_group    = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -473,8 +539,8 @@ import 'replication_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ReplicationGroup;
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -672,6 +738,39 @@ import 'replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_replicationgroup" "example" {
+///   replication_group_id       = "tf-redis-cluster"
+///   description                = "example description"
+///   node_type                  = "cache.t2.small"
+///   port                       = 6379
+///   parameter_group_name       = "default.redis3.2.cluster.on"
+///   automatic_failover_enabled = true
+///   num_node_groups            = 2
+///   node_group_configurations {
+///     node_group_id              = "0001"
+///     primary_availability_zone  = "us-west-2a"
+///     replica_availability_zones = ["us-west-2b"]
+///     replica_count              = 1
+///     slots                      = "0-8191"
+///   }
+///   node_group_configurations {
+///     node_group_id              = "0002"
+///     primary_availability_zone  = "us-west-2b"
+///     replica_availability_zones = ["us-west-2a"]
+///     replica_count              = 1
+///     slots                      = "8192-16383"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -681,8 +780,8 @@ import 'replication_group_state.dart';
 /// import com.pulumi.aws.elasticache.ReplicationGroup;
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
 /// import com.pulumi.aws.elasticache.inputs.ReplicationGroupNodeGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -890,6 +989,38 @@ import 'replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_replicationgroup" "test" {
+///   replication_group_id       = "myreplicaciongroup"
+///   description                = "test description"
+///   node_type                  = "cache.t3.small"
+///   port                       = 6379
+///   apply_immediately          = true
+///   auto_minor_version_upgrade = false
+///   maintenance_window         = "tue:06:30-tue:07:30"
+///   snapshot_window            = "01:00-02:00"
+///   log_delivery_configurations {
+///     destination      = example.name
+///     destination_type = "cloudwatch-logs"
+///     log_format       = "text"
+///     log_type         = "slow-log"
+///   }
+///   log_delivery_configurations {
+///     destination      = exampleAwsKinesisFirehoseDeliveryStream.name
+///     destination_type = "kinesis-firehose"
+///     log_format       = "json"
+///     log_type         = "engine-log"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -899,8 +1030,8 @@ import 'replication_group_state.dart';
 /// import com.pulumi.aws.elasticache.ReplicationGroup;
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
 /// import com.pulumi.aws.elasticache.inputs.ReplicationGroupLogDeliveryConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -964,7 +1095,7 @@ import 'replication_group_state.dart';
 /// ```
 ///
 ///
-/// &gt; **Note:** We currently do not support passing a `primary_cluster_id` in order to create the Replication Group.
+/// &gt; **Note:** We currently do not support passing a `primaryClusterId` in order to create the Replication Group.
 ///
 /// &gt; **Note:** Automatic Failover is unavailable for Redis versions earlier than 2.8.6,
 /// and unavailable on T1 node types. For T2 node types, it is only available on Redis version 3.2.4 or later with cluster mode enabled. See the [High Availability Using Replication Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html) guide
@@ -1075,7 +1206,7 @@ import 'replication_group_state.dart';
 /// 		}
 /// 		example, err := elasticache.NewGlobalReplicationGroup(ctx, "example", &elasticache.GlobalReplicationGroupArgs{
 /// 			GlobalReplicationGroupIdSuffix: pulumi.String("example"),
-/// 			PrimaryReplicationGroupId:      primary.ID(),
+/// 			PrimaryReplicationGroupId:      primary.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1093,6 +1224,34 @@ import 'replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_replicationgroup" "secondary" {
+///   replication_group_id        = "example-secondary"
+///   description                 = "secondary replication group"
+///   global_replication_group_id = aws_elasticache_globalreplicationgroup.example.global_replication_group_id
+///   num_cache_clusters          = 1
+/// }
+/// resource "aws_elasticache_globalreplicationgroup" "example" {
+///   global_replication_group_id_suffix = "example"
+///   primary_replication_group_id       = aws_elasticache_replicationgroup.primary.id
+/// }
+/// resource "aws_elasticache_replicationgroup" "primary" {
+///   replication_group_id = "example-primary"
+///   description          = "primary replication group"
+///   engine               = "redis"
+///   engine_version       = "5.0.6"
+///   node_type            = "cache.m5.large"
+///   num_cache_clusters   = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1103,8 +1262,8 @@ import 'replication_group_state.dart';
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
 /// import com.pulumi.aws.elasticache.GlobalReplicationGroup;
 /// import com.pulumi.aws.elasticache.GlobalReplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1268,6 +1427,30 @@ import 'replication_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_elasticache_replicationgroup" "example" {
+///   replication_group_id       = "example"
+///   description                = "example with authentication"
+///   node_type                  = "cache.t2.micro"
+///   num_cache_clusters         = 1
+///   port                       = 6379
+///   subnet_group_name          = exampleAwsElasticacheSubnetGroup.name
+///   security_group_ids         = [exampleAwsSecurityGroup.id]
+///   parameter_group_name       = "default.redis5.0"
+///   engine_version             = "5.0.6"
+///   transit_encryption_enabled = true
+///   auth_token                 = "abcdefgh1234567890"
+///   auth_token_update_strategy = "ROTATE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1276,8 +1459,8 @@ import 'replication_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.elasticache.ReplicationGroup;
 /// import com.pulumi.aws.elasticache.ReplicationGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1328,11 +1511,11 @@ import 'replication_group_state.dart';
 /// ```
 ///
 ///
-/// &gt; When adding a new `auth_token` to a previously passwordless replication group, using the `ROTATE` update strategy will result in support for **both** the new token and passwordless authentication. To immediately require authorization when adding the initial token, use the `SET` strategy instead. See the [Authenticating with the Redis AUTH command](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html) guide for additional details.
+/// &gt; When adding a new `authToken` to a previously passwordless replication group, using the `ROTATE` update strategy will result in support for **both** the new token and passwordless authentication. To immediately require authorization when adding the initial token, use the `SET` strategy instead. See the [Authenticating with the Redis AUTH command](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html) guide for additional details.
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ElastiCache Replication Groups using the `replication_group_id`. For example:
+/// Using `pulumi import`, import ElastiCache Replication Groups using the `replicationGroupId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticache/replicationGroup:ReplicationGroup my_replication_group replication-group-1
@@ -1346,15 +1529,15 @@ class ReplicationGroup extends pulumi.CustomResource {
   /// When `engine` is `redis`, default is `false`.
   /// When `engine` is `valkey`, default is `true`.
   late final pulumi.Output<bool> atRestEncryptionEnabled;
-  /// Password used to access a password protected server. Can be specified only if `transit_encryption_enabled = true`.
+  /// Password used to access a password protected server. Can be specified only if `transitEncryptionEnabled = true`.
   late final pulumi.Output<String?> authToken;
-  /// Strategy used when modifying `auth_token` on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then `auth_token` must be omitted.
+  /// Strategy used when modifying `authToken` on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then `authToken` must be omitted.
   late final pulumi.Output<String?> authTokenUpdateStrategy;
   /// Specifies whether minor version engine upgrades will be applied automatically to the underlying Cache Cluster instances during the maintenance window.
   /// Only supported for engine types `"redis"` and `"valkey"` and if the engine version is 6 or higher.
   /// Defaults to `true`.
   late final pulumi.Output<bool> autoMinorVersionUpgrade;
-  /// Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. If enabled, `num_cache_clusters` must be greater than 1. Must be enabled for Redis (cluster mode enabled) replication groups. Defaults to `false`.
+  /// Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. If enabled, `numCacheClusters` must be greater than 1. Must be enabled for Redis (cluster mode enabled) replication groups. Defaults to `false`.
   late final pulumi.Output<bool?> automaticFailoverEnabled;
   /// Indicates if cluster mode is enabled.
   late final pulumi.Output<bool> clusterEnabled;
@@ -1366,6 +1549,8 @@ class ReplicationGroup extends pulumi.CustomResource {
   late final pulumi.Output<bool> dataTieringEnabled;
   /// User-created description for the replication group. Must not be empty.
   late final pulumi.Output<String> description;
+  /// Specifies the durability mode for the replication group. Valid values are `default`, `async`, `sync`, or `disabled`. Requires cluster mode enabled and Valkey 9.0 or higher.
+  late final pulumi.Output<String> durability;
   /// Name of the cache engine to be used for the clusters in this replication group.
   /// Valid values are `redis` or `valkey`.
   /// Default is `redis`.
@@ -1375,17 +1560,17 @@ class ReplicationGroup extends pulumi.CustomResource {
   /// If the version is 6, the major and minor version can be set, e.g., `6.2`,
   /// or the minor version can be unspecified which will use the latest version at creation time, e.g., `6.x`.
   /// Otherwise, specify the full version desired, e.g., `5.0.6`.
-  /// The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below.
+  /// The actual engine version used is returned in the attribute `engineVersionActual`, see Attribute Reference below.
   late final pulumi.Output<String> engineVersion;
   /// Because ElastiCache pulls the latest minor or patch for a version, this attribute returns the running version of the cache engine.
   late final pulumi.Output<String> engineVersionActual;
   /// The name of your final node group (shard) snapshot. ElastiCache creates the snapshot from the primary node in the cluster. If omitted, no final snapshot will be made.
   late final pulumi.Output<String?> finalSnapshotIdentifier;
-  /// The ID of the global replication group to which this replication group should belong. If this parameter is specified, the replication group is added to the specified global replication group as a secondary replication group; otherwise, the replication group is not part of any global replication group. If `global_replication_group_id` is set, the `num_node_groups` parameter cannot be set.
+  /// The ID of the global replication group to which this replication group should belong. If this parameter is specified, the replication group is added to the specified global replication group as a secondary replication group; otherwise, the replication group is not part of any global replication group. If `globalReplicationGroupId` is set, the `numNodeGroups` parameter cannot be set.
   late final pulumi.Output<String> globalReplicationGroupId;
   /// The IP version to advertise in the discovery protocol. Valid values are `ipv4` or `ipv6`.
   late final pulumi.Output<String> ipDiscovery;
-  /// The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `at_rest_encryption_enabled = true`.
+  /// The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `atRestEncryptionEnabled = true`.
   late final pulumi.Output<String?> kmsKeyId;
   /// Specifies the destination and format of Redis OSS/Valkey [SLOWLOG](https://redis.io/commands/slowlog) or Redis OSS/Valkey [Engine Log](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See the documentation on [Amazon ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See Log Delivery Configuration below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> logDeliveryConfigurations;
@@ -1394,29 +1579,29 @@ class ReplicationGroup extends pulumi.CustomResource {
   /// Identifiers of all the nodes that are part of this replication group.
   late final pulumi.Output<List<String>> memberClusters;
   /// Specifies whether to enable Multi-AZ Support for the replication group.
-  /// If `true`, `automatic_failover_enabled` must also be enabled.
+  /// If `true`, `automaticFailoverEnabled` must also be enabled.
   /// Defaults to `false`.
   late final pulumi.Output<bool?> multiAzEnabled;
-  /// The IP versions for cache cluster connections. Valid values are `ipv4`, `ipv6` or `dual_stack`.
+  /// The IP versions for cache cluster connections. Valid values are `ipv4`, `ipv6` or `dualStack`.
   late final pulumi.Output<String> networkType;
-  /// Configuration block for node groups (shards). Can be specified only if `num_node_groups` is set. Conflicts with `preferred_cache_cluster_azs`. See Node Group Configuration below for more details.
+  /// Configuration block for node groups (shards). Can be specified only if `numNodeGroups` is set. Conflicts with `preferredCacheClusterAzs`. See Node Group Configuration below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> nodeGroupConfigurations;
   /// Instance class to be used.
   /// See AWS documentation for information on [supported node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html) and [guidance on selecting node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes-select-size.html).
-  /// Required unless `global_replication_group_id` is set.
-  /// Cannot be set if `global_replication_group_id` is set.
+  /// Required unless `globalReplicationGroupId` is set.
+  /// Cannot be set if `globalReplicationGroupId` is set.
   late final pulumi.Output<String> nodeType;
   /// ARN of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
   late final pulumi.Output<String?> notificationTopicArn;
   /// Number of cache clusters (primary and replicas) this replication group will have.
-  /// If `automatic_failover_enabled` or `multi_az_enabled` are `true`, must be at least 2.
+  /// If `automaticFailoverEnabled` or `multiAzEnabled` are `true`, must be at least 2.
   /// Updates will occur before other modifications.
-  /// Conflicts with `num_node_groups` and `replicas_per_node_group`.
+  /// Conflicts with `numNodeGroups` and `replicasPerNodeGroup`.
   /// Defaults to `1`.
   late final pulumi.Output<int> numCacheClusters;
   /// Number of node groups (shards) for this Redis replication group.
   /// Changing this number will trigger a resizing operation before other settings modifications.
-  /// Conflicts with `num_cache_clusters`.
+  /// Conflicts with `numCacheClusters`.
   late final pulumi.Output<int> numNodeGroups;
   /// Name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used. To enable "cluster mode", i.e., data sharding, use a parameter group that has the parameter `cluster-enabled` set to true.
   late final pulumi.Output<String> parameterGroupName;
@@ -1432,9 +1617,9 @@ class ReplicationGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Number of replica nodes in each node group.
   /// Changing this number will trigger a resizing operation before other settings modifications.
-  /// Valid values are 0 to 5.
-  /// Conflicts with `num_cache_clusters`.
-  /// Can only be set if `num_node_groups` is set.
+  /// Default AWS limit is 5. Higher values may be available with a quota increase.
+  /// Conflicts with `numCacheClusters`.
+  /// Can only be set if `numNodeGroups` is set.
   late final pulumi.Output<int> replicasPerNodeGroup;
   /// Replication group identifier. This parameter is stored as a lowercase string.
   ///
@@ -1446,20 +1631,20 @@ class ReplicationGroup extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> securityGroupNames;
   /// List of ARNs that identify Redis RDB snapshot files stored in Amazon S3. The names object names cannot contain any commas.
   late final pulumi.Output<List<String>?> snapshotArns;
-  /// Name of a snapshot from which to restore data into the new node group. Changing the `snapshot_name` forces a new resource.
+  /// Name of a snapshot from which to restore data into the new node group. Changing the `snapshotName` forces a new resource.
   late final pulumi.Output<String?> snapshotName;
-  /// Number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days before being deleted. If the value of `snapshot_retention_limit` is set to zero (0), backups are turned off. Please note that setting a `snapshot_retention_limit` is not supported on cache.t1.micro cache nodes
+  /// Number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days before being deleted. If the value of `snapshotRetentionLimit` is set to zero (0), backups are turned off. Please note that setting a `snapshotRetentionLimit` is not supported on cache.t1.micro cache nodes
   late final pulumi.Output<int?> snapshotRetentionLimit;
   /// Daily time range (in UTC) during which ElastiCache will begin taking a daily snapshot of your cache cluster. The minimum snapshot window is a 60 minute period. Example: `05:00-09:00`
   late final pulumi.Output<String> snapshotWindow;
   /// Name of the cache subnet group to be used for the replication group.
   late final pulumi.Output<String> subnetGroupName;
-  /// Map of tags to assign to the resource. Adding tags to this resource will add or overwrite any existing tags on the clusters in the replication group and not to the group itself. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. Adding tags to this resource will add or overwrite any existing tags on the clusters in the replication group and not to the group itself. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Whether to enable encryption in transit.
-  /// Changing this argument with an `engine_version` &lt; `7.0.5` will force a replacement.
+  /// Changing this argument with an `engineVersion` &lt; `7.0.5` will force a replacement.
   /// Engine versions prior to `7.0.5` only allow this transit encryption to be configured during creation of the replication group.
   late final pulumi.Output<bool> transitEncryptionEnabled;
   /// A setting that enables clients to migrate to in-transit encryption with no downtime.
@@ -1496,6 +1681,7 @@ class ReplicationGroup extends pulumi.CustomResource {
     configurationEndpointAddress = registerOutput<String>('configurationEndpointAddress');
     dataTieringEnabled = registerOutput<bool>('dataTieringEnabled');
     description = registerOutput<String>('description');
+    durability = registerOutput<String>('durability');
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');
@@ -1570,6 +1756,7 @@ class ReplicationGroup extends pulumi.CustomResource {
     configurationEndpointAddress = registerOutput<String>('configurationEndpointAddress');
     dataTieringEnabled = registerOutput<bool>('dataTieringEnabled');
     description = registerOutput<String>('description');
+    durability = registerOutput<String>('durability');
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');

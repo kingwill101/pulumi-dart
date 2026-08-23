@@ -104,6 +104,29 @@ import 'lb_stickiness_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lightsail_lb" "example" {
+///   name              = "example-load-balancer"
+///   health_check_path = "/"
+///   instance_port     = "80"
+///   tags = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "aws_lightsail_lbstickinesspolicy" "example" {
+///   lb_name         = aws_lightsail_lb.example.name
+///   cookie_duration = 900
+///   enabled         = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +137,8 @@ import 'lb_stickiness_policy_state.dart';
 /// import com.pulumi.aws.lightsail.LbArgs;
 /// import com.pulumi.aws.lightsail.LbStickinessPolicy;
 /// import com.pulumi.aws.lightsail.LbStickinessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,7 +188,7 @@ import 'lb_stickiness_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.lightsail.LbStickinessPolicy` using the `lb_name` attribute. For example:
+/// Using `pulumi import`, import `aws.lightsail.LbStickinessPolicy` using the `lbName` attribute. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lightsail/lbStickinessPolicy:LbStickinessPolicy example example-load-balancer

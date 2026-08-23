@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryBucketLocation {
-  /// [Availability Zone ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#az-ids) or Local Zone ID.
+  /// [Availability Zone ID](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html) or Local Zone ID.
   final pulumi.Input<String> name;
   /// Location type. Valid values: `AvailabilityZone`, `LocalZone`.
   final pulumi.Input<String>? type;
 
   /// Creates a new [DirectoryBucketLocation].
-  /// [name] [Availability Zone ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#az-ids) or Local Zone ID.
+  /// [name] [Availability Zone ID](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html) or Local Zone ID.
   /// [type] Location type. Valid values: `AvailabilityZone`, `LocalZone`.
   const DirectoryBucketLocation({
     required this.name,
@@ -30,4 +30,3 @@ class DirectoryBucketLocation {
     );
   }
 }
-

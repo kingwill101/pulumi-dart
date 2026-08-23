@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverPipelineConfig {
-  /// A list of Function objects.
+  /// List of Function objects.
   final pulumi.Input<List<String>>? functions;
 
   /// Creates a new [ResolverPipelineConfig].
-  /// [functions] A list of Function objects.
+  /// [functions] List of Function objects.
   const ResolverPipelineConfig({
     this.functions,
   });
@@ -24,4 +24,3 @@ class ResolverPipelineConfig {
     );
   }
 }
-

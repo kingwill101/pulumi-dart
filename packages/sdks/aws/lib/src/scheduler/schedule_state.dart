@@ -20,7 +20,7 @@ class ScheduleState {
   final pulumi.Input<String>? groupName;
   /// ARN for the customer managed KMS key that EventBridge Scheduler will use to encrypt and decrypt your data.
   final pulumi.Input<String>? kmsKeyArn;
-  /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
@@ -47,7 +47,7 @@ class ScheduleState {
   /// [flexibleTimeWindow] Configures a time window during which EventBridge Scheduler invokes the schedule. Detailed below.
   /// [groupName] Name of the schedule group to associate with this schedule. When omitted, the `default` schedule group is used.
   /// [kmsKeyArn] ARN for the customer managed KMS key that EventBridge Scheduler will use to encrypt and decrypt your data.
-  /// [name] Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [name] Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scheduleExpression] Defines when the schedule runs. Read more in [Schedule types on EventBridge Scheduler](https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html).
@@ -113,4 +113,3 @@ class ScheduleState {
     );
   }
 }
-

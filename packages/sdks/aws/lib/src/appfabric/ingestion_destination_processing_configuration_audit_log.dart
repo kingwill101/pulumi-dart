@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IngestionDestinationProcessingConfigurationAuditLog {
-  /// The format in which the audit logs need to be formatted. Valid values: `json`, `parquet`.
+  /// Format in which the audit logs need to be formatted. Valid values: `json`, `parquet`.
   final pulumi.Input<String> format;
-  /// The event schema in which the audit logs need to be formatted. Valid values: `ocsf`, `raw`.
+  /// Event schema in which the audit logs need to be formatted. Valid values: `ocsf`, `raw`.
   final pulumi.Input<String> schema;
 
   /// Creates a new [IngestionDestinationProcessingConfigurationAuditLog].
-  /// [format] The format in which the audit logs need to be formatted. Valid values: `json`, `parquet`.
-  /// [schema] The event schema in which the audit logs need to be formatted. Valid values: `ocsf`, `raw`.
+  /// [format] Format in which the audit logs need to be formatted. Valid values: `json`, `parquet`.
+  /// [schema] Event schema in which the audit logs need to be formatted. Valid values: `ocsf`, `raw`.
   const IngestionDestinationProcessingConfigurationAuditLog({
     required this.format,
     required this.schema,
@@ -30,4 +30,3 @@ class IngestionDestinationProcessingConfigurationAuditLog {
     );
   }
 }
-

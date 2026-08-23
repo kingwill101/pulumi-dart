@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda {
-  /// The Amazon Resource Name (ARN) of the AWS Lambda function.
+  /// Amazon Resource Name (ARN) of the AWS Lambda function.
   final pulumi.Input<String> functionArn;
   /// Additional JSON that provides supplemental data to the Lambda function used to transform objects.
   final pulumi.Input<String>? functionPayload;
 
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda].
-  /// [functionArn] The Amazon Resource Name (ARN) of the AWS Lambda function.
+  /// [functionArn] Amazon Resource Name (ARN) of the AWS Lambda function.
   /// [functionPayload] Additional JSON that provides supplemental data to the Lambda function used to transform objects.
   const ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda({
     required this.functionArn,
@@ -30,4 +30,3 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
     );
   }
 }
-

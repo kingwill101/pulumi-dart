@@ -96,6 +96,27 @@ import 'canary_vpc_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_synthetics_canary" "some" {
+///   name                 = "some-canary"
+///   artifact_s3_location = "s3://some-bucket/"
+///   execution_role_arn   = "some-role"
+///   handler              = "exports.handler"
+///   zip_file             = "test-fixtures/lambdatest.zip"
+///   runtime_version      = "syn-1.0"
+///   schedule = {
+///     expression = "rate(0 minute)"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +126,8 @@ import 'canary_vpc_config.dart';
 /// import com.pulumi.aws.synthetics.Canary;
 /// import com.pulumi.aws.synthetics.CanaryArgs;
 /// import com.pulumi.aws.synthetics.inputs.CanaryScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -181,11 +202,11 @@ class Canary extends pulumi.CustomResource {
   late final pulumi.Output<CanaryRunConfig> runConfig;
   /// Runtime version to use for the canary. Versions change often so consult the [Amazon CloudWatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html) for the latest valid versions. Values include `syn-python-selenium-1.0`, `syn-nodejs-puppeteer-3.0`, `syn-nodejs-2.2`, `syn-nodejs-2.1`, `syn-nodejs-2.0`, and `syn-1.0`.
   late final pulumi.Output<String> runtimeVersion;
-  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zip_file`.**
+  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zipFile`.**
   late final pulumi.Output<String?> s3Bucket;
-  /// S3 key of your script. **Conflicts with `zip_file`.**
+  /// S3 key of your script. **Conflicts with `zipFile`.**
   late final pulumi.Output<String?> s3Key;
-  /// S3 version ID of your script. **Conflicts with `zip_file`.**
+  /// S3 version ID of your script. **Conflicts with `zipFile`.**
   late final pulumi.Output<String?> s3Version;
   /// Configuration block providing how often the canary is to run and when these test runs are to stop. Detailed below.
   ///
@@ -199,15 +220,15 @@ class Canary extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Number of days to retain data about successful runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
   late final pulumi.Output<int?> successRetentionPeriod;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Structure that contains information about when the canary was created, modified, and most recently run. see Timeline.
   late final pulumi.Output<List<Map<String, dynamic>>> timelines;
   /// Configuration block. Detailed below.
   late final pulumi.Output<CanaryVpcConfig?> vpcConfig;
-  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3_bucket`, `s3_key`, and `s3_version`.**
+  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3Bucket`, `s3Key`, and `s3Version`.**
   late final pulumi.Output<String?> zipFile;
 
   /// Creates a new [Canary].

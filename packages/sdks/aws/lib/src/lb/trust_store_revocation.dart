@@ -91,6 +91,26 @@ import 'trust_store_revocation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lb_truststore" "test" {
+///   name                             = "tf-example-lb-ts"
+///   ca_certificates_bundle_s3_bucket = "..."
+///   ca_certificates_bundle_s3_key    = "..."
+/// }
+/// resource "aws_lb_truststorerevocation" "test" {
+///   trust_store_arn       = aws_lb_truststore.test.arn
+///   revocations_s3_bucket = "..."
+///   revocations_s3_key    = "..."
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +121,8 @@ import 'trust_store_revocation_state.dart';
 /// import com.pulumi.aws.lb.TrustStoreArgs;
 /// import com.pulumi.aws.lb.TrustStoreRevocation;
 /// import com.pulumi.aws.lb.TrustStoreRevocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

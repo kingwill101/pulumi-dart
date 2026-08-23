@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_odb_get_network_peering_connection_get_network_peering_connection_args_doc}
 class GetNetworkPeeringConnectionArgs {
-  /// The unique identifier of the ODB network peering connection.
+  /// Unique identifier of the ODB network peering connection.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
@@ -15,7 +15,7 @@ class GetNetworkPeeringConnectionArgs {
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetNetworkPeeringConnectionArgs].
-  /// [id] The unique identifier of the ODB network peering connection.
+  /// [id] Unique identifier of the ODB network peering connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetNetworkPeeringConnectionArgs({
     required this.id,
@@ -36,4 +36,3 @@ class GetNetworkPeeringConnectionArgs {
     );
   }
 }
-

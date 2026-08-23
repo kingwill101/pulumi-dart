@@ -8,8 +8,7 @@ import 'get_open_zfs_snapshot_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_fsx_get_open_zfs_snapshot_get_open_zfs_snapshot_args_doc}
 class GetOpenZfsSnapshotArgs {
-  /// One or more name/value pairs to filter off of. The
-  /// supported names are file-system-id or volume-id.
+  /// Configuration block. Detailed below.
   final pulumi.Input<List<GetOpenZfsSnapshotFilter>>? filters;
   /// If more than one result is returned, use the most recent snapshot.
   final pulumi.Input<bool>? mostRecent;
@@ -23,7 +22,7 @@ class GetOpenZfsSnapshotArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetOpenZfsSnapshotArgs].
-  /// [filters] One or more name/value pairs to filter off of. The
+  /// [filters] Configuration block. Detailed below.
   /// [mostRecent] If more than one result is returned, use the most recent snapshot.
   /// [name] Name of the snapshot.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -60,4 +59,3 @@ class GetOpenZfsSnapshotArgs {
     );
   }
 }
-

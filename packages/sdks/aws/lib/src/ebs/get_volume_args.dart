@@ -10,7 +10,7 @@ import 'get_volume_filter.dart';
 class GetVolumeArgs {
   /// One or more name/value pairs to filter off of. There are
   /// several valid keys, for a full reference, check out
-  /// [describe-volumes in the AWS CLI reference][1].
+  /// [describe-volumes in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-volumes.html).
   final pulumi.Input<List<GetVolumeFilter>>? filters;
   /// If more than one result is returned, use the most
   /// recent volume.
@@ -50,4 +50,3 @@ class GetVolumeArgs {
     );
   }
 }
-

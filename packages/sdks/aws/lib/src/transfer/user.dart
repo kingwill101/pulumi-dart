@@ -259,14 +259,14 @@ import 'user_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "foo", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("tf-test-transfer-user-iam-policy"),
-/// 			Role:   fooRole.ID(),
+/// 			Role:   fooRole.ID().ToIDOutput().ToStringOutput(),
 /// 			Policy: pulumi.String(foo.Json),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = transfer.NewUser(ctx, "foo", &transfer.UserArgs{
-/// 			ServerId:          fooServer.ID(),
+/// 			ServerId:          fooServer.ID().ToIDOutput().ToStringOutput(),
 /// 			UserName:          pulumi.String("tftestuser"),
 /// 			Role:              fooRole.Arn,
 /// 			HomeDirectoryType: pulumi.String("LOGICAL"),
@@ -284,6 +284,60 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["transfer.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "foo" {
+///   statements {
+///     sid       = "AllowFullAccesstoS3"
+///     effect    = "Allow"
+///     actions   = ["s3:*"]
+///     resources = ["*"]
+///   }
+/// }
+///
+/// resource "aws_transfer_server" "foo" {
+///   identity_provider_type = "SERVICE_MANAGED"
+///   tags = {
+///     "NAME" = "tf-acc-test-transfer-server"
+///   }
+/// }
+/// resource "aws_iam_role" "foo" {
+///   name               = "tf-test-transfer-user-iam-role"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// resource "aws_iam_rolepolicy" "foo" {
+///   name   = "tf-test-transfer-user-iam-policy"
+///   role   = aws_iam_role.foo.id
+///   policy = data.aws_iam_getpolicydocument.foo.json
+/// }
+/// resource "aws_transfer_user" "foo" {
+///   server_id           = aws_transfer_server.foo.id
+///   user_name           = "tftestuser"
+///   role                = aws_iam_role.foo.arn
+///   home_directory_type = "LOGICAL"
+///   home_directory_mappings {
+///     entry  = "/test.pdf"
+///     target = "/bucket3/test-path/tftestuser.pdf"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -294,6 +348,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.transfer.ServerArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -301,8 +357,8 @@ import 'user_state.dart';
 /// import com.pulumi.aws.transfer.User;
 /// import com.pulumi.aws.transfer.UserArgs;
 /// import com.pulumi.aws.transfer.inputs.UserHomeDirectoryMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,9 +480,146 @@ import 'user_state.dart';
 /// ```
 ///
 ///
+/// To restrict a user to their own home directory, use a `homeDirectoryMappings` block like the following:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.transfer.User("example", {
+///     homeDirectoryType: "LOGICAL",
+///     homeDirectoryMappings: [{
+///         entry: "/",
+///         target: `/${foo.id}/${Transfer:UserName}`,
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.transfer.User("example",
+///     home_directory_type="LOGICAL",
+///     home_directory_mappings=[{
+///         "entry": "/",
+///         "target": f"/{foo['id']}/${{Transfer:UserName}}",
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Transfer.User("example", new()
+///     {
+///         HomeDirectoryType = "LOGICAL",
+///         HomeDirectoryMappings = new[]
+///         {
+///             new Aws.Transfer.Inputs.UserHomeDirectoryMappingArgs
+///             {
+///                 Entry = "/",
+///                 Target = $"/{foo.Id}/${{Transfer:UserName}}",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/transfer"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := transfer.NewUser(ctx, "example", &transfer.UserArgs{
+/// 			HomeDirectoryType: pulumi.String("LOGICAL"),
+/// 			HomeDirectoryMappings: transfer.UserHomeDirectoryMappingArray{
+/// 				&transfer.UserHomeDirectoryMappingArgs{
+/// 					Entry:  pulumi.String("/"),
+/// 					Target: pulumi.Sprintf("/%v/${Transfer:UserName}", foo.Id),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_transfer_user" "example" {
+///   home_directory_type = "LOGICAL"
+///   home_directory_mappings {
+///     entry  = "/"
+///     target ="/${foo.id}/${Transfer:UserName}"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.transfer.User;
+/// import com.pulumi.aws.transfer.UserArgs;
+/// import com.pulumi.aws.transfer.inputs.UserHomeDirectoryMappingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new User("example", UserArgs.builder()
+///             .homeDirectoryType("LOGICAL")
+///             .homeDirectoryMappings(UserHomeDirectoryMappingArgs.builder()
+///                 .entry("/")
+///                 .target(String.format("/%s/${{Transfer:UserName}}", foo.id()))
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:transfer:User
+///     properties:
+///       homeDirectoryType: LOGICAL
+///       homeDirectoryMappings:
+///         - entry: /
+///           target: /${foo.id}/$${Transfer:UserName}
+/// ```
+///
+///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer Users using the `server_id` and `user_name` separated by `/`. For example:
+/// Using `pulumi import`, import Transfer Users using the `serverId` and `userName` separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/user:User bar s-12345678/test-username
@@ -434,27 +627,27 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of Transfer User
   late final pulumi.Output<String> arn;
-  /// The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
+  /// Landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
   late final pulumi.Output<String?> homeDirectory;
-  /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See Home Directory Mappings below.
+  /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See `homeDirectoryMappings` Block below.
   late final pulumi.Output<List<Map<String, dynamic>>?> homeDirectoryMappings;
-  /// The type of landing directory (folder) you mapped for your users' home directory. Valid values are `PATH` and `LOGICAL`.
+  /// Type of landing directory (folder) you mapped for your users' home directory. Valid values are `PATH` and `LOGICAL`.
   late final pulumi.Output<String?> homeDirectoryType;
-  /// An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
+  /// IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. Since the IAM variable syntax matches Terraform's interpolation syntax, they must be escaped inside Terraform configuration strings (`$${Transfer:UserName}`).  These are evaluated on-the-fly when navigating the bucket.
   late final pulumi.Output<String?> policy;
-  /// Specifies the full POSIX identity, including user ID (Uid), group ID (Gid), and any secondary groups IDs (SecondaryGids), that controls your users' access to your Amazon EFS file systems. See Posix Profile below.
+  /// Full POSIX identity, including user ID (Uid), group ID (Gid), and any secondary groups IDs (SecondaryGids), that controls your users' access to your Amazon EFS file systems. See `posixProfile` Block below.
   late final pulumi.Output<UserPosixProfile?> posixProfile;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Amazon Resource Name (ARN) of an IAM role that allows the service to control your user’s access to your Amazon S3 bucket.
   late final pulumi.Output<String> role;
-  /// The Server ID of the Transfer Server (e.g., `s-12345678`)
+  /// Server ID of the Transfer Server (e.g., `s-12345678`)
   late final pulumi.Output<String> serverId;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The name used for log in to your SFTP server.
+  /// Name used for log in to your SFTP server.
   late final pulumi.Output<String> userName;
 
   /// Creates a new [User].

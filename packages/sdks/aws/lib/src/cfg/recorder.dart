@@ -153,6 +153,35 @@ import 'recorder_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_iam_getpolicydocument" "assumeRole" {
+///   statements {
+///     effect = "Allow"
+///     principals {
+///       type        = "Service"
+///       identifiers = ["config.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
+///   }
+/// }
+///
+/// resource "aws_cfg_recorder" "foo" {
+///   name     = "example"
+///   role_arn = aws_iam_role.r.arn
+/// }
+/// resource "aws_iam_role" "r" {
+///   name               = "awsconfig-example"
+///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -161,12 +190,14 @@ import 'recorder_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cfg.Recorder;
 /// import com.pulumi.aws.cfg.RecorderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -341,6 +372,29 @@ import 'recorder_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_recorder" "foo" {
+///   name     = "example"
+///   role_arn = r.arn
+///   recording_group = {
+///     all_supported = false
+///     exclusion_by_resource_types = [{
+///       "resourceTypes" = ["AWS::EC2::Instance"]
+///     }]
+///     recording_strategies = [{
+///       "useOnly" = "EXCLUSION_BY_RESOURCE_TYPES"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -350,8 +404,10 @@ import 'recorder_state.dart';
 /// import com.pulumi.aws.cfg.Recorder;
 /// import com.pulumi.aws.cfg.RecorderArgs;
 /// import com.pulumi.aws.cfg.inputs.RecorderRecordingGroupArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.cfg.inputs.RecorderRecordingGroupExclusionByResourceTypeArgs;
+/// import com.pulumi.aws.cfg.inputs.RecorderRecordingGroupRecordingStrategyArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -527,6 +583,33 @@ import 'recorder_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cfg_recorder" "foo" {
+///   name     = "example"
+///   role_arn = r.arn
+///   recording_group = {
+///     all_supported                 = false
+///     include_global_resource_types = false
+///     resource_types                = ["AWS::EC2::Instance", "AWS::EC2::NetworkInterface"]
+///   }
+///   recording_mode = {
+///     recording_frequency = "CONTINUOUS"
+///     recording_mode_override = {
+///       description         = "Only record EC2 network interfaces daily"
+///       resource_types      = ["AWS::EC2::NetworkInterface"]
+///       recording_frequency = "DAILY"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -538,8 +621,8 @@ import 'recorder_state.dart';
 /// import com.pulumi.aws.cfg.inputs.RecorderRecordingGroupArgs;
 /// import com.pulumi.aws.cfg.inputs.RecorderRecordingModeArgs;
 /// import com.pulumi.aws.cfg.inputs.RecorderRecordingModeRecordingModeOverrideArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -599,13 +682,25 @@ import 'recorder_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Configuration Recorder using the name. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the configuration recorder.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Configuration Recorders using the `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:cfg/recorder:Recorder foo example
+/// $ pulumi import aws:cfg/recorder:Recorder example example
 /// ```
 class Recorder extends pulumi.CustomResource {
-  /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
+  /// The name of the configuration recorder. Defaults to `default`. Changing it recreates the resource.
   late final pulumi.Output<String> name;
   /// Recording group - see below.
   late final pulumi.Output<RecorderRecordingGroup> recordingGroup;

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement {
-  /// String to match against.
+  /// String to match against. For `LABEL` scope, include the name and any preceding namespace specifications. For `NAMESPACE` scope, include namespace strings. Labels are case sensitive and components must be separated by colon (e.g., `NS1:NS2:name`).
   final pulumi.Input<String> key;
-  /// Specify whether you want to match using the label name or just the namespace. Valid values are `LABEL` or `NAMESPACE`.
+  /// Whether to match using the label name or namespace. Valid values: `LABEL`, `NAMESPACE`.
   final pulumi.Input<String> scope;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement].
-  /// [key] String to match against.
-  /// [scope] Specify whether you want to match using the label name or just the namespace. Valid values are `LABEL` or `NAMESPACE`.
+  /// [key] String to match against. For `LABEL` scope, include the name and any preceding namespace specifications. For `NAMESPACE` scope, include namespace strings. Labels are case sensitive and components must be separated by colon (e.g., `NS1:NS2:name`).
+  /// [scope] Whether to match using the label name or namespace. Valid values: `LABEL`, `NAMESPACE`.
   const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement({
     required this.key,
     required this.scope,
@@ -30,4 +30,3 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchSt
     );
   }
 }
-

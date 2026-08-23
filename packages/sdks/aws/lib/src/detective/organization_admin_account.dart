@@ -91,6 +91,24 @@ import 'organization_admin_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_organizations_organization" "example" {
+///   aws_service_access_principals = ["detective.amazonaws.com"]
+///   feature_set                   = "ALL"
+/// }
+/// resource "aws_detective_organizationadminaccount" "example" {
+///   depends_on = [aws_organizations_organization.example]
+///   account_id = "123456789012"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +120,8 @@ import 'organization_admin_account_state.dart';
 /// import com.pulumi.aws.detective.OrganizationAdminAccount;
 /// import com.pulumi.aws.detective.OrganizationAdminAccountArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,7 +168,7 @@ import 'organization_admin_account_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.detective.OrganizationAdminAccount` using `account_id`. For example:
+/// Using `pulumi import`, import `aws.detective.OrganizationAdminAccount` using `accountId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:detective/organizationAdminAccount:OrganizationAdminAccount example 123456789012

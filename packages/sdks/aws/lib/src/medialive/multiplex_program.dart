@@ -170,7 +170,7 @@ import 'multiplex_program_timeouts.dart';
 /// 		}
 /// 		_, err = medialive.NewMultiplexProgram(ctx, "example", &medialive.MultiplexProgramArgs{
 /// 			ProgramName: pulumi.String("example_program"),
-/// 			MultiplexId: example.ID(),
+/// 			MultiplexId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			MultiplexProgramSettings: &medialive.MultiplexProgramMultiplexProgramSettingsArgs{
 /// 				ProgramNumber:            pulumi.Int(1),
 /// 				PreferredChannelPipeline: pulumi.String("CURRENTLY_ACTIVE"),
@@ -184,6 +184,45 @@ import 'multiplex_program_timeouts.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getavailabilityzones" "available" {
+///   state = "available"
+/// }
+///
+/// resource "aws_medialive_multiplex" "example" {
+///   name               = "example-multiplex-changed"
+///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
+///   multiplex_settings = {
+///     transport_stream_bitrate                = 1000000
+///     transport_stream_id                     = 1
+///     transport_stream_reserved_bitrate       = 1
+///     maximum_video_buffer_delay_milliseconds = 1000
+///   }
+///   start_multiplex = true
+///   tags = {
+///     "tag1" = "value1"
+///   }
+/// }
+/// resource "aws_medialive_multiplexprogram" "example" {
+///   program_name = "example_program"
+///   multiplex_id = aws_medialive_multiplex.example.id
+///   multiplex_program_settings = {
+///     program_number             = 1
+///     preferred_channel_pipeline = "CURRENTLY_ACTIVE"
+///     video_settings = {
+///       constant_bitrate = 100000
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -201,8 +240,8 @@ import 'multiplex_program_timeouts.dart';
 /// import com.pulumi.aws.medialive.MultiplexProgramArgs;
 /// import com.pulumi.aws.medialive.inputs.MultiplexProgramMultiplexProgramSettingsArgs;
 /// import com.pulumi.aws.medialive.inputs.MultiplexProgramMultiplexProgramSettingsVideoSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,10 +326,23 @@ import 'multiplex_program_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import MediaLive MultiplexProgram using the `id`, or a combination of "`program_name`/`multiplex_id`". For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `multiplexId` (String) ID of the Multiplex.
+/// * `programName` (String) Unique program name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import MediaLive MultiplexProgram using the `id`, or a combination of "`programName`/`multiplexId`". For example:
 ///
 /// ```sh
-/// $ pulumi import aws:medialive/multiplexProgram:MultiplexProgram example example_program/1234567
+/// $ pulumi import aws:medialive/multiplexProgram:MultiplexProgram example example_program/12345678
 /// ```
 class MultiplexProgram extends pulumi.CustomResource {
   /// Multiplex ID.

@@ -15,46 +15,40 @@ import 'flow_destination_flow_config_destination_connector_properties_upsolver.d
 import 'flow_destination_flow_config_destination_connector_properties_zendesk.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorProperties {
-  /// Properties that are required to query the custom Connector. See Custom Connector Destination Properties for more details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector>? customConnector;
-  /// Properties that are required to query Amazon Connect Customer Profiles. See Customer Profiles Destination Properties for more details.
+  /// Properties required to query Amazon Connect Customer Profiles. See the `destination_flow_config.destination_connector_properties.customer_profiles` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles>? customerProfiles;
-  /// Properties that are required to query Amazon EventBridge. See Generic Destination Properties for more details.
+  /// Properties required to query Amazon EventBridge. See the `destination_flow_config.destination_connector_properties.event_bridge` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge>? eventBridge;
-  /// Properties that are required to query Amazon Honeycode. See Generic Destination Properties for more details.
+  /// Properties required to query Amazon Honeycode. See the `destination_flow_config.destination_connector_properties.honeycode` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode>? honeycode;
   final pulumi.Input<Map<String, dynamic>>? lookoutMetrics;
-  /// Properties that are required to query Marketo. See Generic Destination Properties for more details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo>? marketo;
-  /// Properties that are required to query Amazon Redshift. See Redshift Destination Properties for more details.
+  /// Properties required to query Amazon Redshift. See the `destination_flow_config.destination_connector_properties.redshift` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift>? redshift;
-  /// Properties that are required to query Amazon S3. See S3 Destination Properties for more details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3>? s3;
-  /// Properties that are required to query Salesforce. See Salesforce Destination Properties for more details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce>? salesforce;
-  /// Properties that are required to query SAPOData. See SAPOData Destination Properties for more details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData>? sapoData;
-  /// Properties that are required to query Snowflake. See Snowflake Destination Properties for more details.
+  /// Properties required to query Snowflake. See the `destination_flow_config.destination_connector_properties.snowflake` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake>? snowflake;
-  /// Properties that are required to query Upsolver. See Upsolver Destination Properties for more details.
+  /// Properties required to query Upsolver. See the `destination_flow_config.destination_connector_properties.upsolver` Block for details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver>? upsolver;
-  /// Properties that are required to query Zendesk. See Zendesk Destination Properties for more details.
   final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk>? zendesk;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorProperties].
-  /// [customConnector] Properties that are required to query the custom Connector. See Custom Connector Destination Properties for more details.
-  /// [customerProfiles] Properties that are required to query Amazon Connect Customer Profiles. See Customer Profiles Destination Properties for more details.
-  /// [eventBridge] Properties that are required to query Amazon EventBridge. See Generic Destination Properties for more details.
-  /// [honeycode] Properties that are required to query Amazon Honeycode. See Generic Destination Properties for more details.
+  /// [customConnector] Optional.
+  /// [customerProfiles] Properties required to query Amazon Connect Customer Profiles. See the `destination_flow_config.destination_connector_properties.customer_profiles` Block for details.
+  /// [eventBridge] Properties required to query Amazon EventBridge. See the `destination_flow_config.destination_connector_properties.event_bridge` Block for details.
+  /// [honeycode] Properties required to query Amazon Honeycode. See the `destination_flow_config.destination_connector_properties.honeycode` Block for details.
   /// [lookoutMetrics] Optional.
-  /// [marketo] Properties that are required to query Marketo. See Generic Destination Properties for more details.
-  /// [redshift] Properties that are required to query Amazon Redshift. See Redshift Destination Properties for more details.
-  /// [s3] Properties that are required to query Amazon S3. See S3 Destination Properties for more details.
-  /// [salesforce] Properties that are required to query Salesforce. See Salesforce Destination Properties for more details.
-  /// [sapoData] Properties that are required to query SAPOData. See SAPOData Destination Properties for more details.
-  /// [snowflake] Properties that are required to query Snowflake. See Snowflake Destination Properties for more details.
-  /// [upsolver] Properties that are required to query Upsolver. See Upsolver Destination Properties for more details.
-  /// [zendesk] Properties that are required to query Zendesk. See Zendesk Destination Properties for more details.
+  /// [marketo] Optional.
+  /// [redshift] Properties required to query Amazon Redshift. See the `destination_flow_config.destination_connector_properties.redshift` Block for details.
+  /// [s3] Optional.
+  /// [salesforce] Optional.
+  /// [sapoData] Optional.
+  /// [snowflake] Properties required to query Snowflake. See the `destination_flow_config.destination_connector_properties.snowflake` Block for details.
+  /// [upsolver] Properties required to query Upsolver. See the `destination_flow_config.destination_connector_properties.upsolver` Block for details.
+  /// [zendesk] Optional.
   const FlowDestinationFlowConfigDestinationConnectorProperties({
     this.customConnector,
     this.customerProfiles,
@@ -107,4 +101,3 @@ class FlowDestinationFlowConfigDestinationConnectorProperties {
     );
   }
 }
-

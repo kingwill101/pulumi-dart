@@ -241,7 +241,7 @@ import 'pipeline_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datapipeline.NewPipelineDefinition(ctx, "example", &datapipeline.PipelineDefinitionArgs{
-/// 			PipelineId: _default.ID(),
+/// 			PipelineId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			PipelineObjects: datapipeline.PipelineDefinitionPipelineObjectArray{
 /// 				&datapipeline.PipelineDefinitionPipelineObjectArgs{
 /// 					Id:   pulumi.String("Default"),
@@ -306,6 +306,70 @@ import 'pipeline_definition_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_datapipeline_pipeline" "default" {
+///   name = "tf-pipeline-default"
+/// }
+/// resource "aws_datapipeline_pipelinedefinition" "example" {
+///   pipeline_id = aws_datapipeline_pipeline.default.id
+///   pipeline_objects {
+///     id   = "Default"
+///     name = "Default"
+///     fields {
+///       key          = "workerGroup"
+///       string_value = "workerGroup"
+///     }
+///   }
+///   pipeline_objects {
+///     id   = "Schedule"
+///     name = "Schedule"
+///     fields {
+///       key          = "startDateTime"
+///       string_value = "2012-12-12T00:00:00"
+///     }
+///     fields {
+///       key          = "type"
+///       string_value = "Schedule"
+///     }
+///     fields {
+///       key          = "period"
+///       string_value = "1 hour"
+///     }
+///     fields {
+///       key          = "endDateTime"
+///       string_value = "2012-12-21T18:00:00"
+///     }
+///   }
+///   pipeline_objects {
+///     id   = "SayHello"
+///     name = "SayHello"
+///     fields {
+///       key          = "type"
+///       string_value = "ShellCommandActivity"
+///     }
+///     fields {
+///       key          = "command"
+///       string_value = "echo hello"
+///     }
+///     fields {
+///       key          = "parent"
+///       string_value = "Default"
+///     }
+///     fields {
+///       key          = "schedule"
+///       string_value = "Schedule"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +381,9 @@ import 'pipeline_definition_state.dart';
 /// import com.pulumi.aws.datapipeline.PipelineDefinition;
 /// import com.pulumi.aws.datapipeline.PipelineDefinitionArgs;
 /// import com.pulumi.aws.datapipeline.inputs.PipelineDefinitionPipelineObjectArgs;
-/// import java.util.List;
+/// import com.pulumi.aws.datapipeline.inputs.PipelineDefinitionPipelineObjectFieldArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

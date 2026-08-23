@@ -105,6 +105,29 @@ import 'resource_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_ec2_dedicatedhost" "example" {
+///   instance_family   = "t3"
+///   availability_zone = "us-east-1a"
+///   host_recovery     = "off"
+///   auto_placement    = "on"
+/// }
+/// resource "aws_resourcegroups_group" "example" {
+///   name = "example"
+/// }
+/// resource "aws_resourcegroups_resource" "example" {
+///   group_arn    = aws_resourcegroups_group.example.arn
+///   resource_arn = aws_ec2_dedicatedhost.example.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +140,8 @@ import 'resource_state.dart';
 /// import com.pulumi.aws.resourcegroups.GroupArgs;
 /// import com.pulumi.aws.resourcegroups.Resource;
 /// import com.pulumi.aws.resourcegroups.ResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,7 +197,7 @@ import 'resource_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an AWS Resource Groups Resource using `group_arn` and `resource_arn`, separated by a comma (`,`). For example:
+/// Using `pulumi import`, import an AWS Resource Groups Resource using `groupArn` and `resourceArn`, separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:resourcegroups/resource:Resource example arn:aws:resource-groups:us-west-2:012345678901:group/example,arn:aws:lambda:us-west-2:012345678901:function:example

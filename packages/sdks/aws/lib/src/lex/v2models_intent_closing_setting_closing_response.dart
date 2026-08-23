@@ -6,12 +6,12 @@ import 'v2models_intent_closing_setting_closing_response_message_group.dart';
 class V2modelsIntentClosingSettingClosingResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
   final pulumi.Input<bool>? allowInterrupt;
-  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   final pulumi.Input<List<V2modelsIntentClosingSettingClosingResponseMessageGroup>>? messageGroups;
 
   /// Creates a new [V2modelsIntentClosingSettingClosingResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
-  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
+  /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
   const V2modelsIntentClosingSettingClosingResponse({
     this.allowInterrupt,
     this.messageGroups,
@@ -31,4 +31,3 @@ class V2modelsIntentClosingSettingClosingResponse {
     );
   }
 }
-

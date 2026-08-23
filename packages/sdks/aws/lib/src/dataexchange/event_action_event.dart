@@ -5,7 +5,7 @@ import 'event_action_event_revision_published.dart';
 
 class EventActionEvent {
   /// Configuration for a Revision Published event.
-  /// Described in `revision_published` Configuration Block below.
+  /// Described in `revisionPublished` Configuration Block below.
   final pulumi.Input<EventActionEventRevisionPublished> revisionPublished;
 
   /// Creates a new [EventActionEvent].
@@ -26,4 +26,3 @@ class EventActionEvent {
     );
   }
 }
-

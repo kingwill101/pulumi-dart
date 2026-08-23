@@ -6,7 +6,7 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 ///
 /// &gt; **NOTE on VPC Endpoint Services and VPC Endpoint Service Allowed Principals:** This provider provides
 /// both a standalone VPC Endpoint Service Allowed Principal resource
-/// and a VPC Endpoint Service resource with an `allowed_principals` attribute. Do not use the same principal ARN in both
+/// and a VPC Endpoint Service resource with an `allowedPrincipals` attribute. Do not use the same principal ARN in both
 /// a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
 /// and will overwrite the association.
 ///
@@ -78,6 +78,23 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getcalleridentity" "current" {
+/// }
+///
+/// resource "aws_ec2_vpcendpointserviceallowedprinciple" "allow_me_to_foo" {
+///   vpc_endpoint_service_id = foo.id
+///   principal_arn           = data.aws_getcalleridentity.current.arn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +105,8 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 /// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
 /// import com.pulumi.aws.ec2.VpcEndpointServiceAllowedPrinciple;
 /// import com.pulumi.aws.ec2.VpcEndpointServiceAllowedPrincipleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

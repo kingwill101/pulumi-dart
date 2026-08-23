@@ -3,26 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
-  /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// Amazon Resource Name (ARN) for the Exadata infrastructure.
   final pulumi.Input<String> arn;
-  /// The display name of the Exadata infrastructure.
+  /// Display name of the Exadata infrastructure.
   final pulumi.Input<String> displayName;
-  /// The unique identifier of the Exadata infrastructure.
+  /// Unique identifier of the Exadata infrastructure.
   final pulumi.Input<String> id;
-  /// The name of the OCI resource anchor for the Exadata infrastructure.
+  /// Name of the OCI resource anchor for the Exadata infrastructure.
   final pulumi.Input<String> ociResourceAnchorName;
-  /// The HTTPS link to the Exadata infrastructure in OCI.
+  /// HTTPS link to the Exadata infrastructure in OCI.
   final pulumi.Input<String> ociUrl;
-  /// The OCID of the Exadata infrastructure in OCI.
+  /// OCID of the Exadata infrastructure in OCI.
   final pulumi.Input<String> ocid;
 
   /// Creates a new [GetCloudExadataInfrastructuresCloudExadataInfrastructure].
-  /// [arn] The Amazon Resource Name (ARN) for the Exadata infrastructure.
-  /// [displayName] The display name of the Exadata infrastructure.
-  /// [id] The unique identifier of the Exadata infrastructure.
-  /// [ociResourceAnchorName] The name of the OCI resource anchor for the Exadata infrastructure.
-  /// [ociUrl] The HTTPS link to the Exadata infrastructure in OCI.
-  /// [ocid] The OCID of the Exadata infrastructure in OCI.
+  /// [arn] Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// [displayName] Display name of the Exadata infrastructure.
+  /// [id] Unique identifier of the Exadata infrastructure.
+  /// [ociResourceAnchorName] Name of the OCI resource anchor for the Exadata infrastructure.
+  /// [ociUrl] HTTPS link to the Exadata infrastructure in OCI.
+  /// [ocid] OCID of the Exadata infrastructure in OCI.
   const GetCloudExadataInfrastructuresCloudExadataInfrastructure({
     required this.arn,
     required this.displayName,
@@ -54,4 +54,3 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     );
   }
 }
-

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConfigurationResourceConfigurationDefinitionDnsResource {
-  /// The hostname of the Resource for this configuration.
+  /// Hostname of the Resource for this configuration.
   final pulumi.Input<String> domainName;
-  /// The IP Address type either `IPV4` or `IPV6`
+  /// IP Address type either `IPV4` or `IPV6`
   final pulumi.Input<String> ipAddressType;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionDnsResource].
-  /// [domainName] The hostname of the Resource for this configuration.
-  /// [ipAddressType] The IP Address type either `IPV4` or `IPV6`
+  /// [domainName] Hostname of the Resource for this configuration.
+  /// [ipAddressType] IP Address type either `IPV4` or `IPV6`
   const ResourceConfigurationResourceConfigurationDefinitionDnsResource({
     required this.domainName,
     required this.ipAddressType,
@@ -30,4 +30,3 @@ class ResourceConfigurationResourceConfigurationDefinitionDnsResource {
     );
   }
 }
-

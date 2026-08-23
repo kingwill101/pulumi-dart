@@ -10,9 +10,9 @@ class VpcOriginState {
   final pulumi.Input<String>? arn;
   /// The current version of the origin.
   final pulumi.Input<String>? etag;
-  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<VpcOriginTimeouts>? timeouts;
   /// The VPC origin endpoint configuration.
@@ -23,8 +23,8 @@ class VpcOriginState {
   /// Creates a new [VpcOriginState].
   /// [arn] The VPC origin ARN.
   /// [etag] The current version of the origin.
-  /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [vpcOriginEndpointConfig] The VPC origin endpoint configuration.
   const VpcOriginState({
@@ -58,4 +58,3 @@ class VpcOriginState {
     );
   }
 }
-

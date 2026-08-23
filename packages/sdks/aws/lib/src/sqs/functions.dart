@@ -62,6 +62,19 @@ import 'get_queues_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sqs_getqueue" "example" {
+///   name = "queue"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +83,8 @@ import 'get_queues_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sqs.SqsFunctions;
 /// import com.pulumi.aws.sqs.inputs.GetQueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +182,19 @@ Future<GetQueueResult> getQueue(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_sqs_getqueues" "example" {
+///   queue_name_prefix = "example"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +203,8 @@ Future<GetQueueResult> getQueue(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sqs.SqsFunctions;
 /// import com.pulumi.aws.sqs.inputs.GetQueuesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

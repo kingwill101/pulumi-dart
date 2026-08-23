@@ -5,7 +5,7 @@ import 'cluster_instance_state.dart';
 /// A Cluster Instance Resource defines attributes that are specific to a single instance in a Neptune Cluster.
 ///
 /// You can simply add neptune instances and Neptune manages the replication. You can use the count
-/// meta-parameter to make multiple instances and join them all to the same Neptune Cluster, or you may specify different Cluster Instance resources with various `instance_class` sizes.
+/// meta-parameter to make multiple instances and join them all to the same Neptune Cluster, or you may specify different Cluster Instance resources with various `instanceClass` sizes.
 ///
 /// ## Example Usage
 ///
@@ -26,8 +26,8 @@ import 'cluster_instance_state.dart';
 ///     applyImmediately: true,
 /// });
 /// const example: aws.neptune.ClusterInstance[] = [];
-/// for (const range = {value: 0}; range.value < 2; range.value++) {
-///     example.push(new aws.neptune.ClusterInstance(`example-${range.value}`, {
+/// for (let range = 0; range < 2; range++) {
+///     example.push(new aws.neptune.ClusterInstance(`example-${range}`, {
 ///         clusterIdentifier: _default.id,
 ///         engine: "neptune",
 ///         instanceClass: "db.r4.large",
@@ -37,6 +37,7 @@ import 'cluster_instance_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_aws as aws
 ///
 /// default = aws.neptune.Cluster("default",
@@ -47,9 +48,9 @@ import 'cluster_instance_state.dart';
 ///     skip_final_snapshot=True,
 ///     iam_database_authentication_enabled=True,
 ///     apply_immediately=True)
-/// example = []
-/// for range in [{"value": i} for i in range(0, 2)]:
-///     example.append(aws.neptune.ClusterInstance(f"example-{range['value']}",
+/// example: list[aws.neptune.ClusterInstance] = []
+/// for example_range in [{"value": i} for i in range(0, 2)]:
+///     example.append(aws.neptune.ClusterInstance(f"example-{example_range['value']}",
 ///         cluster_identifier=default.id,
 ///         engine="neptune",
 ///         instance_class="db.r4.large",
@@ -117,7 +118,7 @@ import 'cluster_instance_state.dart';
 /// 			key0 := index
 /// 			_ := index
 /// 			__res, err := neptune.NewClusterInstance(ctx, fmt.Sprintf("example-%v", key0), &neptune.ClusterInstanceArgs{
-/// 				ClusterIdentifier: _default.ID(),
+/// 				ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
 /// 				Engine:            pulumi.String("neptune"),
 /// 				InstanceClass:     pulumi.String("db.r4.large"),
 /// 				ApplyImmediately:  pulumi.Bool(true),
@@ -131,6 +132,32 @@ import 'cluster_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_neptune_cluster" "default" {
+///   cluster_identifier                  = "neptune-cluster-demo"
+///   engine                              = "neptune"
+///   backup_retention_period             = 5
+///   preferred_backup_window             = "07:00-09:00"
+///   skip_final_snapshot                 = true
+///   iam_database_authentication_enabled = true
+///   apply_immediately                   = true
+/// }
+/// resource "aws_neptune_clusterinstance" "example" {
+///   count              = 2
+///   cluster_identifier = aws_neptune_cluster.default.id
+///   engine             = "neptune"
+///   instance_class     = "db.r4.large"
+///   apply_immediately  = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +169,8 @@ import 'cluster_instance_state.dart';
 /// import com.pulumi.aws.neptune.ClusterInstance;
 /// import com.pulumi.aws.neptune.ClusterInstanceArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,7 +267,7 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyArn;
   /// The name of the neptune parameter group to associate with this instance.
   late final pulumi.Output<String> neptuneParameterGroupName;
-  /// A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptune_subnet_group_name` of the attached `aws.neptune.Cluster`.
+  /// A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
   late final pulumi.Output<String> neptuneSubnetGroupName;
   /// The port on which the DB accepts connections. Defaults to `8182`.
   late final pulumi.Output<int?> port;
@@ -261,9 +288,9 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<bool> storageEncrypted;
   /// Storage type associated with the cluster `standard/iopt1`.
   late final pulumi.Output<String> storageType;
-  /// A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
   late final pulumi.Output<bool> writer;

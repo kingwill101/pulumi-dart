@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
   final pulumi.Input<String>? dataTransferApi;
-  /// Flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
+  /// Whether to enable dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
   final pulumi.Input<bool>? enableDynamicFieldUpdate;
-  /// Whether Amazon AppFlow includes deleted files in the flow run.
+  /// Whether to include deleted files in the flow run.
   final pulumi.Input<bool>? includeDeletedRecords;
   final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSalesforce].
   /// [dataTransferApi] Optional.
-  /// [enableDynamicFieldUpdate] Flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
-  /// [includeDeletedRecords] Whether Amazon AppFlow includes deleted files in the flow run.
+  /// [enableDynamicFieldUpdate] Whether to enable dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
+  /// [includeDeletedRecords] Whether to include deleted files in the flow run.
   /// [object_] Required.
   const FlowSourceFlowConfigSourceConnectorPropertiesSalesforce({
     this.dataTransferApi,
@@ -40,4 +40,3 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
     );
   }
 }
-

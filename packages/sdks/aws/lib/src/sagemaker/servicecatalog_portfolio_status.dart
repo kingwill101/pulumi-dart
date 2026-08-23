@@ -56,6 +56,19 @@ import 'servicecatalog_portfolio_status_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_sagemaker_servicecatalogportfoliostatus" "example" {
+///   status = "Enabled"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'servicecatalog_portfolio_status_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sagemaker.ServicecatalogPortfolioStatus;
 /// import com.pulumi.aws.sagemaker.ServicecatalogPortfolioStatusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -94,6 +107,14 @@ import 'servicecatalog_portfolio_status_state.dart';
 ///
 ///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import models using the `id`. For example:
 ///

@@ -6,29 +6,28 @@ import 'route_spec_http2_route_match_path.dart';
 import 'route_spec_http2_route_match_query_parameter.dart';
 
 class RouteSpecHttp2RouteMatch {
-  /// Client request headers to match on.
+  /// Client request headers to match on. See `spec.http_route.match.header` Block for details.
   final pulumi.Input<List<RouteSpecHttp2RouteMatchHeader>>? headers;
   /// Client request header method to match on. Valid values: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
   final pulumi.Input<String>? method;
-  /// Client request path to match on.
+  /// Client request path to match on. See `spec.http_route.match.path` Block for details.
   final pulumi.Input<RouteSpecHttp2RouteMatchPath>? path;
-  /// The port number to match from the request.
+  /// Port number to match from the request.
   final pulumi.Input<int>? port;
-  /// Path with which to match requests.
-  /// This parameter must always start with /, which by itself matches all requests to the virtual router service name.
+  /// Header value sent by the client must begin with the specified characters.
   final pulumi.Input<String>? prefix;
-  /// Client request query parameters to match on.
+  /// Client request query parameters to match on. See `spec.http_route.match.query_parameter` Block for details.
   final pulumi.Input<List<RouteSpecHttp2RouteMatchQueryParameter>>? queryParameters;
   /// Client request header scheme to match on. Valid values: `http`, `https`.
   final pulumi.Input<String>? scheme;
 
   /// Creates a new [RouteSpecHttp2RouteMatch].
-  /// [headers] Client request headers to match on.
+  /// [headers] Client request headers to match on. See `spec.http_route.match.header` Block for details.
   /// [method] Client request header method to match on. Valid values: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
-  /// [path] Client request path to match on.
-  /// [port] The port number to match from the request.
-  /// [prefix] Path with which to match requests.
-  /// [queryParameters] Client request query parameters to match on.
+  /// [path] Client request path to match on. See `spec.http_route.match.path` Block for details.
+  /// [port] Port number to match from the request.
+  /// [prefix] Header value sent by the client must begin with the specified characters.
+  /// [queryParameters] Client request query parameters to match on. See `spec.http_route.match.query_parameter` Block for details.
   /// [scheme] Client request header scheme to match on. Valid values: `http`, `https`.
   const RouteSpecHttp2RouteMatch({
     this.headers,
@@ -64,4 +63,3 @@ class RouteSpecHttp2RouteMatch {
     );
   }
 }
-

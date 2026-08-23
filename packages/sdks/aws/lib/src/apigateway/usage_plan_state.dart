@@ -7,9 +7,9 @@ import 'usage_plan_throttle_settings.dart';
 
 /// Input properties used for looking up and filtering UsagePlan resources.
 class UsagePlanState {
-  /// Associated API stages of the usage plan.
+  /// Associated API stages of the usage plan. See `apiStages` Block below.
   final pulumi.Input<List<UsagePlanApiStage>>? apiStages;
-  /// ARN
+  /// ARN of the usage plan.
   final pulumi.Input<String>? arn;
   /// Description of a usage plan.
   final pulumi.Input<String>? description;
@@ -17,28 +17,28 @@ class UsagePlanState {
   final pulumi.Input<String>? name;
   /// AWS Marketplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
   final pulumi.Input<String>? productCode;
-  /// The quota settings of the usage plan.
+  /// Quota settings of the usage plan. See `quotaSettings` Block below.
   final pulumi.Input<UsagePlanQuotaSettings>? quotaSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The throttling limits of the usage plan.
+  /// Throttling limits of the usage plan. See `throttleSettings` Block below.
   final pulumi.Input<UsagePlanThrottleSettings>? throttleSettings;
 
   /// Creates a new [UsagePlanState].
-  /// [apiStages] Associated API stages of the usage plan.
-  /// [arn] ARN
+  /// [apiStages] Associated API stages of the usage plan. See `apiStages` Block below.
+  /// [arn] ARN of the usage plan.
   /// [description] Description of a usage plan.
   /// [name] Name of the usage plan.
   /// [productCode] AWS Marketplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-  /// [quotaSettings] The quota settings of the usage plan.
+  /// [quotaSettings] Quota settings of the usage plan. See `quotaSettings` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  /// [throttleSettings] The throttling limits of the usage plan.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [throttleSettings] Throttling limits of the usage plan. See `throttleSettings` Block below.
   const UsagePlanState({
     this.apiStages,
     this.arn,
@@ -82,4 +82,3 @@ class UsagePlanState {
     );
   }
 }
-

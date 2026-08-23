@@ -96,6 +96,27 @@ import 'cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_memorydb_cluster" "example" {
+///   acl_name                 = "open-access"
+///   name                     = "my-cluster"
+///   node_type                = "db.t4g.small"
+///   engine                   = "redis"
+///   engine_version           = "7.1"
+///   num_shards               = 2
+///   security_group_ids       = [exampleAwsSecurityGroup.id]
+///   snapshot_retention_limit = 7
+///   subnet_group_name        = exampleAwsMemorydbSubnetGroup.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +125,8 @@ import 'cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.memorydb.Cluster;
 /// import com.pulumi.aws.memorydb.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,16 +198,20 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> engineVersion;
   /// Name of the final cluster snapshot to be created when this resource is deleted. If omitted, no final snapshot will be made.
   late final pulumi.Output<String?> finalSnapshotName;
+  /// Mechanism that the cluster uses to discover IP addresses. Valid values are `ipv4` and `ipv6`. Defaults to `ipv4`. To specify `ipv6`, `networkType` must be `ipv6` or `dualStack`.
+  late final pulumi.Output<String> ipDiscovery;
   /// ARN of the KMS key used to encrypt the cluster at rest.
   late final pulumi.Output<String?> kmsKeyArn;
   /// Specifies the weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). The minimum maintenance window is a 60 minute period. Example: `sun:23:00-mon:01:30`.
   late final pulumi.Output<String> maintenanceWindow;
   /// The multi region cluster identifier specified on `aws.memorydb.MultiRegionCluster`.
   late final pulumi.Output<String?> multiRegionClusterName;
-  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+  /// IP address type for the cluster. Valid values are `ipv4`, `ipv6` and `dualStack`. Defaults to `ipv4`.
+  late final pulumi.Output<String> networkType;
   /// The compute and memory capacity of the nodes in the cluster. See AWS documentation on [supported node types](https://docs.aws.amazon.com/memorydb/latest/devguide/nodes.supportedtypes.html) as well as [vertical scaling](https://docs.aws.amazon.com/memorydb/latest/devguide/cluster-vertical-scaling.html).
   ///
   /// The following arguments are optional:
@@ -217,11 +242,11 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> snsTopicArn;
   /// The name of the subnet group to be used for the cluster. Defaults to a subnet group consisting of default VPC subnets.
   late final pulumi.Output<String> subnetGroupName;
-  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// A flag to enable in-transit encryption on the cluster. When set to `false`, the `acl_name` must be `open-access`. Defaults to `true`.
+  /// A flag to enable in-transit encryption on the cluster. When set to `false`, the `aclName` must be `open-access`. Defaults to `true`.
   late final pulumi.Output<bool?> tlsEnabled;
 
   /// Creates a new [Cluster].
@@ -248,11 +273,13 @@ class Cluster extends pulumi.CustomResource {
     enginePatchVersion = registerOutput<String>('enginePatchVersion');
     engineVersion = registerOutput<String>('engineVersion');
     finalSnapshotName = registerOutput<String?>('finalSnapshotName');
+    ipDiscovery = registerOutput<String>('ipDiscovery');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     multiRegionClusterName = registerOutput<String?>('multiRegionClusterName');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
+    networkType = registerOutput<String>('networkType');
     nodeType = registerOutput<String>('nodeType');
     numReplicasPerShard = registerOutput<int?>('numReplicasPerShard');
     numShards = registerOutput<int?>('numShards');
@@ -305,11 +332,13 @@ class Cluster extends pulumi.CustomResource {
     enginePatchVersion = registerOutput<String>('enginePatchVersion');
     engineVersion = registerOutput<String>('engineVersion');
     finalSnapshotName = registerOutput<String?>('finalSnapshotName');
+    ipDiscovery = registerOutput<String>('ipDiscovery');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     multiRegionClusterName = registerOutput<String?>('multiRegionClusterName');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
+    networkType = registerOutput<String>('networkType');
     nodeType = registerOutput<String>('nodeType');
     numReplicasPerShard = registerOutput<int?>('numReplicasPerShard');
     numShards = registerOutput<int?>('numShards');

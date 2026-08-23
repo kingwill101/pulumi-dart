@@ -7,13 +7,13 @@ class EndpointConfigurationProductionVariantServerlessConfig {
   final pulumi.Input<int> maxConcurrency;
   /// Memory size of your serverless endpoint. Valid values are in 1 GB increments: `1024` MB, `2048` MB, `3072` MB, `4096` MB, `5120` MB, or `6144` MB.
   final pulumi.Input<int> memorySizeInMb;
-  /// Amount of provisioned concurrency to allocate for the serverless endpoint. Should be less than or equal to `max_concurrency`. Valid values are between `1` and `200`.
+  /// Amount of provisioned concurrency to allocate for the serverless endpoint. Should be less than or equal to `maxConcurrency`. Valid values are between `1` and `200`.
   final pulumi.Input<int>? provisionedConcurrency;
 
   /// Creates a new [EndpointConfigurationProductionVariantServerlessConfig].
   /// [maxConcurrency] Maximum number of concurrent invocations your serverless endpoint can process. Valid values are between `1` and `200`.
   /// [memorySizeInMb] Memory size of your serverless endpoint. Valid values are in 1 GB increments: `1024` MB, `2048` MB, `3072` MB, `4096` MB, `5120` MB, or `6144` MB.
-  /// [provisionedConcurrency] Amount of provisioned concurrency to allocate for the serverless endpoint. Should be less than or equal to `max_concurrency`. Valid values are between `1` and `200`.
+  /// [provisionedConcurrency] Amount of provisioned concurrency to allocate for the serverless endpoint. Should be less than or equal to `maxConcurrency`. Valid values are between `1` and `200`.
   const EndpointConfigurationProductionVariantServerlessConfig({
     required this.maxConcurrency,
     required this.memorySizeInMb,
@@ -36,4 +36,3 @@ class EndpointConfigurationProductionVariantServerlessConfig {
     );
   }
 }
-

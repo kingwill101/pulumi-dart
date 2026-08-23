@@ -5,14 +5,14 @@ import 'routing_rule_condition_match_base_paths.dart';
 import 'routing_rule_condition_match_headers.dart';
 
 class RoutingRuleCondition {
-  /// The base path to be matched. See below.
+  /// Base path to be matched. See below.
   final pulumi.Input<RoutingRuleConditionMatchBasePaths>? matchBasePaths;
-  /// The headers to be matched. See below.
+  /// Headers to be matched. See below.
   final pulumi.Input<RoutingRuleConditionMatchHeaders>? matchHeaders;
 
   /// Creates a new [RoutingRuleCondition].
-  /// [matchBasePaths] The base path to be matched. See below.
-  /// [matchHeaders] The headers to be matched. See below.
+  /// [matchBasePaths] Base path to be matched. See below.
+  /// [matchHeaders] Headers to be matched. See below.
   const RoutingRuleCondition({
     this.matchBasePaths,
     this.matchHeaders,
@@ -32,4 +32,3 @@ class RoutingRuleCondition {
     );
   }
 }
-

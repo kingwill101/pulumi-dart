@@ -13,6 +13,7 @@ enum Region {
   aPSoutheast3("ap-southeast-3"),
   aPSoutheast4("ap-southeast-4"),
   aPSoutheast5("ap-southeast-5"),
+  aPSoutheast6("ap-southeast-6"),
   aPSoutheast7("ap-southeast-7"),
   cACentral("ca-central-1"),
   cAWest1("ca-west-1"),
@@ -35,12 +36,16 @@ enum Region {
   uSWest2("us-west-2"),
   cNNorth1("cn-north-1"),
   cNNorthwest1("cn-northwest-1"),
+  eUSCDEEast1("eusc-de-east-1"),
   uSGovEast1("us-gov-east-1"),
   uSGovWest1("us-gov-west-1"),
   uSISOEast1("us-iso-east-1"),
   uSISOWest1("us-iso-west-1"),
   uSISOBEast1("us-isob-east-1"),
-  eUISOEWest1("eu-isoe-west-1");
+  uSISOBWest1("us-isob-west-1"),
+  eUISOEWest1("eu-isoe-west-1"),
+  uSISOFEast1("us-isof-east-1"),
+  uSISOFSouth1("us-isof-south-1");
 
   const Region(this.wireValue);
   final String wireValue;
@@ -54,4 +59,3 @@ enum Region {
     throw ArgumentError('Unknown Region value: $value');
   }
 }
-

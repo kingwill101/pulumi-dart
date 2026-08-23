@@ -30,4 +30,3 @@ class S3AccessPointAttachmentTimeouts {
     );
   }
 }
-

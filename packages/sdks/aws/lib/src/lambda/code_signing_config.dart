@@ -194,6 +194,45 @@ import 'code_signing_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Create signing profiles for different environments
+/// resource "aws_signer_signingprofile" "prod" {
+///   platform_id = "AWSLambda-SHA384-ECDSA"
+///   name_prefix = "prod_lambda_"
+///   tags = {
+///     "Environment" = "production"
+///   }
+/// }
+/// resource "aws_signer_signingprofile" "dev" {
+///   platform_id = "AWSLambda-SHA384-ECDSA"
+///   name_prefix = "dev_lambda_"
+///   tags = {
+///     "Environment" = "development"
+///   }
+/// }
+/// # Code signing configuration with enforcement
+/// resource "aws_lambda_codesigningconfig" "example" {
+///   description = "Code signing configuration for Lambda functions"
+///   allowed_publishers = {
+///     signing_profile_version_arns = [aws_signer_signingprofile.prod.version_arn, aws_signer_signingprofile.dev.version_arn]
+///   }
+///   policies = {
+///     untrusted_artifact_on_deployment = "Enforce"
+///   }
+///   tags = {
+///     "Environment" = "production"
+///     "Purpose"     = "code-signing"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -206,8 +245,8 @@ import 'code_signing_config_state.dart';
 /// import com.pulumi.aws.lambda.CodeSigningConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.CodeSigningConfigAllowedPublishersArgs;
 /// import com.pulumi.aws.lambda.inputs.CodeSigningConfigPoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,6 +426,29 @@ import 'code_signing_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_lambda_codesigningconfig" "example" {
+///   description = "Development code signing configuration"
+///   allowed_publishers = {
+///     signing_profile_version_arns = [dev.versionArn]
+///   }
+///   policies = {
+///     untrusted_artifact_on_deployment = "Warn"
+///   }
+///   tags = {
+///     "Environment" = "development"
+///     "Purpose"     = "code-signing"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -397,8 +459,8 @@ import 'code_signing_config_state.dart';
 /// import com.pulumi.aws.lambda.CodeSigningConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.CodeSigningConfigAllowedPublishersArgs;
 /// import com.pulumi.aws.lambda.inputs.CodeSigningConfigPoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -625,6 +687,44 @@ import 'code_signing_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// # Production signing configuration
+/// resource "aws_lambda_codesigningconfig" "prod" {
+///   description = "Production code signing configuration with strict enforcement"
+///   allowed_publishers = {
+///     signing_profile_version_arns = [prodAwsSignerSigningProfile.versionArn]
+///   }
+///   policies = {
+///     untrusted_artifact_on_deployment = "Enforce"
+///   }
+///   tags = {
+///     "Environment" = "production"
+///     "Security"    = "strict"
+///   }
+/// }
+/// # Development signing configuration
+/// resource "aws_lambda_codesigningconfig" "dev" {
+///   description = "Development code signing configuration with warnings"
+///   allowed_publishers = {
+///     signing_profile_version_arns = [devAwsSignerSigningProfile.versionArn, test.versionArn]
+///   }
+///   policies = {
+///     untrusted_artifact_on_deployment = "Warn"
+///   }
+///   tags = {
+///     "Environment" = "development"
+///     "Security"    = "flexible"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -635,8 +735,8 @@ import 'code_signing_config_state.dart';
 /// import com.pulumi.aws.lambda.CodeSigningConfigArgs;
 /// import com.pulumi.aws.lambda.inputs.CodeSigningConfigAllowedPublishersArgs;
 /// import com.pulumi.aws.lambda.inputs.CodeSigningConfigPoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -739,9 +839,9 @@ class CodeSigningConfig extends pulumi.CustomResource {
   late final pulumi.Output<CodeSigningConfigPolicies> policies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CodeSigningConfig].

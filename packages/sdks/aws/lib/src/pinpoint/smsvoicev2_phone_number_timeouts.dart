@@ -36,4 +36,3 @@ class Smsvoicev2PhoneNumberTimeouts {
     );
   }
 }
-
