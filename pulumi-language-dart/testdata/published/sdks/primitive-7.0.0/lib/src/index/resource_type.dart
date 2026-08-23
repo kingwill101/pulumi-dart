@@ -21,7 +21,7 @@ class ResourceType extends pulumi.CustomResource {
           'primitive:index:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.0.0').merge(options),
         ) {
     boolean = registerOutput<bool>('boolean');
     booleanMap = registerOutput<Map<String, bool>>('booleanMap');

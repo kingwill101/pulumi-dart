@@ -47,6 +47,9 @@ func renderDartProgram(program dartProgram) []byte {
 		if statement.Local != nil {
 			fmt.Fprintf(&body, "    final %s = %s;\n", statement.Local.Name, statement.Local.Expression)
 		}
+		if statement.Hook != nil {
+			body.WriteString(renderDartProgramHook(*statement.Hook))
+		}
 		if statement.Resource != nil {
 			body.WriteString(renderDartProgramResource(*statement.Resource))
 		}

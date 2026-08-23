@@ -544,6 +544,7 @@ ResourceOptions _copyResourceOptionsWithProvider(
   return ResourceOptions(
     id: options.id,
     urn: options.urn,
+    importId: options.importId,
     hideDiffs: options.hideDiffs,
     replaceWith: options.replaceWith,
     envVarMappings: options.envVarMappings,

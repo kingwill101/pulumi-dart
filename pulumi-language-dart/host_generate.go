@@ -18,23 +18,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func (host *dartLanguageHost) GenerateProgram(
-	ctx context.Context, req *pulumirpc.GenerateProgramRequest,
-) (*pulumirpc.GenerateProgramResponse, error) {
-	_ = ctx
-	if req == nil {
-		return nil, status.Error(codes.InvalidArgument, "request is required")
-	}
-
-	source := map[string][]byte{
-		"main.dart": codegen.GeneratedProgramStub(req.GetSource()),
-	}
-
-	return &pulumirpc.GenerateProgramResponse{
-		Source: source,
-	}, nil
-}
-
 func (host *dartLanguageHost) GenerateProject(
 	ctx context.Context, req *pulumirpc.GenerateProjectRequest,
 ) (*pulumirpc.GenerateProjectResponse, error) {
@@ -87,8 +70,19 @@ func (host *dartLanguageHost) GenerateProject(
 		return nil, fmt.Errorf("failed to create generated program directory: %w", err)
 	}
 
+	generatedProgram, err := generateProjectProgram(req)
+	if err != nil {
+		return nil, err
+	}
+	if generatedProgram.hasErrors {
+		return &pulumirpc.GenerateProjectResponse{Diagnostics: generatedProgram.diagnostics}, nil
+	}
+
 	pubspec := codegen.BuildGeneratedPubspec(
-		projectName, dartLocalDependencies(req.GetLocalDependencies()), nil, configuredPulumiDependency(),
+		projectName,
+		dartProgramLocalDependencies(req.GetLocalDependencies(), generatedProgram.packages),
+		nil,
+		configuredPulumiDependency(),
 	)
 	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {
@@ -101,14 +95,6 @@ func (host *dartLanguageHost) GenerateProject(
 	binDir := filepath.Join(programDirectory, "bin")
 	if err := os.MkdirAll(binDir, 0o700); err != nil {
 		return nil, fmt.Errorf("failed to create generated bin directory: %w", err)
-	}
-
-	generatedProgram, err := generateProjectProgram(req)
-	if err != nil {
-		return nil, err
-	}
-	if generatedProgram.hasErrors {
-		return &pulumirpc.GenerateProjectResponse{Diagnostics: generatedProgram.diagnostics}, nil
 	}
 
 	programFile := filepath.Join(binDir, projectName+".dart")

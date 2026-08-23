@@ -1,4 +1,5 @@
 import 'constants.dart';
+import 'asset_archive.dart';
 import 'input.dart';
 import 'output.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
@@ -88,6 +89,37 @@ class StructConverter {
       }
 
       result.structValue = resourceRef;
+      return result;
+    }
+
+    if (value is AssetOrArchive) {
+      final encoded = Struct()
+        ..fields[Constants.specialSigKey] = Value()
+        ..fields[Constants.specialSigKey]!.stringValue = value is Asset
+            ? Constants.specialAssetSig
+            : Constants.specialArchiveSig;
+
+      switch (value) {
+        case FileAsset(:final path) || FileArchive(:final path):
+          encoded.fields[Constants.assetOrArchivePathName] = Value()
+            ..stringValue = path;
+        case StringAsset(:final content):
+          encoded.fields[Constants.assetTextName] = Value()
+            ..stringValue = content;
+        case Base64Asset(:final content):
+          encoded.fields[Constants.assetTextName] = Value()
+            ..stringValue = content;
+        case RemoteAsset(:final url) || RemoteArchive(:final url):
+          encoded.fields[Constants.assetOrArchiveUriName] = Value()
+            ..stringValue = url;
+        case AssetArchive(:final assets):
+          encoded.fields[Constants.archiveAssetsName] = await toValue(
+            assets,
+            collapseUnknownCollections: collapseUnknownCollections,
+          );
+      }
+
+      result.structValue = encoded;
       return result;
     }
 

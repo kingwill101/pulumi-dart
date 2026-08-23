@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 /// {@template pulumi.resource_hook_handler.summary}
 /// Callback signature for lifecycle resource hooks.
@@ -38,7 +39,36 @@ class ResourceHook {
   /// Whether to run during dry-run previews.
   final bool onDryRun;
 
-  const ResourceHook(this.name, this.handler, {this.onDryRun = false});
+  /// Whether command failures should be logged instead of failing deployment.
+  final bool ignoreErrors;
+
+  const ResourceHook(
+    this.name,
+    this.handler, {
+    this.onDryRun = false,
+    this.ignoreErrors = false,
+  });
+}
+
+/// Runs a resource-hook command and throws when it exits unsuccessfully.
+Future<void> runResourceHookCommand(List<String> command) async {
+  if (command.isEmpty) return;
+  final result = await Process.run(command.first, command.skip(1).toList());
+  if (result.exitCode != 0) {
+    throw ProcessException(
+      command.first,
+      command.skip(1).toList(),
+      result.stderr.toString(),
+      result.exitCode,
+    );
+  }
+}
+
+/// Runs an error-hook command and returns whether the operation should retry.
+Future<bool> runErrorHookCommand(List<String> command) async {
+  if (command.isEmpty) return false;
+  final result = await Process.run(command.first, command.skip(1).toList());
+  return result.exitCode == 0;
 }
 
 /// Context passed to a lifecycle [ResourceHook].

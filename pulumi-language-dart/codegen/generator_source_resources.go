@@ -30,7 +30,10 @@ func (p *sourcePlan) renderResources() {
 		modulePath, className, path := tokenModulePath(token), p.resourceNames[token], p.resourcePaths[token]
 		resource := p.spec.Resources[token]
 		p.resourceExports = append(p.resourceExports, path)
-		p.files[path] = generatedResourceFile(token, resource, className, path, p.spec.Parameterization != nil, p.typeFilesByName, p.registrationPath)
+		p.files[path] = generatedResourceFile(
+			token, resource, className, path, p.spec.Parameterization != nil,
+			p.typeFilesByName, p.registrationPath, p.spec.Version, p.spec.PluginDownloadURL,
+		)
 		moduleFile := moduleLibraryFilePath(modulePath)
 		p.symbols.addAlias("type", moduleFile, canonicalTypeName(tokenElementName(token)), className, path)
 		if resource.ArgsClass != "" {

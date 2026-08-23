@@ -1,20 +1,21 @@
 package schemair
 
 type Package struct {
-	Name             string
-	Namespace        string
-	Version          string
-	Description      string
-	License          string
-	Homepage         string
-	Repository       string
-	Keywords         []string
-	Parameterization *Parameterization
-	Resources        map[string]Resource
-	Functions        map[string]Function
-	Config           *Config
-	Enums            []Enum
-	ObjectClasses    []ObjectClass
+	Name              string
+	Namespace         string
+	Version           string
+	PluginDownloadURL string
+	Description       string
+	License           string
+	Homepage          string
+	Repository        string
+	Keywords          []string
+	Parameterization  *Parameterization
+	Resources         map[string]Resource
+	Functions         map[string]Function
+	Config            *Config
+	Enums             []Enum
+	ObjectClasses     []ObjectClass
 }
 
 type Parameterization struct {
@@ -36,6 +37,7 @@ type Resource struct {
 	HasDefaultArgs   bool
 	OutputProperties []Property
 	Methods          []ResourceMethod
+	ReplaceOnChanges []string
 }
 
 type ResourceMethod struct {

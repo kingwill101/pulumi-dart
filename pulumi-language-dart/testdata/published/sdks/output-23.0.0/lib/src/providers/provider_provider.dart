@@ -14,6 +14,6 @@ class ProviderProvider extends pulumi.ProviderResource {
           'output',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '23.0.0').merge(options),
         );
 }

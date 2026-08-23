@@ -30,3 +30,14 @@ func TestDartPackageLocalDependenciesOnlyKeepsSchemaRequirements(t *testing.T) {
 		"pulumi_simple": "^1.0.0",
 	}))
 }
+
+func TestDartProgramLocalDependenciesOnlyKeepsImportedPackages(t *testing.T) {
+	t.Parallel()
+
+	assert.Equal(t, map[string]string{
+		"pulumi":        "/core",
+		"pulumi_simple": "/simple",
+	}, dartProgramLocalDependencies(map[string]string{
+		"pulumi": "/core", "simple": "/simple", "component": "/component",
+	}, []string{"simple"}))
+}

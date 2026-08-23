@@ -16,7 +16,7 @@ class ResourceType extends pulumi.CustomResource {
           'simple:index:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '2.0.0').merge(options),
         ) {
     value = registerOutput<bool>('value');
   }

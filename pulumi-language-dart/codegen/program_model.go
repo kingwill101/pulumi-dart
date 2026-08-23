@@ -17,23 +17,42 @@ type dartProgramImport struct {
 type dartProgramStatement struct {
 	Config                *dartProgramConfig
 	Local                 *dartProgramLocal
+	Hook                  *dartProgramHook
 	Resource              *dartProgramResource
 	RequiredPulumiVersion string
 }
 
+type dartProgramHook struct {
+	Name         string
+	LogicalName  string
+	Kind         string
+	Command      []string
+	OnDryRun     string
+	IgnoreErrors string
+}
+
 type dartProgramResource struct {
-	Name        string
-	LogicalName string
-	Type        string
-	Input       string
-	Package     string
-	Module      string
-	Class       string
-	ArgsClass   string
-	Inputs      []dartProgramResourceInput
+	Name         string
+	LogicalName  string
+	Type         string
+	Input        string
+	ID           string
+	Package      string
+	Module       string
+	Class        string
+	ArgsClass    string
+	StateClass   string
+	Inputs       []dartProgramResourceInput
+	OptionsClass string
+	Options      []dartProgramResourceOption
 }
 
 type dartProgramResourceInput struct {
+	Name       string
+	Expression string
+}
+
+type dartProgramResourceOption struct {
 	Name       string
 	Expression string
 }

@@ -569,6 +569,12 @@ class DeploymentImpl extends Deployment
       if (opts.version != null) {
         request.version = opts.version!;
       }
+      if (opts.importId != null) {
+        final importData = await opts.importId!.toOutput().getData();
+        if (importData.isKnown && importData.value != null) {
+          request.importId = importData.value!;
+        }
+      }
       final validatedIgnoreChanges = _validatePropertyPaths(
         opts.ignoreChanges,
         optionName: 'ignoreChanges',
@@ -582,6 +588,13 @@ class DeploymentImpl extends Deployment
       );
       if (validatedReplaceOnChanges.isNotEmpty) {
         request.replaceOnChanges.addAll(validatedReplaceOnChanges);
+      }
+      final validatedHideDiffs = _validatePropertyPaths(
+        opts.hideDiffs,
+        optionName: 'hideDiffs',
+      );
+      if (validatedHideDiffs.isNotEmpty) {
+        request.hideDiffs.addAll(validatedHideDiffs);
       }
       if (opts.pluginDownloadURL != null) {
         request.pluginDownloadURL = opts.pluginDownloadURL!;
@@ -615,6 +628,14 @@ class DeploymentImpl extends Deployment
       if (opts.additionalSecretOutputs != null &&
           opts.additionalSecretOutputs!.isNotEmpty) {
         request.additionalSecretOutputs.addAll(opts.additionalSecretOutputs!);
+      }
+      if (opts.envVarMappings != null && opts.envVarMappings!.isNotEmpty) {
+        request.envVarMappings.addAll(opts.envVarMappings!);
+      }
+      if (opts.replaceWith != null && opts.replaceWith!.isNotEmpty) {
+        for (final replacement in opts.replaceWith!) {
+          request.replaceWith.add(await replacement.urn.getValue());
+        }
       }
       final replacementTrigger = opts.effectiveReplacementTrigger;
       if (replacementTrigger != null) {

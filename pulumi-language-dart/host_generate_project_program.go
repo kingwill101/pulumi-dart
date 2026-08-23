@@ -14,6 +14,7 @@ import (
 
 type generatedProjectProgram struct {
 	source      []byte
+	packages    []string
 	diagnostics []*codegenrpc.Diagnostic
 	hasErrors   bool
 }
@@ -52,9 +53,11 @@ func generateProjectProgram(req *pulumirpc.GenerateProjectRequest) (generatedPro
 	if program == nil {
 		return generatedProjectProgram{}, fmt.Errorf("bind PCL program: program was nil")
 	}
-	result.source, err = codegen.GenerateDartProgram(program)
+	artifact, err := codegen.GenerateDartProgramArtifact(program)
 	if err != nil {
 		return generatedProjectProgram{}, fmt.Errorf("generate Dart program: %w", err)
 	}
+	result.source = artifact.Source
+	result.packages = artifact.Packages
 	return result, nil
 }

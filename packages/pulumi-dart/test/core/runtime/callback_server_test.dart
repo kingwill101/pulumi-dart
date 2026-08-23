@@ -206,7 +206,7 @@ void main() {
         Future<void> noop(ResourceHookArgs args) async {}
 
         final first = await callbackServer.registerResourceHook(
-          ResourceHook('hookA', noop, onDryRun: true),
+          ResourceHook('hookA', noop, onDryRun: true, ignoreErrors: true),
         );
         final second = await callbackServer.registerResourceHook(
           ResourceHook('hookA', noop, onDryRun: false),
@@ -220,6 +220,7 @@ void main() {
           equals('hookA'),
         );
         expect(monitorService.resourceHookRequests.single.onDryRun, isTrue);
+        expect(monitorService.resourceHookRequests.single.ignoreErrors, isTrue);
         expect(
           monitorService.resourceHookRequests.single.callback.target,
           isNotEmpty,

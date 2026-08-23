@@ -2,7 +2,6 @@ package codegen
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
@@ -19,6 +18,12 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 			return "", fmt.Errorf("%s argument %d: %w", expression.Name, index, err)
 		}
 		arguments[index] = lowered
+	}
+	if value, err, handled := lowerAssetBuiltin(expression.Name, arguments); handled {
+		return value, err
+	}
+	if value, err, handled := lowerControlBuiltin(expression.Name, arguments); handled {
+		return value, err
 	}
 	switch expression.Name {
 	case "length":
@@ -88,21 +93,8 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64Sha256")
 	case "entries":
 		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.mapEntries")
-	case "lookup":
-		if len(arguments) != 3 {
-			return "", fmt.Errorf("lookup expects three arguments")
-		}
-		return "pulumi.mapLookup(" + strings.Join(arguments, ", ") + ")", nil
-	case "can":
-		if len(arguments) != 1 {
-			return "", fmt.Errorf("can expects one argument")
-		}
-		return "pulumi.canValue(() => " + arguments[0] + ")", nil
-	case "try":
-		if len(arguments) != 2 {
-			return "", fmt.Errorf("try expects two arguments")
-		}
-		return "pulumi.tryValue(() => " + arguments[0] + ", () => " + arguments[1] + ")", nil
+	case "notImplemented":
+		return lowerNotImplementedBuiltin(arguments)
 	case "getOutput":
 		if len(arguments) != 2 {
 			return "", fmt.Errorf("getOutput expects two arguments")

@@ -46,10 +46,23 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 			if invokeExpression(node.Definition.Value) != nil {
 				lowerer.typedObjectNames[name] = true
 			}
+		case *pcl.Hook:
+			hook, err := lowerer.hook(node)
+			if err != nil {
+				return dartProgram{}, fmt.Errorf("hook %q: %w", node.LogicalName(), err)
+			}
+			result.Statements = append(result.Statements, dartProgramStatement{Hook: &hook})
 		case *pcl.Resource:
 			resource, err := lowerer.resource(node)
 			if err != nil {
 				return dartProgram{}, fmt.Errorf("resource %q: %w", node.LogicalName(), err)
+			}
+			result.Resources = append(result.Resources, resource)
+			result.Statements = append(result.Statements, dartProgramStatement{Resource: &resource})
+		case *pcl.ReadResource:
+			resource, err := lowerer.readResource(node)
+			if err != nil {
+				return dartProgram{}, fmt.Errorf("read resource %q: %w", node.LogicalName(), err)
 			}
 			result.Resources = append(result.Resources, resource)
 			result.Statements = append(result.Statements, dartProgramStatement{Resource: &resource})

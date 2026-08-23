@@ -9,11 +9,17 @@ import (
 )
 
 func (lowerer programLowerer) scopeTraversalExpression(expression *model.ScopeTraversalExpression) (string, error) {
+	if expression.RootName == "args" && len(expression.Traversal) > 1 {
+		return lowerHookArgsTraversal(expression.Traversal[1:])
+	}
 	name, ok := lowerer.names[expression.RootName]
 	if !ok {
 		return "", fmt.Errorf("unknown variable %q", expression.RootName)
 	}
 	if _, resourceRoot := expression.Parts[0].(*pcl.Resource); resourceRoot {
+		return lowerDartTraversal(name, expression.Traversal[1:], true)
+	}
+	if _, resourceRoot := expression.Parts[0].(*pcl.ReadResource); resourceRoot {
 		return lowerDartTraversal(name, expression.Traversal[1:], true)
 	}
 	rootType := model.GetTraversableType(expression.Parts[0])

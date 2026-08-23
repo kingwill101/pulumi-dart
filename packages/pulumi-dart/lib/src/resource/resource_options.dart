@@ -81,11 +81,14 @@ class ResourceOptions {
   /// Existing resource URN for read-style operations.
   final Input<String>? urn;
 
+  /// Existing provider ID to import while registering this resource.
+  final Input<String>? importId;
+
   /// Property names to hide from diff output.
   final List<String>? hideDiffs;
 
-  /// Property names that trigger replacement when changed.
-  final List<String>? replaceWith;
+  /// Resources whose replacement should also replace this resource.
+  final List<Resource>? replaceWith;
 
   /// Environment variable mappings for provider configuration.
   final Map<String, String>? envVarMappings;
@@ -150,6 +153,7 @@ class ResourceOptions {
   const ResourceOptions({
     this.id,
     this.urn,
+    this.importId,
     this.hideDiffs,
     this.replaceWith,
     this.envVarMappings,
@@ -192,6 +196,7 @@ class ResourceOptions {
     return ResourceOptions(
       id: options.id ?? id,
       urn: options.urn ?? urn,
+      importId: options.importId ?? importId,
       hideDiffs: [...?hideDiffs, ...?options.hideDiffs],
       replaceWith: [...?replaceWith, ...?options.replaceWith],
       envVarMappings: mergeEnvVarMappings(
@@ -300,6 +305,7 @@ ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
   return ResourceOptions(
     id: options.id,
     urn: options.urn,
+    importId: options.importId,
     hideDiffs: options.hideDiffs != null ? List.from(options.hideDiffs!) : null,
     replaceWith: options.replaceWith != null
         ? List.from(options.replaceWith!)

@@ -380,11 +380,20 @@ void main() {
     });
 
     test('replaceWith arrays append', () {
-      final merged = const ResourceOptions(
-        replaceWith: ['a', 'b'],
-      ).merge(const ResourceOptions(replaceWith: ['b', 'c']));
+      final a = DependencyResource(
+        'urn:pulumi:stack::project::test:index:A::a',
+      );
+      final b = DependencyResource(
+        'urn:pulumi:stack::project::test:index:B::b',
+      );
+      final c = DependencyResource(
+        'urn:pulumi:stack::project::test:index:C::c',
+      );
+      final merged = ResourceOptions(
+        replaceWith: [a, b],
+      ).merge(ResourceOptions(replaceWith: [b, c]));
 
-      expect(merged.replaceWith, equals(['a', 'b', 'b', 'c']));
+      expect(merged.replaceWith, equals([a, b, b, c]));
     });
 
     test('envVarMappings merge with later values overriding earlier ones', () {

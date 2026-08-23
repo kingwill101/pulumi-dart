@@ -1,19 +1,20 @@
 package codegen
 
 type rawPackageSchema struct {
-	Name        string                     `json:"name"`
-	Namespace   string                     `json:"namespace"`
-	Version     string                     `json:"version"`
-	Description string                     `json:"description"`
-	License     string                     `json:"license"`
-	Homepage    string                     `json:"homepage"`
-	Repository  string                     `json:"repository"`
-	Keywords    []string                   `json:"keywords"`
-	Types       map[string]rawTypeSpec     `json:"types"`
-	Config      rawConfigSpec              `json:"config"`
-	Resources   map[string]rawResourceSpec `json:"resources"`
-	Functions   map[string]rawFunctionSpec `json:"functions"`
-	Provider    *rawResourceSpec           `json:"provider"`
+	Name              string                     `json:"name"`
+	Namespace         string                     `json:"namespace"`
+	Version           string                     `json:"version"`
+	PluginDownloadURL string                     `json:"pluginDownloadURL"`
+	Description       string                     `json:"description"`
+	License           string                     `json:"license"`
+	Homepage          string                     `json:"homepage"`
+	Repository        string                     `json:"repository"`
+	Keywords          []string                   `json:"keywords"`
+	Types             map[string]rawTypeSpec     `json:"types"`
+	Config            rawConfigSpec              `json:"config"`
+	Resources         map[string]rawResourceSpec `json:"resources"`
+	Functions         map[string]rawFunctionSpec `json:"functions"`
+	Provider          *rawResourceSpec           `json:"provider"`
 }
 
 type rawConfigSpec struct {
@@ -67,6 +68,7 @@ type rawEnumValueSpec struct {
 type rawPropertyTypeSpec struct {
 	Description          string                `json:"description"`
 	Secret               bool                  `json:"secret"`
+	ReplaceOnChanges     bool                  `json:"replaceOnChanges"`
 	Type                 string                `json:"type"`
 	Ref                  string                `json:"$ref"`
 	Items                *rawPropertyTypeSpec  `json:"items"`

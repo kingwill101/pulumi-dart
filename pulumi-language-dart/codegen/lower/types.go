@@ -41,11 +41,7 @@ func NullableType(base string, required bool) string {
 func ObjectPropertyType(objectClass schemair.ObjectClass, property schemair.Property) string {
 	base := PropertyBaseType(property)
 	if objectClass.UsesInputTypes {
-		inputBase := base
-		if !property.Required && base != "dynamic" {
-			inputBase += "?"
-		}
-		typed := fmt.Sprintf("pulumi.Input<%s>", inputBase)
+		typed := fmt.Sprintf("pulumi.Input<%s>", base)
 		if property.Required {
 			return typed
 		}

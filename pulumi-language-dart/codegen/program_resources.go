@@ -61,9 +61,17 @@ func (lowerer programLowerer) providerResource(
 			Name: propertyFieldName(input.Name, map[string]int{}), Expression: expression,
 		}
 	}
+	options, err := lowerer.resourceOptions(resource.Options)
+	if err != nil {
+		return dartProgramResource{}, err
+	}
+	optionsClass := "CustomResourceOptions"
+	if resource.Schema != nil && resource.Schema.IsComponent {
+		optionsClass = "ComponentResourceOptions"
+	}
 	return dartProgramResource{
 		Name: name, LogicalName: resource.LogicalName(), Type: "provider",
 		Package: pkg, Module: module, Class: className,
-		ArgsClass: argsClass, Inputs: inputs,
+		ArgsClass: argsClass, Inputs: inputs, OptionsClass: optionsClass, Options: options,
 	}, nil
 }

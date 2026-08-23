@@ -29,3 +29,17 @@ func dartPackageLocalDependencies(
 	}
 	return local
 }
+
+func dartProgramLocalDependencies(
+	dependencies map[string]string,
+	packages []string,
+) map[string]string {
+	required := make(map[string]interface{}, len(packages))
+	for _, name := range packages {
+		if name != "pulumi" && !strings.HasPrefix(name, "pulumi_") {
+			name = "pulumi_" + strings.ReplaceAll(name, "-", "_")
+		}
+		required[name] = nil
+	}
+	return dartPackageLocalDependencies(dependencies, required)
+}

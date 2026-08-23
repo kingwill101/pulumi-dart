@@ -20,7 +20,7 @@ class ComplexResource extends pulumi.CustomResource {
           'output:index:ComplexResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '23.0.0').merge(options),
         ) {
     outputArray = registerOutput<List<String>>('outputArray');
     outputMap = registerOutput<Map<String, String>>('outputMap');

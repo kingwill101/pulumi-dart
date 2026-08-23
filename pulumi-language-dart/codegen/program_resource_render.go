@@ -6,13 +6,28 @@ import (
 )
 
 func renderDartProgramResource(resource dartProgramResource) string {
+	options := renderDartProgramResourceOptions(resource)
 	switch resource.Type {
+	case "read":
+		qualifier := programModuleAlias(resource.Package, resource.Module)
+		state := ""
+		if len(resource.Inputs) > 0 {
+			var fields strings.Builder
+			for _, input := range resource.Inputs {
+				fmt.Fprintf(&fields, "%s: (%s).input(), ", input.Name, input.Expression)
+			}
+			state = ", state: " + qualifier + "." + resource.StateClass + "(" + fields.String() + ")"
+		}
+		return fmt.Sprintf(
+			"    final %s = %s.%s.get(%s, (%s).input()%s%s);\n",
+			resource.Name, qualifier, resource.Class, dartStringLiteral(resource.LogicalName), resource.ID, state, options,
+		)
 	case "provider":
 		qualifier := programModuleAlias(resource.Package, resource.Module)
 		if len(resource.Inputs) == 0 {
 			return fmt.Sprintf(
 				"    final %s = %s.%s(%s);\n",
-				resource.Name, qualifier, resource.Class, dartStringLiteral(resource.LogicalName),
+				resource.Name, qualifier, resource.Class, dartStringLiteral(resource.LogicalName)+options,
 			)
 		}
 		var inputs strings.Builder
@@ -20,9 +35,9 @@ func renderDartProgramResource(resource dartProgramResource) string {
 			fmt.Fprintf(&inputs, "%s: (%s).input(), ", input.Name, input.Expression)
 		}
 		return fmt.Sprintf(
-			"    final %s = %s.%s(%s, args: %s.%s(%s));\n",
+			"    final %s = %s.%s(%s, args: %s.%s(%s)%s);\n",
 			resource.Name, qualifier, resource.Class, dartStringLiteral(resource.LogicalName),
-			qualifier, resource.ArgsClass, inputs.String(),
+			qualifier, resource.ArgsClass, inputs.String(), options,
 		)
 	case "stackReference":
 		return fmt.Sprintf(
@@ -39,6 +54,21 @@ func renderDartProgramResource(resource dartProgramResource) string {
 			resource.Input,
 		)
 	}
+}
+
+func renderDartProgramResourceOptions(resource dartProgramResource) string {
+	if len(resource.Options) == 0 {
+		return ""
+	}
+	className := resource.OptionsClass
+	if className == "" {
+		className = "CustomResourceOptions"
+	}
+	var fields strings.Builder
+	for _, option := range resource.Options {
+		fmt.Fprintf(&fields, "%s: %s, ", option.Name, option.Expression)
+	}
+	return ", options: pulumi." + className + "(" + fields.String() + ")"
 }
 
 func programPackageAlias(name string) string {

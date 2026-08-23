@@ -92,6 +92,7 @@ class ComponentResourceOptions extends ResourceOptions {
   ComponentResourceOptions({
     super.id,
     super.urn,
+    super.importId,
     super.hideDiffs,
     super.replaceWith,
     super.envVarMappings,
@@ -118,4 +119,40 @@ class ComponentResourceOptions extends ResourceOptions {
          resourceTransformations: resourceTransformations ?? [],
          resourceTransforms: resourceTransforms ?? [],
        );
+
+  factory ComponentResourceOptions.fromResourceOptions(
+    ResourceOptions options,
+  ) {
+    return ComponentResourceOptions(
+      id: options.id,
+      urn: options.urn,
+      importId: options.importId,
+      hideDiffs: options.hideDiffs,
+      replaceWith: options.replaceWith,
+      envVarMappings: options.envVarMappings,
+      parent: options.parent,
+      dependsOn: options.dependsOn,
+      protect: options.protect,
+      provider: options.provider,
+      providers: options.providers,
+      resourceTransformations: options.resourceTransformations,
+      resourceTransforms: options.resourceTransforms,
+      hooks: options.hooks,
+      aliases: options.aliases,
+      version: options.version,
+      pluginDownloadURL: options.pluginDownloadURL,
+      replacementTrigger: options.replacementTrigger,
+      customTimeouts: options.customTimeouts,
+      deleteBeforeReplace: options.deleteBeforeReplace,
+      retainOnDelete: options.retainOnDelete,
+      deletedWith: options.deletedWith,
+      additionalSecretOutputs: options.additionalSecretOutputs,
+      ignoreChanges: options.ignoreChanges,
+      replaceOnChanges: options.replaceOnChanges,
+    );
+  }
+
+  @override
+  ComponentResourceOptions merge(ResourceOptions? options) =>
+      ComponentResourceOptions.fromResourceOptions(super.merge(options));
 }

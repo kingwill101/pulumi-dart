@@ -33,6 +33,8 @@ func lowerBoundResource(spec *packageSchema, pkg *schema.Package, used map[strin
 		result.StateClass = state.ClassName
 	}
 	result.Methods = lowerBoundResourceMethods(spec, pkg, used, named, resource, baseName, modulePath)
+	replaceOnChanges, _ := resource.ReplaceOnChanges()
+	result.ReplaceOnChanges = schema.PropertyListJoinToString(replaceOnChanges, func(name string) string { return name })
 	result.OutputProperties = makeResourceOutputPropertySpecs(resource, named, pkg.Name)
 	spec.Resources[resource.Token] = result
 }

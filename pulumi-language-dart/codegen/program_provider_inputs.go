@@ -39,6 +39,8 @@ func (lowerer programLowerer) typedProviderExpression(
 	nullable := providerTypeIsOptional(typ)
 	typ = unwrapProviderInputType(typ)
 	switch typ := typ.(type) {
+	case *schema.EnumType:
+		return lowerer.providerEnumExpression(defaultPackage, expression, typ)
 	case *schema.ObjectType:
 		return lowerer.providerObjectExpression(defaultPackage, expression, typ)
 	case *schema.ArrayType:

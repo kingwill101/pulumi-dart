@@ -433,6 +433,7 @@ void main() {
           'rich',
           dependencyForProperty: propertyDependency,
           options: CustomResourceOptions(
+            importId: 'import-123'.input(),
             parent: parent,
             dependsOn: [depB, depA],
             protect: true,
@@ -452,6 +453,9 @@ void main() {
             deletedWith: deletedWith,
             additionalSecretOutputs: ['secretA', 'secretB'],
             ignoreChanges: [' plain ', 'nested.value'],
+            hideDiffs: [' value ', 'nested.secret'],
+            replaceWith: [depA],
+            envVarMappings: {'SOURCE_VAR': 'TARGET_VAR'},
             replacementTrigger: {'reason': 'rotation'},
           ),
         );
@@ -463,6 +467,7 @@ void main() {
         expect(request!.type, 'pkg:index:RichOptions');
         expect(request.name, 'rich');
         expect(request.custom, isTrue);
+        expect(request.importId, 'import-123');
         expect(request.parent, await parent.urn.getValue());
         expect(
           request.dependencies,
@@ -495,6 +500,9 @@ void main() {
         expect(request.deletedWith, await deletedWith.urn.getValue());
         expect(request.additionalSecretOutputs, ['secretA', 'secretB']);
         expect(request.ignoreChanges, ['plain', 'nested.value']);
+        expect(request.hideDiffs, ['value', 'nested.secret']);
+        expect(request.replaceWith, [await depA.urn.getValue()]);
+        expect(request.envVarMappings, {'SOURCE_VAR': 'TARGET_VAR'});
         expect(request.replacementTrigger.hasStructValue(), isTrue);
         expect(
           request.replacementTrigger.structValue.fields['reason']?.stringValue,

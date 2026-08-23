@@ -12,11 +12,16 @@ func TestRenderDartProgramProviderResource(t *testing.T) {
 	resource := dartProgramResource{
 		Name: "res", LogicalName: "res", Type: "provider",
 		Package: "simple", Module: "index", Class: "ResourceType", ArgsClass: "ResourceArgs",
-		Inputs: []dartProgramResourceInput{{Name: "value", Expression: "true"}},
+		Inputs:       []dartProgramResourceInput{{Name: "value", Expression: "true"}},
+		OptionsClass: "CustomResourceOptions",
+		Options: []dartProgramResourceOption{
+			{Name: "protect", Expression: "true"},
+			{Name: "version", Expression: "'2.0.0'"},
+		},
 	}
 
 	assert.Equal(t,
-		"    final res = simple_index.ResourceType('res', args: simple_index.ResourceArgs(value: (true).input(), ));\n",
+		"    final res = simple_index.ResourceType('res', args: simple_index.ResourceArgs(value: (true).input(), ), options: pulumi.CustomResourceOptions(protect: true, version: '2.0.0', ));\n",
 		renderDartProgramResource(resource),
 	)
 }
