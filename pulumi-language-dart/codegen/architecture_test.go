@@ -26,7 +26,6 @@ var legacyOversizedFiles = map[string]string{
 	"codegen/codegen_schema_bind.go":       "legacy bound-schema lowering",
 	"codegen/codegen_schema_parse.go":      "legacy raw-schema lowering",
 	"codegen/codegen_schema_types.go":      "legacy schema type conversion",
-	"codegen/codegen_tokens_types.go":      "legacy token and Dart type conversion",
 	"codegen/codegen_writers_resources.go": "legacy resource renderer",
 	"codegen/generator_sources.go":         "legacy file and symbol planner",
 	"generate_pack_test.go":                "legacy end-to-end generator test suite",
