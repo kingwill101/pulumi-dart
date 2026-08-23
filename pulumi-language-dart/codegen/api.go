@@ -8,9 +8,6 @@ type PackageSchema = packageSchema
 // RawPackageSchema is the exported alias for the raw JSON schema model.
 type RawPackageSchema = rawPackageSchema
 
-// ModuleAliasSpec is the exported alias for generated module alias metadata.
-type ModuleAliasSpec = moduleAliasSpec
-
 // PackageTypeSpec is the exported alias for resolved type metadata.
 type PackageTypeSpec = packageTypeSpec
 
@@ -74,28 +71,6 @@ func ExternalTokenTypeSpec(
 // supported wire-compatible types.
 func CoerceOutputCollectionType(typeSpec PackageTypeSpec) PackageTypeSpec {
 	return coerceOutputCollectionType(typeSpec)
-}
-
-// GeneratedPackageSources generates the Dart SDK source files for a package schema.
-func GeneratedPackageSources(
-	spec *PackageSchema,
-	packageName, sdkLibraryName string,
-) (map[string][]byte, map[string][]ModuleAliasSpec) {
-	return generatedPackageSources(spec, packageName, sdkLibraryName)
-}
-
-// GeneratedPublicModuleEntryPoints creates public module entry files for generated sources.
-func GeneratedPublicModuleEntryPoints(packageName string, sdkSources map[string][]byte) map[string][]byte {
-	return generatedPublicModuleEntryPoints(packageName, sdkSources)
-}
-
-// GeneratedPackageRootLibrary creates the root `package:<pkg>/<pkg>.dart` library file.
-func GeneratedPackageRootLibrary(
-	packageName string,
-	spec *PackageSchema,
-	moduleSymbols map[string][]ModuleAliasSpec,
-) []byte {
-	return generatedPackageRootLibrary(packageName, spec, moduleSymbols)
 }
 
 // GeneratedSDKPackageVersion computes generated package version metadata.

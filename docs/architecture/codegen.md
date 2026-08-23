@@ -5,7 +5,7 @@ binding and language-host contracts. The generator is organized as a one-way
 pipeline:
 
 ```
-host adapter -> schema IR -> Dart IR -> lowering/planning -> rendering -> package result -> writer
+host adapter -> schema IR -> planning/lowering -> Dart IR -> rendering -> package result -> writer
 ```
 
 The core pipeline must be deterministic and side-effect free. Environment,
@@ -17,9 +17,10 @@ return typed values, generated files, and diagnostics.
 
 - `codegen/schemair`: normalized Pulumi package semantics.
 - `codegen/dartir`: Dart declarations and types needed by generated SDKs.
-- `codegen/lower`: schema-to-Dart conversion, naming, references, and paths.
+- `codegen/lower`: pure schema-to-Dart IR conversion and expression lowering.
 - `codegen/render`: deterministic rendering of Dart IR.
-- `codegen/packagegen`: pure assembly of the complete in-memory package.
+- `codegen` source planning: naming, references, paths, and pure assembly of
+  the complete in-memory package.
 - the language host: RPC translation, configuration and dependency discovery,
   writing results, and workspace synchronization.
 
@@ -33,6 +34,6 @@ features are introduced only after the pipeline split, in focused changes to
 the Dart IR, lowering, and render stages.
 
 Each stage has direct table or golden tests. End-to-end RPC tests cover only
-boundary behavior. Production files target roughly 200 lines (300 maximum)
-and test files roughly 300 lines (450 maximum); cohesive fixtures and static
+boundary behavior. Production files target roughly 120 lines (300 maximum)
+and test files roughly 200 lines (450 maximum); cohesive fixtures and static
 tables require a documented exception.
