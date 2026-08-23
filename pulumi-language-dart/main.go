@@ -2136,10 +2136,16 @@ func (host *dartLanguageHost) InstallDependencies(
 	cmd := exec.Command(host.exec, "pub", "get")
 	cmd.Dir = programDirectory
 	cmd.Env = os.Environ()
-	cmd.Stdout, cmd.Stderr = stdout, stderr
+	var diagnostics bytes.Buffer
+	cmd.Stdout = io.MultiWriter(stdout, &diagnostics)
+	cmd.Stderr = io.MultiWriter(stderr, &diagnostics)
 
 	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("`dart pub get` failed to install dependencies: %w", err)
+		return fmt.Errorf(
+			"`dart pub get` failed to install dependencies: %w: %s",
+			err,
+			strings.TrimSpace(diagnostics.String()),
+		)
 	}
 	stdout.Write([]byte("Finished installing dependencies\n\n"))
 

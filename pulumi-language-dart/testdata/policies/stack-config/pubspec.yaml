@@ -1,0 +1,9 @@
+name: stack_config
+version: 2.0.0
+environment:
+  sdk: '>=3.11.0 <4.0.0'
+dependencies:
+  pulumi:
+    path: ../../../../packages/pulumi-dart
+  pulumi_policy:
+    path: ../../../../packages/policy

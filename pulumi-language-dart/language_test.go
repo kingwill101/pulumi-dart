@@ -40,6 +40,15 @@ import (
 // runner still registers every test returned by the shared conformance server,
 // so unsupported and newly-added cases remain visible as explicit skips.
 var passingConformanceTests = []string{
+	"policy-config",
+	"policy-config-schema",
+	"policy-dryrun",
+	"policy-enforcement-config",
+	"policy-invalid",
+	"policy-remediate",
+	"policy-simple",
+	"policy-stack-config",
+	"policy-stack-tags",
 	"l1-empty",
 	"l1-config-types-primitive",
 	"l1-config-types-optional",
@@ -284,6 +293,7 @@ func TestLanguageConformance(t *testing.T) {
 
 	rootDir, err := filepath.Abs(t.TempDir())
 	require.NoError(t, err)
+	policyPackDirectory := prepareConformancePolicyPacks(t)
 	prepare, err := client.PrepareLanguageTests(ctx, &testingrpc.PrepareLanguageTestsRequest{
 		LanguagePluginName:   "dart",
 		LanguagePluginTarget: fmt.Sprintf("127.0.0.1:%d", host.Port),
@@ -291,6 +301,7 @@ func TestLanguageConformance(t *testing.T) {
 		SnapshotDirectory:    "testdata/published",
 		CoreSdkDirectory:     "../packages/pulumi-dart",
 		CoreSdkVersion:       "3.0.0",
+		PolicyPackDirectory:  policyPackDirectory,
 		SnapshotEdits: []*testingrpc.PrepareLanguageTestsRequest_Replacement{
 			{
 				Path:        "pubspec\\.yaml",
@@ -326,6 +337,44 @@ func TestLanguageConformance(t *testing.T) {
 			assert.True(t, result.Success)
 		})
 	}
+}
+
+func prepareConformancePolicyPacks(t *testing.T) string {
+	t.Helper()
+	source, err := filepath.Abs("testdata/policies")
+	require.NoError(t, err)
+	destination := t.TempDir()
+	require.NoError(t, os.CopyFS(destination, os.DirFS(source)))
+
+	policySDKSource, err := filepath.Abs("../packages/policy")
+	require.NoError(t, err)
+	coreSDKSource, err := filepath.Abs("../packages/pulumi-dart")
+	require.NoError(t, err)
+	policySDK := filepath.Join(t.TempDir(), "policy")
+	require.NoError(t, os.CopyFS(policySDK, os.DirFS(policySDKSource)))
+	policyPubspec := filepath.Join(policySDK, "pubspec.yaml")
+	contents, err := os.ReadFile(policyPubspec)
+	require.NoError(t, err)
+	require.NoError(t, os.WriteFile(
+		policyPubspec,
+		[]byte(strings.ReplaceAll(string(contents), "resolution: workspace\n", "")),
+		0o600,
+	))
+
+	require.NoError(t, filepath.WalkDir(destination, func(path string, entry os.DirEntry, err error) error {
+		if err != nil || entry.IsDir() || entry.Name() != "pubspec.yaml" {
+			return err
+		}
+		contents, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		resolved := strings.ReplaceAll(string(contents), "../../../../packages/policy", filepath.ToSlash(policySDK))
+		resolved = strings.ReplaceAll(resolved, "../../../../packages/pulumi-dart", filepath.ToSlash(coreSDKSource))
+		resolved += "\ndependency_overrides:\n  pulumi:\n    path: " + filepath.ToSlash(coreSDKSource) + "\n"
+		return os.WriteFile(path, []byte(resolved), 0o600)
+	}))
+	return destination
 }
 
 func requestedExperimentalConformanceTests() map[string]struct{} {
