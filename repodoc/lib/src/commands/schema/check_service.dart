@@ -221,6 +221,14 @@ Future<Map<String, dynamic>> _reportForProvider(
   final packageVersion = packagePubspecAbs.isEmpty
       ? ''
       : _pubspecVersion(packagePubspecAbs);
+  final localComparableVersion = localVersion.isNotEmpty
+      ? localVersion
+      : packageVersion;
+  final localVersionSource = localVersion.isNotEmpty
+      ? 'schema'
+      : packageVersion.isNotEmpty
+      ? 'package'
+      : 'unknown';
 
   final localRawSha = _sha256Hex(localSchemaBytes);
   final upstreamRawSha = _sha256Hex(upstreamSchemaBytes);
@@ -230,7 +238,7 @@ Future<Map<String, dynamic>> _reportForProvider(
   );
 
   final upstreamVersionChanged =
-      upstreamVersion.isNotEmpty && localVersion != upstreamVersion;
+      upstreamVersion.isNotEmpty && localComparableVersion != upstreamVersion;
   final upstreamChecksumChanged = localCanonicalSha != upstreamCanonicalSha;
 
   String packageVersionMatchesLocalSchema;
@@ -254,6 +262,8 @@ Future<Map<String, dynamic>> _reportForProvider(
     'local_schema_path': provider.localSchemaPath,
     'package_pubspec_path': provider.packagePubspecPath,
     'local_schema_version': localVersion,
+    'local_version': localComparableVersion,
+    'local_version_source': localVersionSource,
     'upstream_schema_version': upstreamSchemaVersion,
     'upstream_release_version': upstreamReleaseVersion,
     'upstream_version': upstreamVersion,

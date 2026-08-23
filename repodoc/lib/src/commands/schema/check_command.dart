@@ -109,7 +109,7 @@ final class SchemaCheckCommand extends Command<int> {
         for (final report in reports)
           [
             value(report, 'provider'),
-            value(report, 'local_schema_version'),
+            value(report, 'local_version'),
             value(report, 'upstream_version'),
             value(report, 'package_version'),
             report['schema_source'] == 'github_release_asset'

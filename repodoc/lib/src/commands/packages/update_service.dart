@@ -45,7 +45,7 @@ final class PackageUpdater {
     final packagePubspec = _string(report, 'package_pubspec_path');
     return PackageUpdatePlan(
       provider: provider,
-      localVersion: _string(report, 'local_schema_version'),
+      localVersion: _string(report, 'local_version'),
       upstreamVersion: _string(report, 'upstream_version'),
       schemaUrl: _string(report, 'schema_url'),
       schemaSource: _string(report, 'schema_source'),
@@ -54,7 +54,7 @@ final class PackageUpdater {
       contentChanged: report['upstream_checksum_changed'] == true,
       dependencyPubspecPaths: _exactDependencyPubspecs(
         provider,
-        _string(report, 'local_schema_version'),
+        _string(report, 'local_version'),
       ),
     );
   }

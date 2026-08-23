@@ -109,6 +109,24 @@ void main() {
     expect(result.output(singleProvider: false), hasLength(2));
   });
 
+  test('schema result accepts package version for versionless schemas', () {
+    final result = SchemaCheckResult([
+      {
+        'provider': 'azure-native',
+        'local_schema_version': '',
+        'local_version': '3.26.0',
+        'local_version_source': 'package',
+        'upstream_version': '3.26.0',
+        'upstream_version_changed': false,
+        'upstream_checksum_changed': false,
+        'drift': false,
+      },
+    ]);
+
+    expect(result.hasDrift, isFalse);
+    expect(result.reports.single['local_version_source'], 'package');
+  });
+
   test('package updater rejects same-version content changes by default', () {
     final updater = PackageUpdater();
     const plan = PackageUpdatePlan(
