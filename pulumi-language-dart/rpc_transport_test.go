@@ -169,7 +169,7 @@ func TestLanguageRuntimeGrpcGenerateProjectProgramPackageAndPack(t *testing.T) {
 	})
 	require.NoError(t, err)
 	require.NotNil(t, packResp)
-	assert.FileExists(t, packResp.ArtifactPath)
+	assert.DirExists(t, packResp.ArtifactPath)
 
 	_, err = client.GenerateProject(context.Background(), &pulumirpc.GenerateProjectRequest{})
 	require.Error(t, err)

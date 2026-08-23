@@ -1,10 +1,7 @@
 package main
 
 import (
-	"archive/tar"
-	"compress/gzip"
 	"context"
-	"io"
 	"os"
 	"path/filepath"
 	"testing"
@@ -108,7 +105,7 @@ func TestGenerateProjectRequiresTargetDirectory(t *testing.T) {
 	assert.Contains(t, err.Error(), "target directory is required")
 }
 
-func TestPackProducesArchive(t *testing.T) {
+func TestPackProducesDirectoryArtifact(t *testing.T) {
 	t.Parallel()
 
 	host := &dartLanguageHost{}
@@ -125,29 +122,9 @@ func TestPackProducesArchive(t *testing.T) {
 	})
 	require.NoError(t, err)
 	require.NotNil(t, resp)
-	assert.Equal(t, filepath.Join(destinationDir, "my_pkg.tar.gz"), resp.ArtifactPath)
-
-	archiveFile, err := os.Open(resp.ArtifactPath)
-	require.NoError(t, err)
-	defer archiveFile.Close()
-
-	gzipReader, err := gzip.NewReader(archiveFile)
-	require.NoError(t, err)
-	defer gzipReader.Close()
-
-	tarReader := tar.NewReader(gzipReader)
-	entries := map[string]bool{}
-	for {
-		hdr, err := tarReader.Next()
-		if err == io.EOF {
-			break
-		}
-		require.NoError(t, err)
-		entries[hdr.Name] = true
-	}
-
-	assert.True(t, entries["pubspec.yaml"])
-	assert.True(t, entries["lib/my_pkg.dart"])
+	assert.Equal(t, filepath.Join(destinationDir, "my_pkg"), resp.ArtifactPath)
+	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "pubspec.yaml"))
+	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "lib", "my_pkg.dart"))
 }
 
 func TestPackRequiresPackageDirectory(t *testing.T) {

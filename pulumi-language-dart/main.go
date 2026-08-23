@@ -15,10 +15,8 @@
 package main
 
 import (
-	"archive/tar"
 	"bufio"
 	"bytes"
-	"compress/gzip"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
@@ -2580,62 +2578,15 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 		packageName = codegen.SanitizeDartIdentifier(pubspec.Name)
 	}
 
-	artifactPath := filepath.Join(destinationDir, packageName+".tar.gz")
-	artifactFile, err := os.Create(artifactPath)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create archive: %w", err)
+	// Pub path dependencies must point at directories. A compressed archive is
+	// not a usable Dart package artifact, even though it satisfies this
+	// language-neutral RPC's filesystem-path contract.
+	artifactPath := filepath.Join(destinationDir, packageName)
+	if err := os.Mkdir(artifactPath, 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create package artifact: %w", err)
 	}
-	defer artifactFile.Close()
-
-	gzipWriter := gzip.NewWriter(artifactFile)
-	defer gzipWriter.Close()
-	tarWriter := tar.NewWriter(gzipWriter)
-	defer tarWriter.Close()
-
-	var filePaths []string
-	if err := filepath.Walk(packageDir, func(path string, info os.FileInfo, walkErr error) error {
-		if walkErr != nil {
-			return walkErr
-		}
-		if info.IsDir() {
-			return nil
-		}
-		filePaths = append(filePaths, path)
-		return nil
-	}); err != nil {
-		return nil, fmt.Errorf("failed to enumerate package files: %w", err)
-	}
-	sort.Strings(filePaths)
-
-	for _, path := range filePaths {
-		info, err := os.Lstat(path)
-		if err != nil {
-			return nil, fmt.Errorf("failed to stat %s: %w", path, err)
-		}
-		relPath, err := filepath.Rel(packageDir, path)
-		if err != nil {
-			return nil, fmt.Errorf("failed to compute relative path for %s: %w", path, err)
-		}
-
-		header, err := tar.FileInfoHeader(info, "")
-		if err != nil {
-			return nil, fmt.Errorf("failed to create tar header for %s: %w", path, err)
-		}
-		header.Name = filepath.ToSlash(relPath)
-
-		if err := tarWriter.WriteHeader(header); err != nil {
-			return nil, fmt.Errorf("failed to write tar header for %s: %w", path, err)
-		}
-
-		file, err := os.Open(path)
-		if err != nil {
-			return nil, fmt.Errorf("failed to open %s: %w", path, err)
-		}
-		if _, err := io.Copy(tarWriter, file); err != nil {
-			file.Close()
-			return nil, fmt.Errorf("failed to write %s to archive: %w", path, err)
-		}
-		file.Close()
+	if err := copyDirContents(packageDir, artifactPath); err != nil {
+		return nil, fmt.Errorf("failed to copy package artifact: %w", err)
 	}
 
 	return &pulumirpc.PackResponse{
