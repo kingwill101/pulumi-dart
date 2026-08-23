@@ -144,4 +144,3 @@ class BatchPredictionJobAiplatformV1beta1Args {
     );
   }
 }
-

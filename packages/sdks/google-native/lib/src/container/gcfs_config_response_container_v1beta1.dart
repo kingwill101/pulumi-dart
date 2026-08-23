@@ -25,4 +25,3 @@ class GcfsConfigResponseContainerV1beta1 {
     );
   }
 }
-

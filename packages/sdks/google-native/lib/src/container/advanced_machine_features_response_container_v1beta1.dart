@@ -25,4 +25,3 @@ class AdvancedMachineFeaturesResponseContainerV1beta1 {
     );
   }
 }
-

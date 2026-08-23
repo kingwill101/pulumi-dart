@@ -44,4 +44,3 @@ class GoogleCloudChannelV1RenewalSettingsResponse {
     );
   }
 }
-

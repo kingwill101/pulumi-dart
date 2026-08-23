@@ -20,4 +20,3 @@ enum WeeklyScheduleDaysOfWeekItemAlloydbV1alpha {
     throw ArgumentError('Unknown WeeklyScheduleDaysOfWeekItemAlloydbV1alpha value: $value');
   }
 }
-

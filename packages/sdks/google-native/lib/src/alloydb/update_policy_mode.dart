@@ -16,4 +16,3 @@ enum UpdatePolicyMode {
     throw ArgumentError('Unknown UpdatePolicyMode value: $value');
   }
 }
-

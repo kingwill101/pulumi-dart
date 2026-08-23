@@ -43,4 +43,3 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse {
     );
   }
 }
-

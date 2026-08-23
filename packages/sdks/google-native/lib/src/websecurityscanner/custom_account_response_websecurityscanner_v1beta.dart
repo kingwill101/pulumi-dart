@@ -37,4 +37,3 @@ class CustomAccountResponseWebsecurityscannerV1beta {
     );
   }
 }
-

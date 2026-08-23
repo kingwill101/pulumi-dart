@@ -37,4 +37,3 @@ class AuditLogConfigResponseComputeV1 {
     );
   }
 }
-

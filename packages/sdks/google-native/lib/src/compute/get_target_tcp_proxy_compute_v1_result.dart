@@ -72,4 +72,3 @@ class GetTargetTcpProxyComputeV1Result {
     );
   }
 }
-

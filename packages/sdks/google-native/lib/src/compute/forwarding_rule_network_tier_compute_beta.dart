@@ -17,4 +17,3 @@ enum ForwardingRuleNetworkTierComputeBeta {
     throw ArgumentError('Unknown ForwardingRuleNetworkTierComputeBeta value: $value');
   }
 }
-

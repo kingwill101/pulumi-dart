@@ -15,4 +15,3 @@ enum BuildOptionsDefaultLogsBucketBehavior {
     throw ArgumentError('Unknown BuildOptionsDefaultLogsBucketBehavior value: $value');
   }
 }
-

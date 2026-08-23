@@ -63,4 +63,3 @@ class RuleResponseGameservicesV1beta {
     );
   }
 }
-

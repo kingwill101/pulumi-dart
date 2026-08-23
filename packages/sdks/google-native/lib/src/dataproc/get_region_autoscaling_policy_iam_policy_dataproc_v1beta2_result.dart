@@ -38,4 +38,3 @@ class GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Result {
     );
   }
 }
-

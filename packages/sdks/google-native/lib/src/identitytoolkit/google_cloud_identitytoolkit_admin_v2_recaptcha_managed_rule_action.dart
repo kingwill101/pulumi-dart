@@ -15,4 +15,3 @@ enum GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction {
     throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction value: $value');
   }
 }
-

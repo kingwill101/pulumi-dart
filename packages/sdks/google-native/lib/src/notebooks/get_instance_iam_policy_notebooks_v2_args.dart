@@ -42,4 +42,3 @@ class GetInstanceIamPolicyNotebooksV2Args {
     );
   }
 }
-

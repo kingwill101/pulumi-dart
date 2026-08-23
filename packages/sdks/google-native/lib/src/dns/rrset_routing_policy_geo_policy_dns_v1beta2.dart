@@ -37,4 +37,3 @@ class RRSetRoutingPolicyGeoPolicyDnsV1beta2 {
     );
   }
 }
-

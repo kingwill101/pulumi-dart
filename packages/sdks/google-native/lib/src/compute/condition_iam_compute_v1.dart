@@ -21,4 +21,3 @@ enum ConditionIamComputeV1 {
     throw ArgumentError('Unknown ConditionIamComputeV1 value: $value');
   }
 }
-

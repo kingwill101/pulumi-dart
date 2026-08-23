@@ -37,4 +37,3 @@ class GetSubnetworkComputeV1Args {
     );
   }
 }
-

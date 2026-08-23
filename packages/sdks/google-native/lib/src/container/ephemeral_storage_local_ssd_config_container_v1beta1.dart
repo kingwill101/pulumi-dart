@@ -25,4 +25,3 @@ class EphemeralStorageLocalSsdConfigContainerV1beta1 {
     );
   }
 }
-

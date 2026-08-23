@@ -38,4 +38,3 @@ class BindingResponseSecretmanagerV1beta1 {
     );
   }
 }
-

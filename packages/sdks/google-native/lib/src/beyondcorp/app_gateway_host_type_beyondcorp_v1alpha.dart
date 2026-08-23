@@ -15,4 +15,3 @@ enum AppGatewayHostTypeBeyondcorpV1alpha {
     throw ArgumentError('Unknown AppGatewayHostTypeBeyondcorpV1alpha value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class CaseClassificationCloudsupportV2beta {
     );
   }
 }
-

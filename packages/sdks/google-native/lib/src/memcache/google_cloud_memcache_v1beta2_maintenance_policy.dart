@@ -32,4 +32,3 @@ class GoogleCloudMemcacheV1beta2MaintenancePolicy {
     );
   }
 }
-

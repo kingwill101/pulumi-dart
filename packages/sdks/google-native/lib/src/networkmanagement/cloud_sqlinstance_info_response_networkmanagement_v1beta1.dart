@@ -55,4 +55,3 @@ class CloudSQLInstanceInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

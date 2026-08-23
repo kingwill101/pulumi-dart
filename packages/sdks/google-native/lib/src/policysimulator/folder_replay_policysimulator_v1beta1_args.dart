@@ -39,4 +39,3 @@ class FolderReplayPolicysimulatorV1beta1Args {
     );
   }
 }
-

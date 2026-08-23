@@ -52,4 +52,3 @@ class FunctionIamBindingCloudfunctionsV2alphaArgs {
     );
   }
 }
-

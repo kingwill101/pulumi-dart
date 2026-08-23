@@ -26,4 +26,3 @@ class DSSEAttestationNoteContaineranalysisV1alpha1 {
     );
   }
 }
-

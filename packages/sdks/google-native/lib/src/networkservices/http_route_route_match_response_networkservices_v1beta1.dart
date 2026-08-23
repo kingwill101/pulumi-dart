@@ -57,4 +57,3 @@ class HttpRouteRouteMatchResponseNetworkservicesV1beta1 {
     );
   }
 }
-

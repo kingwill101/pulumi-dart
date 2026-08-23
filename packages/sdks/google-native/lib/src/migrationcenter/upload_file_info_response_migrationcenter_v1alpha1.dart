@@ -37,4 +37,3 @@ class UploadFileInfoResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

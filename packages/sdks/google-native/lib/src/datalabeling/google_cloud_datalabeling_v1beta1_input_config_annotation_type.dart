@@ -27,4 +27,3 @@ enum GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
     throw ArgumentError('Unknown GoogleCloudDatalabelingV1beta1InputConfigAnnotationType value: $value');
   }
 }
-

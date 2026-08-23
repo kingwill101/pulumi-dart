@@ -31,4 +31,3 @@ class LatencyPercentileResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

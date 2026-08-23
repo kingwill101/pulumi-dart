@@ -56,4 +56,3 @@ class RegionWorkflowTemplateIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

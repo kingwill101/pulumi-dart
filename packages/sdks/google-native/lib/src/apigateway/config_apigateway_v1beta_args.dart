@@ -89,4 +89,3 @@ class ConfigApigatewayV1betaArgs {
     );
   }
 }
-

@@ -14,4 +14,3 @@ enum DynamicGroupQueryResourceTypeCloudidentityV1beta1 {
     throw ArgumentError('Unknown DynamicGroupQueryResourceTypeCloudidentityV1beta1 value: $value');
   }
 }
-

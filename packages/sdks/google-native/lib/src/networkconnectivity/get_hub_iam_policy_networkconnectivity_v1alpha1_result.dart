@@ -45,4 +45,3 @@ class GetHubIamPolicyNetworkconnectivityV1alpha1Result {
     );
   }
 }
-

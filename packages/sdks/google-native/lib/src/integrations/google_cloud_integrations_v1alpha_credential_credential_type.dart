@@ -25,4 +25,3 @@ enum GoogleCloudIntegrationsV1alphaCredentialCredentialType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaCredentialCredentialType value: $value');
   }
 }
-

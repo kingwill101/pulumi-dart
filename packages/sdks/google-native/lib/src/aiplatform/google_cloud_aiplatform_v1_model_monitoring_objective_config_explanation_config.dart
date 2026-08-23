@@ -32,4 +32,3 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig {
     );
   }
 }
-

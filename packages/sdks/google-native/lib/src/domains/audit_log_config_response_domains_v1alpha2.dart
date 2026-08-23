@@ -31,4 +31,3 @@ class AuditLogConfigResponseDomainsV1alpha2 {
     );
   }
 }
-

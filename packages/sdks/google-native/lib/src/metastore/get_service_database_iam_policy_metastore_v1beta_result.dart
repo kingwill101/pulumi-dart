@@ -45,4 +45,3 @@ class GetServiceDatabaseIamPolicyMetastoreV1betaResult {
     );
   }
 }
-

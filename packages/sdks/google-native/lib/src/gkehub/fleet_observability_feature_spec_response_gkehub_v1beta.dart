@@ -26,4 +26,3 @@ class FleetObservabilityFeatureSpecResponseGkehubV1beta {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class GetChangeDnsV1beta2Args {
     );
   }
 }
-

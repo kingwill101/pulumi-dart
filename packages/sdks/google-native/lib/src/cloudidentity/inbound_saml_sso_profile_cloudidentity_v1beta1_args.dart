@@ -47,4 +47,3 @@ class InboundSamlSsoProfileCloudidentityV1beta1Args {
     );
   }
 }
-

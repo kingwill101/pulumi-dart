@@ -61,4 +61,3 @@ class GetMetadataImportMetastoreV1betaResult {
     );
   }
 }
-

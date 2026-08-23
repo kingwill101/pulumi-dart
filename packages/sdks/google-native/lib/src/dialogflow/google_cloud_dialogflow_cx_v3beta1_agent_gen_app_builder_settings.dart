@@ -25,4 +25,3 @@ class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings {
     );
   }
 }
-

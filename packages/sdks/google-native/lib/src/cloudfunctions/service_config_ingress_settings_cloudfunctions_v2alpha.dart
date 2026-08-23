@@ -17,4 +17,3 @@ enum ServiceConfigIngressSettingsCloudfunctionsV2alpha {
     throw ArgumentError('Unknown ServiceConfigIngressSettingsCloudfunctionsV2alpha value: $value');
   }
 }
-

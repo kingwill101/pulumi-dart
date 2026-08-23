@@ -26,4 +26,3 @@ enum ExecutionStageStateExecutionStageState {
     throw ArgumentError('Unknown ExecutionStageStateExecutionStageState value: $value');
   }
 }
-

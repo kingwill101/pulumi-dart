@@ -91,4 +91,3 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse {
     );
   }
 }
-

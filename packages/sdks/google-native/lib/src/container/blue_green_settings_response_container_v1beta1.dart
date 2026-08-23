@@ -32,4 +32,3 @@ class BlueGreenSettingsResponseContainerV1beta1 {
     );
   }
 }
-

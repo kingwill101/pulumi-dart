@@ -17,4 +17,3 @@ enum AppServingStatus {
     throw ArgumentError('Unknown AppServingStatus value: $value');
   }
 }
-

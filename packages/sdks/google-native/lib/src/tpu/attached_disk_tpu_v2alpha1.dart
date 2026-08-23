@@ -32,4 +32,3 @@ class AttachedDiskTpuV2alpha1 {
     );
   }
 }
-

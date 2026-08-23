@@ -50,4 +50,3 @@ class PatchInstanceFilterOsconfigV1beta {
     );
   }
 }
-

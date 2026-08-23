@@ -43,4 +43,3 @@ class GoogleCloudDatacatalogV1DataplexExternalTableResponse {
     );
   }
 }
-

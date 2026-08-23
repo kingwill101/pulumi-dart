@@ -16,4 +16,3 @@ enum RouterNatSourceSubnetworkIpRangesToNatComputeBeta {
     throw ArgumentError('Unknown RouterNatSourceSubnetworkIpRangesToNatComputeBeta value: $value');
   }
 }
-

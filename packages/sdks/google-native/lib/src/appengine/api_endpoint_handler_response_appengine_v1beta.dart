@@ -25,4 +25,3 @@ class ApiEndpointHandlerResponseAppengineV1beta {
     );
   }
 }
-

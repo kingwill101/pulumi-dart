@@ -38,4 +38,3 @@ class SchemaConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

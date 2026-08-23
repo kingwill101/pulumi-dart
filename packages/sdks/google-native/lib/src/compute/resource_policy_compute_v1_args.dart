@@ -76,4 +76,3 @@ class ResourcePolicyComputeV1Args {
     );
   }
 }
-

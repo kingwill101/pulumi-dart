@@ -67,4 +67,3 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse {
     );
   }
 }
-

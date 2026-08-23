@@ -15,4 +15,3 @@ enum SubnetworkRoleComputeBeta {
     throw ArgumentError('Unknown SubnetworkRoleComputeBeta value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum ChannelCredentialsChannelCredentialType {
     throw ArgumentError('Unknown ChannelCredentialsChannelCredentialType value: $value');
   }
 }
-

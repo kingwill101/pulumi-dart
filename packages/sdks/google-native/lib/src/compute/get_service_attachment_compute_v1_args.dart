@@ -37,4 +37,3 @@ class GetServiceAttachmentComputeV1Args {
     );
   }
 }
-

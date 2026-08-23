@@ -66,4 +66,3 @@ class SchemaDiscoveryengineV1betaArgs {
     );
   }
 }
-

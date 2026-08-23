@@ -240,4 +240,3 @@ class GetInstanceRedisV1beta1Result {
     );
   }
 }
-

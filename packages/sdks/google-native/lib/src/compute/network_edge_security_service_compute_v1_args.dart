@@ -56,4 +56,3 @@ class NetworkEdgeSecurityServiceComputeV1Args {
     );
   }
 }
-

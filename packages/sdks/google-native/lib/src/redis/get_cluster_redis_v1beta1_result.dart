@@ -101,4 +101,3 @@ class GetClusterRedisV1beta1Result {
     );
   }
 }
-

@@ -145,4 +145,3 @@ class GetInstanceMemcacheV1beta2Result {
     );
   }
 }
-

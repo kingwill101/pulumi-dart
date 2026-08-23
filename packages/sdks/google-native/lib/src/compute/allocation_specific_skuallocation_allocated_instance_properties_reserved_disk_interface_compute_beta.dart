@@ -15,4 +15,3 @@ enum AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInter
     throw ArgumentError('Unknown AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeBeta value: $value');
   }
 }
-

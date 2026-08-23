@@ -38,4 +38,3 @@ class CounterOptionsGameservicesV1beta {
     );
   }
 }
-

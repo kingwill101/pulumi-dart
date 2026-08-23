@@ -15,4 +15,3 @@ enum ManagedZoneForwardingConfigNameServerTargetForwardingPath {
     throw ArgumentError('Unknown ManagedZoneForwardingConfigNameServerTargetForwardingPath value: $value');
   }
 }
-

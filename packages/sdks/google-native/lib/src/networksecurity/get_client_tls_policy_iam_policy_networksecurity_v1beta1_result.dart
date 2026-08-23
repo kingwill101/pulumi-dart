@@ -45,4 +45,3 @@ class GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Result {
     );
   }
 }
-

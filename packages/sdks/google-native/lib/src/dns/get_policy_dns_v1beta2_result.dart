@@ -62,4 +62,3 @@ class GetPolicyDnsV1beta2Result {
     );
   }
 }
-

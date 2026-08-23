@@ -25,4 +25,3 @@ class IapTestServiceAccountInfoResponseWebsecurityscannerV1beta {
     );
   }
 }
-

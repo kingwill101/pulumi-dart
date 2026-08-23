@@ -62,4 +62,3 @@ class PasswordValidationPolicySqladminV1beta4 {
     );
   }
 }
-

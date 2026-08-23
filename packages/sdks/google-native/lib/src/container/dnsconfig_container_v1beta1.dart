@@ -39,4 +39,3 @@ class DNSConfigContainerV1beta1 {
     );
   }
 }
-

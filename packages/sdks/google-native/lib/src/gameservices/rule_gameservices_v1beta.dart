@@ -64,4 +64,3 @@ class RuleGameservicesV1beta {
     );
   }
 }
-

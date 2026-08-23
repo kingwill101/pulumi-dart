@@ -15,4 +15,3 @@ enum InstanceMessageCodeMemcacheV1beta2 {
     throw ArgumentError('Unknown InstanceMessageCodeMemcacheV1beta2 value: $value');
   }
 }
-

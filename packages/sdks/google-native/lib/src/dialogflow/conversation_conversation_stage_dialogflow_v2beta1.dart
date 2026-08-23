@@ -16,4 +16,3 @@ enum ConversationConversationStageDialogflowV2beta1 {
     throw ArgumentError('Unknown ConversationConversationStageDialogflowV2beta1 value: $value');
   }
 }
-

@@ -56,4 +56,3 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
     );
   }
 }
-

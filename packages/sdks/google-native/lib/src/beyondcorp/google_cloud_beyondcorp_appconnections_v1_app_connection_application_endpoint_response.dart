@@ -31,4 +31,3 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointRespo
     );
   }
 }
-

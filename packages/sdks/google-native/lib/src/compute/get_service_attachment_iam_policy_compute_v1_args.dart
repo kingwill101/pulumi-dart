@@ -42,4 +42,3 @@ class GetServiceAttachmentIamPolicyComputeV1Args {
     );
   }
 }
-

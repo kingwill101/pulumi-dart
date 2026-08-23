@@ -45,4 +45,3 @@ class GetRegistrationIamPolicyDomainsV1beta1Result {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class AttestorIamMemberBinaryauthorizationV1beta1Args {
     );
   }
 }
-

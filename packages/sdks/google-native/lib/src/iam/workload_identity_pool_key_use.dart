@@ -15,4 +15,3 @@ enum WorkloadIdentityPoolKeyUse {
     throw ArgumentError('Unknown WorkloadIdentityPoolKeyUse value: $value');
   }
 }
-

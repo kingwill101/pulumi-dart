@@ -25,4 +25,3 @@ class ConfigManagementPolicyControllerMonitoringResponseGkehubV1beta {
     );
   }
 }
-

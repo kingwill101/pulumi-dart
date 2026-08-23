@@ -37,4 +37,3 @@ class NodeAffinityResponseContainerV1beta1 {
     );
   }
 }
-

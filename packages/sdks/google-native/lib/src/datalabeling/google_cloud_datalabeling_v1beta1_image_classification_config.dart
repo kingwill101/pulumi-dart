@@ -38,4 +38,3 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
     );
   }
 }
-

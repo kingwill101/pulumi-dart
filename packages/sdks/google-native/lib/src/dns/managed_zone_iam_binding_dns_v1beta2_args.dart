@@ -52,4 +52,3 @@ class ManagedZoneIamBindingDnsV1beta2Args {
     );
   }
 }
-

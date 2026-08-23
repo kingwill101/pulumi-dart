@@ -25,4 +25,3 @@ class InterconnectAttachmentPrivateInfoResponseComputeV1 {
     );
   }
 }
-

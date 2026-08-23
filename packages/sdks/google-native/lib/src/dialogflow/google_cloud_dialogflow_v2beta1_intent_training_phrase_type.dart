@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2beta1IntentTrainingPhraseType {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentTrainingPhraseType value: $value');
   }
 }
-

@@ -68,4 +68,3 @@ class SparkJobDataprocV1beta2 {
     );
   }
 }
-

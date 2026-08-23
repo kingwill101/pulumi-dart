@@ -25,4 +25,3 @@ enum GoogleCloudMlV1AcceleratorConfigType {
     throw ArgumentError('Unknown GoogleCloudMlV1AcceleratorConfigType value: $value');
   }
 }
-

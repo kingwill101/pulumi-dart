@@ -25,4 +25,3 @@ class ManualScalingResponseAppengineV1beta {
     );
   }
 }
-

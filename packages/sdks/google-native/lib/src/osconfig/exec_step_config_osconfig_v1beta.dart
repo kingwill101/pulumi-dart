@@ -45,4 +45,3 @@ class ExecStepConfigOsconfigV1beta {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class NamespaceIamMemberServicedirectoryV1beta1Args {
     );
   }
 }
-

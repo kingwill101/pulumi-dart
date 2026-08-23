@@ -51,4 +51,3 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
     );
   }
 }
-

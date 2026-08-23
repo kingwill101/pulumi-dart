@@ -32,4 +32,3 @@ enum ListingCategoriesItemAnalyticshubV1beta1 {
     throw ArgumentError('Unknown ListingCategoriesItemAnalyticshubV1beta1 value: $value');
   }
 }
-

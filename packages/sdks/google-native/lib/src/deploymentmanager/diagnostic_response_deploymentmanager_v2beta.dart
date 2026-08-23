@@ -30,4 +30,3 @@ class DiagnosticResponseDeploymentmanagerV2beta {
     );
   }
 }
-

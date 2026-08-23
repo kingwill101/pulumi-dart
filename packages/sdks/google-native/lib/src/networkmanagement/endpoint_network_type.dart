@@ -16,4 +16,3 @@ enum EndpointNetworkType {
     throw ArgumentError('Unknown EndpointNetworkType value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
     );
   }
 }
-

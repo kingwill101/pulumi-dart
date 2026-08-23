@@ -44,4 +44,3 @@ class ManagedZoneDnsSecConfigDnsV1beta2 {
     );
   }
 }
-

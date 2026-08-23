@@ -26,4 +26,3 @@ class HttpRouteRequestMirrorPolicyNetworkservicesV1beta1 {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum RegionBackendServiceLoadBalancingSchemeComputeV1 {
     throw ArgumentError('Unknown RegionBackendServiceLoadBalancingSchemeComputeV1 value: $value');
   }
 }
-

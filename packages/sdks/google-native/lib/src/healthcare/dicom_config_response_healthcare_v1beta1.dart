@@ -44,4 +44,3 @@ class DicomConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

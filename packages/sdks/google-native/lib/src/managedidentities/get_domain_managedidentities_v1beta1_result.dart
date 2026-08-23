@@ -98,4 +98,3 @@ class GetDomainManagedidentitiesV1beta1Result {
     );
   }
 }
-

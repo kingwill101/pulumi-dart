@@ -31,4 +31,3 @@ class AdditionalNodeNetworkConfigResponseContainerV1beta1 {
     );
   }
 }
-

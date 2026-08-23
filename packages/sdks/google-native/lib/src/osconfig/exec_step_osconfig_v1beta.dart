@@ -32,4 +32,3 @@ class ExecStepOsconfigV1beta {
     );
   }
 }
-

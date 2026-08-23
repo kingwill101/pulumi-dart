@@ -37,4 +37,3 @@ class GetInstanceGroupComputeV1Args {
     );
   }
 }
-

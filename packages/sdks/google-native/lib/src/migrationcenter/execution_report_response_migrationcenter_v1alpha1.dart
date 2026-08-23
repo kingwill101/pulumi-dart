@@ -45,4 +45,3 @@ class ExecutionReportResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

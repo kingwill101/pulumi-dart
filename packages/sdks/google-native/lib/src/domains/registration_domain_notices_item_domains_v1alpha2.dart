@@ -14,4 +14,3 @@ enum RegistrationDomainNoticesItemDomainsV1alpha2 {
     throw ArgumentError('Unknown RegistrationDomainNoticesItemDomainsV1alpha2 value: $value');
   }
 }
-

@@ -26,4 +26,3 @@ class SecurityConfigDataprocV1beta2 {
     );
   }
 }
-

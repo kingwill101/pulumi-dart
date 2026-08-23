@@ -17,4 +17,3 @@ enum GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType {
     throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType value: $value');
   }
 }
-

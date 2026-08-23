@@ -45,4 +45,3 @@ class FileValidationReportResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

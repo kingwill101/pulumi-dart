@@ -25,4 +25,3 @@ class TimeBasedRetentionResponseAlloydbV1alpha {
     );
   }
 }
-

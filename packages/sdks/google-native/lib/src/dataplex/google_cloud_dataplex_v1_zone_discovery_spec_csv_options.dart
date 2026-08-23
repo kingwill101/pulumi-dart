@@ -43,4 +43,3 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions {
     );
   }
 }
-

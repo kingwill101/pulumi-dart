@@ -43,4 +43,3 @@ class SecretEnvVarResponseCloudfunctionsV2 {
     );
   }
 }
-

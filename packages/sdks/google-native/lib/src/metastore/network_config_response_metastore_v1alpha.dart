@@ -32,4 +32,3 @@ class NetworkConfigResponseMetastoreV1alpha {
     );
   }
 }
-

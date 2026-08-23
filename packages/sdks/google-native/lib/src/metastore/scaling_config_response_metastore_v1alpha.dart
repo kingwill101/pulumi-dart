@@ -31,4 +31,3 @@ class ScalingConfigResponseMetastoreV1alpha {
     );
   }
 }
-

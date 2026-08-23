@@ -40,4 +40,3 @@ class NodeConfigDefaultsResponseContainerV1beta1 {
     );
   }
 }
-

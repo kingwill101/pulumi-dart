@@ -16,4 +16,3 @@ enum CustomConnectorCustomConnectorType {
     throw ArgumentError('Unknown CustomConnectorCustomConnectorType value: $value');
   }
 }
-

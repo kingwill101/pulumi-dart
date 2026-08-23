@@ -21,4 +21,3 @@ enum GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType {
     throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType value: $value');
   }
 }
-

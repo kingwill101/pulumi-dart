@@ -31,4 +31,3 @@ class ResourcePolicyHourlyCycleComputeV1 {
     );
   }
 }
-

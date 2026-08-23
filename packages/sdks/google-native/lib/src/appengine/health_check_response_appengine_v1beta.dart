@@ -61,4 +61,3 @@ class HealthCheckResponseAppengineV1beta {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum DiskStorageTypeComputeBeta {
     throw ArgumentError('Unknown DiskStorageTypeComputeBeta value: $value');
   }
 }
-

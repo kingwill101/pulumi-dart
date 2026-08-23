@@ -25,4 +25,3 @@ class EdgeLocationResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

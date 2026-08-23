@@ -43,4 +43,3 @@ class GoogleTypeExprAiplatformV1beta1 {
     );
   }
 }
-

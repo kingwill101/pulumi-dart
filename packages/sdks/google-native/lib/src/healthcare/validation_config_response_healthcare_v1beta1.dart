@@ -49,4 +49,3 @@ class ValidationConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

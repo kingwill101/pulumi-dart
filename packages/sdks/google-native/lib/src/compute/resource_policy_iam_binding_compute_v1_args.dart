@@ -52,4 +52,3 @@ class ResourcePolicyIamBindingComputeV1Args {
     );
   }
 }
-

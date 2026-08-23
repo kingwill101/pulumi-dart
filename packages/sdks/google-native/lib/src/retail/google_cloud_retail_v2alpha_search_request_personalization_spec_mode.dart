@@ -16,4 +16,3 @@ enum GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode {
     throw ArgumentError('Unknown GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode value: $value');
   }
 }
-

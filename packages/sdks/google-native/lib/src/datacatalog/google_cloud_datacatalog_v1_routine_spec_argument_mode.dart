@@ -17,4 +17,3 @@ enum GoogleCloudDatacatalogV1RoutineSpecArgumentMode {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1RoutineSpecArgumentMode value: $value');
   }
 }
-

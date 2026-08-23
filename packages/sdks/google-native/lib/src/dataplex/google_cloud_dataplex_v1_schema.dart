@@ -46,4 +46,3 @@ class GoogleCloudDataplexV1Schema {
     );
   }
 }
-

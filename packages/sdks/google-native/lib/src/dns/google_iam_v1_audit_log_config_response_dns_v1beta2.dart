@@ -31,4 +31,3 @@ class GoogleIamV1AuditLogConfigResponseDnsV1beta2 {
     );
   }
 }
-

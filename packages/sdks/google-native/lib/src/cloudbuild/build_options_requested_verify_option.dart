@@ -15,4 +15,3 @@ enum BuildOptionsRequestedVerifyOption {
     throw ArgumentError('Unknown BuildOptionsRequestedVerifyOption value: $value');
   }
 }
-

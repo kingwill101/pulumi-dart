@@ -18,4 +18,3 @@ enum ExperimentStateDialogflowV3beta1 {
     throw ArgumentError('Unknown ExperimentStateDialogflowV3beta1 value: $value');
   }
 }
-

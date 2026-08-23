@@ -127,4 +127,3 @@ class GetHealthCheckComputeV1Result {
     );
   }
 }
-

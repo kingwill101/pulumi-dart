@@ -15,4 +15,3 @@ enum MetricVersion {
     throw ArgumentError('Unknown MetricVersion value: $value');
   }
 }
-

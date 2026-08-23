@@ -36,4 +36,3 @@ class GetContextDialogflowV2beta1Result {
     );
   }
 }
-

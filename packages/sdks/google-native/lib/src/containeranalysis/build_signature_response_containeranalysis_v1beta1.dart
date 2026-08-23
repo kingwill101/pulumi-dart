@@ -43,4 +43,3 @@ class BuildSignatureResponseContaineranalysisV1beta1 {
     );
   }
 }
-

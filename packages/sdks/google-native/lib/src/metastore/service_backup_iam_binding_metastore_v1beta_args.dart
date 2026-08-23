@@ -52,4 +52,3 @@ class ServiceBackupIamBindingMetastoreV1betaArgs {
     );
   }
 }
-

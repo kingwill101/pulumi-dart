@@ -50,4 +50,3 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata {
     );
   }
 }
-

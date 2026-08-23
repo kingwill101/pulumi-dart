@@ -43,4 +43,3 @@ class InTotoProvenanceResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

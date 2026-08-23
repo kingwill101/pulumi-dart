@@ -56,4 +56,3 @@ class ConditionResponseAccesscontextmanagerV1beta {
     );
   }
 }
-

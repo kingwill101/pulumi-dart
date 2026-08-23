@@ -38,4 +38,3 @@ class NodeManagementResponseContainerV1beta1 {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class ClusterSelectorResponseDataprocV1beta2 {
     );
   }
 }
-

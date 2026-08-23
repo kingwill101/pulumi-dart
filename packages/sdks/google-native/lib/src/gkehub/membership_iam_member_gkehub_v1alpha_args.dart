@@ -52,4 +52,3 @@ class MembershipIamMemberGkehubV1alphaArgs {
     );
   }
 }
-

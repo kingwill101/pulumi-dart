@@ -31,4 +31,3 @@ class DatabaseTypeResponseDatamigrationV1beta1 {
     );
   }
 }
-

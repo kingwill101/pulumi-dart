@@ -16,4 +16,3 @@ enum GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrain
     throw ArgumentError('Unknown GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class NetworkConfigResponseCloudbuildV1alpha2 {
     );
   }
 }
-

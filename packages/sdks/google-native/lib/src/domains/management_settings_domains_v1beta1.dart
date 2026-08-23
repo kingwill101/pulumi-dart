@@ -33,4 +33,3 @@ class ManagementSettingsDomainsV1beta1 {
     );
   }
 }
-

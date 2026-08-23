@@ -44,4 +44,3 @@ class GetReplayPolicysimulatorV1alphaResult {
     );
   }
 }
-

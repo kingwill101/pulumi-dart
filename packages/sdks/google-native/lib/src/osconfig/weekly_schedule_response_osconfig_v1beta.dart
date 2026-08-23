@@ -25,4 +25,3 @@ class WeeklyScheduleResponseOsconfigV1beta {
     );
   }
 }
-

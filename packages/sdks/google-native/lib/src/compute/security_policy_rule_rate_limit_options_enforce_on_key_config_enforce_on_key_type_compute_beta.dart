@@ -22,4 +22,3 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeCompute
     throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeComputeBeta value: $value');
   }
 }
-

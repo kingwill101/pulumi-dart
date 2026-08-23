@@ -51,4 +51,3 @@ class MetadataStoreAiplatformV1beta1Args {
     );
   }
 }
-

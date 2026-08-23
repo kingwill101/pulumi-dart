@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeCloudfunctionsV2beta {
     throw ArgumentError('Unknown AuditLogConfigLogTypeCloudfunctionsV2beta value: $value');
   }
 }
-

@@ -18,4 +18,3 @@ enum PersistenceConfigRdbSnapshotPeriod {
     throw ArgumentError('Unknown PersistenceConfigRdbSnapshotPeriod value: $value');
   }
 }
-

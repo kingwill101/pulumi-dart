@@ -45,4 +45,3 @@ class KubernetesResourceResponseGkehubV1beta1 {
     );
   }
 }
-

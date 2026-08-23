@@ -52,4 +52,3 @@ class WorkstationClusterWorkstationConfigWorkstationIamBindingWorkstationsV1beta
     );
   }
 }
-

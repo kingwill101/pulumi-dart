@@ -38,4 +38,3 @@ class BindingResponseDomainsV1beta1 {
     );
   }
 }
-

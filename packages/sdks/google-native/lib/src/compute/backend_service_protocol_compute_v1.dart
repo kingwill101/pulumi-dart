@@ -21,4 +21,3 @@ enum BackendServiceProtocolComputeV1 {
     throw ArgumentError('Unknown BackendServiceProtocolComputeV1 value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class MultiClusterIngressFeatureSpecResponseGkehubV1alpha {
     );
   }
 }
-

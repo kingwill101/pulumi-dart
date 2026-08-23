@@ -25,4 +25,3 @@ class ReplicaResponseSecretmanagerV1beta1 {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum ReservationAffinityConsumeReservationTypeComputeV1 {
     throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeComputeV1 value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState {
     throw ArgumentError('Unknown OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState value: $value');
   }
 }
-

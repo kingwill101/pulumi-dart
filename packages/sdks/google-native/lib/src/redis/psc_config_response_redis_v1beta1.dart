@@ -24,4 +24,3 @@ class PscConfigResponseRedisV1beta1 {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class ClusterUpgradePostConditionsGkehubV1alpha {
     );
   }
 }
-

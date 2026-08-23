@@ -42,4 +42,3 @@ class GetBindingGkehubV1betaArgs {
     );
   }
 }
-

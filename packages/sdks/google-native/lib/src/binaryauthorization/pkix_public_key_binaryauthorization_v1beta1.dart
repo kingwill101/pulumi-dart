@@ -32,4 +32,3 @@ class PkixPublicKeyBinaryauthorizationV1beta1 {
     );
   }
 }
-

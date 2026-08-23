@@ -15,4 +15,3 @@ enum SubnetworkIpv6AccessTypeComputeBeta {
     throw ArgumentError('Unknown SubnetworkIpv6AccessTypeComputeBeta value: $value');
   }
 }
-

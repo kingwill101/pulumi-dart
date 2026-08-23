@@ -42,4 +42,3 @@ class GetContextAiplatformV1beta1Args {
     );
   }
 }
-

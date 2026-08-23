@@ -37,4 +37,3 @@ class HttpRouteHeaderModifierResponseNetworkservicesV1beta1 {
     );
   }
 }
-

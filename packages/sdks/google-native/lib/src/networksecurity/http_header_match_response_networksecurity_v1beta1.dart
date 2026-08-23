@@ -31,4 +31,3 @@ class HttpHeaderMatchResponseNetworksecurityV1beta1 {
     );
   }
 }
-

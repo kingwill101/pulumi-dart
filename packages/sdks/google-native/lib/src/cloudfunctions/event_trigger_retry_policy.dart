@@ -16,4 +16,3 @@ enum EventTriggerRetryPolicy {
     throw ArgumentError('Unknown EventTriggerRetryPolicy value: $value');
   }
 }
-

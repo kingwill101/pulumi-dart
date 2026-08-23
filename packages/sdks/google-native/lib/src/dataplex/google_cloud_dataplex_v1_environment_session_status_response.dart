@@ -25,4 +25,3 @@ class GoogleCloudDataplexV1EnvironmentSessionStatusResponse {
     );
   }
 }
-

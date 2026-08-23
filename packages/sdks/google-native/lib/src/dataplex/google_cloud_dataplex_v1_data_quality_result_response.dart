@@ -72,4 +72,3 @@ class GoogleCloudDataplexV1DataQualityResultResponse {
     );
   }
 }
-

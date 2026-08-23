@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType value: $value');
   }
 }
-

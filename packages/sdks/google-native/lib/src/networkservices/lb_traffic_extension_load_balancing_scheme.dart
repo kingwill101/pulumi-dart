@@ -16,4 +16,3 @@ enum LbTrafficExtensionLoadBalancingScheme {
     throw ArgumentError('Unknown LbTrafficExtensionLoadBalancingScheme value: $value');
   }
 }
-

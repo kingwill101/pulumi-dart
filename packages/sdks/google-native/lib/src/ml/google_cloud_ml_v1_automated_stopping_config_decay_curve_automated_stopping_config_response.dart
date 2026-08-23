@@ -24,4 +24,3 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigRes
     );
   }
 }
-

@@ -37,4 +37,3 @@ class ManagementSettingsResponseDomainsV1alpha2 {
     );
   }
 }
-

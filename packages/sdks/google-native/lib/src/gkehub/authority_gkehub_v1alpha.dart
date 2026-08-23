@@ -31,4 +31,3 @@ class AuthorityGkehubV1alpha {
     );
   }
 }
-

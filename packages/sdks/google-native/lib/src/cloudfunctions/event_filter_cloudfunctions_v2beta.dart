@@ -37,4 +37,3 @@ class EventFilterCloudfunctionsV2beta {
     );
   }
 }
-

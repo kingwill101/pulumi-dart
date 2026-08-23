@@ -16,4 +16,3 @@ enum GatewayTypeNetworkservicesV1beta1 {
     throw ArgumentError('Unknown GatewayTypeNetworkservicesV1beta1 value: $value');
   }
 }
-

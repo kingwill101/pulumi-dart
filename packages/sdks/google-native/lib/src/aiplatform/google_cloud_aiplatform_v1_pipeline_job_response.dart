@@ -138,4 +138,3 @@ class GoogleCloudAiplatformV1PipelineJobResponse {
     );
   }
 }
-

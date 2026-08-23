@@ -26,4 +26,3 @@ class UpdatePolicyAlloydbV1beta {
     );
   }
 }
-

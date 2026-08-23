@@ -38,4 +38,3 @@ class RemediationResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

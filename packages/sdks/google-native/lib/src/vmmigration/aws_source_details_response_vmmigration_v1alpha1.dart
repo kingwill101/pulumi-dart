@@ -70,4 +70,3 @@ class AwsSourceDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

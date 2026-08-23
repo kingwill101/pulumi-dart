@@ -86,4 +86,3 @@ class GetEndpointPolicyNetworkservicesV1beta1Result {
     );
   }
 }
-

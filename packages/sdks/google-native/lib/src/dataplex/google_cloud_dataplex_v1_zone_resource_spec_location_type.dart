@@ -16,4 +16,3 @@ enum GoogleCloudDataplexV1ZoneResourceSpecLocationType {
     throw ArgumentError('Unknown GoogleCloudDataplexV1ZoneResourceSpecLocationType value: $value');
   }
 }
-

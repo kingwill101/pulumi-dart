@@ -30,4 +30,3 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeV1 
     );
   }
 }
-

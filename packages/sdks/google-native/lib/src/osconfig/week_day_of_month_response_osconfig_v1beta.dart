@@ -37,4 +37,3 @@ class WeekDayOfMonthResponseOsconfigV1beta {
     );
   }
 }
-

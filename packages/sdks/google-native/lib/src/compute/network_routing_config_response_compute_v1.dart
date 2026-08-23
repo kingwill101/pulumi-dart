@@ -25,4 +25,3 @@ class NetworkRoutingConfigResponseComputeV1 {
     );
   }
 }
-

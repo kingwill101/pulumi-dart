@@ -18,4 +18,3 @@ enum TimePartitioningTypeHealthcareV1beta1 {
     throw ArgumentError('Unknown TimePartitioningTypeHealthcareV1beta1 value: $value');
   }
 }
-

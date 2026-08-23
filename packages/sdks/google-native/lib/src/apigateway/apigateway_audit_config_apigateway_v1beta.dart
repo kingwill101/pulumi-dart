@@ -32,4 +32,3 @@ class ApigatewayAuditConfigApigatewayV1beta {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class AppConnectorIamBindingBeyondcorpV1alphaArgs {
     );
   }
 }
-

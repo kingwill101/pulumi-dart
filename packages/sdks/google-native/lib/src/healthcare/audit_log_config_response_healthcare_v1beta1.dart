@@ -31,4 +31,3 @@ class AuditLogConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

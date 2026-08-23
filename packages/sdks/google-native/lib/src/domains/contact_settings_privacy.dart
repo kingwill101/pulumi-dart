@@ -17,4 +17,3 @@ enum ContactSettingsPrivacy {
     throw ArgumentError('Unknown ContactSettingsPrivacy value: $value');
   }
 }
-

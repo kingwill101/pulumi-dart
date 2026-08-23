@@ -54,4 +54,3 @@ class SSLHealthCheckResponseComputeV1 {
     );
   }
 }
-

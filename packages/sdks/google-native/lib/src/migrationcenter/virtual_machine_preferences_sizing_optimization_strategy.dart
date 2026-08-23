@@ -17,4 +17,3 @@ enum VirtualMachinePreferencesSizingOptimizationStrategy {
     throw ArgumentError('Unknown VirtualMachinePreferencesSizingOptimizationStrategy value: $value');
   }
 }
-

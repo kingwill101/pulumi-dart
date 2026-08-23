@@ -25,4 +25,3 @@ class TimeZoneResponseOsconfigV1beta {
     );
   }
 }
-

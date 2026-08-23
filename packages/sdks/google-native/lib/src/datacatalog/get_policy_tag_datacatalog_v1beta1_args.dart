@@ -42,4 +42,3 @@ class GetPolicyTagDatacatalogV1beta1Args {
     );
   }
 }
-

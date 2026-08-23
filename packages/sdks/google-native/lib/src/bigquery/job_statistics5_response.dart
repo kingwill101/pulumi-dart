@@ -30,4 +30,3 @@ class JobStatistics5Response {
     );
   }
 }
-

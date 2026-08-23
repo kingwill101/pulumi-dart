@@ -37,4 +37,3 @@ class GoogleCloudRetailV2betaRatingResponse {
     );
   }
 }
-

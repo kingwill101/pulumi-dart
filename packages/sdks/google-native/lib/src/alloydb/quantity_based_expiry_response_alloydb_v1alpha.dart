@@ -31,4 +31,3 @@ class QuantityBasedExpiryResponseAlloydbV1alpha {
     );
   }
 }
-

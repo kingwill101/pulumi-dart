@@ -38,4 +38,3 @@ class TopicPubsubV1beta2Args {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class FastSocketResponseContainerV1beta1 {
     );
   }
 }
-

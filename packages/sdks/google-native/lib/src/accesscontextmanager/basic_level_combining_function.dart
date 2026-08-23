@@ -15,4 +15,3 @@ enum BasicLevelCombiningFunction {
     throw ArgumentError('Unknown BasicLevelCombiningFunction value: $value');
   }
 }
-

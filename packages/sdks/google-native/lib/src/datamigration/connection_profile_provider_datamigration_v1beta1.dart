@@ -16,4 +16,3 @@ enum ConnectionProfileProviderDatamigrationV1beta1 {
     throw ArgumentError('Unknown ConnectionProfileProviderDatamigrationV1beta1 value: $value');
   }
 }
-

@@ -26,4 +26,3 @@ class FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta {
     );
   }
 }
-

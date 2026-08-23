@@ -49,4 +49,3 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
     );
   }
 }
-

@@ -39,4 +39,3 @@ class ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

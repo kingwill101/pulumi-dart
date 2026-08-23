@@ -25,4 +25,3 @@ class DataplexConfigResponseMetastoreV1beta {
     );
   }
 }
-

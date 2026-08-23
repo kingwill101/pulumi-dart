@@ -25,4 +25,3 @@ class GkeBackupAgentConfigContainerV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetServiceBindingNetworkservicesV1beta1Args {
     );
   }
 }
-

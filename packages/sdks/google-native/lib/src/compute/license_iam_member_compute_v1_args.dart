@@ -52,4 +52,3 @@ class LicenseIamMemberComputeV1Args {
     );
   }
 }
-

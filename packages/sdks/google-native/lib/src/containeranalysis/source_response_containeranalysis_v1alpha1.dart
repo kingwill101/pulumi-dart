@@ -58,4 +58,3 @@ class SourceResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

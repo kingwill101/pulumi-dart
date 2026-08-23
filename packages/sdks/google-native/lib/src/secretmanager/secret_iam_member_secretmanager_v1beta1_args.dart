@@ -52,4 +52,3 @@ class SecretIamMemberSecretmanagerV1beta1Args {
     );
   }
 }
-

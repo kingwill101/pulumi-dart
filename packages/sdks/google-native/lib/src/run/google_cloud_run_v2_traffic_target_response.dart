@@ -43,4 +43,3 @@ class GoogleCloudRunV2TrafficTargetResponse {
     );
   }
 }
-

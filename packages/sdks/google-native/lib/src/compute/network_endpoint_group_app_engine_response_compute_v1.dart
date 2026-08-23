@@ -37,4 +37,3 @@ class NetworkEndpointGroupAppEngineResponseComputeV1 {
     );
   }
 }
-

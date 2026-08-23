@@ -31,4 +31,3 @@ class AutoUpgradeOptionsResponseContainerV1beta1 {
     );
   }
 }
-

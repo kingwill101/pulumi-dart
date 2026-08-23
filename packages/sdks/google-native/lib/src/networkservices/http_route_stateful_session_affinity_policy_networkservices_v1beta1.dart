@@ -25,4 +25,3 @@ class HttpRouteStatefulSessionAffinityPolicyNetworkservicesV1beta1 {
     );
   }
 }
-

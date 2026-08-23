@@ -31,4 +31,3 @@ class DropInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

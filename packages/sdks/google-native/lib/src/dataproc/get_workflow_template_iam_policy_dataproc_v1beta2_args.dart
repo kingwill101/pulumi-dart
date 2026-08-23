@@ -42,4 +42,3 @@ class GetWorkflowTemplateIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

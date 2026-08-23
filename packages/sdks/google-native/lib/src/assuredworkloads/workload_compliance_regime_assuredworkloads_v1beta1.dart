@@ -32,4 +32,3 @@ enum WorkloadComplianceRegimeAssuredworkloadsV1beta1 {
     throw ArgumentError('Unknown WorkloadComplianceRegimeAssuredworkloadsV1beta1 value: $value');
   }
 }
-

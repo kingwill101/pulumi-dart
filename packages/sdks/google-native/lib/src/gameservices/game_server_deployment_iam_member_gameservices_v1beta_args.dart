@@ -52,4 +52,3 @@ class GameServerDeploymentIamMemberGameservicesV1betaArgs {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1 {
     throw ArgumentError('Unknown ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1 value: $value');
   }
 }
-

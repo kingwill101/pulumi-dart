@@ -32,4 +32,3 @@ class GetGlobalForwardingRuleComputeV1Args {
     );
   }
 }
-

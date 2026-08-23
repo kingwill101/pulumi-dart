@@ -31,4 +31,3 @@ class GitSourceContextResponseContaineranalysisV1beta1 {
     );
   }
 }
-

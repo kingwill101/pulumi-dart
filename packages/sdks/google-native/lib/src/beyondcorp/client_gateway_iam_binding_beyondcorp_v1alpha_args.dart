@@ -52,4 +52,3 @@ class ClientGatewayIamBindingBeyondcorpV1alphaArgs {
     );
   }
 }
-

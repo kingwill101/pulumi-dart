@@ -25,4 +25,3 @@ class GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse {
     );
   }
 }
-

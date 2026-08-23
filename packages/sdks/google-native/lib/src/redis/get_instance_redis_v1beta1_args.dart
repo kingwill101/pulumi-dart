@@ -37,4 +37,3 @@ class GetInstanceRedisV1beta1Args {
     );
   }
 }
-

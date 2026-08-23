@@ -64,4 +64,3 @@ class OrganizationSourceIamPolicySecuritycenterV1beta1Args {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class PolicyControllerMonitoringConfigResponseGkehubV1beta {
     );
   }
 }
-

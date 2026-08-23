@@ -38,4 +38,3 @@ class BindingCloudfunctionsV2beta {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class PatientIdHealthcareV1beta1 {
     );
   }
 }
-

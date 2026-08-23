@@ -38,4 +38,3 @@ class GetTaxonomyIamPolicyDatacatalogV1beta1Result {
     );
   }
 }
-

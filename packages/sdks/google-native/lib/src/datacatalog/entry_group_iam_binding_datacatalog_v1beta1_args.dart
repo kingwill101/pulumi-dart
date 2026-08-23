@@ -52,4 +52,3 @@ class EntryGroupIamBindingDatacatalogV1beta1Args {
     );
   }
 }
-

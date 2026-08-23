@@ -38,4 +38,3 @@ class BindingResponseDataprocV1beta2 {
     );
   }
 }
-

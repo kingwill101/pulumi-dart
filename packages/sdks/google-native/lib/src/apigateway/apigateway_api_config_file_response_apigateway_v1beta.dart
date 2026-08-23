@@ -31,4 +31,3 @@ class ApigatewayApiConfigFileResponseApigatewayV1beta {
     );
   }
 }
-

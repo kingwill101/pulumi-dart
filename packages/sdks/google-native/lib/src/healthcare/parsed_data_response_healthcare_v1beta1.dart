@@ -25,4 +25,3 @@ class ParsedDataResponseHealthcareV1beta1 {
     );
   }
 }
-

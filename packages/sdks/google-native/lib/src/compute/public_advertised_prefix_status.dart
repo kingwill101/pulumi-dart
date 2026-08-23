@@ -22,4 +22,3 @@ enum PublicAdvertisedPrefixStatus {
     throw ArgumentError('Unknown PublicAdvertisedPrefixStatus value: $value');
   }
 }
-

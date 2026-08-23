@@ -31,4 +31,3 @@ class AcceleratorConfigResponseComputeV1 {
     );
   }
 }
-

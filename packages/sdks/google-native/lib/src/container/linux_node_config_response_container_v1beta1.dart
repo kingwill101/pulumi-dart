@@ -31,4 +31,3 @@ class LinuxNodeConfigResponseContainerV1beta1 {
     );
   }
 }
-

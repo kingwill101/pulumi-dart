@@ -31,4 +31,3 @@ class ParentProductConfigContainerV1beta1 {
     );
   }
 }
-

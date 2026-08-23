@@ -52,4 +52,3 @@ class FederationIamMemberMetastoreV1betaArgs {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class MysqlRdbmsResponseDatastreamV1alpha1 {
     );
   }
 }
-

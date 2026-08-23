@@ -40,4 +40,3 @@ class MonitoringConfigContainerV1beta1 {
     );
   }
 }
-

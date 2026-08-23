@@ -60,4 +60,3 @@ class HTTP2HealthCheckResponseComputeV1 {
     );
   }
 }
-

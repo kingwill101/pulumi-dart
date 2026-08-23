@@ -15,4 +15,3 @@ enum RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta {
     throw ArgumentError('Unknown RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta value: $value');
   }
 }
-

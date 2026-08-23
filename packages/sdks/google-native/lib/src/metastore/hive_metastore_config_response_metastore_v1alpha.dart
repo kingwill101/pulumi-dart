@@ -50,4 +50,3 @@ class HiveMetastoreConfigResponseMetastoreV1alpha {
     );
   }
 }
-

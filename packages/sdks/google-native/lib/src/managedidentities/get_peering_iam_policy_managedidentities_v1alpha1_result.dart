@@ -38,4 +38,3 @@ class GetPeeringIamPolicyManagedidentitiesV1alpha1Result {
     );
   }
 }
-

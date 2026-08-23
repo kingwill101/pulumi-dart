@@ -52,4 +52,3 @@ class GetContextDialogflowV2beta1Args {
     );
   }
 }
-

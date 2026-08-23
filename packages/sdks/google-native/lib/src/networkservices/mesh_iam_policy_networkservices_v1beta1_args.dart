@@ -69,4 +69,3 @@ class MeshIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

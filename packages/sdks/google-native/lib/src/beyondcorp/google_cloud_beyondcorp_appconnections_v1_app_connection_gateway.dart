@@ -32,4 +32,3 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetConversationProfileDialogflowV2beta1Args {
     );
   }
 }
-

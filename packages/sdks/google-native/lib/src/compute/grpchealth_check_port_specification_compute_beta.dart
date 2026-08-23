@@ -16,4 +16,3 @@ enum GRPCHealthCheckPortSpecificationComputeBeta {
     throw ArgumentError('Unknown GRPCHealthCheckPortSpecificationComputeBeta value: $value');
   }
 }
-

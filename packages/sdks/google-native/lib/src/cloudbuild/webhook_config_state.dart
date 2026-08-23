@@ -16,4 +16,3 @@ enum WebhookConfigState {
     throw ArgumentError('Unknown WebhookConfigState value: $value');
   }
 }
-

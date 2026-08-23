@@ -16,4 +16,3 @@ enum ClusterTransitEncryptionModeRedisV1beta1 {
     throw ArgumentError('Unknown ClusterTransitEncryptionModeRedisV1beta1 value: $value');
   }
 }
-

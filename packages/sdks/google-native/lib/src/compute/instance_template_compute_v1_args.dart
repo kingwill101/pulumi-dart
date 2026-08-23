@@ -65,4 +65,3 @@ class InstanceTemplateComputeV1Args {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class ImageHealthcareV1beta1 {
     );
   }
 }
-

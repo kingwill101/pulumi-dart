@@ -15,4 +15,3 @@ enum RegionDiskStorageTypeComputeBeta {
     throw ArgumentError('Unknown RegionDiskStorageTypeComputeBeta value: $value');
   }
 }
-

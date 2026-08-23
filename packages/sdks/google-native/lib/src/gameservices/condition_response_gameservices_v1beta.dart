@@ -49,4 +49,3 @@ class ConditionResponseGameservicesV1beta {
     );
   }
 }
-

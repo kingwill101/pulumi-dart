@@ -26,4 +26,3 @@ class ConfigManagementPolicyControllerMonitoringGkehubV1alpha {
     );
   }
 }
-

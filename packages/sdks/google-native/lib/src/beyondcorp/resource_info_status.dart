@@ -18,4 +18,3 @@ enum ResourceInfoStatus {
     throw ArgumentError('Unknown ResourceInfoStatus value: $value');
   }
 }
-

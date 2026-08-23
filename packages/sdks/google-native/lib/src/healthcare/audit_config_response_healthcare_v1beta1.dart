@@ -32,4 +32,3 @@ class AuditConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

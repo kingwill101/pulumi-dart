@@ -31,4 +31,3 @@ class Interval {
     );
   }
 }
-

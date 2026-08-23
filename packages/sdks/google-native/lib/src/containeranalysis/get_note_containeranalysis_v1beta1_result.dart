@@ -172,4 +172,3 @@ class GetNoteContaineranalysisV1beta1Result {
     );
   }
 }
-

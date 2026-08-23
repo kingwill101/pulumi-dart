@@ -101,4 +101,3 @@ class CloudSqlSettingsDatamigrationV1beta1 {
     );
   }
 }
-

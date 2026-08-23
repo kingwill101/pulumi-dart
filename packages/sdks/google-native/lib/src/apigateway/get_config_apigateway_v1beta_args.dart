@@ -47,4 +47,3 @@ class GetConfigApigatewayV1betaArgs {
     );
   }
 }
-

@@ -123,4 +123,3 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
     );
   }
 }
-

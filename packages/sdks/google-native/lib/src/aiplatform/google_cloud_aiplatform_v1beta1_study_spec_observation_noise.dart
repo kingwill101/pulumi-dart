@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1beta1StudySpecObservationNoise {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1StudySpecObservationNoise value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption value: $value');
   }
 }
-

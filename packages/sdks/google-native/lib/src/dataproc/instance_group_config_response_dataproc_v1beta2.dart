@@ -89,4 +89,3 @@ class InstanceGroupConfigResponseDataprocV1beta2 {
     );
   }
 }
-

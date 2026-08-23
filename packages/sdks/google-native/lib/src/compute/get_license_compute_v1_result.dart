@@ -72,4 +72,3 @@ class GetLicenseComputeV1Result {
     );
   }
 }
-

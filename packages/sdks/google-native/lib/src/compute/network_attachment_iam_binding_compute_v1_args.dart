@@ -52,4 +52,3 @@ class NetworkAttachmentIamBindingComputeV1Args {
     );
   }
 }
-

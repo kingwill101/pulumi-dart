@@ -67,4 +67,3 @@ class GetReportMigrationcenterV1alpha1Result {
     );
   }
 }
-

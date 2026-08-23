@@ -16,4 +16,3 @@ enum DeliveryConfigDeliveryRequirement {
     throw ArgumentError('Unknown DeliveryConfigDeliveryRequirement value: $value');
   }
 }
-

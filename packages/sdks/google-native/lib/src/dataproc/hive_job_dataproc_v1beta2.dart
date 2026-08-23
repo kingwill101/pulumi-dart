@@ -56,4 +56,3 @@ class HiveJobDataprocV1beta2 {
     );
   }
 }
-

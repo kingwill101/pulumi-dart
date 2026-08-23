@@ -17,4 +17,3 @@ enum ModelPeriodicTuningStateRetailV2beta {
     throw ArgumentError('Unknown ModelPeriodicTuningStateRetailV2beta value: $value');
   }
 }
-

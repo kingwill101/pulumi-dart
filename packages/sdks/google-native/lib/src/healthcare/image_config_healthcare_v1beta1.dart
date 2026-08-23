@@ -38,4 +38,3 @@ class ImageConfigHealthcareV1beta1 {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class OneTimeScheduleOsconfigV1beta {
     );
   }
 }
-

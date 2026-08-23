@@ -43,4 +43,3 @@ class SqlAclEntryResponseDatamigrationV1beta1 {
     );
   }
 }
-

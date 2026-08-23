@@ -39,4 +39,3 @@ class CloudRepoSourceContextContaineranalysisV1beta1 {
     );
   }
 }
-

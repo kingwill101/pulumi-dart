@@ -16,4 +16,3 @@ enum ConversationStateDiscoveryengineV1beta {
     throw ArgumentError('Unknown ConversationStateDiscoveryengineV1beta value: $value');
   }
 }
-

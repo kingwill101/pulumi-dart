@@ -42,4 +42,3 @@ class GetRegionNetworkFirewallPolicyIamPolicyComputeV1Args {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeNetworkconnectivityV1alpha1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeNetworkconnectivityV1alpha1 value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetNetworkAttachmentComputeV1Args {
     );
   }
 }
-

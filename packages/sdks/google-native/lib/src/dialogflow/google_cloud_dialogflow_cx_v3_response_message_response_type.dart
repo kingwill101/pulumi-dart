@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowCxV3ResponseMessageResponseType {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3ResponseMessageResponseType value: $value');
   }
 }
-

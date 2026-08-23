@@ -15,4 +15,3 @@ enum DnsKeySpecKeyType {
     throw ArgumentError('Unknown DnsKeySpecKeyType value: $value');
   }
 }
-

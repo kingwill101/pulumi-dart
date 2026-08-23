@@ -43,4 +43,3 @@ class StandardSchedulerSettingsAppengineV1beta {
     );
   }
 }
-

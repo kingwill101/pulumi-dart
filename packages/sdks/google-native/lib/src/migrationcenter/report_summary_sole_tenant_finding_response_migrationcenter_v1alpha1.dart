@@ -38,4 +38,3 @@ class ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

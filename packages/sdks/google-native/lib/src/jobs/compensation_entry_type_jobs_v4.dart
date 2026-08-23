@@ -22,4 +22,3 @@ enum CompensationEntryTypeJobsV4 {
     throw ArgumentError('Unknown CompensationEntryTypeJobsV4 value: $value');
   }
 }
-

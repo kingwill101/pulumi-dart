@@ -15,4 +15,3 @@ enum RegionBackendServiceVpcNetworkScope {
     throw ArgumentError('Unknown RegionBackendServiceVpcNetworkScope value: $value');
   }
 }
-

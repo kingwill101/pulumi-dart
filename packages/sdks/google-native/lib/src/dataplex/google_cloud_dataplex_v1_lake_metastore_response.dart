@@ -25,4 +25,3 @@ class GoogleCloudDataplexV1LakeMetastoreResponse {
     );
   }
 }
-

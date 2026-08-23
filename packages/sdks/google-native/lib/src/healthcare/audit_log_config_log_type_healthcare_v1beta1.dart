@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeHealthcareV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeHealthcareV1beta1 value: $value');
   }
 }
-

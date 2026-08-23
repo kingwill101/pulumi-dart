@@ -32,4 +32,3 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
     );
   }
 }
-

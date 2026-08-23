@@ -17,4 +17,3 @@ enum ShareSettingsShareTypeComputeBeta {
     throw ArgumentError('Unknown ShareSettingsShareTypeComputeBeta value: $value');
   }
 }
-

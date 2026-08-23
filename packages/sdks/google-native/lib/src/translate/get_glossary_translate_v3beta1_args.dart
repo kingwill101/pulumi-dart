@@ -37,4 +37,3 @@ class GetGlossaryTranslateV3beta1Args {
     );
   }
 }
-

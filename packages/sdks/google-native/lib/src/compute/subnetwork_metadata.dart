@@ -15,4 +15,3 @@ enum SubnetworkMetadata {
     throw ArgumentError('Unknown SubnetworkMetadata value: $value');
   }
 }
-

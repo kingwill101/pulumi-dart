@@ -32,4 +32,3 @@ class OSPolicyResourceExecResourceResponseOsconfigV1alpha {
     );
   }
 }
-

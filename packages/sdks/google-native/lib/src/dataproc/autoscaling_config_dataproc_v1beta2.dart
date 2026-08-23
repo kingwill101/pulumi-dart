@@ -25,4 +25,3 @@ class AutoscalingConfigDataprocV1beta2 {
     );
   }
 }
-

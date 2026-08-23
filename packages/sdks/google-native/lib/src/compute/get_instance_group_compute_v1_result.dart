@@ -92,4 +92,3 @@ class GetInstanceGroupComputeV1Result {
     );
   }
 }
-

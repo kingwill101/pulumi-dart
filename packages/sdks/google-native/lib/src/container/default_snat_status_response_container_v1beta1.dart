@@ -25,4 +25,3 @@ class DefaultSnatStatusResponseContainerV1beta1 {
     );
   }
 }
-

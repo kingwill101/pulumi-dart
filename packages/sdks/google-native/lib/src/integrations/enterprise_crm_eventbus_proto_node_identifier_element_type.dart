@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusProtoNodeIdentifierElementType {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoNodeIdentifierElementType value: $value');
   }
 }
-

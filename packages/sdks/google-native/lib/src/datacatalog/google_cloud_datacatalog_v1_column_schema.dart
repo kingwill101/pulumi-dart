@@ -81,4 +81,3 @@ class GoogleCloudDatacatalogV1ColumnSchema {
     );
   }
 }
-

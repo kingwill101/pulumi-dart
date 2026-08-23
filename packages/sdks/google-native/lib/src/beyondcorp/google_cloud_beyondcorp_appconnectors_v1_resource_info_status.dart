@@ -18,4 +18,3 @@ enum GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus {
     throw ArgumentError('Unknown GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus value: $value');
   }
 }
-

@@ -96,4 +96,3 @@ class DocumentDiscoveryengineV1betaArgs {
     );
   }
 }
-

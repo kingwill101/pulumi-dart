@@ -52,4 +52,3 @@ class RegionBackendServiceIamMemberComputeV1Args {
     );
   }
 }
-

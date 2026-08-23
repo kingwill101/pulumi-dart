@@ -42,4 +42,3 @@ class GetAppGatewayIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

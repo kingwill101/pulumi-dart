@@ -18,4 +18,3 @@ enum TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1 {
     throw ArgumentError('Unknown TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1 value: $value');
   }
 }
-

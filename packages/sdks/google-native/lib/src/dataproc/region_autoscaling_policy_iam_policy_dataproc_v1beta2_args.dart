@@ -56,4 +56,3 @@ class RegionAutoscalingPolicyIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

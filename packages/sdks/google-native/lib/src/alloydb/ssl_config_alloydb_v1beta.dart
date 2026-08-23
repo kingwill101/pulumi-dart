@@ -33,4 +33,3 @@ class SslConfigAlloydbV1beta {
     );
   }
 }
-

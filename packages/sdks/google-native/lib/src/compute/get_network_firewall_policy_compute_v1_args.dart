@@ -32,4 +32,3 @@ class GetNetworkFirewallPolicyComputeV1Args {
     );
   }
 }
-

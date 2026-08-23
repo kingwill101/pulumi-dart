@@ -42,4 +42,3 @@ class GetGatewayIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

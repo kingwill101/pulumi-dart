@@ -15,4 +15,3 @@ enum EnterpriseCrmEventbusStatsDimensionsEnumFilterType {
     throw ArgumentError('Unknown EnterpriseCrmEventbusStatsDimensionsEnumFilterType value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class CloudFunctionV2Target {
     );
   }
 }
-

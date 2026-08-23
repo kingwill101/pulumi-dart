@@ -39,4 +39,3 @@ class SourceResponseCloudfunctionsV2beta {
     );
   }
 }
-

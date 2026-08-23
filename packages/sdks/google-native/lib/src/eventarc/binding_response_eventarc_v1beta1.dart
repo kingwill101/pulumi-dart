@@ -38,4 +38,3 @@ class BindingResponseEventarcV1beta1 {
     );
   }
 }
-

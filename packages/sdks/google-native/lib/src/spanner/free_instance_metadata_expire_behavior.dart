@@ -16,4 +16,3 @@ enum FreeInstanceMetadataExpireBehavior {
     throw ArgumentError('Unknown FreeInstanceMetadataExpireBehavior value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class SamlSpConfigResponseCloudidentityV1beta1 {
     );
   }
 }
-

@@ -30,4 +30,3 @@ class AutoscalerStatusDetailsResponseComputeV1 {
     );
   }
 }
-

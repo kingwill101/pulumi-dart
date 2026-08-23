@@ -16,4 +16,3 @@ enum PackageNoteArchitecture {
     throw ArgumentError('Unknown PackageNoteArchitecture value: $value');
   }
 }
-

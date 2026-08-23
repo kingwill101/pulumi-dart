@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum AttachedDiskInitializeParamsOnUpdateActionComputeBeta {
     throw ArgumentError('Unknown AttachedDiskInitializeParamsOnUpdateActionComputeBeta value: $value');
   }
 }
-

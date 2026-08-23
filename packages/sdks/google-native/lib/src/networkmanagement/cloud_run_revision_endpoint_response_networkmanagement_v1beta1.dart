@@ -25,4 +25,3 @@ class CloudRunRevisionEndpointResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

@@ -62,4 +62,3 @@ class GetServerConfigContainerV1beta1Result {
     );
   }
 }
-

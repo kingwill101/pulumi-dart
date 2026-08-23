@@ -65,4 +65,3 @@ class EnvironmentComposerV1beta1Args {
     );
   }
 }
-

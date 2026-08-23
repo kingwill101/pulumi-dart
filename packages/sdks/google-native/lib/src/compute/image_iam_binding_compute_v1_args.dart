@@ -52,4 +52,3 @@ class ImageIamBindingComputeV1Args {
     );
   }
 }
-

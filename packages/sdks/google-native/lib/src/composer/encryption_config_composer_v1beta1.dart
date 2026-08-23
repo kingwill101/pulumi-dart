@@ -25,4 +25,3 @@ class EncryptionConfigComposerV1beta1 {
     );
   }
 }
-

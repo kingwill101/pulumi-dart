@@ -25,4 +25,3 @@ class AuthorizationLoggingOptionsResponseGameservicesV1beta {
     );
   }
 }
-

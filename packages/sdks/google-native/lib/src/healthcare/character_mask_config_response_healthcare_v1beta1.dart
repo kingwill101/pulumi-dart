@@ -25,4 +25,3 @@ class CharacterMaskConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

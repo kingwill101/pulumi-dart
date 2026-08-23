@@ -32,4 +32,3 @@ class OSPolicyAssignmentRolloutOsconfigV1alpha {
     );
   }
 }
-

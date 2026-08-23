@@ -31,4 +31,3 @@ class BackupSourceResponseAlloydbV1beta {
     );
   }
 }
-

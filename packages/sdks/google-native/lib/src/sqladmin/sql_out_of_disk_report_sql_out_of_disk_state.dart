@@ -16,4 +16,3 @@ enum SqlOutOfDiskReportSqlOutOfDiskState {
     throw ArgumentError('Unknown SqlOutOfDiskReportSqlOutOfDiskState value: $value');
   }
 }
-

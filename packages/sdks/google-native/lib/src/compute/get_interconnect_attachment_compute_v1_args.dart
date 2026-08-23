@@ -37,4 +37,3 @@ class GetInterconnectAttachmentComputeV1Args {
     );
   }
 }
-

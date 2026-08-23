@@ -43,4 +43,3 @@ class ExprResponseDatafusionV1beta1 {
     );
   }
 }
-

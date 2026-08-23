@@ -43,4 +43,3 @@ class ExprResponseDatacatalogV1beta1 {
     );
   }
 }
-

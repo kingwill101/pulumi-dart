@@ -37,4 +37,3 @@ class GceShieldedInstanceConfigWorkstationsV1beta {
     );
   }
 }
-

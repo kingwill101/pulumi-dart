@@ -43,4 +43,3 @@ class ExprArtifactregistryV1beta2 {
     );
   }
 }
-

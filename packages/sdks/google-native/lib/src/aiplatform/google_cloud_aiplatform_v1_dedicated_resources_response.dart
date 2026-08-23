@@ -45,4 +45,3 @@ class GoogleCloudAiplatformV1DedicatedResourcesResponse {
     );
   }
 }
-

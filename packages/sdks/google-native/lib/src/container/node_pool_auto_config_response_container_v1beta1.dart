@@ -33,4 +33,3 @@ class NodePoolAutoConfigResponseContainerV1beta1 {
     );
   }
 }
-

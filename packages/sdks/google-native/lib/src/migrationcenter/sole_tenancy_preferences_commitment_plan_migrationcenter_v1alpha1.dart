@@ -17,4 +17,3 @@ enum SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown SoleTenancyPreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
   }
 }
-

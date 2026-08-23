@@ -52,4 +52,3 @@ class GetRegionBackendServiceIamPolicyComputeV1Result {
     );
   }
 }
-

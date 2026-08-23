@@ -44,4 +44,3 @@ class RRSetRoutingPolicyPrimaryBackupPolicyResponseDnsV1beta2 {
     );
   }
 }
-

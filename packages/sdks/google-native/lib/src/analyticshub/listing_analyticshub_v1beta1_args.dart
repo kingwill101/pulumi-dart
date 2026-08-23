@@ -114,4 +114,3 @@ class ListingAnalyticshubV1beta1Args {
     );
   }
 }
-

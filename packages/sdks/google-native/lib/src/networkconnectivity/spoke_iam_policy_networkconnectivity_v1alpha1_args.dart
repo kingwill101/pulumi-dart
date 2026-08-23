@@ -69,4 +69,3 @@ class SpokeIamPolicyNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

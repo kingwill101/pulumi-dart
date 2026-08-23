@@ -25,4 +25,3 @@ class GoogleCloudRunV2CloudSqlInstanceResponse {
     );
   }
 }
-

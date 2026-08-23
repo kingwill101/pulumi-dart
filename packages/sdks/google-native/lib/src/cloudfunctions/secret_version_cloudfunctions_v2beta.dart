@@ -31,4 +31,3 @@ class SecretVersionCloudfunctionsV2beta {
     );
   }
 }
-

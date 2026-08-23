@@ -17,4 +17,3 @@ enum GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType {
     throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType value: $value');
   }
 }
-

@@ -14,4 +14,3 @@ enum SecuritySettingPurgeDataTypesItem {
     throw ArgumentError('Unknown SecuritySettingPurgeDataTypesItem value: $value');
   }
 }
-

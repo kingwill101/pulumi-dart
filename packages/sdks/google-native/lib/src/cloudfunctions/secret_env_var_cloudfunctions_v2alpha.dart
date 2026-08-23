@@ -43,4 +43,3 @@ class SecretEnvVarCloudfunctionsV2alpha {
     );
   }
 }
-

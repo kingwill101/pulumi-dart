@@ -163,4 +163,3 @@ class GetInstanceAlloydbV1betaResult {
     );
   }
 }
-

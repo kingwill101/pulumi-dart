@@ -70,4 +70,3 @@ class VexAssessmentResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

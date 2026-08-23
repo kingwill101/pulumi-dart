@@ -20,4 +20,3 @@ enum SoftwareRecipeStepExtractArchiveType {
     throw ArgumentError('Unknown SoftwareRecipeStepExtractArchiveType value: $value');
   }
 }
-

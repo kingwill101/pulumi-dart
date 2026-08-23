@@ -39,4 +39,3 @@ class GoogleCloudAiplatformV1StudySpecMetricSpec {
     );
   }
 }
-

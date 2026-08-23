@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAli
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment value: $value');
   }
 }
-

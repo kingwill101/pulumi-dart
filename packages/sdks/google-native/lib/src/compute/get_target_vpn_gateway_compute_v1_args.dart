@@ -37,4 +37,3 @@ class GetTargetVpnGatewayComputeV1Args {
     );
   }
 }
-

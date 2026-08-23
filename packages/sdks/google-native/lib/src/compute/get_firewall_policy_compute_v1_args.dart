@@ -27,4 +27,3 @@ class GetFirewallPolicyComputeV1Args {
     );
   }
 }
-

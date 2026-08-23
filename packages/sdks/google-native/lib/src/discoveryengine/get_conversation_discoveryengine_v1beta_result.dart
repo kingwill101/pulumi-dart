@@ -56,4 +56,3 @@ class GetConversationDiscoveryengineV1betaResult {
     );
   }
 }
-

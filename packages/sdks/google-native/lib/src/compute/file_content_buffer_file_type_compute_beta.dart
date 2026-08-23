@@ -16,4 +16,3 @@ enum FileContentBufferFileTypeComputeBeta {
     throw ArgumentError('Unknown FileContentBufferFileTypeComputeBeta value: $value');
   }
 }
-

@@ -76,4 +76,3 @@ class AssessmentResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

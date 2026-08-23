@@ -37,4 +37,3 @@ class AppEngineRoutingCloudschedulerV1beta1 {
     );
   }
 }
-

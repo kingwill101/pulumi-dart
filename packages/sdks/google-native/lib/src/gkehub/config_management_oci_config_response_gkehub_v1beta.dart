@@ -49,4 +49,3 @@ class ConfigManagementOciConfigResponseGkehubV1beta {
     );
   }
 }
-

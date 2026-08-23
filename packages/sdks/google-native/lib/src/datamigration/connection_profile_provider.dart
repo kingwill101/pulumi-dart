@@ -18,4 +18,3 @@ enum ConnectionProfileProvider {
     throw ArgumentError('Unknown ConnectionProfileProvider value: $value');
   }
 }
-

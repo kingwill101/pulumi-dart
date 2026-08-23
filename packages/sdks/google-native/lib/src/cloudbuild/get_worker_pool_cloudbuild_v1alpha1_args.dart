@@ -32,4 +32,3 @@ class GetWorkerPoolCloudbuildV1alpha1Args {
     );
   }
 }
-

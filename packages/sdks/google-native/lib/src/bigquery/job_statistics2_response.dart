@@ -231,4 +231,3 @@ class JobStatistics2Response {
     );
   }
 }
-

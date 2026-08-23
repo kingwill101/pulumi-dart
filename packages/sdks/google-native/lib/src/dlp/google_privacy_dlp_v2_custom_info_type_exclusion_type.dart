@@ -15,4 +15,3 @@ enum GooglePrivacyDlpV2CustomInfoTypeExclusionType {
     throw ArgumentError('Unknown GooglePrivacyDlpV2CustomInfoTypeExclusionType value: $value');
   }
 }
-

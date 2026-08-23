@@ -17,4 +17,3 @@ enum EnvironmentConfigEnvironmentSize {
     throw ArgumentError('Unknown EnvironmentConfigEnvironmentSize value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum GoogleCloudDataplexV1ContentNotebookKernelType {
     throw ArgumentError('Unknown GoogleCloudDataplexV1ContentNotebookKernelType value: $value');
   }
 }
-

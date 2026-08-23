@@ -55,4 +55,3 @@ class GetVersionDialogflowV3Result {
     );
   }
 }
-

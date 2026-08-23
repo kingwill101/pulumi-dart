@@ -16,4 +16,3 @@ enum GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis {
     throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis value: $value');
   }
 }
-

@@ -39,4 +39,3 @@ class GoogleCloudRunV2VpcAccess {
     );
   }
 }
-

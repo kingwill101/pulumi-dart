@@ -52,4 +52,3 @@ class DomainBackupIamMemberManagedidentitiesV1alpha1Args {
     );
   }
 }
-

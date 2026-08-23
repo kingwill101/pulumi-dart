@@ -25,4 +25,3 @@ class RestrictionEvaluationsCloudidentityV1beta1 {
     );
   }
 }
-

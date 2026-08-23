@@ -42,4 +42,3 @@ class GetJobIamPolicyRunV2Args {
     );
   }
 }
-

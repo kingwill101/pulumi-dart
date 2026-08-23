@@ -39,4 +39,3 @@ class SourceConfigResponseDatastreamV1alpha1 {
     );
   }
 }
-

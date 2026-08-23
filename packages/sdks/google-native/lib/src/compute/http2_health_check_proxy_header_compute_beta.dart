@@ -15,4 +15,3 @@ enum HTTP2HealthCheckProxyHeaderComputeBeta {
     throw ArgumentError('Unknown HTTP2HealthCheckProxyHeaderComputeBeta value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class SslSettingsAppengineV1alpha {
     );
   }
 }
-

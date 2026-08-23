@@ -16,4 +16,3 @@ enum RestoreConfigClusterResourceConflictPolicy {
     throw ArgumentError('Unknown RestoreConfigClusterResourceConflictPolicy value: $value');
   }
 }
-

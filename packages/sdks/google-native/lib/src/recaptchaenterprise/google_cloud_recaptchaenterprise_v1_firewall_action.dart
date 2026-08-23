@@ -51,4 +51,3 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
     );
   }
 }
-

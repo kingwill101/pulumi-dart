@@ -17,4 +17,3 @@ enum ReleaseChannelChannelContainerV1beta1 {
     throw ArgumentError('Unknown ReleaseChannelChannelContainerV1beta1 value: $value');
   }
 }
-

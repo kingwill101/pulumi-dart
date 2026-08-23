@@ -69,4 +69,3 @@ class GetIntentDialogflowV3beta1Result {
     );
   }
 }
-

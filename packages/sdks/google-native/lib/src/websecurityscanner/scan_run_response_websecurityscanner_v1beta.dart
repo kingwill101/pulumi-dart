@@ -87,4 +87,3 @@ class ScanRunResponseWebsecurityscannerV1beta {
     );
   }
 }
-

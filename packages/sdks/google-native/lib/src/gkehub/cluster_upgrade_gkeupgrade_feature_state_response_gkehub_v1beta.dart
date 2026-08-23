@@ -33,4 +33,3 @@ class ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1beta {
     );
   }
 }
-

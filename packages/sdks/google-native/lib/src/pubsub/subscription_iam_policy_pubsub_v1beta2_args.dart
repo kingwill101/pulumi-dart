@@ -51,4 +51,3 @@ class SubscriptionIamPolicyPubsubV1beta2Args {
     );
   }
 }
-

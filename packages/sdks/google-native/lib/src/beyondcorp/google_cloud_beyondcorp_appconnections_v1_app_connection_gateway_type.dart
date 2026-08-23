@@ -15,4 +15,3 @@ enum GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType {
     throw ArgumentError('Unknown GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType value: $value');
   }
 }
-

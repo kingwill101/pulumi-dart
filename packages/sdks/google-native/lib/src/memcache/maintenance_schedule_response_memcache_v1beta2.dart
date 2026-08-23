@@ -37,4 +37,3 @@ class MaintenanceScheduleResponseMemcacheV1beta2 {
     );
   }
 }
-

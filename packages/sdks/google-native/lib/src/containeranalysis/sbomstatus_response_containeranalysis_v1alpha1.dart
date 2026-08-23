@@ -31,4 +31,3 @@ class SBOMStatusResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

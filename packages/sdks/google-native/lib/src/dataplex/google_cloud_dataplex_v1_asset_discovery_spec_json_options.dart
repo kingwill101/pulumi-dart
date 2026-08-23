@@ -31,4 +31,3 @@ class GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions {
     );
   }
 }
-

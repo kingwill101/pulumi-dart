@@ -50,4 +50,3 @@ class GceRegionalPersistentDiskWorkstationsV1beta {
     );
   }
 }
-

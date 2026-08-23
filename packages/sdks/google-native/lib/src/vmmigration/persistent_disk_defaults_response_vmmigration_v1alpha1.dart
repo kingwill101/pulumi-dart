@@ -57,4 +57,3 @@ class PersistentDiskDefaultsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum ServiceMeshMembershipSpecManagementGkehubV1alpha {
     throw ArgumentError('Unknown ServiceMeshMembershipSpecManagementGkehubV1alpha value: $value');
   }
 }
-

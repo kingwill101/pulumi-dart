@@ -31,4 +31,3 @@ class GoogleIamV1AuditLogConfigResponseBeyondcorpV1alpha {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
     );
   }
 }
-

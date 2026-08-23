@@ -47,4 +47,3 @@ class GetVersionDialogflowV3beta1Args {
     );
   }
 }
-

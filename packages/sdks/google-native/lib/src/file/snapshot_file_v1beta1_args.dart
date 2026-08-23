@@ -55,4 +55,3 @@ class SnapshotFileV1beta1Args {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class ExprResponseEventarcV1beta1 {
     );
   }
 }
-

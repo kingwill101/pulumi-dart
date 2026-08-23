@@ -33,4 +33,3 @@ class ValidationCANetworksecurityV1beta1 {
     );
   }
 }
-

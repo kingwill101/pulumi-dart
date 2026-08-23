@@ -74,4 +74,3 @@ class WorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaArgs {
     );
   }
 }
-

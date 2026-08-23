@@ -52,4 +52,3 @@ class NoteIamBindingContaineranalysisV1beta1Args {
     );
   }
 }
-

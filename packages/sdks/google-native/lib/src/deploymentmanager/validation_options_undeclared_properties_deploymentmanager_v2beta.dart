@@ -19,4 +19,3 @@ enum ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta {
     throw ArgumentError('Unknown ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta value: $value');
   }
 }
-

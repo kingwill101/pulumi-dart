@@ -39,4 +39,3 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
     );
   }
 }
-

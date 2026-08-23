@@ -25,4 +25,3 @@ class GooglePrivacyDlpV2ImageTransformations {
     );
   }
 }
-

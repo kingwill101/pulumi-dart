@@ -42,4 +42,3 @@ class GetInstanceIamPolicyComputeV1Args {
     );
   }
 }
-

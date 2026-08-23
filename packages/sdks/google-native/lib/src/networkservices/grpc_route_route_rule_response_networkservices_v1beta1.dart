@@ -33,4 +33,3 @@ class GrpcRouteRouteRuleResponseNetworkservicesV1beta1 {
     );
   }
 }
-

@@ -70,4 +70,3 @@ class ResourcePolicyIamPolicyComputeV1Args {
     );
   }
 }
-

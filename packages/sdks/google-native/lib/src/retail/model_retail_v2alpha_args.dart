@@ -102,4 +102,3 @@ class ModelRetailV2alphaArgs {
     );
   }
 }
-

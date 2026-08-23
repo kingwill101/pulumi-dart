@@ -37,4 +37,3 @@ class GetResourcePolicyComputeV1Args {
     );
   }
 }
-

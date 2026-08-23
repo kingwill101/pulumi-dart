@@ -72,4 +72,3 @@ class RunAiplatformV1beta1Args {
     );
   }
 }
-

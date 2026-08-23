@@ -55,4 +55,3 @@ class NetworkResponseAppengineV1beta {
     );
   }
 }
-

@@ -51,4 +51,3 @@ class GoogleCloudContactcenterinsightsV1AnalysisResponse {
     );
   }
 }
-

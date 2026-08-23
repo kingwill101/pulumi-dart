@@ -15,4 +15,3 @@ enum SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility
     throw ArgumentError('Unknown SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility value: $value');
   }
 }
-

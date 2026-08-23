@@ -37,4 +37,3 @@ class ErrorHandlerResponseAppengineV1beta {
     );
   }
 }
-

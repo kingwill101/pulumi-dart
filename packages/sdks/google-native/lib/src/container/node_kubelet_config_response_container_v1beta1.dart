@@ -49,4 +49,3 @@ class NodeKubeletConfigResponseContainerV1beta1 {
     );
   }
 }
-

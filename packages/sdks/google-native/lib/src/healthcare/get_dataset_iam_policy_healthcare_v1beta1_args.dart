@@ -42,4 +42,3 @@ class GetDatasetIamPolicyHealthcareV1beta1Args {
     );
   }
 }
-

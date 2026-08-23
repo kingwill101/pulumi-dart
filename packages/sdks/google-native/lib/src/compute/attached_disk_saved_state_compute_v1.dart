@@ -15,4 +15,3 @@ enum AttachedDiskSavedStateComputeV1 {
     throw ArgumentError('Unknown AttachedDiskSavedStateComputeV1 value: $value');
   }
 }
-

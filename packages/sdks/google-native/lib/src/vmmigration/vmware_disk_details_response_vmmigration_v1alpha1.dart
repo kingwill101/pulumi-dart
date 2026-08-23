@@ -37,4 +37,3 @@ class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class GetOrganizationIamPolicyCloudresourcemanagerV1beta1Result {
     );
   }
 }
-

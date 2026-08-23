@@ -37,4 +37,3 @@ class OSPolicyResourceFileGcsResponseOsconfigV1alpha {
     );
   }
 }
-

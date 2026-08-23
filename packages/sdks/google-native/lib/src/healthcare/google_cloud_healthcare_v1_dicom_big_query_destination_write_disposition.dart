@@ -17,4 +17,3 @@ enum GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition {
     throw ArgumentError('Unknown GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition value: $value');
   }
 }
-

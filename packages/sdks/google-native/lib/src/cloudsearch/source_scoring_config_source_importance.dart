@@ -16,4 +16,3 @@ enum SourceScoringConfigSourceImportance {
     throw ArgumentError('Unknown SourceScoringConfigSourceImportance value: $value');
   }
 }
-

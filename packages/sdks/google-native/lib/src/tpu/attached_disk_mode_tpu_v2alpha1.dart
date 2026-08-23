@@ -16,4 +16,3 @@ enum AttachedDiskModeTpuV2alpha1 {
     throw ArgumentError('Unknown AttachedDiskModeTpuV2alpha1 value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class NoteIamMemberContaineranalysisV1alpha1Args {
     );
   }
 }
-

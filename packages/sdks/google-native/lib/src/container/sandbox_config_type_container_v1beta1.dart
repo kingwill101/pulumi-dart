@@ -15,4 +15,3 @@ enum SandboxConfigTypeContainerV1beta1 {
     throw ArgumentError('Unknown SandboxConfigTypeContainerV1beta1 value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum ParticipantRole {
     throw ArgumentError('Unknown ParticipantRole value: $value');
   }
 }
-

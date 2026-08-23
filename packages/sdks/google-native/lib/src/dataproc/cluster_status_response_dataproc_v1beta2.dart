@@ -43,4 +43,3 @@ class ClusterStatusResponseDataprocV1beta2 {
     );
   }
 }
-

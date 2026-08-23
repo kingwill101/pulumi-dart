@@ -16,4 +16,3 @@ enum DevicePolicyAllowedEncryptionStatusesItem {
     throw ArgumentError('Unknown DevicePolicyAllowedEncryptionStatusesItem value: $value');
   }
 }
-

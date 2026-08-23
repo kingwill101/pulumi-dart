@@ -50,4 +50,3 @@ class CycleStepResponseVmmigrationV1alpha1 {
     );
   }
 }
-

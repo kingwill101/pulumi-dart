@@ -71,4 +71,3 @@ class AutomatedBackupPolicyResponseAlloydbV1beta {
     );
   }
 }
-

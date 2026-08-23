@@ -37,4 +37,3 @@ class GetInternalRangeNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

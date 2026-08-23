@@ -55,4 +55,3 @@ class GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec {
     );
   }
 }
-

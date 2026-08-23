@@ -37,4 +37,3 @@ class GetSnapshotIamPolicyComputeV1Args {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class FeatureIamMemberGkehubV1betaArgs {
     );
   }
 }
-

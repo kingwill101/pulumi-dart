@@ -17,4 +17,3 @@ enum BackendServiceCdnPolicyCacheModeComputeV1 {
     throw ArgumentError('Unknown BackendServiceCdnPolicyCacheModeComputeV1 value: $value');
   }
 }
-

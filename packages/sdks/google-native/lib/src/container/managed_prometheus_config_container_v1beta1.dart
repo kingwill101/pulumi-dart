@@ -25,4 +25,3 @@ class ManagedPrometheusConfigContainerV1beta1 {
     );
   }
 }
-

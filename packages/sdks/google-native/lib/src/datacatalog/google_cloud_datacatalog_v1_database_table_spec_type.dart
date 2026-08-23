@@ -16,4 +16,3 @@ enum GoogleCloudDatacatalogV1DatabaseTableSpecType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1DatabaseTableSpecType value: $value');
   }
 }
-

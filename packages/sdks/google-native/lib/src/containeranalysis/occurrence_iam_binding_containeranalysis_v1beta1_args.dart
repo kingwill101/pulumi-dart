@@ -52,4 +52,3 @@ class OccurrenceIamBindingContaineranalysisV1beta1Args {
     );
   }
 }
-

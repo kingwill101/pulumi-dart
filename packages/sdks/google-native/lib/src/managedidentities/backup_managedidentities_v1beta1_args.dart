@@ -50,4 +50,3 @@ class BackupManagedidentitiesV1beta1Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2 {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class GetHealthCheckComputeV1Args {
     );
   }
 }
-

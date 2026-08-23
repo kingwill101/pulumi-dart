@@ -32,4 +32,3 @@ class AuditConfigSecretmanagerV1beta1 {
     );
   }
 }
-

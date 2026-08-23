@@ -102,4 +102,3 @@ class StreamDatastreamV1alpha1Args {
     );
   }
 }
-

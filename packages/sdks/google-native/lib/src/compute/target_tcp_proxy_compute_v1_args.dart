@@ -64,4 +64,3 @@ class TargetTcpProxyComputeV1Args {
     );
   }
 }
-

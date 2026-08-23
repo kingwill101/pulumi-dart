@@ -31,4 +31,3 @@ class Hl7V2NotificationConfigHealthcareV1beta1 {
     );
   }
 }
-

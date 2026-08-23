@@ -68,4 +68,3 @@ class FederationMetastoreV1alphaArgs {
     );
   }
 }
-

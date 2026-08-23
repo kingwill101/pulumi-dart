@@ -25,4 +25,3 @@ class EncryptionConfigResponseAlloydbV1alpha {
     );
   }
 }
-

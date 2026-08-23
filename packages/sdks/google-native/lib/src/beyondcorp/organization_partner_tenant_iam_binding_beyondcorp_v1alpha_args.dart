@@ -52,4 +52,3 @@ class OrganizationPartnerTenantIamBindingBeyondcorpV1alphaArgs {
     );
   }
 }
-

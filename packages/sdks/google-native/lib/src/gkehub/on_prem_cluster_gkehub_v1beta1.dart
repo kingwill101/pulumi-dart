@@ -38,4 +38,3 @@ class OnPremClusterGkehubV1beta1 {
     );
   }
 }
-

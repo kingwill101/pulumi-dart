@@ -17,4 +17,3 @@ enum PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1 {
     throw ArgumentError('Unknown PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1 value: $value');
   }
 }
-

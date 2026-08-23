@@ -16,4 +16,3 @@ enum SchemaPackageSchematizedParsingTypeHealthcareV1beta1 {
     throw ArgumentError('Unknown SchemaPackageSchematizedParsingTypeHealthcareV1beta1 value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum VmwareEngineNetworkType {
     throw ArgumentError('Unknown VmwareEngineNetworkType value: $value');
   }
 }
-

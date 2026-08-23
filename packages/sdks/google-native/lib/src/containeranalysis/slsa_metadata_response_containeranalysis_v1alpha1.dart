@@ -50,4 +50,3 @@ class SlsaMetadataResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

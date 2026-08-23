@@ -31,4 +31,3 @@ class ArtifactResponseContaineranalysisV1beta1 {
     );
   }
 }
-

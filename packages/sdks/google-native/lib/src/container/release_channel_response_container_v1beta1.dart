@@ -25,4 +25,3 @@ class ReleaseChannelResponseContainerV1beta1 {
     );
   }
 }
-

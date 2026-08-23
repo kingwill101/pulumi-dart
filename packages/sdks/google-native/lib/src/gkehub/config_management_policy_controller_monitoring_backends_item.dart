@@ -15,4 +15,3 @@ enum ConfigManagementPolicyControllerMonitoringBackendsItem {
     throw ArgumentError('Unknown ConfigManagementPolicyControllerMonitoringBackendsItem value: $value');
   }
 }
-

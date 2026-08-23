@@ -61,4 +61,3 @@ class GetRegionNotificationEndpointComputeV1Result {
     );
   }
 }
-

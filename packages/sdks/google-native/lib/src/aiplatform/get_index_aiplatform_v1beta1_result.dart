@@ -100,4 +100,3 @@ class GetIndexAiplatformV1beta1Result {
     );
   }
 }
-

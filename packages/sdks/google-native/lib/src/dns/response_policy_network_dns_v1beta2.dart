@@ -29,4 +29,3 @@ class ResponsePolicyNetworkDnsV1beta2 {
     );
   }
 }
-

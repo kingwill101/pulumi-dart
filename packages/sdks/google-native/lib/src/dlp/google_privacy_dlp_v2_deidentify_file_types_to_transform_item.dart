@@ -23,4 +23,3 @@ enum GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
     throw ArgumentError('Unknown GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem value: $value');
   }
 }
-

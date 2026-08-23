@@ -25,4 +25,3 @@ class NetworkTagsContainerV1beta1 {
     );
   }
 }
-

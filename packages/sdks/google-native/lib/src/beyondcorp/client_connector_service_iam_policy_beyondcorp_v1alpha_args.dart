@@ -69,4 +69,3 @@ class ClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

@@ -51,4 +51,3 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
     );
   }
 }
-

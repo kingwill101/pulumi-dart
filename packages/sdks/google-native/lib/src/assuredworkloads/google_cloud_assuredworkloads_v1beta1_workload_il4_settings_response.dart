@@ -26,4 +26,3 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum MembershipSpecCertificateManagement {
     throw ArgumentError('Unknown MembershipSpecCertificateManagement value: $value');
   }
 }
-

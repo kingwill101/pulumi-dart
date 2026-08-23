@@ -39,4 +39,3 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
     );
   }
 }
-

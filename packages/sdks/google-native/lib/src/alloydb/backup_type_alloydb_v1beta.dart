@@ -17,4 +17,3 @@ enum BackupTypeAlloydbV1beta {
     throw ArgumentError('Unknown BackupTypeAlloydbV1beta value: $value');
   }
 }
-

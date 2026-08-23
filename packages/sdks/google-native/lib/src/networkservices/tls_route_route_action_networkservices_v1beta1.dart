@@ -26,4 +26,3 @@ class TlsRouteRouteActionNetworkservicesV1beta1 {
     );
   }
 }
-

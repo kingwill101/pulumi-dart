@@ -26,4 +26,3 @@ class StateInfoResponseRedisV1beta1 {
     );
   }
 }
-

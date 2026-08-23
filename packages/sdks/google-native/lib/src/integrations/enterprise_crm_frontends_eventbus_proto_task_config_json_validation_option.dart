@@ -18,4 +18,3 @@ enum EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption {
     throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption value: $value');
   }
 }
-

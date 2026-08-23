@@ -129,4 +129,3 @@ class ClusterAlloydbV1betaArgs {
     );
   }
 }
-

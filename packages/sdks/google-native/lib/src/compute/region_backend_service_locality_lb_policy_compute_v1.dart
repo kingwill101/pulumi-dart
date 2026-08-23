@@ -21,4 +21,3 @@ enum RegionBackendServiceLocalityLbPolicyComputeV1 {
     throw ArgumentError('Unknown RegionBackendServiceLocalityLbPolicyComputeV1 value: $value');
   }
 }
-

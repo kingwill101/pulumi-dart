@@ -32,4 +32,3 @@ class FleetObservabilityLoggingConfigResponseGkehubV1alpha {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class MultiCloudClusterGkehubV1beta {
     );
   }
 }
-

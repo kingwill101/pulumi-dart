@@ -47,4 +47,3 @@ class CommonFleetDefaultMemberConfigSpecGkehubV1beta {
     );
   }
 }
-

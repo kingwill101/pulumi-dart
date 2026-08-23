@@ -31,4 +31,3 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse 
     );
   }
 }
-

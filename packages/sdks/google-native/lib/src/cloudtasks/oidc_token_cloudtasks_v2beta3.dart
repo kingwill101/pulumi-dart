@@ -31,4 +31,3 @@ class OidcTokenCloudtasksV2beta3 {
     );
   }
 }
-

@@ -60,4 +60,3 @@ class GoogleCloudAiplatformV1beta1WorkerPoolSpec {
     );
   }
 }
-

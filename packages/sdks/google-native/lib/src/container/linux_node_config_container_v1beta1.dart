@@ -32,4 +32,3 @@ class LinuxNodeConfigContainerV1beta1 {
     );
   }
 }
-

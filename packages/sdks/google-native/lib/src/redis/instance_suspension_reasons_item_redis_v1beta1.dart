@@ -14,4 +14,3 @@ enum InstanceSuspensionReasonsItemRedisV1beta1 {
     throw ArgumentError('Unknown InstanceSuspensionReasonsItemRedisV1beta1 value: $value');
   }
 }
-

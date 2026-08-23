@@ -38,4 +38,3 @@ class BindingResponseDatafusionV1beta1 {
     );
   }
 }
-

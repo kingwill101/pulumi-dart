@@ -45,4 +45,3 @@ class OSPolicyResourceFileOsconfigV1alpha {
     );
   }
 }
-

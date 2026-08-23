@@ -47,4 +47,3 @@ class GetTagArtifactregistryV1beta1Args {
     );
   }
 }
-

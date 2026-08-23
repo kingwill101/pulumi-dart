@@ -26,4 +26,3 @@ enum GoogleCloudDatacatalogV1VertexDatasetSpecDataType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1VertexDatasetSpecDataType value: $value');
   }
 }
-

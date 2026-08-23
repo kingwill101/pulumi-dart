@@ -15,4 +15,3 @@ enum RegionNetworkEndpointGroupClientPortMappingMode {
     throw ArgumentError('Unknown RegionNetworkEndpointGroupClientPortMappingMode value: $value');
   }
 }
-

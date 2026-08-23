@@ -16,4 +16,3 @@ enum GoogleCloudChannelV1ConditionalOverrideRebillingBasis {
     throw ArgumentError('Unknown GoogleCloudChannelV1ConditionalOverrideRebillingBasis value: $value');
   }
 }
-

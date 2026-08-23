@@ -76,4 +76,3 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
     );
   }
 }
-

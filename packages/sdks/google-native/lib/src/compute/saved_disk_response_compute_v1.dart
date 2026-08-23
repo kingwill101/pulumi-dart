@@ -49,4 +49,3 @@ class SavedDiskResponseComputeV1 {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType value: $value');
   }
 }
-

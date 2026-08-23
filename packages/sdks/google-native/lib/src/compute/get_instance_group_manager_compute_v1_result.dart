@@ -166,4 +166,3 @@ class GetInstanceGroupManagerComputeV1Result {
     );
   }
 }
-

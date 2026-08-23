@@ -23,4 +23,3 @@ enum FeatureGroupFeatureValueTypeAiplatformV1beta1 {
     throw ArgumentError('Unknown FeatureGroupFeatureValueTypeAiplatformV1beta1 value: $value');
   }
 }
-

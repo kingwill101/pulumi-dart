@@ -18,4 +18,3 @@ enum PublicKeyCredentialFormat {
     throw ArgumentError('Unknown PublicKeyCredentialFormat value: $value');
   }
 }
-

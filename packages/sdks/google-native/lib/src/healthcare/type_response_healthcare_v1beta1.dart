@@ -38,4 +38,3 @@ class TypeResponseHealthcareV1beta1 {
     );
   }
 }
-

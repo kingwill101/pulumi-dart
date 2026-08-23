@@ -73,4 +73,3 @@ class BudgetBillingbudgetsV1beta1Args {
     );
   }
 }
-

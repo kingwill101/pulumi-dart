@@ -37,4 +37,3 @@ class GetManagedZoneDnsV1beta2Args {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class AuthorizationPolicyIamBindingNetworksecurityV1beta1Args {
     );
   }
 }
-

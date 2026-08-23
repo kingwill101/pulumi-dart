@@ -16,4 +16,3 @@ enum TaskResponseViewCloudtasksV2beta2 {
     throw ArgumentError('Unknown TaskResponseViewCloudtasksV2beta2 value: $value');
   }
 }
-

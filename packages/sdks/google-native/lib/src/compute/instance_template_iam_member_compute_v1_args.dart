@@ -52,4 +52,3 @@ class InstanceTemplateIamMemberComputeV1Args {
     );
   }
 }
-

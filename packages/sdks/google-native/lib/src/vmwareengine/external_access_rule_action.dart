@@ -16,4 +16,3 @@ enum ExternalAccessRuleAction {
     throw ArgumentError('Unknown ExternalAccessRuleAction value: $value');
   }
 }
-

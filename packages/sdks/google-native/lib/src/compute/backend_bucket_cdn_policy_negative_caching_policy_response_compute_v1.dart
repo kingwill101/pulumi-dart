@@ -31,4 +31,3 @@ class BackendBucketCdnPolicyNegativeCachingPolicyResponseComputeV1 {
     );
   }
 }
-

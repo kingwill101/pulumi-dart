@@ -25,4 +25,3 @@ class QueryListResponseDataprocV1beta2 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum LogConfigCloudAuditOptionsLogNameComputeBeta {
     throw ArgumentError('Unknown LogConfigCloudAuditOptionsLogNameComputeBeta value: $value');
   }
 }
-

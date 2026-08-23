@@ -43,4 +43,3 @@ class ApplianceVersionResponseVmmigrationV1alpha1 {
     );
   }
 }
-

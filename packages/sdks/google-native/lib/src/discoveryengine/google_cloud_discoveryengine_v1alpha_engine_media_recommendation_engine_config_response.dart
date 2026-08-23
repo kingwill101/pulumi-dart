@@ -44,4 +44,3 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResp
     );
   }
 }
-

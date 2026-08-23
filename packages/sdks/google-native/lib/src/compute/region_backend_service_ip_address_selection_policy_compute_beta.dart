@@ -17,4 +17,3 @@ enum RegionBackendServiceIpAddressSelectionPolicyComputeBeta {
     throw ArgumentError('Unknown RegionBackendServiceIpAddressSelectionPolicyComputeBeta value: $value');
   }
 }
-

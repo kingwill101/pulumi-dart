@@ -95,4 +95,3 @@ class GetStreamDatastreamV1alpha1Result {
     );
   }
 }
-

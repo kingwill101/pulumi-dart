@@ -65,4 +65,3 @@ class LicenseIamPolicyComputeV1Args {
     );
   }
 }
-

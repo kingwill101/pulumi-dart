@@ -21,4 +21,3 @@ enum PublishingOrganization {
     throw ArgumentError('Unknown PublishingOrganization value: $value');
   }
 }
-

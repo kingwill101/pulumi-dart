@@ -25,4 +25,3 @@ class I18nConfigResponse {
     );
   }
 }
-

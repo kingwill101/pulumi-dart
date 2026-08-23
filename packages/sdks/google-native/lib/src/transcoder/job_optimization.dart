@@ -16,4 +16,3 @@ enum JobOptimization {
     throw ArgumentError('Unknown JobOptimization value: $value');
   }
 }
-

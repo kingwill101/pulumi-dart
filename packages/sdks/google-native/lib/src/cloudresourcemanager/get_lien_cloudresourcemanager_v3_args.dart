@@ -27,4 +27,3 @@ class GetLienCloudresourcemanagerV3Args {
     );
   }
 }
-

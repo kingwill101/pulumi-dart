@@ -21,4 +21,3 @@ enum ServiceLaunchStage {
     throw ArgumentError('Unknown ServiceLaunchStage value: $value');
   }
 }
-

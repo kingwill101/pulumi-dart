@@ -25,4 +25,3 @@ class QueryOverrideResponseCloudtasksV2beta3 {
     );
   }
 }
-

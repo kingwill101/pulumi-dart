@@ -25,4 +25,3 @@ class GoogleIamAdminV1WorkforcePoolProviderSaml {
     );
   }
 }
-

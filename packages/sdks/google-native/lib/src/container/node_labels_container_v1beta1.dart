@@ -25,4 +25,3 @@ class NodeLabelsContainerV1beta1 {
     );
   }
 }
-

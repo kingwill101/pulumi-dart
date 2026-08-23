@@ -15,4 +15,3 @@ enum NetworkInterfaceSubInterfaceIpAllocationMode {
     throw ArgumentError('Unknown NetworkInterfaceSubInterfaceIpAllocationMode value: $value');
   }
 }
-

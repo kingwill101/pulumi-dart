@@ -26,4 +26,3 @@ class ReleaseChannelContainerV1beta1 {
     );
   }
 }
-

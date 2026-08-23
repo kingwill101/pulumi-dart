@@ -36,4 +36,3 @@ class RunDetailsContaineranalysisV1beta1 {
     );
   }
 }
-

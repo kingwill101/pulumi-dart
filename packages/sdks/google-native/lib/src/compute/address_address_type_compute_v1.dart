@@ -16,4 +16,3 @@ enum AddressAddressTypeComputeV1 {
     throw ArgumentError('Unknown AddressAddressTypeComputeV1 value: $value');
   }
 }
-

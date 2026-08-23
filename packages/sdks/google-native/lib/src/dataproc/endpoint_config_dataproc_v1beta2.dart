@@ -25,4 +25,3 @@ class EndpointConfigDataprocV1beta2 {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class AcceleratorResponseDatafusionV1beta1 {
     );
   }
 }
-

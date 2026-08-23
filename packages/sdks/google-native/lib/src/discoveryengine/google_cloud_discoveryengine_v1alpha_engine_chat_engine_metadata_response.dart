@@ -25,4 +25,3 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse {
     );
   }
 }
-

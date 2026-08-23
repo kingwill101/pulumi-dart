@@ -21,4 +21,3 @@ enum WeeklyMaintenanceWindowDayMemcacheV1beta2 {
     throw ArgumentError('Unknown WeeklyMaintenanceWindowDayMemcacheV1beta2 value: $value');
   }
 }
-

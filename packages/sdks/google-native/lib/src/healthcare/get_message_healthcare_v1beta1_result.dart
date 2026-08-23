@@ -82,4 +82,3 @@ class GetMessageHealthcareV1beta1Result {
     );
   }
 }
-

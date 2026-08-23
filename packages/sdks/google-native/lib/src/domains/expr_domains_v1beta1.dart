@@ -43,4 +43,3 @@ class ExprDomainsV1beta1 {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class DateShiftConfigHealthcareV1beta1 {
     );
   }
 }
-

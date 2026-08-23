@@ -31,4 +31,3 @@ class TypeProviderLabelEntryDeploymentmanagerV2beta {
     );
   }
 }
-

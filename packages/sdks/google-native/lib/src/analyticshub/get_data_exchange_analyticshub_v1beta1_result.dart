@@ -60,4 +60,3 @@ class GetDataExchangeAnalyticshubV1beta1Result {
     );
   }
 }
-

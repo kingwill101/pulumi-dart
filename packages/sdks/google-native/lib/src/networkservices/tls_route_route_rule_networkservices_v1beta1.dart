@@ -33,4 +33,3 @@ class TlsRouteRouteRuleNetworkservicesV1beta1 {
     );
   }
 }
-

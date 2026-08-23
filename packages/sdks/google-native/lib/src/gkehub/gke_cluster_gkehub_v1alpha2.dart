@@ -25,4 +25,3 @@ class GkeClusterGkehubV1alpha2 {
     );
   }
 }
-

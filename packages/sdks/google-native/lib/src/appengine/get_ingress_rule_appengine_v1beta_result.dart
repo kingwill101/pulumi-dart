@@ -42,4 +42,3 @@ class GetIngressRuleAppengineV1betaResult {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum RoutineSecurityMode {
     throw ArgumentError('Unknown RoutineSecurityMode value: $value');
   }
 }
-

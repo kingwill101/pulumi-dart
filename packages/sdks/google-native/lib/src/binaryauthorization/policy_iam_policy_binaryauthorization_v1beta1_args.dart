@@ -46,4 +46,3 @@ class PolicyIamPolicyBinaryauthorizationV1beta1Args {
     );
   }
 }
-

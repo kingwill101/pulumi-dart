@@ -42,4 +42,3 @@ class GetSnapshotFileV1beta1Args {
     );
   }
 }
-

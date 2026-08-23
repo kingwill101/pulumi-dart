@@ -17,4 +17,3 @@ enum GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnaly
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline value: $value');
   }
 }
-

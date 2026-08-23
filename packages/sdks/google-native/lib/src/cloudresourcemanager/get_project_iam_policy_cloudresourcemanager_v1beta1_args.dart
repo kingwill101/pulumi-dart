@@ -27,4 +27,3 @@ class GetProjectIamPolicyCloudresourcemanagerV1beta1Args {
     );
   }
 }
-

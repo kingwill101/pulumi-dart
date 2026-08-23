@@ -25,4 +25,3 @@ class EntrypointResponseAppengineV1beta {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class FederationIamBindingMetastoreV1alphaArgs {
     );
   }
 }
-

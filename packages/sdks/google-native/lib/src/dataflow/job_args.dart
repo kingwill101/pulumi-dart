@@ -194,4 +194,3 @@ class JobArgs {
     );
   }
 }
-

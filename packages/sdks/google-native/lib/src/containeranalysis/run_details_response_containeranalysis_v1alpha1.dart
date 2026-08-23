@@ -36,4 +36,3 @@ class RunDetailsResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

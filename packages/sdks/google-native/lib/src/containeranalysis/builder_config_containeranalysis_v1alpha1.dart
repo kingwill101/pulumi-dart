@@ -23,4 +23,3 @@ class BuilderConfigContaineranalysisV1alpha1 {
     );
   }
 }
-

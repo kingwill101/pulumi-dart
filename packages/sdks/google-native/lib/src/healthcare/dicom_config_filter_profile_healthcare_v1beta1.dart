@@ -18,4 +18,3 @@ enum DicomConfigFilterProfileHealthcareV1beta1 {
     throw ArgumentError('Unknown DicomConfigFilterProfileHealthcareV1beta1 value: $value');
   }
 }
-

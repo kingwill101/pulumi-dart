@@ -65,4 +65,3 @@ class SslPolicyComputeV1Args {
     );
   }
 }
-

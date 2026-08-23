@@ -59,4 +59,3 @@ class GoogleCloudAiplatformV1ExplanationParametersResponse {
     );
   }
 }
-

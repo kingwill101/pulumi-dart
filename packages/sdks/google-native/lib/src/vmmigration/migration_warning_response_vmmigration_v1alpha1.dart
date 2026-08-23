@@ -51,4 +51,3 @@ class MigrationWarningResponseVmmigrationV1alpha1 {
     );
   }
 }
-

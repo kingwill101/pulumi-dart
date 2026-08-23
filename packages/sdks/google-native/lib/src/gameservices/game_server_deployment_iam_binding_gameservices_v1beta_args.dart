@@ -52,4 +52,3 @@ class GameServerDeploymentIamBindingGameservicesV1betaArgs {
     );
   }
 }
-

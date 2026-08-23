@@ -25,4 +25,3 @@ class OSPolicyResourcePackageResourceZypperOsconfigV1alpha {
     );
   }
 }
-

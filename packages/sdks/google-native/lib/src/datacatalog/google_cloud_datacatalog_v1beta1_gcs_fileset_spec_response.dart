@@ -32,4 +32,3 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse {
     );
   }
 }
-

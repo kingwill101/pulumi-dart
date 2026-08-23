@@ -16,4 +16,3 @@ enum NodePoolAutoscalingLocationPolicyContainerV1beta1 {
     throw ArgumentError('Unknown NodePoolAutoscalingLocationPolicyContainerV1beta1 value: $value');
   }
 }
-

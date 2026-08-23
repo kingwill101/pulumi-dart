@@ -44,4 +44,3 @@ class SourceResponseContaineranalysisV1beta1 {
     );
   }
 }
-

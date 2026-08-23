@@ -45,4 +45,3 @@ class AwsSourceVmDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

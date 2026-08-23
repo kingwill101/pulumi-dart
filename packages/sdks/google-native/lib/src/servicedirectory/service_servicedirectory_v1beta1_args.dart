@@ -55,4 +55,3 @@ class ServiceServicedirectoryV1beta1Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class FhirNotificationConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

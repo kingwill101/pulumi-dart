@@ -43,4 +43,3 @@ class TimeOfDayMemcacheV1beta2 {
     );
   }
 }
-

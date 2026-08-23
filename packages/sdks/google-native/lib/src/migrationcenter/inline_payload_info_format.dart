@@ -20,4 +20,3 @@ enum InlinePayloadInfoFormat {
     throw ArgumentError('Unknown InlinePayloadInfoFormat value: $value');
   }
 }
-

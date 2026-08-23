@@ -52,4 +52,3 @@ class DataExchangeListingIamMemberAnalyticshubV1beta1Args {
     );
   }
 }
-

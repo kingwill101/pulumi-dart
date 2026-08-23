@@ -31,4 +31,3 @@ class CidrBlockResponseContainerV1beta1 {
     );
   }
 }
-

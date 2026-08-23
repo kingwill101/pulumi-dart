@@ -42,4 +42,3 @@ class GetArtifactAiplatformV1beta1Args {
     );
   }
 }
-

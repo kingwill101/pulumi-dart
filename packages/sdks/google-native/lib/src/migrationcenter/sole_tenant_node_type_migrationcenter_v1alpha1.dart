@@ -25,4 +25,3 @@ class SoleTenantNodeTypeMigrationcenterV1alpha1 {
     );
   }
 }
-

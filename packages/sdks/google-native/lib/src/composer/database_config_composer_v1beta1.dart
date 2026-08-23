@@ -31,4 +31,3 @@ class DatabaseConfigComposerV1beta1 {
     );
   }
 }
-

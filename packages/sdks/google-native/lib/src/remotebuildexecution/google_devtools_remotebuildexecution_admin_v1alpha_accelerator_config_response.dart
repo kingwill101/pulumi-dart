@@ -31,4 +31,3 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
     );
   }
 }
-

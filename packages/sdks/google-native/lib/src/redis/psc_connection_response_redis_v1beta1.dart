@@ -49,4 +49,3 @@ class PscConnectionResponseRedisV1beta1 {
     );
   }
 }
-

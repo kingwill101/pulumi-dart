@@ -25,4 +25,3 @@ class GoogleCloudAiplatformV1GcsDestination {
     );
   }
 }
-

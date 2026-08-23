@@ -13,4 +13,3 @@ enum InterconnectRequestedFeaturesItemComputeV1 {
     throw ArgumentError('Unknown InterconnectRequestedFeaturesItemComputeV1 value: $value');
   }
 }
-

@@ -21,4 +21,3 @@ enum EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy value: $value');
   }
 }
-

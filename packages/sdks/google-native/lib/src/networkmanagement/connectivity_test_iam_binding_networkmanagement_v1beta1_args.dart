@@ -52,4 +52,3 @@ class ConnectivityTestIamBindingNetworkmanagementV1beta1Args {
     );
   }
 }
-

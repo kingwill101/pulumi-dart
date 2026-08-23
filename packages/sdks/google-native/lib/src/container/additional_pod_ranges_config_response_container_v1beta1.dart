@@ -32,4 +32,3 @@ class AdditionalPodRangesConfigResponseContainerV1beta1 {
     );
   }
 }
-

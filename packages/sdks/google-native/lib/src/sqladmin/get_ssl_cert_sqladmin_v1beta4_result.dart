@@ -72,4 +72,3 @@ class GetSslCertSqladminV1beta4Result {
     );
   }
 }
-

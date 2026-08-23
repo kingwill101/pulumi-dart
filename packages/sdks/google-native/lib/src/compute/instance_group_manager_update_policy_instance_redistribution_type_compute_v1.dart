@@ -15,4 +15,3 @@ enum InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeComputeV1 {
     throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeComputeV1 value: $value');
   }
 }
-

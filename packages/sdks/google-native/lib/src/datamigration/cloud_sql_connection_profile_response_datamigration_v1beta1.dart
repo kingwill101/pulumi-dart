@@ -44,4 +44,3 @@ class CloudSqlConnectionProfileResponseDatamigrationV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetMeshNetworkservicesV1beta1Args {
     );
   }
 }
-

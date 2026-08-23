@@ -19,4 +19,3 @@ enum GoogleCloudMlV1PredictionInputOutputDataFormat {
     throw ArgumentError('Unknown GoogleCloudMlV1PredictionInputOutputDataFormat value: $value');
   }
 }
-

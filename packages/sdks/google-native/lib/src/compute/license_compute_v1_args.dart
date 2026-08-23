@@ -57,4 +57,3 @@ class LicenseComputeV1Args {
     );
   }
 }
-

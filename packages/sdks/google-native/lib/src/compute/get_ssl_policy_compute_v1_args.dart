@@ -32,4 +32,3 @@ class GetSslPolicyComputeV1Args {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class NodeTemplateIamMemberComputeV1Args {
     );
   }
 }
-

@@ -44,4 +44,3 @@ class GerritSourceContextContaineranalysisV1beta1 {
     );
   }
 }
-

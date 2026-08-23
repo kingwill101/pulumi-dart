@@ -49,4 +49,3 @@ class NetworkConfigResponseFileV1beta1 {
     );
   }
 }
-

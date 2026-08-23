@@ -88,4 +88,3 @@ class GoogleCloudAiplatformV1ModelContainerSpecResponse {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class WebServerResourceComposerV1beta1 {
     );
   }
 }
-

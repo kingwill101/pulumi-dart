@@ -45,4 +45,3 @@ class GetClientGatewayIamPolicyBeyondcorpV1alphaResult {
     );
   }
 }
-

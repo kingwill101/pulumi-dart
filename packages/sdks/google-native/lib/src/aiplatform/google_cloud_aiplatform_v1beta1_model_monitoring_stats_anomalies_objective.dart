@@ -18,4 +18,3 @@ enum GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective value: $value');
   }
 }
-

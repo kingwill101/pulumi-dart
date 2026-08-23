@@ -16,4 +16,3 @@ enum BuildSignatureKeyTypeContaineranalysisV1beta1 {
     throw ArgumentError('Unknown BuildSignatureKeyTypeContaineranalysisV1beta1 value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
     );
   }
 }
-

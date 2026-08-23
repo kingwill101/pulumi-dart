@@ -45,4 +45,3 @@ class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaResult
     );
   }
 }
-

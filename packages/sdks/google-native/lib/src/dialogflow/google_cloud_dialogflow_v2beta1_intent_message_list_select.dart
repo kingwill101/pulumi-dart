@@ -38,4 +38,3 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
     );
   }
 }
-

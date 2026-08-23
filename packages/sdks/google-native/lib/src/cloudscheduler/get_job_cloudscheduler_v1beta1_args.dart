@@ -37,4 +37,3 @@ class GetJobCloudschedulerV1beta1Args {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class WorkflowTemplateIamMemberDataprocV1beta2Args {
     );
   }
 }
-

@@ -74,4 +74,3 @@ class GetFleetGkehubV1alphaResult {
     );
   }
 }
-

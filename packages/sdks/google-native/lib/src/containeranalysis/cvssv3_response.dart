@@ -76,4 +76,3 @@ class CVSSv3Response {
     );
   }
 }
-

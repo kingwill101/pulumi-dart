@@ -15,4 +15,3 @@ enum TCPHealthCheckProxyHeaderComputeV1 {
     throw ArgumentError('Unknown TCPHealthCheckProxyHeaderComputeV1 value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class NodeInfoResponseRedisV1beta1 {
     );
   }
 }
-

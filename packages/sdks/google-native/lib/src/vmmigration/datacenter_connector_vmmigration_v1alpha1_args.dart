@@ -67,4 +67,3 @@ class DatacenterConnectorVmmigrationV1alpha1Args {
     );
   }
 }
-

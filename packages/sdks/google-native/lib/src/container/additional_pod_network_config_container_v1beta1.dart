@@ -38,4 +38,3 @@ class AdditionalPodNetworkConfigContainerV1beta1 {
     );
   }
 }
-

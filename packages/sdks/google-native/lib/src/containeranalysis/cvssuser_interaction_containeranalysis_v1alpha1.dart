@@ -16,4 +16,3 @@ enum CVSSUserInteractionContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown CVSSUserInteractionContaineranalysisV1alpha1 value: $value');
   }
 }
-

@@ -56,4 +56,3 @@ class GetReportConfigMigrationcenterV1alpha1Result {
     );
   }
 }
-

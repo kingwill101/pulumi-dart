@@ -49,4 +49,3 @@ class GoogleCloudIdentitytoolkitAdminV2HashConfigResponse {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum BootDiskDiskType {
     throw ArgumentError('Unknown BootDiskDiskType value: $value');
   }
 }
-

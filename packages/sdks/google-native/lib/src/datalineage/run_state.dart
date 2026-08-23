@@ -18,4 +18,3 @@ enum RunState {
     throw ArgumentError('Unknown RunState value: $value');
   }
 }
-

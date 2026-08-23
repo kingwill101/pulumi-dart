@@ -42,4 +42,3 @@ class GetMembershipIamPolicyGkehubV1beta1Args {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class SslConfigResponseAlloydbV1alpha {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class LogConfigCounterOptionsComputeV1 {
     );
   }
 }
-

@@ -29,4 +29,3 @@ enum MigrationJobStateDatamigrationV1beta1 {
     throw ArgumentError('Unknown MigrationJobStateDatamigrationV1beta1 value: $value');
   }
 }
-

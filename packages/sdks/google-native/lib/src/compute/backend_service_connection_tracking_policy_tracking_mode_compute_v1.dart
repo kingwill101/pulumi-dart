@@ -16,4 +16,3 @@ enum BackendServiceConnectionTrackingPolicyTrackingModeComputeV1 {
     throw ArgumentError('Unknown BackendServiceConnectionTrackingPolicyTrackingModeComputeV1 value: $value');
   }
 }
-

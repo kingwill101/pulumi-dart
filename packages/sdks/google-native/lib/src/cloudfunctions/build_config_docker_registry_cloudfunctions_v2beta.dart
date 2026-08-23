@@ -16,4 +16,3 @@ enum BuildConfigDockerRegistryCloudfunctionsV2beta {
     throw ArgumentError('Unknown BuildConfigDockerRegistryCloudfunctionsV2beta value: $value');
   }
 }
-

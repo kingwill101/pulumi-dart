@@ -38,4 +38,3 @@ class GetV1beta1IamPolicyResult {
     );
   }
 }
-

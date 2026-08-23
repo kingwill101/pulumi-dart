@@ -16,4 +16,3 @@ enum InterconnectAttachmentEdgeAvailabilityDomain {
     throw ArgumentError('Unknown InterconnectAttachmentEdgeAvailabilityDomain value: $value');
   }
 }
-

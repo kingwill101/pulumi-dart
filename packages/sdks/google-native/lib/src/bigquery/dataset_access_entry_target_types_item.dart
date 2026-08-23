@@ -15,4 +15,3 @@ enum DatasetAccessEntryTargetTypesItem {
     throw ArgumentError('Unknown DatasetAccessEntryTargetTypesItem value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetMigrationJobDatamigrationV1beta1Args {
     );
   }
 }
-

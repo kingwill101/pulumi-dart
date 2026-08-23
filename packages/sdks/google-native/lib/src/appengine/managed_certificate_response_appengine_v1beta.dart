@@ -31,4 +31,3 @@ class ManagedCertificateResponseAppengineV1beta {
     );
   }
 }
-

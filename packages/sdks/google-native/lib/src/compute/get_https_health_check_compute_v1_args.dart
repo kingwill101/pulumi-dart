@@ -32,4 +32,3 @@ class GetHttpsHealthCheckComputeV1Args {
     );
   }
 }
-

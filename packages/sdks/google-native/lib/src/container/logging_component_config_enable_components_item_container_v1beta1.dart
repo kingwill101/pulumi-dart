@@ -18,4 +18,3 @@ enum LoggingComponentConfigEnableComponentsItemContainerV1beta1 {
     throw ArgumentError('Unknown LoggingComponentConfigEnableComponentsItemContainerV1beta1 value: $value');
   }
 }
-

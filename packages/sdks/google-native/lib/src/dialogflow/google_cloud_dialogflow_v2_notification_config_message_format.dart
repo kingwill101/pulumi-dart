@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2NotificationConfigMessageFormat {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2NotificationConfigMessageFormat value: $value');
   }
 }
-

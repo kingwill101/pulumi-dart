@@ -25,4 +25,3 @@ class ScriptHandlerAppengineV1beta {
     );
   }
 }
-

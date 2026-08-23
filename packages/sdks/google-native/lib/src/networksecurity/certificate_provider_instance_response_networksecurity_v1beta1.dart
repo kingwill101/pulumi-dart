@@ -25,4 +25,3 @@ class CertificateProviderInstanceResponseNetworksecurityV1beta1 {
     );
   }
 }
-

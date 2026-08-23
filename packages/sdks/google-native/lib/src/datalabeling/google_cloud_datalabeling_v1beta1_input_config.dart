@@ -61,4 +61,3 @@ class GoogleCloudDatalabelingV1beta1InputConfig {
     );
   }
 }
-

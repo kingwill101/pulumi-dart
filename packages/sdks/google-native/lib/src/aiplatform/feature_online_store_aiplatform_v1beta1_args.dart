@@ -77,4 +77,3 @@ class FeatureOnlineStoreAiplatformV1beta1Args {
     );
   }
 }
-

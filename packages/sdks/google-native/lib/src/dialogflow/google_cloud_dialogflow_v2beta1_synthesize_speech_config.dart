@@ -50,4 +50,3 @@ class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
     );
   }
 }
-

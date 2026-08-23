@@ -37,4 +37,3 @@ class GoogleCloudChannelV1ProvisionedServiceResponse {
     );
   }
 }
-

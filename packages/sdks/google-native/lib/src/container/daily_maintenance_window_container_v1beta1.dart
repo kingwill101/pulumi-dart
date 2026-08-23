@@ -25,4 +25,3 @@ class DailyMaintenanceWindowContainerV1beta1 {
     );
   }
 }
-

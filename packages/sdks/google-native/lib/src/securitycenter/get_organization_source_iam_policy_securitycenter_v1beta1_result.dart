@@ -45,4 +45,3 @@ class GetOrganizationSourceIamPolicySecuritycenterV1beta1Result {
     );
   }
 }
-

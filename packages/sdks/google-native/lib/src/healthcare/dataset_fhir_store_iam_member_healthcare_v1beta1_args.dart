@@ -52,4 +52,3 @@ class DatasetFhirStoreIamMemberHealthcareV1beta1Args {
     );
   }
 }
-

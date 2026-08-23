@@ -25,4 +25,3 @@ class RegionPreferencesResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

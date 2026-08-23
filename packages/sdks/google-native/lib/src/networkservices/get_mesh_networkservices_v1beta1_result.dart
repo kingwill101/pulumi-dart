@@ -60,4 +60,3 @@ class GetMeshNetworkservicesV1beta1Result {
     );
   }
 }
-

@@ -66,4 +66,3 @@ class GetHubNetworkconnectivityV1alpha1Result {
     );
   }
 }
-

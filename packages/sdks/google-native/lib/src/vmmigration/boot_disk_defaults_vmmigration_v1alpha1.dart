@@ -52,4 +52,3 @@ class BootDiskDefaultsVmmigrationV1alpha1 {
     );
   }
 }
-

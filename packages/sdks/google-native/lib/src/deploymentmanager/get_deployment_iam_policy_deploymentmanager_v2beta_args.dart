@@ -37,4 +37,3 @@ class GetDeploymentIamPolicyDeploymentmanagerV2betaArgs {
     );
   }
 }
-

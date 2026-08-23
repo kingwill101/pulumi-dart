@@ -74,4 +74,3 @@ class GoogleCloudApigeeV1TlsInfo {
     );
   }
 }
-

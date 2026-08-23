@@ -19,4 +19,3 @@ enum SeverityOverrideSeverity {
     throw ArgumentError('Unknown SeverityOverrideSeverity value: $value');
   }
 }
-

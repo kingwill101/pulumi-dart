@@ -178,4 +178,3 @@ class ImageComputeV1Args {
     );
   }
 }
-

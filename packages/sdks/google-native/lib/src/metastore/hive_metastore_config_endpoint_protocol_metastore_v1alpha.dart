@@ -16,4 +16,3 @@ enum HiveMetastoreConfigEndpointProtocolMetastoreV1alpha {
     throw ArgumentError('Unknown HiveMetastoreConfigEndpointProtocolMetastoreV1alpha value: $value');
   }
 }
-

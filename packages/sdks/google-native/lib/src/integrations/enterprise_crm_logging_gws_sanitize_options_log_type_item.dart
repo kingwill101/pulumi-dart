@@ -16,4 +16,3 @@ enum EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem {
     throw ArgumentError('Unknown EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem value: $value');
   }
 }
-

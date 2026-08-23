@@ -46,4 +46,3 @@ class GoogleCloudApigeeV1OperationConfigResponse {
     );
   }
 }
-

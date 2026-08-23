@@ -16,4 +16,3 @@ enum FunctionEnvironmentCloudfunctionsV2beta {
     throw ArgumentError('Unknown FunctionEnvironmentCloudfunctionsV2beta value: $value');
   }
 }
-

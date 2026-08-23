@@ -15,4 +15,3 @@ enum RouterBgpPeerAdvertisedGroupsItem {
     throw ArgumentError('Unknown RouterBgpPeerAdvertisedGroupsItem value: $value');
   }
 }
-

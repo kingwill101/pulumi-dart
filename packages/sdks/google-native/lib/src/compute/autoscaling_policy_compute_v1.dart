@@ -77,4 +77,3 @@ class AutoscalingPolicyComputeV1 {
     );
   }
 }
-

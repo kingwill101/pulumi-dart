@@ -47,4 +47,3 @@ class GetEntityTypeDialogflowV3Args {
     );
   }
 }
-

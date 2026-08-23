@@ -14,4 +14,3 @@ enum DataAccessOptionsLogModeGameservicesV1beta {
     throw ArgumentError('Unknown DataAccessOptionsLogModeGameservicesV1beta value: $value');
   }
 }
-

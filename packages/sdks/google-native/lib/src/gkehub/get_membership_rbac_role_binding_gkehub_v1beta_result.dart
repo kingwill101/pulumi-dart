@@ -80,4 +80,3 @@ class GetMembershipRbacRoleBindingGkehubV1betaResult {
     );
   }
 }
-

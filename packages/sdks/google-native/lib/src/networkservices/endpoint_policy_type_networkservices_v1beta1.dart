@@ -16,4 +16,3 @@ enum EndpointPolicyTypeNetworkservicesV1beta1 {
     throw ArgumentError('Unknown EndpointPolicyTypeNetworkservicesV1beta1 value: $value');
   }
 }
-

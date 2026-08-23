@@ -43,4 +43,3 @@ class HttpRouteQueryParameterMatchResponseNetworkservicesV1beta1 {
     );
   }
 }
-

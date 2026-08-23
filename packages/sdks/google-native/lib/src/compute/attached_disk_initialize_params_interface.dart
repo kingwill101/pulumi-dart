@@ -16,4 +16,3 @@ enum AttachedDiskInitializeParamsInterface {
     throw ArgumentError('Unknown AttachedDiskInitializeParamsInterface value: $value');
   }
 }
-

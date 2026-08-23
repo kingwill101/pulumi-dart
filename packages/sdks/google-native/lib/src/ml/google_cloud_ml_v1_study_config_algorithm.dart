@@ -17,4 +17,3 @@ enum GoogleCloudMlV1StudyConfigAlgorithm {
     throw ArgumentError('Unknown GoogleCloudMlV1StudyConfigAlgorithm value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class HubIamBindingNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

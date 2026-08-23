@@ -19,4 +19,3 @@ enum GoogleCloudMlV1PredictionInputDataFormat {
     throw ArgumentError('Unknown GoogleCloudMlV1PredictionInputDataFormat value: $value');
   }
 }
-

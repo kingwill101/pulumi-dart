@@ -20,4 +20,3 @@ enum DiscoveredAnalysisStatusContaineranalysisV1beta1 {
     throw ArgumentError('Unknown DiscoveredAnalysisStatusContaineranalysisV1beta1 value: $value');
   }
 }
-

@@ -26,4 +26,3 @@ class GoogleDomainsDnsDomainsV1beta1 {
     );
   }
 }
-

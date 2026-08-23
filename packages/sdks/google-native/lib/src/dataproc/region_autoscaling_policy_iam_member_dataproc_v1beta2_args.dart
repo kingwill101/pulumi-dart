@@ -52,4 +52,3 @@ class RegionAutoscalingPolicyIamMemberDataprocV1beta2Args {
     );
   }
 }
-

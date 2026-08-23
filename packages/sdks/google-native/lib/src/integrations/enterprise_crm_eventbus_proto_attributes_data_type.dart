@@ -19,4 +19,3 @@ enum EnterpriseCrmEventbusProtoAttributesDataType {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoAttributesDataType value: $value');
   }
 }
-

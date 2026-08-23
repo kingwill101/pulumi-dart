@@ -61,4 +61,3 @@ class NamespaceServiceIamPolicyServicedirectoryV1beta1Args {
     );
   }
 }
-

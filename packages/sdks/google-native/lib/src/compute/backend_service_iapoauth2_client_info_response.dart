@@ -36,4 +36,3 @@ class BackendServiceIAPOAuth2ClientInfoResponse {
     );
   }
 }
-

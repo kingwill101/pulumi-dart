@@ -18,4 +18,3 @@ enum UrlMapSecurityLevelAppengineV1beta {
     throw ArgumentError('Unknown UrlMapSecurityLevelAppengineV1beta value: $value');
   }
 }
-

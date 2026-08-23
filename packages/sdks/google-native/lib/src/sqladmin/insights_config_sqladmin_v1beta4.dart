@@ -49,4 +49,3 @@ class InsightsConfigSqladminV1beta4 {
     );
   }
 }
-

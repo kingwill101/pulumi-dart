@@ -18,4 +18,3 @@ enum TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 {
     throw ArgumentError('Unknown TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 value: $value');
   }
 }
-

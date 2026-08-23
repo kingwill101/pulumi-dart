@@ -46,4 +46,3 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecResponse {
     );
   }
 }
-

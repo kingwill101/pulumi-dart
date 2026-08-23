@@ -51,4 +51,3 @@ class ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1 {
     );
   }
 }
-

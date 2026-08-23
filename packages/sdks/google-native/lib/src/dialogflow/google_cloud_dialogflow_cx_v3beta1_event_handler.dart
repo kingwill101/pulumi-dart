@@ -44,4 +44,3 @@ class GoogleCloudDialogflowCxV3beta1EventHandler {
     );
   }
 }
-

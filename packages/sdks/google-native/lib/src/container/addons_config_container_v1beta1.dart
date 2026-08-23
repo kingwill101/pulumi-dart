@@ -110,4 +110,3 @@ class AddonsConfigContainerV1beta1 {
     );
   }
 }
-

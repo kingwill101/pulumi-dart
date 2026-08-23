@@ -60,4 +60,3 @@ class VersionDialogflowV3beta1Args {
     );
   }
 }
-

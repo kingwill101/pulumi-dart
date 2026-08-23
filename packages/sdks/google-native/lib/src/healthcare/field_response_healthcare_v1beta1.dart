@@ -49,4 +49,3 @@ class FieldResponseHealthcareV1beta1 {
     );
   }
 }
-

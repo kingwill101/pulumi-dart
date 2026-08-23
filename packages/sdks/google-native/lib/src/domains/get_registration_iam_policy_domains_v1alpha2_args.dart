@@ -42,4 +42,3 @@ class GetRegistrationIamPolicyDomainsV1alpha2Args {
     );
   }
 }
-

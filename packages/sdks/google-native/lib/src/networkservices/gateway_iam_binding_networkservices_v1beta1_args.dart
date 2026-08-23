@@ -52,4 +52,3 @@ class GatewayIamBindingNetworkservicesV1beta1Args {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class SchedulingNodeAffinityVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -49,4 +49,3 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse {
     );
   }
 }
-

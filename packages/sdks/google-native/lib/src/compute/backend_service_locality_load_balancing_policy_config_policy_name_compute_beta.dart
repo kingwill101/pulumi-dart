@@ -21,4 +21,3 @@ enum BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeBeta {
     throw ArgumentError('Unknown BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeBeta value: $value');
   }
 }
-

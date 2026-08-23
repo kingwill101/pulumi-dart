@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioForma
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat value: $value');
   }
 }
-

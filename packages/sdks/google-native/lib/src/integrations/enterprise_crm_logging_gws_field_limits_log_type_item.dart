@@ -16,4 +16,3 @@ enum EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem {
     throw ArgumentError('Unknown EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem value: $value');
   }
 }
-

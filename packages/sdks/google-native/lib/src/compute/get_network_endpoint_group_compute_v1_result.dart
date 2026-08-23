@@ -129,4 +129,3 @@ class GetNetworkEndpointGroupComputeV1Result {
     );
   }
 }
-

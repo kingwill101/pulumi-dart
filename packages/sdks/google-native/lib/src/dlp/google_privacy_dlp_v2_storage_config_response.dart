@@ -53,4 +53,3 @@ class GooglePrivacyDlpV2StorageConfigResponse {
     );
   }
 }
-

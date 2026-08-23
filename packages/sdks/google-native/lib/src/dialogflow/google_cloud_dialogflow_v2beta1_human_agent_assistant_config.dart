@@ -46,4 +46,3 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig {
     );
   }
 }
-

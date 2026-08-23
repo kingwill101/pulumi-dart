@@ -37,4 +37,3 @@ class GoogleCloudAiplatformV1PredictSchemata {
     );
   }
 }
-

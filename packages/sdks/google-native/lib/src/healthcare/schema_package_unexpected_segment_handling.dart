@@ -17,4 +17,3 @@ enum SchemaPackageUnexpectedSegmentHandling {
     throw ArgumentError('Unknown SchemaPackageUnexpectedSegmentHandling value: $value');
   }
 }
-

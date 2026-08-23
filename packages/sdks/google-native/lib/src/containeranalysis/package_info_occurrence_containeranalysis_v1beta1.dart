@@ -50,4 +50,3 @@ class PackageInfoOccurrenceContaineranalysisV1beta1 {
     );
   }
 }
-

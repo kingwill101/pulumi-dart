@@ -16,4 +16,3 @@ enum OrganizationDiscoveryConfigStatus {
     throw ArgumentError('Unknown OrganizationDiscoveryConfigStatus value: $value');
   }
 }
-

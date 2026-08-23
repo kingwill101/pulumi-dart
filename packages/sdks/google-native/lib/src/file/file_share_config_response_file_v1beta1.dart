@@ -44,4 +44,3 @@ class FileShareConfigResponseFileV1beta1 {
     );
   }
 }
-

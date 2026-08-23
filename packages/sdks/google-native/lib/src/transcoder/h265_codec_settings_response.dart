@@ -133,4 +133,3 @@ class H265CodecSettingsResponse {
     );
   }
 }
-

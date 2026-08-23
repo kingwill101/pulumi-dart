@@ -31,4 +31,3 @@ class GkeClusterResponseGkehubV1alpha2 {
     );
   }
 }
-

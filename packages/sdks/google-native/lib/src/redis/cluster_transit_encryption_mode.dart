@@ -16,4 +16,3 @@ enum ClusterTransitEncryptionMode {
     throw ArgumentError('Unknown ClusterTransitEncryptionMode value: $value');
   }
 }
-

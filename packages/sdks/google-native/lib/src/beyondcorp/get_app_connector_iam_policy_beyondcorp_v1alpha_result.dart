@@ -45,4 +45,3 @@ class GetAppConnectorIamPolicyBeyondcorpV1alphaResult {
     );
   }
 }
-

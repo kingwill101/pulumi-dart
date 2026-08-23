@@ -45,4 +45,3 @@ class GetSpokeIamPolicyNetworkconnectivityV1alpha1Result {
     );
   }
 }
-

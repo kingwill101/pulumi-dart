@@ -26,4 +26,3 @@ class DestinationEventarcV1beta1 {
     );
   }
 }
-

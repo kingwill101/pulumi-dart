@@ -37,4 +37,3 @@ class PgpSignedAttestationResponseContaineranalysisV1beta1 {
     );
   }
 }
-

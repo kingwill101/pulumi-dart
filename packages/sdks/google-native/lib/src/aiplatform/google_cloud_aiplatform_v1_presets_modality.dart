@@ -17,4 +17,3 @@ enum GoogleCloudAiplatformV1PresetsModality {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1PresetsModality value: $value');
   }
 }
-

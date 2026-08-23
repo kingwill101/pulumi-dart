@@ -25,4 +25,3 @@ class WebServerConfigComposerV1beta1 {
     );
   }
 }
-

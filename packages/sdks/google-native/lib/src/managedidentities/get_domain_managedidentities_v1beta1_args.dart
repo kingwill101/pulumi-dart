@@ -32,4 +32,3 @@ class GetDomainManagedidentitiesV1beta1Args {
     );
   }
 }
-

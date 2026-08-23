@@ -21,4 +21,3 @@ enum TargetPoolSessionAffinityComputeBeta {
     throw ArgumentError('Unknown TargetPoolSessionAffinityComputeBeta value: $value');
   }
 }
-

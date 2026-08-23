@@ -31,4 +31,3 @@ class EnvelopeSignatureResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

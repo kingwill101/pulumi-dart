@@ -37,4 +37,3 @@ class ReservationAffinityResponseContainerV1beta1 {
     );
   }
 }
-

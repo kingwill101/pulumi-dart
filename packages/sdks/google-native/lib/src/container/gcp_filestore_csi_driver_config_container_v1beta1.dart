@@ -25,4 +25,3 @@ class GcpFilestoreCsiDriverConfigContainerV1beta1 {
     );
   }
 }
-

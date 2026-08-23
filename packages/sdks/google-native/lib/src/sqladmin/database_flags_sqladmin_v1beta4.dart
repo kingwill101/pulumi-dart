@@ -31,4 +31,3 @@ class DatabaseFlagsSqladminV1beta4 {
     );
   }
 }
-

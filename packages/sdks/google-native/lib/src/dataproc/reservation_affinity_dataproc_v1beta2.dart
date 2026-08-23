@@ -38,4 +38,3 @@ class ReservationAffinityDataprocV1beta2 {
     );
   }
 }
-

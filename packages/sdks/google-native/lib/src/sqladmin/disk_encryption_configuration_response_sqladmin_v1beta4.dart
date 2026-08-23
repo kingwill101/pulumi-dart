@@ -31,4 +31,3 @@ class DiskEncryptionConfigurationResponseSqladminV1beta4 {
     );
   }
 }
-

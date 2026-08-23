@@ -32,4 +32,3 @@ class ScalingConfigMetastoreV1alpha {
     );
   }
 }
-

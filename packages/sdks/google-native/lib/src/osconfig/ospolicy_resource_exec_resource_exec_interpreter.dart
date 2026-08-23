@@ -17,4 +17,3 @@ enum OSPolicyResourceExecResourceExecInterpreter {
     throw ArgumentError('Unknown OSPolicyResourceExecResourceExecInterpreter value: $value');
   }
 }
-

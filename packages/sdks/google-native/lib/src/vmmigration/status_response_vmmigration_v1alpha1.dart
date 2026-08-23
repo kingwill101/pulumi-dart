@@ -37,4 +37,3 @@ class StatusResponseVmmigrationV1alpha1 {
     );
   }
 }
-

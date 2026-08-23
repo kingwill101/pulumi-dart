@@ -36,4 +36,3 @@ class AuditLogConfigResponseGameservicesV1beta {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode {
     throw ArgumentError('Unknown GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode value: $value');
   }
 }
-

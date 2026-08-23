@@ -16,4 +16,3 @@ enum BillingAccountSinkOutputVersionFormat {
     throw ArgumentError('Unknown BillingAccountSinkOutputVersionFormat value: $value');
   }
 }
-

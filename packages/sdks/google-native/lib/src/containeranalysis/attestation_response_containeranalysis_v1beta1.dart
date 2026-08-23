@@ -32,4 +32,3 @@ class AttestationResponseContaineranalysisV1beta1 {
     );
   }
 }
-

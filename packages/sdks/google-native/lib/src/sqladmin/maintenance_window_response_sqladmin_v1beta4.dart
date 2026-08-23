@@ -43,4 +43,3 @@ class MaintenanceWindowResponseSqladminV1beta4 {
     );
   }
 }
-

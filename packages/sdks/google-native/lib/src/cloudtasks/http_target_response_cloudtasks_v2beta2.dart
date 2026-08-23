@@ -53,4 +53,3 @@ class HttpTargetResponseCloudtasksV2beta2 {
     );
   }
 }
-

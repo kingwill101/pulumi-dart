@@ -16,4 +16,3 @@ enum LoggingVariantConfigVariantContainerV1beta1 {
     throw ArgumentError('Unknown LoggingVariantConfigVariantContainerV1beta1 value: $value');
   }
 }
-

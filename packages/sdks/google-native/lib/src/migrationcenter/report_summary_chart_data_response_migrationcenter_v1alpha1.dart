@@ -26,4 +26,3 @@ class ReportSummaryChartDataResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

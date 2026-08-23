@@ -24,4 +24,3 @@ class SubsettingResponseComputeV1 {
     );
   }
 }
-

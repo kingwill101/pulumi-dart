@@ -28,4 +28,3 @@ class Uint128ResponseComputeBeta {
     );
   }
 }
-

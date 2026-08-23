@@ -31,4 +31,3 @@ class SchedulingConfigResponseTpuV2alpha1 {
     );
   }
 }
-

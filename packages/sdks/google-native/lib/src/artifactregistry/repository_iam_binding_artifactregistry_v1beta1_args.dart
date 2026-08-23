@@ -52,4 +52,3 @@ class RepositoryIamBindingArtifactregistryV1beta1Args {
     );
   }
 }
-

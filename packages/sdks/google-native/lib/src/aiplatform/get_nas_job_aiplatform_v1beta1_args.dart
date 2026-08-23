@@ -37,4 +37,3 @@ class GetNasJobAiplatformV1beta1Args {
     );
   }
 }
-

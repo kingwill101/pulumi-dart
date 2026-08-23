@@ -45,4 +45,3 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType {
     throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType value: $value');
   }
 }
-

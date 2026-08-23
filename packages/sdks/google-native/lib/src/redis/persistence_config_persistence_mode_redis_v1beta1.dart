@@ -16,4 +16,3 @@ enum PersistenceConfigPersistenceModeRedisV1beta1 {
     throw ArgumentError('Unknown PersistenceConfigPersistenceModeRedisV1beta1 value: $value');
   }
 }
-

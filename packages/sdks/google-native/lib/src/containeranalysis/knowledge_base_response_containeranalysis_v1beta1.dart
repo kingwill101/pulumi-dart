@@ -30,4 +30,3 @@ class KnowledgeBaseResponseContaineranalysisV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum InterconnectAttachmentTypeComputeBeta {
     throw ArgumentError('Unknown InterconnectAttachmentTypeComputeBeta value: $value');
   }
 }
-

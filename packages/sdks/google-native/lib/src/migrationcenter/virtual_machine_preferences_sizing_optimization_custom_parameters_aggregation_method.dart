@@ -18,4 +18,3 @@ enum VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMetho
     throw ArgumentError('Unknown VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod value: $value');
   }
 }
-

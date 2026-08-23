@@ -32,4 +32,3 @@ class GoogleCloudContentwarehouseV1AccessControlActionResponse {
     );
   }
 }
-

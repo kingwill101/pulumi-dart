@@ -70,4 +70,3 @@ class RegionInstanceTemplateComputeV1Args {
     );
   }
 }
-

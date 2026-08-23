@@ -15,4 +15,3 @@ enum GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat value: $value');
   }
 }
-

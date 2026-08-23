@@ -25,4 +25,3 @@ class NetworkPolicyConfigContainerV1beta1 {
     );
   }
 }
-

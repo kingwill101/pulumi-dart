@@ -37,4 +37,3 @@ class GoogleTypeMoneyResponseAiplatformV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

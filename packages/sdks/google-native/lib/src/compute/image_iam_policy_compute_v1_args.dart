@@ -65,4 +65,3 @@ class ImageIamPolicyComputeV1Args {
     );
   }
 }
-

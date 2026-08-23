@@ -16,4 +16,3 @@ enum ClusterAuthorizationModeRedisV1beta1 {
     throw ArgumentError('Unknown ClusterAuthorizationModeRedisV1beta1 value: $value');
   }
 }
-

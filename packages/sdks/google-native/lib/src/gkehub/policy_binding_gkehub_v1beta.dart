@@ -25,4 +25,3 @@ class PolicyBindingGkehubV1beta {
     );
   }
 }
-

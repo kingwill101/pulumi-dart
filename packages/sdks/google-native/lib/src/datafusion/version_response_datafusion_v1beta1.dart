@@ -43,4 +43,3 @@ class VersionResponseDatafusionV1beta1 {
     );
   }
 }
-

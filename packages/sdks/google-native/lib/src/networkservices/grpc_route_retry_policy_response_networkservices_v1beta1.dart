@@ -31,4 +31,3 @@ class GrpcRouteRetryPolicyResponseNetworkservicesV1beta1 {
     );
   }
 }
-

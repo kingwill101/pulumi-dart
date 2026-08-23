@@ -15,4 +15,3 @@ enum InstanceGroupManagerUpdatePolicyReplacementMethod {
     throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyReplacementMethod value: $value');
   }
 }
-

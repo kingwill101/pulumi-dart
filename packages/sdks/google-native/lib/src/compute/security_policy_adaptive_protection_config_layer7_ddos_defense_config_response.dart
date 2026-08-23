@@ -38,4 +38,3 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse {
     );
   }
 }
-

@@ -68,4 +68,3 @@ class GetPrivateConnectionDatastreamV1alpha1Result {
     );
   }
 }
-

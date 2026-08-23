@@ -45,4 +45,3 @@ class GoogleCloudChannelV1RenewalSettings {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class FirewallLogConfigResponseComputeV1 {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class SecurityPolicyDdosProtectionConfigComputeV1 {
     );
   }
 }
-

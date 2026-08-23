@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmen
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment value: $value');
   }
 }
-

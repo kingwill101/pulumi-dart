@@ -24,4 +24,3 @@ class MemcacheParametersResponseMemcacheV1beta2 {
     );
   }
 }
-

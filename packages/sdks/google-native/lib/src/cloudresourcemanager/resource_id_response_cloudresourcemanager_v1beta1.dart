@@ -25,4 +25,3 @@ class ResourceIdResponseCloudresourcemanagerV1beta1 {
     );
   }
 }
-

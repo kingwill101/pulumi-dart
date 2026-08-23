@@ -25,4 +25,3 @@ class ResourceLabelsContainerV1beta1 {
     );
   }
 }
-

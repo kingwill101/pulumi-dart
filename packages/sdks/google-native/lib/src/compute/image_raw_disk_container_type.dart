@@ -14,4 +14,3 @@ enum ImageRawDiskContainerType {
     throw ArgumentError('Unknown ImageRawDiskContainerType value: $value');
   }
 }
-

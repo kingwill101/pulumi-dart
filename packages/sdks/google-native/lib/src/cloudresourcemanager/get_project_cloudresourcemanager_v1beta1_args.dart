@@ -27,4 +27,3 @@ class GetProjectCloudresourcemanagerV1beta1Args {
     );
   }
 }
-

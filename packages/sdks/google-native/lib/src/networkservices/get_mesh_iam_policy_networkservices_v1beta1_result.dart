@@ -45,4 +45,3 @@ class GetMeshIamPolicyNetworkservicesV1beta1Result {
     );
   }
 }
-

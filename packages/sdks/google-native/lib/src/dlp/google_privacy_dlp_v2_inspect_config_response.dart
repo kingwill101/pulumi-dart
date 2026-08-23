@@ -78,4 +78,3 @@ class GooglePrivacyDlpV2InspectConfigResponse {
     );
   }
 }
-

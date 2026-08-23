@@ -67,4 +67,3 @@ class InboundSsoAssignmentCloudidentityV1beta1Args {
     );
   }
 }
-

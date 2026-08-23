@@ -25,4 +25,3 @@ class AdvancedMachineFeaturesSqladminV1beta4 {
     );
   }
 }
-

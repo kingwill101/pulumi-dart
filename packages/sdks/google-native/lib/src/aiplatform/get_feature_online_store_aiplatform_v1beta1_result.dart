@@ -81,4 +81,3 @@ class GetFeatureOnlineStoreAiplatformV1beta1Result {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class ProductResponseContaineranalysisV1beta1 {
     );
   }
 }
-

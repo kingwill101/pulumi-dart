@@ -17,4 +17,3 @@ enum RegionSecurityPolicyTypeComputeBeta {
     throw ArgumentError('Unknown RegionSecurityPolicyTypeComputeBeta value: $value');
   }
 }
-

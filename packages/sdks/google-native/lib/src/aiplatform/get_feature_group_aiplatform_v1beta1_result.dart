@@ -61,4 +61,3 @@ class GetFeatureGroupAiplatformV1beta1Result {
     );
   }
 }
-

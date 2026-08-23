@@ -16,4 +16,3 @@ enum AuthorizationPolicyAction {
     throw ArgumentError('Unknown AuthorizationPolicyAction value: $value');
   }
 }
-

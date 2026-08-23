@@ -25,4 +25,3 @@ class GrpcRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1 {
     );
   }
 }
-

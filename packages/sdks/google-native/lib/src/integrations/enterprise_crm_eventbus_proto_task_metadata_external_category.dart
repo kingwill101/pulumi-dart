@@ -27,4 +27,3 @@ enum EnterpriseCrmEventbusProtoTaskMetadataExternalCategory {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataExternalCategory value: $value');
   }
 }
-

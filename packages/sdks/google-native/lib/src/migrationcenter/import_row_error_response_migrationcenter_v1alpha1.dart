@@ -44,4 +44,3 @@ class ImportRowErrorResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

@@ -55,4 +55,3 @@ class KubernetesMetadataResponseGkehubV1beta {
     );
   }
 }
-

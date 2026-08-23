@@ -16,4 +16,3 @@ enum OSPolicyResourcePackageResourceDesiredState {
     throw ArgumentError('Unknown OSPolicyResourcePackageResourceDesiredState value: $value');
   }
 }
-

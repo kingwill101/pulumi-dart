@@ -218,4 +218,3 @@ class GetForwardingRuleComputeV1Result {
     );
   }
 }
-

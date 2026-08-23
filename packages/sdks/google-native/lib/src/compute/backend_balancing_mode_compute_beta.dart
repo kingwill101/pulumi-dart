@@ -16,4 +16,3 @@ enum BackendBalancingModeComputeBeta {
     throw ArgumentError('Unknown BackendBalancingModeComputeBeta value: $value');
   }
 }
-

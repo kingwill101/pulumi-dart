@@ -18,4 +18,3 @@ enum ApiConfigHandlerSecurityLevelAppengineV1beta {
     throw ArgumentError('Unknown ApiConfigHandlerSecurityLevelAppengineV1beta value: $value');
   }
 }
-

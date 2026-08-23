@@ -25,4 +25,3 @@ class EncryptionConfigMetastoreV1beta {
     );
   }
 }
-

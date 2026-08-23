@@ -16,4 +16,3 @@ enum DevicePolicyAllowedDeviceManagementLevelsItem {
     throw ArgumentError('Unknown DevicePolicyAllowedDeviceManagementLevelsItem value: $value');
   }
 }
-

@@ -70,4 +70,3 @@ class NetworkAttachmentIamPolicyComputeV1Args {
     );
   }
 }
-

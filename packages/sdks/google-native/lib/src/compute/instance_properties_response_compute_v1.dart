@@ -156,4 +156,3 @@ class InstancePropertiesResponseComputeV1 {
     );
   }
 }
-

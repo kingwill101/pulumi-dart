@@ -32,4 +32,3 @@ class BasisResponseContaineranalysisV1beta1 {
     );
   }
 }
-

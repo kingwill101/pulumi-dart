@@ -97,4 +97,3 @@ class IdentityServiceOidcConfigGkehubV1alpha {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetTargetProjectVmmigrationV1alpha1Args {
     );
   }
 }
-

@@ -70,4 +70,3 @@ class GooglePrivacyDlpV2Value {
     );
   }
 }
-

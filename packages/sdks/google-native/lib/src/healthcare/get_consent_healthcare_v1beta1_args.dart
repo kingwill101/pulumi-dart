@@ -47,4 +47,3 @@ class GetConsentHealthcareV1beta1Args {
     );
   }
 }
-

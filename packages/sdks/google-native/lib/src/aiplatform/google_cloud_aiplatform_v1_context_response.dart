@@ -85,4 +85,3 @@ class GoogleCloudAiplatformV1ContextResponse {
     );
   }
 }
-

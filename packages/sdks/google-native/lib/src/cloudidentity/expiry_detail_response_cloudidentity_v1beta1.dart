@@ -25,4 +25,3 @@ class ExpiryDetailResponseCloudidentityV1beta1 {
     );
   }
 }
-

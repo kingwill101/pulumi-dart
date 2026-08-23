@@ -78,4 +78,3 @@ class GetRuleNetworksecurityV1beta1Result {
     );
   }
 }
-

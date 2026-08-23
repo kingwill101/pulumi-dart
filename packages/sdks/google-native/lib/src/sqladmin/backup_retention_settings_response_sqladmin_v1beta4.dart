@@ -31,4 +31,3 @@ class BackupRetentionSettingsResponseSqladminV1beta4 {
     );
   }
 }
-

@@ -50,4 +50,3 @@ class GoogleCloudContentwarehouseV1RuleResponse {
     );
   }
 }
-

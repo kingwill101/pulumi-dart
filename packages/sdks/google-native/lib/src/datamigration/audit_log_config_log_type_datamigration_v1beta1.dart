@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeDatamigrationV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeDatamigrationV1beta1 value: $value');
   }
 }
-

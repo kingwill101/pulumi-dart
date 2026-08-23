@@ -32,4 +32,3 @@ class GetSecretSecretmanagerV1beta1Args {
     );
   }
 }
-

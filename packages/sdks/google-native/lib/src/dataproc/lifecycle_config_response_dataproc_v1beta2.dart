@@ -43,4 +43,3 @@ class LifecycleConfigResponseDataprocV1beta2 {
     );
   }
 }
-

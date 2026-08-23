@@ -25,4 +25,3 @@ class EncryptionConfigResponseDataprocV1beta2 {
     );
   }
 }
-

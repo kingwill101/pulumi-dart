@@ -78,4 +78,3 @@ class EndpointServicedirectoryV1beta1Args {
     );
   }
 }
-

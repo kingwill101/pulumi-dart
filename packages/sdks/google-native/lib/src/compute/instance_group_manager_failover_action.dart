@@ -15,4 +15,3 @@ enum InstanceGroupManagerFailoverAction {
     throw ArgumentError('Unknown InstanceGroupManagerFailoverAction value: $value');
   }
 }
-

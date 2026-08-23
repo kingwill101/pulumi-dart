@@ -64,4 +64,3 @@ class HubIamPolicyNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

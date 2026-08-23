@@ -52,4 +52,3 @@ class QueueIamMemberCloudtasksV2beta2Args {
     );
   }
 }
-

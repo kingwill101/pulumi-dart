@@ -44,4 +44,3 @@ class ReleaseChannelConfigResponseContainerV1beta1 {
     );
   }
 }
-

@@ -21,4 +21,3 @@ enum HttpRequestHttpMethodCloudtasksV2beta3 {
     throw ArgumentError('Unknown HttpRequestHttpMethodCloudtasksV2beta3 value: $value');
   }
 }
-

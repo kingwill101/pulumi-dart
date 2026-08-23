@@ -15,4 +15,3 @@ enum GooglePrivacyDlpV2InspectConfigContentOptionsItem {
     throw ArgumentError('Unknown GooglePrivacyDlpV2InspectConfigContentOptionsItem value: $value');
   }
 }
-

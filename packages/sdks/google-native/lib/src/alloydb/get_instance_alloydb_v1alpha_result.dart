@@ -169,4 +169,3 @@ class GetInstanceAlloydbV1alphaResult {
     );
   }
 }
-

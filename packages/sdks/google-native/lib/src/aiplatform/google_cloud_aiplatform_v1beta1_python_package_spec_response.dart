@@ -50,4 +50,3 @@ class GoogleCloudAiplatformV1beta1PythonPackageSpecResponse {
     );
   }
 }
-

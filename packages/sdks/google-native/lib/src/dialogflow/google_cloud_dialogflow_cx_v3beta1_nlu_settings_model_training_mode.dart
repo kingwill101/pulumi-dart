@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode value: $value');
   }
 }
-

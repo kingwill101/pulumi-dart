@@ -17,4 +17,3 @@ enum GlobalForwardingRuleNetworkTierComputeV1 {
     throw ArgumentError('Unknown GlobalForwardingRuleNetworkTierComputeV1 value: $value');
   }
 }
-

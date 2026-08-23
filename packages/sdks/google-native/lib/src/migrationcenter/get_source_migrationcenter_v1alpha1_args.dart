@@ -37,4 +37,3 @@ class GetSourceMigrationcenterV1alpha1Args {
     );
   }
 }
-

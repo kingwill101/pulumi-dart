@@ -69,4 +69,3 @@ class GetMembershipCloudidentityV1beta1Result {
     );
   }
 }
-

@@ -76,4 +76,3 @@ class DatabaseSqladminV1beta4Args {
     );
   }
 }
-

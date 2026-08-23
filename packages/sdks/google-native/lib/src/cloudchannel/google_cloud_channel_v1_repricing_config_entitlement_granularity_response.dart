@@ -25,4 +25,3 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse {
     );
   }
 }
-

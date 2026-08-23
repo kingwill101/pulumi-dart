@@ -31,4 +31,3 @@ class PasswordStatusResponseSqladminV1beta4 {
     );
   }
 }
-

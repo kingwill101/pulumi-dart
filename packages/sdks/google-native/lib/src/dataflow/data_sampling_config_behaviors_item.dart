@@ -16,4 +16,3 @@ enum DataSamplingConfigBehaviorsItem {
     throw ArgumentError('Unknown DataSamplingConfigBehaviorsItem value: $value');
   }
 }
-

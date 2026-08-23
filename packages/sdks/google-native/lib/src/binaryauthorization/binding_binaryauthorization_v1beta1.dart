@@ -38,4 +38,3 @@ class BindingBinaryauthorizationV1beta1 {
     );
   }
 }
-

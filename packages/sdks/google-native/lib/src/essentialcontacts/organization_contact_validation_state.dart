@@ -16,4 +16,3 @@ enum OrganizationContactValidationState {
     throw ArgumentError('Unknown OrganizationContactValidationState value: $value');
   }
 }
-

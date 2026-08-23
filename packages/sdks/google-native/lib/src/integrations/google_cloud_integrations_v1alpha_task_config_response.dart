@@ -119,4 +119,3 @@ class GoogleCloudIntegrationsV1alphaTaskConfigResponse {
     );
   }
 }
-

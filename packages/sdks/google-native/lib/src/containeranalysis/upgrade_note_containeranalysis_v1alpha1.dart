@@ -39,4 +39,3 @@ class UpgradeNoteContaineranalysisV1alpha1 {
     );
   }
 }
-

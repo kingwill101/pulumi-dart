@@ -18,4 +18,3 @@ enum AssessmentState {
     throw ArgumentError('Unknown AssessmentState value: $value');
   }
 }
-

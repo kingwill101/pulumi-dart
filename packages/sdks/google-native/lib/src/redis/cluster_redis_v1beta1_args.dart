@@ -83,4 +83,3 @@ class ClusterRedisV1beta1Args {
     );
   }
 }
-

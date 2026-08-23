@@ -17,4 +17,3 @@ enum ClusterUpdateDesiredPrivateIpv6GoogleAccessContainerV1beta1 {
     throw ArgumentError('Unknown ClusterUpdateDesiredPrivateIpv6GoogleAccessContainerV1beta1 value: $value');
   }
 }
-

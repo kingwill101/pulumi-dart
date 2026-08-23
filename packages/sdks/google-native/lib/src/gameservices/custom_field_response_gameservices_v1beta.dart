@@ -31,4 +31,3 @@ class CustomFieldResponseGameservicesV1beta {
     );
   }
 }
-

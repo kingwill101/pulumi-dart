@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusStatsDimensionsRetryAttempt {
     throw ArgumentError('Unknown EnterpriseCrmEventbusStatsDimensionsRetryAttempt value: $value');
   }
 }
-

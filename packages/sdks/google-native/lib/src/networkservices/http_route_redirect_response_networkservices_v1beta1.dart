@@ -61,4 +61,3 @@ class HttpRouteRedirectResponseNetworkservicesV1beta1 {
     );
   }
 }
-

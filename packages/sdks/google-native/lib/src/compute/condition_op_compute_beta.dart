@@ -19,4 +19,3 @@ enum ConditionOpComputeBeta {
     throw ArgumentError('Unknown ConditionOpComputeBeta value: $value');
   }
 }
-

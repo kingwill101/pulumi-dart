@@ -19,4 +19,3 @@ enum CertificateExtensionConstraintsKnownExtensionsItem {
     throw ArgumentError('Unknown CertificateExtensionConstraintsKnownExtensionsItem value: $value');
   }
 }
-

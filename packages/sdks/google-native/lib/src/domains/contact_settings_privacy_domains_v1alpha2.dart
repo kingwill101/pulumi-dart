@@ -17,4 +17,3 @@ enum ContactSettingsPrivacyDomainsV1alpha2 {
     throw ArgumentError('Unknown ContactSettingsPrivacyDomainsV1alpha2 value: $value');
   }
 }
-

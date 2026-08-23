@@ -31,4 +31,3 @@ class ShieldedInstanceConfigResponseContainerV1beta1 {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum EnterpriseCrmLoggingGwsFieldLimitsShortenerType {
     throw ArgumentError('Unknown EnterpriseCrmLoggingGwsFieldLimitsShortenerType value: $value');
   }
 }
-

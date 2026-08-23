@@ -38,4 +38,3 @@ class BindingSecuritycenterV1beta1 {
     );
   }
 }
-

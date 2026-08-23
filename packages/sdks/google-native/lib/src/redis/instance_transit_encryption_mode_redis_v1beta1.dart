@@ -16,4 +16,3 @@ enum InstanceTransitEncryptionModeRedisV1beta1 {
     throw ArgumentError('Unknown InstanceTransitEncryptionModeRedisV1beta1 value: $value');
   }
 }
-

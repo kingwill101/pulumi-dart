@@ -15,4 +15,3 @@ enum ControlSolutionTypesItemRetailV2alpha {
     throw ArgumentError('Unknown ControlSolutionTypesItemRetailV2alpha value: $value');
   }
 }
-

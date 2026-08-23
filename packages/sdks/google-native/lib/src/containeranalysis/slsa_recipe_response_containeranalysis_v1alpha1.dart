@@ -49,4 +49,3 @@ class SlsaRecipeResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

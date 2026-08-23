@@ -16,4 +16,3 @@ enum BinaryAuthorizationConfigEvaluationMode {
     throw ArgumentError('Unknown BinaryAuthorizationConfigEvaluationMode value: $value');
   }
 }
-

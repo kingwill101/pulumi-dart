@@ -25,4 +25,3 @@ class MachineConfigAlloydbV1alpha {
     );
   }
 }
-

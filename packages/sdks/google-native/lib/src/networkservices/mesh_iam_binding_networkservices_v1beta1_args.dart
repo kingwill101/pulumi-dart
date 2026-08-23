@@ -52,4 +52,3 @@ class MeshIamBindingNetworkservicesV1beta1Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetScopeGkehubV1alphaArgs {
     );
   }
 }
-

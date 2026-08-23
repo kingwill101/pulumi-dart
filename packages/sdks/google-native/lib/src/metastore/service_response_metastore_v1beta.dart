@@ -159,4 +159,3 @@ class ServiceResponseMetastoreV1beta {
     );
   }
 }
-

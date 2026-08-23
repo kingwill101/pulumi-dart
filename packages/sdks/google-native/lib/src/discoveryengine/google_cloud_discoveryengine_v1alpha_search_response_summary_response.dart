@@ -38,4 +38,3 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse {
     );
   }
 }
-

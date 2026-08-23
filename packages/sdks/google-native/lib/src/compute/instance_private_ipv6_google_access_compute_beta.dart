@@ -16,4 +16,3 @@ enum InstancePrivateIpv6GoogleAccessComputeBeta {
     throw ArgumentError('Unknown InstancePrivateIpv6GoogleAccessComputeBeta value: $value');
   }
 }
-

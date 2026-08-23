@@ -43,4 +43,3 @@ class ReplicatingStepResponseVmmigrationV1alpha1 {
     );
   }
 }
-

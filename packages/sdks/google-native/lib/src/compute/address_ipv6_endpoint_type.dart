@@ -15,4 +15,3 @@ enum AddressIpv6EndpointType {
     throw ArgumentError('Unknown AddressIpv6EndpointType value: $value');
   }
 }
-

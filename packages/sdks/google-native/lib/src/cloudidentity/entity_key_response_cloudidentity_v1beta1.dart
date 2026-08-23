@@ -25,4 +25,3 @@ class EntityKeyResponseCloudidentityV1beta1 {
     );
   }
 }
-

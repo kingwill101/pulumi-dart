@@ -32,4 +32,3 @@ class GetAttestorBinaryauthorizationV1beta1Args {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum AutoscalingPolicyModeComputeV1 {
     throw ArgumentError('Unknown AutoscalingPolicyModeComputeV1 value: $value');
   }
 }
-

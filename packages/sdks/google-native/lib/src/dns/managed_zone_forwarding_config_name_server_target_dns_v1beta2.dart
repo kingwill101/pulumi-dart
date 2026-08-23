@@ -42,4 +42,3 @@ class ManagedZoneForwardingConfigNameServerTargetDnsV1beta2 {
     );
   }
 }
-

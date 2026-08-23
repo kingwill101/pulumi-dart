@@ -37,4 +37,3 @@ class RestrictedExportConfigResponseAnalyticshubV1beta1 {
     );
   }
 }
-

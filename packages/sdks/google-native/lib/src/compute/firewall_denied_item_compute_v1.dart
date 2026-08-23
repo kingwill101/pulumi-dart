@@ -30,4 +30,3 @@ class FirewallDeniedItemComputeV1 {
     );
   }
 }
-

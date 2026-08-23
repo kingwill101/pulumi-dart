@@ -56,4 +56,3 @@ class SparkRJobResponseDataprocV1beta2 {
     );
   }
 }
-

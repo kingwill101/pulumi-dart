@@ -40,4 +40,3 @@ class AuthenticationWebsecurityscannerV1beta {
     );
   }
 }
-

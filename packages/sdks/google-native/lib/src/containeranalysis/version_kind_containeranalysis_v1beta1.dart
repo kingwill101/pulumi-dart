@@ -17,4 +17,3 @@ enum VersionKindContaineranalysisV1beta1 {
     throw ArgumentError('Unknown VersionKindContaineranalysisV1beta1 value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetTriggerEventarcV1beta1Args {
     );
   }
 }
-

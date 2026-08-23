@@ -79,4 +79,3 @@ class AccessConfigResponseComputeV1 {
     );
   }
 }
-

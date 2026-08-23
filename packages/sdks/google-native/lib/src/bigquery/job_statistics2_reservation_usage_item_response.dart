@@ -30,4 +30,3 @@ class JobStatistics2ReservationUsageItemResponse {
     );
   }
 }
-

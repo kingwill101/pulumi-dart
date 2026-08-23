@@ -96,4 +96,3 @@ class GetBackupFileV1beta1Result {
     );
   }
 }
-

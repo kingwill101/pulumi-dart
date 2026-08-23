@@ -38,4 +38,3 @@ class PlacementPolicyContainerV1beta1 {
     );
   }
 }
-

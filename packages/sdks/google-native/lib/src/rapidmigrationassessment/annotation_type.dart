@@ -16,4 +16,3 @@ enum AnnotationType {
     throw ArgumentError('Unknown AnnotationType value: $value');
   }
 }
-

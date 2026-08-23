@@ -20,4 +20,3 @@ enum MetadataOptionsStorageClass {
     throw ArgumentError('Unknown MetadataOptionsStorageClass value: $value');
   }
 }
-

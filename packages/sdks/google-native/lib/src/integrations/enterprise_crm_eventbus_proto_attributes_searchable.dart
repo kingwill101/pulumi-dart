@@ -15,4 +15,3 @@ enum EnterpriseCrmEventbusProtoAttributesSearchable {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoAttributesSearchable value: $value');
   }
 }
-

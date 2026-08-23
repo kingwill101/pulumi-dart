@@ -15,4 +15,3 @@ enum AppConnectionTypeBeyondcorpV1alpha {
     throw ArgumentError('Unknown AppConnectionTypeBeyondcorpV1alpha value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class SlsaProvenanceV1ResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

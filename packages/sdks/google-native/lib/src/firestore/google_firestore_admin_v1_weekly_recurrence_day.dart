@@ -21,4 +21,3 @@ enum GoogleFirestoreAdminV1WeeklyRecurrenceDay {
     throw ArgumentError('Unknown GoogleFirestoreAdminV1WeeklyRecurrenceDay value: $value');
   }
 }
-

@@ -71,4 +71,3 @@ class NetworkFirewallPolicyComputeV1Args {
     );
   }
 }
-

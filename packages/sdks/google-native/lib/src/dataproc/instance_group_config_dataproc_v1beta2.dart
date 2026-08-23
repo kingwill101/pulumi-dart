@@ -64,4 +64,3 @@ class InstanceGroupConfigDataprocV1beta2 {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class PolicyControllerPolicyContentSpecResponseGkehubV1alpha {
     );
   }
 }
-

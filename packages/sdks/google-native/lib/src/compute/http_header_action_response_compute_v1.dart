@@ -44,4 +44,3 @@ class HttpHeaderActionResponseComputeV1 {
     );
   }
 }
-

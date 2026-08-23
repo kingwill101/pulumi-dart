@@ -17,4 +17,3 @@ enum GoogleCloudContentwarehouseV1AccessControlActionOperationType {
     throw ArgumentError('Unknown GoogleCloudContentwarehouseV1AccessControlActionOperationType value: $value');
   }
 }
-

@@ -64,4 +64,3 @@ class GoogleCloudRunV2ProbeResponse {
     );
   }
 }
-

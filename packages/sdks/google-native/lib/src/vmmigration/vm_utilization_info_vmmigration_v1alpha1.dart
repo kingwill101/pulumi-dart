@@ -39,4 +39,3 @@ class VmUtilizationInfoVmmigrationV1alpha1 {
     );
   }
 }
-

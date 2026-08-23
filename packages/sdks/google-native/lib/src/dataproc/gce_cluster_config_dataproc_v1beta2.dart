@@ -95,4 +95,3 @@ class GceClusterConfigDataprocV1beta2 {
     );
   }
 }
-

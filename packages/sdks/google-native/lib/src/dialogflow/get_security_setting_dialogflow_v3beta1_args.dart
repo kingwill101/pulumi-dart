@@ -37,4 +37,3 @@ class GetSecuritySettingDialogflowV3beta1Args {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class BindingDatacatalogV1beta1 {
     );
   }
 }
-

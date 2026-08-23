@@ -52,4 +52,3 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
     );
   }
 }
-

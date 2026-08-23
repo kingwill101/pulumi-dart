@@ -61,4 +61,3 @@ class LivenessCheckResponseAppengineV1beta {
     );
   }
 }
-

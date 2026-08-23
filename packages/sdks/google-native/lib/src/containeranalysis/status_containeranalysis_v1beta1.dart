@@ -37,4 +37,3 @@ class StatusContaineranalysisV1beta1 {
     );
   }
 }
-

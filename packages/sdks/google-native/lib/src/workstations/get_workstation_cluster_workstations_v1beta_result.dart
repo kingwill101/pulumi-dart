@@ -124,4 +124,3 @@ class GetWorkstationClusterWorkstationsV1betaResult {
     );
   }
 }
-

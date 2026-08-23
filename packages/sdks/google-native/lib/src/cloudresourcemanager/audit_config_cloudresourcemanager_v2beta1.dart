@@ -32,4 +32,3 @@ class AuditConfigCloudresourcemanagerV2beta1 {
     );
   }
 }
-

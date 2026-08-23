@@ -42,4 +42,3 @@ class GetRegionOperationIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

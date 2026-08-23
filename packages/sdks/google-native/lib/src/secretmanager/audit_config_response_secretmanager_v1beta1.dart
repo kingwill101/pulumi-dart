@@ -32,4 +32,3 @@ class AuditConfigResponseSecretmanagerV1beta1 {
     );
   }
 }
-

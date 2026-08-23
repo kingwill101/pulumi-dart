@@ -26,4 +26,3 @@ class GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse {
     );
   }
 }
-

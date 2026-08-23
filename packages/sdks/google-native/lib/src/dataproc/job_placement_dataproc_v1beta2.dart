@@ -31,4 +31,3 @@ class JobPlacementDataprocV1beta2 {
     );
   }
 }
-

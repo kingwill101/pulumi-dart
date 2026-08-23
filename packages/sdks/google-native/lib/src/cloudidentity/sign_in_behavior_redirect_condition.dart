@@ -15,4 +15,3 @@ enum SignInBehaviorRedirectCondition {
     throw ArgumentError('Unknown SignInBehaviorRedirectCondition value: $value');
   }
 }
-

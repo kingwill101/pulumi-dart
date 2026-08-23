@@ -16,4 +16,3 @@ enum CompositeFilterLogicOperator {
     throw ArgumentError('Unknown CompositeFilterLogicOperator value: $value');
   }
 }
-

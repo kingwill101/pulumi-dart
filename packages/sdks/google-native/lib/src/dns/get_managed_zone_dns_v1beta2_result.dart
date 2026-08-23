@@ -119,4 +119,3 @@ class GetManagedZoneDnsV1beta2Result {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum VmwareVmDetailsPowerStateVmmigrationV1alpha1 {
     throw ArgumentError('Unknown VmwareVmDetailsPowerStateVmmigrationV1alpha1 value: $value');
   }
 }
-

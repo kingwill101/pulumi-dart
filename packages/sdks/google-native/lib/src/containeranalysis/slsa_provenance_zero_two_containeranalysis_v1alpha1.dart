@@ -59,4 +59,3 @@ class SlsaProvenanceZeroTwoContaineranalysisV1alpha1 {
     );
   }
 }
-

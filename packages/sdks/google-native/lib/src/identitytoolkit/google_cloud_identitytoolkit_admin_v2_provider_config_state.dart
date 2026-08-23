@@ -17,4 +17,3 @@ enum GoogleCloudIdentitytoolkitAdminV2ProviderConfigState {
     throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2ProviderConfigState value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class InstanceGroupManagerInstanceLifecyclePolicyComputeV1 {
     );
   }
 }
-

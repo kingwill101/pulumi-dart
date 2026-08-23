@@ -52,4 +52,3 @@ class ServiceIamMemberMetastoreV1alphaArgs {
     );
   }
 }
-

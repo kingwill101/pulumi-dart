@@ -25,4 +25,3 @@ class DisplayDeviceComputeV1 {
     );
   }
 }
-

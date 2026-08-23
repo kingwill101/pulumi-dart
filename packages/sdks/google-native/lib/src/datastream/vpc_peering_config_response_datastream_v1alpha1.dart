@@ -31,4 +31,3 @@ class VpcPeeringConfigResponseDatastreamV1alpha1 {
     );
   }
 }
-

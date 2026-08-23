@@ -210,4 +210,3 @@ class GetImageComputeV1Result {
     );
   }
 }
-

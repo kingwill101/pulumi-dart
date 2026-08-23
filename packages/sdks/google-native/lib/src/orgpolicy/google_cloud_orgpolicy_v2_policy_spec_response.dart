@@ -50,4 +50,3 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse {
     );
   }
 }
-

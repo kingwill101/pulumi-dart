@@ -16,4 +16,3 @@ enum TemplatesVersionDatabasePersistencePolicy {
     throw ArgumentError('Unknown TemplatesVersionDatabasePersistencePolicy value: $value');
   }
 }
-

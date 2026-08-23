@@ -37,4 +37,3 @@ class GetRegionInstanceTemplateComputeV1Args {
     );
   }
 }
-

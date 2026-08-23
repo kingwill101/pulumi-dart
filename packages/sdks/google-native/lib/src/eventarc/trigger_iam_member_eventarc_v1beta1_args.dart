@@ -52,4 +52,3 @@ class TriggerIamMemberEventarcV1beta1Args {
     );
   }
 }
-

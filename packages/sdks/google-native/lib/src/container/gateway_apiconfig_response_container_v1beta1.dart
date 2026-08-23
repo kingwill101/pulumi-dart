@@ -25,4 +25,3 @@ class GatewayAPIConfigResponseContainerV1beta1 {
     );
   }
 }
-

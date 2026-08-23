@@ -44,4 +44,3 @@ class ContactDomainsV1beta1 {
     );
   }
 }
-

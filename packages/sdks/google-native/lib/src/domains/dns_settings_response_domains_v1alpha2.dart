@@ -40,4 +40,3 @@ class DnsSettingsResponseDomainsV1alpha2 {
     );
   }
 }
-

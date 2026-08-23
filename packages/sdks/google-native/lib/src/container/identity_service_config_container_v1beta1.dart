@@ -25,4 +25,3 @@ class IdentityServiceConfigContainerV1beta1 {
     );
   }
 }
-

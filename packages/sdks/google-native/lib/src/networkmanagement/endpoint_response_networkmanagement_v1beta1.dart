@@ -112,4 +112,3 @@ class EndpointResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

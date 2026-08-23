@@ -16,4 +16,3 @@ enum GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal {
     throw ArgumentError('Unknown GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal value: $value');
   }
 }
-

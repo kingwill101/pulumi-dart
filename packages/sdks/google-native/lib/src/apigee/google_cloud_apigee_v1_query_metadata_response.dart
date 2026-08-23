@@ -54,4 +54,3 @@ class GoogleCloudApigeeV1QueryMetadataResponse {
     );
   }
 }
-

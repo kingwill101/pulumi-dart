@@ -49,4 +49,3 @@ class GoogleCloudChannelV1Value {
     );
   }
 }
-

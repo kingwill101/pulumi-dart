@@ -78,4 +78,3 @@ class GetFederationMetastoreV1alphaResult {
     );
   }
 }
-

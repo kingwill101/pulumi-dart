@@ -43,4 +43,3 @@ class ApigatewayExprResponseApigatewayV1beta {
     );
   }
 }
-

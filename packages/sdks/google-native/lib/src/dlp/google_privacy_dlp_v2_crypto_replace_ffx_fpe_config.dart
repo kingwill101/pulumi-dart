@@ -59,4 +59,3 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
     );
   }
 }
-

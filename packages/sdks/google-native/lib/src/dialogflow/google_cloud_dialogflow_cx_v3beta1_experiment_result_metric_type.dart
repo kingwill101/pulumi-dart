@@ -19,4 +19,3 @@ enum GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType value: $value');
   }
 }
-

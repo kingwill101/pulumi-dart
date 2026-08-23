@@ -52,4 +52,3 @@ class DataExchangeIamBindingAnalyticshubV1beta1Args {
     );
   }
 }
-

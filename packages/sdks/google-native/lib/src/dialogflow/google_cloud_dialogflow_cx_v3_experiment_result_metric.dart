@@ -52,4 +52,3 @@ class GoogleCloudDialogflowCxV3ExperimentResultMetric {
     );
   }
 }
-

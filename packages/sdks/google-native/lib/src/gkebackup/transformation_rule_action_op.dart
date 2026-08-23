@@ -20,4 +20,3 @@ enum TransformationRuleActionOp {
     throw ArgumentError('Unknown TransformationRuleActionOp value: $value');
   }
 }
-

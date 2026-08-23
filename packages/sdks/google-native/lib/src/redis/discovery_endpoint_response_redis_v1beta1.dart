@@ -38,4 +38,3 @@ class DiscoveryEndpointResponseRedisV1beta1 {
     );
   }
 }
-

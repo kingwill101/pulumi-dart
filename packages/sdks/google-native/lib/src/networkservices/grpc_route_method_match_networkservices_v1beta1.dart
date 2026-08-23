@@ -44,4 +44,3 @@ class GrpcRouteMethodMatchNetworkservicesV1beta1 {
     );
   }
 }
-

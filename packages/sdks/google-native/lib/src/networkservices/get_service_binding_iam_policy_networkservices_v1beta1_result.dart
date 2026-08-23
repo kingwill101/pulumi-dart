@@ -45,4 +45,3 @@ class GetServiceBindingIamPolicyNetworkservicesV1beta1Result {
     );
   }
 }
-

@@ -57,4 +57,3 @@ class HttpTargetResponseCloudschedulerV1beta1 {
     );
   }
 }
-

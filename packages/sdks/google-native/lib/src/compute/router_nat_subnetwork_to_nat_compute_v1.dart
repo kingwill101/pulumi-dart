@@ -38,4 +38,3 @@ class RouterNatSubnetworkToNatComputeV1 {
     );
   }
 }
-

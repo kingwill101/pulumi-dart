@@ -31,4 +31,3 @@ class NotificationConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

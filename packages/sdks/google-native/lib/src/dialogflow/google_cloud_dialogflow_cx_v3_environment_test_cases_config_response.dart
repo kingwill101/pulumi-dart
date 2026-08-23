@@ -37,4 +37,3 @@ class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse {
     );
   }
 }
-

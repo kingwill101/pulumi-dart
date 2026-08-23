@@ -49,4 +49,3 @@ class CommandResponseContaineranalysisV1beta1 {
     );
   }
 }
-

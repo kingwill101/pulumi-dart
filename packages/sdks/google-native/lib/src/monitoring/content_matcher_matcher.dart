@@ -20,4 +20,3 @@ enum ContentMatcherMatcher {
     throw ArgumentError('Unknown ContentMatcherMatcher value: $value');
   }
 }
-

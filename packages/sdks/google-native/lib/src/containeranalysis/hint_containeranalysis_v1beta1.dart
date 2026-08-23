@@ -25,4 +25,3 @@ class HintContaineranalysisV1beta1 {
     );
   }
 }
-

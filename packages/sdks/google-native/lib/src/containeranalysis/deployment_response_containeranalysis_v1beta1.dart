@@ -61,4 +61,3 @@ class DeploymentResponseContaineranalysisV1beta1 {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class RRSetRoutingPolicyResponseDnsV1beta2 {
     );
   }
 }
-

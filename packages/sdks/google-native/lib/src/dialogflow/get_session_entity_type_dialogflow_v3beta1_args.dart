@@ -52,4 +52,3 @@ class GetSessionEntityTypeDialogflowV3beta1Args {
     );
   }
 }
-

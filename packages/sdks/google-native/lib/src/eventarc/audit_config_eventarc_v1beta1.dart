@@ -32,4 +32,3 @@ class AuditConfigEventarcV1beta1 {
     );
   }
 }
-

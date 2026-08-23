@@ -64,4 +64,3 @@ class ConnectivityTestIamPolicyNetworkmanagementV1beta1Args {
     );
   }
 }
-

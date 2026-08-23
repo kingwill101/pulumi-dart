@@ -31,4 +31,3 @@ class VersionSourceResponseHealthcareV1beta1 {
     );
   }
 }
-

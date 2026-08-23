@@ -30,4 +30,3 @@ class ManagedZoneForwardingConfigDnsV1beta2 {
     );
   }
 }
-

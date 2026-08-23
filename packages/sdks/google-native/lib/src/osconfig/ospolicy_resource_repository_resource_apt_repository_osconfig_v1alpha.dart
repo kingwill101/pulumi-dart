@@ -50,4 +50,3 @@ class OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha {
     );
   }
 }
-

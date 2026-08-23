@@ -32,4 +32,3 @@ class LogConfigCloudAuditOptionsResponseComputeV1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum PublicAdvertisedPrefixPdpScope {
     throw ArgumentError('Unknown PublicAdvertisedPrefixPdpScope value: $value');
   }
 }
-

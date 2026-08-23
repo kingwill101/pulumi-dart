@@ -25,4 +25,3 @@ class FleetLifecycleStateResponseGkehubV1alpha {
     );
   }
 }
-

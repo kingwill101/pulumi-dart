@@ -49,4 +49,3 @@ class BlueGreenInfoResponseContainerV1beta1 {
     );
   }
 }
-

@@ -51,4 +51,3 @@ class DomainIamPolicyManagedidentitiesV1alpha1Args {
     );
   }
 }
-

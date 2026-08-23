@@ -32,4 +32,3 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse {
     );
   }
 }
-

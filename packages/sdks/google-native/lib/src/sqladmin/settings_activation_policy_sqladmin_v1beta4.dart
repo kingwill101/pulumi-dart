@@ -17,4 +17,3 @@ enum SettingsActivationPolicySqladminV1beta4 {
     throw ArgumentError('Unknown SettingsActivationPolicySqladminV1beta4 value: $value');
   }
 }
-

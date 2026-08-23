@@ -18,4 +18,3 @@ enum DicomTagConfigProfileType {
     throw ArgumentError('Unknown DicomTagConfigProfileType value: $value');
   }
 }
-

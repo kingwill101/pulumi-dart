@@ -81,4 +81,3 @@ class GetScanConfigWebsecurityscannerV1alphaResult {
     );
   }
 }
-

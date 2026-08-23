@@ -38,4 +38,3 @@ class OracleSourceConfigDatastreamV1alpha1 {
     );
   }
 }
-

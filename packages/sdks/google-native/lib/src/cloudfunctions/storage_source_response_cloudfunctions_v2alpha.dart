@@ -37,4 +37,3 @@ class StorageSourceResponseCloudfunctionsV2alpha {
     );
   }
 }
-

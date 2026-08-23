@@ -16,4 +16,3 @@ enum DiskArchitectureComputeBeta {
     throw ArgumentError('Unknown DiskArchitectureComputeBeta value: $value');
   }
 }
-

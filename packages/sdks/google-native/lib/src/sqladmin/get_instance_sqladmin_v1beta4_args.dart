@@ -32,4 +32,3 @@ class GetInstanceSqladminV1beta4Args {
     );
   }
 }
-

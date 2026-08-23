@@ -79,4 +79,3 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse {
     );
   }
 }
-

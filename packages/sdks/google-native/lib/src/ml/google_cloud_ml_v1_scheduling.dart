@@ -37,4 +37,3 @@ class GoogleCloudMlV1Scheduling {
     );
   }
 }
-

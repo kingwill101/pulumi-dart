@@ -149,4 +149,3 @@ class WorkloadAssuredworkloadsV1beta1Args {
     );
   }
 }
-

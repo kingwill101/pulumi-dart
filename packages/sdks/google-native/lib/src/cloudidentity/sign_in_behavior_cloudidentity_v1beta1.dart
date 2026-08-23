@@ -26,4 +26,3 @@ class SignInBehaviorCloudidentityV1beta1 {
     );
   }
 }
-

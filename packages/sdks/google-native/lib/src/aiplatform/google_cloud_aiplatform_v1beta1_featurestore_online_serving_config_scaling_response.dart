@@ -37,4 +37,3 @@ class GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingResponse
     );
   }
 }
-

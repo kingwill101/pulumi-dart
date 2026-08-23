@@ -80,4 +80,3 @@ class GetScopeRbacRoleBindingGkehubV1betaResult {
     );
   }
 }
-

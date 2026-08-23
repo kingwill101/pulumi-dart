@@ -48,4 +48,3 @@ class GetUrlListNetworksecurityV1beta1Result {
     );
   }
 }
-

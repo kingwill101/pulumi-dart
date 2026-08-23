@@ -15,4 +15,3 @@ enum RouterNatEndpointTypesItemComputeV1 {
     throw ArgumentError('Unknown RouterNatEndpointTypesItemComputeV1 value: $value');
   }
 }
-

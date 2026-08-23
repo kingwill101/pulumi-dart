@@ -32,4 +32,3 @@ class GetTargetHttpProxyComputeV1Args {
     );
   }
 }
-

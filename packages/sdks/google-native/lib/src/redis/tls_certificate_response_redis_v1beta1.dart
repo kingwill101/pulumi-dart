@@ -49,4 +49,3 @@ class TlsCertificateResponseRedisV1beta1 {
     );
   }
 }
-

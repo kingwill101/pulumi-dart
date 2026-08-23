@@ -49,4 +49,3 @@ class ForwardSshTunnelConnectivityResponseDatastreamV1alpha1 {
     );
   }
 }
-

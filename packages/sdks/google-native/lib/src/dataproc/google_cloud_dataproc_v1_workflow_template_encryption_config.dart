@@ -25,4 +25,3 @@ class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
     );
   }
 }
-

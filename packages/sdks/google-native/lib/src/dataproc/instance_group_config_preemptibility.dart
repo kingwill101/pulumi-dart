@@ -17,4 +17,3 @@ enum InstanceGroupConfigPreemptibility {
     throw ArgumentError('Unknown InstanceGroupConfigPreemptibility value: $value');
   }
 }
-

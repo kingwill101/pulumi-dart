@@ -40,4 +40,3 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsResponse {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
     throw ArgumentError('Unknown GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic value: $value');
   }
 }
-

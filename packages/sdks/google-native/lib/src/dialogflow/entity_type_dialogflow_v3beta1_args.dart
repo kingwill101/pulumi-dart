@@ -95,4 +95,3 @@ class EntityTypeDialogflowV3beta1Args {
     );
   }
 }
-

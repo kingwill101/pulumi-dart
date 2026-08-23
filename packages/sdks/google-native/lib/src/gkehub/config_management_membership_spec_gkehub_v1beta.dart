@@ -59,4 +59,3 @@ class ConfigManagementMembershipSpecGkehubV1beta {
     );
   }
 }
-

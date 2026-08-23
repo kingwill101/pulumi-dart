@@ -42,4 +42,3 @@ class RouterNatRuleActionResponseComputeV1 {
     );
   }
 }
-

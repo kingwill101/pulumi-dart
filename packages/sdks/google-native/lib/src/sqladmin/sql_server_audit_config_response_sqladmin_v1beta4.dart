@@ -43,4 +43,3 @@ class SqlServerAuditConfigResponseSqladminV1beta4 {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum ServingConfigSolutionTypesItemRetailV2beta {
     throw ArgumentError('Unknown ServingConfigSolutionTypesItemRetailV2beta value: $value');
   }
 }
-

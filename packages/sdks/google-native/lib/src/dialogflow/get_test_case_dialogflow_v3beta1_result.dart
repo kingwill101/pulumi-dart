@@ -70,4 +70,3 @@ class GetTestCaseDialogflowV3beta1Result {
     );
   }
 }
-

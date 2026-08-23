@@ -38,4 +38,3 @@ class BindingManagedidentitiesV1alpha1 {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class FeaturestoreIamMemberAiplatformV1beta1Args {
     );
   }
 }
-

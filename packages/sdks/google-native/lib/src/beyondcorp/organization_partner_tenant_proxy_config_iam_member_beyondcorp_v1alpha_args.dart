@@ -52,4 +52,3 @@ class OrganizationPartnerTenantProxyConfigIamMemberBeyondcorpV1alphaArgs {
     );
   }
 }
-

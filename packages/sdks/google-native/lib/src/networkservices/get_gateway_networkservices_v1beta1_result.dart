@@ -108,4 +108,3 @@ class GetGatewayNetworkservicesV1beta1Result {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class SslCertificateSelfManagedSslCertificateComputeV1 {
     );
   }
 }
-

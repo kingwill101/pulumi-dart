@@ -31,4 +31,3 @@ class UserPasswordAlloydbV1alpha {
     );
   }
 }
-

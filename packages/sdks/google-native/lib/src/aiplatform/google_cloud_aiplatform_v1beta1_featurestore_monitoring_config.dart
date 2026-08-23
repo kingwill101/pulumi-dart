@@ -46,4 +46,3 @@ class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig {
     );
   }
 }
-

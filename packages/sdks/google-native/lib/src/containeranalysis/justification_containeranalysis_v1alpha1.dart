@@ -32,4 +32,3 @@ class JustificationContaineranalysisV1alpha1 {
     );
   }
 }
-

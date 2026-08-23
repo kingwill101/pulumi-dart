@@ -16,4 +16,3 @@ enum CVSSv3PrivilegesRequiredContaineranalysisV1beta1 {
     throw ArgumentError('Unknown CVSSv3PrivilegesRequiredContaineranalysisV1beta1 value: $value');
   }
 }
-

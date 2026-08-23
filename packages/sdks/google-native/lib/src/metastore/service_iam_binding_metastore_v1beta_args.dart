@@ -52,4 +52,3 @@ class ServiceIamBindingMetastoreV1betaArgs {
     );
   }
 }
-

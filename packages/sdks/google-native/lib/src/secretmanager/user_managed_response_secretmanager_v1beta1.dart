@@ -26,4 +26,3 @@ class UserManagedResponseSecretmanagerV1beta1 {
     );
   }
 }
-

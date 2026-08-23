@@ -16,4 +16,3 @@ enum CVSSPrivilegesRequired {
     throw ArgumentError('Unknown CVSSPrivilegesRequired value: $value');
   }
 }
-

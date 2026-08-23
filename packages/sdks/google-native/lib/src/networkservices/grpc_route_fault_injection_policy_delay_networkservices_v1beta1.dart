@@ -31,4 +31,3 @@ class GrpcRouteFaultInjectionPolicyDelayNetworkservicesV1beta1 {
     );
   }
 }
-

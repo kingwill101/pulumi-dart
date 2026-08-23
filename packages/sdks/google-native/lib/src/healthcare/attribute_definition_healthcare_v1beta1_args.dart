@@ -85,4 +85,3 @@ class AttributeDefinitionHealthcareV1beta1Args {
     );
   }
 }
-

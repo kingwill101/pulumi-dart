@@ -63,4 +63,3 @@ class AutoscalerComputeV1Args {
     );
   }
 }
-

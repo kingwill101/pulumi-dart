@@ -78,4 +78,3 @@ class GetRegionTargetHttpProxyComputeV1Result {
     );
   }
 }
-

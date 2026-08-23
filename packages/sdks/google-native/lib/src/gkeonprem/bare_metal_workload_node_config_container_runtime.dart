@@ -15,4 +15,3 @@ enum BareMetalWorkloadNodeConfigContainerRuntime {
     throw ArgumentError('Unknown BareMetalWorkloadNodeConfigContainerRuntime value: $value');
   }
 }
-

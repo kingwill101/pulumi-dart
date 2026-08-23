@@ -108,4 +108,3 @@ class NetworkConfigResponseContainerV1beta1 {
     );
   }
 }
-

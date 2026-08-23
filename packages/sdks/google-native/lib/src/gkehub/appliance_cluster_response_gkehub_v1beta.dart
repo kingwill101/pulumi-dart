@@ -25,4 +25,3 @@ class ApplianceClusterResponseGkehubV1beta {
     );
   }
 }
-

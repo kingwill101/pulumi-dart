@@ -100,4 +100,3 @@ class OrderedJobResponseDataprocV1beta2 {
     );
   }
 }
-

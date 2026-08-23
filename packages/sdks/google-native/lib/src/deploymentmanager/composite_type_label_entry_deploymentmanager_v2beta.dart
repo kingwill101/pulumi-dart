@@ -31,4 +31,3 @@ class CompositeTypeLabelEntryDeploymentmanagerV2beta {
     );
   }
 }
-

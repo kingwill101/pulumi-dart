@@ -43,4 +43,3 @@ class WindowsDetailResponseContaineranalysisV1beta1 {
     );
   }
 }
-

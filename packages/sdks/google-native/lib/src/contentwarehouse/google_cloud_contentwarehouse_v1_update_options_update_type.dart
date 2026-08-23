@@ -20,4 +20,3 @@ enum GoogleCloudContentwarehouseV1UpdateOptionsUpdateType {
     throw ArgumentError('Unknown GoogleCloudContentwarehouseV1UpdateOptionsUpdateType value: $value');
   }
 }
-

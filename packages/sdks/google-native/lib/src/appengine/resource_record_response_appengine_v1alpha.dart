@@ -37,4 +37,3 @@ class ResourceRecordResponseAppengineV1alpha {
     );
   }
 }
-

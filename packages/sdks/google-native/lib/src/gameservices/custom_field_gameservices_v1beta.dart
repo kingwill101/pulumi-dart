@@ -31,4 +31,3 @@ class CustomFieldGameservicesV1beta {
     );
   }
 }
-

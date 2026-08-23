@@ -37,4 +37,3 @@ class StatusResponseCloudtasksV2beta2 {
     );
   }
 }
-

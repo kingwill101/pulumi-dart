@@ -43,4 +43,3 @@ class QueryInsightsInstanceConfigResponseAlloydbV1alpha {
     );
   }
 }
-

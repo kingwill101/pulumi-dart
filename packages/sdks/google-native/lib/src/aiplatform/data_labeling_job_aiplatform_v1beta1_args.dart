@@ -100,4 +100,3 @@ class DataLabelingJobAiplatformV1beta1Args {
     );
   }
 }
-

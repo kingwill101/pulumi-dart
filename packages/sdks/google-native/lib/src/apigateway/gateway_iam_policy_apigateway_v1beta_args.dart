@@ -69,4 +69,3 @@ class GatewayIamPolicyApigatewayV1betaArgs {
     );
   }
 }
-

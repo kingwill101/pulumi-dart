@@ -32,4 +32,3 @@ class MysqlDatabaseDatastreamV1alpha1 {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class GoogleTypeExprBeyondcorpV1alpha {
     );
   }
 }
-

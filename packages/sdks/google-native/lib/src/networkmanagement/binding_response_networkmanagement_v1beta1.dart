@@ -38,4 +38,3 @@ class BindingResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

@@ -21,4 +21,3 @@ enum ContactNotificationCategorySubscriptionsItem {
     throw ArgumentError('Unknown ContactNotificationCategorySubscriptionsItem value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class AppConnectionIamMemberBeyondcorpV1alphaArgs {
     );
   }
 }
-

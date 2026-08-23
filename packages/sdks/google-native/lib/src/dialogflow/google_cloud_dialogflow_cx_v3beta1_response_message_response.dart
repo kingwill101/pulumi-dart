@@ -92,4 +92,3 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse {
     );
   }
 }
-

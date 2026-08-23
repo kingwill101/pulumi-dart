@@ -37,4 +37,3 @@ class NonCompliantFileContaineranalysisV1alpha1 {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class DatasetDicomStoreIamMemberHealthcareV1beta1Args {
     );
   }
 }
-

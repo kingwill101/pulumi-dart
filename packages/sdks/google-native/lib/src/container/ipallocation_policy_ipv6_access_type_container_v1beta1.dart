@@ -16,4 +16,3 @@ enum IPAllocationPolicyIpv6AccessTypeContainerV1beta1 {
     throw ArgumentError('Unknown IPAllocationPolicyIpv6AccessTypeContainerV1beta1 value: $value');
   }
 }
-

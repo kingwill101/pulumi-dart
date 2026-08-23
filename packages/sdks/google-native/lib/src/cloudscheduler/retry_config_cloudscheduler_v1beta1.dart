@@ -49,4 +49,3 @@ class RetryConfigCloudschedulerV1beta1 {
     );
   }
 }
-

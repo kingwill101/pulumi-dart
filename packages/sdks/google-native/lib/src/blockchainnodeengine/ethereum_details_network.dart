@@ -18,4 +18,3 @@ enum EthereumDetailsNetwork {
     throw ArgumentError('Unknown EthereumDetailsNetwork value: $value');
   }
 }
-

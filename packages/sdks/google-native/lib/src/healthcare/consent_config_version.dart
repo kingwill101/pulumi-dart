@@ -15,4 +15,3 @@ enum ConsentConfigVersion {
     throw ArgumentError('Unknown ConsentConfigVersion value: $value');
   }
 }
-

@@ -19,4 +19,3 @@ enum GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood {
     throw ArgumentError('Unknown GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood value: $value');
   }
 }
-

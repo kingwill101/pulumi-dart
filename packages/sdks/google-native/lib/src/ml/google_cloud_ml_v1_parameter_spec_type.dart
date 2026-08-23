@@ -18,4 +18,3 @@ enum GoogleCloudMlV1ParameterSpecType {
     throw ArgumentError('Unknown GoogleCloudMlV1ParameterSpecType value: $value');
   }
 }
-

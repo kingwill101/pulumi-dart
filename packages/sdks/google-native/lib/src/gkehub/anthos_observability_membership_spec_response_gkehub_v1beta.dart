@@ -37,4 +37,3 @@ class AnthosObservabilityMembershipSpecResponseGkehubV1beta {
     );
   }
 }
-

@@ -98,4 +98,3 @@ class ArtifactAiplatformV1beta1Args {
     );
   }
 }
-

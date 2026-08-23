@@ -39,4 +39,3 @@ class StreamConfigHealthcareV1beta1 {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState {
     throw ArgumentError('Unknown ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState value: $value');
   }
 }
-

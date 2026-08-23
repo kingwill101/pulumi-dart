@@ -48,4 +48,3 @@ class FirewallPolicyAssociationResponseComputeV1 {
     );
   }
 }
-

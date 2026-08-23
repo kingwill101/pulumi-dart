@@ -22,4 +22,3 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType {
     throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType value: $value');
   }
 }
-

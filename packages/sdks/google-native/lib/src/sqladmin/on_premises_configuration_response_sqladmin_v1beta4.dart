@@ -74,4 +74,3 @@ class OnPremisesConfigurationResponseSqladminV1beta4 {
     );
   }
 }
-

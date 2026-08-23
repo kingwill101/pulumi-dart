@@ -31,4 +31,3 @@ class OidcTokenResponseCloudschedulerV1beta1 {
     );
   }
 }
-

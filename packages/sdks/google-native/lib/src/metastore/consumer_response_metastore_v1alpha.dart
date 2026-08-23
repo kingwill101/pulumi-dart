@@ -37,4 +37,3 @@ class ConsumerResponseMetastoreV1alpha {
     );
   }
 }
-

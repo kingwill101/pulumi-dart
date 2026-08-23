@@ -77,4 +77,3 @@ class NodeNetworkConfigResponseContainerV1beta1 {
     );
   }
 }
-

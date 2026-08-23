@@ -49,4 +49,3 @@ class LoadBalancerBackendResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

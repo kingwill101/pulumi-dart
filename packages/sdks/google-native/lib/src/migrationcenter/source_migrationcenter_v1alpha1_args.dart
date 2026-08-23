@@ -75,4 +75,3 @@ class SourceMigrationcenterV1alpha1Args {
     );
   }
 }
-

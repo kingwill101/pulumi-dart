@@ -16,4 +16,3 @@ enum SettingsReplicationType {
     throw ArgumentError('Unknown SettingsReplicationType value: $value');
   }
 }
-

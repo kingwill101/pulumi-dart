@@ -151,4 +151,3 @@ class NodePoolContainerV1beta1Args {
     );
   }
 }
-

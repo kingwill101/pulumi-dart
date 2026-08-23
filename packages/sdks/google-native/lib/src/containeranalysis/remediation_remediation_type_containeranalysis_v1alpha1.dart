@@ -19,4 +19,3 @@ enum RemediationRemediationTypeContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown RemediationRemediationTypeContaineranalysisV1alpha1 value: $value');
   }
 }
-

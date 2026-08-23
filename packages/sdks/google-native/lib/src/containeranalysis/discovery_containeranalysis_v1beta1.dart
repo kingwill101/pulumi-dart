@@ -26,4 +26,3 @@ class DiscoveryContaineranalysisV1beta1 {
     );
   }
 }
-

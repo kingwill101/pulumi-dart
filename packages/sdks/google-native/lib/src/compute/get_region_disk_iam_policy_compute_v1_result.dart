@@ -52,4 +52,3 @@ class GetRegionDiskIamPolicyComputeV1Result {
     );
   }
 }
-

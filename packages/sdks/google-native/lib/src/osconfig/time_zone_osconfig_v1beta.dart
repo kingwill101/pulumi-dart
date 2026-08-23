@@ -31,4 +31,3 @@ class TimeZoneOsconfigV1beta {
     );
   }
 }
-

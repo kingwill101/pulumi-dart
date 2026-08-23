@@ -16,4 +16,3 @@ enum FhirStoreComplexDataTypeReferenceParsing {
     throw ArgumentError('Unknown FhirStoreComplexDataTypeReferenceParsing value: $value');
   }
 }
-

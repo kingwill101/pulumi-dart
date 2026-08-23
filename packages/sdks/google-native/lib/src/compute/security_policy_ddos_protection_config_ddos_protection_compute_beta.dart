@@ -15,4 +15,3 @@ enum SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta {
     throw ArgumentError('Unknown SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta value: $value');
   }
 }
-

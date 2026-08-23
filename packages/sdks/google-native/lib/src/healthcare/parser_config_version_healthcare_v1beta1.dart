@@ -17,4 +17,3 @@ enum ParserConfigVersionHealthcareV1beta1 {
     throw ArgumentError('Unknown ParserConfigVersionHealthcareV1beta1 value: $value');
   }
 }
-

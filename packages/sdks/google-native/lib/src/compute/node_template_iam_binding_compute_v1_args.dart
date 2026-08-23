@@ -52,4 +52,3 @@ class NodeTemplateIamBindingComputeV1Args {
     );
   }
 }
-

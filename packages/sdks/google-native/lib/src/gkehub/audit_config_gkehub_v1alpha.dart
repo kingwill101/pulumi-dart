@@ -32,4 +32,3 @@ class AuditConfigGkehubV1alpha {
     );
   }
 }
-

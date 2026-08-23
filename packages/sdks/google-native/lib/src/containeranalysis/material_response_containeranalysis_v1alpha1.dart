@@ -31,4 +31,3 @@ class MaterialResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

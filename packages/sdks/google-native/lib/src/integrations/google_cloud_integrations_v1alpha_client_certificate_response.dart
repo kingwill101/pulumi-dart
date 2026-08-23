@@ -37,4 +37,3 @@ class GoogleCloudIntegrationsV1alphaClientCertificateResponse {
     );
   }
 }
-

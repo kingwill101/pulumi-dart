@@ -100,4 +100,3 @@ class GetFeatureGkehubV1betaResult {
     );
   }
 }
-

@@ -68,4 +68,3 @@ class GoogleCloudDataplexV1TaskSparkTaskConfig {
     );
   }
 }
-

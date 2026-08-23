@@ -47,4 +47,3 @@ class GetRunAiplatformV1beta1Args {
     );
   }
 }
-

@@ -64,4 +64,3 @@ class RuleComputeV1 {
     );
   }
 }
-

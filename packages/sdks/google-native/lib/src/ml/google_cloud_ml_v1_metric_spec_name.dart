@@ -16,4 +16,3 @@ enum GoogleCloudMlV1MetricSpecName {
     throw ArgumentError('Unknown GoogleCloudMlV1MetricSpecName value: $value');
   }
 }
-

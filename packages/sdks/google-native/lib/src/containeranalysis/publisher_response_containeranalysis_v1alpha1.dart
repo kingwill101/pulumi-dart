@@ -37,4 +37,3 @@ class PublisherResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

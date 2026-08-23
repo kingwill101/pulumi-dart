@@ -43,4 +43,3 @@ class ExprContaineranalysisV1alpha1 {
     );
   }
 }
-

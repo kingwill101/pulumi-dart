@@ -17,4 +17,3 @@ enum FhirStoreVersionHealthcareV1beta1 {
     throw ArgumentError('Unknown FhirStoreVersionHealthcareV1beta1 value: $value');
   }
 }
-

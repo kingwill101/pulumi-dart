@@ -37,4 +37,3 @@ class GetAttestorIamPolicyBinaryauthorizationV1beta1Args {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaMockConfigMockStrategy value: $value');
   }
 }
-

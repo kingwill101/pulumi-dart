@@ -59,4 +59,3 @@ class UriOverrideCloudtasksV2beta3 {
     );
   }
 }
-

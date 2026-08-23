@@ -31,4 +31,3 @@ class AuditLogConfigResponseSecuritycenterV1beta1 {
     );
   }
 }
-

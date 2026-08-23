@@ -25,4 +25,3 @@ class VpnGatewayVpnGatewayInterfaceComputeV1 {
     );
   }
 }
-

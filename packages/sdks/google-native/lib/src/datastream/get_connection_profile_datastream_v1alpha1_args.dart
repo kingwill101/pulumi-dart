@@ -37,4 +37,3 @@ class GetConnectionProfileDatastreamV1alpha1Args {
     );
   }
 }
-

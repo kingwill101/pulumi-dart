@@ -26,4 +26,3 @@ class AuthorizationLoggingOptionsGameservicesV1beta {
     );
   }
 }
-

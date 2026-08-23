@@ -32,4 +32,3 @@ class GetBudgetBillingbudgetsV1beta1Args {
     );
   }
 }
-

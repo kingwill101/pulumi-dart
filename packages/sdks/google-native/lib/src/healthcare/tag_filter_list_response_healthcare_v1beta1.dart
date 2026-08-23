@@ -25,4 +25,3 @@ class TagFilterListResponseHealthcareV1beta1 {
     );
   }
 }
-

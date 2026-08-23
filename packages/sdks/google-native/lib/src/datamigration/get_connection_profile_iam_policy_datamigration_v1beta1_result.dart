@@ -45,4 +45,3 @@ class GetConnectionProfileIamPolicyDatamigrationV1beta1Result {
     );
   }
 }
-

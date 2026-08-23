@@ -63,4 +63,3 @@ class GetGlossaryTranslateV3beta1Result {
     );
   }
 }
-

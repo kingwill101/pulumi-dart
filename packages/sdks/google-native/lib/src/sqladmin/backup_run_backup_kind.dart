@@ -16,4 +16,3 @@ enum BackupRunBackupKind {
     throw ArgumentError('Unknown BackupRunBackupKind value: $value');
   }
 }
-

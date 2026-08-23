@@ -43,4 +43,3 @@ class BindingGameservicesV1beta {
     );
   }
 }
-

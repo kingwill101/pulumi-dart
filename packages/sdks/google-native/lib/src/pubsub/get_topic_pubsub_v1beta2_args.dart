@@ -32,4 +32,3 @@ class GetTopicPubsubV1beta2Args {
     );
   }
 }
-

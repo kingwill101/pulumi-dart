@@ -44,4 +44,3 @@ class DestinationResponseNetworksecurityV1beta1 {
     );
   }
 }
-

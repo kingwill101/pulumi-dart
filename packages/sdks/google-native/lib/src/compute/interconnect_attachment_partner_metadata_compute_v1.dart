@@ -37,4 +37,3 @@ class InterconnectAttachmentPartnerMetadataComputeV1 {
     );
   }
 }
-

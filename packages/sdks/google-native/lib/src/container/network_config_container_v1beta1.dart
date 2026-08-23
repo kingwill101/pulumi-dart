@@ -99,4 +99,3 @@ class NetworkConfigContainerV1beta1 {
     );
   }
 }
-

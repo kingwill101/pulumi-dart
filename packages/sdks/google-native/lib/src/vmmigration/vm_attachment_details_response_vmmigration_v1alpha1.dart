@@ -25,4 +25,3 @@ class VmAttachmentDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

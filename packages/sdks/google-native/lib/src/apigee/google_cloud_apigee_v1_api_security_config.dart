@@ -25,4 +25,3 @@ class GoogleCloudApigeeV1ApiSecurityConfig {
     );
   }
 }
-

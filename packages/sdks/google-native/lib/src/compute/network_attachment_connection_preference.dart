@@ -15,4 +15,3 @@ enum NetworkAttachmentConnectionPreference {
     throw ArgumentError('Unknown NetworkAttachmentConnectionPreference value: $value');
   }
 }
-

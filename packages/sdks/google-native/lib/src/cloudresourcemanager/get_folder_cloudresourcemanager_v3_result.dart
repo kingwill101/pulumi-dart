@@ -66,4 +66,3 @@ class GetFolderCloudresourcemanagerV3Result {
     );
   }
 }
-

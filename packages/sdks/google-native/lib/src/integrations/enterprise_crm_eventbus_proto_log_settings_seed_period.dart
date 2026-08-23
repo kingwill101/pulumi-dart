@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusProtoLogSettingsSeedPeriod {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoLogSettingsSeedPeriod value: $value');
   }
 }
-

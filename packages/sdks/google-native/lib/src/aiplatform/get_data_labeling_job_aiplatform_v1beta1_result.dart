@@ -130,4 +130,3 @@ class GetDataLabelingJobAiplatformV1beta1Result {
     );
   }
 }
-

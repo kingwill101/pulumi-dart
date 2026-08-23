@@ -16,4 +16,3 @@ enum AptSettingsTypeOsconfigV1beta {
     throw ArgumentError('Unknown AptSettingsTypeOsconfigV1beta value: $value');
   }
 }
-

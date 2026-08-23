@@ -85,4 +85,3 @@ class PostalAddressDomainsV1alpha2 {
     );
   }
 }
-

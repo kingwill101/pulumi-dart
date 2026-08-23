@@ -40,4 +40,3 @@ class OSPolicyResourceGroupResponseOsconfigV1alpha {
     );
   }
 }
-

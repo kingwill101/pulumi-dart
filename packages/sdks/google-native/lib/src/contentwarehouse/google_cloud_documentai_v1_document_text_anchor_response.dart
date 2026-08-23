@@ -32,4 +32,3 @@ class GoogleCloudDocumentaiV1DocumentTextAnchorResponse {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetDatabaseSqladminV1beta4Args {
     );
   }
 }
-

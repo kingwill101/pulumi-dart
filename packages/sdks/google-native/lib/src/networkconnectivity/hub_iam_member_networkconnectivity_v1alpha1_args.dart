@@ -52,4 +52,3 @@ class HubIamMemberNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

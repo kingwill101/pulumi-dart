@@ -32,4 +32,3 @@ class GetRouteComputeV1Args {
     );
   }
 }
-

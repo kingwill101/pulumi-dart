@@ -52,4 +52,3 @@ class DatasetConsentStoreIamMemberHealthcareV1beta1Args {
     );
   }
 }
-

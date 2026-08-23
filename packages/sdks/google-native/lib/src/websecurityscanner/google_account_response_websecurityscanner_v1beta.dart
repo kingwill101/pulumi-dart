@@ -31,4 +31,3 @@ class GoogleAccountResponseWebsecurityscannerV1beta {
     );
   }
 }
-

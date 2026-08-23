@@ -49,4 +49,3 @@ class RecipeContaineranalysisV1alpha1 {
     );
   }
 }
-

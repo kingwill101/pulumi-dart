@@ -26,4 +26,3 @@ class OracleRdbmsResponseDatastreamV1alpha1 {
     );
   }
 }
-

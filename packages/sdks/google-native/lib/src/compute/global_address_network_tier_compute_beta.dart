@@ -17,4 +17,3 @@ enum GlobalAddressNetworkTierComputeBeta {
     throw ArgumentError('Unknown GlobalAddressNetworkTierComputeBeta value: $value');
   }
 }
-

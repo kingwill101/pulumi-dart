@@ -73,4 +73,3 @@ class VpnTunnelInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

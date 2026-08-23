@@ -58,4 +58,3 @@ class GoogleCloudDatacatalogV1PhysicalSchema {
     );
   }
 }
-

@@ -66,4 +66,3 @@ class GetPeeringManagedidentitiesV1alpha1Result {
     );
   }
 }
-

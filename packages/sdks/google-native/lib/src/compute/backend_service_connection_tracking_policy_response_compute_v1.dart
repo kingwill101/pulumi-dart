@@ -43,4 +43,3 @@ class BackendServiceConnectionTrackingPolicyResponseComputeV1 {
     );
   }
 }
-

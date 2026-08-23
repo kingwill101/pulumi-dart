@@ -52,4 +52,3 @@ class ClientConnectorServiceIamBindingBeyondcorpV1alphaArgs {
     );
   }
 }
-

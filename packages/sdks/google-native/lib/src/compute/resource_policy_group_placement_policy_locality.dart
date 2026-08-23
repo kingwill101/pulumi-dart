@@ -16,4 +16,3 @@ enum ResourcePolicyGroupPlacementPolicyLocality {
     throw ArgumentError('Unknown ResourcePolicyGroupPlacementPolicyLocality value: $value');
   }
 }
-

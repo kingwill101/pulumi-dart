@@ -52,4 +52,3 @@ class RegionOperationIamMemberDataprocV1beta2Args {
     );
   }
 }
-

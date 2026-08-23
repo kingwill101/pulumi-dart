@@ -50,4 +50,3 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo {
     );
   }
 }
-

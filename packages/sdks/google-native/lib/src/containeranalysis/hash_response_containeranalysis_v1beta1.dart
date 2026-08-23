@@ -31,4 +31,3 @@ class HashResponseContaineranalysisV1beta1 {
     );
   }
 }
-

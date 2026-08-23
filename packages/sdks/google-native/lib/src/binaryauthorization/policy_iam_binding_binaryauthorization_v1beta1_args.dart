@@ -52,4 +52,3 @@ class PolicyIamBindingBinaryauthorizationV1beta1Args {
     );
   }
 }
-

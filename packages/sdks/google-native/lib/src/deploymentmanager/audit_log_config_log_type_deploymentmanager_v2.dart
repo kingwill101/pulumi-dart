@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeDeploymentmanagerV2 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeDeploymentmanagerV2 value: $value');
   }
 }
-

@@ -62,4 +62,3 @@ class GetAuthorizationPolicyNetworksecurityV1beta1Result {
     );
   }
 }
-

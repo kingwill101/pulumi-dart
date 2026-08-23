@@ -16,4 +16,3 @@ enum TelemetryConfigLogFormatMetastoreV1beta {
     throw ArgumentError('Unknown TelemetryConfigLogFormatMetastoreV1beta value: $value');
   }
 }
-

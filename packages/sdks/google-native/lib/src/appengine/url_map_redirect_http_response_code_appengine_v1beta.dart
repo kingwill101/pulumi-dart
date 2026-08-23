@@ -18,4 +18,3 @@ enum UrlMapRedirectHttpResponseCodeAppengineV1beta {
     throw ArgumentError('Unknown UrlMapRedirectHttpResponseCodeAppengineV1beta value: $value');
   }
 }
-

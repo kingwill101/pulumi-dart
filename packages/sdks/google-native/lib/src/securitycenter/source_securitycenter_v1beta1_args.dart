@@ -45,4 +45,3 @@ class SourceSecuritycenterV1beta1Args {
     );
   }
 }
-

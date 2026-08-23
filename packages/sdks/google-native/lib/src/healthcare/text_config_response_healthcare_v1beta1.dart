@@ -44,4 +44,3 @@ class TextConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum TextStyleFontSize {
     throw ArgumentError('Unknown TextStyleFontSize value: $value');
   }
 }
-

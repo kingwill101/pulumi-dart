@@ -179,4 +179,3 @@ class GoogleCloudMlV1TrainingInputResponse {
     );
   }
 }
-

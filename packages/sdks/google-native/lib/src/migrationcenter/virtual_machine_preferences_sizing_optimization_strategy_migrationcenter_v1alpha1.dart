@@ -18,4 +18,3 @@ enum VirtualMachinePreferencesSizingOptimizationStrategyMigrationcenterV1alpha1 
     throw ArgumentError('Unknown VirtualMachinePreferencesSizingOptimizationStrategyMigrationcenterV1alpha1 value: $value');
   }
 }
-

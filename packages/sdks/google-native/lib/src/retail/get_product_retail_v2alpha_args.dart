@@ -47,4 +47,3 @@ class GetProductRetailV2alphaArgs {
     );
   }
 }
-

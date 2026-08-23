@@ -127,4 +127,3 @@ class GetRegionHealthCheckComputeV1Result {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetNodeGroupComputeV1Args {
     );
   }
 }
-

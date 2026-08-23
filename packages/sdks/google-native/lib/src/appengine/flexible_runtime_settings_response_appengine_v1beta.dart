@@ -31,4 +31,3 @@ class FlexibleRuntimeSettingsResponseAppengineV1beta {
     );
   }
 }
-

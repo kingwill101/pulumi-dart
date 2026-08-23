@@ -16,4 +16,3 @@ enum NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1 {
     throw ArgumentError('Unknown NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1 value: $value');
   }
 }
-

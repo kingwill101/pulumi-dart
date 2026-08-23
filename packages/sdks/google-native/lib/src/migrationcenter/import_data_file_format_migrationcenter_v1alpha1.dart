@@ -20,4 +20,3 @@ enum ImportDataFileFormatMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown ImportDataFileFormatMigrationcenterV1alpha1 value: $value');
   }
 }
-

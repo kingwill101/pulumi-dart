@@ -32,4 +32,3 @@ class FieldMetadataHealthcareV1beta1 {
     );
   }
 }
-

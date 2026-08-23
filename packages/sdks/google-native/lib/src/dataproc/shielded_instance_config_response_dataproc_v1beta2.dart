@@ -37,4 +37,3 @@ class ShieldedInstanceConfigResponseDataprocV1beta2 {
     );
   }
 }
-

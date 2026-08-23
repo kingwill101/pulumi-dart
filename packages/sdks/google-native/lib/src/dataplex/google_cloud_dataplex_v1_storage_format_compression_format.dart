@@ -16,4 +16,3 @@ enum GoogleCloudDataplexV1StorageFormatCompressionFormat {
     throw ArgumentError('Unknown GoogleCloudDataplexV1StorageFormatCompressionFormat value: $value');
   }
 }
-

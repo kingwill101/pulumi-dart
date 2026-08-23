@@ -24,4 +24,3 @@ enum AcceleratorConfigTypeNotebooksV2 {
     throw ArgumentError('Unknown AcceleratorConfigTypeNotebooksV2 value: $value');
   }
 }
-

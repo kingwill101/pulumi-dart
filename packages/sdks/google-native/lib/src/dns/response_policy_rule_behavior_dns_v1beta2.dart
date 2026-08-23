@@ -15,4 +15,3 @@ enum ResponsePolicyRuleBehaviorDnsV1beta2 {
     throw ArgumentError('Unknown ResponsePolicyRuleBehaviorDnsV1beta2 value: $value');
   }
 }
-

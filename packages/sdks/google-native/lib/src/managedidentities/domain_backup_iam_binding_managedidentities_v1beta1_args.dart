@@ -52,4 +52,3 @@ class DomainBackupIamBindingManagedidentitiesV1beta1Args {
     );
   }
 }
-

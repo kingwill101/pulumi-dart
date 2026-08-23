@@ -51,4 +51,3 @@ class HiveMetastoreConfigMetastoreV1beta {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum MaintenanceExclusionOptionsScope {
     throw ArgumentError('Unknown MaintenanceExclusionOptionsScope value: $value');
   }
 }
-

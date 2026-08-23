@@ -31,4 +31,3 @@ class OAuthTokenResponseCloudtasksV2beta2 {
     );
   }
 }
-

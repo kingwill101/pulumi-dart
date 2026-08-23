@@ -25,4 +25,3 @@ class CloudFunctionEndpointNetworkmanagementV1beta1 {
     );
   }
 }
-

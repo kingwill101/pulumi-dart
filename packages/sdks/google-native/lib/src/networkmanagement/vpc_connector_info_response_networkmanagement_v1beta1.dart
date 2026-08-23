@@ -37,4 +37,3 @@ class VpcConnectorInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

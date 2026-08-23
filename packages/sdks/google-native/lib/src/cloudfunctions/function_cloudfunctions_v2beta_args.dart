@@ -90,4 +90,3 @@ class FunctionCloudfunctionsV2betaArgs {
     );
   }
 }
-

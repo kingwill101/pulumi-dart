@@ -52,4 +52,3 @@ class RepositoryIamMemberArtifactregistryV1beta1Args {
     );
   }
 }
-

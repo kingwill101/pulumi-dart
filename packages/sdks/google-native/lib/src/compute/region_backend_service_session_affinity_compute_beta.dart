@@ -21,4 +21,3 @@ enum RegionBackendServiceSessionAffinityComputeBeta {
     throw ArgumentError('Unknown RegionBackendServiceSessionAffinityComputeBeta value: $value');
   }
 }
-

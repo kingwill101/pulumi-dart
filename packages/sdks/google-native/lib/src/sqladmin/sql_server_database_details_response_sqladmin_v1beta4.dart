@@ -31,4 +31,3 @@ class SqlServerDatabaseDetailsResponseSqladminV1beta4 {
     );
   }
 }
-

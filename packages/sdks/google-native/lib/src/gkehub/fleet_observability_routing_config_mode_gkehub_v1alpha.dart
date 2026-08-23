@@ -16,4 +16,3 @@ enum FleetObservabilityRoutingConfigModeGkehubV1alpha {
     throw ArgumentError('Unknown FleetObservabilityRoutingConfigModeGkehubV1alpha value: $value');
   }
 }
-

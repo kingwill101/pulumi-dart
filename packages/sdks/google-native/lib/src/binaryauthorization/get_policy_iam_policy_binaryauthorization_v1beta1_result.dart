@@ -38,4 +38,3 @@ class GetPolicyIamPolicyBinaryauthorizationV1beta1Result {
     );
   }
 }
-

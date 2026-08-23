@@ -27,4 +27,3 @@ class GetFolderIamPolicyCloudresourcemanagerV2beta1Args {
     );
   }
 }
-

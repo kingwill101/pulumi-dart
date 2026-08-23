@@ -16,4 +16,3 @@ enum ResourceGroupResourceType {
     throw ArgumentError('Unknown ResourceGroupResourceType value: $value');
   }
 }
-

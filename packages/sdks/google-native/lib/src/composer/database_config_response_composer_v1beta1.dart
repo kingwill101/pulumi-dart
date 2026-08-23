@@ -31,4 +31,3 @@ class DatabaseConfigResponseComposerV1beta1 {
     );
   }
 }
-

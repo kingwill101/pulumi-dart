@@ -24,4 +24,3 @@ class PacketMirroringMirroredResourceInfoInstanceInfoComputeV1 {
     );
   }
 }
-

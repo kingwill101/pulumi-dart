@@ -31,4 +31,3 @@ class NetworkPolicyResponseContainerV1beta1 {
     );
   }
 }
-

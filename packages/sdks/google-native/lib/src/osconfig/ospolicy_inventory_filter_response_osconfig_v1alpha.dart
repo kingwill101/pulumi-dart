@@ -31,4 +31,3 @@ class OSPolicyInventoryFilterResponseOsconfigV1alpha {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum GooglePrivacyDlpV2CloudStorageOptionsSampleMethod {
     throw ArgumentError('Unknown GooglePrivacyDlpV2CloudStorageOptionsSampleMethod value: $value');
   }
 }
-

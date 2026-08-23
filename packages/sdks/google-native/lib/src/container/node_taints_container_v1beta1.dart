@@ -26,4 +26,3 @@ class NodeTaintsContainerV1beta1 {
     );
   }
 }
-

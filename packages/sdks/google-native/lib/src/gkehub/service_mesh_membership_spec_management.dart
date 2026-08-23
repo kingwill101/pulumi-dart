@@ -16,4 +16,3 @@ enum ServiceMeshMembershipSpecManagement {
     throw ArgumentError('Unknown ServiceMeshMembershipSpecManagement value: $value');
   }
 }
-

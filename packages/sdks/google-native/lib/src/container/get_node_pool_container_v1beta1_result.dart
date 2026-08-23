@@ -156,4 +156,3 @@ class GetNodePoolContainerV1beta1Result {
     );
   }
 }
-

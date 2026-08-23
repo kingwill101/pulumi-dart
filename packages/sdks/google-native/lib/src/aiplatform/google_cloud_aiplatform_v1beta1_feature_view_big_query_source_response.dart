@@ -30,4 +30,3 @@ class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse {
     );
   }
 }
-

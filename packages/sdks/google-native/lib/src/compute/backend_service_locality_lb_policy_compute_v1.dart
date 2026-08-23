@@ -21,4 +21,3 @@ enum BackendServiceLocalityLbPolicyComputeV1 {
     throw ArgumentError('Unknown BackendServiceLocalityLbPolicyComputeV1 value: $value');
   }
 }
-

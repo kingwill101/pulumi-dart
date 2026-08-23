@@ -17,4 +17,3 @@ enum InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeBeta {
     throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeBeta value: $value');
   }
 }
-

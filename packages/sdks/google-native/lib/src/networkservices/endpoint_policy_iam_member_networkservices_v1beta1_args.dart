@@ -52,4 +52,3 @@ class EndpointPolicyIamMemberNetworkservicesV1beta1Args {
     );
   }
 }
-

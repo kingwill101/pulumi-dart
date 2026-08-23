@@ -52,4 +52,3 @@ class ResourcePolicyIamMemberComputeV1Args {
     );
   }
 }
-

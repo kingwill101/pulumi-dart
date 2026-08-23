@@ -18,4 +18,3 @@ enum MultiEntityRenameSourceNameTransformation {
     throw ArgumentError('Unknown MultiEntityRenameSourceNameTransformation value: $value');
   }
 }
-

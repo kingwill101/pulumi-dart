@@ -51,4 +51,3 @@ class TemplateContentsDeploymentmanagerV2beta {
     );
   }
 }
-

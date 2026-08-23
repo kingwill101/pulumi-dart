@@ -39,4 +39,3 @@ class MembershipRoleCloudidentityV1beta1 {
     );
   }
 }
-

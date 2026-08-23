@@ -65,4 +65,3 @@ class InstanceTemplateIamPolicyComputeV1Args {
     );
   }
 }
-

@@ -60,4 +60,3 @@ class GetResourceRecordSetDnsV1beta2Result {
     );
   }
 }
-

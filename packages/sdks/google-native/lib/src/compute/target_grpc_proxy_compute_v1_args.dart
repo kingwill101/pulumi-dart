@@ -57,4 +57,3 @@ class TargetGrpcProxyComputeV1Args {
     );
   }
 }
-

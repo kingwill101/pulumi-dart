@@ -25,4 +25,3 @@ class FilterResponseContainerV1beta1 {
     );
   }
 }
-

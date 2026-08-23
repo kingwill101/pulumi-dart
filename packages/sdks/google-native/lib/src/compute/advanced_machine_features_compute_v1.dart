@@ -43,4 +43,3 @@ class AdvancedMachineFeaturesComputeV1 {
     );
   }
 }
-

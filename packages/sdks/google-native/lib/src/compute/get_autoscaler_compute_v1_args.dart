@@ -37,4 +37,3 @@ class GetAutoscalerComputeV1Args {
     );
   }
 }
-

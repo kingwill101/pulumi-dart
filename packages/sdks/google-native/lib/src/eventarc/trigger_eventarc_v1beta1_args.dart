@@ -70,4 +70,3 @@ class TriggerEventarcV1beta1Args {
     );
   }
 }
-

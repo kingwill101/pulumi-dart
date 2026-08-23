@@ -45,4 +45,3 @@ class GetEndpointPolicyIamPolicyNetworkservicesV1beta1Result {
     );
   }
 }
-

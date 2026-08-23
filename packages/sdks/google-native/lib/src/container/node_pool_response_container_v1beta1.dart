@@ -156,4 +156,3 @@ class NodePoolResponseContainerV1beta1 {
     );
   }
 }
-

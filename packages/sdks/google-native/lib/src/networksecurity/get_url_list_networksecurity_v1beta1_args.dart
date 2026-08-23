@@ -37,4 +37,3 @@ class GetUrlListNetworksecurityV1beta1Args {
     );
   }
 }
-

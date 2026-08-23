@@ -50,4 +50,3 @@ class ServicePerimeterConfigResponseAccesscontextmanagerV1beta {
     );
   }
 }
-

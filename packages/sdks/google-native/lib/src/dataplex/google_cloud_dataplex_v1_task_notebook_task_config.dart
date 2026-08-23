@@ -44,4 +44,3 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfig {
     );
   }
 }
-

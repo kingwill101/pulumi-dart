@@ -70,4 +70,3 @@ class GoogleCloudDocumentaiV1DocumentPageFormFieldResponse {
     );
   }
 }
-

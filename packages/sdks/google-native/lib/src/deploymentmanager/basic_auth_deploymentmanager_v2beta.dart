@@ -29,4 +29,3 @@ class BasicAuthDeploymentmanagerV2beta {
     );
   }
 }
-

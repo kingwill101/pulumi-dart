@@ -50,4 +50,3 @@ class VersionContaineranalysisV1alpha1 {
     );
   }
 }
-

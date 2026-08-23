@@ -17,4 +17,3 @@ enum GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2 {
     throw ArgumentError('Unknown GceClusterConfigPrivateIpv6GoogleAccessDataprocV1beta2 value: $value');
   }
 }
-

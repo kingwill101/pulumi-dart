@@ -56,4 +56,3 @@ class RegionJobIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

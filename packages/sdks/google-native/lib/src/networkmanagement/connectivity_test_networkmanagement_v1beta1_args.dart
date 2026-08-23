@@ -76,4 +76,3 @@ class ConnectivityTestNetworkmanagementV1beta1Args {
     );
   }
 }
-

@@ -49,4 +49,3 @@ class MetadataExportResponseMetastoreV1beta {
     );
   }
 }
-

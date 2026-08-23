@@ -33,4 +33,3 @@ class GoogleCloudDocumentaiV1BoundingPoly {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class GetDatasetHl7V2StoreIamPolicyResult {
     );
   }
 }
-

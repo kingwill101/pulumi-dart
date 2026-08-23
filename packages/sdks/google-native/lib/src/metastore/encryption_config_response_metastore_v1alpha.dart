@@ -25,4 +25,3 @@ class EncryptionConfigResponseMetastoreV1alpha {
     );
   }
 }
-

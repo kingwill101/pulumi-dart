@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeNetworkmanagementV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeNetworkmanagementV1beta1 value: $value');
   }
 }
-

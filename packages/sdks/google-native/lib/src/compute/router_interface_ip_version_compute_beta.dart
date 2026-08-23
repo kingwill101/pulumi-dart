@@ -15,4 +15,3 @@ enum RouterInterfaceIpVersionComputeBeta {
     throw ArgumentError('Unknown RouterInterfaceIpVersionComputeBeta value: $value');
   }
 }
-

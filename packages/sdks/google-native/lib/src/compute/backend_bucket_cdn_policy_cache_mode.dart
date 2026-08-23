@@ -17,4 +17,3 @@ enum BackendBucketCdnPolicyCacheMode {
     throw ArgumentError('Unknown BackendBucketCdnPolicyCacheMode value: $value');
   }
 }
-

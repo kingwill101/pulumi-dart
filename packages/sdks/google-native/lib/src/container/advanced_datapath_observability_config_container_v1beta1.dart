@@ -32,4 +32,3 @@ class AdvancedDatapathObservabilityConfigContainerV1beta1 {
     );
   }
 }
-

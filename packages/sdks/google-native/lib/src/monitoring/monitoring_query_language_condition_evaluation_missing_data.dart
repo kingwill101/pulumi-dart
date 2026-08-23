@@ -17,4 +17,3 @@ enum MonitoringQueryLanguageConditionEvaluationMissingData {
     throw ArgumentError('Unknown MonitoringQueryLanguageConditionEvaluationMissingData value: $value');
   }
 }
-

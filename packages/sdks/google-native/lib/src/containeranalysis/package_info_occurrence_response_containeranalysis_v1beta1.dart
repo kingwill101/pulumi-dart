@@ -74,4 +74,3 @@ class PackageInfoOccurrenceResponseContaineranalysisV1beta1 {
     );
   }
 }
-

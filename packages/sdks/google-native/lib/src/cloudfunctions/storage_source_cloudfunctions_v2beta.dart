@@ -37,4 +37,3 @@ class StorageSourceCloudfunctionsV2beta {
     );
   }
 }
-

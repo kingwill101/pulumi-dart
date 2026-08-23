@@ -49,4 +49,3 @@ class RecipeResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

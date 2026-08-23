@@ -25,4 +25,3 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
     );
   }
 }
-

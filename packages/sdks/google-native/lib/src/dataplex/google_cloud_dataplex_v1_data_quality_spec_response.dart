@@ -45,4 +45,3 @@ class GoogleCloudDataplexV1DataQualitySpecResponse {
     );
   }
 }
-

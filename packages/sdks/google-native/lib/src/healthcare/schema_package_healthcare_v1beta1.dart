@@ -53,4 +53,3 @@ class SchemaPackageHealthcareV1beta1 {
     );
   }
 }
-

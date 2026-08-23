@@ -32,4 +32,3 @@ class GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
     );
   }
 }
-

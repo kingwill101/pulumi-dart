@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation value: $value');
   }
 }
-

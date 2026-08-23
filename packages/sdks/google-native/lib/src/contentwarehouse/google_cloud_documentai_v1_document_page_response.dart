@@ -137,4 +137,3 @@ class GoogleCloudDocumentaiV1DocumentPageResponse {
     );
   }
 }
-

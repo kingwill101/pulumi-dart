@@ -37,4 +37,3 @@ class FingerprintResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

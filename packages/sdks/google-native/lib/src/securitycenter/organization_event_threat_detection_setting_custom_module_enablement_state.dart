@@ -16,4 +16,3 @@ enum OrganizationEventThreatDetectionSettingCustomModuleEnablementState {
     throw ArgumentError('Unknown OrganizationEventThreatDetectionSettingCustomModuleEnablementState value: $value');
   }
 }
-

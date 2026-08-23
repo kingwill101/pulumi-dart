@@ -31,4 +31,3 @@ class ServiceAccountTpuV2alpha1 {
     );
   }
 }
-

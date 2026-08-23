@@ -15,4 +15,3 @@ enum GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSumma
     throw ArgumentError('Unknown GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel value: $value');
   }
 }
-

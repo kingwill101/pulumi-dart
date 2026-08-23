@@ -20,4 +20,3 @@ enum HealthCheckTypeComputeV1 {
     throw ArgumentError('Unknown HealthCheckTypeComputeV1 value: $value');
   }
 }
-

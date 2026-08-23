@@ -16,4 +16,3 @@ enum DatabaseAppEngineIntegrationMode {
     throw ArgumentError('Unknown DatabaseAppEngineIntegrationMode value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class InstanceIamBindingComputeV1Args {
     );
   }
 }
-

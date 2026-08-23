@@ -52,4 +52,3 @@ class NamespaceIamBindingServicedirectoryV1beta1Args {
     );
   }
 }
-

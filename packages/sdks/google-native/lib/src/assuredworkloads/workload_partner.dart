@@ -18,4 +18,3 @@ enum WorkloadPartner {
     throw ArgumentError('Unknown WorkloadPartner value: $value');
   }
 }
-

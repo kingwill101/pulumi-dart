@@ -62,4 +62,3 @@ class GetEnvironmentDialogflowV2beta1Result {
     );
   }
 }
-

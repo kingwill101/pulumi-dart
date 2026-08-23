@@ -50,4 +50,3 @@ class OSPolicyResourceExecResourceExecResponseOsconfigV1alpha {
     );
   }
 }
-

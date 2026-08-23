@@ -50,4 +50,3 @@ class MetadataResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum ComputeEnginePreferencesLicenseType {
     throw ArgumentError('Unknown ComputeEnginePreferencesLicenseType value: $value');
   }
 }
-

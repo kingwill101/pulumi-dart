@@ -38,4 +38,3 @@ class WeeklyMaintenanceWindowResponseRedisV1beta1 {
     );
   }
 }
-

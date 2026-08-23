@@ -32,4 +32,3 @@ class RecurringTimeWindowResponseContainerV1beta1 {
     );
   }
 }
-

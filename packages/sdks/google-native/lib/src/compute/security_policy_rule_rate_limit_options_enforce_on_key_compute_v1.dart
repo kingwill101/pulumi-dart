@@ -21,4 +21,3 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1 {
     throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1 value: $value');
   }
 }
-

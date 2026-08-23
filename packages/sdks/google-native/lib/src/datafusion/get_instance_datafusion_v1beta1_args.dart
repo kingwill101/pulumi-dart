@@ -37,4 +37,3 @@ class GetInstanceDatafusionV1beta1Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class MysqlSslConfigDatastreamV1alpha1 {
     );
   }
 }
-

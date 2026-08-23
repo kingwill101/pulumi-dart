@@ -32,4 +32,3 @@ class AliasContextContaineranalysisV1beta1 {
     );
   }
 }
-

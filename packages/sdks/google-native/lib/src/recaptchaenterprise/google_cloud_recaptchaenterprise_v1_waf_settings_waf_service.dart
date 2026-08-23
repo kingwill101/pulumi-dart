@@ -16,4 +16,3 @@ enum GoogleCloudRecaptchaenterpriseV1WafSettingsWafService {
     throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1WafSettingsWafService value: $value');
   }
 }
-

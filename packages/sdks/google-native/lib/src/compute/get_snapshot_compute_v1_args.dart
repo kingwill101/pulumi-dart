@@ -32,4 +32,3 @@ class GetSnapshotComputeV1Args {
     );
   }
 }
-

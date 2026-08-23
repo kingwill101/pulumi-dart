@@ -78,4 +78,3 @@ class GetTargetHttpProxyComputeV1Result {
     );
   }
 }
-

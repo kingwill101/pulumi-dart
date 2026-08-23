@@ -37,4 +37,3 @@ class AbortInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

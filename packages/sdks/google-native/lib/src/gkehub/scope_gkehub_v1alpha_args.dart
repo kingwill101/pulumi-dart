@@ -56,4 +56,3 @@ class ScopeGkehubV1alphaArgs {
     );
   }
 }
-

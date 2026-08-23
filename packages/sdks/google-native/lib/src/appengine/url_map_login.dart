@@ -17,4 +17,3 @@ enum UrlMapLogin {
     throw ArgumentError('Unknown UrlMapLogin value: $value');
   }
 }
-

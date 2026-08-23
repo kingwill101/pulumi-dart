@@ -69,4 +69,3 @@ class ServiceBindingIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

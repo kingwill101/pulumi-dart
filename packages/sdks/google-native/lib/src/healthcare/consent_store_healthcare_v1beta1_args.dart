@@ -67,4 +67,3 @@ class ConsentStoreHealthcareV1beta1Args {
     );
   }
 }
-

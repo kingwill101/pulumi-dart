@@ -42,4 +42,3 @@ class RouterBgpPeerBfdResponseComputeV1 {
     );
   }
 }
-

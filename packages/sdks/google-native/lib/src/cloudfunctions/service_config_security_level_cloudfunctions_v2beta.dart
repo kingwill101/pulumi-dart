@@ -16,4 +16,3 @@ enum ServiceConfigSecurityLevelCloudfunctionsV2beta {
     throw ArgumentError('Unknown ServiceConfigSecurityLevelCloudfunctionsV2beta value: $value');
   }
 }
-

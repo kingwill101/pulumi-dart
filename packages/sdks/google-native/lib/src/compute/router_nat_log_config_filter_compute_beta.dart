@@ -16,4 +16,3 @@ enum RouterNatLogConfigFilterComputeBeta {
     throw ArgumentError('Unknown RouterNatLogConfigFilterComputeBeta value: $value');
   }
 }
-

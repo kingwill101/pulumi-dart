@@ -37,4 +37,3 @@ class GetReservationBigqueryreservationV1beta1Args {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum RegionInstanceGroupManagerFailoverActionComputeBeta {
     throw ArgumentError('Unknown RegionInstanceGroupManagerFailoverActionComputeBeta value: $value');
   }
 }
-

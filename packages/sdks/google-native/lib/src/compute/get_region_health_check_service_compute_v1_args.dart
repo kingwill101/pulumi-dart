@@ -37,4 +37,3 @@ class GetRegionHealthCheckServiceComputeV1Args {
     );
   }
 }
-

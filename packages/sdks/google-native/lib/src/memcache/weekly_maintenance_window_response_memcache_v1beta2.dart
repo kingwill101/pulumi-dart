@@ -38,4 +38,3 @@ class WeeklyMaintenanceWindowResponseMemcacheV1beta2 {
     );
   }
 }
-

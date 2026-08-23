@@ -18,4 +18,3 @@ enum ExternalRefCategoryContaineranalysisV1beta1 {
     throw ArgumentError('Unknown ExternalRefCategoryContaineranalysisV1beta1 value: $value');
   }
 }
-

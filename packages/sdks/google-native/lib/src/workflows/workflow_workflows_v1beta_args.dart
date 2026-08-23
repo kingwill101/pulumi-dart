@@ -68,4 +68,3 @@ class WorkflowWorkflowsV1betaArgs {
     );
   }
 }
-

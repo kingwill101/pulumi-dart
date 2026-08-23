@@ -70,4 +70,3 @@ class AuthorizationPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

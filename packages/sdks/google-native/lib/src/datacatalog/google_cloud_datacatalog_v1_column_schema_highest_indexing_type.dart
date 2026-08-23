@@ -18,4 +18,3 @@ enum GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType value: $value');
   }
 }
-

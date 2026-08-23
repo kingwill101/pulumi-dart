@@ -52,4 +52,3 @@ class BackendBucketIamMemberComputeV1Args {
     );
   }
 }
-

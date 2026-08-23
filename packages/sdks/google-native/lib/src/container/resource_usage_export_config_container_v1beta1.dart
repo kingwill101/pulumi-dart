@@ -39,4 +39,3 @@ class ResourceUsageExportConfigContainerV1beta1 {
     );
   }
 }
-

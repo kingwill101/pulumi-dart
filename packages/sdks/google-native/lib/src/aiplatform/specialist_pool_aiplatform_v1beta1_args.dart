@@ -56,4 +56,3 @@ class SpecialistPoolAiplatformV1beta1Args {
     );
   }
 }
-

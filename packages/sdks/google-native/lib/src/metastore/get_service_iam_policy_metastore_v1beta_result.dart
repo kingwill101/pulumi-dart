@@ -45,4 +45,3 @@ class GetServiceIamPolicyMetastoreV1betaResult {
     );
   }
 }
-

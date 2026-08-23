@@ -37,4 +37,3 @@ class GetHubIamPolicyNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

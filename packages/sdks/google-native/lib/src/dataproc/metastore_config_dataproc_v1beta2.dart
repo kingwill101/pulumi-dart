@@ -25,4 +25,3 @@ class MetastoreConfigDataprocV1beta2 {
     );
   }
 }
-

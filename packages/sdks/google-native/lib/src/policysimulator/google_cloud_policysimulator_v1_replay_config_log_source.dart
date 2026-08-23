@@ -15,4 +15,3 @@ enum GoogleCloudPolicysimulatorV1ReplayConfigLogSource {
     throw ArgumentError('Unknown GoogleCloudPolicysimulatorV1ReplayConfigLogSource value: $value');
   }
 }
-

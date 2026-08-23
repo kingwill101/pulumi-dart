@@ -74,4 +74,3 @@ class GoogleCloudContentwarehouseV1Action {
     );
   }
 }
-

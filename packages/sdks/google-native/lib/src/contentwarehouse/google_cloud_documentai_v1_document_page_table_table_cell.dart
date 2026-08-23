@@ -45,4 +45,3 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCell {
     );
   }
 }
-

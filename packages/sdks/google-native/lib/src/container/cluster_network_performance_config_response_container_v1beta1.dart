@@ -25,4 +25,3 @@ class ClusterNetworkPerformanceConfigResponseContainerV1beta1 {
     );
   }
 }
-

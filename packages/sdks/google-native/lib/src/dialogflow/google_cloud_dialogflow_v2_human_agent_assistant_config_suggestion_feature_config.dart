@@ -66,4 +66,3 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     );
   }
 }
-

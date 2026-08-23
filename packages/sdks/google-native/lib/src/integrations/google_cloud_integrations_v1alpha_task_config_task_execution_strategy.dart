@@ -17,4 +17,3 @@ enum GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy value: $value');
   }
 }
-

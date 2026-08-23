@@ -67,4 +67,3 @@ class CorsPolicyResponseComputeV1 {
     );
   }
 }
-

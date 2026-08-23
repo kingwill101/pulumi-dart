@@ -79,4 +79,3 @@ class GetTimeSeriesAiplatformV1beta1Result {
     );
   }
 }
-

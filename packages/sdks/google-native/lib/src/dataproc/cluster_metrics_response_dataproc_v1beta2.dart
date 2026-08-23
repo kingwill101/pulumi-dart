@@ -31,4 +31,3 @@ class ClusterMetricsResponseDataprocV1beta2 {
     );
   }
 }
-

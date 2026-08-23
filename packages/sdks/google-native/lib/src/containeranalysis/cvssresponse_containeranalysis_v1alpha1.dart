@@ -89,4 +89,3 @@ class CVSSResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

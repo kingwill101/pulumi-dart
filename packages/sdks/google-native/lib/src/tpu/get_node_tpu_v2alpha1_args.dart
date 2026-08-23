@@ -37,4 +37,3 @@ class GetNodeTpuV2alpha1Args {
     );
   }
 }
-

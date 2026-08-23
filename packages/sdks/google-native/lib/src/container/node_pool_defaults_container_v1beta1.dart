@@ -26,4 +26,3 @@ class NodePoolDefaultsContainerV1beta1 {
     );
   }
 }
-

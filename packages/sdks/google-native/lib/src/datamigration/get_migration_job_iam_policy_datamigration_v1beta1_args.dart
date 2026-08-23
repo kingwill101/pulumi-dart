@@ -42,4 +42,3 @@ class GetMigrationJobIamPolicyDatamigrationV1beta1Args {
     );
   }
 }
-

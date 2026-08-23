@@ -15,4 +15,3 @@ enum GPUSharingConfigGpuSharingStrategyContainerV1beta1 {
     throw ArgumentError('Unknown GPUSharingConfigGpuSharingStrategyContainerV1beta1 value: $value');
   }
 }
-

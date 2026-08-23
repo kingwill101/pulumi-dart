@@ -17,4 +17,3 @@ enum WorkloadMetadataConfigNodeMetadata {
     throw ArgumentError('Unknown WorkloadMetadataConfigNodeMetadata value: $value');
   }
 }
-

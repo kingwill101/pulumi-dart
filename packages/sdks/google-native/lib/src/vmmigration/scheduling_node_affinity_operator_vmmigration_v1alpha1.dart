@@ -16,4 +16,3 @@ enum SchedulingNodeAffinityOperatorVmmigrationV1alpha1 {
     throw ArgumentError('Unknown SchedulingNodeAffinityOperatorVmmigrationV1alpha1 value: $value');
   }
 }
-

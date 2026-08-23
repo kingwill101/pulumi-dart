@@ -16,4 +16,3 @@ enum AllocationAggregateReservationVmFamilyComputeBeta {
     throw ArgumentError('Unknown AllocationAggregateReservationVmFamilyComputeBeta value: $value');
   }
 }
-

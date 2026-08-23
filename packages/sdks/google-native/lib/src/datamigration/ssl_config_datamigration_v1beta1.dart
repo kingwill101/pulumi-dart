@@ -37,4 +37,3 @@ class SslConfigDatamigrationV1beta1 {
     );
   }
 }
-

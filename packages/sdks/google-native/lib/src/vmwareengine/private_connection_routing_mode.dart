@@ -16,4 +16,3 @@ enum PrivateConnectionRoutingMode {
     throw ArgumentError('Unknown PrivateConnectionRoutingMode value: $value');
   }
 }
-

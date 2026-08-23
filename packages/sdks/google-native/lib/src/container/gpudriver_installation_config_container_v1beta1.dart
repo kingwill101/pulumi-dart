@@ -26,4 +26,3 @@ class GPUDriverInstallationConfigContainerV1beta1 {
     );
   }
 }
-

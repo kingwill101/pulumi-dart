@@ -32,4 +32,3 @@ class TimePartitioningHealthcareV1beta1 {
     );
   }
 }
-

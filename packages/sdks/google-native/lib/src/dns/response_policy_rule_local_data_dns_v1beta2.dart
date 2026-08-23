@@ -25,4 +25,3 @@ class ResponsePolicyRuleLocalDataDnsV1beta2 {
     );
   }
 }
-

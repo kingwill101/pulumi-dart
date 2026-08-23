@@ -147,4 +147,3 @@ class GetRouteComputeV1Result {
     );
   }
 }
-

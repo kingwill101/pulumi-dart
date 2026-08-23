@@ -64,4 +64,3 @@ class NasJobAiplatformV1beta1Args {
     );
   }
 }
-

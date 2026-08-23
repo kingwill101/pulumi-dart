@@ -108,4 +108,3 @@ class GetNodeGroupComputeV1Result {
     );
   }
 }
-

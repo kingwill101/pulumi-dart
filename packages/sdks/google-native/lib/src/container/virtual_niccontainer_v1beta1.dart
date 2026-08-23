@@ -25,4 +25,3 @@ class VirtualNICContainerV1beta1 {
     );
   }
 }
-

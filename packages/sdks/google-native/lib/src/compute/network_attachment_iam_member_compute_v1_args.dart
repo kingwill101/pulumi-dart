@@ -52,4 +52,3 @@ class NetworkAttachmentIamMemberComputeV1Args {
     );
   }
 }
-

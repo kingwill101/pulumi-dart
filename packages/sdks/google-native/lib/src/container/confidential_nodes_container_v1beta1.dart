@@ -25,4 +25,3 @@ class ConfidentialNodesContainerV1beta1 {
     );
   }
 }
-

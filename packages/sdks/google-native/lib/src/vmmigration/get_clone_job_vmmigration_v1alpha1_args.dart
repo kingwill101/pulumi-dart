@@ -47,4 +47,3 @@ class GetCloneJobVmmigrationV1alpha1Args {
     );
   }
 }
-

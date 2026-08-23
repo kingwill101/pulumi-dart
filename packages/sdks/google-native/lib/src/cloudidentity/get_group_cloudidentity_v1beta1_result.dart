@@ -88,4 +88,3 @@ class GetGroupCloudidentityV1beta1Result {
     );
   }
 }
-

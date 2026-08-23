@@ -55,4 +55,3 @@ class GoogleCloudApigeeV1ProfileConfigCategoryResponse {
     );
   }
 }
-

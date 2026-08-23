@@ -19,4 +19,3 @@ enum SslConfigSslModeAlloydbV1alpha {
     throw ArgumentError('Unknown SslConfigSslModeAlloydbV1alpha value: $value');
   }
 }
-

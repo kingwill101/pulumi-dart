@@ -49,4 +49,3 @@ class GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
     );
   }
 }
-

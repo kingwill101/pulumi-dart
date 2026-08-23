@@ -31,4 +31,3 @@ class ResourceManifestResponseGkehubV1beta {
     );
   }
 }
-

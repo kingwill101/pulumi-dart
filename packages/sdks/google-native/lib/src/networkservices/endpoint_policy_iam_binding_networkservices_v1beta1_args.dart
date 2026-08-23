@@ -52,4 +52,3 @@ class EndpointPolicyIamBindingNetworkservicesV1beta1Args {
     );
   }
 }
-

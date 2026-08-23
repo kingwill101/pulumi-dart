@@ -20,4 +20,3 @@ enum DiskInstantiationConfigInstantiateFrom {
     throw ArgumentError('Unknown DiskInstantiationConfigInstantiateFrom value: $value');
   }
 }
-

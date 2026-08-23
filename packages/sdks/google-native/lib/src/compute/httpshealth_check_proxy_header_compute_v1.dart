@@ -15,4 +15,3 @@ enum HTTPSHealthCheckProxyHeaderComputeV1 {
     throw ArgumentError('Unknown HTTPSHealthCheckProxyHeaderComputeV1 value: $value');
   }
 }
-

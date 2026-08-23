@@ -25,4 +25,3 @@ class RoleResponseGkehubV1alpha {
     );
   }
 }
-

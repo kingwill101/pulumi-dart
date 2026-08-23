@@ -52,4 +52,3 @@ class ClientTlsPolicyIamBindingNetworksecurityV1beta1Args {
     );
   }
 }
-

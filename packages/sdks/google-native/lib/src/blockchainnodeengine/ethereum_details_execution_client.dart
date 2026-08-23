@@ -16,4 +16,3 @@ enum EthereumDetailsExecutionClient {
     throw ArgumentError('Unknown EthereumDetailsExecutionClient value: $value');
   }
 }
-

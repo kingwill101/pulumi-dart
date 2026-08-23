@@ -43,4 +43,3 @@ class GetEntryGroupDatacatalogV1beta1Result {
     );
   }
 }
-

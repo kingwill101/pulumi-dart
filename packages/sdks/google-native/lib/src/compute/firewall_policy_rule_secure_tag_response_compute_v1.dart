@@ -30,4 +30,3 @@ class FirewallPolicyRuleSecureTagResponseComputeV1 {
     );
   }
 }
-

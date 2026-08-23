@@ -79,4 +79,3 @@ class FirewallInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

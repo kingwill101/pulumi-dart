@@ -13,4 +13,3 @@ enum RouterBgpAdvertisedGroupsItemComputeV1 {
     throw ArgumentError('Unknown RouterBgpAdvertisedGroupsItemComputeV1 value: $value');
   }
 }
-

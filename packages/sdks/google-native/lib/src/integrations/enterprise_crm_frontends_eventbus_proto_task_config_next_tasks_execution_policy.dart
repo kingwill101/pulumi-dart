@@ -16,4 +16,3 @@ enum EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy {
     throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class HttpHeaderOptionResponseComputeV1 {
     );
   }
 }
-

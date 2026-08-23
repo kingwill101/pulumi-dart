@@ -16,4 +16,3 @@ enum FunctionVpcConnectorEgressSettings {
     throw ArgumentError('Unknown FunctionVpcConnectorEgressSettings value: $value');
   }
 }
-

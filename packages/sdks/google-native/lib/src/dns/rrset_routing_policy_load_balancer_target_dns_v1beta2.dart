@@ -68,4 +68,3 @@ class RRSetRoutingPolicyLoadBalancerTargetDnsV1beta2 {
     );
   }
 }
-

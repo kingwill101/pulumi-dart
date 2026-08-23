@@ -52,4 +52,3 @@ class SnapshotIamMemberComputeV1Args {
     );
   }
 }
-

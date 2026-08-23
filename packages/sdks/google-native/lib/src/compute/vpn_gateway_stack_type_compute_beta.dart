@@ -15,4 +15,3 @@ enum VpnGatewayStackTypeComputeBeta {
     throw ArgumentError('Unknown VpnGatewayStackTypeComputeBeta value: $value');
   }
 }
-

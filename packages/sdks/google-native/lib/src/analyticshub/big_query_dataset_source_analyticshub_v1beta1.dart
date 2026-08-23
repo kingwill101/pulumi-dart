@@ -25,4 +25,3 @@ class BigQueryDatasetSourceAnalyticshubV1beta1 {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType {
     throw ArgumentError('Unknown GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType value: $value');
   }
 }
-

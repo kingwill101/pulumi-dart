@@ -15,4 +15,3 @@ enum RegionBackendServiceCompressionModeComputeBeta {
     throw ArgumentError('Unknown RegionBackendServiceCompressionModeComputeBeta value: $value');
   }
 }
-

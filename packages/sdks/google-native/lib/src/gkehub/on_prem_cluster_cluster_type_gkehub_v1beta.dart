@@ -18,4 +18,3 @@ enum OnPremClusterClusterTypeGkehubV1beta {
     throw ArgumentError('Unknown OnPremClusterClusterTypeGkehubV1beta value: $value');
   }
 }
-

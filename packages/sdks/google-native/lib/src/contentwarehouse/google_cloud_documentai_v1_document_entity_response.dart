@@ -83,4 +83,3 @@ class GoogleCloudDocumentaiV1DocumentEntityResponse {
     );
   }
 }
-

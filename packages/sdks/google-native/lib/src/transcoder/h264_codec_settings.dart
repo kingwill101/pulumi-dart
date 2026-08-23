@@ -139,4 +139,3 @@ class H264CodecSettings {
     );
   }
 }
-

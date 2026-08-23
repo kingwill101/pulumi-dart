@@ -16,4 +16,3 @@ enum PickTimeSeriesFilterDirection {
     throw ArgumentError('Unknown PickTimeSeriesFilterDirection value: $value');
   }
 }
-

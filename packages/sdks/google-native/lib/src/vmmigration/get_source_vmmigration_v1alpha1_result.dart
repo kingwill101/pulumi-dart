@@ -83,4 +83,3 @@ class GetSourceVmmigrationV1alpha1Result {
     );
   }
 }
-

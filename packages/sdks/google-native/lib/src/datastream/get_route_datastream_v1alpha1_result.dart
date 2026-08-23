@@ -60,4 +60,3 @@ class GetRouteDatastreamV1alpha1Result {
     );
   }
 }
-

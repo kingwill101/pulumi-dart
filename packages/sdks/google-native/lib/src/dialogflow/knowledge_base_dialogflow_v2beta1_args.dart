@@ -50,4 +50,3 @@ class KnowledgeBaseDialogflowV2beta1Args {
     );
   }
 }
-

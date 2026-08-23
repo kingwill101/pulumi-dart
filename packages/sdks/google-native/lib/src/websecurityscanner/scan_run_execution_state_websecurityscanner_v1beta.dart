@@ -17,4 +17,3 @@ enum ScanRunExecutionStateWebsecurityscannerV1beta {
     throw ArgumentError('Unknown ScanRunExecutionStateWebsecurityscannerV1beta value: $value');
   }
 }
-

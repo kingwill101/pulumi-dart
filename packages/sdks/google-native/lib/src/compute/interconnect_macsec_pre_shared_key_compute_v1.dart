@@ -31,4 +31,3 @@ class InterconnectMacsecPreSharedKeyComputeV1 {
     );
   }
 }
-

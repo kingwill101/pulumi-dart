@@ -15,4 +15,3 @@ enum MavenRepositoryPublicRepository {
     throw ArgumentError('Unknown MavenRepositoryPublicRepository value: $value');
   }
 }
-

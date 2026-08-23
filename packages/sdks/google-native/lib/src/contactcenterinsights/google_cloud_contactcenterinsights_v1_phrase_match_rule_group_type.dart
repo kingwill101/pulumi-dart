@@ -16,4 +16,3 @@ enum GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType {
     throw ArgumentError('Unknown GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType value: $value');
   }
 }
-

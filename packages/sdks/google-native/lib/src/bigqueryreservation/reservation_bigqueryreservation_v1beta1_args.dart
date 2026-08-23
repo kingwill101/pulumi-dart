@@ -68,4 +68,3 @@ class ReservationBigqueryreservationV1beta1Args {
     );
   }
 }
-

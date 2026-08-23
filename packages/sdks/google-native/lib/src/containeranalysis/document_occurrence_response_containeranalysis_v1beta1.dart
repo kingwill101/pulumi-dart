@@ -67,4 +67,3 @@ class DocumentOccurrenceResponseContaineranalysisV1beta1 {
     );
   }
 }
-

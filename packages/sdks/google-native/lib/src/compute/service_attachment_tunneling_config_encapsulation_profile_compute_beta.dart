@@ -15,4 +15,3 @@ enum ServiceAttachmentTunnelingConfigEncapsulationProfileComputeBeta {
     throw ArgumentError('Unknown ServiceAttachmentTunnelingConfigEncapsulationProfileComputeBeta value: $value');
   }
 }
-

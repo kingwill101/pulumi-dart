@@ -38,4 +38,3 @@ class GoogleIamV1BindingBeyondcorpV1alpha {
     );
   }
 }
-

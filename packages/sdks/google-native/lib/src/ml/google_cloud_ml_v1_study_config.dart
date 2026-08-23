@@ -47,4 +47,3 @@ class GoogleCloudMlV1StudyConfig {
     );
   }
 }
-

@@ -50,4 +50,3 @@ class DatasetHealthcareV1beta1Args {
     );
   }
 }
-

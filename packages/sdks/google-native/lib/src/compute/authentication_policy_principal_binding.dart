@@ -16,4 +16,3 @@ enum AuthenticationPolicyPrincipalBinding {
     throw ArgumentError('Unknown AuthenticationPolicyPrincipalBinding value: $value');
   }
 }
-

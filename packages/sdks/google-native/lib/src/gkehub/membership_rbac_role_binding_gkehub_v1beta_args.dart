@@ -74,4 +74,3 @@ class MembershipRbacRoleBindingGkehubV1betaArgs {
     );
   }
 }
-

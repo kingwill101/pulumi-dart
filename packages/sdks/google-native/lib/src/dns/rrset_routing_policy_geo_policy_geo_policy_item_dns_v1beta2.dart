@@ -48,4 +48,3 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2 {
     );
   }
 }
-

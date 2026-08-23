@@ -26,4 +26,3 @@ class RoleGkehubV1beta {
     );
   }
 }
-

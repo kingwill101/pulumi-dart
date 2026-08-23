@@ -37,4 +37,3 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSour
     );
   }
 }
-

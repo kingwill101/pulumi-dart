@@ -25,4 +25,3 @@ class OSPolicyResourcePackageResourceYUMOsconfigV1alpha {
     );
   }
 }
-

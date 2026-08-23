@@ -15,4 +15,3 @@ enum FirewallPolicyRuleDirectionComputeV1 {
     throw ArgumentError('Unknown FirewallPolicyRuleDirectionComputeV1 value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetDataExchangeAnalyticshubV1beta1Args {
     );
   }
 }
-

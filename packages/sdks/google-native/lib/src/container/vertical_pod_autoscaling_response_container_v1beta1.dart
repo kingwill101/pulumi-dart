@@ -25,4 +25,3 @@ class VerticalPodAutoscalingResponseContainerV1beta1 {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class PersistentDirectoryResponseWorkstationsV1beta {
     );
   }
 }
-

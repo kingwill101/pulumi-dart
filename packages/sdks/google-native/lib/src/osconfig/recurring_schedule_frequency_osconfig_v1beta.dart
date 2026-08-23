@@ -17,4 +17,3 @@ enum RecurringScheduleFrequencyOsconfigV1beta {
     throw ArgumentError('Unknown RecurringScheduleFrequencyOsconfigV1beta value: $value');
   }
 }
-

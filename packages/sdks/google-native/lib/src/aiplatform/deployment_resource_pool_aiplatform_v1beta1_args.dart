@@ -51,4 +51,3 @@ class DeploymentResourcePoolAiplatformV1beta1Args {
     );
   }
 }
-

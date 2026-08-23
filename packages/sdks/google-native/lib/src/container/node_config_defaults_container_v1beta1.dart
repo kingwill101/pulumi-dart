@@ -40,4 +40,3 @@ class NodeConfigDefaultsContainerV1beta1 {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class RegexValidationDataprocV1beta2 {
     );
   }
 }
-

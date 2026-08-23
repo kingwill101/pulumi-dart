@@ -16,4 +16,3 @@ enum InstanceMemcacheVersionMemcacheV1beta2 {
     throw ArgumentError('Unknown InstanceMemcacheVersionMemcacheV1beta2 value: $value');
   }
 }
-

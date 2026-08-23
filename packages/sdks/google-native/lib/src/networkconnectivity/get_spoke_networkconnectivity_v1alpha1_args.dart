@@ -37,4 +37,3 @@ class GetSpokeNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

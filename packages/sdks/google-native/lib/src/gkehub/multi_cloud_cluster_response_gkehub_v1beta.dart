@@ -31,4 +31,3 @@ class MultiCloudClusterResponseGkehubV1beta {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class ExprResponseNetworkconnectivityV1alpha1 {
     );
   }
 }
-

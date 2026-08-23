@@ -24,4 +24,3 @@ class DataAccessOptionsResponseGameservicesV1beta {
     );
   }
 }
-

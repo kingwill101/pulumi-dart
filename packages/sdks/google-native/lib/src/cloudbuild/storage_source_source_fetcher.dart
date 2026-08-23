@@ -16,4 +16,3 @@ enum StorageSourceSourceFetcher {
     throw ArgumentError('Unknown StorageSourceSourceFetcher value: $value');
   }
 }
-

@@ -33,4 +33,3 @@ class MetadataIntegrationResponseMetastoreV1beta {
     );
   }
 }
-

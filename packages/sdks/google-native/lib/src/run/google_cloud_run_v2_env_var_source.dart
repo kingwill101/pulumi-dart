@@ -26,4 +26,3 @@ class GoogleCloudRunV2EnvVarSource {
     );
   }
 }
-

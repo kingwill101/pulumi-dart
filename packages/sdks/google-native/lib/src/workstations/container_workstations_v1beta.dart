@@ -55,4 +55,3 @@ class ContainerWorkstationsV1beta {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class TaxonomyPolicyTagIamMemberDatacatalogV1beta1Args {
     );
   }
 }
-

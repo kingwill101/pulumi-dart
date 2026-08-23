@@ -31,4 +31,3 @@ class CertificateRawDataAppengineV1beta {
     );
   }
 }
-

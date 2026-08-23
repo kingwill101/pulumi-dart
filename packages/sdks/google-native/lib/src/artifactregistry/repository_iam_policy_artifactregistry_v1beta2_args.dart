@@ -56,4 +56,3 @@ class RepositoryIamPolicyArtifactregistryV1beta2Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponseOsconfigV1alpha {
     );
   }
 }
-

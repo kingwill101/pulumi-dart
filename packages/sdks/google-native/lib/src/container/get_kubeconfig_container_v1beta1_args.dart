@@ -28,4 +28,3 @@ class GetKubeconfigContainerV1beta1Args {
     );
   }
 }
-

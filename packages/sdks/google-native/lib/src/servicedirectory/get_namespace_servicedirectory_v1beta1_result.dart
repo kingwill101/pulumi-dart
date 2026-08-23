@@ -48,4 +48,3 @@ class GetNamespaceServicedirectoryV1beta1Result {
     );
   }
 }
-

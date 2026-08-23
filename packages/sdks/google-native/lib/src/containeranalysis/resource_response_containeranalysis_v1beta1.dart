@@ -38,4 +38,3 @@ class ResourceResponseContaineranalysisV1beta1 {
     );
   }
 }
-

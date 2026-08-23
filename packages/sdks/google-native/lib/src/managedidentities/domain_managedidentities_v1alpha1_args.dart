@@ -69,4 +69,3 @@ class DomainManagedidentitiesV1alpha1Args {
     );
   }
 }
-

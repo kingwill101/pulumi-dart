@@ -56,4 +56,3 @@ class UrlListNetworksecurityV1beta1Args {
     );
   }
 }
-

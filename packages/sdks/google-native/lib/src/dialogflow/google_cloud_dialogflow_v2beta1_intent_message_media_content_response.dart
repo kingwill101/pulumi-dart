@@ -32,4 +32,3 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum RestoreConfigNamespacedResourceRestoreMode {
     throw ArgumentError('Unknown RestoreConfigNamespacedResourceRestoreMode value: $value');
   }
 }
-

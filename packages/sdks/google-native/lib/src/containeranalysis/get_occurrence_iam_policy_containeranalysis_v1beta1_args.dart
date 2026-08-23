@@ -32,4 +32,3 @@ class GetOccurrenceIamPolicyContaineranalysisV1beta1Args {
     );
   }
 }
-

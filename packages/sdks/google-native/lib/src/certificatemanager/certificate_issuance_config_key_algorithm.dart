@@ -16,4 +16,3 @@ enum CertificateIssuanceConfigKeyAlgorithm {
     throw ArgumentError('Unknown CertificateIssuanceConfigKeyAlgorithm value: $value');
   }
 }
-

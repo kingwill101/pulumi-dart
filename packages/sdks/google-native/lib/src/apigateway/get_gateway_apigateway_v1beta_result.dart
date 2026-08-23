@@ -66,4 +66,3 @@ class GetGatewayApigatewayV1betaResult {
     );
   }
 }
-

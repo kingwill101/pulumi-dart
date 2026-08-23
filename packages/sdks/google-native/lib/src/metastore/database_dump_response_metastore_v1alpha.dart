@@ -43,4 +43,3 @@ class DatabaseDumpResponseMetastoreV1alpha {
     );
   }
 }
-

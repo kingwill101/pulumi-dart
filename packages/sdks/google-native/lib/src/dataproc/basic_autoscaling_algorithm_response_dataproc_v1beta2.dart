@@ -32,4 +32,3 @@ class BasicAutoscalingAlgorithmResponseDataprocV1beta2 {
     );
   }
 }
-

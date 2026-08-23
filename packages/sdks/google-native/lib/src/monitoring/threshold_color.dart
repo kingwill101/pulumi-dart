@@ -16,4 +16,3 @@ enum ThresholdColor {
     throw ArgumentError('Unknown ThresholdColor value: $value');
   }
 }
-

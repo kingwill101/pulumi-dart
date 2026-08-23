@@ -33,4 +33,3 @@ class Hl7TypesConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

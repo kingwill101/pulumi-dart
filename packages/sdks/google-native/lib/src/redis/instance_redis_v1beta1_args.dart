@@ -178,4 +178,3 @@ class InstanceRedisV1beta1Args {
     );
   }
 }
-

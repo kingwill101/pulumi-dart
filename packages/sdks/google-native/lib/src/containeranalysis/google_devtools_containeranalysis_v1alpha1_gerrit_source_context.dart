@@ -44,4 +44,3 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
     );
   }
 }
-

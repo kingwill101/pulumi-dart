@@ -43,4 +43,3 @@ class ArtifactContaineranalysisV1alpha1 {
     );
   }
 }
-

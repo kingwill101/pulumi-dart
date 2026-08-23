@@ -20,4 +20,3 @@ enum GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta {
     throw ArgumentError('Unknown GlobalNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
   }
 }
-

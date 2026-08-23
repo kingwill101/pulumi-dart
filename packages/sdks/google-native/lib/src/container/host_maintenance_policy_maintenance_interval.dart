@@ -16,4 +16,3 @@ enum HostMaintenancePolicyMaintenanceInterval {
     throw ArgumentError('Unknown HostMaintenancePolicyMaintenanceInterval value: $value');
   }
 }
-

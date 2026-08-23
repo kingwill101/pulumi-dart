@@ -16,4 +16,3 @@ enum RegionSslPolicyMinTlsVersionComputeV1 {
     throw ArgumentError('Unknown RegionSslPolicyMinTlsVersionComputeV1 value: $value');
   }
 }
-

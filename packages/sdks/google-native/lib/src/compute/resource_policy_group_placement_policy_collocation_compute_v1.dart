@@ -15,4 +15,3 @@ enum ResourcePolicyGroupPlacementPolicyCollocationComputeV1 {
     throw ArgumentError('Unknown ResourcePolicyGroupPlacementPolicyCollocationComputeV1 value: $value');
   }
 }
-

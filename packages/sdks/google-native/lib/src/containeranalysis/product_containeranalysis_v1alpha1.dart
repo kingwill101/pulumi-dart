@@ -38,4 +38,3 @@ class ProductContaineranalysisV1alpha1 {
     );
   }
 }
-

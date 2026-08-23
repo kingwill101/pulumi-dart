@@ -17,4 +17,3 @@ enum InstanceInstanceTypeAlloydbV1alpha {
     throw ArgumentError('Unknown InstanceInstanceTypeAlloydbV1alpha value: $value');
   }
 }
-

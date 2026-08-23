@@ -25,4 +25,3 @@ class DeployableResponseContaineranalysisV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum EndpointsApiServiceRolloutStrategyAppengineV1beta {
     throw ArgumentError('Unknown EndpointsApiServiceRolloutStrategyAppengineV1beta value: $value');
   }
 }
-

@@ -90,4 +90,3 @@ class GetTargetVpnGatewayComputeV1Result {
     );
   }
 }
-

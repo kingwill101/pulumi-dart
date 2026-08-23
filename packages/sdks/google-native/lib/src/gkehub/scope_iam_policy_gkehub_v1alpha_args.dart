@@ -69,4 +69,3 @@ class ScopeIamPolicyGkehubV1alphaArgs {
     );
   }
 }
-

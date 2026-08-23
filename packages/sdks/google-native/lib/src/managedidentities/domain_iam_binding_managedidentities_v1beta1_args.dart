@@ -52,4 +52,3 @@ class DomainIamBindingManagedidentitiesV1beta1Args {
     );
   }
 }
-

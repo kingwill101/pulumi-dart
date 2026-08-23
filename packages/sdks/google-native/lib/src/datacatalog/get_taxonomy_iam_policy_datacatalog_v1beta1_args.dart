@@ -37,4 +37,3 @@ class GetTaxonomyIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

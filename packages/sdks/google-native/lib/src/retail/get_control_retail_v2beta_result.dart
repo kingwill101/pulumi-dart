@@ -62,4 +62,3 @@ class GetControlRetailV2betaResult {
     );
   }
 }
-

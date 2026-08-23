@@ -49,4 +49,3 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse {
     );
   }
 }
-

@@ -129,4 +129,3 @@ class FhirStoreHealthcareV1beta1Args {
     );
   }
 }
-

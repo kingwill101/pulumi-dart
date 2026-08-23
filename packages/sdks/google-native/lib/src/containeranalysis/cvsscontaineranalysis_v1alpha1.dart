@@ -98,4 +98,3 @@ class CVSSContaineranalysisV1alpha1 {
     );
   }
 }
-

@@ -47,4 +47,3 @@ class GetMigratingVmVmmigrationV1alpha1Args {
     );
   }
 }
-

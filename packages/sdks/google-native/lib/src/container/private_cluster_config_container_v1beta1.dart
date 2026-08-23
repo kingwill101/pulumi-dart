@@ -50,4 +50,3 @@ class PrivateClusterConfigContainerV1beta1 {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum SecurityPolicyUserDefinedFieldBaseComputeV1 {
     throw ArgumentError('Unknown SecurityPolicyUserDefinedFieldBaseComputeV1 value: $value');
   }
 }
-

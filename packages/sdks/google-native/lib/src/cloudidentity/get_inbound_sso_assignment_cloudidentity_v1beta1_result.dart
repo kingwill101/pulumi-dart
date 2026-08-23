@@ -68,4 +68,3 @@ class GetInboundSsoAssignmentCloudidentityV1beta1Result {
     );
   }
 }
-

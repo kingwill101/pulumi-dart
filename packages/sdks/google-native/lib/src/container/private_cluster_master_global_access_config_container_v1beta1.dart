@@ -25,4 +25,3 @@ class PrivateClusterMasterGlobalAccessConfigContainerV1beta1 {
     );
   }
 }
-

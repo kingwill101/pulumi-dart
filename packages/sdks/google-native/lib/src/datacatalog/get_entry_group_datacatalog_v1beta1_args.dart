@@ -42,4 +42,3 @@ class GetEntryGroupDatacatalogV1beta1Args {
     );
   }
 }
-

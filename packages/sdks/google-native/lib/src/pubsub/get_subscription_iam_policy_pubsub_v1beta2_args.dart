@@ -37,4 +37,3 @@ class GetSubscriptionIamPolicyPubsubV1beta2Args {
     );
   }
 }
-

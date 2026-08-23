@@ -90,4 +90,3 @@ class GetArtifactAiplatformV1beta1Result {
     );
   }
 }
-

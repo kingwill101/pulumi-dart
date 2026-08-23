@@ -17,4 +17,3 @@ enum TimeSeriesValueTypeAiplatformV1beta1 {
     throw ArgumentError('Unknown TimeSeriesValueTypeAiplatformV1beta1 value: $value');
   }
 }
-

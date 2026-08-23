@@ -25,4 +25,3 @@ class AppEngineVersionEndpointResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

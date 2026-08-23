@@ -39,4 +39,3 @@ class GetDomainMappingAppengineV1alphaResult {
     );
   }
 }
-

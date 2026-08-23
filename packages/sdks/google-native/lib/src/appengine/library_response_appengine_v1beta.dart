@@ -31,4 +31,3 @@ class LibraryResponseAppengineV1beta {
     );
   }
 }
-

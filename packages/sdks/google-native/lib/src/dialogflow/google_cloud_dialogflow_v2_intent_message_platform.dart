@@ -23,4 +23,3 @@ enum GoogleCloudDialogflowV2IntentMessagePlatform {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2IntentMessagePlatform value: $value');
   }
 }
-

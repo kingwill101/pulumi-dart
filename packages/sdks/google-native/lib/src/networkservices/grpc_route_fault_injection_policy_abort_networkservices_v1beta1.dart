@@ -31,4 +31,3 @@ class GrpcRouteFaultInjectionPolicyAbortNetworkservicesV1beta1 {
     );
   }
 }
-

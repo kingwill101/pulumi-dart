@@ -16,4 +16,3 @@ enum FilterEventTypeItem {
     throw ArgumentError('Unknown FilterEventTypeItem value: $value');
   }
 }
-

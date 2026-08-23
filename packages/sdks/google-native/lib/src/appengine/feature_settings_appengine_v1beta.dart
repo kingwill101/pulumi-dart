@@ -31,4 +31,3 @@ class FeatureSettingsAppengineV1beta {
     );
   }
 }
-

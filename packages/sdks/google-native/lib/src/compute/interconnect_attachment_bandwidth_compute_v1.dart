@@ -25,4 +25,3 @@ enum InterconnectAttachmentBandwidthComputeV1 {
     throw ArgumentError('Unknown InterconnectAttachmentBandwidthComputeV1 value: $value');
   }
 }
-

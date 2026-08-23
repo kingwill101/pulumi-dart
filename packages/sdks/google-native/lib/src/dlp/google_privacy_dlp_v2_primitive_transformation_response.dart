@@ -101,4 +101,3 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse {
     );
   }
 }
-

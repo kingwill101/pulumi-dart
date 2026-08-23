@@ -54,4 +54,3 @@ class GetSnapshotFileV1beta1Result {
     );
   }
 }
-

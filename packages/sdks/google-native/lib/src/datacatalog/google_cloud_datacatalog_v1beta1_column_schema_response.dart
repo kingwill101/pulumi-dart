@@ -49,4 +49,3 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
     );
   }
 }
-

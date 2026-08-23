@@ -25,4 +25,3 @@ class ShieldedInstanceConfigTpuV2alpha1 {
     );
   }
 }
-

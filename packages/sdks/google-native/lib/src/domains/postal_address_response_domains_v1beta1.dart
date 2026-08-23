@@ -85,4 +85,3 @@ class PostalAddressResponseDomainsV1beta1 {
     );
   }
 }
-

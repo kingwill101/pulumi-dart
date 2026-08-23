@@ -31,4 +31,3 @@ class ZipInfoResponseAppengineV1beta {
     );
   }
 }
-

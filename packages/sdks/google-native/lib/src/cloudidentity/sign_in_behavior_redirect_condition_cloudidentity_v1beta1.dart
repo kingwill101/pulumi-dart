@@ -15,4 +15,3 @@ enum SignInBehaviorRedirectConditionCloudidentityV1beta1 {
     throw ArgumentError('Unknown SignInBehaviorRedirectConditionCloudidentityV1beta1 value: $value');
   }
 }
-

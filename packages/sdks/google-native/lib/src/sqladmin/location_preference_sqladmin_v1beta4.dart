@@ -43,4 +43,3 @@ class LocationPreferenceSqladminV1beta4 {
     );
   }
 }
-

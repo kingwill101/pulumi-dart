@@ -37,4 +37,3 @@ class IpMappingResponseSqladminV1beta4 {
     );
   }
 }
-

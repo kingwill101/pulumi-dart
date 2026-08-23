@@ -17,4 +17,3 @@ enum CVSSAuthenticationContaineranalysisV1beta1 {
     throw ArgumentError('Unknown CVSSAuthenticationContaineranalysisV1beta1 value: $value');
   }
 }
-

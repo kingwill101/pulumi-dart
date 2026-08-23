@@ -32,4 +32,3 @@ class MonthlyScheduleOsconfigV1beta {
     );
   }
 }
-

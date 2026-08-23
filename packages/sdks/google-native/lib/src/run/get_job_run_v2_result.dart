@@ -167,4 +167,3 @@ class GetJobRunV2Result {
     );
   }
 }
-

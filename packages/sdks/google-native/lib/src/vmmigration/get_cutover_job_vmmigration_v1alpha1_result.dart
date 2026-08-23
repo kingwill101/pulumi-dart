@@ -108,4 +108,3 @@ class GetCutoverJobVmmigrationV1alpha1Result {
     );
   }
 }
-

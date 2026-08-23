@@ -44,4 +44,3 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse {
     );
   }
 }
-

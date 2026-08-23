@@ -33,4 +33,3 @@ class GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
     );
   }
 }
-

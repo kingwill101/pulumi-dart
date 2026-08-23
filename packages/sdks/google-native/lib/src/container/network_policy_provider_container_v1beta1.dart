@@ -15,4 +15,3 @@ enum NetworkPolicyProviderContainerV1beta1 {
     throw ArgumentError('Unknown NetworkPolicyProviderContainerV1beta1 value: $value');
   }
 }
-

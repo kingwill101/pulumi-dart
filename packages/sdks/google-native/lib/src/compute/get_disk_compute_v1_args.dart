@@ -37,4 +37,3 @@ class GetDiskComputeV1Args {
     );
   }
 }
-

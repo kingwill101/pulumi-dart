@@ -15,4 +15,3 @@ enum SecuritySettingRedactionStrategy {
     throw ArgumentError('Unknown SecuritySettingRedactionStrategy value: $value');
   }
 }
-

@@ -44,4 +44,3 @@ class AzureSourceDetailsVmmigrationV1alpha1 {
     );
   }
 }
-

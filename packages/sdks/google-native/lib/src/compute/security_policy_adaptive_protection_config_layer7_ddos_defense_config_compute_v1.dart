@@ -39,4 +39,3 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeV1 {
     );
   }
 }
-

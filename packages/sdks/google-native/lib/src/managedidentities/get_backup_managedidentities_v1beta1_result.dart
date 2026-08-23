@@ -66,4 +66,3 @@ class GetBackupManagedidentitiesV1beta1Result {
     );
   }
 }
-

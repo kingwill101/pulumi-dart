@@ -16,4 +16,3 @@ enum DatabaseTypeProviderDatamigrationV1beta1 {
     throw ArgumentError('Unknown DatabaseTypeProviderDatamigrationV1beta1 value: $value');
   }
 }
-

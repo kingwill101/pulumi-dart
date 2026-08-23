@@ -16,4 +16,3 @@ enum GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcem
     throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState value: $value');
   }
 }
-

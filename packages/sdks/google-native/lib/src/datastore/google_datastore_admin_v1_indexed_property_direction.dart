@@ -16,4 +16,3 @@ enum GoogleDatastoreAdminV1IndexedPropertyDirection {
     throw ArgumentError('Unknown GoogleDatastoreAdminV1IndexedPropertyDirection value: $value');
   }
 }
-

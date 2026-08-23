@@ -25,4 +25,3 @@ enum InterconnectAttachmentBandwidthComputeBeta {
     throw ArgumentError('Unknown InterconnectAttachmentBandwidthComputeBeta value: $value');
   }
 }
-

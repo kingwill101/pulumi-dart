@@ -21,4 +21,3 @@ enum InstancePeeringCidrRange {
     throw ArgumentError('Unknown InstancePeeringCidrRange value: $value');
   }
 }
-

@@ -43,4 +43,3 @@ class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailRespo
     );
   }
 }
-

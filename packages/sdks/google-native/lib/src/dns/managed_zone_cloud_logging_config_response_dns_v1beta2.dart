@@ -30,4 +30,3 @@ class ManagedZoneCloudLoggingConfigResponseDnsV1beta2 {
     );
   }
 }
-

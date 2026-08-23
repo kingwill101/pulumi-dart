@@ -15,4 +15,3 @@ enum PythonRepositoryPublicRepository {
     throw ArgumentError('Unknown PythonRepositoryPublicRepository value: $value');
   }
 }
-

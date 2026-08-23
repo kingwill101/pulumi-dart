@@ -25,4 +25,3 @@ class MonitoringComponentConfigResponseContainerV1beta1 {
     );
   }
 }
-

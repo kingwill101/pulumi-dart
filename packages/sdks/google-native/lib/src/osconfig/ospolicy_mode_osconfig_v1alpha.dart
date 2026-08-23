@@ -16,4 +16,3 @@ enum OSPolicyModeOsconfigV1alpha {
     throw ArgumentError('Unknown OSPolicyModeOsconfigV1alpha value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum ClusterUpdateDesiredDatapathProvider {
     throw ArgumentError('Unknown ClusterUpdateDesiredDatapathProvider value: $value');
   }
 }
-

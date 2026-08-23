@@ -38,4 +38,3 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse {
     );
   }
 }
-

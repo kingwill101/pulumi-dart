@@ -26,4 +26,3 @@ class LoggingConfigContainerV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum ArtifactStateAiplatformV1beta1 {
     throw ArgumentError('Unknown ArtifactStateAiplatformV1beta1 value: $value');
   }
 }
-

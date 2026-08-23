@@ -54,4 +54,3 @@ class GetMetadataSchemaAiplatformV1beta1Result {
     );
   }
 }
-

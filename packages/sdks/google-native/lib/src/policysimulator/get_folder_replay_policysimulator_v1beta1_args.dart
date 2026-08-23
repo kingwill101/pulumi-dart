@@ -37,4 +37,3 @@ class GetFolderReplayPolicysimulatorV1beta1Args {
     );
   }
 }
-

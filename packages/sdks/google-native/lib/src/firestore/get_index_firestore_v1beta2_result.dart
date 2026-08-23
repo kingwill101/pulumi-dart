@@ -44,4 +44,3 @@ class GetIndexFirestoreV1beta2Result {
     );
   }
 }
-

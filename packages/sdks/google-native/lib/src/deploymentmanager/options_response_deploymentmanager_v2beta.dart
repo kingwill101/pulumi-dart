@@ -46,4 +46,3 @@ class OptionsResponseDeploymentmanagerV2beta {
     );
   }
 }
-

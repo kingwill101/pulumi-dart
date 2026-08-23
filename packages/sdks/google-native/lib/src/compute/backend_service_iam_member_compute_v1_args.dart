@@ -52,4 +52,3 @@ class BackendServiceIamMemberComputeV1Args {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class EncryptionVmmigrationV1alpha1 {
     );
   }
 }
-

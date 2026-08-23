@@ -25,4 +25,3 @@ class GceConfidentialInstanceConfigWorkstationsV1beta {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GoogleCloudApigeeV1TraceSamplingConfigSampler {
     throw ArgumentError('Unknown GoogleCloudApigeeV1TraceSamplingConfigSampler value: $value');
   }
 }
-

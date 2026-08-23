@@ -39,4 +39,3 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfig {
     );
   }
 }
-

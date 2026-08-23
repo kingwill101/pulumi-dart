@@ -75,4 +75,3 @@ class ReportMigrationcenterV1alpha1Args {
     );
   }
 }
-

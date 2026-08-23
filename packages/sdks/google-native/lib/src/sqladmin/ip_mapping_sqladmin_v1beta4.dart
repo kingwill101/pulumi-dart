@@ -38,4 +38,3 @@ class IpMappingSqladminV1beta4 {
     );
   }
 }
-

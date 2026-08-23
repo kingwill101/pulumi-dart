@@ -29,4 +29,3 @@ enum GoogleCloudDataplexV1SchemaSchemaFieldType {
     throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaSchemaFieldType value: $value');
   }
 }
-

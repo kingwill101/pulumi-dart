@@ -26,4 +26,3 @@ class IdentityServiceMembershipSpecResponseGkehubV1alpha {
     );
   }
 }
-

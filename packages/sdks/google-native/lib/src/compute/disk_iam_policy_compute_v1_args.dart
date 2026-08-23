@@ -70,4 +70,3 @@ class DiskIamPolicyComputeV1Args {
     );
   }
 }
-

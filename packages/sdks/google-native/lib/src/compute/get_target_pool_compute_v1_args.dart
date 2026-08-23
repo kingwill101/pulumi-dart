@@ -37,4 +37,3 @@ class GetTargetPoolComputeV1Args {
     );
   }
 }
-

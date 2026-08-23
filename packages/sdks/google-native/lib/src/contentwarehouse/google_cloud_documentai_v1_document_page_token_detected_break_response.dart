@@ -25,4 +25,3 @@ class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse {
     );
   }
 }
-

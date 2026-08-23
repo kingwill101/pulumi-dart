@@ -58,4 +58,3 @@ class InfoTypeTransformationResponseHealthcareV1beta1 {
     );
   }
 }
-

@@ -68,4 +68,3 @@ class Oauth2AuthCodeFlow {
     );
   }
 }
-

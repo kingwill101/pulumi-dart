@@ -15,4 +15,3 @@ enum PgpSignedAttestationContentType {
     throw ArgumentError('Unknown PgpSignedAttestationContentType value: $value');
   }
 }
-

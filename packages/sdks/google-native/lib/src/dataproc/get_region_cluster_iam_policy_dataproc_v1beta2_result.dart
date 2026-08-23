@@ -38,4 +38,3 @@ class GetRegionClusterIamPolicyDataprocV1beta2Result {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha {
     throw ArgumentError('Unknown PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha value: $value');
   }
 }
-

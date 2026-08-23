@@ -25,4 +25,3 @@ class IdentityServiceConfigResponseContainerV1beta1 {
     );
   }
 }
-

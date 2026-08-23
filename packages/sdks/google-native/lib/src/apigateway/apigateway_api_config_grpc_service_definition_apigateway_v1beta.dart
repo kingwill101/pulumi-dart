@@ -32,4 +32,3 @@ class ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta {
     );
   }
 }
-

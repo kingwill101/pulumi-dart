@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth value: $value');
   }
 }
-

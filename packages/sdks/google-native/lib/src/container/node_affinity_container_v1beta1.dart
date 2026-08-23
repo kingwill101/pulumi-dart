@@ -38,4 +38,3 @@ class NodeAffinityContainerV1beta1 {
     );
   }
 }
-

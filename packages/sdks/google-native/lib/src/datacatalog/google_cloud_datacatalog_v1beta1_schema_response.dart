@@ -26,4 +26,3 @@ class GoogleCloudDatacatalogV1beta1SchemaResponse {
     );
   }
 }
-

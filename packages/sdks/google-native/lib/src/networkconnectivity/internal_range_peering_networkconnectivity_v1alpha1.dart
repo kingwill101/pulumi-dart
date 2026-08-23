@@ -17,4 +17,3 @@ enum InternalRangePeeringNetworkconnectivityV1alpha1 {
     throw ArgumentError('Unknown InternalRangePeeringNetworkconnectivityV1alpha1 value: $value');
   }
 }
-

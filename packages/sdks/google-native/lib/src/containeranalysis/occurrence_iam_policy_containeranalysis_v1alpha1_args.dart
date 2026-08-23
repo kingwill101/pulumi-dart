@@ -51,4 +51,3 @@ class OccurrenceIamPolicyContaineranalysisV1alpha1Args {
     );
   }
 }
-

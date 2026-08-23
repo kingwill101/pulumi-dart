@@ -17,4 +17,3 @@ enum GlobalAddressNetworkTierComputeV1 {
     throw ArgumentError('Unknown GlobalAddressNetworkTierComputeV1 value: $value');
   }
 }
-

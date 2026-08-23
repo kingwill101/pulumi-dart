@@ -15,4 +15,3 @@ enum SchedulingOnHostMaintenanceComputeBeta {
     throw ArgumentError('Unknown SchedulingOnHostMaintenanceComputeBeta value: $value');
   }
 }
-

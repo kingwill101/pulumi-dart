@@ -85,4 +85,3 @@ class GetUserSqladminV1beta4Result {
     );
   }
 }
-

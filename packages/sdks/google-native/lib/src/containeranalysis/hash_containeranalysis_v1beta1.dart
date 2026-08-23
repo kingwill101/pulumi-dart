@@ -32,4 +32,3 @@ class HashContaineranalysisV1beta1 {
     );
   }
 }
-

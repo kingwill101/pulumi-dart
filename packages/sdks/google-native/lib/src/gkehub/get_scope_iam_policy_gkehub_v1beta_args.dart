@@ -42,4 +42,3 @@ class GetScopeIamPolicyGkehubV1betaArgs {
     );
   }
 }
-

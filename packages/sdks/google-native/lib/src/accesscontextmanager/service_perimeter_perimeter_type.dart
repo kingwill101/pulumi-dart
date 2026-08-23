@@ -15,4 +15,3 @@ enum ServicePerimeterPerimeterType {
     throw ArgumentError('Unknown ServicePerimeterPerimeterType value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetPreferenceSetMigrationcenterV1alpha1Args {
     );
   }
 }
-

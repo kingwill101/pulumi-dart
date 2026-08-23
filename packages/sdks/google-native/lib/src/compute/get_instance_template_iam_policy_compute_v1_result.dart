@@ -52,4 +52,3 @@ class GetInstanceTemplateIamPolicyComputeV1Result {
     );
   }
 }
-

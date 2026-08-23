@@ -25,4 +25,3 @@ class LogConfigDataAccessOptionsResponseComputeV1 {
     );
   }
 }
-

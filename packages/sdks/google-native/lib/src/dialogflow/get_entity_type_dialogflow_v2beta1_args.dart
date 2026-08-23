@@ -42,4 +42,3 @@ class GetEntityTypeDialogflowV2beta1Args {
     );
   }
 }
-

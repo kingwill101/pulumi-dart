@@ -19,4 +19,3 @@ enum VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown VmwareEnginePreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
   }
 }
-

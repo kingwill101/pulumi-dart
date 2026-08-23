@@ -197,4 +197,3 @@ class JobJobsV4Args {
     );
   }
 }
-

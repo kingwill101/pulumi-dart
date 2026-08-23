@@ -17,4 +17,3 @@ enum FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState {
     throw ArgumentError('Unknown FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState value: $value');
   }
 }
-

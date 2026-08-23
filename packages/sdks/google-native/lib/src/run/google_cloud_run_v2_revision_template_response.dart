@@ -101,4 +101,3 @@ class GoogleCloudRunV2RevisionTemplateResponse {
     );
   }
 }
-

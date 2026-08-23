@@ -18,4 +18,3 @@ enum HttpRedirectActionRedirectResponseCodeComputeBeta {
     throw ArgumentError('Unknown HttpRedirectActionRedirectResponseCodeComputeBeta value: $value');
   }
 }
-

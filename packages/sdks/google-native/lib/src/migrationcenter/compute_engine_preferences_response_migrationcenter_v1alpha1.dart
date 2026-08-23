@@ -38,4 +38,3 @@ class ComputeEnginePreferencesResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

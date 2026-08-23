@@ -26,4 +26,3 @@ class GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
     );
   }
 }
-

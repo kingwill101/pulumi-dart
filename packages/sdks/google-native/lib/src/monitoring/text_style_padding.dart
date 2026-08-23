@@ -19,4 +19,3 @@ enum TextStylePadding {
     throw ArgumentError('Unknown TextStylePadding value: $value');
   }
 }
-

@@ -76,4 +76,3 @@ class ServerTlsPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

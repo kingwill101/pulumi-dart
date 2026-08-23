@@ -95,4 +95,3 @@ class EndpointPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

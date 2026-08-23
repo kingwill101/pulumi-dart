@@ -31,4 +31,3 @@ enum EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType {
     throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType value: $value');
   }
 }
-

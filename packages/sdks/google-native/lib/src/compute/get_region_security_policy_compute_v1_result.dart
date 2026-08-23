@@ -117,4 +117,3 @@ class GetRegionSecurityPolicyComputeV1Result {
     );
   }
 }
-

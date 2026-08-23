@@ -69,4 +69,3 @@ class InstanceNotebooksV2Args {
     );
   }
 }
-

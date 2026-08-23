@@ -52,4 +52,3 @@ class GetResourcePolicyIamPolicyComputeV1Result {
     );
   }
 }
-

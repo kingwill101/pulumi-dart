@@ -31,4 +31,3 @@ class PersistentDiskResponseVmmigrationV1alpha1 {
     );
   }
 }
-

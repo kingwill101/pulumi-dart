@@ -68,4 +68,3 @@ class GoogleCloudApigeeV1CredentialResponse {
     );
   }
 }
-

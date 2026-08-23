@@ -17,4 +17,3 @@ enum NodeGroupAutoscalingPolicyModeComputeBeta {
     throw ArgumentError('Unknown NodeGroupAutoscalingPolicyModeComputeBeta value: $value');
   }
 }
-

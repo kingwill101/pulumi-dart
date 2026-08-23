@@ -16,4 +16,3 @@ enum InstanceReadReplicasModeRedisV1beta1 {
     throw ArgumentError('Unknown InstanceReadReplicasModeRedisV1beta1 value: $value');
   }
 }
-

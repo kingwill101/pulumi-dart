@@ -37,4 +37,3 @@ class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
     );
   }
 }
-

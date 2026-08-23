@@ -92,4 +92,3 @@ class VmwareVmDetailsVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetSourceVmmigrationV1alpha1Args {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2 {
     );
   }
 }
-

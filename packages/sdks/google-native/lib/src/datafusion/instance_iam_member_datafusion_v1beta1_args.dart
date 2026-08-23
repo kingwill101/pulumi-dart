@@ -52,4 +52,3 @@ class InstanceIamMemberDatafusionV1beta1Args {
     );
   }
 }
-

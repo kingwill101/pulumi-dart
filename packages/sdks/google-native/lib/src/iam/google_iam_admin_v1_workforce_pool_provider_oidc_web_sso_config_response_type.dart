@@ -16,4 +16,3 @@ enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType {
     throw ArgumentError('Unknown GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType value: $value');
   }
 }
-

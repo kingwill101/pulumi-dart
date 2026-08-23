@@ -52,4 +52,3 @@ class SubnetworkIamBindingComputeV1Args {
     );
   }
 }
-

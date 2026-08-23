@@ -71,4 +71,3 @@ class DeviceCloudidentityV1beta1Args {
     );
   }
 }
-

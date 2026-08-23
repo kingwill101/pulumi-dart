@@ -37,4 +37,3 @@ class GcsObjectResponseOsconfigV1beta {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class FolderIamMemberCloudresourcemanagerV2beta1Args {
     );
   }
 }
-

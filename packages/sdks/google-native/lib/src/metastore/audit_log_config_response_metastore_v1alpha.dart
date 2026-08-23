@@ -31,4 +31,3 @@ class AuditLogConfigResponseMetastoreV1alpha {
     );
   }
 }
-

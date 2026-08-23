@@ -37,4 +37,3 @@ class NetworkInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

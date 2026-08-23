@@ -50,4 +50,3 @@ class UpgradeStatusResponseVmmigrationV1alpha1 {
     );
   }
 }
-

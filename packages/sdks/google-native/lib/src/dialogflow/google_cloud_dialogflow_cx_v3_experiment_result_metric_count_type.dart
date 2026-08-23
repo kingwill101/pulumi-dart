@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3ExperimentResultMetricCountType value: $value');
   }
 }
-

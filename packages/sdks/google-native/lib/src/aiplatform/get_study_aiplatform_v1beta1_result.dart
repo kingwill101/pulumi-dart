@@ -55,4 +55,3 @@ class GetStudyAiplatformV1beta1Result {
     );
   }
 }
-

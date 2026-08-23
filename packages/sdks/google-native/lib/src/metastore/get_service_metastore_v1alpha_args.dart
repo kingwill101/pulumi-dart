@@ -37,4 +37,3 @@ class GetServiceMetastoreV1alphaArgs {
     );
   }
 }
-

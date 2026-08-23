@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusProtoTaskMetadataStatus {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataStatus value: $value');
   }
 }
-

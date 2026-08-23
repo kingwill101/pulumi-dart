@@ -38,4 +38,3 @@ class BindingResponsePrivatecaV1beta1 {
     );
   }
 }
-

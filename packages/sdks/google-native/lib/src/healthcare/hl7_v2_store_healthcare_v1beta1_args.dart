@@ -82,4 +82,3 @@ class Hl7V2StoreHealthcareV1beta1Args {
     );
   }
 }
-

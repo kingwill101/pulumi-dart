@@ -113,4 +113,3 @@ class RegionNetworkEndpointGroupComputeV1Args {
     );
   }
 }
-

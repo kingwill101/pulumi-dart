@@ -18,4 +18,3 @@ enum GoogleCloudDocumentaiV1DocumentPageLayoutOrientation {
     throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentPageLayoutOrientation value: $value');
   }
 }
-

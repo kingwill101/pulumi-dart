@@ -176,4 +176,3 @@ class NoteContaineranalysisV1alpha1Args {
     );
   }
 }
-

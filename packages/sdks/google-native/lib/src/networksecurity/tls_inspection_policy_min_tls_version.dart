@@ -18,4 +18,3 @@ enum TlsInspectionPolicyMinTlsVersion {
     throw ArgumentError('Unknown TlsInspectionPolicyMinTlsVersion value: $value');
   }
 }
-

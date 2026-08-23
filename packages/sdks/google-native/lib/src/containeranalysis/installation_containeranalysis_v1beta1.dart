@@ -33,4 +33,3 @@ class InstallationContaineranalysisV1beta1 {
     );
   }
 }
-

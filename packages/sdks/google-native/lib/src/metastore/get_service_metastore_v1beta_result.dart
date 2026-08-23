@@ -158,4 +158,3 @@ class GetServiceMetastoreV1betaResult {
     );
   }
 }
-

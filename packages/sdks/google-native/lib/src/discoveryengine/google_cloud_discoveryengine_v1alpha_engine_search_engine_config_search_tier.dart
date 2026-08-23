@@ -16,4 +16,3 @@ enum GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier {
     throw ArgumentError('Unknown GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier value: $value');
   }
 }
-

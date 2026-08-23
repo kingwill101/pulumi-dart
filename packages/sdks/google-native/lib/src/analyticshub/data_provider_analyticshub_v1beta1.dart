@@ -31,4 +31,3 @@ class DataProviderAnalyticshubV1beta1 {
     );
   }
 }
-

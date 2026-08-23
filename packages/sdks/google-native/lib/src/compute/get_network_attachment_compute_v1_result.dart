@@ -103,4 +103,3 @@ class GetNetworkAttachmentComputeV1Result {
     );
   }
 }
-

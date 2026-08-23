@@ -43,4 +43,3 @@ class ReverseSshConnectivityDatamigrationV1beta1 {
     );
   }
 }
-

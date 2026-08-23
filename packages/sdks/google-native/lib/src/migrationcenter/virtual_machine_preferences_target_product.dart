@@ -17,4 +17,3 @@ enum VirtualMachinePreferencesTargetProduct {
     throw ArgumentError('Unknown VirtualMachinePreferencesTargetProduct value: $value');
   }
 }
-

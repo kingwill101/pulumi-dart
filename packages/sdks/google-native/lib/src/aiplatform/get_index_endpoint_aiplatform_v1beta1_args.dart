@@ -37,4 +37,3 @@ class GetIndexEndpointAiplatformV1beta1Args {
     );
   }
 }
-

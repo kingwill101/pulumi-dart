@@ -42,4 +42,3 @@ class GetFunctionIamPolicyCloudfunctionsV2betaArgs {
     );
   }
 }
-

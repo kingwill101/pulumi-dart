@@ -39,4 +39,3 @@ class SshPublicKeyOsloginV1alphaArgs {
     );
   }
 }
-

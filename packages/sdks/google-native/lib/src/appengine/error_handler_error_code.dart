@@ -18,4 +18,3 @@ enum ErrorHandlerErrorCode {
     throw ArgumentError('Unknown ErrorHandlerErrorCode value: $value');
   }
 }
-

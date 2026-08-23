@@ -16,4 +16,3 @@ enum QueueType {
     throw ArgumentError('Unknown QueueType value: $value');
   }
 }
-

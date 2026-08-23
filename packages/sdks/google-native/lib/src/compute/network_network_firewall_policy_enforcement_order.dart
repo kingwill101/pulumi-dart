@@ -15,4 +15,3 @@ enum NetworkNetworkFirewallPolicyEnforcementOrder {
     throw ArgumentError('Unknown NetworkNetworkFirewallPolicyEnforcementOrder value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum NetworkInstanceIpModeAppengineV1beta {
     throw ArgumentError('Unknown NetworkInstanceIpModeAppengineV1beta value: $value');
   }
 }
-

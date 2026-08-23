@@ -64,4 +64,3 @@ class SecretIamPolicySecretmanagerV1beta1Args {
     );
   }
 }
-

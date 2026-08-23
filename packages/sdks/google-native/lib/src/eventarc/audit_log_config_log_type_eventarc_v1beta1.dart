@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeEventarcV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeEventarcV1beta1 value: $value');
   }
 }
-

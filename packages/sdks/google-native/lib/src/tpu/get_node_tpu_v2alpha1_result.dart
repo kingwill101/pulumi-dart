@@ -178,4 +178,3 @@ class GetNodeTpuV2alpha1Result {
     );
   }
 }
-

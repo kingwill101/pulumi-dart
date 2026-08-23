@@ -45,4 +45,3 @@ class SbomReferenceIntotoPayloadResponseContaineranalysisV1beta1 {
     );
   }
 }
-

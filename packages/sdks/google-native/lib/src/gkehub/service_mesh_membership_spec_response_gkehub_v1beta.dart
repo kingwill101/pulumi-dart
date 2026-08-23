@@ -31,4 +31,3 @@ class ServiceMeshMembershipSpecResponseGkehubV1beta {
     );
   }
 }
-

@@ -39,4 +39,3 @@ class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
     );
   }
 }
-

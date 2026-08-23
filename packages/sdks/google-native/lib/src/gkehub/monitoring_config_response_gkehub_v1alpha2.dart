@@ -49,4 +49,3 @@ class MonitoringConfigResponseGkehubV1alpha2 {
     );
   }
 }
-

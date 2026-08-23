@@ -45,4 +45,3 @@ class GetDatasetFhirStoreIamPolicyHealthcareV1beta1Result {
     );
   }
 }
-

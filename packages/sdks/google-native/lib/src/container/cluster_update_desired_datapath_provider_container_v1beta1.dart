@@ -16,4 +16,3 @@ enum ClusterUpdateDesiredDatapathProviderContainerV1beta1 {
     throw ArgumentError('Unknown ClusterUpdateDesiredDatapathProviderContainerV1beta1 value: $value');
   }
 }
-

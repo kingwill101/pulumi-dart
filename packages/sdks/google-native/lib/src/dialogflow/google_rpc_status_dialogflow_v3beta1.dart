@@ -37,4 +37,3 @@ class GoogleRpcStatusDialogflowV3beta1 {
     );
   }
 }
-

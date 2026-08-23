@@ -78,4 +78,3 @@ class MembershipGkehubV1alpha2Args {
     );
   }
 }
-

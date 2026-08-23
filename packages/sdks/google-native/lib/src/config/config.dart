@@ -67,4 +67,3 @@ class GoogleNativeConfig {
 }
 
 const config = GoogleNativeConfig();
-

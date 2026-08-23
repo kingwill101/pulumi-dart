@@ -115,4 +115,3 @@ class RouteInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

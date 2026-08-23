@@ -27,4 +27,3 @@ class GetTopicPubsubV1beta1aArgs {
     );
   }
 }
-

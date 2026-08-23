@@ -44,4 +44,3 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationResponse {
     );
   }
 }
-

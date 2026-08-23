@@ -19,4 +19,3 @@ enum EnvironmentState {
     throw ArgumentError('Unknown EnvironmentState value: $value');
   }
 }
-

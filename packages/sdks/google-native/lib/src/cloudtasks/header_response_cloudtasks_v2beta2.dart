@@ -31,4 +31,3 @@ class HeaderResponseCloudtasksV2beta2 {
     );
   }
 }
-

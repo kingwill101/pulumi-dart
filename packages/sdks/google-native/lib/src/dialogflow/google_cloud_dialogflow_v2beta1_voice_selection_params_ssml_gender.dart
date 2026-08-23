@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum AcceleratorConfigTypeTpuV2alpha1 {
     throw ArgumentError('Unknown AcceleratorConfigTypeTpuV2alpha1 value: $value');
   }
 }
-

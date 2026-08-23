@@ -37,4 +37,3 @@ class GoogleCloudDiscoveryengineV1alphaDocumentContentResponse {
     );
   }
 }
-

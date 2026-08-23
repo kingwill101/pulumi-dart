@@ -77,4 +77,3 @@ class ProbingDetailsResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

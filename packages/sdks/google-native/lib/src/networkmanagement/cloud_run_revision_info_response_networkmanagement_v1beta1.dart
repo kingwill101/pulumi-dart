@@ -49,4 +49,3 @@ class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

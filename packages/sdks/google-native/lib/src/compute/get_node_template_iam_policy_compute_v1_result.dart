@@ -52,4 +52,3 @@ class GetNodeTemplateIamPolicyComputeV1Result {
     );
   }
 }
-

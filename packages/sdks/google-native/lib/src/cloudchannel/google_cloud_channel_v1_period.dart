@@ -32,4 +32,3 @@ class GoogleCloudChannelV1Period {
     );
   }
 }
-

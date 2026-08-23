@@ -32,4 +32,3 @@ class DeidentifiedStoreDestinationHealthcareV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class StatusResponseCloudschedulerV1beta1 {
     );
   }
 }
-

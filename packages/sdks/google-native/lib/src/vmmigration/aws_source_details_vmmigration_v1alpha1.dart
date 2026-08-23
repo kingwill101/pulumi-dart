@@ -51,4 +51,3 @@ class AwsSourceDetailsVmmigrationV1alpha1 {
     );
   }
 }
-

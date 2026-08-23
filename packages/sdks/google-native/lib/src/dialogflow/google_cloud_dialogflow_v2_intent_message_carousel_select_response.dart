@@ -26,4 +26,3 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class DnsCacheConfigContainerV1beta1 {
     );
   }
 }
-

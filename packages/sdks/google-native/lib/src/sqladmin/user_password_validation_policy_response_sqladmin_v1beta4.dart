@@ -50,4 +50,3 @@ class UserPasswordValidationPolicyResponseSqladminV1beta4 {
     );
   }
 }
-

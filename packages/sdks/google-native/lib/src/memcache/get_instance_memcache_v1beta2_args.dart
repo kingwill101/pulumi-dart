@@ -37,4 +37,3 @@ class GetInstanceMemcacheV1beta2Args {
     );
   }
 }
-

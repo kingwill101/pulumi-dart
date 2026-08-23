@@ -31,4 +31,3 @@ class SchedulePolicyResponseVmmigrationV1alpha1 {
     );
   }
 }
-

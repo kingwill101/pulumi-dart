@@ -59,4 +59,3 @@ class FolderIamPolicyCloudresourcemanagerV3Args {
     );
   }
 }
-

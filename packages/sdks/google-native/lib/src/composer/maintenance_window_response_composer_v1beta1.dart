@@ -37,4 +37,3 @@ class MaintenanceWindowResponseComposerV1beta1 {
     );
   }
 }
-

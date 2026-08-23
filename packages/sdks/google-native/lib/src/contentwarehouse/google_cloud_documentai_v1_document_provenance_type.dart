@@ -21,4 +21,3 @@ enum GoogleCloudDocumentaiV1DocumentProvenanceType {
     throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentProvenanceType value: $value');
   }
 }
-

@@ -45,4 +45,3 @@ class GetTriggerIamPolicyEventarcV1beta1Result {
     );
   }
 }
-

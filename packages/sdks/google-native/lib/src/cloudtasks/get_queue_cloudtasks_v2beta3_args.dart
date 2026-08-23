@@ -42,4 +42,3 @@ class GetQueueCloudtasksV2beta3Args {
     );
   }
 }
-

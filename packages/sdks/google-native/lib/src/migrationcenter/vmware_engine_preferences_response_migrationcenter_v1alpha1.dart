@@ -43,4 +43,3 @@ class VmwareEnginePreferencesResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

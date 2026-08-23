@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight value: $value');
   }
 }
-

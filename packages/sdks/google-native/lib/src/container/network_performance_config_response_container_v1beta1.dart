@@ -31,4 +31,3 @@ class NetworkPerformanceConfigResponseContainerV1beta1 {
     );
   }
 }
-

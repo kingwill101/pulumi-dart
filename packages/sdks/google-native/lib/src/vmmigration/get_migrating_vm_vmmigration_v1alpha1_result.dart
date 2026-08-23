@@ -182,4 +182,3 @@ class GetMigratingVmVmmigrationV1alpha1Result {
     );
   }
 }
-

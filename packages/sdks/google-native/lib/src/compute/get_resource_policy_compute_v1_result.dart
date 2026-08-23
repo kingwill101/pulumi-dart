@@ -92,4 +92,3 @@ class GetResourcePolicyComputeV1Result {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions value: $value');
   }
 }
-

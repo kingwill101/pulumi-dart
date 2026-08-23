@@ -17,4 +17,3 @@ enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRe
     throw ArgumentError('Unknown GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase value: $value');
   }
 }
-

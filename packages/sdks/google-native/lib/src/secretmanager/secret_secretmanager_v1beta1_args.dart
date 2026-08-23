@@ -46,4 +46,3 @@ class SecretSecretmanagerV1beta1Args {
     );
   }
 }
-

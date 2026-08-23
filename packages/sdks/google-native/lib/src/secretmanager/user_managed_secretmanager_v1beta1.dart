@@ -26,4 +26,3 @@ class UserManagedSecretmanagerV1beta1 {
     );
   }
 }
-

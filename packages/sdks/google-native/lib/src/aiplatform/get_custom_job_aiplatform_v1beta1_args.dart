@@ -37,4 +37,3 @@ class GetCustomJobAiplatformV1beta1Args {
     );
   }
 }
-

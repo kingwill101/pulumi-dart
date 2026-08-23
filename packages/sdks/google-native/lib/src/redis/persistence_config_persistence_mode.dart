@@ -16,4 +16,3 @@ enum PersistenceConfigPersistenceMode {
     throw ArgumentError('Unknown PersistenceConfigPersistenceMode value: $value');
   }
 }
-

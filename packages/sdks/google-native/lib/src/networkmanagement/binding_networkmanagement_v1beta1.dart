@@ -38,4 +38,3 @@ class BindingNetworkmanagementV1beta1 {
     );
   }
 }
-

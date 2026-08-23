@@ -18,4 +18,3 @@ enum CapacityCommitmentPlanBigqueryreservationV1beta1 {
     throw ArgumentError('Unknown CapacityCommitmentPlanBigqueryreservationV1beta1 value: $value');
   }
 }
-

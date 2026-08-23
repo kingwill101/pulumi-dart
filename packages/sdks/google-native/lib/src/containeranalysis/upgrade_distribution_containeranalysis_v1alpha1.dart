@@ -43,4 +43,3 @@ class UpgradeDistributionContaineranalysisV1alpha1 {
     );
   }
 }
-

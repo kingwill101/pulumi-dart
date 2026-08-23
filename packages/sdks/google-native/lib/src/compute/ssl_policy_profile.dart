@@ -17,4 +17,3 @@ enum SslPolicyProfile {
     throw ArgumentError('Unknown SslPolicyProfile value: $value');
   }
 }
-

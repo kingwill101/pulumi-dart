@@ -37,4 +37,3 @@ class GetHttpRouteNetworkservicesV1beta1Args {
     );
   }
 }
-

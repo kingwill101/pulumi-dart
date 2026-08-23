@@ -32,4 +32,3 @@ class ComplianceOccurrenceResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

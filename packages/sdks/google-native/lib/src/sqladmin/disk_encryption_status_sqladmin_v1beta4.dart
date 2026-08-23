@@ -31,4 +31,3 @@ class DiskEncryptionStatusSqladminV1beta4 {
     );
   }
 }
-

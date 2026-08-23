@@ -37,4 +37,3 @@ class GetSecretIamPolicySecretmanagerV1beta1Args {
     );
   }
 }
-

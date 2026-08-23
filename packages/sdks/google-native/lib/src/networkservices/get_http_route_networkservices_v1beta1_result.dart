@@ -80,4 +80,3 @@ class GetHttpRouteNetworkservicesV1beta1Result {
     );
   }
 }
-

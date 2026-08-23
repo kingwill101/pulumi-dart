@@ -33,4 +33,3 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
     );
   }
 }
-

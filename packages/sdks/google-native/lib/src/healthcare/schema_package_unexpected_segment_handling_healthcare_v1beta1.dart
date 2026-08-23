@@ -17,4 +17,3 @@ enum SchemaPackageUnexpectedSegmentHandlingHealthcareV1beta1 {
     throw ArgumentError('Unknown SchemaPackageUnexpectedSegmentHandlingHealthcareV1beta1 value: $value');
   }
 }
-

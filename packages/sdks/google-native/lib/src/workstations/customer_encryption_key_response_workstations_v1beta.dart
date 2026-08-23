@@ -31,4 +31,3 @@ class CustomerEncryptionKeyResponseWorkstationsV1beta {
     );
   }
 }
-

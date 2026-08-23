@@ -39,4 +39,3 @@ class PersistenceConfigRedisV1beta1 {
     );
   }
 }
-

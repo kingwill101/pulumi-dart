@@ -17,4 +17,3 @@ enum ReportStateMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown ReportStateMigrationcenterV1alpha1 value: $value');
   }
 }
-

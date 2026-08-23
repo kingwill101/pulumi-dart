@@ -50,4 +50,3 @@ class MysqlProfileDatastreamV1alpha1 {
     );
   }
 }
-

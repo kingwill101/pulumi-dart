@@ -32,4 +32,3 @@ class GoogleDatastoreAdminV1IndexedProperty {
     );
   }
 }
-

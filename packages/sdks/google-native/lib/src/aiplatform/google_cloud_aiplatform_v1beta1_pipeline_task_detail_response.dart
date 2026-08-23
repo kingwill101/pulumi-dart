@@ -101,4 +101,3 @@ class GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse {
     );
   }
 }
-

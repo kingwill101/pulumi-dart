@@ -18,4 +18,3 @@ enum DoubleComparisonFilterValueComparison {
     throw ArgumentError('Unknown DoubleComparisonFilterValueComparison value: $value');
   }
 }
-

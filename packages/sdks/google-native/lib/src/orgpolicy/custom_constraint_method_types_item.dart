@@ -16,4 +16,3 @@ enum CustomConstraintMethodTypesItem {
     throw ArgumentError('Unknown CustomConstraintMethodTypesItem value: $value');
   }
 }
-

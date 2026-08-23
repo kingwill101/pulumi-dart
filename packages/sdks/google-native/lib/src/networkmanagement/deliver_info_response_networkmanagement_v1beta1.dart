@@ -31,4 +31,3 @@ class DeliverInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

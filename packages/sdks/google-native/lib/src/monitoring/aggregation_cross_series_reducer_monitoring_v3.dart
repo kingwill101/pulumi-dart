@@ -27,4 +27,3 @@ enum AggregationCrossSeriesReducerMonitoringV3 {
     throw ArgumentError('Unknown AggregationCrossSeriesReducerMonitoringV3 value: $value');
   }
 }
-

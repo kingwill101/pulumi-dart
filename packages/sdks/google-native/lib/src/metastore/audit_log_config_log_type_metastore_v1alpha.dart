@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeMetastoreV1alpha {
     throw ArgumentError('Unknown AuditLogConfigLogTypeMetastoreV1alpha value: $value');
   }
 }
-

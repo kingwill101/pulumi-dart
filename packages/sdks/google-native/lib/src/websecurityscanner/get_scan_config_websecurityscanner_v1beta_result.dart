@@ -111,4 +111,3 @@ class GetScanConfigWebsecurityscannerV1betaResult {
     );
   }
 }
-

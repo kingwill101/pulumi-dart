@@ -15,4 +15,3 @@ enum TargetSslProxyProxyHeaderComputeV1 {
     throw ArgumentError('Unknown TargetSslProxyProxyHeaderComputeV1 value: $value');
   }
 }
-

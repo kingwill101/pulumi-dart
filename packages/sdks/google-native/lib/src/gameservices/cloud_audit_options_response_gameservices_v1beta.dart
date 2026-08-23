@@ -32,4 +32,3 @@ class CloudAuditOptionsResponseGameservicesV1beta {
     );
   }
 }
-

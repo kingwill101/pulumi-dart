@@ -56,4 +56,3 @@ class DevicePolicyResponseAccesscontextmanagerV1beta {
     );
   }
 }
-

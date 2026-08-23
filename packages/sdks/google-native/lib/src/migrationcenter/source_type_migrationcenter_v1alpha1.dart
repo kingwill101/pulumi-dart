@@ -18,4 +18,3 @@ enum SourceTypeMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown SourceTypeMigrationcenterV1alpha1 value: $value');
   }
 }
-

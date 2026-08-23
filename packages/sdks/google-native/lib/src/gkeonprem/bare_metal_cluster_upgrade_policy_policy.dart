@@ -16,4 +16,3 @@ enum BareMetalClusterUpgradePolicyPolicy {
     throw ArgumentError('Unknown BareMetalClusterUpgradePolicyPolicy value: $value');
   }
 }
-

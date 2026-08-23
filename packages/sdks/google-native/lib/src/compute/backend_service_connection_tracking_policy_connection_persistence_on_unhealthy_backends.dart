@@ -16,4 +16,3 @@ enum BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBacke
     throw ArgumentError('Unknown BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends value: $value');
   }
 }
-

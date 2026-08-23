@@ -25,4 +25,3 @@ class DataCatalogConfigMetastoreV1alpha {
     );
   }
 }
-

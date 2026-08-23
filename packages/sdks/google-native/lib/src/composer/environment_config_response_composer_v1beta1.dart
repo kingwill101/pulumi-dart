@@ -138,4 +138,3 @@ class EnvironmentConfigResponseComposerV1beta1 {
     );
   }
 }
-

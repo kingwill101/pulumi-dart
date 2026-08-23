@@ -52,4 +52,3 @@ class JobIamMemberRunV2Args {
     );
   }
 }
-

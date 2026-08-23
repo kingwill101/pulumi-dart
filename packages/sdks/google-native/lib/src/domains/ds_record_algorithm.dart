@@ -31,4 +31,3 @@ enum DsRecordAlgorithm {
     throw ArgumentError('Unknown DsRecordAlgorithm value: $value');
   }
 }
-

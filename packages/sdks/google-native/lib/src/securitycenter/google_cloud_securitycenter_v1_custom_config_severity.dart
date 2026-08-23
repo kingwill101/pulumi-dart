@@ -18,4 +18,3 @@ enum GoogleCloudSecuritycenterV1CustomConfigSeverity {
     throw ArgumentError('Unknown GoogleCloudSecuritycenterV1CustomConfigSeverity value: $value');
   }
 }
-

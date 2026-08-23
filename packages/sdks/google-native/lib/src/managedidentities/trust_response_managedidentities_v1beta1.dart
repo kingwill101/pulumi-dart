@@ -85,4 +85,3 @@ class TrustResponseManagedidentitiesV1beta1 {
     );
   }
 }
-

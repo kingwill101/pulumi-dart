@@ -79,4 +79,3 @@ class Vp9CodecSettings {
     );
   }
 }
-

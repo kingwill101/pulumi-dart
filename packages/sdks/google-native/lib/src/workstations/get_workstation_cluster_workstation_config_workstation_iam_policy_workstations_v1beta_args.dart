@@ -52,4 +52,3 @@ class GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1be
     );
   }
 }
-

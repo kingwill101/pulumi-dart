@@ -37,4 +37,3 @@ class DiskConfigResponseDataprocV1beta2 {
     );
   }
 }
-

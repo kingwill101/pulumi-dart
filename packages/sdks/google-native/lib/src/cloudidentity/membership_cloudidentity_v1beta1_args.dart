@@ -47,4 +47,3 @@ class MembershipCloudidentityV1beta1Args {
     );
   }
 }
-

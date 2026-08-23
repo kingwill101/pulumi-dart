@@ -37,4 +37,3 @@ class VolumeResponseAppengineV1beta {
     );
   }
 }
-

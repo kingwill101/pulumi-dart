@@ -17,4 +17,3 @@ enum RouterNatAutoNetworkTierComputeBeta {
     throw ArgumentError('Unknown RouterNatAutoNetworkTierComputeBeta value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum MetadataOptionsUid {
     throw ArgumentError('Unknown MetadataOptionsUid value: $value');
   }
 }
-

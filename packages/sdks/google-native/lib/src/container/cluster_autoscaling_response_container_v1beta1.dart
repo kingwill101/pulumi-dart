@@ -51,4 +51,3 @@ class ClusterAutoscalingResponseContainerV1beta1 {
     );
   }
 }
-

@@ -23,4 +23,3 @@ enum MonitoringComponentConfigEnableComponentsItem {
     throw ArgumentError('Unknown MonitoringComponentConfigEnableComponentsItem value: $value');
   }
 }
-

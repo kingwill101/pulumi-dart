@@ -31,4 +31,3 @@ class CpuUtilizationResponseAppengineV1beta {
     );
   }
 }
-

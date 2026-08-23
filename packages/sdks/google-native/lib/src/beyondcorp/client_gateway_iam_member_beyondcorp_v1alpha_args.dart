@@ -52,4 +52,3 @@ class ClientGatewayIamMemberBeyondcorpV1alphaArgs {
     );
   }
 }
-

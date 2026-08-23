@@ -51,4 +51,3 @@ class PeeringManagedidentitiesV1alpha1Args {
     );
   }
 }
-

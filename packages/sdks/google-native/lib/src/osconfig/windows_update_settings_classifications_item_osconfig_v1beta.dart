@@ -22,4 +22,3 @@ enum WindowsUpdateSettingsClassificationsItemOsconfigV1beta {
     throw ArgumentError('Unknown WindowsUpdateSettingsClassificationsItemOsconfigV1beta value: $value');
   }
 }
-

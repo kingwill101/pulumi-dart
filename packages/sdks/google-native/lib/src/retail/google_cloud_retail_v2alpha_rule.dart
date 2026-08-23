@@ -96,4 +96,3 @@ class GoogleCloudRetailV2alphaRule {
     );
   }
 }
-

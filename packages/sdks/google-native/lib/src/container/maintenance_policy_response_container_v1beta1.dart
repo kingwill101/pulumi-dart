@@ -32,4 +32,3 @@ class MaintenancePolicyResponseContainerV1beta1 {
     );
   }
 }
-

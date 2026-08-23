@@ -50,4 +50,3 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
     );
   }
 }
-

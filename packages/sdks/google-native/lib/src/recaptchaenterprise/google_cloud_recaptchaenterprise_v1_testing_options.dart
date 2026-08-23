@@ -32,4 +32,3 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
     );
   }
 }
-

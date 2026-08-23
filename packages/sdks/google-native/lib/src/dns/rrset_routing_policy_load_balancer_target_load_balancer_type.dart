@@ -17,4 +17,3 @@ enum RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
     throw ArgumentError('Unknown RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType value: $value');
   }
 }
-

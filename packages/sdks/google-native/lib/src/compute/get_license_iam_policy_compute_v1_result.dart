@@ -52,4 +52,3 @@ class GetLicenseIamPolicyComputeV1Result {
     );
   }
 }
-

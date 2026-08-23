@@ -55,4 +55,3 @@ class RepoSourceCloudfunctionsV2alpha {
     );
   }
 }
-

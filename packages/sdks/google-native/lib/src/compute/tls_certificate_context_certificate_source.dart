@@ -16,4 +16,3 @@ enum TlsCertificateContextCertificateSource {
     throw ArgumentError('Unknown TlsCertificateContextCertificateSource value: $value');
   }
 }
-

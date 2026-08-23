@@ -16,4 +16,3 @@ enum GlobalAddressIpVersion {
     throw ArgumentError('Unknown GlobalAddressIpVersion value: $value');
   }
 }
-

@@ -39,4 +39,3 @@ class TypeHealthcareV1beta1 {
     );
   }
 }
-

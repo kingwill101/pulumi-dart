@@ -15,4 +15,3 @@ enum BasicLevelCombiningFunctionAccesscontextmanagerV1beta {
     throw ArgumentError('Unknown BasicLevelCombiningFunctionAccesscontextmanagerV1beta value: $value');
   }
 }
-

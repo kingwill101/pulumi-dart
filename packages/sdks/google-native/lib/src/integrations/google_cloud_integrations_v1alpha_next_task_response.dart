@@ -49,4 +49,3 @@ class GoogleCloudIntegrationsV1alphaNextTaskResponse {
     );
   }
 }
-

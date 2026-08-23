@@ -16,4 +16,3 @@ enum InstanceKeyRevocationActionType {
     throw ArgumentError('Unknown InstanceKeyRevocationActionType value: $value');
   }
 }
-

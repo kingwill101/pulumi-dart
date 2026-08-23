@@ -54,4 +54,3 @@ class CloneJobVmmigrationV1alpha1Args {
     );
   }
 }
-

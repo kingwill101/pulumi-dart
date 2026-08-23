@@ -25,4 +25,3 @@ class NetworkConfigCloudbuildV1alpha2 {
     );
   }
 }
-

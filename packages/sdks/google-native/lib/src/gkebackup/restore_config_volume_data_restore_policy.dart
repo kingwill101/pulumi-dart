@@ -17,4 +17,3 @@ enum RestoreConfigVolumeDataRestorePolicy {
     throw ArgumentError('Unknown RestoreConfigVolumeDataRestorePolicy value: $value');
   }
 }
-

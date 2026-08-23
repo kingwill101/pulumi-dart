@@ -15,4 +15,3 @@ enum PublicKeyCertificateFormat {
     throw ArgumentError('Unknown PublicKeyCertificateFormat value: $value');
   }
 }
-

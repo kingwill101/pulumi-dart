@@ -31,4 +31,3 @@ class DatabaseEncryptionResponseContainerV1beta1 {
     );
   }
 }
-

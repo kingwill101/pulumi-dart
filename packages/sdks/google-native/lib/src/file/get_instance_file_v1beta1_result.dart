@@ -142,4 +142,3 @@ class GetInstanceFileV1beta1Result {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
     );
   }
 }
-

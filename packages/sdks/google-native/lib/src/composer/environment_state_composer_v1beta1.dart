@@ -19,4 +19,3 @@ enum EnvironmentStateComposerV1beta1 {
     throw ArgumentError('Unknown EnvironmentStateComposerV1beta1 value: $value');
   }
 }
-

@@ -24,4 +24,3 @@ class NetworkPerformanceConfigComputeV1 {
     );
   }
 }
-

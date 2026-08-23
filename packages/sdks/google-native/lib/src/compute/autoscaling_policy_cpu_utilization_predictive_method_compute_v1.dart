@@ -15,4 +15,3 @@ enum AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 {
     throw ArgumentError('Unknown AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 value: $value');
   }
 }
-

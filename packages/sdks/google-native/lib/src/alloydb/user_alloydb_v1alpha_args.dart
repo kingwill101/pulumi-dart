@@ -68,4 +68,3 @@ class UserAlloydbV1alphaArgs {
     );
   }
 }
-

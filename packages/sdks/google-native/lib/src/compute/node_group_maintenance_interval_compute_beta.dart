@@ -16,4 +16,3 @@ enum NodeGroupMaintenanceIntervalComputeBeta {
     throw ArgumentError('Unknown NodeGroupMaintenanceIntervalComputeBeta value: $value');
   }
 }
-

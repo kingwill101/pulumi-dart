@@ -32,4 +32,3 @@ class OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha {
     );
   }
 }
-

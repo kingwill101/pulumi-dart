@@ -32,4 +32,3 @@ class Hl7SchemaConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

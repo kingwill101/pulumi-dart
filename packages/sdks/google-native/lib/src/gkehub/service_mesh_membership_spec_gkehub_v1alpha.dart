@@ -40,4 +40,3 @@ class ServiceMeshMembershipSpecGkehubV1alpha {
     );
   }
 }
-

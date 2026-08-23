@@ -16,4 +16,3 @@ enum DistributionArchitectureContaineranalysisV1beta1 {
     throw ArgumentError('Unknown DistributionArchitectureContaineranalysisV1beta1 value: $value');
   }
 }
-

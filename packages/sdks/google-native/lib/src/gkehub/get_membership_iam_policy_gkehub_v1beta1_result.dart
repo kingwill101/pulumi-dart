@@ -45,4 +45,3 @@ class GetMembershipIamPolicyGkehubV1beta1Result {
     );
   }
 }
-

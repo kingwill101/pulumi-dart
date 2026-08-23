@@ -25,4 +25,3 @@ class WindowsNodeConfigResponseContainerV1beta1 {
     );
   }
 }
-

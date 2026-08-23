@@ -17,4 +17,3 @@ enum ApigatewayAuditLogConfigLogTypeApigatewayV1beta {
     throw ArgumentError('Unknown ApigatewayAuditLogConfigLogTypeApigatewayV1beta value: $value');
   }
 }
-

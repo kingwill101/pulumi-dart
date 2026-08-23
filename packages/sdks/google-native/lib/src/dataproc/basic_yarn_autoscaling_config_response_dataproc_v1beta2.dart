@@ -49,4 +49,3 @@ class BasicYarnAutoscalingConfigResponseDataprocV1beta2 {
     );
   }
 }
-

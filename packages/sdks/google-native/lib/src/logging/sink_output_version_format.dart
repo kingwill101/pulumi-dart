@@ -16,4 +16,3 @@ enum SinkOutputVersionFormat {
     throw ArgumentError('Unknown SinkOutputVersionFormat value: $value');
   }
 }
-

@@ -106,4 +106,3 @@ class GetMembershipGkehubV1alpha2Result {
     );
   }
 }
-

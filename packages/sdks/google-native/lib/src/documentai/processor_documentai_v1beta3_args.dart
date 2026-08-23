@@ -62,4 +62,3 @@ class ProcessorDocumentaiV1beta3Args {
     );
   }
 }
-

@@ -109,4 +109,3 @@ class AutomaticScalingResponseAppengineV1beta {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum VersionServingStatusAppengineV1beta {
     throw ArgumentError('Unknown VersionServingStatusAppengineV1beta value: $value');
   }
 }
-

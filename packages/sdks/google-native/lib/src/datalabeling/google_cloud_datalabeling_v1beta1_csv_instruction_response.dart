@@ -25,4 +25,3 @@ class GoogleCloudDatalabelingV1beta1CsvInstructionResponse {
     );
   }
 }
-

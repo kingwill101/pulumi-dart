@@ -25,4 +25,3 @@ class RelationshipNoteResponseContaineranalysisV1beta1 {
     );
   }
 }
-

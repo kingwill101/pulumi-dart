@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm
     throw ArgumentError('Unknown GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm value: $value');
   }
 }
-

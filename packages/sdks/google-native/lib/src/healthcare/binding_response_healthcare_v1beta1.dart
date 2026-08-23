@@ -38,4 +38,3 @@ class BindingResponseHealthcareV1beta1 {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum RouterBgpAdvertiseModeComputeV1 {
     throw ArgumentError('Unknown RouterBgpAdvertiseModeComputeV1 value: $value');
   }
 }
-

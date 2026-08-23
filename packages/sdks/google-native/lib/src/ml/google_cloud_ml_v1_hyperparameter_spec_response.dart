@@ -74,4 +74,3 @@ class GoogleCloudMlV1HyperparameterSpecResponse {
     );
   }
 }
-

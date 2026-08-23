@@ -51,4 +51,3 @@ class NoteIamPolicyContaineranalysisV1alpha1Args {
     );
   }
 }
-

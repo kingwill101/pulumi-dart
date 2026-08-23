@@ -35,4 +35,3 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
     );
   }
 }
-

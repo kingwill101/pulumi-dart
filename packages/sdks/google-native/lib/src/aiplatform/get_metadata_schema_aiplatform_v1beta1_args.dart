@@ -42,4 +42,3 @@ class GetMetadataSchemaAiplatformV1beta1Args {
     );
   }
 }
-

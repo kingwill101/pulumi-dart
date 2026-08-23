@@ -38,4 +38,3 @@ class GetQueueIamPolicyCloudtasksV2beta2Result {
     );
   }
 }
-

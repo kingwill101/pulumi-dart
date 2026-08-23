@@ -58,4 +58,3 @@ class ClusterDataprocV1beta2Args {
     );
   }
 }
-

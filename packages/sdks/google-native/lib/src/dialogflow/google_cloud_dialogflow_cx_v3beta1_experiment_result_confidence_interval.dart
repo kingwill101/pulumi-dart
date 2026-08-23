@@ -43,4 +43,3 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetBackupRunSqladminV1beta4Args {
     );
   }
 }
-

@@ -63,4 +63,3 @@ class RegionAutoscalerComputeV1Args {
     );
   }
 }
-

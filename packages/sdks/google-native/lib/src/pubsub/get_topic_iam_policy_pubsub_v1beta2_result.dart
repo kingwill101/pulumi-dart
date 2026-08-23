@@ -38,4 +38,3 @@ class GetTopicIamPolicyPubsubV1beta2Result {
     );
   }
 }
-

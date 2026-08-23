@@ -223,4 +223,3 @@ class SettingsResponseSqladminV1beta4 {
     );
   }
 }
-

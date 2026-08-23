@@ -17,4 +17,3 @@ enum AppDatabaseTypeAppengineV1beta {
     throw ArgumentError('Unknown AppDatabaseTypeAppengineV1beta value: $value');
   }
 }
-

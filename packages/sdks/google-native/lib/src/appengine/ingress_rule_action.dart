@@ -16,4 +16,3 @@ enum IngressRuleAction {
     throw ArgumentError('Unknown IngressRuleAction value: $value');
   }
 }
-

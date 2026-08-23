@@ -90,4 +90,3 @@ class ConnectionProfileDatamigrationV1beta1Args {
     );
   }
 }
-

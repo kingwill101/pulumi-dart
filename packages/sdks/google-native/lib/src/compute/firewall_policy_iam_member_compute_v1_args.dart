@@ -52,4 +52,3 @@ class FirewallPolicyIamMemberComputeV1Args {
     );
   }
 }
-

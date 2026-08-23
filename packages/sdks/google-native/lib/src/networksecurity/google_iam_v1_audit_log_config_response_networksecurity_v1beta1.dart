@@ -31,4 +31,3 @@ class GoogleIamV1AuditLogConfigResponseNetworksecurityV1beta1 {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeV1 {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class InstanceIamBindingDatafusionV1beta1Args {
     );
   }
 }
-

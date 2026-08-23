@@ -42,4 +42,3 @@ class GetModelRetailV2alphaArgs {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class SamlSsoInfoResponseCloudidentityV1beta1 {
     );
   }
 }
-

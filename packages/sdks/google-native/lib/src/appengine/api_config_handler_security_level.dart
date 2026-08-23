@@ -18,4 +18,3 @@ enum ApiConfigHandlerSecurityLevel {
     throw ArgumentError('Unknown ApiConfigHandlerSecurityLevel value: $value');
   }
 }
-

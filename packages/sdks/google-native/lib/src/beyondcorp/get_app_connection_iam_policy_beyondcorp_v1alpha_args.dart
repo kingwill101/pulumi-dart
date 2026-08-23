@@ -42,4 +42,3 @@ class GetAppConnectionIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

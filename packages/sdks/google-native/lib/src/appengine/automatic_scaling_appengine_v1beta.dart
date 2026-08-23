@@ -109,4 +109,3 @@ class AutomaticScalingAppengineV1beta {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum FhirStoreComplexDataTypeReferenceParsingHealthcareV1beta1 {
     throw ArgumentError('Unknown FhirStoreComplexDataTypeReferenceParsingHealthcareV1beta1 value: $value');
   }
 }
-

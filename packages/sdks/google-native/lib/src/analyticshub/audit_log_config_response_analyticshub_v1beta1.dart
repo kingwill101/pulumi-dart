@@ -31,4 +31,3 @@ class AuditLogConfigResponseAnalyticshubV1beta1 {
     );
   }
 }
-

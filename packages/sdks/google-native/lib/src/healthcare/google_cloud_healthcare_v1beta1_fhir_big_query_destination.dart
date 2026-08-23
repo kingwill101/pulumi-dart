@@ -45,4 +45,3 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestination {
     );
   }
 }
-

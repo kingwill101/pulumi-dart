@@ -37,4 +37,3 @@ class GetDebugTokenFirebaseappcheckV1betaArgs {
     );
   }
 }
-

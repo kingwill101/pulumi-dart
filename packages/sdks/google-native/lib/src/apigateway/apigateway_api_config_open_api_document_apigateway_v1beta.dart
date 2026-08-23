@@ -26,4 +26,3 @@ class ApigatewayApiConfigOpenApiDocumentApigatewayV1beta {
     );
   }
 }
-

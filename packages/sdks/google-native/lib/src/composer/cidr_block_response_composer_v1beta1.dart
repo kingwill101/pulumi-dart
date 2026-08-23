@@ -31,4 +31,3 @@ class CidrBlockResponseComposerV1beta1 {
     );
   }
 }
-

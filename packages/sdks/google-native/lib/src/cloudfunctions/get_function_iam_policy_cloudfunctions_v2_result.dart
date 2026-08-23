@@ -45,4 +45,3 @@ class GetFunctionIamPolicyCloudfunctionsV2Result {
     );
   }
 }
-

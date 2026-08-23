@@ -18,4 +18,3 @@ enum GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
     throw ArgumentError('Unknown GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState value: $value');
   }
 }
-

@@ -44,4 +44,3 @@ class SqlIpConfigDatamigrationV1beta1 {
     );
   }
 }
-

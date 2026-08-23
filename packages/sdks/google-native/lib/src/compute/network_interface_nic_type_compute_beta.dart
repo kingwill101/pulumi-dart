@@ -16,4 +16,3 @@ enum NetworkInterfaceNicTypeComputeBeta {
     throw ArgumentError('Unknown NetworkInterfaceNicTypeComputeBeta value: $value');
   }
 }
-

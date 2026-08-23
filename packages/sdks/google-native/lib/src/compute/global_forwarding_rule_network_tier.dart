@@ -18,4 +18,3 @@ enum GlobalForwardingRuleNetworkTier {
     throw ArgumentError('Unknown GlobalForwardingRuleNetworkTier value: $value');
   }
 }
-

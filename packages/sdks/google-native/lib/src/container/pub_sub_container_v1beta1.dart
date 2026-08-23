@@ -38,4 +38,3 @@ class PubSubContainerV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum VersionDatabasePersistencePolicy {
     throw ArgumentError('Unknown VersionDatabasePersistencePolicy value: $value');
   }
 }
-

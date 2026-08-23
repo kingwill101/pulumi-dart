@@ -37,4 +37,3 @@ class ResourceLimitResponseContainerV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class LicenseResourceCommitmentComputeV1 {
     );
   }
 }
-

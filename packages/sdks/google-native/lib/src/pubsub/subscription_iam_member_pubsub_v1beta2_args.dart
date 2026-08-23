@@ -52,4 +52,3 @@ class SubscriptionIamMemberPubsubV1beta2Args {
     );
   }
 }
-

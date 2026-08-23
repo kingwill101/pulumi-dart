@@ -31,4 +31,3 @@ class SecurityPostureConfigResponseContainerV1beta1 {
     );
   }
 }
-

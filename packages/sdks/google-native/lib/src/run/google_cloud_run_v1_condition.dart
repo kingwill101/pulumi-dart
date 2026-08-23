@@ -55,4 +55,3 @@ class GoogleCloudRunV1Condition {
     );
   }
 }
-

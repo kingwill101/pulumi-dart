@@ -72,4 +72,3 @@ class GetOrganizationAddressGroupNetworksecurityV1beta1Result {
     );
   }
 }
-

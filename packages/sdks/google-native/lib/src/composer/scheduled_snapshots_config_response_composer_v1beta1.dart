@@ -43,4 +43,3 @@ class ScheduledSnapshotsConfigResponseComposerV1beta1 {
     );
   }
 }
-

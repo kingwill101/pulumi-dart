@@ -44,4 +44,3 @@ class AttemptResponseCloudtasksV2beta3 {
     );
   }
 }
-

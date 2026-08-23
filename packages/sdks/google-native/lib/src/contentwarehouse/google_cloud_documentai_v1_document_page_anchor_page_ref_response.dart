@@ -50,4 +50,3 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse {
     );
   }
 }
-

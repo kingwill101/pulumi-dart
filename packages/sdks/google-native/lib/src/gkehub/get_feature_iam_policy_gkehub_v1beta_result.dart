@@ -45,4 +45,3 @@ class GetFeatureIamPolicyGkehubV1betaResult {
     );
   }
 }
-

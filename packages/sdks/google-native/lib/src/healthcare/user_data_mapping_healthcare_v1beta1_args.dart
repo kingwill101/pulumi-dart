@@ -67,4 +67,3 @@ class UserDataMappingHealthcareV1beta1Args {
     );
   }
 }
-

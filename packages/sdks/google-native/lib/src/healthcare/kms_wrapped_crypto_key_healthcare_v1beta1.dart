@@ -31,4 +31,3 @@ class KmsWrappedCryptoKeyHealthcareV1beta1 {
     );
   }
 }
-

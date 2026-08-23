@@ -196,4 +196,3 @@ class GetInterconnectComputeV1Result {
     );
   }
 }
-

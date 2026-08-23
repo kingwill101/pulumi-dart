@@ -23,4 +23,3 @@ class ManagedZoneReverseLookupConfigDnsV1beta2 {
     );
   }
 }
-

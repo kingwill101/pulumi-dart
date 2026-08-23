@@ -37,4 +37,3 @@ class PlacementPolicyResponseContainerV1beta1 {
     );
   }
 }
-

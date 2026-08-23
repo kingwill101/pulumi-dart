@@ -26,4 +26,3 @@ class WebServerNetworkAccessControlComposerV1beta1 {
     );
   }
 }
-

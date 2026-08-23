@@ -17,4 +17,3 @@ enum UtilizationReportTimeFrameVmmigrationV1alpha1 {
     throw ArgumentError('Unknown UtilizationReportTimeFrameVmmigrationV1alpha1 value: $value');
   }
 }
-

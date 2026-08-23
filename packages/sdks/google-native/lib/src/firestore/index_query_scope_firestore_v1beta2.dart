@@ -16,4 +16,3 @@ enum IndexQueryScopeFirestoreV1beta2 {
     throw ArgumentError('Unknown IndexQueryScopeFirestoreV1beta2 value: $value');
   }
 }
-

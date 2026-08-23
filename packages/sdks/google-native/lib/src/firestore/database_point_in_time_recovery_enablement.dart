@@ -16,4 +16,3 @@ enum DatabasePointInTimeRecoveryEnablement {
     throw ArgumentError('Unknown DatabasePointInTimeRecoveryEnablement value: $value');
   }
 }
-

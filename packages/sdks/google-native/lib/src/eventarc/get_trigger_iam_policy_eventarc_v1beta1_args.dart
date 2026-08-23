@@ -42,4 +42,3 @@ class GetTriggerIamPolicyEventarcV1beta1Args {
     );
   }
 }
-

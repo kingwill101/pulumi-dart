@@ -32,4 +32,3 @@ class CollectionOverrideResponseDeploymentmanagerV2beta {
     );
   }
 }
-

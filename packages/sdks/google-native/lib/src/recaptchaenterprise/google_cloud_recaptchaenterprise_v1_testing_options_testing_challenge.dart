@@ -16,4 +16,3 @@ enum GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge {
     throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge value: $value');
   }
 }
-

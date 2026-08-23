@@ -37,4 +37,3 @@ class GetFunctionCloudfunctionsV2alphaArgs {
     );
   }
 }
-

@@ -86,4 +86,3 @@ class GetVpnGatewayComputeV1Result {
     );
   }
 }
-

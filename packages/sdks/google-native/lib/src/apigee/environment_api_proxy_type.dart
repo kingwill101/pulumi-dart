@@ -16,4 +16,3 @@ enum EnvironmentApiProxyType {
     throw ArgumentError('Unknown EnvironmentApiProxyType value: $value');
   }
 }
-

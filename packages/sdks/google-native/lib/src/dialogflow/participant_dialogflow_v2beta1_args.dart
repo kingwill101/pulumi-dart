@@ -62,4 +62,3 @@ class ParticipantDialogflowV2beta1Args {
     );
   }
 }
-
