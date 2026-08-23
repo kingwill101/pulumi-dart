@@ -2,6 +2,9 @@
 # Created by `dart pub`
 .dart_tool/
 
+# Prepared Dagger CI artifacts
+.dagger-ci/
+
 # Local reference repositories used for proto regeneration
 .googleapis/
 .protobuf/
