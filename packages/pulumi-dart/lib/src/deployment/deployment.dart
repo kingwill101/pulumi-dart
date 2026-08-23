@@ -431,6 +431,7 @@ class DeploymentImpl extends Deployment
           resource: resource as CustomResource,
           args: args,
           opts: opts,
+          registerPackageRequest: registerPackageRequest,
         );
         return;
       }
@@ -653,6 +654,7 @@ class DeploymentImpl extends Deployment
     required CustomResource resource,
     required Inputs args,
     required ResourceOptions opts,
+    models.RegisterPackageRequest? registerPackageRequest,
   }) async {
     final serializedProps = <String, dynamic>{};
     final dependencyUrns = <String>{};
@@ -718,6 +720,13 @@ class DeploymentImpl extends Deployment
       ..acceptSecrets = true
       ..acceptResources = true;
     applyRequestSourceMetadata(request, StackTrace.current);
+
+    if (registerPackageRequest != null) {
+      final packageRef = await resolvePackageRef(registerPackageRequest);
+      if (packageRef != null) {
+        request.packageRef = packageRef;
+      }
+    }
 
     if (dependencyUrns.isNotEmpty) {
       final sorted = dependencyUrns.toList()..sort();

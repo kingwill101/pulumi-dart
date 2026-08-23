@@ -25,6 +25,7 @@ import '../../mocks/mock_engine.dart';
 
 class _FakeMonitor implements monitorpkg.Monitor {
   RegisterResourceRequest? capturedRegisterResourceRequest;
+  ReadResourceRequest? capturedReadResourceRequest;
   final List<RegisterResourceRequest> capturedRegisterResourceRequests = [];
   RegisterPackageRequest? capturedRegisterPackageRequest;
   final List<RegisterPackageRequest> capturedRegisterPackageRequests = [];
@@ -77,7 +78,10 @@ class _FakeMonitor implements monitorpkg.Monitor {
     Resource resource,
     ReadResourceRequest request,
   ) async {
-    throw GrpcError.unimplemented('readResource not used in this test');
+    capturedReadResourceRequest = request;
+    return ReadResourceResponse()
+      ..urn = 'urn:pulumi:stack::project::${request.type}::${request.name}'
+      ..properties = Struct();
   }
 
   @override
@@ -284,6 +288,34 @@ void main() {
           ),
           everyElement('pkg-ref-default'),
         );
+      },
+    );
+
+    test(
+      'forwards package reference when reading an existing resource',
+      () async {
+        _PackageBackedResource(
+          'existing',
+          registerPackageRequest: deployment_models.RegisterPackageRequest(
+            name: 'pulumi-base',
+            version: '1.0.0',
+            extensionParameterization: deployment_models.Parameterization(
+              name: 'extension',
+              version: '2.0.0',
+              value: [1, 2, 3],
+            ),
+          ),
+          options: CustomResourceOptions(id: Input.fromValue('existing-id')),
+        );
+
+        await deployment.registerOutputs();
+
+        expect(monitor.capturedReadResourceRequest, isNotNull);
+        expect(
+          monitor.capturedReadResourceRequest!.packageRef,
+          'pkg-ref-default',
+        );
+        expect(monitor.capturedRegisterResourceRequest, isNull);
       },
     );
 

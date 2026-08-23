@@ -63,3 +63,17 @@ func TestResourceRendersOutputsAndAssignments(t *testing.T) {
 	require.Contains(t, actual, "Map<String, dynamic>? args")
 	require.Contains(t, actual, "status = registerOutput<String>('status');")
 }
+
+func TestProviderResourceForwardsPackageRegistration(t *testing.T) {
+	t.Parallel()
+
+	actual := string(Resource(dartir.ResourceClass{
+		Name:                   "Provider",
+		Kind:                   dartir.ProviderResource,
+		TokenLiteral:           "'extension'",
+		HasPackageRegistration: true,
+	}))
+
+	require.Contains(t, actual, "class Provider extends pulumi.ProviderResource")
+	require.Contains(t, actual, "registerPackageRequest: package_registration.registerPackageRequest")
+}

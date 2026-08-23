@@ -1,6 +1,7 @@
 import 'package:pulumi/src/resource/custom_resource.dart';
 
 import '../constants.dart';
+import '../deployment/models.dart' as models;
 import '../input.dart';
 
 /// {@template pulumi.provider_resource.summary}
@@ -23,13 +24,15 @@ class ProviderResource extends CustomResource {
     this.package,
     String name,
     Inputs? args,
-    CustomResourceOptions? options,
-  ) : super(
-        'pulumi:providers:$package',
-        name,
-        args ?? {},
-        options ?? CustomResourceOptions(),
-      );
+    CustomResourceOptions? options, {
+    models.RegisterPackageRequest? registerPackageRequest,
+  }) : super(
+         'pulumi:providers:$package',
+         name,
+         args ?? {},
+         options ?? CustomResourceOptions(),
+         registerPackageRequest: registerPackageRequest,
+       );
 
   ProviderResource.reference(this.package, String urn, {String? id})
     : super(
