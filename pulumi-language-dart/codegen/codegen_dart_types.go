@@ -44,21 +44,6 @@ func objectClassPropertyDartType(objectClass packageObjectClassSpec, property pa
 	return nullableDartType(base, property.Required)
 }
 
-// objectClassConstructorPropertyDartType computes constructor parameter type
-// for object class properties.
-func objectClassConstructorPropertyDartType(objectClass packageObjectClassSpec, property packagePropertySpec) string {
-	if objectClass.UsesInputTypes {
-		base := propertyBaseDartType(property)
-		typed := fmt.Sprintf("pulumi.Input<%s>", base)
-		if property.Required {
-			return typed
-		}
-		return typed + "?"
-	}
-	base := propertyBaseDartType(property)
-	return nullableDartType(base, property.Required)
-}
-
 // typeSpecElement returns element type for array/map specs, defaulting dynamic.
 func typeSpecElement(typeSpec packageTypeSpec) packageTypeSpec {
 	if typeSpec.ElementType != nil {
