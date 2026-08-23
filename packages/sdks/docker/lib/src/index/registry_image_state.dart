@@ -8,6 +8,7 @@ import 'registry_image_build.dart';
 class RegistryImageState {
   /// Authentication configuration for the Docker registry. It is only used for this resource.
   final pulumi.Input<RegistryImageAuthConfig>? authConfig;
+  /// Configuration to build an image. Requires the `Use containerd for pulling and storing images` option to be disabled in the Docker Host(https://github.com/kreuzwerker/terraform-provider-docker/issues/534). Please see [docker build command reference](https://docs.docker.com/engine/reference/commandline/build/#options) too.
   final pulumi.Input<RegistryImageBuild>? build;
   /// If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   final pulumi.Input<bool>? insecureSkipVerify;
@@ -22,7 +23,7 @@ class RegistryImageState {
 
   /// Creates a new [RegistryImageState].
   /// [authConfig] Authentication configuration for the Docker registry. It is only used for this resource.
-  /// [build] Optional.
+  /// [build] Configuration to build an image. Requires the `Use containerd for pulling and storing images` option to be disabled in the Docker Host(https://github.com/kreuzwerker/terraform-provider-docker/issues/534). Please see [docker build command reference](https://docs.docker.com/engine/reference/commandline/build/#options) too.
   /// [insecureSkipVerify] If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   /// [keepRemotely] If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker registry on destroy operation. Defaults to `false`
   /// [name] The name of the Docker image.
@@ -62,4 +63,3 @@ class RegistryImageState {
     );
   }
 }
-

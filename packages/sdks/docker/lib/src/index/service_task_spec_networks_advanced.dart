@@ -7,24 +7,29 @@ class ServiceTaskSpecNetworksAdvanced {
   final pulumi.Input<List<String>>? aliases;
   /// An array of driver options for the network, e.g. `opts1=value`
   final pulumi.Input<List<String>>? driverOpts;
-  /// The name/id of the network.
-  final pulumi.Input<String> name;
+  /// The id of the docker network to use. Please use `docker_network.id`. Using the name attribute of the docker network will lead to constant replacements.
+  final pulumi.Input<String>? id;
+  /// Deprecated attribute. The name/id of the docker network. Conflicts with `id` attribute.
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ServiceTaskSpecNetworksAdvanced].
   /// [aliases] The network aliases of the container in the specific network.
   /// [driverOpts] An array of driver options for the network, e.g. `opts1=value`
-  /// [name] The name/id of the network.
+  /// [id] The id of the docker network to use. Please use `docker_network.id`. Using the name attribute of the docker network will lead to constant replacements.
+  /// [name] Deprecated attribute. The name/id of the docker network. Conflicts with `id` attribute.
   const ServiceTaskSpecNetworksAdvanced({
     this.aliases,
     this.driverOpts,
-    required this.name,
+    this.id,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aliases': ?aliases,
       'driverOpts': ?driverOpts,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
     };
   }
 
@@ -32,8 +37,8 @@ class ServiceTaskSpecNetworksAdvanced {
     return ServiceTaskSpecNetworksAdvanced(
       aliases: (() { final guardedValue = map['aliases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       driverOpts: (() { final guardedValue = map['driverOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

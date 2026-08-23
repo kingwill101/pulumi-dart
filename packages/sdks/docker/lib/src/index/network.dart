@@ -39,7 +39,7 @@ import 'network_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -55,6 +55,19 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// resource "docker_network" "private_network" {
+///   name = "my_network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +76,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.docker.Network;
 /// import com.pulumi.docker.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -95,31 +108,126 @@ import 'network_state.dart';
 ///
 /// ## Import
 ///
+/// !/bin/bash
+///
+/// ```sh
+/// $ pulumi import docker:index/network:Network foo id
+/// ```
+///
 /// ### Example
 ///
 /// Assuming you created a `network` as follows
 ///
+/// ```sh
 /// #!/bin/bash
-///
 /// docker network create foo
-///
-/// prints the long ID
-///
+/// # prints the long ID
 /// 87b57a9b91ecab2db2a6dbf38df74c67d7c7108cbe479d6576574ec2cd8c2d73
+/// ```
 ///
 /// you provide the definition for the resource as follows
 ///
-/// terraform
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as docker from "@pulumi/docker";
+///
+/// const foo = new docker.Network("foo", {name: "foo"});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_docker as docker
+///
+/// foo = docker.Network("foo", name="foo")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Docker = Pulumi.Docker;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var foo = new Docker.Network("foo", new()
+///     {
+///         Name = "foo",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := docker.NewNetwork(ctx, "foo", &docker.NetworkArgs{
+/// 			Name: pulumi.String("foo"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
 ///
 /// resource "docker_network" "foo" {
-///
-/// name = "foo"
-///
+///   name = "foo"
 /// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.docker.Network;
+/// import com.pulumi.docker.NetworkArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var foo = new Network("foo", NetworkArgs.builder()
+///             .name("foo")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   foo:
+///     type: docker:Network
+///     properties:
+///       name: foo
+/// ```
+///
 ///
 /// then the import command is as follows
 ///
-/// #!/bin/bash
+/// !/bin/bash
 ///
 /// ```sh
 /// $ pulumi import docker:index/network:Network foo 87b57a9b91ecab2db2a6dbf38df74c67d7c7108cbe479d6576574ec2cd8c2d73
@@ -127,8 +235,6 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// Enable manual container attachment to the network.
   late final pulumi.Output<bool?> attachable;
-  /// Requests daemon to check for networks with same name.
-  late final pulumi.Output<bool?> checkDuplicate;
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   late final pulumi.Output<String> driver;
   /// Create swarm routing-mesh network. Defaults to `false`.
@@ -139,7 +245,7 @@ class Network extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> ipamConfigs;
   /// Driver used by the custom IP scheme of the network. Defaults to `default`
   late final pulumi.Output<String?> ipamDriver;
-  /// Provide explicit options to the IPAM driver. Valid options vary with `ipam_driver` and refer to that driver's documentation for more details.
+  /// Provide explicit options to the IPAM driver. Valid options vary with `ipamDriver` and refer to that driver's documentation for more details.
   late final pulumi.Output<Map<String, String>?> ipamOptions;
   /// Enable IPv6 networking. Defaults to `false`.
   late final pulumi.Output<bool?> ipv6;
@@ -167,7 +273,6 @@ class Network extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachable = registerOutput<bool?>('attachable');
-    checkDuplicate = registerOutput<bool?>('checkDuplicate');
     driver = registerOutput<String>('driver');
     ingress = registerOutput<bool?>('ingress');
     internal = registerOutput<bool>('internal');
@@ -205,7 +310,6 @@ class Network extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachable = registerOutput<bool?>('attachable');
-    checkDuplicate = registerOutput<bool?>('checkDuplicate');
     driver = registerOutput<String>('driver');
     ingress = registerOutput<bool?>('ingress');
     internal = registerOutput<bool>('internal');

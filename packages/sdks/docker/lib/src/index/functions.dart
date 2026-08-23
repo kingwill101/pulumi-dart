@@ -66,13 +66,13 @@ Future<GetLogsResult> getLogs(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := docker.LookupNetwork(ctx, &docker.LookupNetworkArgs{
+/// 		_, err := docker.GetNetwork(ctx, &docker.LookupNetworkArgs{
 /// 			Name: "main",
 /// 		}, nil)
 /// 		if err != nil {
@@ -80,6 +80,19 @@ Future<GetLogsResult> getLogs(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// data "docker_getnetwork" "main" {
+///   name = "main"
 /// }
 /// ```
 /// ```java
@@ -90,8 +103,8 @@ Future<GetLogsResult> getLogs(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.docker.DockerFunctions;
 /// import com.pulumi.docker.inputs.GetNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,21 +199,21 @@ Future<GetNetworkResult> getNetwork(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// ## With alias
-/// 		_, err := docker.LookupPlugin(ctx, &docker.LookupPluginArgs{
+/// 		_, err := docker.GetPlugin(ctx, &docker.LookupPluginArgs{
 /// 			Alias: pulumi.StringRef("sample-volume-plugin:latest"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// ## With ID
-/// 		_, err = docker.LookupPlugin(ctx, &docker.LookupPluginArgs{
+/// 		_, err = docker.GetPlugin(ctx, &docker.LookupPluginArgs{
 /// 			Id: pulumi.StringRef("e9a9db917b3bfd6706b5d3a66d4bceb9f"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -210,6 +223,25 @@ Future<GetNetworkResult> getNetwork(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// data "docker_getplugin" "byAlias" {
+///   alias = "sample-volume-plugin:latest"
+/// }
+/// data "docker_getplugin" "byId" {
+///   id = "e9a9db917b3bfd6706b5d3a66d4bceb9f"
+/// }
+///
+/// ### With alias
+/// ### With ID
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +250,8 @@ Future<GetNetworkResult> getNetwork(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.docker.DockerFunctions;
 /// import com.pulumi.docker.inputs.GetPluginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,13 +360,13 @@ Future<GetPluginResult> getPlugin(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		ubuntu, err := docker.LookupRegistryImage(ctx, &docker.LookupRegistryImageArgs{
+/// 		ubuntu, err := docker.GetRegistryImage(ctx, &docker.LookupRegistryImageArgs{
 /// 			Name: "ubuntu:precise",
 /// 		}, nil)
 /// 		if err != nil {
@@ -353,6 +385,24 @@ Future<GetPluginResult> getPlugin(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// data "docker_getregistryimage" "ubuntu" {
+///   name = "ubuntu:precise"
+/// }
+///
+/// resource "docker_remoteimage" "ubuntu" {
+///   name          = data.docker_getregistryimage.ubuntu.name
+///   pull_triggers = [data.docker_getregistryimage.ubuntu.sha256_digest]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -363,8 +413,8 @@ Future<GetPluginResult> getPlugin(
 /// import com.pulumi.docker.inputs.GetRegistryImageArgs;
 /// import com.pulumi.docker.RemoteImage;
 /// import com.pulumi.docker.RemoteImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -435,7 +485,7 @@ Future<GetRegistryImageManifestsResult> getRegistryImageManifests(
   return GetRegistryImageManifestsResult.fromMap(result);
 }
 
-/// `docker.RemoteImage` provides details about a specific Docker Image which needs to be present on the Docker Host
+/// `docker.RemoteImage` provides details about a specific Docker Image which need to be present on the Docker Host
 ///
 /// ## Example Usage
 ///
@@ -512,35 +562,35 @@ Future<GetRegistryImageManifestsResult> getRegistryImageManifests(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// uses the 'latest' tag
-/// 		_, err := docker.LookupRemoteImage(ctx, &docker.LookupRemoteImageArgs{
+/// 		_, err := docker.GetRemoteImage(ctx, &docker.LookupRemoteImageArgs{
 /// 			Name: "nginx",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// uses a specific tag
-/// 		_, err = docker.LookupRemoteImage(ctx, &docker.LookupRemoteImageArgs{
+/// 		_, err = docker.GetRemoteImage(ctx, &docker.LookupRemoteImageArgs{
 /// 			Name: "nginx:1.17.6",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// use the image digest
-/// 		_, err = docker.LookupRemoteImage(ctx, &docker.LookupRemoteImageArgs{
+/// 		_, err = docker.GetRemoteImage(ctx, &docker.LookupRemoteImageArgs{
 /// 			Name: "nginx@sha256:36b74457bccb56fbf8b05f79c85569501b721d4db813b684391d63e02287c0b2",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// uses the tag and the image digest
-/// 		_, err = docker.LookupRemoteImage(ctx, &docker.LookupRemoteImageArgs{
+/// 		_, err = docker.GetRemoteImage(ctx, &docker.LookupRemoteImageArgs{
 /// 			Name: "nginx:1.19.1@sha256:36b74457bccb56fbf8b05f79c85569501b721d4db813b684391d63e02287c0b2",
 /// 		}, nil)
 /// 		if err != nil {
@@ -550,6 +600,33 @@ Future<GetRegistryImageManifestsResult> getRegistryImageManifests(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// data "docker_getremoteimage" "latest" {
+///   name = "nginx"
+/// }
+/// data "docker_getremoteimage" "specific" {
+///   name = "nginx:1.17.6"
+/// }
+/// data "docker_getremoteimage" "digest" {
+///   name = "nginx@sha256:36b74457bccb56fbf8b05f79c85569501b721d4db813b684391d63e02287c0b2"
+/// }
+/// data "docker_getremoteimage" "tagAndDigest" {
+///   name = "nginx:1.19.1@sha256:36b74457bccb56fbf8b05f79c85569501b721d4db813b684391d63e02287c0b2"
+/// }
+///
+/// # uses the 'latest' tag
+/// # uses a specific tag
+/// # use the image digest
+/// # uses the tag and the image digest
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -558,8 +635,8 @@ Future<GetRegistryImageManifestsResult> getRegistryImageManifests(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.docker.DockerFunctions;
 /// import com.pulumi.docker.inputs.GetRemoteImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

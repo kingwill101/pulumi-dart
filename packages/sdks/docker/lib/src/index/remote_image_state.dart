@@ -5,6 +5,7 @@ import 'remote_image_build.dart';
 
 /// Input properties used for looking up and filtering RemoteImage resources.
 class RemoteImageState {
+  /// Configuration to build an image. Requires the `Use containerd for pulling and storing images` option to be disabled in the Docker Host(https://github.com/kreuzwerker/terraform-provider-docker/issues/534). Please see [docker build command reference](https://docs.docker.com/engine/reference/commandline/build/#options) too.
   final pulumi.Input<RemoteImageBuild>? build;
   /// If true, then the image is removed forcibly when the resource is destroyed.
   final pulumi.Input<bool>? forceRemove;
@@ -24,7 +25,7 @@ class RemoteImageState {
   final pulumi.Input<Map<String, String>>? triggers;
 
   /// Creates a new [RemoteImageState].
-  /// [build] Optional.
+  /// [build] Configuration to build an image. Requires the `Use containerd for pulling and storing images` option to be disabled in the Docker Host(https://github.com/kreuzwerker/terraform-provider-docker/issues/534). Please see [docker build command reference](https://docs.docker.com/engine/reference/commandline/build/#options) too.
   /// [forceRemove] If true, then the image is removed forcibly when the resource is destroyed.
   /// [imageId] The ID of the image (as seen when executing `docker inspect` on the image). Can be used to reference the image via its ID in other resources.
   /// [keepLocally] If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker local storage on destroy operation.
@@ -73,4 +74,3 @@ class RemoteImageState {
     );
   }
 }
-

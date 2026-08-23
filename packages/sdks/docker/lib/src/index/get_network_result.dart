@@ -1,10 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_network_container.dart';
 import 'get_network_ipam_config.dart';
 
 /// Result data returned by getNetwork.
 class GetNetworkResult {
+  /// Containers attached to the network.
+  final List<GetNetworkContainer> containers;
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   final String driver;
   /// The ID of this resource.
@@ -21,6 +24,7 @@ class GetNetworkResult {
   final String scope;
 
   /// Creates a new [GetNetworkResult].
+  /// [containers] Containers attached to the network.
   /// [driver] The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   /// [id] The ID of this resource.
   /// [internal] If `true`, the network is internal.
@@ -29,6 +33,7 @@ class GetNetworkResult {
   /// [options] Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
   /// [scope] Scope of the network. One of `swarm`, `global`, or `local`.
   const GetNetworkResult({
+    required this.containers,
     required this.driver,
     required this.id,
     required this.internal,
@@ -40,6 +45,7 @@ class GetNetworkResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'containers': pulumi.Input.encodeList<GetNetworkContainer, Map<String, dynamic>>(containers, (value) => value.toMap()),
       'driver': driver,
       'id': id,
       'internal': internal,
@@ -52,6 +58,7 @@ class GetNetworkResult {
 
   factory GetNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkResult(
+      containers: pulumi.Input.decodeList<GetNetworkContainer>(map['containers']!, (value) => GetNetworkContainer.fromMap((value as Map).cast<String, dynamic>())),
       driver: map['driver'] as String,
       id: map['id'] as String,
       internal: map['internal'] as bool,
@@ -62,4 +69,3 @@ class GetNetworkResult {
     );
   }
 }
-

@@ -40,7 +40,7 @@ import 'volume_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -56,6 +56,19 @@ import 'volume_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// resource "docker_volume" "shared_volume" {
+///   name = "shared_volume"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +77,8 @@ import 'volume_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.docker.Volume;
 /// import com.pulumi.docker.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -96,31 +109,126 @@ import 'volume_state.dart';
 ///
 /// ## Import
 ///
+/// !/bin/bash
+///
+/// ```sh
+/// $ pulumi import docker:index/volume:Volume foo id
+/// ```
+///
 /// ### Example
 ///
 /// Assuming you created a `volume` as follows
 ///
+/// ```sh
 /// #!/bin/bash
-///
 /// docker volume create
-///
-/// prints the long ID
-///
+/// # prints the long ID
 /// 524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d
+/// ```
 ///
 /// you provide the definition for the resource as follows
 ///
-/// terraform
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as docker from "@pulumi/docker";
+///
+/// const foo = new docker.Volume("foo", {name: "524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d"});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_docker as docker
+///
+/// foo = docker.Volume("foo", name="524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Docker = Pulumi.Docker;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var foo = new Docker.Volume("foo", new()
+///     {
+///         Name = "524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := docker.NewVolume(ctx, "foo", &docker.VolumeArgs{
+/// 			Name: pulumi.String("524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
 ///
 /// resource "docker_volume" "foo" {
-///
-/// name = "524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d"
-///
+///   name = "524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d"
 /// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.docker.Volume;
+/// import com.pulumi.docker.VolumeArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var foo = new Volume("foo", VolumeArgs.builder()
+///             .name("524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   foo:
+///     type: docker:Volume
+///     properties:
+///       name: 524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d
+/// ```
+///
 ///
 /// then the import command is as follows
 ///
-/// #!/bin/bash
+/// !/bin/bash
 ///
 /// ```sh
 /// $ pulumi import docker:index/volume:Volume foo 524b0457aa2a87dd2b75c74c3e4e53f406974249e63ab3ed9bf21e5644f9dc7d

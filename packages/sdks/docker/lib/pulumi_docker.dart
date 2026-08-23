@@ -33,6 +33,16 @@ class _IndexModuleNamespace {
   final ContainerCapabilitiesArgs = module_index.ContainerCapabilities.new;
   final ContainerDevice = module_index.ContainerDevice.new;
   final ContainerDeviceArgs = module_index.ContainerDevice.new;
+  final ContainerDeviceReadBp = module_index.ContainerDeviceReadBp.new;
+  final ContainerDeviceReadBpArgs = module_index.ContainerDeviceReadBp.new;
+  final ContainerDeviceReadIop = module_index.ContainerDeviceReadIop.new;
+  final ContainerDeviceReadIopArgs = module_index.ContainerDeviceReadIop.new;
+  final ContainerDeviceRequest = module_index.ContainerDeviceRequest.new;
+  final ContainerDeviceRequestArgs = module_index.ContainerDeviceRequest.new;
+  final ContainerDeviceWriteBp = module_index.ContainerDeviceWriteBp.new;
+  final ContainerDeviceWriteBpArgs = module_index.ContainerDeviceWriteBp.new;
+  final ContainerDeviceWriteIop = module_index.ContainerDeviceWriteIop.new;
+  final ContainerDeviceWriteIopArgs = module_index.ContainerDeviceWriteIop.new;
   final ContainerHealthcheck = module_index.ContainerHealthcheck.new;
   final ContainerHealthcheckArgs = module_index.ContainerHealthcheck.new;
   final ContainerHost = module_index.ContainerHost.new;
@@ -69,6 +79,8 @@ class _IndexModuleNamespace {
   final GetLogsResult = module_index.GetLogsResult.new;
   final GetLogsResultArgs = module_index.GetLogsResult.new;
   final GetNetworkArgs = module_index.GetNetworkArgs.new;
+  final GetNetworkContainer = module_index.GetNetworkContainer.new;
+  final GetNetworkContainerArgs = module_index.GetNetworkContainer.new;
   final GetNetworkIpamConfig = module_index.GetNetworkIpamConfig.new;
   final GetNetworkIpamConfigArgs = module_index.GetNetworkIpamConfig.new;
   final GetNetworkResult = module_index.GetNetworkResult.new;
@@ -147,6 +159,8 @@ class _IndexModuleNamespace {
   final ServiceAuthArgs = module_index.ServiceAuth.new;
   final ServiceConfig = module_index.ServiceConfig.new;
   final ServiceConfigArgs = module_index.ServiceConfigArgs.new;
+  final ServiceConfigLabel = module_index.ServiceConfigLabel.new;
+  final ServiceConfigLabelArgs = module_index.ServiceConfigLabel.new;
   final ServiceConfigState = module_index.ServiceConfigState.new;
   final ServiceConfigStateArgs = module_index.ServiceConfigState.new;
   final ServiceConvergeConfig = module_index.ServiceConvergeConfig.new;

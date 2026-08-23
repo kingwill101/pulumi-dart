@@ -100,4 +100,3 @@ class DockerConfig {
 }
 
 const config = DockerConfig();
-

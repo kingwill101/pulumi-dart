@@ -60,7 +60,7 @@ import 'container_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -85,6 +85,25 @@ import 'container_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// # Start a container
+/// resource "docker_container" "ubuntu" {
+///   name  = "foo"
+///   image = docker_remoteimage.ubuntu.image_id
+/// }
+/// # Find the latest Ubuntu precise image.
+/// resource "docker_remoteimage" "ubuntu" {
+///   name = "ubuntu:precise"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'container_state.dart';
 /// import com.pulumi.docker.RemoteImageArgs;
 /// import com.pulumi.docker.Container;
 /// import com.pulumi.docker.ContainerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,41 +160,170 @@ import 'container_state.dart';
 ///
 /// ## Import
 ///
+/// !/bin/bash
+///
+/// ```sh
+/// $ pulumi import docker:index/container:Container foo id
+/// ```
+///
 /// ### Example
 ///
 /// Assuming you created a `container` as follows
 ///
+/// ```sh
 /// #!/bin/bash
-///
 /// docker run --name foo -p8080:80 -d nginx
-///
-/// prints the container ID
-///
+/// # prints the container ID
 /// 9a550c0f0163d39d77222d3efd58701b625d47676c25c686c95b5b92d1cba6fd
+/// ```
 ///
 /// you provide the definition for the resource as follows
 ///
-/// terraform
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as docker from "@pulumi/docker";
+///
+/// const foo = new docker.Container("foo", {
+///     name: "foo",
+///     image: "nginx",
+///     ports: [{
+///         internal: 80,
+///         external: 8080,
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_docker as docker
+///
+/// foo = docker.Container("foo",
+///     name="foo",
+///     image="nginx",
+///     ports=[{
+///         "internal": 80,
+///         "external": 8080,
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Docker = Pulumi.Docker;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var foo = new Docker.Container("foo", new()
+///     {
+///         Name = "foo",
+///         Image = "nginx",
+///         Ports = new[]
+///         {
+///             new Docker.Inputs.ContainerPortArgs
+///             {
+///                 Internal = 80,
+///                 External = 8080,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := docker.NewContainer(ctx, "foo", &docker.ContainerArgs{
+/// 			Name:  pulumi.String("foo"),
+/// 			Image: pulumi.String("nginx"),
+/// 			Ports: docker.ContainerPortArray{
+/// 				&docker.ContainerPortArgs{
+/// 					Internal: pulumi.Int(80),
+/// 					External: pulumi.Int(8080),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
 ///
 /// resource "docker_container" "foo" {
-///
-/// name  = "foo"
-///
-/// image = "nginx"
-///
-/// ports {
-///
-/// internal = "80"
-///
-/// external = "8080"
-///
+///   name  = "foo"
+///   image = "nginx"
+///   ports {
+///     internal = "80"
+///     external = "8080"
+///   }
 /// }
+/// ```
+/// ```java
+/// package generated_program;
 ///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.docker.Container;
+/// import com.pulumi.docker.ContainerArgs;
+/// import com.pulumi.docker.inputs.ContainerPortArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var foo = new Container("foo", ContainerArgs.builder()
+///             .name("foo")
+///             .image("nginx")
+///             .ports(ContainerPortArgs.builder()
+///                 .internal(80)
+///                 .external(8080)
+///                 .build())
+///             .build());
+///
+///     }
 /// }
+/// ```
+/// ```yaml
+/// resources:
+///   foo:
+///     type: docker:Container
+///     properties:
+///       name: foo
+///       image: nginx
+///       ports:
+///         - internal: '80'
+///           external: '8080'
+/// ```
+///
 ///
 /// then the import command is as follows
 ///
-/// #!/bin/bash
+/// !/bin/bash
 ///
 /// ```sh
 /// $ pulumi import docker:index/container:Container foo 9a550c0f0163d39d77222d3efd58701b625d47676c25c686c95b5b92d1cba6fd
@@ -185,7 +333,7 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<bool?> attach;
   /// The network bridge of the container as read from its NetworkSettings.
   late final pulumi.Output<String> bridge;
-  /// Add or drop certrain linux capabilities.
+  /// Add or drop certain linux capabilities.
   late final pulumi.Output<ContainerCapabilities?> capabilities;
   /// Optional parent cgroup for the container
   late final pulumi.Output<String?> cgroupParent;
@@ -205,11 +353,21 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<String?> cpuSet;
   /// CPU shares (relative weight) for the container.
   late final pulumi.Output<int?> cpuShares;
-  /// Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpu_period` and `cpu_quota`.
+  /// Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpuPeriod` and `cpuQuota`.
   late final pulumi.Output<String?> cpus;
   /// If defined will attempt to stop the container before destroying. Container will be destroyed after `n` seconds or on successful stop.
   late final pulumi.Output<int?> destroyGraceSeconds;
-  /// Bind devices to the container.
+  /// Limit read rate (bytes per second) from a device. This is the equivalent to repeating `--device-read-bps` for `docker run`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> deviceReadBps;
+  /// Limit read rate (IO per second) from a device. This is the equivalent to repeating `--device-read-iops` for `docker run`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> deviceReadIops;
+  /// Device requests for the container, such as CDI devices (e.g., `nvidia.com/gpu=all`) or GPU requests. This is the equivalent to using the `--device` flag for CDI devices in `docker run`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> deviceRequests;
+  /// Limit write rate (bytes per second) to a device. This is the equivalent to repeating `--device-write-bps` for `docker run`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> deviceWriteBps;
+  /// Limit write rate (IO per second) to a device. This is the equivalent to repeating `--device-write-iops` for `docker run`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> deviceWriteIops;
+  /// Bind traditional devices to the container (e.g., `/dev/nvidia0`). For CDI devices, use `deviceRequests` instead.
   late final pulumi.Output<List<Map<String, dynamic>>?> devices;
   /// DNS servers to use.
   late final pulumi.Output<List<String>?> dns;
@@ -223,9 +381,9 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> entrypoints;
   /// Environment variables to set in the form of `KEY=VALUE`, e.g. `DEBUG=0`
   late final pulumi.Output<List<String>> envs;
-  /// The exit code of the container if its execution is done (`must_run` must be disabled).
+  /// The exit code of the container if its execution is done (`mustRun` must be disabled).
   late final pulumi.Output<int> exitCode;
-  /// GPU devices to add to the container. Currently, only the value `all` is supported. Passing any other value will result in unexpected behavior.
+  /// GPU devices to add to the container. Supported values are `all` or `device=&lt;id[,id...]&gt;`, for example `device=0,2` or `device=GPU-3a23c669-1f69-c64e-cf85-44e9b07e7a2a`.
   late final pulumi.Output<String?> gpus;
   /// Additional groups for the container user
   late final pulumi.Output<List<String>?> groupAdds;
@@ -235,7 +393,7 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<String> hostname;
   /// Additional hosts to add to the container.
   late final pulumi.Output<List<Map<String, dynamic>>?> hosts;
-  /// The ID of the image to back this container. The easiest way to get this value is to use the `image_id` attribute of the `docker.RemoteImage` resource as is shown in the example.
+  /// The ID of the image to back this container. The easiest way to get this value is to use the `imageId` attribute of the `docker.RemoteImage` resource as is shown in the example.
   late final pulumi.Output<String> image;
   /// Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
   late final pulumi.Output<bool> init;
@@ -259,6 +417,7 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<int?> memorySwap;
   /// Specification for mounts to be added to containers created as part of the service.
   late final pulumi.Output<List<Map<String, dynamic>>?> mounts;
+  /// If `true`, then the Docker container will be kept running. If `false`, Terraform leaves the container alone. This attribute is also used to trigger a restart of a stopped container. If your container is stopped, Terraform will set `mustRun` to `false` and this will trigger a change. Defaults to `true`.
   late final pulumi.Output<bool?> mustRun;
   /// The name of the container.
   late final pulumi.Output<String> name;
@@ -266,10 +425,12 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> networkDatas;
   /// Network mode of the container. Defaults to `bridge`. If your host OS is any other OS, you need to set this value explicitly, e.g. `nat` when your container will be running on an Windows host. See https://docs.docker.com/engine/network/ for more information.
   late final pulumi.Output<String?> networkMode;
-  /// The networks the container is attached to
+  /// The networks the container is attached to. This is the equivalent to the `--network` option of `docker run`
   late final pulumi.Output<List<Map<String, dynamic>>?> networksAdvanced;
-  /// he PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
+  /// The PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
   late final pulumi.Output<String?> pidMode;
+  /// Platform in the format `os[/arch[/variant]]` used for image lookup and container runtime, for example `linux/amd64`.
+  late final pulumi.Output<String> platform;
   /// Publish a container's port(s) to the host.
   late final pulumi.Output<List<Map<String, dynamic>>?> ports;
   /// If `true`, the container runs in privileged mode.
@@ -308,9 +469,9 @@ class Container extends pulumi.CustomResource {
   late final pulumi.Output<bool?> tty;
   /// Ulimit options to add.
   late final pulumi.Output<List<Map<String, dynamic>>?> ulimits;
-  /// Specifies files to upload to the container before starting it. Only one of `content` or `content_base64` can be set and at least one of them has to be set.
+  /// Specifies files to upload to the container before starting it. Only one of `content` or `contentBase64` can be set and at least one of them has to be set.
   late final pulumi.Output<List<Map<String, dynamic>>?> uploads;
-  /// User used for run the first process. Format is `user` or `user:group` which user and group can be passed literraly or by name.
+  /// User used for run the first process. Format is `user` or `user:group` which user and group can be passed literally or by name.
   late final pulumi.Output<String?> user;
   /// Sets the usernamespace mode for the container when usernamespace remapping option is enabled.
   late final pulumi.Output<String?> usernsMode;
@@ -351,6 +512,11 @@ class Container extends pulumi.CustomResource {
     cpuShares = registerOutput<int?>('cpuShares');
     cpus = registerOutput<String?>('cpus');
     destroyGraceSeconds = registerOutput<int?>('destroyGraceSeconds');
+    deviceReadBps = registerOutput<List<Map<String, dynamic>>?>('deviceReadBps');
+    deviceReadIops = registerOutput<List<Map<String, dynamic>>?>('deviceReadIops');
+    deviceRequests = registerOutput<List<Map<String, dynamic>>?>('deviceRequests');
+    deviceWriteBps = registerOutput<List<Map<String, dynamic>>?>('deviceWriteBps');
+    deviceWriteIops = registerOutput<List<Map<String, dynamic>>?>('deviceWriteIops');
     devices = registerOutput<List<Map<String, dynamic>>?>('devices');
     dns = registerOutput<List<String>?>('dns');
     dnsOpts = registerOutput<List<String>?>('dnsOpts');
@@ -382,6 +548,7 @@ class Container extends pulumi.CustomResource {
     networkMode = registerOutput<String?>('networkMode');
     networksAdvanced = registerOutput<List<Map<String, dynamic>>?>('networksAdvanced');
     pidMode = registerOutput<String?>('pidMode');
+    platform = registerOutput<String>('platform');
     ports = registerOutput<List<Map<String, dynamic>>?>('ports');
     privileged = registerOutput<bool?>('privileged');
     publishAllPorts = registerOutput<bool?>('publishAllPorts');
@@ -447,6 +614,11 @@ class Container extends pulumi.CustomResource {
     cpuShares = registerOutput<int?>('cpuShares');
     cpus = registerOutput<String?>('cpus');
     destroyGraceSeconds = registerOutput<int?>('destroyGraceSeconds');
+    deviceReadBps = registerOutput<List<Map<String, dynamic>>?>('deviceReadBps');
+    deviceReadIops = registerOutput<List<Map<String, dynamic>>?>('deviceReadIops');
+    deviceRequests = registerOutput<List<Map<String, dynamic>>?>('deviceRequests');
+    deviceWriteBps = registerOutput<List<Map<String, dynamic>>?>('deviceWriteBps');
+    deviceWriteIops = registerOutput<List<Map<String, dynamic>>?>('deviceWriteIops');
     devices = registerOutput<List<Map<String, dynamic>>?>('devices');
     dns = registerOutput<List<String>?>('dns');
     dnsOpts = registerOutput<List<String>?>('dnsOpts');
@@ -478,6 +650,7 @@ class Container extends pulumi.CustomResource {
     networkMode = registerOutput<String?>('networkMode');
     networksAdvanced = registerOutput<List<Map<String, dynamic>>?>('networksAdvanced');
     pidMode = registerOutput<String?>('pidMode');
+    platform = registerOutput<String>('platform');
     ports = registerOutput<List<Map<String, dynamic>>?>('ports');
     privileged = registerOutput<bool?>('privileged');
     publishAllPorts = registerOutput<bool?>('publishAllPorts');

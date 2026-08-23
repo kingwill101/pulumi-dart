@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceEndpointSpecPort {
   /// A random name for the port
   final pulumi.Input<String>? name;
-  /// Rrepresents the protocol of a port: `tcp`, `udp` or `sctp`. Defaults to `tcp`.
+  /// Represents the protocol of a port: `tcp`, `udp` or `sctp`. Defaults to `tcp`.
   final pulumi.Input<String>? protocol;
   /// Represents the mode in which the port is to be published: 'ingress' or 'host'. Defaults to `ingress`.
   final pulumi.Input<String>? publishMode;
@@ -16,7 +16,7 @@ class ServiceEndpointSpecPort {
 
   /// Creates a new [ServiceEndpointSpecPort].
   /// [name] A random name for the port
-  /// [protocol] Rrepresents the protocol of a port: `tcp`, `udp` or `sctp`. Defaults to `tcp`.
+  /// [protocol] Represents the protocol of a port: `tcp`, `udp` or `sctp`. Defaults to `tcp`.
   /// [publishMode] Represents the mode in which the port is to be published: 'ingress' or 'host'. Defaults to `ingress`.
   /// [publishedPort] The port on the swarm hosts
   /// [targetPort] The port inside the container
@@ -48,4 +48,3 @@ class ServiceEndpointSpecPort {
     );
   }
 }
-

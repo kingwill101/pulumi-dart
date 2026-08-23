@@ -5,7 +5,146 @@ import 'buildx_builder_kubernetes.dart';
 import 'buildx_builder_remote.dart';
 import 'buildx_builder_state.dart';
 
+/// &lt;!-- Bug: Type and Name are switched --&gt;
 /// Manages a Docker Buildx builder instance. This resource allows you to create a  buildx builder with various configurations such as driver, nodes, and platform settings. Please see https://github.com/docker/buildx/blob/master/docs/reference/buildx_create.md for more documentation
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as docker from "@pulumi/docker";
+///
+/// const example = new docker.BuildxBuilder("example", {
+///     name: "example-builder",
+///     driver: "docker-container",
+///     use: true,
+///     dockerContainer: {
+///         image: "moby/buildkit:latest",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_docker as docker
+///
+/// example = docker.BuildxBuilder("example",
+///     name="example-builder",
+///     driver="docker-container",
+///     use=True,
+///     docker_container={
+///         "image": "moby/buildkit:latest",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Docker = Pulumi.Docker;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Docker.BuildxBuilder("example", new()
+///     {
+///         Name = "example-builder",
+///         Driver = "docker-container",
+///         Use = true,
+///         DockerContainer = new Docker.Inputs.BuildxBuilderDockerContainerArgs
+///         {
+///             Image = "moby/buildkit:latest",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-docker/sdk/v5/go/docker"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := docker.NewBuildxBuilder(ctx, "example", &docker.BuildxBuilderArgs{
+/// 			Name:   pulumi.String("example-builder"),
+/// 			Driver: pulumi.String("docker-container"),
+/// 			Use:    pulumi.Bool(true),
+/// 			DockerContainer: &docker.BuildxBuilderDockerContainerArgs{
+/// 				Image: pulumi.String("moby/buildkit:latest"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker = {
+///       source = "pulumi/docker"
+///     }
+///   }
+/// }
+///
+/// resource "docker_buildxbuilder" "example" {
+///   name   = "example-builder"
+///   driver = "docker-container"
+///   use    = true
+///   docker_container = {
+///     image = "moby/buildkit:latest"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.docker.BuildxBuilder;
+/// import com.pulumi.docker.BuildxBuilderArgs;
+/// import com.pulumi.docker.inputs.BuildxBuilderDockerContainerArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new BuildxBuilder("example", BuildxBuilderArgs.builder()
+///             .name("example-builder")
+///             .driver("docker-container")
+///             .use(true)
+///             .dockerContainer(BuildxBuilderDockerContainerArgs.builder()
+///                 .image("moby/buildkit:latest")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: docker:BuildxBuilder
+///     properties:
+///       name: example-builder
+///       driver: docker-container
+///       use: true
+///       dockerContainer:
+///         image: moby/buildkit:latest
+/// ```
 class BuildxBuilder extends pulumi.CustomResource {
   /// Append a node to builder instead of changing it
   late final pulumi.Output<bool?> append;

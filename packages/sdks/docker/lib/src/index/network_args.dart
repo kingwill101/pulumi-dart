@@ -11,8 +11,6 @@ import 'network_label.dart';
 class NetworkArgs {
   /// Enable manual container attachment to the network.
   final pulumi.Input<bool>? attachable;
-  /// Requests daemon to check for networks with same name.
-  final pulumi.Input<bool>? checkDuplicate;
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   final pulumi.Input<String>? driver;
   /// Create swarm routing-mesh network. Defaults to `false`.
@@ -23,7 +21,7 @@ class NetworkArgs {
   final pulumi.Input<List<NetworkIpamConfig>>? ipamConfigs;
   /// Driver used by the custom IP scheme of the network. Defaults to `default`
   final pulumi.Input<String>? ipamDriver;
-  /// Provide explicit options to the IPAM driver. Valid options vary with `ipam_driver` and refer to that driver's documentation for more details.
+  /// Provide explicit options to the IPAM driver. Valid options vary with `ipamDriver` and refer to that driver's documentation for more details.
   final pulumi.Input<Map<String, String>>? ipamOptions;
   /// Enable IPv6 networking. Defaults to `false`.
   final pulumi.Input<bool>? ipv6;
@@ -36,20 +34,18 @@ class NetworkArgs {
 
   /// Creates a new [NetworkArgs].
   /// [attachable] Enable manual container attachment to the network.
-  /// [checkDuplicate] Requests daemon to check for networks with same name.
   /// [driver] The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   /// [ingress] Create swarm routing-mesh network. Defaults to `false`.
   /// [internal] Whether the network is internal.
   /// [ipamConfigs] The IPAM configuration options
   /// [ipamDriver] Driver used by the custom IP scheme of the network. Defaults to `default`
-  /// [ipamOptions] Provide explicit options to the IPAM driver. Valid options vary with `ipam_driver` and refer to that driver's documentation for more details.
+  /// [ipamOptions] Provide explicit options to the IPAM driver. Valid options vary with `ipamDriver` and refer to that driver's documentation for more details.
   /// [ipv6] Enable IPv6 networking. Defaults to `false`.
   /// [labels] User-defined key/value metadata
   /// [name] The name of the Docker network.
   /// [options] Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
   const NetworkArgs({
     this.attachable,
-    this.checkDuplicate,
     this.driver,
     this.ingress,
     this.internal,
@@ -65,7 +61,6 @@ class NetworkArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attachable': ?attachable,
-      'checkDuplicate': ?checkDuplicate,
       'driver': ?driver,
       'ingress': ?ingress,
       'internal': ?internal,
@@ -82,7 +77,6 @@ class NetworkArgs {
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
       attachable: (() { final guardedValue = map['attachable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      checkDuplicate: (() { final guardedValue = map['checkDuplicate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ingress: (() { final guardedValue = map['ingress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       internal: (() { final guardedValue = map['internal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -96,4 +90,3 @@ class NetworkArgs {
     );
   }
 }
-

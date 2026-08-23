@@ -16,7 +16,7 @@ class RegistryImageBuild {
   final pulumi.Input<String>? buildId;
   /// Path to a file where the buildx log are written to. Only available when `builder` is set. If not set, no logs are available. The path is taken as is, so make sure to use a path that is available.
   final pulumi.Input<String>? buildLogFile;
-  /// Set the name of the buildx builder to use. If not set, the legacy builder is used.
+  /// The name of the buildx builder to use. If BUILDX_BUILDER environment variable is set, it will be used. If left empty, the provider tries to resolve to the default builder - which might not always work. If you are in Windows, the legacy builder is used.
   final pulumi.Input<String>? builder;
   /// External cache sources (e.g., `user/app:cache`, `type=local,src=path/to/dir`). Only supported when using a buildx builder.
   final pulumi.Input<List<String>>? cacheFroms;
@@ -58,12 +58,16 @@ class RegistryImageBuild {
   final pulumi.Input<bool>? noCache;
   /// Set the target platform for the build. Defaults to `GOOS/GOARCH`. For more information see the [docker documentation](https://github.com/docker/buildx/blob/master/docs/reference/buildx.md#-set-the-target-platforms-for-the-build---platform)
   final pulumi.Input<String>? platform;
+  /// Set provenance attestation for the build. BuildKit v0.11+ adds provenance attestations by default, which creates OCI image manifests that some registries (like AWS Lambda) don't support. Set to `false` to disable. Valid values: `false`, `true`, `min`, `max`, `mode=min`, `mode=max`, or a full provenance specification. Only available when using a buildx builder.
+  final pulumi.Input<String>? provenance;
   /// Attempt to pull the image even if an older image exists locally
   final pulumi.Input<bool>? pullParent;
   /// A Git repository URI or HTTP/HTTPS context URI. Will be ignored if `builder` is set.
   final pulumi.Input<String>? remoteContext;
   /// Remove intermediate containers after a successful build. Defaults to `true`.
   final pulumi.Input<bool>? remove;
+  /// Set SBOM (Software Bill of Materials) attestation for the build. Set to `false` to disable. Valid values: `false`, `true`, or a full SBOM specification. Only available when using a buildx builder.
+  final pulumi.Input<String>? sbom;
   /// Set build-time secrets. Only available when you use a buildx builder.
   final pulumi.Input<List<RegistryImageBuildSecret>>? secrets;
   /// The security options
@@ -82,6 +86,8 @@ class RegistryImageBuild {
   final pulumi.Input<String>? target;
   /// Configuration for ulimits
   final pulumi.Input<List<RegistryImageBuildUlimit>>? ulimits;
+  /// Force using the legacy Docker builder for image builds, even if buildx/buildkit would be available.
+  final pulumi.Input<bool>? useLegacyBuilder;
   /// Version of the underlying builder to use
   final pulumi.Input<String>? version;
 
@@ -91,7 +97,7 @@ class RegistryImageBuild {
   /// [buildArgs] Pairs for build-time variables in the form of `ENDPOINT : "https://example.com"`
   /// [buildId] BuildID is an optional identifier that can be passed together with the build request. The same identifier can be used to gracefully cancel the build with the cancel request.
   /// [buildLogFile] Path to a file where the buildx log are written to. Only available when `builder` is set. If not set, no logs are available. The path is taken as is, so make sure to use a path that is available.
-  /// [builder] Set the name of the buildx builder to use. If not set, the legacy builder is used.
+  /// [builder] The name of the buildx builder to use. If BUILDX_BUILDER environment variable is set, it will be used. If left empty, the provider tries to resolve to the default builder - which might not always work. If you are in Windows, the legacy builder is used.
   /// [cacheFroms] External cache sources (e.g., `user/app:cache`, `type=local,src=path/to/dir`). Only supported when using a buildx builder.
   /// [cacheTos] Cache export destinations (e.g., `user/app:cache`, `type=local,dest=path/to/dir`). Only supported when using a buildx builder.
   /// [cgroupParent] Optional parent cgroup for the container
@@ -112,9 +118,11 @@ class RegistryImageBuild {
   /// [networkMode] Set the networking mode for the RUN instructions during build
   /// [noCache] Do not use the cache when building the image
   /// [platform] Set the target platform for the build. Defaults to `GOOS/GOARCH`. For more information see the [docker documentation](https://github.com/docker/buildx/blob/master/docs/reference/buildx.md#-set-the-target-platforms-for-the-build---platform)
+  /// [provenance] Set provenance attestation for the build. BuildKit v0.11+ adds provenance attestations by default, which creates OCI image manifests that some registries (like AWS Lambda) don't support. Set to `false` to disable. Valid values: `false`, `true`, `min`, `max`, `mode=min`, `mode=max`, or a full provenance specification. Only available when using a buildx builder.
   /// [pullParent] Attempt to pull the image even if an older image exists locally
   /// [remoteContext] A Git repository URI or HTTP/HTTPS context URI. Will be ignored if `builder` is set.
   /// [remove] Remove intermediate containers after a successful build. Defaults to `true`.
+  /// [sbom] Set SBOM (Software Bill of Materials) attestation for the build. Set to `false` to disable. Valid values: `false`, `true`, or a full SBOM specification. Only available when using a buildx builder.
   /// [secrets] Set build-time secrets. Only available when you use a buildx builder.
   /// [securityOpts] The security options
   /// [sessionId] Set an ID for the build session
@@ -124,6 +132,7 @@ class RegistryImageBuild {
   /// [tags] Name and optionally a tag in the 'name:tag' format
   /// [target] Set the target build stage to build
   /// [ulimits] Configuration for ulimits
+  /// [useLegacyBuilder] Force using the legacy Docker builder for image builds, even if buildx/buildkit would be available.
   /// [version] Version of the underlying builder to use
   const RegistryImageBuild({
     this.additionalContexts,
@@ -152,9 +161,11 @@ class RegistryImageBuild {
     this.networkMode,
     this.noCache,
     this.platform,
+    this.provenance,
     this.pullParent,
     this.remoteContext,
     this.remove,
+    this.sbom,
     this.secrets,
     this.securityOpts,
     this.sessionId,
@@ -164,6 +175,7 @@ class RegistryImageBuild {
     this.tags,
     this.target,
     this.ulimits,
+    this.useLegacyBuilder,
     this.version,
   });
 
@@ -195,9 +207,11 @@ class RegistryImageBuild {
       'networkMode': ?networkMode,
       'noCache': ?noCache,
       'platform': ?platform,
+      'provenance': ?provenance,
       'pullParent': ?pullParent,
       'remoteContext': ?remoteContext,
       'remove': ?remove,
+      'sbom': ?sbom,
       'secrets': ?pulumi.Input.mapOptionalInputValue<List<RegistryImageBuildSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<RegistryImageBuildSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
       'securityOpts': ?securityOpts,
       'sessionId': ?sessionId,
@@ -207,6 +221,7 @@ class RegistryImageBuild {
       'tags': ?tags,
       'target': ?target,
       'ulimits': ?pulumi.Input.mapOptionalInputValue<List<RegistryImageBuildUlimit>, List<Map<String, dynamic>>>(ulimits, (value) => pulumi.Input.encodeList<RegistryImageBuildUlimit, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'useLegacyBuilder': ?useLegacyBuilder,
       'version': ?version,
     };
   }
@@ -239,9 +254,11 @@ class RegistryImageBuild {
       networkMode: (() { final guardedValue = map['networkMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       noCache: (() { final guardedValue = map['noCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provenance: (() { final guardedValue = map['provenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pullParent: (() { final guardedValue = map['pullParent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       remoteContext: (() { final guardedValue = map['remoteContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remove: (() { final guardedValue = map['remove']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sbom: (() { final guardedValue = map['sbom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryImageBuildSecret>(guardedValue, (value) => RegistryImageBuildSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),
       securityOpts: (() { final guardedValue = map['securityOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       sessionId: (() { final guardedValue = map['sessionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -251,8 +268,8 @@ class RegistryImageBuild {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ulimits: (() { final guardedValue = map['ulimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryImageBuildUlimit>(guardedValue, (value) => RegistryImageBuildUlimit.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      useLegacyBuilder: (() { final guardedValue = map['useLegacyBuilder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-
