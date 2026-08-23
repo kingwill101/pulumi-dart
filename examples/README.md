@@ -46,19 +46,15 @@ The workspace currently includes SDKs under `packages/sdks/`. Use this mapping w
 
 ### Directly sourced from `thirdparty/pulumi_examples/`
 
-- `alicloud` -> source prefix `alicloud-`
 - `aws` -> source prefix `aws-`
 - `aws-apigateway` -> source prefix `aws-apigateway-`
 - `azure` -> source prefixes `azure-` and `classic-azure-` as needed
 - `azure-native` -> source prefix `azure-` (ported examples use Azure Native resources)
 - `digitalocean` -> source prefix `digitalocean-`
 - `docker` -> source prefix `docker-`
-- `f5bigip` -> source prefix `f5bigip-`
 - `gcp` -> source prefix `gcp-`
 - `kubernetes` -> source prefix `kubernetes-`
 - `libvirt` -> source prefix `libvirt-`
-- `linode` -> source prefix `linode-`
-- `openstack` -> source prefix `openstack-`
 - `policy` -> source prefix `policy-`
 - `random` -> source prefix `random-`
 
@@ -109,7 +105,7 @@ find thirdparty/pulumi_examples -mindepth 1 -maxdepth 1 -type d -name 'aws-apiga
 
 - `thirdparty/pulumi_examples` coverage is complete for currently tracked Dart providers except `azure`.
 - `thirdparty/pulumi-command/examples` coverage is complete for tracked canonical scenarios under `examples/command/`.
-- `aws`, `aws-apigateway`, `alicloud`, `digitalocean`, `docker`, `f5bigip`, `gcp`, `kubernetes`, `libvirt`, `openstack`, and `random` have no upstream-mapped gaps in the current inventory.
+- `aws`, `aws-apigateway`, `digitalocean`, `docker`, `gcp`, `kubernetes`, `libvirt`, and `random` have no upstream-mapped gaps in the current inventory.
 - `awsx` examples are fully mapped from `thirdparty/pulumi-awsx/examples` to `examples/awsx/`.
 - `automation` has all core scenario families ported; language/test variants are not tracked as separate Dart examples.
 

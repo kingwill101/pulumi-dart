@@ -1,12 +1,6 @@
 {
   "providers": [
     {
-      "name": "alicloud",
-      "schema_url": "https://www.pulumi.com/registry/packages/alicloud/schema.json",
-      "local_schema_path": "packages/sdks/schemas/alicloud.schema.json",
-      "package_pubspec_path": "packages/sdks/alicloud/pubspec.yaml"
-    },
-    {
       "name": "aws",
       "schema_url": "https://www.pulumi.com/registry/packages/aws/schema.json",
       "local_schema_path": "packages/sdks/schemas/aws.schema.json",
@@ -73,12 +67,6 @@
       "package_pubspec_path": "packages/sdks/eks/pubspec.yaml"
     },
     {
-      "name": "f5bigip",
-      "schema_url": "https://www.pulumi.com/registry/packages/f5bigip/schema.json",
-      "local_schema_path": "packages/sdks/schemas/f5bigip.schema.json",
-      "package_pubspec_path": "packages/sdks/f5bigip/pubspec.yaml"
-    },
-    {
       "name": "gcp",
       "schema_url": "https://www.pulumi.com/registry/packages/gcp/schema.json",
       "local_schema_path": "packages/sdks/schemas/gcp.schema.json",
@@ -109,28 +97,10 @@
       "package_pubspec_path": "packages/sdks/libvirt/pubspec.yaml"
     },
     {
-      "name": "linode",
-      "schema_url": "https://www.pulumi.com/registry/packages/linode/schema.json",
-      "local_schema_path": "packages/sdks/schemas/linode.schema.json",
-      "package_pubspec_path": "packages/sdks/linode/pubspec.yaml"
-    },
-    {
       "name": "mysql",
       "schema_url": "https://www.pulumi.com/registry/packages/mysql/schema.json",
       "local_schema_path": "packages/sdks/schemas/mysql.schema.json",
       "package_pubspec_path": "packages/sdks/mysql/pubspec.yaml"
-    },
-    {
-      "name": "newrelic",
-      "schema_url": "https://www.pulumi.com/registry/packages/newrelic/schema.json",
-      "local_schema_path": "packages/sdks/schemas/newrelic.schema.json",
-      "package_pubspec_path": "packages/sdks/newrelic/pubspec.yaml"
-    },
-    {
-      "name": "openstack",
-      "schema_url": "https://www.pulumi.com/registry/packages/openstack/schema.json",
-      "local_schema_path": "packages/sdks/schemas/openstack.schema.json",
-      "package_pubspec_path": "packages/sdks/openstack/pubspec.yaml"
     },
     {
       "name": "postgresql",
