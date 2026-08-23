@@ -58,6 +58,13 @@ final class UpstreamAuditor {
     required String? provider,
     required bool coreOnly,
   }) {
+    if (coreOnly && provider != null) {
+      throw ArgumentError('--core-only cannot be combined with --provider.');
+    }
+    final providers = ledger['providers'] as Map<String, dynamic>;
+    if (provider != null && !providers.containsKey(provider)) {
+      throw ArgumentError.value(provider, 'provider', 'Unknown provider');
+    }
     final sources = <UpstreamSource>[
       for (final entry
           in (ledger['core'] as List<dynamic>).cast<Map<String, dynamic>>())
@@ -69,7 +76,6 @@ final class UpstreamAuditor {
         ),
     ];
     if (coreOnly) return sources;
-    final providers = (ledger['providers'] as Map<String, dynamic>);
     for (final entry in providers.entries) {
       if (provider != null && provider != entry.key) continue;
       final value = entry.value as Map<String, dynamic>;
@@ -81,10 +87,6 @@ final class UpstreamAuditor {
           reviewedVersion: '${value['reviewed_version']}',
         ),
       );
-    }
-    if (provider != null &&
-        sources.every((source) => source.name != provider)) {
-      throw ArgumentError.value(provider, 'provider', 'Unknown provider');
     }
     return provider == null
         ? sources

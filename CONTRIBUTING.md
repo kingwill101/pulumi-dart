@@ -7,6 +7,7 @@ This guide is for contributors working on the language host, core SDK, and provi
 - Go
 - Dart SDK
 - Pulumi CLI
+- GitHub CLI (`gh`), authenticated for `repodoc upstream:check`
 - `jq`
 - `curl`
 - `task` (Taskfile runner)

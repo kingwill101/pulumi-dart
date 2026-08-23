@@ -35,6 +35,91 @@ void main() {
     expect(result.releases, 1);
     expect(result.findings.single.release, 'v3.2.0');
   });
+
+  test('rejects provider with core-only', () async {
+    final ledger = _writeLedger();
+    addTearDown(() => ledger.parent.deleteSync(recursive: true));
+
+    expect(
+      () => UpstreamAuditor(releases: _FakeReleaseSource(const [])).audit(
+        ledgerPath: ledger.path,
+        since: DateTime.utc(2026),
+        coreOnly: true,
+        provider: 'aws',
+      ),
+      throwsArgumentError,
+    );
+  });
+
+  test('rejects core source names passed as providers', () async {
+    final ledger = _writeLedger();
+    addTearDown(() => ledger.parent.deleteSync(recursive: true));
+
+    expect(
+      () => UpstreamAuditor(releases: _FakeReleaseSource(const [])).audit(
+        ledgerPath: ledger.path,
+        since: DateTime.utc(2026),
+        provider: 'pulumi',
+      ),
+      throwsArgumentError,
+    );
+  });
+
+  test('GitHub release source flattens paginated responses', () async {
+    late List<String> arguments;
+    final source = GhReleaseSource(
+      run: (executable, passedArguments) async {
+        expect(executable, 'gh');
+        arguments = passedArguments;
+        return ProcessResult(
+          1,
+          0,
+          jsonEncode([
+            [
+              {
+                'tag_name': 'v2.0.0',
+                'published_at': '2026-02-01T00:00:00Z',
+                'html_url': 'https://example.test/v2',
+                'body': 'second',
+              },
+            ],
+            [
+              {
+                'tag_name': 'v1.0.0',
+                'published_at': '2026-01-01T00:00:00Z',
+                'html_url': 'https://example.test/v1',
+                'body': 'first',
+              },
+            ],
+          ]),
+          '',
+        );
+      },
+    );
+
+    final releases = await source.releases('pulumi/pulumi');
+
+    expect(arguments, containsAllInOrder(['--paginate', '--slurp']));
+    expect(releases.map((release) => release.tag), ['v2.0.0', 'v1.0.0']);
+  });
+}
+
+File _writeLedger() {
+  final directory = Directory.systemTemp.createTempSync('upstream-ledger-');
+  return File('${directory.path}/ledger.json')..writeAsStringSync(
+    jsonEncode({
+      'core': [
+        {
+          'name': 'pulumi',
+          'repository': 'pulumi/pulumi',
+          'reviewed_version': '3.1.0',
+        },
+      ],
+      'providers': {
+        'aws': {'repository': 'pulumi/pulumi-aws', 'reviewed_version': '7.0.0'},
+      },
+    }),
+  );
 }
 
 UpstreamRelease _release(String tag, DateTime date) => UpstreamRelease(
