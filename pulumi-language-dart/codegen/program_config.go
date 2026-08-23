@@ -27,9 +27,31 @@ func (lowerer programLowerer) configVariable(variable *pcl.ConfigVariable) (dart
 		expression = "(" + expression + ").toInt()"
 	}
 	if variable.Secret {
-		expression = "pulumi.secret(" + expression + ")"
+		dartType := dartConfigValueType(resolvedType)
+		expression = "pulumi.secret(" + expression + ").apply<" + dartType + ">((value) => value as " + dartType + ")"
 	}
 	return dartProgramConfig{Name: name, Expression: expression}, nil
+}
+
+func dartConfigValueType(typ model.Type) string {
+	switch typ {
+	case model.BoolType:
+		return "bool"
+	case model.IntType:
+		return "int"
+	case model.NumberType:
+		return "double"
+	case model.StringType:
+		return "String"
+	}
+	switch typ.(type) {
+	case *model.ListType, *model.TupleType, *model.SetType:
+		return "List<dynamic>"
+	case *model.MapType, *model.ObjectType:
+		return "Map<String, dynamic>"
+	default:
+		return "dynamic"
+	}
 }
 
 func dartConfigGetter(typ model.Type, required bool) (string, error) {

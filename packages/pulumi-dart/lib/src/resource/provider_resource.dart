@@ -26,12 +26,14 @@ class ProviderResource extends CustomResource {
     Inputs? args,
     CustomResourceOptions? options, {
     models.RegisterPackageRequest? registerPackageRequest,
+    List<String> additionalSecretOutputs = const [],
   }) : super(
          'pulumi:providers:$package',
          name,
          args ?? {},
          options ?? CustomResourceOptions(),
          registerPackageRequest: registerPackageRequest,
+         additionalSecretOutputs: additionalSecretOutputs,
        );
 
   ProviderResource.reference(this.package, String urn, {String? id})

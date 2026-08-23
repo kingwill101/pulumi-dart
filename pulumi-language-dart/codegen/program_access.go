@@ -67,7 +67,7 @@ func lowerDartTraversal(source string, traversal hcl.Traversal, properties bool)
 		switch traverser := traverser.(type) {
 		case hcl.TraverseAttr:
 			if properties {
-				result += "." + lowerCamelIdentifier(toDartClassName(traverser.Name))
+				result += "." + propertyFieldName(traverser.Name, map[string]int{})
 			} else {
 				result = "pulumi.indexValue(" + result + ", " + dartStringLiteral(traverser.Name) + ")"
 			}

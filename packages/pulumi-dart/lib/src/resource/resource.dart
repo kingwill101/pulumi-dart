@@ -67,6 +67,7 @@ abstract class Resource {
     bool dependency = false,
     models.RegisterPackageRequest? registerPackageRequest,
     bool ignoreDeployment = false,
+    List<String> additionalSecretOutputs = const [],
   }) : _custom = custom,
        _remote = remote,
        _protect = false,
@@ -164,7 +165,11 @@ abstract class Resource {
       }
     }
 
-    options = options.clone();
+    options = options
+        .merge(
+          ResourceOptions(additionalSecretOutputs: additionalSecretOutputs),
+        )
+        .clone();
     if (options.parent == null && parent != null) {
       options = options.merge(ResourceOptions(parent: parent));
     }
@@ -267,8 +272,13 @@ abstract class Resource {
   Output<T> registerOutput<T>(
     String propertyName, {
     Object? Function(Object?)? decoder,
+    bool isSecret = false,
   }) {
-    final source = OutputCompletionSource.create<T>(this, decoder: decoder);
+    final source = OutputCompletionSource.create<T>(
+      this,
+      decoder: decoder,
+      isSecret: isSecret,
+    );
     completionSources[propertyName] = source;
     if (_pendingOutputException != null) {
       source.trySetException(_pendingOutputException!);

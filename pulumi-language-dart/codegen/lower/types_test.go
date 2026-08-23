@@ -67,6 +67,22 @@ func TestResourceRegisterOutputExpressionUsesDecoder(t *testing.T) {
 	require.Contains(t, actual, "Widget.fromMap")
 }
 
+func TestResourceRegisterOutputExpressionPreservesSchemaSecret(t *testing.T) {
+	t.Parallel()
+
+	property := schemair.Property{
+		Name:     "password",
+		Secret:   true,
+		Required: true,
+		TypeSpec: schemair.Type{Kind: "scalar", DartType: "String"},
+	}
+
+	require.Equal(t,
+		"registerOutput<String>('password', isSecret: true)",
+		ResourceRegisterOutputExpression(property),
+	)
+}
+
 func TestRegisterOutputAssignmentTargetAvoidsConstructorShadowing(t *testing.T) {
 	t.Parallel()
 

@@ -18,8 +18,10 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"sync"
 	"testing"
 
@@ -71,6 +73,10 @@ var passingConformanceTests = []string{
 	"l2-parallel-resources",
 	"l2-resource-primitives",
 	"l2-resource-const",
+	"l2-resource-config-primitives",
+	"l2-resource-optional",
+	"l2-resource-secret",
+	"l2-resource-schema-secret",
 	"l1-keyword-overlap",
 	"l1-output-array",
 	"l1-output-bool",
@@ -187,9 +193,12 @@ func TestLanguageConformance(t *testing.T) {
 	for _, name := range passingConformanceTests {
 		passing[name] = struct{}{}
 	}
+	experimental := requestedExperimentalConformanceTests()
 	for _, name := range tests.Tests {
 		t.Run(name, func(t *testing.T) {
-			if _, ok := passing[name]; !ok {
+			_, mustPass := passing[name]
+			_, requested := experimental[name]
+			if !mustPass && !requested {
 				t.Skip("Dart conformance support is not implemented yet")
 			}
 			result, err := client.RunLanguageTest(ctx, &testingrpc.RunLanguageTestRequest{
@@ -205,4 +214,14 @@ func TestLanguageConformance(t *testing.T) {
 			assert.True(t, result.Success)
 		})
 	}
+}
+
+func requestedExperimentalConformanceTests() map[string]struct{} {
+	result := map[string]struct{}{}
+	for _, name := range strings.Split(os.Getenv("PULUMI_DART_CONFORMANCE_TESTS"), ",") {
+		if name = strings.TrimSpace(name); name != "" {
+			result[name] = struct{}{}
+		}
+	}
+	return result
 }

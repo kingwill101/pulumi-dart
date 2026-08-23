@@ -17,18 +17,18 @@ func buildGeneratedPackagePubspec(
 	packageName string,
 	rawSchema string,
 ) (codegen.PubSpec, error) {
-	localDependencies := copyLocalDependencies(req.GetLocalDependencies())
-	if strings.TrimSpace(localDependencies["pulumi"]) == "" {
-		if path := inferLocalPulumiDependencyFromProject(req.GetDirectory()); path != "" {
-			localDependencies["pulumi"] = path
-		}
-	}
 	required := requiredDartDependencies(
 		schemaResult.packageSpec,
 		rawSchema,
 		schemaResult.spec.Name,
 		req.GetDirectory(),
 	)
+	localDependencies := dartPackageLocalDependencies(req.GetLocalDependencies(), required)
+	if strings.TrimSpace(localDependencies["pulumi"]) == "" {
+		if path := inferLocalPulumiDependencyFromProject(req.GetDirectory()); path != "" {
+			localDependencies["pulumi"] = path
+		}
+	}
 	pubspec := codegen.BuildGeneratedPubspec(packageName, localDependencies, required, configuredPulumiDependency())
 	if shouldUseWorkspaceResolution(req.GetDirectory()) {
 		pubspec.Resolution = "workspace"
@@ -48,14 +48,6 @@ func buildGeneratedPackagePubspec(
 		return codegen.PubSpec{}, err
 	}
 	return pubspec, nil
-}
-
-func copyLocalDependencies(dependencies map[string]string) map[string]string {
-	result := make(map[string]string, len(dependencies))
-	for name, path := range dependencies {
-		result[name] = path
-	}
-	return result
 }
 
 func writeGeneratedPubspec(directory string, generated codegen.PubSpec, record func(string)) error {

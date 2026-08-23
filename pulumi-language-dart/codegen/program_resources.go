@@ -2,6 +2,7 @@ package codegen
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
 )
@@ -37,9 +38,17 @@ func (lowerer programLowerer) providerResource(
 	if diagnostics.HasErrors() {
 		return dartProgramResource{}, fmt.Errorf("invalid resource token %q", token)
 	}
+	className := sanitizeTypeName(toDartClassName(member))
+	argsClass := sanitizeTypeName(toDartClassName(member) + "Args")
+	if strings.HasPrefix(token, "pulumi:providers:") {
+		pkg = strings.TrimPrefix(token, "pulumi:providers:")
+		module = "providers"
+		className = sanitizeTypeName(toDartClassName(pkg) + "Type")
+		argsClass = sanitizeTypeName(toDartClassName(pkg) + "Args")
+	}
 	inputs := make([]dartProgramResourceInput, len(resource.Inputs))
 	for index, input := range resource.Inputs {
-		expression, err := lowerer.providerInputExpression(resource, input.Name, input.Value)
+		expression, err := lowerer.providerInputExpression(resource, pkg, input.Name, input.Value)
 		if err != nil {
 			return dartProgramResource{}, fmt.Errorf("input %q: %w", input.Name, err)
 		}
@@ -49,7 +58,7 @@ func (lowerer programLowerer) providerResource(
 	}
 	return dartProgramResource{
 		Name: name, LogicalName: resource.LogicalName(), Type: "provider",
-		Package: pkg, Module: module, Class: sanitizeTypeName(toDartClassName(member)),
-		ArgsClass: sanitizeTypeName(toDartClassName(member) + "Args"), Inputs: inputs,
+		Package: pkg, Module: module, Class: className,
+		ArgsClass: argsClass, Inputs: inputs,
 	}, nil
 }

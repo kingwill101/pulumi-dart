@@ -1,0 +1,30 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'complex_resource_args.dart';
+import 'data.dart';
+
+class ComplexResource extends pulumi.CustomResource {
+  late final pulumi.Output<List<String>> outputArray;
+  late final pulumi.Output<Map<String, String>> outputMap;
+  late final pulumi.Output<Data> outputObject;
+  late final pulumi.Output<double> value;
+
+  /// Creates a new [ComplexResource].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [ComplexResource]. {@macro pulumi_index_complex_resource_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  ComplexResource(
+    String name, {
+    ComplexResourceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'output:index:ComplexResource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    outputArray = registerOutput<List<String>>('outputArray');
+    outputMap = registerOutput<Map<String, String>>('outputMap');
+    outputObject = registerOutput<Data>('outputObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Data.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    value = registerOutput<double>('value');
+  }
+}

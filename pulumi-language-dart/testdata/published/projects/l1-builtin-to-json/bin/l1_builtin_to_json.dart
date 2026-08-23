@@ -8,7 +8,7 @@ class GeneratedStack extends pulumi.Stack {
     final aString = config.require('aString');
     final aNumber = config.requireNumber('aNumber');
     final aList = config.requireObject<List<dynamic>>('aList');
-    final aSecret = pulumi.secret(config.require('aSecret'));
+    final aSecret = pulumi.secret(config.require('aSecret')).apply<String>((value) => value as String);
 
     final nestedObject = {'anObject': {'name': aString, 'items': aList}, 'a_secret': aSecret};
 

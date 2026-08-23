@@ -78,6 +78,7 @@ class CustomResource extends Resource {
     bool remote = false,
     bool dependency = false,
     models.RegisterPackageRequest? registerPackageRequest,
+    List<String> additionalSecretOutputs = const [],
   }) : super(
          type,
          name,
@@ -87,6 +88,7 @@ class CustomResource extends Resource {
          remote: remote,
          dependency: dependency,
          registerPackageRequest: registerPackageRequest,
+         additionalSecretOutputs: additionalSecretOutputs,
        ) {
     id = Output<String>(_idCompleter.future);
     unawaited(

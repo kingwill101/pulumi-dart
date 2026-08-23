@@ -132,9 +132,9 @@ func TestGeneratePackageEmitsMultiArgumentInvokeSignature(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "import 'mode.dart';")
-	assert.Contains(t, content, "pulumi.Input<String> name,\n  pulumi.Input<Mode> mode,\n  pulumi.Input<int>? count,")
+	assert.Contains(t, content, "pulumi.Input<String> name,\n  pulumi.Input<Mode> mode,\n  pulumi.Input<int?>? count,")
 	assert.Contains(t, content, "LookupWidgetArgs(name: name, mode: mode, count: count, ).toMap()")
-	assert.Less(t, strings.Index(content, "pulumi.Input<String> name,"), strings.Index(content, "pulumi.Input<int>? count,"))
+	assert.Less(t, strings.Index(content, "pulumi.Input<String> name,"), strings.Index(content, "pulumi.Input<int?>? count,"))
 }
 
 func TestGeneratePackageUsesModuleDirectoryStructure(t *testing.T) {
@@ -321,7 +321,7 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<int> size;")
-	assert.Contains(t, content, "final pulumi.Input<String>? label;")
+	assert.Contains(t, content, "final pulumi.Input<String?>? label;")
 	assert.Contains(t, content, "required this.size")
 	assert.Contains(t, content, "this.label")
 	assert.NotContains(t, content, "size: map['size'] as int")

@@ -88,7 +88,7 @@ func (host *dartLanguageHost) GenerateProject(
 	}
 
 	pubspec := codegen.BuildGeneratedPubspec(
-		projectName, dartProgramLocalDependencies(req.GetLocalDependencies()), nil, configuredPulumiDependency(),
+		projectName, dartLocalDependencies(req.GetLocalDependencies()), nil, configuredPulumiDependency(),
 	)
 	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {

@@ -160,7 +160,7 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	assert.Contains(t, content, "// FILE: index/widget.dart")
 	assert.Contains(t, content, "// FILE: index/functions.dart")
 	assert.Contains(t, content, "final pulumi.Input<List<WidgetMode>> modes;")
-	assert.Contains(t, content, "final pulumi.Input<Map<String, WidgetMetadata>>? metadataById;")
+	assert.Contains(t, content, "final pulumi.Input<Map<String, WidgetMetadata>?>? metadataById;")
 	assert.Contains(
 		t,
 		content,

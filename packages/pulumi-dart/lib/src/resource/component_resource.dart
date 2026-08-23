@@ -37,6 +37,7 @@ class ComponentResource extends Resource {
     Inputs? args,
     ComponentResourceOptions? options, {
     bool remote = false,
+    List<String> additionalSecretOutputs = const [],
   }) : super(
          type,
          name,
@@ -44,6 +45,7 @@ class ComponentResource extends Resource {
          args ?? {},
          options ?? ComponentResourceOptions(),
          remote: remote,
+         additionalSecretOutputs: additionalSecretOutputs,
        );
 
   /// Registers component outputs with the engine.

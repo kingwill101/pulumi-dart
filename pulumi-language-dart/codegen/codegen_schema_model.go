@@ -65,6 +65,7 @@ type rawEnumValueSpec struct {
 
 type rawPropertyTypeSpec struct {
 	Description          string                `json:"description"`
+	Secret               bool                  `json:"secret"`
 	Type                 string                `json:"type"`
 	Ref                  string                `json:"$ref"`
 	Items                *rawPropertyTypeSpec  `json:"items"`

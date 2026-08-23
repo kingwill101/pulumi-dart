@@ -29,6 +29,7 @@ type Resource struct {
 func ResourceClass(resource Resource) dartir.ResourceClass {
 	outputs := make([]dartir.ResourceOutput, len(resource.Schema.OutputProperties))
 	assignments := make([]dartir.Assignment, len(resource.Schema.OutputProperties))
+	secretOutputs := make([]string, 0)
 	constructorNames := resourceConstructorParameterNames(resource.Kind, resource.Schema.ArgsClass != "")
 	for index, property := range resource.Schema.OutputProperties {
 		outputs[index] = dartir.ResourceOutput{
@@ -40,20 +41,24 @@ func ResourceClass(resource Resource) dartir.ResourceClass {
 			Target:     RegisterOutputAssignmentTarget(property.FieldName, constructorNames...),
 			Expression: ResourceRegisterOutputExpression(property),
 		}
+		if property.Secret {
+			secretOutputs = append(secretOutputs, darttext.StringLiteral(property.Name))
+		}
 	}
 
 	return dartir.ResourceClass{
-		Name:                   resource.ClassName,
-		Docs:                   resource.Schema.Comment,
-		Kind:                   resource.Kind,
-		Imports:                append([]dartir.Import(nil), resource.Imports...),
-		ArgsClass:              resource.Schema.ArgsClass,
-		ArgsDocs:               resource.ArgsDocs,
-		TokenLiteral:           darttext.StringLiteral(resource.RegistrationToken),
-		HasPackageRegistration: resource.HasPackageRegistration,
-		Outputs:                outputs,
-		ConstructorAssignments: assignments,
-		Members:                resourceMembers(resource),
+		Name:                           resource.ClassName,
+		Docs:                           resource.Schema.Comment,
+		Kind:                           resource.Kind,
+		Imports:                        append([]dartir.Import(nil), resource.Imports...),
+		ArgsClass:                      resource.Schema.ArgsClass,
+		ArgsDocs:                       resource.ArgsDocs,
+		TokenLiteral:                   darttext.StringLiteral(resource.RegistrationToken),
+		HasPackageRegistration:         resource.HasPackageRegistration,
+		AdditionalSecretOutputLiterals: secretOutputs,
+		Outputs:                        outputs,
+		ConstructorAssignments:         assignments,
+		Members:                        resourceMembers(resource),
 	}
 }
 

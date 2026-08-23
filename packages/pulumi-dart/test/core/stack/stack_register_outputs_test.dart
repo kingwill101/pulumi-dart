@@ -152,5 +152,31 @@ void main() {
         expect(fields[Constants.valueName]!.stringValue, 'secret-value');
       },
     );
+
+    test(
+      'serializeOutputValue preserves secrecy for unknown outputs',
+      () async {
+        final stack = _EmptyStack();
+        final serialized = await stack.serializeOutputValue(
+          const OutputData<Object?>(
+            value: null,
+            isKnown: false,
+            isSecret: true,
+            resources: {},
+          ),
+        );
+
+        expect(serialized.hasStructValue(), isTrue);
+        final fields = serialized.structValue.fields;
+        expect(
+          fields[Constants.specialSigKey]!.stringValue,
+          Constants.specialSecretSig,
+        );
+        expect(
+          fields[Constants.valueName]!.stringValue,
+          Constants.unknownValue,
+        );
+      },
+    );
   });
 }

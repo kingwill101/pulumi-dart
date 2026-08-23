@@ -24,6 +24,7 @@ func makeResourceOutputPropertySpecs(resource *schema.Resource, named map[string
 		fields = append(fields, packagePropertySpec{
 			Name: property.Name, FieldName: propertyFieldName(property.Name, usedNames),
 			Comment: strings.TrimSpace(property.Comment), Required: !resource.IsComponent && property.IsRequired(),
+			Secret:   property.Secret,
 			TypeSpec: typeSpec, DartType: typeSpec.DartType,
 			ReferenceKind: referenceKind, ReferenceType: referenceType, ReferenceWireType: referenceWireType,
 		})

@@ -77,3 +77,16 @@ func TestProviderResourceForwardsPackageRegistration(t *testing.T) {
 	require.Contains(t, actual, "class Provider extends pulumi.ProviderResource")
 	require.Contains(t, actual, "registerPackageRequest: package_registration.registerPackageRequest")
 }
+
+func TestResourceForwardsSchemaSecretOutputs(t *testing.T) {
+	t.Parallel()
+
+	actual := string(Resource(dartir.ResourceClass{
+		Name:                           "Widget",
+		Kind:                           dartir.CustomResource,
+		TokenLiteral:                   "'example:index:Widget'",
+		AdditionalSecretOutputLiterals: []string{"'password'", "'token'"},
+	}))
+
+	require.Contains(t, actual, "additionalSecretOutputs: const ['password', 'token']")
+}

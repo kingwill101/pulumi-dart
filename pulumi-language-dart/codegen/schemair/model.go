@@ -69,6 +69,7 @@ type Property struct {
 	FieldName         string
 	Comment           string
 	Required          bool
+	Secret            bool
 	TypeSpec          Type
 	DartType          string
 	ReferenceKind     string

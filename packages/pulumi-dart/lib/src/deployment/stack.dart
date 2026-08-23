@@ -137,11 +137,9 @@ abstract class Stack extends ComponentResource {
 
   /// Serializes stack output metadata to Pulumi wire format.
   Future<Value> serializeOutputValue(OutputData outputData) async {
-    if (!outputData.isKnown) {
-      return Value()..stringValue = Constants.unknownValue;
-    }
-
-    final inner = await StructConverter.toValue(outputData.value);
+    final inner = outputData.isKnown
+        ? await StructConverter.toValue(outputData.value)
+        : (Value()..stringValue = Constants.unknownValue);
     if (!outputData.isSecret) {
       return inner;
     }

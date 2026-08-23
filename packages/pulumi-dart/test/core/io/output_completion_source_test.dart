@@ -42,6 +42,39 @@ void main() {
       expect(data.value, isNull);
     });
 
+    test('schema-secret unknown outputs remain secret', () async {
+      final source = OutputCompletionSource.create<String?>(
+        resource,
+        isSecret: true,
+      );
+      source.trySetDefaultResult(false);
+
+      final data = await source.output.getData();
+      expect(data.isKnown, isFalse);
+      expect(data.isSecret, isTrue);
+      expect(data.value, isNull);
+    });
+
+    test('schema secrecy is combined with provider output secrecy', () async {
+      final source = OutputCompletionSource.create<String>(
+        resource,
+        isSecret: true,
+      );
+      source.setValue(
+        const OutputData<Object?>(
+          value: 'value',
+          isKnown: true,
+          isSecret: false,
+          resources: {},
+        ),
+      );
+
+      final data = await source.output.getData();
+      expect(data.isKnown, isTrue);
+      expect(data.isSecret, isTrue);
+      expect(data.value, equals('value'));
+    });
+
     test('setStringValue ignores updates after completion', () async {
       final source = OutputCompletionSource.create<String>(resource);
       source.setStringValue('first', true);

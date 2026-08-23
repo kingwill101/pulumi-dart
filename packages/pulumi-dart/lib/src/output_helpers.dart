@@ -28,18 +28,19 @@ Output<dynamic> output(dynamic value) {
 /// original value was already secret.
 /// {@endtemplate}
 ///
-Output<dynamic> secret(dynamic value) {
-  return Output<dynamic>(
-    _resolveOutputData(value).then(
-      (data) => OutputData<dynamic>(
-        value: data.value,
-        isKnown: data.isKnown,
-        isSecret: true,
-        resources: data.resources,
-      ),
-    ),
-  );
+Output<T> secret<T>(Object? value) {
+  if (value is Output<T>) {
+    return Output.createSecret(value);
+  }
+  if (value is Output) {
+    return Output.createSecret(value.apply<T>((resolved) => resolved as T));
+  }
+  return Output.createSecret(Input.asInput<T>(value).toOutput());
 }
+
+/// Marks an already typed input as secret without weakening its value type.
+Input<T> secretInput<T>(Input<T> value) =>
+    Input.fromOutput(Output.createSecret(value.toOutput()));
 
 /// Removes the secret bit from an output.
 Output<T> unsecret<T>(Output<T> value) => Output.unsecret(value);

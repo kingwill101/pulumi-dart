@@ -209,7 +209,7 @@ import 'widget_mode.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_widget_args_doc}
 class WidgetArgs {
-  final pulumi.Input<WidgetMetadata>? metadata;
+  final pulumi.Input<WidgetMetadata?>? metadata;
   final pulumi.Input<WidgetMode> mode;
 
   /// Creates a new [WidgetArgs].

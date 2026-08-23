@@ -15,5 +15,9 @@ func (lowerer programLowerer) conditionalExpression(expression *model.Conditiona
 	if err != nil {
 		return "", err
 	}
+	if model.ContainsOutputs(expression.Condition.Type()) {
+		return "pulumi.output(" + condition + ").apply<dynamic>((value) => value ? " +
+			whenTrue + " : " + whenFalse + ")", nil
+	}
 	return "(" + condition + " ? " + whenTrue + " : " + whenFalse + ")", nil
 }

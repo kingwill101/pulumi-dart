@@ -127,6 +127,33 @@ void main() {
       expect(plainData.value, equals({'a': 1}));
     });
 
+    test('secret preserves its inferred static value type', () async {
+      final Output<String> wrapped = secret('value');
+      final data = await wrapped.getData();
+
+      expect(data.value, 'value');
+      expect(data.isSecret, isTrue);
+    });
+
+    test('secret flattens and re-secrets an existing output', () async {
+      final original = Output.create('value');
+      final wrapped = secret(original);
+      final data = await wrapped.getData();
+
+      expect(data.value, 'value');
+      expect(data.isSecret, isTrue);
+    });
+
+    test('secretInput preserves a contextual input type', () async {
+      final Input<Map<String, String>> wrapped = secretInput(
+        ({'key': 'value'}).input(),
+      );
+      final data = await wrapped.toOutput().getData();
+
+      expect(data.value, {'key': 'value'});
+      expect(data.isSecret, isTrue);
+    });
+
     test('jsonStringify and jsonParse roundtrip values', () async {
       final encoded = jsonStringify({
         'x': Output.create(1),

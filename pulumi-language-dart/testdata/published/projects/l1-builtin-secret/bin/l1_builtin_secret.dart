@@ -5,7 +5,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     final config = pulumi.Config();
-    final aSecret = pulumi.secret(config.require('aSecret'));
+    final aSecret = pulumi.secret(config.require('aSecret')).apply<String>((value) => value as String);
     final notSecret = config.require('notSecret');
 
     _outputProperties = [

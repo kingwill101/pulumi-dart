@@ -272,7 +272,7 @@ func TestGeneratePackageUsesTypedExternalRefsInGeneratedSources(t *testing.T) {
 	require.NoError(t, err)
 	argsContent := string(argsData)
 	assert.Contains(t, argsContent, "import 'package:pulumi_aws/s3.dart' as pulumi_aws_s3;")
-	assert.Contains(t, argsContent, "final pulumi.Input<pulumi_aws_s3.BucketLogging>? logging;")
+	assert.Contains(t, argsContent, "final pulumi.Input<pulumi_aws_s3.BucketLogging?>? logging;")
 
 	resourceContent := generatedResourceContent(t, targetDir, "repository")
 	assert.Contains(t, resourceContent, "import 'package:pulumi_aws/ecr.dart' as pulumi_aws_ecr;")

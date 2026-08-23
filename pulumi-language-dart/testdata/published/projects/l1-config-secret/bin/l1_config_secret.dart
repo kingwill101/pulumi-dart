@@ -5,7 +5,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     final config = pulumi.Config();
-    final aNumber = pulumi.secret(config.requireNumber('aNumber'));
+    final aNumber = pulumi.secret(config.requireNumber('aNumber')).apply<double>((value) => value as double);
 
     _outputProperties = [
       pulumi.OutputProperty('roundtrip', pulumi.output(aNumber).apply<Object?>((value) => value)),
