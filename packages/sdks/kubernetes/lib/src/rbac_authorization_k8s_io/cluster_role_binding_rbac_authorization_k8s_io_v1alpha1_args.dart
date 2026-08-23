@@ -55,4 +55,3 @@ class ClusterRoleBindingRbacAuthorizationK8sIoV1alpha1Args {
     );
   }
 }
-

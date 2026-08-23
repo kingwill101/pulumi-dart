@@ -32,6 +32,8 @@ export 'meta/preconditions.dart';
 export 'meta/preconditions_patch.dart';
 export 'meta/server_address_by_client_cidr.dart';
 export 'meta/server_address_by_client_cidrpatch.dart';
+export 'meta/shard_info.dart';
+export 'meta/shard_info_patch.dart';
 export 'meta/status.dart';
 export 'meta/status_args.dart';
 export 'meta/status_cause.dart';

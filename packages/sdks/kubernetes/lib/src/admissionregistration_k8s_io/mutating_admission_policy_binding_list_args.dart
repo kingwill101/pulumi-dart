@@ -2,27 +2,27 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/list_meta.dart';
-import 'mutating_admission_policy_binding_admissionregistration_k8s_io_v1alpha1.dart';
+import 'mutating_admission_policy_binding_admissionregistration_k8s_io_v1.dart';
 
-/// {@template pulumi_admissionregistration_k8s_io_v1alpha1_mutating_admission_policy_binding_list_args_doc}
+/// {@template pulumi_admissionregistration_k8s_io_v1_mutating_admission_policy_binding_list_args_doc}
 /// The set of arguments for MutatingAdmissionPolicyBindingList.
 /// {@endtemplate}
-/// {@macro pulumi_admissionregistration_k8s_io_v1alpha1_mutating_admission_policy_binding_list_args_doc}
+/// {@macro pulumi_admissionregistration_k8s_io_v1_mutating_admission_policy_binding_list_args_doc}
 class MutatingAdmissionPolicyBindingListArgs {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
   /// List of PolicyBinding.
-  final pulumi.Input<List<MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1alpha1>> items;
+  final pulumi.Input<List<MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-  /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<ListMeta>? metadata;
 
   /// Creates a new [MutatingAdmissionPolicyBindingListArgs].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [items] List of PolicyBinding.
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// [metadata] metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   const MutatingAdmissionPolicyBindingListArgs({
     this.apiVersion,
     required this.items,
@@ -42,10 +42,9 @@ class MutatingAdmissionPolicyBindingListArgs {
   factory MutatingAdmissionPolicyBindingListArgs.fromMap(Map<String, dynamic> map) {
     return MutatingAdmissionPolicyBindingListArgs(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      items: pulumi.Input.fromValue((map['items'] as List).cast<MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1alpha1>()),
+      items: pulumi.Input.fromValue((map['items'] as List).cast<MutatingAdmissionPolicyBindingAdmissionregistrationK8sIoV1>()),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

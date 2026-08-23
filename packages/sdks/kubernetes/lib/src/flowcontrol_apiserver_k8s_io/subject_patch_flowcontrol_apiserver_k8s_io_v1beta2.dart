@@ -46,4 +46,3 @@ class SubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
     );
   }
 }
-

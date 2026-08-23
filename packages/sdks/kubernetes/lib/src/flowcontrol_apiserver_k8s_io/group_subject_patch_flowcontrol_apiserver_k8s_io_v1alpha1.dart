@@ -25,4 +25,3 @@ class GroupSubjectPatchFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

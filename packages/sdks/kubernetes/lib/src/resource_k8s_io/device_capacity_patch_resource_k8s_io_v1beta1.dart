@@ -38,4 +38,3 @@ class DeviceCapacityPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

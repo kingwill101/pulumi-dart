@@ -49,4 +49,3 @@ class ParentReferenceNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

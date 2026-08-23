@@ -43,4 +43,3 @@ class ContainerResourceMetricSourceAutoscalingV2beta1 {
     );
   }
 }
-

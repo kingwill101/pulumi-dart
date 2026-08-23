@@ -26,4 +26,3 @@ class DeviceSelectorResourceK8sIoV1alpha3 {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class RuntimeClassPatchNodeK8sIoV1alpha1 {
     );
   }
 }
-

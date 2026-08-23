@@ -57,4 +57,3 @@ class SubjectAccessReviewSpecAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class NonResourceAttributesPatchAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

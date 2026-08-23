@@ -5,11 +5,11 @@ import 'expression_warning_patch.dart';
 
 /// TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy
 class TypeCheckingPatch {
-  /// The type checking warnings for each expression.
+  /// expressionWarnings contains the type checking warnings for each expression.
   final pulumi.Input<List<ExpressionWarningPatch>>? expressionWarnings;
 
   /// Creates a new [TypeCheckingPatch].
-  /// [expressionWarnings] The type checking warnings for each expression.
+  /// [expressionWarnings] expressionWarnings contains the type checking warnings for each expression.
   const TypeCheckingPatch({
     this.expressionWarnings,
   });
@@ -26,4 +26,3 @@ class TypeCheckingPatch {
     );
   }
 }
-

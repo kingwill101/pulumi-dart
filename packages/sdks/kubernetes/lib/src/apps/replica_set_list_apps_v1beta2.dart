@@ -45,4 +45,3 @@ class ReplicaSetListAppsV1beta2 {
     );
   }
 }
-

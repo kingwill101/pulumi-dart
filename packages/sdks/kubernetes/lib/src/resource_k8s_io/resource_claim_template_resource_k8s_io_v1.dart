@@ -4,8 +4,6 @@ import 'resource_claim_template_args.dart';
 import 'resource_claim_template_spec.dart';
 
 /// ResourceClaimTemplate is used to produce ResourceClaim objects.
-///
-/// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
 class ResourceClaimTemplateResourceK8sIoV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;

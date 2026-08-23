@@ -53,4 +53,3 @@ class ControllerRevisionPatchAppsV1beta2Args {
     );
   }
 }
-

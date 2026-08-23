@@ -48,4 +48,3 @@ class PodSchedulingContextPatchResourceK8sIoV1alpha3Args {
     );
   }
 }
-

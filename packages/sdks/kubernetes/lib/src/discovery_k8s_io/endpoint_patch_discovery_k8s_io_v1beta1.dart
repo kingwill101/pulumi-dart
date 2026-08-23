@@ -63,4 +63,3 @@ class EndpointPatchDiscoveryK8sIoV1beta1 {
     );
   }
 }
-

@@ -48,4 +48,3 @@ class IPAddressListNetworkingK8sIoV1alpha1Args {
     );
   }
 }
-

@@ -4,8 +4,6 @@ import 'device_class_args.dart';
 import 'device_class_spec.dart';
 
 /// DeviceClass is a vendor- or admin-provided resource that contains device configuration and selectors. It can be referenced in the device requests of a claim to apply these presets. Cluster scoped.
-///
-/// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
 class DeviceClassResourceK8sIoV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;

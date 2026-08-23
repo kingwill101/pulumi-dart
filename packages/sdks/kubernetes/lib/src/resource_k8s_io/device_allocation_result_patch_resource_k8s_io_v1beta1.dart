@@ -35,4 +35,3 @@ class DeviceAllocationResultPatchResourceK8sIoV1beta1 {
     );
   }
 }
-

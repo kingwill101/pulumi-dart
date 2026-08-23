@@ -31,4 +31,3 @@ class TokenRequestPatchStorageK8sIoV1beta1 {
     );
   }
 }
-

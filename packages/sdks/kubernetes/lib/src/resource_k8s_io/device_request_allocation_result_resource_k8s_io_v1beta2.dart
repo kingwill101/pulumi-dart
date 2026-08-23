@@ -11,11 +11,11 @@ class DeviceRequestAllocationResultResourceK8sIoV1beta2 {
   final pulumi.Input<bool>? adminAccess;
   /// BindingConditions contains a copy of the BindingConditions from the corresponding ResourceSlice at the time of allocation.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
   final pulumi.Input<List<String>>? bindingConditions;
   /// BindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
   final pulumi.Input<List<String>>? bindingFailureConditions;
   /// ConsumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device’s requestPolicy if applicable (i.e., may not be less than the requested amount).
   ///
@@ -43,7 +43,7 @@ class DeviceRequestAllocationResultResourceK8sIoV1beta2 {
   ///
   /// The maximum number of tolerations is 16.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceTaints feature gate.
+  /// This is a beta field and requires enabling the DRADeviceTaints feature gate.
   final pulumi.Input<List<DeviceTolerationResourceK8sIoV1beta2>>? tolerations;
 
   /// Creates a new [DeviceRequestAllocationResultResourceK8sIoV1beta2].
@@ -100,4 +100,3 @@ class DeviceRequestAllocationResultResourceK8sIoV1beta2 {
     );
   }
 }
-

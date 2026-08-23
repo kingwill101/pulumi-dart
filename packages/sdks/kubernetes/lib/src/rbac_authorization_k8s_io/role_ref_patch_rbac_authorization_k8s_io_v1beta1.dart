@@ -37,4 +37,3 @@ class RoleRefPatchRbacAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

@@ -48,4 +48,3 @@ class LeaseCandidatePatchCoordinationK8sIoV1beta1Args {
     );
   }
 }
-

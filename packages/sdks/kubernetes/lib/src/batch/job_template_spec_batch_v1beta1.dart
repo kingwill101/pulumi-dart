@@ -33,4 +33,3 @@ class JobTemplateSpecBatchV1beta1 {
     );
   }
 }
-

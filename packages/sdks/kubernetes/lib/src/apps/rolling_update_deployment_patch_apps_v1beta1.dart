@@ -31,4 +31,3 @@ class RollingUpdateDeploymentPatchAppsV1beta1 {
     );
   }
 }
-

@@ -61,4 +61,3 @@ class ResourceAttributesAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

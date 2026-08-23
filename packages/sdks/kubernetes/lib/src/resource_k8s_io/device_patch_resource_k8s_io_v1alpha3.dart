@@ -32,4 +32,3 @@ class DevicePatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

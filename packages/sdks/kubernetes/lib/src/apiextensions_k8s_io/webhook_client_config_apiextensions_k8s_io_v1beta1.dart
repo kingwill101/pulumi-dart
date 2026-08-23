@@ -50,4 +50,3 @@ class WebhookClientConfigApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

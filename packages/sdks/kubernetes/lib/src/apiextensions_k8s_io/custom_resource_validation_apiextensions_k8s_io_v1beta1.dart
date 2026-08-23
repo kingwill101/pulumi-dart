@@ -26,4 +26,3 @@ class CustomResourceValidationApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

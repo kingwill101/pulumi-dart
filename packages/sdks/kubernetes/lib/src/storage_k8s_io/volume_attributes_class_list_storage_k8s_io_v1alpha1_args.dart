@@ -48,4 +48,3 @@ class VolumeAttributesClassListStorageK8sIoV1alpha1Args {
     );
   }
 }
-

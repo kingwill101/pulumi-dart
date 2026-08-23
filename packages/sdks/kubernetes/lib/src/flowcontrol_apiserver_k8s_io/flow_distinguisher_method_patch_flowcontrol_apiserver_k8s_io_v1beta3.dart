@@ -25,4 +25,3 @@ class FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

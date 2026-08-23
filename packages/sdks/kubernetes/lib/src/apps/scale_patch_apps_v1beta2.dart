@@ -52,4 +52,3 @@ class ScalePatchAppsV1beta2 {
     );
   }
 }
-

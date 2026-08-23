@@ -67,4 +67,3 @@ class StatefulSetAppsV1beta1 {
     );
   }
 }
-

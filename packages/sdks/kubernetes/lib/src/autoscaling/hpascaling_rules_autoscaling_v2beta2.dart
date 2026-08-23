@@ -38,4 +38,3 @@ class HPAScalingRulesAutoscalingV2beta2 {
     );
   }
 }
-

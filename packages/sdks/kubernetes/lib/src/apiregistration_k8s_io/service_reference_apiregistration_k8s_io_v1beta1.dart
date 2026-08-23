@@ -37,4 +37,3 @@ class ServiceReferenceApiregistrationK8sIoV1beta1 {
     );
   }
 }
-

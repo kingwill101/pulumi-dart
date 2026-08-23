@@ -49,4 +49,3 @@ class ClusterTrustBundleCertificatesK8sIoV1beta1 {
     );
   }
 }
-

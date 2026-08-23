@@ -26,4 +26,3 @@ class AggregationRuleRbacAuthorizationK8sIoV1alpha1 {
     );
   }
 }
-

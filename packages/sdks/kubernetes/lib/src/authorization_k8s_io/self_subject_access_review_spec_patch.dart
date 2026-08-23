@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'non_resource_attributes_patch.dart';
 import 'resource_attributes_patch.dart';
 
-/// SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set
+/// SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of resourceAttributes and nonResourceAttributes must be set
 class SelfSubjectAccessReviewSpecPatch {
-  /// NonResourceAttributes describes information for a non-resource access request
+  /// nonResourceAttributes describes information for a non-resource access request
   final pulumi.Input<NonResourceAttributesPatch>? nonResourceAttributes;
-  /// ResourceAuthorizationAttributes describes information for a resource access request
+  /// resourceAttributes describes information for a resource access request
   final pulumi.Input<ResourceAttributesPatch>? resourceAttributes;
 
   /// Creates a new [SelfSubjectAccessReviewSpecPatch].
-  /// [nonResourceAttributes] NonResourceAttributes describes information for a non-resource access request
-  /// [resourceAttributes] ResourceAuthorizationAttributes describes information for a resource access request
+  /// [nonResourceAttributes] nonResourceAttributes describes information for a non-resource access request
+  /// [resourceAttributes] resourceAttributes describes information for a resource access request
   const SelfSubjectAccessReviewSpecPatch({
     this.nonResourceAttributes,
     this.resourceAttributes,
@@ -33,4 +33,3 @@ class SelfSubjectAccessReviewSpecPatch {
     );
   }
 }
-

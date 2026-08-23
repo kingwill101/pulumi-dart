@@ -37,4 +37,3 @@ class QueuingConfigurationFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

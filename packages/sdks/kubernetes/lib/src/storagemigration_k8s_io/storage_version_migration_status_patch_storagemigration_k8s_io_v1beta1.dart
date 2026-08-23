@@ -32,4 +32,3 @@ class StorageVersionMigrationStatusPatchStoragemigrationK8sIoV1beta1 {
     );
   }
 }
-

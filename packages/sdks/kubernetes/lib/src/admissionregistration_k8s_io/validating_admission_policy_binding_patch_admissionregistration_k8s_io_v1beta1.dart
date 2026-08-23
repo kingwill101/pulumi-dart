@@ -49,4 +49,3 @@ class ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

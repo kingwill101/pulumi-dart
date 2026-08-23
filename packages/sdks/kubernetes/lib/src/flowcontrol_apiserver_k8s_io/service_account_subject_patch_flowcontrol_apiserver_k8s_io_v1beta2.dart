@@ -31,4 +31,3 @@ class ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
     );
   }
 }
-

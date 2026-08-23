@@ -37,4 +37,3 @@ class ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

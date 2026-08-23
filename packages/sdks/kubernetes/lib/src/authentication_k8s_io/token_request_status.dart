@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TokenRequestStatus is the result of a token request.
 class TokenRequestStatus {
-  /// ExpirationTimestamp is the time of expiration of the returned token.
+  /// expirationTimestamp is the time of expiration of the returned token.
   final pulumi.Input<String> expirationTimestamp;
-  /// Token is the opaque bearer token.
+  /// token is the opaque bearer token.
   final pulumi.Input<String> token;
 
   /// Creates a new [TokenRequestStatus].
-  /// [expirationTimestamp] ExpirationTimestamp is the time of expiration of the returned token.
-  /// [token] Token is the opaque bearer token.
+  /// [expirationTimestamp] expirationTimestamp is the time of expiration of the returned token.
+  /// [token] token is the opaque bearer token.
   const TokenRequestStatus({
     required this.expirationTimestamp,
     required this.token,
@@ -31,4 +31,3 @@ class TokenRequestStatus {
     );
   }
 }
-

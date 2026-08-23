@@ -45,4 +45,3 @@ class ValidatingWebhookConfigurationListAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

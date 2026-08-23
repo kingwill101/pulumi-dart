@@ -32,4 +32,3 @@ class DeviceResourceK8sIoV1beta1 {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1 {
     );
   }
 }
-

@@ -36,4 +36,3 @@ class CounterSetResourceK8sIoV1beta1 {
     );
   }
 }
-

@@ -48,4 +48,3 @@ class ValidatingAdmissionPolicyAdmissionregistrationK8sIoV1alpha1Args {
     );
   }
 }
-

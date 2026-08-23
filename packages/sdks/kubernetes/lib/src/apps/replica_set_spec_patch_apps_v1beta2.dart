@@ -45,4 +45,3 @@ class ReplicaSetSpecPatchAppsV1beta2 {
     );
   }
 }
-

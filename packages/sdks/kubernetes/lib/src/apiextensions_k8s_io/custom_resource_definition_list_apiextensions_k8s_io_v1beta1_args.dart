@@ -47,4 +47,3 @@ class CustomResourceDefinitionListApiextensionsK8sIoV1beta1Args {
     );
   }
 }
-

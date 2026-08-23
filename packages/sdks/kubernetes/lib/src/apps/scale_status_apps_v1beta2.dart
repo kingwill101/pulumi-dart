@@ -37,4 +37,3 @@ class ScaleStatusAppsV1beta2 {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class DeviceClassListResourceK8sIoV1alpha3 {
     );
   }
 }
-

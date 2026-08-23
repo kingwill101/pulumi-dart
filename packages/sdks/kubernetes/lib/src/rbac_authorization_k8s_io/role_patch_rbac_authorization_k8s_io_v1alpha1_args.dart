@@ -48,4 +48,3 @@ class RolePatchRbacAuthorizationK8sIoV1alpha1Args {
     );
   }
 }
-

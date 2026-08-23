@@ -32,4 +32,3 @@ class ResourceMetricStatusAutoscalingV2beta2 {
     );
   }
 }
-

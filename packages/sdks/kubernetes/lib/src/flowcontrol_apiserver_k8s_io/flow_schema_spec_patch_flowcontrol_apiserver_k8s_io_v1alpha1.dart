@@ -46,4 +46,3 @@ class FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

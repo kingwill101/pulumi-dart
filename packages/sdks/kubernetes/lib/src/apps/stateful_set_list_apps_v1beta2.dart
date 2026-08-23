@@ -43,4 +43,3 @@ class StatefulSetListAppsV1beta2 {
     );
   }
 }
-

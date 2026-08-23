@@ -25,4 +25,3 @@ class UserSubjectFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

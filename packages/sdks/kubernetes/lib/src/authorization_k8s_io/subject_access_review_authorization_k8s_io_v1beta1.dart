@@ -51,4 +51,3 @@ class SubjectAccessReviewAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

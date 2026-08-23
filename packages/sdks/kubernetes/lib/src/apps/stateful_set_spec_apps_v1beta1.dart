@@ -71,4 +71,3 @@ class StatefulSetSpecAppsV1beta1 {
     );
   }
 }
-

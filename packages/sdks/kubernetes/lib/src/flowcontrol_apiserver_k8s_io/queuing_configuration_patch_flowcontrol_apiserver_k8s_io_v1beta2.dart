@@ -37,4 +37,3 @@ class QueuingConfigurationPatchFlowcontrolApiserverK8sIoV1beta2 {
     );
   }
 }
-

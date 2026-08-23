@@ -52,4 +52,3 @@ class ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

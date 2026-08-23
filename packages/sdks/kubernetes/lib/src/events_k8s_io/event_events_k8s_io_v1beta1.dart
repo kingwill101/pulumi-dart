@@ -124,4 +124,3 @@ class EventEventsK8sIoV1beta1 {
     );
   }
 }
-

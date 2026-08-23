@@ -48,4 +48,3 @@ class RoleBindingListRbacAuthorizationK8sIoV1beta1Args {
     );
   }
 }
-

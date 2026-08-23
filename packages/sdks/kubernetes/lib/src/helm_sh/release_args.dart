@@ -65,6 +65,8 @@ class ReleaseArgs {
   final pulumi.Input<bool>? skipAwait;
   /// If set, no CRDs will be installed. By default, CRDs are installed if not already present.
   final pulumi.Input<bool>? skipCrds;
+  /// If set, install/upgrade will skip the check for existing resource conflicts and take ownership of the matching resources, adopting any that are not already managed by this release. This mirrors the Helm `--take-ownership` flag.
+  final pulumi.Input<bool>? takeOwnership;
   /// Time in seconds to wait for any individual kubernetes operation.
   final pulumi.Input<int>? timeout;
   /// List of assets (raw yaml files). Content is read and merged with values.
@@ -108,6 +110,7 @@ class ReleaseArgs {
   /// [reuseValues] When upgrading, reuse the last release's values and merge in any overrides. If 'resetValues' is specified, this is ignored
   /// [skipAwait] By default, the provider waits until all resources are in a ready state before marking the release as successful. Setting this to true will skip such await logic.
   /// [skipCrds] If set, no CRDs will be installed. By default, CRDs are installed if not already present.
+  /// [takeOwnership] If set, install/upgrade will skip the check for existing resource conflicts and take ownership of the matching resources, adopting any that are not already managed by this release. This mirrors the Helm `--take-ownership` flag.
   /// [timeout] Time in seconds to wait for any individual kubernetes operation.
   /// [valueYamlFiles] List of assets (raw yaml files). Content is read and merged with values.
   /// [values] Custom values set for the release.
@@ -144,6 +147,7 @@ class ReleaseArgs {
     this.reuseValues,
     this.skipAwait,
     this.skipCrds,
+    this.takeOwnership,
     this.timeout,
     this.valueYamlFiles,
     this.values,
@@ -183,6 +187,7 @@ class ReleaseArgs {
       'reuseValues': ?reuseValues,
       'skipAwait': ?skipAwait,
       'skipCrds': ?skipCrds,
+      'takeOwnership': ?takeOwnership,
       'timeout': ?timeout,
       'valueYamlFiles': ?valueYamlFiles,
       'values': ?values,
@@ -223,6 +228,7 @@ class ReleaseArgs {
       reuseValues: (() { final guardedValue = map['reuseValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       skipAwait: (() { final guardedValue = map['skipAwait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       skipCrds: (() { final guardedValue = map['skipCrds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      takeOwnership: (() { final guardedValue = map['takeOwnership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       valueYamlFiles: (() { final guardedValue = map['valueYamlFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -232,4 +238,3 @@ class ReleaseArgs {
     );
   }
 }
-

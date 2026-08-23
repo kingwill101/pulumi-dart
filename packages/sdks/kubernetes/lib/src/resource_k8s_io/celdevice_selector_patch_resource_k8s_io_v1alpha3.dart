@@ -51,4 +51,3 @@ class CELDeviceSelectorPatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

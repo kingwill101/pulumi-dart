@@ -39,4 +39,3 @@ class CustomResourceDefinitionStatusPatchApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

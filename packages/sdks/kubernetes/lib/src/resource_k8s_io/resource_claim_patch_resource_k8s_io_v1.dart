@@ -11,8 +11,6 @@ import 'resource_claim_status_patch.dart';
 /// [Server-Side Apply Docs](https://www.pulumi.com/registry/packages/kubernetes/how-to-guides/managing-resources-with-server-side-apply/) for
 /// additional information about using Server-Side Apply to manage Kubernetes resources with Pulumi.
 /// ResourceClaim describes a request for access to resources in the cluster, for use by workloads. For example, if a workload needs an accelerator device with specific properties, this is how that request is expressed. The status stanza tracks whether this claim has been satisfied and what specific resources have been allocated.
-///
-/// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
 class ResourceClaimPatchResourceK8sIoV1 extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;

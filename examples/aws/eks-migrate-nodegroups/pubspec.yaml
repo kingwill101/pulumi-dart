@@ -10,7 +10,7 @@ dependencies:
   pulumi_aws: ^7.20.0
   pulumi_awsx: 3.8.0
   pulumi_eks: 4.3.0
-  pulumi_kubernetes: 4.26.0
+  pulumi_kubernetes: 4.33.0
 
 dev_dependencies:
   lints: ^6.1.0

@@ -51,4 +51,3 @@ class LocalSubjectAccessReviewPatchAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

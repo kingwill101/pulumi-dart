@@ -54,4 +54,3 @@ class ResourceClaimResourceK8sIoV1alpha1 {
     );
   }
 }
-

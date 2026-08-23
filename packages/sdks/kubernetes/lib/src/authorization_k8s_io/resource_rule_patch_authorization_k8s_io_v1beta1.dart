@@ -44,4 +44,3 @@ class ResourceRulePatchAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

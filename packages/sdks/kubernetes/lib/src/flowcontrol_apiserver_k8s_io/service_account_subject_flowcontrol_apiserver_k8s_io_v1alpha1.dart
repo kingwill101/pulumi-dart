@@ -31,4 +31,3 @@ class ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

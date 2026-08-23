@@ -25,4 +25,3 @@ class ServiceCIDRSpecNetworkingK8sIoV1beta1 {
     );
   }
 }
-

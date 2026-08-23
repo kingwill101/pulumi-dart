@@ -48,4 +48,3 @@ class ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args {
     );
   }
 }
-

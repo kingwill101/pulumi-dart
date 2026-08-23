@@ -80,4 +80,3 @@ class DaemonSetStatusPatchAppsV1beta2 {
     );
   }
 }
-

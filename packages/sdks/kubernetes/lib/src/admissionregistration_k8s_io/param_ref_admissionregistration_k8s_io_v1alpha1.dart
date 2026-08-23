@@ -5,7 +5,7 @@ import '../meta/label_selector.dart';
 
 /// ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding.
 class ParamRefAdmissionregistrationK8sIoV1alpha1 {
-  /// `name` is the name of the resource being referenced.
+  /// name is the name of the resource being referenced.
   ///
   /// `name` and `selector` are mutually exclusive properties. If one is set, the other must be unset.
   final pulumi.Input<String>? name;
@@ -17,7 +17,7 @@ class ParamRefAdmissionregistrationK8sIoV1alpha1 {
   ///
   /// - If `paramKind` is namespace-scoped, the namespace of the object being evaluated for admission will be used when this field is left unset. Take care that if this is left empty the binding must not match any cluster-scoped resources, which will result in an error.
   final pulumi.Input<String>? namespace;
-  /// `parameterNotFoundAction` controls the behavior of the binding when the resource exists, and name or selector is valid, but there are no parameters matched by the binding. If the value is set to `Allow`, then no matched parameters will be treated as successful validation by the binding. If set to `Deny`, then no matched parameters will be subject to the `failurePolicy` of the policy.
+  /// parameterNotFoundAction controls the behavior of the binding when the resource exists, and name or selector is valid, but there are no parameters matched by the binding. If the value is set to `Allow`, then no matched parameters will be treated as successful validation by the binding. If set to `Deny`, then no matched parameters will be subject to the `failurePolicy` of the policy.
   ///
   /// Allowed values are `Allow` or `Deny` Default to `Deny`
   final pulumi.Input<String>? parameterNotFoundAction;
@@ -29,9 +29,9 @@ class ParamRefAdmissionregistrationK8sIoV1alpha1 {
   final pulumi.Input<LabelSelector>? selector;
 
   /// Creates a new [ParamRefAdmissionregistrationK8sIoV1alpha1].
-  /// [name] `name` is the name of the resource being referenced.
+  /// [name] name is the name of the resource being referenced.
   /// [namespace] namespace is the namespace of the referenced resource. Allows limiting the search for params to a specific namespace. Applies to both `name` and `selector` fields.
-  /// [parameterNotFoundAction] `parameterNotFoundAction` controls the behavior of the binding when the resource exists, and name or selector is valid, but there are no parameters matched by the binding. If the value is set to `Allow`, then no matched parameters will be treated as successful validation by the binding. If set to `Deny`, then no matched parameters will be subject to the `failurePolicy` of the policy.
+  /// [parameterNotFoundAction] parameterNotFoundAction controls the behavior of the binding when the resource exists, and name or selector is valid, but there are no parameters matched by the binding. If the value is set to `Allow`, then no matched parameters will be treated as successful validation by the binding. If set to `Deny`, then no matched parameters will be subject to the `failurePolicy` of the policy.
   /// [selector] selector can be used to match multiple param objects based on their labels. Supply selector: {} to match all resources of the ParamKind.
   const ParamRefAdmissionregistrationK8sIoV1alpha1({
     this.name,
@@ -58,4 +58,3 @@ class ParamRefAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

@@ -11,19 +11,19 @@ class SelfSubjectRulesReview {
   final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-  /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
-  /// Spec holds information about the request being evaluated.
+  /// spec holds information about the request being evaluated.
   final pulumi.Input<SelfSubjectRulesReviewSpec> spec;
-  /// Status is filled in by the server and indicates the set of actions a user can perform.
+  /// status is filled in by the server and indicates the set of actions a user can perform.
   final pulumi.Input<SubjectRulesReviewStatus>? status;
 
   /// Creates a new [SelfSubjectRulesReview].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  /// [spec] Spec holds information about the request being evaluated.
-  /// [status] Status is filled in by the server and indicates the set of actions a user can perform.
+  /// [metadata] metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+  /// [spec] spec holds information about the request being evaluated.
+  /// [status] status is filled in by the server and indicates the set of actions a user can perform.
   const SelfSubjectRulesReview({
     this.apiVersion,
     this.kind,
@@ -52,4 +52,3 @@ class SelfSubjectRulesReview {
     );
   }
 }
-

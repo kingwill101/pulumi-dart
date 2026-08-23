@@ -34,4 +34,3 @@ class DeviceCounterConsumptionPatchResourceK8sIoV1beta2 {
     );
   }
 }
-

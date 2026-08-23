@@ -15,6 +15,8 @@ class ChartHelmShV4Args {
   final pulumi.Input<bool>? dependencyUpdate;
   /// Use chart development versions, too. Equivalent to version '&gt;0.0.0-0'. If `version` is set, this is ignored.
   final pulumi.Input<bool>? devel;
+  /// By default, Helm hook resources (those annotated with `helm.sh/hook`) are omitted from the rendered output. When the provider is configured with `renderYamlToDirectory`, set this to true to include hook resources in the rendered manifests so that another tool (e.g. Argo CD) can apply them. Test hooks (`helm.sh/hook: test`) are always excluded. This setting has no effect outside of render mode, where hooks are not supported.
+  final pulumi.Input<bool>? includeHooks;
   /// Location of public keys used for verification. Used only if `verify` is true
   final pulumi.Input<dynamic>? keyring;
   /// Release name.
@@ -46,6 +48,7 @@ class ChartHelmShV4Args {
   /// [chart] Chart name to be installed. A path may be used.
   /// [dependencyUpdate] Run helm dependency update before installing the chart.
   /// [devel] Use chart development versions, too. Equivalent to version '&gt;0.0.0-0'. If `version` is set, this is ignored.
+  /// [includeHooks] By default, Helm hook resources (those annotated with `helm.sh/hook`) are omitted from the rendered output. When the provider is configured with `renderYamlToDirectory`, set this to true to include hook resources in the rendered manifests so that another tool (e.g. Argo CD) can apply them. Test hooks (`helm.sh/hook: test`) are always excluded. This setting has no effect outside of render mode, where hooks are not supported.
   /// [keyring] Location of public keys used for verification. Used only if `verify` is true
   /// [name] Release name.
   /// [namespace] Namespace for the release.
@@ -63,6 +66,7 @@ class ChartHelmShV4Args {
     required this.chart,
     this.dependencyUpdate,
     this.devel,
+    this.includeHooks,
     this.keyring,
     this.name,
     this.namespace,
@@ -83,6 +87,7 @@ class ChartHelmShV4Args {
       'chart': chart,
       'dependencyUpdate': ?dependencyUpdate,
       'devel': ?devel,
+      'includeHooks': ?includeHooks,
       'keyring': ?keyring,
       'name': ?name,
       'namespace': ?namespace,
@@ -104,6 +109,7 @@ class ChartHelmShV4Args {
       chart: pulumi.Input.fromValue(map['chart'] as String),
       dependencyUpdate: (() { final guardedValue = map['dependencyUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       devel: (() { final guardedValue = map['devel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeHooks: (() { final guardedValue = map['includeHooks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyring: (() { final guardedValue = map['keyring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -120,4 +126,3 @@ class ChartHelmShV4Args {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class ServiceReferencePatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

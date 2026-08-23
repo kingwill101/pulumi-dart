@@ -43,4 +43,3 @@ class ResourceClaimConsumerReferencePatchResourceK8sIoV1beta2 {
     );
   }
 }
-

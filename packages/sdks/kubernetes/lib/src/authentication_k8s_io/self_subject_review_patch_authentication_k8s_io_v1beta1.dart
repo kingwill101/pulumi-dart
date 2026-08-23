@@ -45,4 +45,3 @@ class SelfSubjectReviewPatchAuthenticationK8sIoV1beta1 {
     );
   }
 }
-

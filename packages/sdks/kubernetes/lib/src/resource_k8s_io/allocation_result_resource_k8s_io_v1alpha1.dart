@@ -42,4 +42,3 @@ class AllocationResultResourceK8sIoV1alpha1 {
     );
   }
 }
-

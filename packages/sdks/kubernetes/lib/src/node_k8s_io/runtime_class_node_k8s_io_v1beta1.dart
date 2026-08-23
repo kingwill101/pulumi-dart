@@ -58,4 +58,3 @@ class RuntimeClassNodeK8sIoV1beta1 {
     );
   }
 }
-

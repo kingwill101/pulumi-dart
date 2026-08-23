@@ -47,4 +47,3 @@ class DeviceRequestAllocationResultPatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

@@ -58,4 +58,3 @@ class EndpointSliceDiscoveryK8sIoV1beta1 {
     );
   }
 }
-

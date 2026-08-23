@@ -71,7 +71,7 @@ class DeviceRequestResourceK8sIoV1beta1 {
   ///
   /// This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceTaints feature gate.
+  /// This is a beta field and requires enabling the DRADeviceTaints feature gate.
   final pulumi.Input<List<DeviceTolerationResourceK8sIoV1beta1>>? tolerations;
 
   /// Creates a new [DeviceRequestResourceK8sIoV1beta1].
@@ -124,4 +124,3 @@ class DeviceRequestResourceK8sIoV1beta1 {
     );
   }
 }
-

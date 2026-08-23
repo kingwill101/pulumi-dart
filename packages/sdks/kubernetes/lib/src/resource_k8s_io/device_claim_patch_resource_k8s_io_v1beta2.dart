@@ -40,4 +40,3 @@ class DeviceClaimPatchResourceK8sIoV1beta2 {
     );
   }
 }
-

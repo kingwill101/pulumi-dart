@@ -48,4 +48,3 @@ class FlowSchemaListFlowcontrolApiserverK8sIoV1beta1Args {
     );
   }
 }
-

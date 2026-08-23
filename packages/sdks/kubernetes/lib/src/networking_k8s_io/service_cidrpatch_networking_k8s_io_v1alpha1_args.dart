@@ -48,4 +48,3 @@ class ServiceCIDRPatchNetworkingK8sIoV1alpha1Args {
     );
   }
 }
-

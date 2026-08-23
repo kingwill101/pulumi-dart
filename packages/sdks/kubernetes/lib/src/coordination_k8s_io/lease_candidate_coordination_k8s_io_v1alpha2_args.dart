@@ -16,7 +16,7 @@ class LeaseCandidateCoordinationK8sIoV1alpha2Args {
   /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
   /// spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<LeaseCandidateSpecCoordinationK8sIoV1alpha2>? spec;
+  final pulumi.Input<LeaseCandidateSpecCoordinationK8sIoV1alpha2> spec;
 
   /// Creates a new [LeaseCandidateCoordinationK8sIoV1alpha2Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -27,7 +27,7 @@ class LeaseCandidateCoordinationK8sIoV1alpha2Args {
     this.apiVersion,
     this.kind,
     this.metadata,
-    this.spec,
+    required this.spec,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,7 +35,7 @@ class LeaseCandidateCoordinationK8sIoV1alpha2Args {
       'apiVersion': ?apiVersion,
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<LeaseCandidateSpecCoordinationK8sIoV1alpha2, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<LeaseCandidateSpecCoordinationK8sIoV1alpha2, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
@@ -44,8 +44,7 @@ class LeaseCandidateCoordinationK8sIoV1alpha2Args {
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LeaseCandidateSpecCoordinationK8sIoV1alpha2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(LeaseCandidateSpecCoordinationK8sIoV1alpha2.fromMap((map['spec']! as Map).cast<String, dynamic>())),
     );
   }
 }
-

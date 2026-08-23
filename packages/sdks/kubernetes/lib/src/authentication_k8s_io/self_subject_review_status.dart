@@ -5,11 +5,11 @@ import 'user_info.dart';
 
 /// SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.
 class SelfSubjectReviewStatus {
-  /// User attributes of the user making this request.
+  /// userInfo is a set of attributes belonging to the user making this request.
   final pulumi.Input<UserInfo>? userInfo;
 
   /// Creates a new [SelfSubjectReviewStatus].
-  /// [userInfo] User attributes of the user making this request.
+  /// [userInfo] userInfo is a set of attributes belonging to the user making this request.
   const SelfSubjectReviewStatus({
     this.userInfo,
   });
@@ -26,4 +26,3 @@ class SelfSubjectReviewStatus {
     );
   }
 }
-

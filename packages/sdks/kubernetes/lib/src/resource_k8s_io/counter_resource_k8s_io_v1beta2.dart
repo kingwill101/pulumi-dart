@@ -25,4 +25,3 @@ class CounterResourceK8sIoV1beta2 {
     );
   }
 }
-

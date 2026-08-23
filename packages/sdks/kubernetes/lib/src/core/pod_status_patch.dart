@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_status_patch.dart';
 import 'host_ippatch.dart';
+import 'node_allocatable_resource_claim_status_patch.dart';
 import 'pod_condition_patch.dart';
 import 'pod_extended_resource_claim_status_patch.dart';
 import 'pod_ippatch.dart';
@@ -29,6 +30,8 @@ class PodStatusPatch {
   final pulumi.Input<List<ContainerStatusPatch>>? initContainerStatuses;
   /// A human readable message indicating details about why the pod is in this condition.
   final pulumi.Input<String>? message;
+  /// NodeAllocatableResourceClaimStatuses contains the status of node-allocatable resources that were allocated for this pod through DRA claims. This includes resources currently reported in v1.Node `status.allocatable` that are not extended resources (see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources). Examples include "cpu", "memory", "ephemeral-storage", and hugepages.
+  final pulumi.Input<List<NodeAllocatableResourceClaimStatusPatch>>? nodeAllocatableResourceClaimStatuses;
   /// nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be scheduled right away as preemption victims receive their graceful termination periods. This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the resources on this node to a higher priority pod that is created after preemption. As a result, this field may be different than PodSpec.nodeName when the pod is scheduled.
   final pulumi.Input<String>? nominatedNodeName;
   /// If set, this represents the .metadata.generation that the pod status was set based upon. The PodObservedGenerationTracking feature gate must be enabled to use this field.
@@ -66,6 +69,7 @@ class PodStatusPatch {
   /// [hostIPs] hostIPs holds the IP addresses allocated to the host. If this field is specified, the first entry must match the hostIP field. This list is empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns means that HostIPs will not be updated even if there is a node is assigned to this pod.
   /// [initContainerStatuses] Statuses of init containers in this pod. The most recent successful non-restartable init container will have ready = true, the most recently started container will have startTime set. Each init container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-and-container-status
   /// [message] A human readable message indicating details about why the pod is in this condition.
+  /// [nodeAllocatableResourceClaimStatuses] NodeAllocatableResourceClaimStatuses contains the status of node-allocatable resources that were allocated for this pod through DRA claims. This includes resources currently reported in v1.Node `status.allocatable` that are not extended resources (see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources). Examples include "cpu", "memory", "ephemeral-storage", and hugepages.
   /// [nominatedNodeName] nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be scheduled right away as preemption victims receive their graceful termination periods. This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the resources on this node to a higher priority pod that is created after preemption. As a result, this field may be different than PodSpec.nodeName when the pod is scheduled.
   /// [observedGeneration] If set, this represents the .metadata.generation that the pod status was set based upon. The PodObservedGenerationTracking feature gate must be enabled to use this field.
   /// [phase] The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle. The conditions array, the reason and message fields, and the individual container status arrays contain more detail about the pod's status. There are five possible phase values:
@@ -87,6 +91,7 @@ class PodStatusPatch {
     this.hostIPs,
     this.initContainerStatuses,
     this.message,
+    this.nodeAllocatableResourceClaimStatuses,
     this.nominatedNodeName,
     this.observedGeneration,
     this.phase,
@@ -111,6 +116,7 @@ class PodStatusPatch {
       'hostIPs': ?pulumi.Input.mapOptionalInputValue<List<HostIPPatch>, List<Map<String, dynamic>>>(hostIPs, (value) => pulumi.Input.encodeList<HostIPPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'initContainerStatuses': ?pulumi.Input.mapOptionalInputValue<List<ContainerStatusPatch>, List<Map<String, dynamic>>>(initContainerStatuses, (value) => pulumi.Input.encodeList<ContainerStatusPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': ?message,
+      'nodeAllocatableResourceClaimStatuses': ?pulumi.Input.mapOptionalInputValue<List<NodeAllocatableResourceClaimStatusPatch>, List<Map<String, dynamic>>>(nodeAllocatableResourceClaimStatuses, (value) => pulumi.Input.encodeList<NodeAllocatableResourceClaimStatusPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nominatedNodeName': ?nominatedNodeName,
       'observedGeneration': ?observedGeneration,
       'phase': ?phase,
@@ -136,6 +142,7 @@ class PodStatusPatch {
       hostIPs: (() { final guardedValue = map['hostIPs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HostIPPatch>(guardedValue, (value) => HostIPPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       initContainerStatuses: (() { final guardedValue = map['initContainerStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerStatusPatch>(guardedValue, (value) => ContainerStatusPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeAllocatableResourceClaimStatuses: (() { final guardedValue = map['nodeAllocatableResourceClaimStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeAllocatableResourceClaimStatusPatch>(guardedValue, (value) => NodeAllocatableResourceClaimStatusPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       nominatedNodeName: (() { final guardedValue = map['nominatedNodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       phase: (() { final guardedValue = map['phase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -150,4 +157,3 @@ class PodStatusPatch {
     );
   }
 }
-

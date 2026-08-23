@@ -26,4 +26,3 @@ class IPAddressSpecNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

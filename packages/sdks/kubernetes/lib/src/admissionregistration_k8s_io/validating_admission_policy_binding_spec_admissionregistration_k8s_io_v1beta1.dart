@@ -63,4 +63,3 @@ class ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

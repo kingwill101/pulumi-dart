@@ -41,4 +41,3 @@ class AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

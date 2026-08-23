@@ -78,4 +78,3 @@ class JSONPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

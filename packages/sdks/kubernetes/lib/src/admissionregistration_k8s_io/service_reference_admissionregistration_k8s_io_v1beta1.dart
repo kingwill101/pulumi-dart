@@ -43,4 +43,3 @@ class ServiceReferenceAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

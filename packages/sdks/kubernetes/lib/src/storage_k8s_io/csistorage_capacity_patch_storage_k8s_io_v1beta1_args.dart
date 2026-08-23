@@ -74,4 +74,3 @@ class CSIStorageCapacityPatchStorageK8sIoV1beta1Args {
     );
   }
 }
-

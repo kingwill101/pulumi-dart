@@ -70,4 +70,3 @@ class CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1 {
     );
   }
 }
-

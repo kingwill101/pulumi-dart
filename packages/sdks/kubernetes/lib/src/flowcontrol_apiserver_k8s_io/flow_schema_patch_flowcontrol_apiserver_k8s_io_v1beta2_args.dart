@@ -48,4 +48,3 @@ class FlowSchemaPatchFlowcontrolApiserverK8sIoV1beta2Args {
     );
   }
 }
-

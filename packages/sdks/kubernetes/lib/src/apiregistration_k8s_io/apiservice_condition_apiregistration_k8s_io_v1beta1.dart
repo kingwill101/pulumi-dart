@@ -49,4 +49,3 @@ class APIServiceConditionApiregistrationK8sIoV1beta1 {
     );
   }
 }
-

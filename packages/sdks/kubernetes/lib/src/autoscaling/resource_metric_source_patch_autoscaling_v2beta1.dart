@@ -37,4 +37,3 @@ class ResourceMetricSourcePatchAutoscalingV2beta1 {
     );
   }
 }
-

@@ -55,4 +55,3 @@ class DeploymentConditionAppsV1beta2 {
     );
   }
 }
-

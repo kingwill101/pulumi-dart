@@ -38,4 +38,3 @@ class DeviceAllocationConfigurationPatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

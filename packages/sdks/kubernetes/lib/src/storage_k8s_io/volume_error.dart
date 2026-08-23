@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeError {
   /// errorCode is a numeric gRPC code representing the error encountered during Attach or Detach operations.
   ///
-  /// This is an optional, beta field that requires the MutableCSINodeAllocatableCount feature gate being enabled to be set.
+  /// This field requires the MutableCSINodeAllocatableCount feature gate being enabled to be set.
   final pulumi.Input<int>? errorCode;
   /// message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
   final pulumi.Input<String>? message;
@@ -39,4 +39,3 @@ class VolumeError {
     );
   }
 }
-

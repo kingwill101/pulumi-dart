@@ -50,7 +50,7 @@ class ExactDeviceRequestPatchResourceK8sIoV1beta2 {
   ///
   /// The maximum number of tolerations is 16.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceTaints feature gate.
+  /// This is a beta field and requires enabling the DRADeviceTaints feature gate.
   final pulumi.Input<List<DeviceTolerationPatchResourceK8sIoV1beta2>>? tolerations;
 
   /// Creates a new [ExactDeviceRequestPatchResourceK8sIoV1beta2].
@@ -95,4 +95,3 @@ class ExactDeviceRequestPatchResourceK8sIoV1beta2 {
     );
   }
 }
-

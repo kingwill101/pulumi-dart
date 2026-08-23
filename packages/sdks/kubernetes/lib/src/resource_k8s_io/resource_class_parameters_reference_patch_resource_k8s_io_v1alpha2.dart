@@ -43,4 +43,3 @@ class ResourceClassParametersReferencePatchResourceK8sIoV1alpha2 {
     );
   }
 }
-

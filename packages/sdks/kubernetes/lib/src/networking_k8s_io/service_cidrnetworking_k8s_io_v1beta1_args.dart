@@ -48,4 +48,3 @@ class ServiceCIDRNetworkingK8sIoV1beta1Args {
     );
   }
 }
-

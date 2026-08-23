@@ -8,33 +8,33 @@ import 'label_selector_attributes.dart';
 class ResourceAttributes {
   /// fieldSelector describes the limitation on access based on field.  It can only limit access, not broaden it.
   final pulumi.Input<FieldSelectorAttributes>? fieldSelector;
-  /// Group is the API Group of the Resource.  "*" means all.
+  /// group is the API Group of the Resource.  "*" means all.
   final pulumi.Input<String>? group;
   /// labelSelector describes the limitation on access based on labels.  It can only limit access, not broaden it.
   final pulumi.Input<LabelSelectorAttributes>? labelSelector;
-  /// Name is the name of the resource being requested for a "get" or deleted for a "delete". "" (empty) means all.
+  /// name is the name of the resource being requested for a "get" or deleted for a "delete". "" (empty) means all.
   final pulumi.Input<String>? name;
-  /// Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces "" (empty) is defaulted for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview
+  /// namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces "" (empty) is defaulted for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview
   final pulumi.Input<String>? namespace;
-  /// Resource is one of the existing resource types.  "*" means all.
+  /// resource is one of the existing resource types.  "*" means all.
   final pulumi.Input<String>? resource;
-  /// Subresource is one of the existing resource types.  "" means none.
+  /// subresource is one of the existing resource types.  "" means none.
   final pulumi.Input<String>? subresource;
-  /// Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
+  /// verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
   final pulumi.Input<String>? verb;
-  /// Version is the API Version of the Resource.  "*" means all.
+  /// version is the API Version of the Resource.  "*" means all.
   final pulumi.Input<String>? version;
 
   /// Creates a new [ResourceAttributes].
   /// [fieldSelector] fieldSelector describes the limitation on access based on field.  It can only limit access, not broaden it.
-  /// [group] Group is the API Group of the Resource.  "*" means all.
+  /// [group] group is the API Group of the Resource.  "*" means all.
   /// [labelSelector] labelSelector describes the limitation on access based on labels.  It can only limit access, not broaden it.
-  /// [name] Name is the name of the resource being requested for a "get" or deleted for a "delete". "" (empty) means all.
-  /// [namespace] Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces "" (empty) is defaulted for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview
-  /// [resource] Resource is one of the existing resource types.  "*" means all.
-  /// [subresource] Subresource is one of the existing resource types.  "" means none.
-  /// [verb] Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
-  /// [version] Version is the API Version of the Resource.  "*" means all.
+  /// [name] name is the name of the resource being requested for a "get" or deleted for a "delete". "" (empty) means all.
+  /// [namespace] namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces "" (empty) is defaulted for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview
+  /// [resource] resource is one of the existing resource types.  "*" means all.
+  /// [subresource] subresource is one of the existing resource types.  "" means none.
+  /// [verb] verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
+  /// [version] version is the API Version of the Resource.  "*" means all.
   const ResourceAttributes({
     this.fieldSelector,
     this.group,
@@ -75,4 +75,3 @@ class ResourceAttributes {
     );
   }
 }
-

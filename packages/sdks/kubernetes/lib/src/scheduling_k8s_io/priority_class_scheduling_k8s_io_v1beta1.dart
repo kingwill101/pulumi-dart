@@ -62,4 +62,3 @@ class PriorityClassSchedulingK8sIoV1beta1 {
     );
   }
 }
-

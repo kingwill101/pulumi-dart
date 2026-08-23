@@ -48,4 +48,3 @@ class MutatingWebhookConfigurationListAdmissionregistrationK8sIoV1beta1Args {
     );
   }
 }
-

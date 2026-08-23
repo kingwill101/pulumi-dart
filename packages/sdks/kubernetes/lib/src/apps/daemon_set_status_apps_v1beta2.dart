@@ -80,4 +80,3 @@ class DaemonSetStatusAppsV1beta2 {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class TypeCheckingPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

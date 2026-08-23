@@ -78,4 +78,3 @@ class ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1 {
     );
   }
 }
-

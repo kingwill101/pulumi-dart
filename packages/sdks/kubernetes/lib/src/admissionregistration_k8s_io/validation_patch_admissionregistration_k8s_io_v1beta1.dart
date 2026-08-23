@@ -68,4 +68,3 @@ class ValidationPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

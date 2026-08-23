@@ -49,4 +49,3 @@ class DaemonSetConditionAppsV1beta2 {
     );
   }
 }
-

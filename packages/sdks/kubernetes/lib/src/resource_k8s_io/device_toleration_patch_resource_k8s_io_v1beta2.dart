@@ -49,4 +49,3 @@ class DeviceTolerationPatchResourceK8sIoV1beta2 {
     );
   }
 }
-

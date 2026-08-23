@@ -31,4 +31,3 @@ class IngressTLSPatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

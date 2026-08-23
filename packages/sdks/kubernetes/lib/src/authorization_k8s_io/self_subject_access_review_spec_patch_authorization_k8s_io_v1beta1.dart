@@ -33,4 +33,3 @@ class SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1 {
     );
   }
 }
-

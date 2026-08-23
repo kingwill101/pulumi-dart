@@ -48,4 +48,3 @@ class ControllerRevisionListAppsV1beta2Args {
     );
   }
 }
-

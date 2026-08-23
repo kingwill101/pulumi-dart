@@ -16,7 +16,7 @@ class IPAddressNetworkingK8sIoV1beta1Args {
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
   /// spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<IPAddressSpecNetworkingK8sIoV1beta1>? spec;
+  final pulumi.Input<IPAddressSpecNetworkingK8sIoV1beta1> spec;
 
   /// Creates a new [IPAddressNetworkingK8sIoV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -27,7 +27,7 @@ class IPAddressNetworkingK8sIoV1beta1Args {
     this.apiVersion,
     this.kind,
     this.metadata,
-    this.spec,
+    required this.spec,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,7 +35,7 @@ class IPAddressNetworkingK8sIoV1beta1Args {
       'apiVersion': ?apiVersion,
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<IPAddressSpecNetworkingK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<IPAddressSpecNetworkingK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
@@ -44,8 +44,7 @@ class IPAddressNetworkingK8sIoV1beta1Args {
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IPAddressSpecNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(IPAddressSpecNetworkingK8sIoV1beta1.fromMap((map['spec']! as Map).cast<String, dynamic>())),
     );
   }
 }
-

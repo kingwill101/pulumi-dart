@@ -43,4 +43,3 @@ class SubjectPatchRbacAuthorizationK8sIoV1alpha1 {
     );
   }
 }
-

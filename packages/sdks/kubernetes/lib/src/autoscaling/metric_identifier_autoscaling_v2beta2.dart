@@ -32,4 +32,3 @@ class MetricIdentifierAutoscalingV2beta2 {
     );
   }
 }
-

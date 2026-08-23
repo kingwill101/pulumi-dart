@@ -11,12 +11,12 @@ import 'pod_os.dart';
 import 'pod_readiness_gate.dart';
 import 'pod_resource_claim.dart';
 import 'pod_scheduling_gate.dart';
+import 'pod_scheduling_group.dart';
 import 'pod_security_context.dart';
 import 'resource_requirements.dart';
 import 'toleration.dart';
 import 'topology_spread_constraint.dart';
 import 'volume.dart';
-import 'workload_reference.dart';
 
 /// PodSpec is a description of a pod.
 class PodSpec {
@@ -44,7 +44,7 @@ class PodSpec {
   final pulumi.Input<bool>? hostNetwork;
   /// Use the host's pid namespace. Optional: Default to false.
   final pulumi.Input<bool>? hostPID;
-  /// Use the host's user namespace. Optional: Default to true. If set to true or not present, the pod will be run in the host user namespace, useful for when the pod needs a feature only available to the host user namespace, such as loading a kernel module with CAP_SYS_MODULE. When set to false, a new userns is created for the pod. Setting false is useful for mitigating container breakout vulnerabilities even allowing users to run their containers as root without actually having root privileges on the host. This field is alpha-level and is only honored by servers that enable the UserNamespacesSupport feature.
+  /// Use the host's user namespace. Optional: Default to true. If set to true or not present, the pod will be run in the host user namespace, useful for when the pod needs a feature only available to the host user namespace, such as loading a kernel module with CAP_SYS_MODULE. When set to false, a new userns is created for the pod. Setting false is useful for mitigating container breakout vulnerabilities even allowing users to run their containers as root without actually having root privileges on the host.
   final pulumi.Input<bool>? hostUsers;
   /// Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
   final pulumi.Input<String>? hostname;
@@ -98,6 +98,8 @@ class PodSpec {
   ///
   /// SchedulingGates can only be set at pod creation time, and be removed only afterwards.
   final pulumi.Input<List<PodSchedulingGate>>? schedulingGates;
+  /// SchedulingGroup provides a reference to the immediate scheduling runtime grouping object that this Pod belongs to. This field is used by the scheduler to identify the group and apply the correct group scheduling policies. The association with a group also impacts other lifecycle aspects of a Pod that are relevant in a wider context of scheduling like preemption, resource attachment, etc. If not specified, the Pod is treated as a single unit in all of these aspects. The group object referenced by this field may not exist at the time the Pod is created. This field is immutable, but a group object with the same name may be recreated with different policies. Doing this during pod scheduling may result in the placement not conforming to the expected policies.
+  final pulumi.Input<PodSchedulingGroup>? schedulingGroup;
   /// SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.
   final pulumi.Input<PodSecurityContext>? securityContext;
   /// DeprecatedServiceAccount is a deprecated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead.
@@ -118,8 +120,6 @@ class PodSpec {
   final pulumi.Input<List<TopologySpreadConstraint>>? topologySpreadConstraints;
   /// List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
   final pulumi.Input<List<Volume>>? volumes;
-  /// WorkloadRef provides a reference to the Workload object that this Pod belongs to. This field is used by the scheduler to identify the PodGroup and apply the correct group scheduling policies. The Workload object referenced by this field may not exist at the time the Pod is created. This field is immutable, but a Workload object with the same name may be recreated with different policies. Doing this during pod scheduling may result in the placement not conforming to the expected policies.
-  final pulumi.Input<WorkloadReference>? workloadRef;
 
   /// Creates a new [PodSpec].
   /// [activeDeadlineSeconds] Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
@@ -134,7 +134,7 @@ class PodSpec {
   /// [hostIPC] Use the host's ipc namespace. Optional: Default to false.
   /// [hostNetwork] Host networking requested for this pod. Use the host's network namespace. When using HostNetwork you should specify ports so the scheduler is aware. When `hostNetwork` is true, specified `hostPort` fields in port definitions must match `containerPort`, and unspecified `hostPort` fields in port definitions are defaulted to match `containerPort`. Default to false.
   /// [hostPID] Use the host's pid namespace. Optional: Default to false.
-  /// [hostUsers] Use the host's user namespace. Optional: Default to true. If set to true or not present, the pod will be run in the host user namespace, useful for when the pod needs a feature only available to the host user namespace, such as loading a kernel module with CAP_SYS_MODULE. When set to false, a new userns is created for the pod. Setting false is useful for mitigating container breakout vulnerabilities even allowing users to run their containers as root without actually having root privileges on the host. This field is alpha-level and is only honored by servers that enable the UserNamespacesSupport feature.
+  /// [hostUsers] Use the host's user namespace. Optional: Default to true. If set to true or not present, the pod will be run in the host user namespace, useful for when the pod needs a feature only available to the host user namespace, such as loading a kernel module with CAP_SYS_MODULE. When set to false, a new userns is created for the pod. Setting false is useful for mitigating container breakout vulnerabilities even allowing users to run their containers as root without actually having root privileges on the host.
   /// [hostname] Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.
   /// [hostnameOverride] HostnameOverride specifies an explicit override for the pod's hostname as perceived by the pod. This field only specifies the pod's hostname and does not affect its DNS records. When this field is set to a non-empty string: - It takes precedence over the values set in `hostname` and `subdomain`. - The Pod's hostname will be set to this value. - `setHostnameAsFQDN` must be nil or set to false. - `hostNetwork` must be set to false.
   /// [imagePullSecrets] ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. More info: https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod
@@ -153,6 +153,7 @@ class PodSpec {
   /// [runtimeClassName] RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run. If unset or empty, the "legacy" RuntimeClass will be used, which is an implicit class with an empty definition that uses the default runtime handler. More info: https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class
   /// [schedulerName] If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.
   /// [schedulingGates] SchedulingGates is an opaque list of values that if specified will block scheduling the pod. If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the scheduler will not attempt to schedule the pod.
+  /// [schedulingGroup] SchedulingGroup provides a reference to the immediate scheduling runtime grouping object that this Pod belongs to. This field is used by the scheduler to identify the group and apply the correct group scheduling policies. The association with a group also impacts other lifecycle aspects of a Pod that are relevant in a wider context of scheduling like preemption, resource attachment, etc. If not specified, the Pod is treated as a single unit in all of these aspects. The group object referenced by this field may not exist at the time the Pod is created. This field is immutable, but a group object with the same name may be recreated with different policies. Doing this during pod scheduling may result in the placement not conforming to the expected policies.
   /// [securityContext] SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.
   /// [serviceAccount] DeprecatedServiceAccount is a deprecated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead.
   /// [serviceAccountName] ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
@@ -163,7 +164,6 @@ class PodSpec {
   /// [tolerations] If specified, the pod's tolerations.
   /// [topologySpreadConstraints] TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints are ANDed.
   /// [volumes] List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
-  /// [workloadRef] WorkloadRef provides a reference to the Workload object that this Pod belongs to. This field is used by the scheduler to identify the PodGroup and apply the correct group scheduling policies. The Workload object referenced by this field may not exist at the time the Pod is created. This field is immutable, but a Workload object with the same name may be recreated with different policies. Doing this during pod scheduling may result in the placement not conforming to the expected policies.
   const PodSpec({
     this.activeDeadlineSeconds,
     this.affinity,
@@ -196,6 +196,7 @@ class PodSpec {
     this.runtimeClassName,
     this.schedulerName,
     this.schedulingGates,
+    this.schedulingGroup,
     this.securityContext,
     this.serviceAccount,
     this.serviceAccountName,
@@ -206,7 +207,6 @@ class PodSpec {
     this.tolerations,
     this.topologySpreadConstraints,
     this.volumes,
-    this.workloadRef,
   });
 
   Map<String, dynamic> toMap() {
@@ -242,6 +242,7 @@ class PodSpec {
       'runtimeClassName': ?runtimeClassName,
       'schedulerName': ?schedulerName,
       'schedulingGates': ?pulumi.Input.mapOptionalInputValue<List<PodSchedulingGate>, List<Map<String, dynamic>>>(schedulingGates, (value) => pulumi.Input.encodeList<PodSchedulingGate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schedulingGroup': ?pulumi.Input.mapOptionalInputValue<PodSchedulingGroup, Map<String, dynamic>>(schedulingGroup, (value) => value.toMap()),
       'securityContext': ?pulumi.Input.mapOptionalInputValue<PodSecurityContext, Map<String, dynamic>>(securityContext, (value) => value.toMap()),
       'serviceAccount': ?serviceAccount,
       'serviceAccountName': ?serviceAccountName,
@@ -252,7 +253,6 @@ class PodSpec {
       'tolerations': ?pulumi.Input.mapOptionalInputValue<List<Toleration>, List<Map<String, dynamic>>>(tolerations, (value) => pulumi.Input.encodeList<Toleration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'topologySpreadConstraints': ?pulumi.Input.mapOptionalInputValue<List<TopologySpreadConstraint>, List<Map<String, dynamic>>>(topologySpreadConstraints, (value) => pulumi.Input.encodeList<TopologySpreadConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'volumes': ?pulumi.Input.mapOptionalInputValue<List<Volume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<Volume, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'workloadRef': ?pulumi.Input.mapOptionalInputValue<WorkloadReference, Map<String, dynamic>>(workloadRef, (value) => value.toMap()),
     };
   }
 
@@ -289,6 +289,7 @@ class PodSpec {
       runtimeClassName: (() { final guardedValue = map['runtimeClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedulerName: (() { final guardedValue = map['schedulerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedulingGates: (() { final guardedValue = map['schedulingGates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PodSchedulingGate>(guardedValue, (value) => PodSchedulingGate.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      schedulingGroup: (() { final guardedValue = map['schedulingGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodSchedulingGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityContext: (() { final guardedValue = map['securityContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodSecurityContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAccountName: (() { final guardedValue = map['serviceAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -299,8 +300,6 @@ class PodSpec {
       tolerations: (() { final guardedValue = map['tolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Toleration>(guardedValue, (value) => Toleration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       topologySpreadConstraints: (() { final guardedValue = map['topologySpreadConstraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TopologySpreadConstraint>(guardedValue, (value) => TopologySpreadConstraint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Volume>(guardedValue, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      workloadRef: (() { final guardedValue = map['workloadRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkloadReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

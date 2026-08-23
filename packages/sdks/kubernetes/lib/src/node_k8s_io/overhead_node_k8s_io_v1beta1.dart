@@ -25,4 +25,3 @@ class OverheadNodeK8sIoV1beta1 {
     );
   }
 }
-

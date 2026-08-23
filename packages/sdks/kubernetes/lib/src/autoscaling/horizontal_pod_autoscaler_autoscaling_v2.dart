@@ -14,7 +14,7 @@ class HorizontalPodAutoscalerAutoscalingV2 {
   /// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
   /// spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
-  final pulumi.Input<HorizontalPodAutoscalerSpecAutoscalingV2>? spec;
+  final pulumi.Input<HorizontalPodAutoscalerSpecAutoscalingV2> spec;
   /// status is the current information about the autoscaler.
   final pulumi.Input<HorizontalPodAutoscalerStatusAutoscalingV2>? status;
 
@@ -28,7 +28,7 @@ class HorizontalPodAutoscalerAutoscalingV2 {
     this.apiVersion,
     this.kind,
     this.metadata,
-    this.spec,
+    required this.spec,
     this.status,
   });
 
@@ -37,7 +37,7 @@ class HorizontalPodAutoscalerAutoscalingV2 {
       'apiVersion': ?apiVersion,
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<HorizontalPodAutoscalerSpecAutoscalingV2, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<HorizontalPodAutoscalerSpecAutoscalingV2, Map<String, dynamic>>(spec, (value) => value.toMap()),
       'status': ?pulumi.Input.mapOptionalInputValue<HorizontalPodAutoscalerStatusAutoscalingV2, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
@@ -47,9 +47,8 @@ class HorizontalPodAutoscalerAutoscalingV2 {
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HorizontalPodAutoscalerSpecAutoscalingV2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(HorizontalPodAutoscalerSpecAutoscalingV2.fromMap((map['spec']! as Map).cast<String, dynamic>())),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HorizontalPodAutoscalerStatusAutoscalingV2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

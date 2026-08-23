@@ -25,4 +25,3 @@ class ServiceCIDRSpecPatchNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

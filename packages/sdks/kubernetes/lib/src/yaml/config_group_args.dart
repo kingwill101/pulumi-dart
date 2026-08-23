@@ -13,7 +13,7 @@ class ConfigGroupArgs {
   final pulumi.Input<List<dynamic>>? objs;
   /// A prefix for the auto-generated resource names. Defaults to the name of the ConfigGroup. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   final pulumi.Input<String>? resourcePrefix;
-  /// Indicates that child resources should skip the await logic.
+  /// Indicates that child resources should skip the await logic. Defaults to `false`.
   final pulumi.Input<bool>? skipAwait;
   /// A Kubernetes YAML manifest containing Kubernetes resource configuration(s).
   final pulumi.Input<String>? yaml;
@@ -22,7 +22,7 @@ class ConfigGroupArgs {
   /// [files] Set of paths and/or URLs to Kubernetes manifest files. Supports glob patterns.
   /// [objs] Objects representing Kubernetes resource configurations.
   /// [resourcePrefix] A prefix for the auto-generated resource names. Defaults to the name of the ConfigGroup. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
-  /// [skipAwait] Indicates that child resources should skip the await logic.
+  /// [skipAwait] Indicates that child resources should skip the await logic. Defaults to `false`.
   /// [yaml] A Kubernetes YAML manifest containing Kubernetes resource configuration(s).
   const ConfigGroupArgs({
     this.files,
@@ -52,4 +52,3 @@ class ConfigGroupArgs {
     );
   }
 }
-

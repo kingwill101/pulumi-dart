@@ -25,4 +25,3 @@ class ScaleSpecAppsV1beta2 {
     );
   }
 }
-

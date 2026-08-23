@@ -8,7 +8,7 @@ import 'device_allocation_result_resource_k8s_io_v1beta1.dart';
 class AllocationResultResourceK8sIoV1beta1 {
   /// AllocationTimestamp stores the time when the resources were allocated. This field is not guaranteed to be set, in which case that time is unknown.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gate.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gate.
   final pulumi.Input<String>? allocationTimestamp;
   /// Devices is the result of allocating devices.
   final pulumi.Input<DeviceAllocationResultResourceK8sIoV1beta1>? devices;
@@ -41,4 +41,3 @@ class AllocationResultResourceK8sIoV1beta1 {
     );
   }
 }
-

@@ -95,4 +95,3 @@ class ResourceSliceSpecResourceK8sIoV1beta1 {
     );
   }
 }
-

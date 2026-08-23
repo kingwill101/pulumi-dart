@@ -32,4 +32,3 @@ class CronJobStatusBatchV2alpha1 {
     );
   }
 }
-

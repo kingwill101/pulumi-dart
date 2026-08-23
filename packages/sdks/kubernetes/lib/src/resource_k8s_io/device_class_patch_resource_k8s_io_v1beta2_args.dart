@@ -52,4 +52,3 @@ class DeviceClassPatchResourceK8sIoV1beta2Args {
     );
   }
 }
-

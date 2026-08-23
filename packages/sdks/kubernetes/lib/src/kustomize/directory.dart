@@ -176,7 +176,7 @@ import 'directory_args.dart';
 /// {{% /examples %}}
 class Directory extends pulumi.ComponentResource {
   /// Resources created by the Directory resource.
-  late final pulumi.Output<String?> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
 
   /// Creates a new [Directory].
   /// [name] The Pulumi resource name.
@@ -193,6 +193,6 @@ class Directory extends pulumi.ComponentResource {
           options ?? pulumi.ComponentResourceOptions(),
           remote: true,
         ) {
-    resources = registerOutput<String?>('resources');
+    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
   }
 }

@@ -6,17 +6,17 @@ import 'type_checking.dart';
 
 /// ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.
 class ValidatingAdmissionPolicyStatus {
-  /// The conditions represent the latest available observations of a policy's current state.
+  /// conditions represent the latest available observations of a policy's current state.
   final pulumi.Input<List<Condition>>? conditions;
-  /// The generation observed by the controller.
+  /// observedGeneration is the generation observed by the controller.
   final pulumi.Input<int>? observedGeneration;
-  /// The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
+  /// typeChecking contains the results of type checking for each expression. Presence of this field indicates the completion of the type checking.
   final pulumi.Input<TypeChecking>? typeChecking;
 
   /// Creates a new [ValidatingAdmissionPolicyStatus].
-  /// [conditions] The conditions represent the latest available observations of a policy's current state.
-  /// [observedGeneration] The generation observed by the controller.
-  /// [typeChecking] The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
+  /// [conditions] conditions represent the latest available observations of a policy's current state.
+  /// [observedGeneration] observedGeneration is the generation observed by the controller.
+  /// [typeChecking] typeChecking contains the results of type checking for each expression. Presence of this field indicates the completion of the type checking.
   const ValidatingAdmissionPolicyStatus({
     this.conditions,
     this.observedGeneration,
@@ -39,4 +39,3 @@ class ValidatingAdmissionPolicyStatus {
     );
   }
 }
-

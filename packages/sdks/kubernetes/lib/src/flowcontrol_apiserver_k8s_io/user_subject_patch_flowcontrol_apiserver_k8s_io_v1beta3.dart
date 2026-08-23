@@ -25,4 +25,3 @@ class UserSubjectPatchFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

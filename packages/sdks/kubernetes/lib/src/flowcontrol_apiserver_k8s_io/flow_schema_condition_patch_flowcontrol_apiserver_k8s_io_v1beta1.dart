@@ -49,4 +49,3 @@ class FlowSchemaConditionPatchFlowcontrolApiserverK8sIoV1beta1 {
     );
   }
 }
-

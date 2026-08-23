@@ -14,7 +14,7 @@ class CronJob {
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
   /// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final pulumi.Input<CronJobSpec>? spec;
+  final pulumi.Input<CronJobSpec> spec;
   /// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   final pulumi.Input<CronJobStatus>? status;
 
@@ -28,7 +28,7 @@ class CronJob {
     this.apiVersion,
     this.kind,
     this.metadata,
-    this.spec,
+    required this.spec,
     this.status,
   });
 
@@ -37,7 +37,7 @@ class CronJob {
       'apiVersion': ?apiVersion,
       'kind': ?kind,
       'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<CronJobSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<CronJobSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
       'status': ?pulumi.Input.mapOptionalInputValue<CronJobStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
@@ -47,9 +47,8 @@ class CronJob {
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CronJobSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(CronJobSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CronJobStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

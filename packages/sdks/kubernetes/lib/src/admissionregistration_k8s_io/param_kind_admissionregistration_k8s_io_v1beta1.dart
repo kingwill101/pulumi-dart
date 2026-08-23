@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ParamKind is a tuple of Group Kind and Version.
 class ParamKindAdmissionregistrationK8sIoV1beta1 {
-  /// APIVersion is the API group version the resources belong to. In format of "group/version". Required.
+  /// apiVersion is the API group version the resources belong to. In format of "group/version". Required.
   final pulumi.Input<String>? apiVersion;
-  /// Kind is the API kind the resources belong to. Required.
+  /// kind is the API kind the resources belong to. Required.
   final pulumi.Input<String>? kind;
 
   /// Creates a new [ParamKindAdmissionregistrationK8sIoV1beta1].
-  /// [apiVersion] APIVersion is the API group version the resources belong to. In format of "group/version". Required.
-  /// [kind] Kind is the API kind the resources belong to. Required.
+  /// [apiVersion] apiVersion is the API group version the resources belong to. In format of "group/version". Required.
+  /// [kind] kind is the API kind the resources belong to. Required.
   const ParamKindAdmissionregistrationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
@@ -31,4 +31,3 @@ class ParamKindAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

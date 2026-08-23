@@ -49,4 +49,3 @@ class ResourceClaimTemplateResourceK8sIoV1alpha3 {
     );
   }
 }
-

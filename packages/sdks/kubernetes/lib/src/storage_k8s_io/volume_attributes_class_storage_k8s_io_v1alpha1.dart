@@ -52,4 +52,3 @@ class VolumeAttributesClassStorageK8sIoV1alpha1 {
     );
   }
 }
-

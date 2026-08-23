@@ -52,4 +52,3 @@ class ApplyConfigurationPatchAdmissionregistrationK8sIoV1beta1 {
     );
   }
 }
-

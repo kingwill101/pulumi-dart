@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.
 class SelfSubjectRulesReviewSpecPatch {
-  /// Namespace to evaluate rules for. Required.
+  /// namespace to evaluate rules for. Required.
   final pulumi.Input<String>? namespace;
 
   /// Creates a new [SelfSubjectRulesReviewSpecPatch].
-  /// [namespace] Namespace to evaluate rules for. Required.
+  /// [namespace] namespace to evaluate rules for. Required.
   const SelfSubjectRulesReviewSpecPatch({
     this.namespace,
   });
@@ -25,4 +25,3 @@ class SelfSubjectRulesReviewSpecPatch {
     );
   }
 }
-

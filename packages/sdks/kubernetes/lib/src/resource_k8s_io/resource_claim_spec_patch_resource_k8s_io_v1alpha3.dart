@@ -36,4 +36,3 @@ class ResourceClaimSpecPatchResourceK8sIoV1alpha3 {
     );
   }
 }
-

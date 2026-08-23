@@ -46,4 +46,3 @@ class IngressSpecNetworkingK8sIoV1beta1 {
     );
   }
 }
-

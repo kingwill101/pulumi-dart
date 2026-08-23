@@ -52,4 +52,3 @@ class StorageVersionMigrationStoragemigrationK8sIoV1beta1 {
     );
   }
 }
-

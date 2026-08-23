@@ -45,4 +45,3 @@ class FlowSchemaListFlowcontrolApiserverK8sIoV1alpha1 {
     );
   }
 }
-

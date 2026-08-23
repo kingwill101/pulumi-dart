@@ -56,4 +56,3 @@ class LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3 {
     );
   }
 }
-

@@ -56,4 +56,3 @@ class ReplicaSetStatusAppsV1beta2 {
     );
   }
 }
-

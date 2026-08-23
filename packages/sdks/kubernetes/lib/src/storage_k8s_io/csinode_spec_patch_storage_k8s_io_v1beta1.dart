@@ -26,4 +26,3 @@ class CSINodeSpecPatchStorageK8sIoV1beta1 {
     );
   }
 }
-

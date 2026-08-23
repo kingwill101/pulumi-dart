@@ -47,4 +47,3 @@ class DeviceRequestPatchResourceK8sIoV1beta2 {
     );
   }
 }
-

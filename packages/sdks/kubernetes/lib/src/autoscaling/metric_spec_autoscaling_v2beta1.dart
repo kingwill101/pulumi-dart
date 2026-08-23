@@ -60,4 +60,3 @@ class MetricSpecAutoscalingV2beta1 {
     );
   }
 }
-

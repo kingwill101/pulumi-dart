@@ -48,4 +48,3 @@ class RuntimeClassListNodeK8sIoV1beta1Args {
     );
   }
 }
-

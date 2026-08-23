@@ -49,4 +49,3 @@ class PolicyRuleRbacAuthorizationK8sIoV1alpha1 {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class ServiceCIDRStatusPatchNetworkingK8sIoV1alpha1 {
     );
   }
 }
-

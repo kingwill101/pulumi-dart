@@ -48,4 +48,3 @@ class HTTPIngressPathPatchNetworkingK8sIoV1beta1 {
     );
   }
 }
-

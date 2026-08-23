@@ -7,15 +7,15 @@ import 'device_toleration_patch.dart';
 class DeviceRequestAllocationResultPatch {
   /// AdminAccess indicates that this device was allocated for administrative access. See the corresponding request field for a definition of mode.
   ///
-  /// This is an alpha field and requires enabling the DRAAdminAccess feature gate. Admin access is disabled if this field is unset or set to false, otherwise it is enabled.
+  /// Admin access is disabled if this field is unset or set to false, otherwise it is enabled.
   final pulumi.Input<bool>? adminAccess;
   /// BindingConditions contains a copy of the BindingConditions from the corresponding ResourceSlice at the time of allocation.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
   final pulumi.Input<List<String>>? bindingConditions;
   /// BindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
+  /// This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.
   final pulumi.Input<List<String>>? bindingFailureConditions;
   /// ConsumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device’s requestPolicy if applicable (i.e., may not be less than the requested amount).
   ///
@@ -43,7 +43,7 @@ class DeviceRequestAllocationResultPatch {
   ///
   /// The maximum number of tolerations is 16.
   ///
-  /// This is an alpha field and requires enabling the DRADeviceTaints feature gate.
+  /// This is a beta field and requires enabling the DRADeviceTaints feature gate.
   final pulumi.Input<List<DeviceTolerationPatch>>? tolerations;
 
   /// Creates a new [DeviceRequestAllocationResultPatch].
@@ -100,4 +100,3 @@ class DeviceRequestAllocationResultPatch {
     );
   }
 }
-

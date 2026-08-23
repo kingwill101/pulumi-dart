@@ -32,4 +32,3 @@ class DeploymentStrategyAppsV1beta1 {
     );
   }
 }
-

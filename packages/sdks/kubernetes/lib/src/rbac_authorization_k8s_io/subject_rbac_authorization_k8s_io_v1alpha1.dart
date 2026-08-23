@@ -43,4 +43,3 @@ class SubjectRbacAuthorizationK8sIoV1alpha1 {
     );
   }
 }
-

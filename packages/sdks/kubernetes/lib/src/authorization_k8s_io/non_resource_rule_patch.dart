@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NonResourceRule holds information that describes a rule for the non-resource
 class NonResourceRulePatch {
-  /// NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
+  /// nonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
   final pulumi.Input<List<String>>? nonResourceURLs;
-  /// Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.
+  /// verbs is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.
   final pulumi.Input<List<String>>? verbs;
 
   /// Creates a new [NonResourceRulePatch].
-  /// [nonResourceURLs] NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
-  /// [verbs] Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.
+  /// [nonResourceURLs] nonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
+  /// [verbs] verbs is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.
   const NonResourceRulePatch({
     this.nonResourceURLs,
     this.verbs,
@@ -31,4 +31,3 @@ class NonResourceRulePatch {
     );
   }
 }
-

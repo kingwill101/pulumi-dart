@@ -76,4 +76,3 @@ class DeviceRequestResourceK8sIoV1alpha3 {
     );
   }
 }
-

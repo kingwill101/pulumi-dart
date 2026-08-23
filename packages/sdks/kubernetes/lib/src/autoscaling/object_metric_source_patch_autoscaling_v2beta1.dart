@@ -51,4 +51,3 @@ class ObjectMetricSourcePatchAutoscalingV2beta1 {
     );
   }
 }
-

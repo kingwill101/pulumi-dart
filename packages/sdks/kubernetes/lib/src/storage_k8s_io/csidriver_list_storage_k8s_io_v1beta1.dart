@@ -45,4 +45,3 @@ class CSIDriverListStorageK8sIoV1beta1 {
     );
   }
 }
-
