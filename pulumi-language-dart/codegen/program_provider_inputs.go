@@ -39,6 +39,8 @@ func (lowerer programLowerer) typedProviderExpression(
 	nullable := providerTypeIsOptional(typ)
 	typ = unwrapProviderInputType(typ)
 	switch typ := typ.(type) {
+	case *schema.UnionType:
+		return lowerer.providerUnionExpression(defaultPackage, expression, typ)
 	case *schema.EnumType:
 		return lowerer.providerEnumExpression(defaultPackage, expression, typ)
 	case *schema.ObjectType:
@@ -91,15 +93,6 @@ func unwrapProviderInputType(typ schema.Type) schema.Type {
 			typ = wrapped.ElementType
 		case *schema.OptionalType:
 			typ = wrapped.ElementType
-		case *schema.UnionType:
-			if wrapped.DefaultType != nil {
-				typ = wrapped.DefaultType
-				continue
-			}
-			if len(wrapped.ElementTypes) == 0 {
-				return typ
-			}
-			typ = wrapped.ElementTypes[0]
 		default:
 			return typ
 		}

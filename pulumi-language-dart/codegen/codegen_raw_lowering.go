@@ -64,19 +64,27 @@ func dartTypeSpecFromRawPropertyType(
 	}
 
 	for _, candidates := range [][]rawPropertyTypeSpec{typ.OneOf, typ.AnyOf} {
-		if resolved, ok := firstConcreteRawType(candidates, namedTypeRefs, useReferenceTypes, externalRefs); ok {
+		if resolved, ok := commonRawUnionType(candidates, namedTypeRefs, useReferenceTypes, externalRefs); ok {
 			return resolved
 		}
 	}
 	return makePackageTypeSpec("dynamic", "dynamic")
 }
 
-func firstConcreteRawType(candidates []rawPropertyTypeSpec, named map[string]packageNamedTypeRef, useRefs bool, external *externalRefResolver) (packageTypeSpec, bool) {
+func commonRawUnionType(candidates []rawPropertyTypeSpec, named map[string]packageNamedTypeRef, useRefs bool, external *externalRefResolver) (packageTypeSpec, bool) {
+	var common *packageTypeSpec
 	for _, candidate := range candidates {
 		resolved := dartTypeSpecFromRawPropertyType(candidate, named, useRefs, external)
-		if resolved.DartType != "dynamic" {
-			return resolved, true
+		if common == nil {
+			common = &resolved
+			continue
+		}
+		if common.DartType != resolved.DartType || common.Kind != resolved.Kind {
+			return packageTypeSpec{}, false
 		}
 	}
-	return packageTypeSpec{}, false
+	if common == nil {
+		return packageTypeSpec{}, false
+	}
+	return *common, true
 }

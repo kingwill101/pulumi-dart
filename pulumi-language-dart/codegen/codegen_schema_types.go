@@ -40,13 +40,7 @@ resolved:
 	case *schema.EnumType:
 		return schemaEnumTypeSpec(t, namedTypeRefs, useReferenceTypes, currentProvider)
 	case *schema.UnionType:
-		for _, element := range t.ElementTypes {
-			if element == nil {
-				continue
-			}
-			return dartTypeSpecFromSchemaType(element, namedTypeRefs, useReferenceTypes, currentProvider)
-		}
-		return makePackageTypeSpec("dynamic", "dynamic")
+		return dartSchemaUnionTypeSpec(t, namedTypeRefs, useReferenceTypes, currentProvider)
 	case *schema.TokenType:
 		return schemaTokenTypeSpec(t, namedTypeRefs, useReferenceTypes, currentProvider)
 	case *schema.ObjectType:
@@ -69,4 +63,30 @@ resolved:
 	default:
 		return makePackageTypeSpec("dynamic", "dynamic")
 	}
+}
+
+func dartSchemaUnionTypeSpec(
+	union *schema.UnionType,
+	named map[string]packageNamedTypeRef,
+	useReferences bool,
+	provider string,
+) packageTypeSpec {
+	var common *packageTypeSpec
+	for _, element := range union.ElementTypes {
+		if element == nil {
+			continue
+		}
+		candidate := dartTypeSpecFromSchemaType(element, named, useReferences, provider)
+		if common == nil {
+			common = &candidate
+			continue
+		}
+		if common.DartType != candidate.DartType || common.Kind != candidate.Kind {
+			return makePackageTypeSpec("dynamic", "dynamic")
+		}
+	}
+	if common == nil {
+		return makePackageTypeSpec("dynamic", "dynamic")
+	}
+	return *common
 }

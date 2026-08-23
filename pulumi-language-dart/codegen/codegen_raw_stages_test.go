@@ -54,6 +54,16 @@ func TestDartTypeSpecFromRawPropertyTypeLowersNestedCollections(t *testing.T) {
 	require.Equal(t, "map", typeSpec.ElementType.Kind)
 }
 
+func TestDartTypeSpecFromRawPropertyTypeUsesDynamicForHeterogeneousUnion(t *testing.T) {
+	t.Parallel()
+
+	typeSpec := dartTypeSpecFromRawPropertyType(rawPropertyTypeSpec{
+		OneOf: []rawPropertyTypeSpec{{Type: "string"}, {Type: "integer"}},
+	}, nil, false, nil)
+
+	require.Equal(t, packageTypeSpec{Kind: "dynamic", DartType: "dynamic"}, typeSpec)
+}
+
 func TestBuildExternalSchemaIndexClassifiesTypes(t *testing.T) {
 	t.Parallel()
 
